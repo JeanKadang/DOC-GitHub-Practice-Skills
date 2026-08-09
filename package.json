@@ -8,7 +8,7 @@
     "test": "node --test",
     "validate": "node scripts/validate-skills.mjs",
     "lint:markdown": "npm run lint:markdown:docs && npm run lint:markdown:skills",
-    "lint:markdown:docs": "markdownlint-cli2 \"*.md\" \"docs/**/*.md\" \"#node_modules\"",
+    "lint:markdown:docs": "markdownlint-cli2 \"**/*.md\" \"#node_modules/**\" \"#skills/**\"",
     "lint:markdown:skills": "markdownlint-cli2 \"skills/**/*.md\" --config .markdownlint-skills.jsonc",
     "check": "npm run validate && npm test && npm run lint:markdown"
   },
