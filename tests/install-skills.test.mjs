@@ -5,6 +5,7 @@ import {
   mkdir,
   mkdtemp,
   readFile,
+  readlink,
   readdir,
   rm,
   stat,
@@ -196,6 +197,26 @@ test('rejects a reparse point inside a required source skill tree', { skip: proc
 
   assert.match(`${result.stdout}\n${result.stderr}`, /reparse|junction|link/i);
   assert.equal(await exists(join(root, 'destinations')), false);
+});
+
+test('Force rejects a destination skills junction before changing destination, backup, or source', { skip: process.platform !== 'win32' }, async () => {
+  const root = await temporaryRoot();
+  const sourceRoot = await sourceFixture(root);
+  const codexHome = join(root, 'codex-home');
+  const redirectedSkills = join(codexHome, 'skills');
+  await mkdir(codexHome, { recursive: true });
+  await symlink(join(sourceRoot, 'skills'), redirectedSkills, 'junction');
+  const sourceBefore = await treeSnapshot(join(sourceRoot, 'skills'));
+  const destinationBefore = await readdir(codexHome);
+  const junctionTargetBefore = await readlink(redirectedSkills);
+
+  const result = await runInstaller({ sourceRoot, codexHome, target: 'Codex', force: true, expectFailure: true });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /reparse|junction|redirect|link/i);
+  assert.deepEqual(await treeSnapshot(join(sourceRoot, 'skills')), sourceBefore);
+  assert.deepEqual(await readdir(codexHome), destinationBefore);
+  assert.equal(await readlink(redirectedSkills), junctionTargetBefore);
+  assert.equal(await exists(join(codexHome, 'skill-backups')), false);
 });
 
 test('rejects substituted, duplicate, and incomplete canonical requiredFiles declarations', async () => {

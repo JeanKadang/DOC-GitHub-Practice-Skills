@@ -68,6 +68,42 @@ function Assert-NoReparseInExistingAncestry {
     }
 }
 
+function Assert-PathWithin {
+    param(
+        [Parameter(Mandatory)][string]$Path,
+        [Parameter(Mandatory)][string]$Parent,
+        [Parameter(Mandatory)][string]$Description
+    )
+
+    $fullPath = Get-FullPath -Path $Path
+    $fullParent = Get-FullPath -Path $Parent
+    $parentPrefix = $fullParent + [IO.Path]::DirectorySeparatorChar
+    if (-not $fullPath.StartsWith($parentPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+        throw "$Description is outside its intended parent: $fullPath"
+    }
+}
+
+function Assert-SafeTargetPaths {
+    param(
+        [Parameter(Mandatory)]$Plan,
+        [string]$Destination,
+        [string]$BackupPath
+    )
+
+    Assert-NoReparseInExistingAncestry -Path $Plan.SkillRoot -Description "$($Plan.Name) skill root"
+    if (-not [string]::IsNullOrEmpty($Destination)) {
+        Assert-PathWithin -Path $Destination -Parent $Plan.SkillRoot -Description "$($Plan.Name) skill destination"
+        Assert-NoReparseInExistingAncestry -Path $Destination -Description "$($Plan.Name) skill destination"
+    }
+    if (-not [string]::IsNullOrEmpty($BackupPath)) {
+        $backupRoot = Join-Path $Plan.PlatformPath 'skill-backups'
+        $backupParent = [IO.Path]::GetDirectoryName($BackupPath)
+        Assert-PathWithin -Path $BackupPath -Parent $backupRoot -Description "$($Plan.Name) backup path"
+        Assert-NoReparseInExistingAncestry -Path $backupParent -Description "$($Plan.Name) backup parent"
+        Assert-NoReparseInExistingAncestry -Path $BackupPath -Description "$($Plan.Name) backup path"
+    }
+}
+
 function Get-FileHashHex {
     param([Parameter(Mandatory)][string]$LiteralPath)
     return (Get-FileHash -LiteralPath $LiteralPath -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -253,6 +289,7 @@ if ($Target -in @('Claude', 'Both')) {
 
 foreach ($spec in $targetSpecs) {
     Assert-NoReparseInExistingAncestry -Path $spec.PlatformPath -Description "$($spec.Name) platform-home path"
+    Assert-NoReparseInExistingAncestry -Path $spec.SkillRoot -Description "$($spec.Name) skill root"
     if (Test-PathOverlap -Left $resolvedSource -Right $spec.PlatformPath) {
         throw "Source and destination paths overlap: $resolvedSource and $($spec.PlatformPath)"
     }
@@ -278,13 +315,32 @@ foreach ($spec in $targetSpecs) {
     $skillRoot = $spec.SkillRoot
     $replacements = @()
     foreach ($skill in $inventory.skills) {
-        $destination = Join-Path $skillRoot $skill.name
+        $destination = Get-FullPath -Path (Join-Path $skillRoot $skill.name)
+        Assert-PathWithin -Path $destination -Parent $skillRoot -Description "$($spec.Name) skill destination"
+        Assert-NoReparseInExistingAncestry -Path $destination -Description "$($spec.Name) skill destination"
         if (Test-Path -LiteralPath $destination) {
+            $installedMarker = Join-Path $destination $markerName
+            if (Test-Path -LiteralPath $installedMarker) {
+                Assert-PathWithin -Path $installedMarker -Parent $destination -Description "$($spec.Name) installed marker"
+                Assert-NoReparseInExistingAncestry -Path $installedMarker -Description "$($spec.Name) installed marker"
+            }
+            foreach ($relativeFile in $skill.requiredFiles) {
+                $installedRequiredFile = Get-FullPath -Path (Join-Path $destination $relativeFile)
+                Assert-PathWithin -Path $installedRequiredFile -Parent $destination -Description "$($spec.Name) installed required file"
+                if (Test-Path -LiteralPath $installedRequiredFile) {
+                    Assert-NoReparseInExistingAncestry -Path $installedRequiredFile -Description "$($spec.Name) installed required file"
+                }
+            }
             $tracked = Test-TrackedSkill -SkillPath $destination -Skill $skill -Inventory $inventory
             if (-not $tracked.Valid -and -not $Force) {
                 throw $tracked.Reason
             }
             $backupPath = Join-Path $spec.PlatformPath (Join-Path 'skill-backups' (Join-Path $backupTimestamp $skill.name))
+            $backupRoot = Join-Path $spec.PlatformPath 'skill-backups'
+            $backupParent = [IO.Path]::GetDirectoryName($backupPath)
+            Assert-PathWithin -Path $backupPath -Parent $backupRoot -Description "$($spec.Name) backup path"
+            Assert-NoReparseInExistingAncestry -Path $backupParent -Description "$($spec.Name) backup parent"
+            Assert-NoReparseInExistingAncestry -Path $backupPath -Description "$($spec.Name) backup path"
             if ($Force -and (Test-Path -LiteralPath $backupPath)) {
                 throw "Backup path already exists: $backupPath"
             }
@@ -342,19 +398,27 @@ try {
     }
 
     foreach ($plan in $plans) {
+        Assert-SafeTargetPaths -Plan $plan
         New-Item -ItemType Directory -Path $plan.SkillRoot -Force | Out-Null
+        Assert-SafeTargetPaths -Plan $plan
         foreach ($skill in $inventory.skills) {
+            $destination = Join-Path $plan.SkillRoot $skill.name
             $replacement = $plan.Replacements | Where-Object { $_.Skill.name -eq $skill.name }
             if ($null -ne $replacement) {
                 if ($Force) {
-                    New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($replacement.BackupPath)) -Force | Out-Null
+                    $backupParent = [IO.Path]::GetDirectoryName($replacement.BackupPath)
+                    Assert-SafeTargetPaths -Plan $plan -Destination $replacement.Destination -BackupPath $replacement.BackupPath
+                    New-Item -ItemType Directory -Path $backupParent -Force | Out-Null
+                    Assert-SafeTargetPaths -Plan $plan -Destination $replacement.Destination -BackupPath $replacement.BackupPath
                     Move-Item -LiteralPath $replacement.Destination -Destination $replacement.BackupPath
                 }
                 else {
+                    Assert-SafeTargetPaths -Plan $plan -Destination $replacement.Destination
                     Remove-Item -LiteralPath $replacement.Destination -Recurse
                 }
             }
-            Move-Item -LiteralPath (Join-Path $plan.StagePath $skill.name) -Destination (Join-Path $plan.SkillRoot $skill.name)
+            Assert-SafeTargetPaths -Plan $plan -Destination $destination
+            Move-Item -LiteralPath (Join-Path $plan.StagePath $skill.name) -Destination $destination
         }
     }
 }
