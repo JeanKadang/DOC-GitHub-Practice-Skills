@@ -1,0 +1,53 @@
+name: Improvement
+description: Propose a focused workflow, documentation, or tooling improvement
+title: "Improvement: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence for the need
+      description: Identify the current behavior, source, example, or verification that supports this proposal.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and boundaries
+      description: Describe the proposed outcome, affected surface, and non-goals.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List independently verifiable outcomes, not implementation tasks alone.
+      placeholder: "- [ ] The documented workflow has a reproducible example and passes repository validation."
+    validations:
+      required: true
+  - type: dropdown
+    id: skills
+    attributes:
+      label: Affected skills
+      description: Select every skill whose contract or handoff may change.
+      multiple: true
+      options:
+        - github-issue-first
+        - github-hygiene
+        - github-pr-review
+        - github-repo-review
+        - github-repo-bootstrap
+        - github-security-response
+        - github-projects
+        - github-for-ado-users
+        - Installer, validation, or documentation only
+    validations:
+      required: true
+  - type: checkboxes
+    id: public_content
+    attributes:
+      label: Public repository confirmation
+      options:
+        - label: I confirmed this proposal contains only reusable public content and neutral examples.
+          required: true
