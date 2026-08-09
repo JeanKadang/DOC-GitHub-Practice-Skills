@@ -1,12 +1,14 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import {
+  cp,
   mkdir,
   mkdtemp,
   readFile,
   readdir,
   rm,
   stat,
+  symlink,
   writeFile,
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -45,9 +47,8 @@ async function runInstaller({
     installerPath,
     '-Target',
     target,
-    '-SourceRoot',
-    sourceRoot,
   ];
+  if (sourceRoot !== null) args.push('-SourceRoot', sourceRoot);
   if (codexHome) args.push('-CodexHome', codexHome);
   if (claudeHome) args.push('-ClaudeHome', claudeHome);
   if (dryRun) args.push('-DryRun');
@@ -62,6 +63,7 @@ async function runInstaller({
     assert.equal(expectFailure, false, `installer unexpectedly succeeded:\n${result.stdout}`);
     return { ...result, exitCode: 0 };
   } catch (error) {
+    if (error.code === 'ERR_ASSERTION') throw error;
     if (!expectFailure) throw error;
     assert.notEqual(error.code, 0, 'installer failure must return a non-zero exit code');
     return {
@@ -116,6 +118,14 @@ async function installOnce(root, target = 'Both') {
   return { codexHome, claudeHome };
 }
 
+async function sourceFixture(root) {
+  const sourceRoot = join(root, 'source');
+  await mkdir(join(sourceRoot, 'contracts'), { recursive: true });
+  await cp(join(repoRoot, 'contracts', 'skill-inventory.json'), join(sourceRoot, 'contracts', 'skill-inventory.json'));
+  await cp(join(repoRoot, 'skills'), join(sourceRoot, 'skills'), { recursive: true });
+  return sourceRoot;
+}
+
 test.after(async () => {
   await Promise.all(temporaryRoots.map((root) => rm(root, { recursive: true, force: true })));
 });
@@ -134,6 +144,85 @@ test('dry-run reports the complete plan without changing the filesystem', async 
   assert.match(result.stdout, /Target:\s+Claude/i);
   assert.match(result.stdout, /Skills \(8\)/i);
   assert.match(result.stdout, /backup/i);
+});
+
+test('SourceRoot defaults to the repository containing the installer', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+
+  await runInstaller({ sourceRoot: null, codexHome, target: 'Codex' });
+
+  assert.equal(await exists(join(codexHome, 'skills', inventory.skills[0].name, 'SKILL.md')), true);
+});
+
+for (const [label, targetHomes] of [
+  ['identical', (root) => [join(root, 'shared-home'), join(root, 'shared-home')]],
+  ['nested', (root) => [join(root, 'codex-home'), join(root, 'codex-home', 'claude-home')]],
+]) {
+  test(`rejects ${label} Codex and Claude homes without mutation`, async () => {
+    const root = await temporaryRoot();
+    const [codexHome, claudeHome] = targetHomes(root);
+    const before = await treeSnapshot(root);
+
+    const result = await runInstaller({ codexHome, claudeHome, expectFailure: true });
+
+    assert.match(`${result.stdout}\n${result.stderr}`, /overlap|nested|target/i);
+    assert.deepEqual(await treeSnapshot(root), before);
+  });
+}
+
+test('rejects a junction alias of SourceRoot before destination creation', { skip: process.platform !== 'win32' }, async () => {
+  const root = await temporaryRoot();
+  const sourceAlias = join(root, 'source-alias');
+  const codexHome = join(root, 'destinations', 'codex');
+  await symlink(repoRoot, sourceAlias, 'junction');
+
+  const result = await runInstaller({ sourceRoot: sourceAlias, codexHome, target: 'Codex', expectFailure: true });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /reparse|junction|link/i);
+  assert.equal(await exists(join(root, 'destinations')), false);
+});
+
+test('rejects a reparse point inside a required source skill tree', { skip: process.platform !== 'win32' }, async () => {
+  const root = await temporaryRoot();
+  const sourceRoot = await sourceFixture(root);
+  const skillName = inventory.skills[0].name;
+  const fixtureSkill = join(sourceRoot, 'skills', skillName);
+  await rm(fixtureSkill, { recursive: true });
+  await symlink(join(repoRoot, 'skills', skillName), fixtureSkill, 'junction');
+  const codexHome = join(root, 'destinations', 'codex');
+
+  const result = await runInstaller({ sourceRoot, codexHome, target: 'Codex', expectFailure: true });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /reparse|junction|link/i);
+  assert.equal(await exists(join(root, 'destinations')), false);
+});
+
+test('rejects substituted, duplicate, and incomplete canonical requiredFiles declarations', async () => {
+  const variants = [
+    ['substituted', ['SKILL.md', 'agents/openai.yaml', 'extra.md']],
+    ['duplicate', ['SKILL.md', 'agents/openai.yaml', 'SKILL.md']],
+    ['incomplete', ['SKILL.md', 'agents/openai.yaml']],
+  ];
+
+  for (const [label, requiredFiles] of variants) {
+    const root = await temporaryRoot();
+    const sourceRoot = await sourceFixture(root);
+    const fixtureInventoryPath = join(sourceRoot, 'contracts', 'skill-inventory.json');
+    const fixtureInventory = JSON.parse(await readFile(fixtureInventoryPath, 'utf8'));
+    const repoReview = fixtureInventory.skills.find(({ name }) => name === 'github-repo-review');
+    repoReview.requiredFiles = requiredFiles;
+    if (label === 'substituted') {
+      await writeFile(join(sourceRoot, 'skills', 'github-repo-review', 'extra.md'), 'substitute\n');
+    }
+    await writeFile(fixtureInventoryPath, `${JSON.stringify(fixtureInventory, null, 2)}\n`);
+    const codexHome = join(root, 'destinations', 'codex');
+
+    const result = await runInstaller({ sourceRoot, codexHome, target: 'Codex', expectFailure: true });
+
+    assert.match(`${result.stdout}\n${result.stderr}`, /canonical|inventory|required/i, label);
+    assert.equal(await exists(join(root, 'destinations')), false, label);
+  }
 });
 
 test('Both installs exactly eight skills per target with matching SKILL.md hashes', async () => {
@@ -185,6 +274,24 @@ test('a modified tracked skill is refused without Force', async () => {
   assert.deepEqual(await treeSnapshot(claudeHome), before);
 });
 
+test('a modified tracked skill cannot be concealed by editing its marker hash', async () => {
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  const name = inventory.skills[0].name;
+  const skillPath = join(codexHome, 'skills', name, 'SKILL.md');
+  const markerPath = join(codexHome, 'skills', name, '.doc-github-practice-skills.json');
+  await writeFile(skillPath, 'locally modified and re-marked\n');
+  const marker = JSON.parse(await readFile(markerPath, 'utf8'));
+  marker.requiredFiles['SKILL.md'] = await sha256(skillPath);
+  await writeFile(markerPath, `${JSON.stringify(marker, null, 2)}\n`);
+  const before = await treeSnapshot(codexHome);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', expectFailure: true });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /modified|hash|marker/i);
+  assert.deepEqual(await treeSnapshot(codexHome), before);
+});
+
 test('Force creates a byte-preserving backup before replacing a skill', async () => {
   const root = await temporaryRoot();
   const { codexHome } = await installOnce(root, 'Codex');
@@ -202,6 +309,35 @@ test('Force creates a byte-preserving backup before replacing a skill', async ()
   );
   assert.deepEqual(backedUpBytes, modifiedBytes);
   assert.equal(await sha256(skillPath), await sha256(join(repoRoot, 'skills', name, 'SKILL.md')));
+});
+
+test('Force dry-run with a real replacement creates no backup or filesystem change', async () => {
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  const skillPath = join(codexHome, 'skills', inventory.skills[0].name, 'SKILL.md');
+  await writeFile(skillPath, 'locally modified\n');
+  const before = await treeSnapshot(root);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', force: true, dryRun: true });
+
+  assert.match(result.stdout, /overwrite/i);
+  assert.match(result.stdout, /backup/i);
+  assert.deepEqual(await treeSnapshot(root), before);
+  assert.equal(await exists(join(codexHome, 'skill-backups')), false);
+});
+
+test('a failure after staging removes only installer GUID stages', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+  await mkdir(codexHome, { recursive: true });
+  await writeFile(join(codexHome, 'skills'), 'blocks the skills directory\n');
+  const before = await treeSnapshot(root);
+
+  await runInstaller({ codexHome, target: 'Codex', expectFailure: true });
+
+  assert.deepEqual(await treeSnapshot(root), before);
+  const siblings = await readdir(root);
+  assert.equal(siblings.some((name) => /^\.doc-github-practice-skills-[0-9a-f-]{36}$/i.test(name)), false);
 });
 
 test('a conflict in the second target leaves an installed first target unchanged', async () => {
