@@ -410,7 +410,10 @@ try {
                     Assert-SafeTargetPaths -Plan $plan -Destination $replacement.Destination -BackupPath $replacement.BackupPath
                     New-Item -ItemType Directory -Path $backupParent -Force | Out-Null
                     Assert-SafeTargetPaths -Plan $plan -Destination $replacement.Destination -BackupPath $replacement.BackupPath
-                    Move-Item -LiteralPath $replacement.Destination -Destination $replacement.BackupPath
+                    if (Test-Path -LiteralPath $replacement.BackupPath) {
+                        throw "Backup destination appeared before exclusive move: $($replacement.BackupPath)"
+                    }
+                    [IO.Directory]::Move($replacement.Destination, $replacement.BackupPath)
                 }
                 else {
                     Assert-SafeTargetPaths -Plan $plan -Destination $replacement.Destination
@@ -418,7 +421,10 @@ try {
                 }
             }
             Assert-SafeTargetPaths -Plan $plan -Destination $destination
-            Move-Item -LiteralPath (Join-Path $plan.StagePath $skill.name) -Destination $destination
+            if (Test-Path -LiteralPath $destination) {
+                throw "Skill destination appeared before exclusive move: $destination"
+            }
+            [IO.Directory]::Move((Join-Path $plan.StagePath $skill.name), $destination)
         }
     }
 }
