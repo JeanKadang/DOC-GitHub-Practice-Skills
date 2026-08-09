@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "packageVersion": "0.1.0",
+  "skills": [
+    { "name": "github-for-ado-users", "requiredFiles": ["SKILL.md", "agents/openai.yaml"] },
+    { "name": "github-hygiene", "requiredFiles": ["SKILL.md", "agents/openai.yaml"] },
+    { "name": "github-issue-first", "requiredFiles": ["SKILL.md", "agents/openai.yaml"] },
+    { "name": "github-pr-review", "requiredFiles": ["SKILL.md", "agents/openai.yaml"] },
+    { "name": "github-projects", "requiredFiles": ["SKILL.md", "agents/openai.yaml"] },
+    { "name": "github-repo-bootstrap", "requiredFiles": ["SKILL.md", "agents/openai.yaml"] },
+    { "name": "github-repo-review", "requiredFiles": ["SKILL.md", "agents/openai.yaml", "review-prompt.md"] },
+    { "name": "github-security-response", "requiredFiles": ["SKILL.md", "agents/openai.yaml"] }
+  ]
+}

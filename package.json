@@ -1,0 +1,19 @@
+{
+  "name": "doc-github-practice-skills",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test",
+    "validate": "node scripts/validate-skills.mjs",
+    "lint:markdown": "npm run lint:markdown:docs && npm run lint:markdown:skills",
+    "lint:markdown:docs": "markdownlint-cli2 \"*.md\" \"docs/**/*.md\" \"#node_modules\"",
+    "lint:markdown:skills": "markdownlint-cli2 \"skills/**/*.md\" --config .markdownlint-skills.jsonc",
+    "check": "npm run validate && npm test && npm run lint:markdown"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.23.2",
+    "yaml": "^2.8.1"
+  }
+}

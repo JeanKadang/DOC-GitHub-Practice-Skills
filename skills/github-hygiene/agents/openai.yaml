@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Hygiene"
+  short_description: "Manage GitHub issue, PR, and release hygiene"
+  default_prompt: "Use $github-hygiene to guide this GitHub issue closure, merge, or release workflow."
