@@ -1,0 +1,45 @@
+name: Release tagged version
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Validate and publish release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out tag
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        with:
+          ref: ${{ github.ref }}
+      - name: Set up Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run repository checks
+        run: npm run check
+      - name: Verify tag and manifest versions
+        shell: pwsh
+        run: |
+          $tagVersion = $env:GITHUB_REF_NAME -replace '^v', ''
+          $packageVersion = (Get-Content package.json -Raw | ConvertFrom-Json).version
+          $inventoryVersion = (Get-Content contracts/skill-inventory.json -Raw | ConvertFrom-Json).packageVersion
+          if ($packageVersion -ne $tagVersion) {
+            throw "package.json version '$packageVersion' does not match tag '$tagVersion'."
+          }
+          if ($inventoryVersion -ne $tagVersion) {
+            throw "Inventory version '$inventoryVersion' does not match tag '$tagVersion'."
+          }
+      - name: Create GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create $env:GITHUB_REF_NAME --verify-tag --generate-notes --title $env:GITHUB_REF_NAME

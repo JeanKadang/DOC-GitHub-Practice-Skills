@@ -1,0 +1,30 @@
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+  categories:
+    - title: Security
+      labels:
+        - security
+    - title: Features
+      labels:
+        - enhancement
+    - title: Fixes
+      labels:
+        - bug
+    - title: Documentation
+      labels:
+        - documentation
+    - title: Tooling & CI
+      labels:
+        - tooling
+        - github-actions
+        - npm
+    - title: Maintenance
+      labels:
+        - maintenance
+        - dependencies
+        - process
+    - title: Other
+      labels:
+        - "*"

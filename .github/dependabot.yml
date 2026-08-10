@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    assignees:
+      - JeanKadang
+    labels:
+      - dependencies
+      - npm
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    assignees:
+      - JeanKadang
+    labels:
+      - dependencies
+      - github-actions
+    groups:
+      github-actions-dependencies:
+        patterns:
+          - "*"
