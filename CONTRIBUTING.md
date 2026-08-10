@@ -16,6 +16,15 @@ public, reviewable, and traceable.
 6. Record criterion-level evidence from the diff, tests, CI, documentation, or
    reproducible checks. Use `Closes #N` only after every closure gate passes.
 
+`Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
+stays open when GitHub has a connected development branch. After every merge,
+immediately audit the linked issue state and body. If it is closed while any
+in-scope acceptance criterion is unchecked, unmet, or unevaluated, reopen it
+immediately and record the reason. For work that spans the PR merge, either use
+this audit-and-reopen flow or track the PR-scoped work in a child issue and leave
+the release-spanning parent unconnected. Every PR-scoped criterion still needs
+evidence before merge.
+
 ## Validation
 
 Run the complete local check before requesting review:

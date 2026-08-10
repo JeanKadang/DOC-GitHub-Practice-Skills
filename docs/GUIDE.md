@@ -106,6 +106,15 @@ linked branch exist, `github-hygiene` owns traceability and closure. Use
 approved merge. A broad audit starts with `github-repo-review`, but each public
 finding it creates follows issue-first mechanics.
 
+`Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
+stays open when GitHub has a connected development branch. After every merge,
+immediately audit the linked issue state and body. If it is closed while any
+in-scope acceptance criterion is unchecked, unmet, or unevaluated, reopen it
+immediately and record the reason. For work that spans the PR merge, either use
+this audit-and-reopen flow or track the PR-scoped work in a child issue and leave
+the release-spanning parent unconnected. Every PR-scoped criterion still needs
+evidence before merge.
+
 Security is a private branch in the flow: `github-security-response` replaces
 the public issue and PR path until coordinated disclosure is safe. Repository
 creation begins with `github-repo-bootstrap`. `github-projects` adds a view only

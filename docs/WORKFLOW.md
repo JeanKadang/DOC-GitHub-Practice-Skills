@@ -21,6 +21,15 @@
 10. Reconcile the parent epic or native sub-issue relationship and the milestone.
 11. Release from updated `main`, then close the milestone and clean branches.
 
+`Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
+stays open when GitHub has a connected development branch. After every merge,
+immediately audit the linked issue state and body. If it is closed while any
+in-scope acceptance criterion is unchecked, unmet, or unevaluated, reopen it
+immediately and record the reason. For work that spans the PR merge, either use
+this audit-and-reopen flow or track the PR-scoped work in a child issue and leave
+the release-spanning parent unconnected. Every PR-scoped criterion still needs
+evidence before merge.
+
 ## The real closure gate
 
 For each criterion, record its exact text or identifier, the supporting diff,
@@ -47,4 +56,5 @@ all children and its own completion contract pass.
   fork until coordinated disclosure is safe.
 - A new repository may create only its minimum shell before its first issue.
 - A Projects board is optional shared visualization, never workflow authority.
-- A partial but useful PR may merge with `Refs #N`; its issue remains open.
+- A partial but useful PR may merge with `Refs #N`; the post-merge issue audit
+  still applies.
