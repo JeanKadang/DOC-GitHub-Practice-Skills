@@ -339,3 +339,12 @@ Every close carries a reason a human can read.
 GitHub closing keywords do not evaluate the issue. Before allowing `Closes #N`
 to merge, use `github-hygiene` to perform its acceptance-criteria closure gate.
 Use `Refs #N` while any criterion remains unmet or unevaluated.
+
+`Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
+stays open when GitHub has a connected development branch. After every merge,
+immediately audit the linked issue state and body. If it is closed while any
+in-scope acceptance criterion is unchecked, unmet, or unevaluated, reopen it
+immediately and record the reason. For work that spans the PR merge, either use
+this audit-and-reopen flow or track the PR-scoped work in a child issue and leave
+the release-spanning parent unconnected. Every PR-scoped criterion still needs
+evidence before merge.

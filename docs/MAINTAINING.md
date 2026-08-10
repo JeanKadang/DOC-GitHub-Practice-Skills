@@ -26,6 +26,15 @@ with the parent's checklist. Verify that every child is closed for the supported
 reason, its linked PR is recorded, and the parent's own criteria have evidence.
 After merge, verify both issue state and milestone membership.
 
+`Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
+stays open when GitHub has a connected development branch. After every merge,
+immediately audit the linked issue state and body. If it is closed while any
+in-scope acceptance criterion is unchecked, unmet, or unevaluated, reopen it
+immediately and record the reason. For work that spans the PR merge, either use
+this audit-and-reopen flow or track the PR-scoped work in a child issue and leave
+the release-spanning parent unconnected. Every PR-scoped criterion still needs
+evidence before merge.
+
 GitHub issue and PR numbers share a repository number sequence. Before editing
 metadata or closing an object from a bare `#N`, query it and confirm whether it
 is an issue or pull request. Never assume the object type from the number alone.

@@ -40,7 +40,7 @@ Before approving a merge that would close an issue:
    `gh issue edit <N> --body-file <file>`. Do not round-trip multiline Markdown
    through a PowerShell string array; it can flatten the issue body.
 5. If any in-scope criterion is unmet or unevaluated, keep it unchecked and use
-   `Refs #N` in the PR. The PR may merge, but the issue stays open.
+   `Refs #N` in the PR. The PR may merge, but do not assume the issue stays open.
 6. Only when every in-scope criterion passes, change `Refs #N` to `Closes #N`
    and proceed with the ordinary merge gate.
 
@@ -49,8 +49,15 @@ the issue before merge. Mark it explicitly as removed or superseded; never check
 it as though it was delivered. Deferred work gets a linked follow-up issue and
 the original issue remains open unless its recorded scope is formally changed.
 
-After merge, verify the issue state and body. If GitHub auto-closed an issue with
-unchecked in-scope criteria, reopen it immediately and reconcile the evidence.
+`Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
+stays open when GitHub has a connected development branch. After every merge,
+immediately audit the linked issue state and body. If it is closed while any
+in-scope acceptance criterion is unchecked, unmet, or unevaluated, reopen it
+immediately and record the reason. For work that spans the PR merge, either use
+this audit-and-reopen flow or track the PR-scoped work in a child issue and leave
+the release-spanning parent unconnected. Every PR-scoped criterion still needs
+evidence before merge.
+
 Closing as duplicate, invalid, or not planned is different from completed: use
 the appropriate state reason and a human-readable explanation; do not check
 criteria that were not delivered.

@@ -80,6 +80,15 @@ explicit maintainer approval and all applicable checks green. If the repository
 ships a versioned artifact, tag updated `main`, publish generated release notes,
 and verify the release before closing the bootstrap issue.
 
+`Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
+stays open when GitHub has a connected development branch. After every merge,
+immediately audit the linked issue state and body. If it is closed while any
+in-scope acceptance criterion is unchecked, unmet, or unevaluated, reopen it
+immediately and record the reason. For bootstrap work that spans the PR merge,
+either use this audit-and-reopen flow or track the PR-scoped work in a child
+issue and leave the release-spanning parent unconnected. Every PR-scoped
+criterion still needs evidence before merge.
+
 ## 10. Post-bootstrap API audit
 
 Query GitHub after setup and compare actual state with the approved design:
