@@ -14,6 +14,8 @@ const policyFiles = [
   'docs/GUIDE.md',
   'docs/MAINTAINING.md',
 ];
+const falseOpenAssurance =
+  /(?:Refs #N\s+(?:guarantees?|ensures?|keeps?)[\s\S]{0,80}(?:issue )?(?:open|stays open|remains open)|the PR may merge, but the issue (?:stays|remains) open)/i;
 
 async function policyText(relativePath) {
   return readFile(join(repoRoot, relativePath), 'utf8');
@@ -46,8 +48,12 @@ test('policy never claims Refs guarantees an issue remains open', async () => {
     const content = await policyText(relativePath);
     assert.doesNotMatch(
       content,
-      /Refs #N\s+(?:guarantees?|ensures?|keeps?)[\s\S]{0,80}(?:issue )?(?:open|stays open|remains open)/i,
+      falseOpenAssurance,
       `${relativePath} must not promise that Refs controls issue state`,
     );
   }
+});
+
+test('false assurance detector rejects the former merge claim', () => {
+  assert.match('The PR may merge, but the issue stays open.', falseOpenAssurance);
 });
