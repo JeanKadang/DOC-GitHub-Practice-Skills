@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "packageVersion": "0.1.0",
+  "packageVersion": "0.1.1",
   "skills": [
     { "name": "github-for-ado-users", "requiredFiles": ["SKILL.md", "agents/openai.yaml"] },
     { "name": "github-hygiene", "requiredFiles": ["SKILL.md", "agents/openai.yaml"] },
