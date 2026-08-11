@@ -1,11 +1,13 @@
 # DOC-GitHub-Practice-Skills
 
+[![Validate](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/actions/workflows/validate.yml/badge.svg)](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/actions/workflows/validate.yml)
+
 Versioned GitHub workflow skills for OpenAI Codex, Claude, and people moving
 from Azure DevOps to GitHub.
 
-> **Release status:** v0.1.0 is a pre-release target. The repository contains
-> the v0.1.0 package contract, but this branch does not claim that a GitHub
-> release already exists.
+> **Release status:** [v0.1.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.1.0)
+> is published. The repository contains the v0.1.0 package contract and a
+> matching GitHub release.
 
 ## Skills
 
@@ -53,8 +55,13 @@ The installer validates the source, refuses unapproved overwrites, and can use
 
 Both platforms consume the canonical packages under `skills/`. OpenAI Codex
 also reads `agents/openai.yaml`; Claude ignores that metadata and reads the same
-`SKILL.md`. Node.js 20 or 22 validates the repository. Windows PowerShell is the
-only installer environment verified for v0.1.0.
+`SKILL.md`. Node.js 20 or 22 validates the repository. Windows is the primary
+verified installer environment (a required CI check, and the only one that
+exercises junction/reparse-point rejection). Ubuntu and macOS `pwsh` also run
+the installer suite in CI as an advisory check — Ubuntu passes, **macOS
+currently fails** on a known issue (#23). See
+[docs/MAINTAINING.md](docs/MAINTAINING.md#compatibility-records) for what that
+does and doesn't cover.
 
 ## Contributing, security, and licence
 

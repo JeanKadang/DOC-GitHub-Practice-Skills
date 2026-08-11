@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 import { parse } from 'yaml';
 
-const CANONICAL_SKILLS = [
+export const CANONICAL_SKILLS = [
   { name: 'github-for-ado-users', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-hygiene', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-issue-first', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
