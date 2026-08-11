@@ -177,17 +177,26 @@ then add a plan-supported ruleset that does not require solo self-approval.
 
 ## Proposed improvements, not current policy
 
-These are candidates for separate issues after v0.1.0. They are not requirements
-implemented by the current skills:
+Triaged 2026-08-11 (issue #10). Three items from the original v0.1.0 list were
+already implemented by the time of triage and are removed here rather than
+left stale: parent-epic reconciliation is an explicit step in
+`skills/github-hygiene/SKILL.md`'s sub-issue section; issue-versus-PR object
+type verification and recording tested GitHub CLI/API versions are both
+covered by `docs/MAINTAINING.md`. Milestone semantics (release-based, not
+thematic) are now codified in `docs/WORKFLOW.md`'s lifecycle step 2.
 
-1. Make parent-epic reconciliation an explicit step in every closing skill.
-2. Automate audits for completed issues with unchecked criteria and stale epic
-   checkboxes.
-3. Record whether milestones are release or thematic buckets before closure.
-4. Add more PowerShell-native examples alongside Bash-oriented examples.
-5. Verify issue-versus-PR object type automatically when numbers overlap.
-6. Record tested GitHub CLI and API versions with compatibility-sensitive
-   commands.
+Two candidates remain genuinely open, not requirements implemented by the
+current skills:
+
+1. Automate audits for completed issues with unchecked criteria and stale
+   epic checkboxes. Deferred: real value once the issue count grows, but no
+   scheduled automation exists yet and the repo's current scale (a handful of
+   issues) doesn't yet justify the added CI/API-quota surface. Revisit if
+   issue volume grows enough that manual audits become unreliable.
+2. Add more PowerShell-native examples alongside the Bash-oriented ones in
+   `skills/*/SKILL.md` — tracked as issue #19 rather than folded into this
+   triage, since it's a cross-cutting edit across all eight skill files.
 
 Maintainers must update the canonical skill contract and this policy section in
-separate, reviewed changes before any proposal becomes current behavior.
+separate, reviewed changes before either remaining proposal becomes current
+behavior.
