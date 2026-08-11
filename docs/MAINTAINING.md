@@ -43,8 +43,20 @@ is an issue or pull request. Never assume the object type from the number alone.
 
 For changes that depend on GitHub CLI, API, Actions, Node.js, or PowerShell
 behavior, record the tested versions, operating system, command, and outcome in
-the issue or PR. Mark unverified platforms accurately. Windows PowerShell is the
-only installer environment verified for v0.1.0.
+the issue or PR. Mark unverified platforms accurately. Windows is the primary
+verified installer environment: its dry run is a required check, and its test
+run is the only one that exercises junction/reparse-point rejection (three
+`tests/install-skills.test.mjs` cases are Windows-only by design, since
+reparse points are the concrete attack surface being guarded against there).
+Ubuntu and macOS `pwsh` also run the installer test suite and a live dry run
+in CI, but as an advisory (non-required) check, not yet promoted to a required
+branch-protection check. Ubuntu passes cleanly. **macOS currently fails**
+(`continue-on-error: true`, not a silent skip): its `/var` is itself a symlink
+to `/private/var`, which `Assert-NoReparseInExistingAncestry` treats as an
+attack signal on any path under the OS temp directory, unrelated to any
+symlink the tests actually create. See issue #23 — needs a real fix that
+distinguishes OS-baseline symlinks from attacker-planted ones, not a quick
+patch.
 
 ## Manifest and version consistency
 
