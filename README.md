@@ -1,11 +1,13 @@
 # DOC-GitHub-Practice-Skills
 
+[![Validate](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/actions/workflows/validate.yml/badge.svg)](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/actions/workflows/validate.yml)
+
 Versioned GitHub workflow skills for OpenAI Codex, Claude, and people moving
 from Azure DevOps to GitHub.
 
-> **Release status:** v0.1.0 is a pre-release target. The repository contains
-> the v0.1.0 package contract, but this branch does not claim that a GitHub
-> release already exists.
+> **Release status:** [v0.1.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.1.0)
+> is published. The repository contains the v0.1.0 package contract and a
+> matching GitHub release.
 
 ## Skills
 
