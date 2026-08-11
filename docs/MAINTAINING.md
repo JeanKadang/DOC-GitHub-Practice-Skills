@@ -7,8 +7,9 @@
 ## Cross-skill invariant review
 
 When a shared rule changes, inspect all eight `skills/*/SKILL.md` files, the
-standalone repository-review prompt, the guide, workflow, platform guides, issue
-forms, PR template, and release automation. Human review must confirm that:
+standalone repository-review prompt, the guide, workflow, platform guides,
+issue forms, PR template, release automation, and `docs/adr/` for any decision
+record the change would supersede. Human review must confirm that:
 
 - issue-first work retains ownership, priority, category, milestone, and scope;
 - `Refs #N` remains until criterion evidence passes the closure gate;
