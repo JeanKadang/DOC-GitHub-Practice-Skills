@@ -8,7 +8,10 @@
 
 1. Confirm the repository and existing conventions.
 2. File or select an assigned issue with one priority, relevant categories, a
-   milestone, explicit scope, and observable acceptance criteria.
+   milestone, explicit scope, and observable acceptance criteria. This repo's
+   milestones are release-based (named after the target tag, e.g. `v0.1.1`),
+   not thematic buckets — reuse that scheme rather than introducing a second
+   one alongside it.
 3. Create the branch with `gh issue develop` so GitHub records the link.
 4. Make a focused change and conventional commits on that branch.
 5. Open a pull request beginning with `Refs #N` and state the validation run.
