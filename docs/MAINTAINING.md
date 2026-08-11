@@ -66,6 +66,17 @@ required companion file. Before release, verify all eight frontmatter names and
 OpenAI metadata, and ensure the tag without its leading `v` equals both version
 fields.
 
+The canonical eight-skill roster (names and required files) is independently
+hardcoded in three places: `contracts/skill-inventory.json`,
+`scripts/validate-skills.mjs`'s `CANONICAL_SKILLS`, and
+`scripts/install-skills.ps1`'s `$canonicalRequiredFiles`. This duplication is
+intentional defense-in-depth — the installer refuses to trust the inventory
+JSON blindly — but it means adding, renaming, or changing a skill's required
+files means editing all three by hand. `tests/roster-consistency.test.mjs`
+fails automatically if the three ever diverge, so drift is caught as a test
+failure rather than discovered separately by two independent installer checks
+disagreeing.
+
 ## Release hygiene
 
 Use a release issue and dedicated branch. Update the changelog, validate from a
