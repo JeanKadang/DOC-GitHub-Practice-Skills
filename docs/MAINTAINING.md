@@ -15,7 +15,8 @@ forms, PR template, and release automation. Human review must confirm that:
 - security-sensitive findings never enter a public issue or branch;
 - approval, merge, release, and destructive operations remain explicit gates;
 - a Projects board remains optional and mirrors issue metadata; and
-- Claude and OpenAI Codex consume the same canonical `SKILL.md` content.
+- Claude, OpenAI Codex, and GitHub Copilot consume the same canonical
+  `SKILL.md` content.
 
 Automation validates structure. It cannot establish semantic consistency.
 
