@@ -56,7 +56,8 @@ also reads `agents/openai.yaml`; Claude ignores that metadata and reads the same
 `SKILL.md`. Node.js 20 or 22 validates the repository. Windows is the primary
 verified installer environment (a required CI check, and the only one that
 exercises junction/reparse-point rejection). Ubuntu and macOS `pwsh` also run
-the installer suite in CI as an advisory check — see
+the installer suite in CI as an advisory check — Ubuntu passes, **macOS
+currently fails** on a known issue (#23). See
 [docs/MAINTAINING.md](docs/MAINTAINING.md#compatibility-records) for what that
 does and doesn't cover.
 
