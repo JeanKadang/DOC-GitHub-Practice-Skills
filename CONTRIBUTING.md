@@ -46,6 +46,6 @@ organization-specific fields or templates, credentials, screenshots of private
 systems, internal policies, or copied workplace material. Sanitize and review
 every example before committing it.
 
-Policy changes to a canonical `SKILL.md` must consider all eight skills and both
-consuming platforms. Installed copies are deployment outputs; propose changes in
-this repository.
+Policy changes to a canonical `SKILL.md` must consider all eight skills and all
+three consuming platforms (OpenAI Codex, Claude, GitHub Copilot). Installed
+copies are deployment outputs; propose changes in this repository.

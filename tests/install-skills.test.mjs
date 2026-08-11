@@ -37,6 +37,7 @@ async function runInstaller({
   sourceRoot = repoRoot,
   codexHome,
   claudeHome,
+  copilotHome,
   target = 'Both',
   dryRun = false,
   force = false,
@@ -52,6 +53,7 @@ async function runInstaller({
   if (sourceRoot !== null) args.push('-SourceRoot', sourceRoot);
   if (codexHome) args.push('-CodexHome', codexHome);
   if (claudeHome) args.push('-ClaudeHome', claudeHome);
+  if (copilotHome) args.push('-CopilotHome', copilotHome);
   if (dryRun) args.push('-DryRun');
   if (force) args.push('-Force');
 
@@ -92,6 +94,7 @@ async function sha256(path) {
 async function treeSnapshot(root) {
   if (!(await exists(root))) return null;
   const entries = [];
+  const pending = [];
 
   async function visit(path, relative = '') {
     const children = await readdir(path, { withFileTypes: true });
@@ -103,12 +106,16 @@ async function treeSnapshot(root) {
         entries.push(`d:${childRelative}`);
         await visit(childPath, childRelative);
       } else {
-        entries.push(`f:${childRelative}:${await sha256(childPath)}`);
+        const index = entries.push(null) - 1;
+        pending.push(sha256(childPath).then((hash) => {
+          entries[index] = `f:${childRelative}:${hash}`;
+        }));
       }
     }
   }
 
   await visit(root);
+  await Promise.all(pending);
   return entries;
 }
 
@@ -154,6 +161,21 @@ test('SourceRoot defaults to the repository containing the installer', async () 
   await runInstaller({ sourceRoot: null, codexHome, target: 'Codex' });
 
   assert.equal(await exists(join(codexHome, 'skills', inventory.skills[0].name, 'SKILL.md')), true);
+});
+
+test('Copilot target installs all eight skills under CopilotHome/skills', async () => {
+  const root = await temporaryRoot();
+  const copilotHome = join(root, 'copilot-home');
+  const expectedNames = inventory.skills.map(({ name }) => name).sort();
+
+  await runInstaller({ copilotHome, target: 'Copilot' });
+
+  const names = (await readdir(join(copilotHome, 'skills'), { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  assert.deepEqual(names, expectedNames);
+  assert.equal(await exists(join(copilotHome, 'skills', expectedNames[0], 'SKILL.md')), true);
 });
 
 for (const [label, targetHomes] of [
@@ -226,18 +248,20 @@ test('rejects substituted, duplicate, and incomplete canonical requiredFiles dec
     ['incomplete', ['SKILL.md', 'agents/openai.yaml']],
   ];
 
+  // Shared across variants: only the inventory's requiredFiles differ per
+  // case, and the installer must fail before any destination is created, so
+  // one source copy can be reused instead of a fresh 8-skill tree per variant.
+  const root = await temporaryRoot();
+  const sourceRoot = await sourceFixture(root);
+  const fixtureInventoryPath = join(sourceRoot, 'contracts', 'skill-inventory.json');
+  await writeFile(join(sourceRoot, 'skills', 'github-repo-review', 'extra.md'), 'substitute\n');
+
   for (const [label, requiredFiles] of variants) {
-    const root = await temporaryRoot();
-    const sourceRoot = await sourceFixture(root);
-    const fixtureInventoryPath = join(sourceRoot, 'contracts', 'skill-inventory.json');
     const fixtureInventory = JSON.parse(await readFile(fixtureInventoryPath, 'utf8'));
     const repoReview = fixtureInventory.skills.find(({ name }) => name === 'github-repo-review');
     repoReview.requiredFiles = requiredFiles;
-    if (label === 'substituted') {
-      await writeFile(join(sourceRoot, 'skills', 'github-repo-review', 'extra.md'), 'substitute\n');
-    }
     await writeFile(fixtureInventoryPath, `${JSON.stringify(fixtureInventory, null, 2)}\n`);
-    const codexHome = join(root, 'destinations', 'codex');
+    const codexHome = join(root, 'destinations', label, 'codex');
 
     const result = await runInstaller({ sourceRoot, codexHome, target: 'Codex', expectFailure: true });
 

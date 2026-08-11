@@ -1,11 +1,13 @@
 # DOC-GitHub-Practice-Skills
 
-Versioned GitHub workflow skills for OpenAI Codex, Claude, and people moving
-from Azure DevOps to GitHub.
+[![Validate](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/actions/workflows/validate.yml/badge.svg)](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/actions/workflows/validate.yml)
 
-> **Release status:** v0.1.0 is a pre-release target. The repository contains
-> the v0.1.0 package contract, but this branch does not claim that a GitHub
-> release already exists.
+Versioned GitHub workflow skills for OpenAI Codex, Claude, GitHub Copilot CLI,
+and people moving from Azure DevOps to GitHub.
+
+> **Release status:** [v0.1.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.1.0)
+> is published. The repository contains the v0.1.0 package contract and a
+> matching GitHub release.
 
 ## Skills
 
@@ -39,8 +41,10 @@ pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Both
 
 The installer validates the source, refuses unapproved overwrites, and can use
 `-Force` to back up a modified tracked installation before replacement. See the
-[OpenAI Codex guide](docs/openai-codex.md) and
-[Claude guide](docs/claude.md) for discovery details.
+[OpenAI Codex guide](docs/openai-codex.md), [Claude guide](docs/claude.md), and
+[Copilot CLI guide](docs/copilot.md) for discovery details. `-Target Both`
+installs Codex and Claude only; install Copilot separately with
+`-Target Copilot`.
 
 ## Documentation
 
@@ -51,10 +55,17 @@ The installer validates the source, refuses unapproved overwrites, and can use
 
 ## Compatibility
 
-Both platforms consume the canonical packages under `skills/`. OpenAI Codex
-also reads `agents/openai.yaml`; Claude ignores that metadata and reads the same
-`SKILL.md`. Node.js 20 or 22 validates the repository. Windows PowerShell is the
-only installer environment verified for v0.1.0.
+All three platforms consume the canonical packages under `skills/`. OpenAI
+Codex also reads `agents/openai.yaml`; Claude and Copilot both ignore that
+metadata and read the same `SKILL.md` — GitHub's Agent Skills format is an
+open standard shared with Anthropic's, so no content translation is needed for
+Copilot. Node.js 20 or 22 validates the repository. Windows is the primary
+verified installer environment (a required CI check, and the only one that
+exercises junction/reparse-point rejection). Ubuntu and macOS `pwsh` also run
+the installer suite in CI as an advisory check — Ubuntu passes, **macOS
+currently fails** on a known issue (#23). See
+[docs/MAINTAINING.md](docs/MAINTAINING.md#compatibility-records) for what that
+does and doesn't cover.
 
 ## Contributing, security, and licence
 

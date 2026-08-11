@@ -1,10 +1,11 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('Codex', 'Claude', 'Both')]
+    [ValidateSet('Codex', 'Claude', 'Copilot', 'Both')]
     [string]$Target = 'Both',
     [string]$SourceRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$CodexHome = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex'),
     [string]$ClaudeHome = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.claude'),
+    [string]$CopilotHome = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.copilot'),
     [switch]$DryRun,
     [switch]$Force
 )
@@ -201,7 +202,7 @@ if (-not (Test-Path -LiteralPath $SourceRoot -PathType Container)) {
 $sourcePath = Get-FullPath -Path $SourceRoot
 Assert-NoReparseInExistingAncestry -Path $sourcePath -Description 'Source repository path'
 $resolvedSource = (Resolve-Path -LiteralPath $sourcePath).Path.TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar)
-$inventoryPath = Join-Path $resolvedSource 'contracts\skill-inventory.json'
+$inventoryPath = Join-Path $resolvedSource (Join-Path 'contracts' 'skill-inventory.json')
 if (-not (Test-Path -LiteralPath $inventoryPath -PathType Leaf)) {
     throw "Source inventory is missing: $inventoryPath"
 }
@@ -282,6 +283,14 @@ if ($Target -in @('Claude', 'Both')) {
     $platformPath = Get-FullPath -Path $ClaudeHome
     $targetSpecs += [pscustomobject]@{
         Name = 'Claude'
+        PlatformPath = $platformPath
+        SkillRoot = Join-Path $platformPath 'skills'
+    }
+}
+if ($Target -eq 'Copilot') {
+    $platformPath = Get-FullPath -Path $CopilotHome
+    $targetSpecs += [pscustomobject]@{
+        Name = 'Copilot'
         PlatformPath = $platformPath
         SkillRoot = Join-Path $platformPath 'skills'
     }
