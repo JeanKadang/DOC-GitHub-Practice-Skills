@@ -37,6 +37,7 @@ async function runInstaller({
   sourceRoot = repoRoot,
   codexHome,
   claudeHome,
+  copilotHome,
   target = 'Both',
   dryRun = false,
   force = false,
@@ -52,6 +53,7 @@ async function runInstaller({
   if (sourceRoot !== null) args.push('-SourceRoot', sourceRoot);
   if (codexHome) args.push('-CodexHome', codexHome);
   if (claudeHome) args.push('-ClaudeHome', claudeHome);
+  if (copilotHome) args.push('-CopilotHome', copilotHome);
   if (dryRun) args.push('-DryRun');
   if (force) args.push('-Force');
 
@@ -159,6 +161,21 @@ test('SourceRoot defaults to the repository containing the installer', async () 
   await runInstaller({ sourceRoot: null, codexHome, target: 'Codex' });
 
   assert.equal(await exists(join(codexHome, 'skills', inventory.skills[0].name, 'SKILL.md')), true);
+});
+
+test('Copilot target installs all eight skills under CopilotHome/skills', async () => {
+  const root = await temporaryRoot();
+  const copilotHome = join(root, 'copilot-home');
+  const expectedNames = inventory.skills.map(({ name }) => name).sort();
+
+  await runInstaller({ copilotHome, target: 'Copilot' });
+
+  const names = (await readdir(join(copilotHome, 'skills'), { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  assert.deepEqual(names, expectedNames);
+  assert.equal(await exists(join(copilotHome, 'skills', expectedNames[0], 'SKILL.md')), true);
 });
 
 for (const [label, targetHomes] of [

@@ -1,10 +1,11 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('Codex', 'Claude', 'Both')]
+    [ValidateSet('Codex', 'Claude', 'Copilot', 'Both')]
     [string]$Target = 'Both',
     [string]$SourceRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$CodexHome = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex'),
     [string]$ClaudeHome = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.claude'),
+    [string]$CopilotHome = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.copilot'),
     [switch]$DryRun,
     [switch]$Force
 )
@@ -282,6 +283,14 @@ if ($Target -in @('Claude', 'Both')) {
     $platformPath = Get-FullPath -Path $ClaudeHome
     $targetSpecs += [pscustomobject]@{
         Name = 'Claude'
+        PlatformPath = $platformPath
+        SkillRoot = Join-Path $platformPath 'skills'
+    }
+}
+if ($Target -eq 'Copilot') {
+    $platformPath = Get-FullPath -Path $CopilotHome
+    $targetSpecs += [pscustomobject]@{
+        Name = 'Copilot'
         PlatformPath = $platformPath
         SkillRoot = Join-Path $platformPath 'skills'
     }
