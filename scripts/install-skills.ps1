@@ -202,7 +202,7 @@ if (-not (Test-Path -LiteralPath $SourceRoot -PathType Container)) {
 $sourcePath = Get-FullPath -Path $SourceRoot
 Assert-NoReparseInExistingAncestry -Path $sourcePath -Description 'Source repository path'
 $resolvedSource = (Resolve-Path -LiteralPath $sourcePath).Path.TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar)
-$inventoryPath = Join-Path $resolvedSource 'contracts\skill-inventory.json'
+$inventoryPath = Join-Path $resolvedSource (Join-Path 'contracts' 'skill-inventory.json')
 if (-not (Test-Path -LiteralPath $inventoryPath -PathType Leaf)) {
     throw "Source inventory is missing: $inventoryPath"
 }

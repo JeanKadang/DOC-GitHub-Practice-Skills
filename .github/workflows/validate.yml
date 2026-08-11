@@ -90,3 +90,44 @@ jobs:
               Remove-Item -LiteralPath $testRoot -Recurse -Force
             }
           }
+
+  installer-dry-run-cross-platform:
+    name: Installer dry run (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    # macOS's /var is itself a symlink to /private/var, which the reparse-point
+    # ancestry guard currently treats as an attack signal (issue #23). Known,
+    # unresolved gap — don't let it block other checks while it's open.
+    continue-on-error: ${{ matrix.os == 'macos-latest' }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run installer tests
+        run: node --test tests/install-skills.test.mjs
+      - name: Run direct dry run against fresh homes
+        shell: pwsh
+        run: |
+          $testRoot = Join-Path $env:RUNNER_TEMP "installer-dry-run-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
+          $codexHome = Join-Path $testRoot 'codex'
+          $claudeHome = Join-Path $testRoot 'claude'
+          try {
+            & ./scripts/install-skills.ps1 -Target Both -SourceRoot $PWD.Path -CodexHome $codexHome -ClaudeHome $claudeHome -DryRun
+            if (Test-Path -LiteralPath $testRoot) {
+              throw "Dry run created the temporary home root: $testRoot"
+            }
+          }
+          finally {
+            if (Test-Path -LiteralPath $testRoot) {
+              Remove-Item -LiteralPath $testRoot -Recurse -Force
+            }
+          }
