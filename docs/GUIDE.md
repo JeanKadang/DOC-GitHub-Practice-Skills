@@ -1,8 +1,8 @@
 # GitHub practice skills guide
 
-**Policy version:** v0.1.0
+**Policy version:** v0.2.0
 
-**Reviewed:** 2026-08-09
+**Reviewed:** 2026-09-25
 
 The common delivery path is:
 
@@ -19,7 +19,7 @@ issue with ownership, labels, milestone, and acceptance criteria
 Acceptance criteria are evaluated evidence requirements, not clerical boxes.
 [WORKFLOW.md](WORKFLOW.md) defines the closure gates in detail.
 
-## Current v0.1.0 policy
+## Current v0.2.0 policy
 
 The following sections describe the canonical skills as they exist in v0.1.0.
 
@@ -34,13 +34,23 @@ The following sections describe the canonical skills as they exist in v0.1.0.
 
 ### `github-hygiene`
 
-- **Trigger:** Work branches, closure, merge, milestones, releases, or cleanup
-  are involved.
+- **Trigger:** Work branches, closure, merge, or cleanup are involved.
 - **Responsibilities and outputs:** Maintain the issue-linked traceability
-  chain, evaluate criteria, record evidence, and perform approved release and
+  chain, evaluate criteria, record evidence, and perform approved merge and
   cleanup steps.
 - **Boundary and handoff:** Individual PR review belongs to
-  `github-pr-review`; merging and releasing still require explicit approval.
+  `github-pr-review`; releasing and tagging hand off to `github-releases`.
+
+### `github-releases`
+
+- **Trigger:** Cutting a release, tagging a version, configuring branch
+  protection/rulesets, or creating/closing milestones.
+- **Responsibilities and outputs:** Maintain milestone conventions, configure
+  and audit rulesets, run the release recipe, and keep release-note
+  automation accurate.
+- **Boundary and handoff:** PR merge and the closure gate belong to
+  `github-hygiene`; a release containing a security fix goes through
+  `github-security-response` first.
 
 ### `github-pr-review`
 
@@ -98,13 +108,26 @@ The following sections describe the canonical skills as they exist in v0.1.0.
 - **Boundary and handoff:** Do not reproduce an organization's process;
   workflow execution hands off to the relevant GitHub skill.
 
+### `github-contributing`
+
+- **Trigger:** Submitting a pull request to a repository you don't maintain.
+- **Responsibilities and outputs:** Fork and sync with upstream, submit a PR
+  following the target repository's own conventions, and respond to review
+  as the PR's author.
+- **Boundary and handoff:** Does not impose this repository's `Refs`/`Closes`
+  conventions on a foreign repo; reviewing someone else's fork PR is
+  `github-pr-review`, not this skill.
+
 ## Trigger and handoff model
 
 Start with `github-issue-first` for ordinary committed work. Once the issue and
 linked branch exist, `github-hygiene` owns traceability and closure. Use
 `github-pr-review` for the review decision and return to `github-hygiene` for an
-approved merge. A broad audit starts with `github-repo-review`, but each public
-finding it creates follows issue-first mechanics.
+approved merge, then `github-releases` to ship it. A broad audit starts with
+`github-repo-review`, but each public finding it creates follows issue-first
+mechanics. Contributing to a repository you don't maintain starts with
+`github-contributing` instead of `github-hygiene`/`github-releases` — you have
+neither merge nor tag authority there.
 
 `Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
 stays open when GitHub has a connected development branch. After every merge,
@@ -162,10 +185,11 @@ interface. The issue remains the source of ownership and dependency truth.
 
 ### Release
 
-Create a separate `release/x.y.z` issue-linked branch and PR, update the version
-source and changelog, and run the complete validation. After explicit approval
-and green CI, merge, update local `main`, tag that exact commit, verify the
-release workflow, close the release milestone, and prune merged branches.
+Using `github-releases`: create a separate `release/x.y.z` issue-linked branch
+and PR, update the version source and changelog, and run the complete
+validation. After explicit approval and green CI, merge (per `github-hygiene`'s
+PR flow), update local `main`, tag that exact commit, verify the release
+workflow, close the milestone, and prune merged branches.
 
 ### New repository
 
