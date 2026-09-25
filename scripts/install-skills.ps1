@@ -16,6 +16,7 @@ $ErrorActionPreference = 'Stop'
 $markerName = '.doc-github-practice-skills.json'
 $packageName = 'doc-github-practice-skills'
 $canonicalRequiredFiles = [ordered]@{
+    'github-contributing' = @('SKILL.md', 'agents/openai.yaml')
     'github-for-ado-users' = @('SKILL.md', 'agents/openai.yaml')
     'github-hygiene' = @('SKILL.md', 'agents/openai.yaml')
     'github-issue-first' = @('SKILL.md', 'agents/openai.yaml')
