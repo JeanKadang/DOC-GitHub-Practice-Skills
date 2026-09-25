@@ -49,9 +49,10 @@ Full findings and file-by-file blast radius:
   `github-projects`, `github-for-ado-users`, and `github-pr-review` are
   repointed to the new skills rather than left stale or duplicated.
 
-This is now stated identically in `docs/GUIDE.md`'s per-skill sections and
-`README.md`'s skill list — see `docs/MAINTAINING.md`'s cross-skill invariant
-review for the full list to check when this wording changes.
+This is now stated identically in `docs/GUIDE.md`'s per-skill sections,
+`README.md`'s skill list, and `CLAUDE.md`'s roster enumeration — see
+`docs/MAINTAINING.md`'s cross-skill invariant review for the full list to
+check when this wording changes.
 
 ## Consequences
 
@@ -61,11 +62,13 @@ review for the full list to check when this wording changes.
   matching entry added in two places (`github-contributing`,
   `github-releases`); `tests/roster-consistency.test.mjs` continues to catch
   any future drift between the three automatically.
-- `install-skills.ps1` also had three hardcoded literal-`8` spots (a count
-  guard and two output strings) not covered by the "three hardcoded places"
-  description in `docs/MAINTAINING.md` at the time — these were found during
-  this change and converted to read the roster's actual size dynamically, so
-  a future roster change won't reintroduce the same class of bug.
+- `install-skills.ps1` also had four hardcoded literal-`8` spots (the count
+  guard, the `'canonical eight-skill inventory'` error message, the
+  `"Skills (8)"` dry-run string, and the `"Installed 8 skills"` completion
+  string) not covered by the "three hardcoded places" description in
+  `docs/MAINTAINING.md` at the time — these were found during this change and
+  converted to read the roster's actual size dynamically, so a future roster
+  change won't reintroduce the same class of bug.
 - `tests/install-skills.test.mjs` and `tests/validate-skills.test.mjs` had
   their own hardcoded "eight"/`8` literals (an output-format regex, two test
   names, a comment, and a length assertion) that needed updating alongside

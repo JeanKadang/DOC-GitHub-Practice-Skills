@@ -8,8 +8,9 @@
 
 When a shared rule changes, inspect all ten `skills/*/SKILL.md` files, the
 standalone repository-review prompt, the guide, workflow, platform guides,
-issue forms, PR template, release automation, and `docs/adr/` for any decision
-record the change would supersede. Human review must confirm that:
+`CLAUDE.md`, issue forms, PR template, release automation, and `docs/adr/` for
+any decision record the change would supersede. Human review must confirm
+that:
 
 - issue-first work retains ownership, priority, category, milestone, and scope;
 - `Refs #N` remains until criterion evidence passes the closure gate;
@@ -64,7 +65,7 @@ patch.
 
 `package.json` and `contracts/skill-inventory.json` must carry the same package
 version. The inventory must list every canonical `github-*` directory and each
-required companion file. Before release, verify all eight frontmatter names and
+required companion file. Before release, verify all ten frontmatter names and
 OpenAI metadata, and ensure the tag without its leading `v` equals both version
 fields.
 

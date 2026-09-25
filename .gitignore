@@ -2,3 +2,4 @@ node_modules/
 
 # SDD/worktree scratch (local only)
 .worktrees/
+.superpowers/

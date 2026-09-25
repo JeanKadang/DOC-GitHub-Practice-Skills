@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 
+### Added
+
+- `github-releases` skill — milestones, branch protection/rulesets, release
+  notes, release recipe.
+- `github-contributing` skill — forking, syncing, and submitting a PR to a
+  repository you don't maintain.
+
+### Changed
+
+- `github-hygiene` narrowed to PR flow, the acceptance-criteria closure gate,
+  and cleanup — release/ruleset/milestone content moved to `github-releases`.
+
 ## [0.1.1] - 2026-08-11
 
 ### Added
