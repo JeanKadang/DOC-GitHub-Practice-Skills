@@ -30,3 +30,5 @@ documentation clarifications and typo-level fixes do not need one.
 
 - [0001](0001-refs-closes-connected-branch-closure.md) — `Refs`/`Closes`
   closure semantics must account for GitHub's connected-branch auto-closure.
+- [0002](0002-split-hygiene-add-contributing-and-releases.md) — Split
+  `github-hygiene` into hygiene + releases and added `github-contributing`.
