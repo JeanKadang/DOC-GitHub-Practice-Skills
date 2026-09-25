@@ -73,4 +73,4 @@ review for the full list to check when this wording changes.
   `roster-consistency.test.mjs` does, since they assert against the real
   repository's installed/validated state rather than cross-checking the
   three manifest sources against each other.
-- Evidence: issue #30.
+- Evidence: issue #30, PR #31.
