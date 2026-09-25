@@ -101,9 +101,11 @@ record every difference before declaring bootstrap complete.
 Use `github-issue-first` for ordinary work after the bootstrap boundary,
 `github-pr-review` for pull-request review, `github-security-response` for a
 security event, `github-projects` only when shared board governance is warranted,
-`github-hygiene` for releases and cleanup, and `github-repo-review` for a broad
-repository audit. Use `github-for-ado-users` for general ADO migration guidance;
-keep workplace-specific material private.
+`github-hygiene` for PR merges and cleanup, `github-releases` for the first
+release and its rulesets, and `github-repo-review` for a broad repository audit.
+Use `github-for-ado-users` for general ADO migration guidance and
+`github-contributing` if the bootstrap work is itself a fork PR to a template
+repo; keep workplace-specific material private.
 
 ## 12. Common mistakes
 

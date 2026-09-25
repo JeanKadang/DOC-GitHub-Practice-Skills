@@ -80,7 +80,7 @@ Every filed issue also gets a milestone before you move on — not just labels
 and an assignee. `gh issue create` has no `--milestone` flag, so attach it as
 a follow-up: `gh issue edit <N> --milestone "<title>"`. Full milestone
 conventions (what to name it, when to reuse vs. create, when to close it) live
-in `github-hygiene` — check there rather than improvising a naming scheme.
+in `github-releases` — check there rather than improvising a naming scheme.
 
 Priority tiers:
 - **P0** — critical bug, security risk, data loss risk, broken build, or production-blocking issue.

@@ -134,10 +134,10 @@ Rough order, with the skill that covers each:
 
 1. Labels (priority + category) — `github-issue-first`
 2. Issue types, if you are in an org — `github-issue-first`
-3. Milestones for releases, **not** sprints — `github-hygiene`
-4. Ruleset on `main` (required checks + review) — `github-hygiene`
+3. Milestones for releases, **not** sprints — `github-releases`
+4. Ruleset on `main` (required checks + review) — `github-releases`
 5. CODEOWNERS, CONTRIBUTING.md, issue forms, PR template — `github-repo-review`
-6. `.github/release.yml` for categorised release notes — `github-hygiene`
+6. `.github/release.yml` for categorised release notes — `github-releases`
 7. Projects board **only if more than one maintainer** — `github-projects`
 8. Discussions enabled, with categories
 
