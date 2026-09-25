@@ -5,11 +5,13 @@ import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 
 export const CANONICAL_SKILLS = [
+  { name: 'github-contributing', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-for-ado-users', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-hygiene', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-issue-first', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-pr-review', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-projects', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
+  { name: 'github-releases', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-repo-bootstrap', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   {
     name: 'github-repo-review',

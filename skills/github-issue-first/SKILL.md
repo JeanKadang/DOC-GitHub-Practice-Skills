@@ -80,7 +80,7 @@ Every filed issue also gets a milestone before you move on — not just labels
 and an assignee. `gh issue create` has no `--milestone` flag, so attach it as
 a follow-up: `gh issue edit <N> --milestone "<title>"`. Full milestone
 conventions (what to name it, when to reuse vs. create, when to close it) live
-in `github-hygiene` — check there rather than improvising a naming scheme.
+in `github-releases` — check there rather than improvising a naming scheme.
 
 Priority tiers:
 - **P0** — critical bug, security risk, data loss risk, broken build, or production-blocking issue.
@@ -235,8 +235,9 @@ If anything comes back with no priority label, no category label, or no
 assignee, fix it before considering the batch done.
 
 If the repo has a Projects board, the batch is not done until the new issues are
-on it — see the `github-projects` skill. Branch/PR/release conventions for acting
-on these issues live in `github-hygiene`; reviewing a PR is `github-pr-review`.
+on it — see the `github-projects` skill. Branch/PR conventions for acting on
+these issues live in `github-hygiene`, release conventions live in
+`github-releases`, and reviewing a PR is `github-pr-review`.
 
 **Security findings are the exception to filing publicly.** An unpatched
 vulnerability, an exploitable defect, or a committed credential must not go into a

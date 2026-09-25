@@ -6,14 +6,18 @@ Versioned GitHub workflow skills for OpenAI Codex, Claude, GitHub Copilot CLI,
 and people moving from Azure DevOps to GitHub.
 
 > **Release status:** [v0.1.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.1.0)
-> is published. The repository contains the v0.1.0 package contract and a
-> matching GitHub release.
+> is published. This checkout targets the upcoming v0.2.0 package contract
+> (ten skills); tag and publish the matching GitHub release per
+> `github-releases` before updating this line.
 
 ## Skills
 
 - `github-issue-first` records actionable work before implementation.
-- `github-hygiene` governs branches, pull requests, closure, releases, and
-  cleanup.
+- `github-hygiene` governs branches, pull requests, closure, and cleanup.
+- `github-releases` governs milestones, branch protection, and cutting a
+  release.
+- `github-contributing` covers forking, syncing, and submitting a pull
+  request to a repository you don't maintain.
 - `github-pr-review` reviews pull requests and their linked acceptance criteria.
 - `github-repo-review` performs evidence-based, full-repository audits.
 - `github-repo-bootstrap` creates and verifies a new repository safely.

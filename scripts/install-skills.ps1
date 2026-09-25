@@ -16,11 +16,13 @@ $ErrorActionPreference = 'Stop'
 $markerName = '.doc-github-practice-skills.json'
 $packageName = 'doc-github-practice-skills'
 $canonicalRequiredFiles = [ordered]@{
+    'github-contributing' = @('SKILL.md', 'agents/openai.yaml')
     'github-for-ado-users' = @('SKILL.md', 'agents/openai.yaml')
     'github-hygiene' = @('SKILL.md', 'agents/openai.yaml')
     'github-issue-first' = @('SKILL.md', 'agents/openai.yaml')
     'github-pr-review' = @('SKILL.md', 'agents/openai.yaml')
     'github-projects' = @('SKILL.md', 'agents/openai.yaml')
+    'github-releases' = @('SKILL.md', 'agents/openai.yaml')
     'github-repo-bootstrap' = @('SKILL.md', 'agents/openai.yaml')
     'github-repo-review' = @('SKILL.md', 'agents/openai.yaml', 'review-prompt.md')
     'github-security-response' = @('SKILL.md', 'agents/openai.yaml')
@@ -217,9 +219,9 @@ catch {
 $inventoryNames = @($inventory.skills.name | Sort-Object)
 if ($inventory.schemaVersion -ne 1 -or
     [string]::IsNullOrWhiteSpace([string]$inventory.packageVersion) -or
-    $inventoryNames.Count -ne 8 -or
+    $inventoryNames.Count -ne $expectedSkillNames.Count -or
     (($inventoryNames -join "`n") -ne (($expectedSkillNames | Sort-Object) -join "`n"))) {
-    throw 'Source inventory does not contain the canonical eight-skill inventory.'
+    throw "Source inventory does not contain the canonical $($expectedSkillNames.Count)-skill inventory."
 }
 
 foreach ($skill in $inventory.skills) {
@@ -372,7 +374,7 @@ foreach ($spec in $targetSpecs) {
 
 if ($DryRun) {
     Write-Output "Source: $resolvedSource"
-    Write-Output "Skills (8): $($inventoryNames -join ', ')"
+    Write-Output "Skills ($($inventoryNames.Count)): $($inventoryNames -join ', ')"
     foreach ($plan in $plans) {
         Write-Output "Target: $($plan.Name) -> $($plan.SkillRoot)"
         foreach ($skill in $inventory.skills) {
@@ -456,4 +458,4 @@ finally {
     }
 }
 
-Write-Output "Installed 8 skills to: $($targetSpecs.Name -join ', ')"
+Write-Output "Installed $($inventory.skills.Count) skills to: $($targetSpecs.Name -join ', ')"

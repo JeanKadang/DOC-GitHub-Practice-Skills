@@ -11,9 +11,11 @@ mirrors them so several maintainers can see who is doing what without reading
 every issue. If a fact lives only on the board, it is lost to anyone reading the
 repo through the API, the Issues tab, or `gh`.
 
-Companion skills: `github-issue-first` (filing, labels, assignment, dependencies)
-and `github-hygiene` (branch/PR/release conventions). Anything you create here
-still follows those.
+Companion skills: `github-issue-first` (filing, labels, assignment, dependencies),
+`github-hygiene` (branch/PR conventions), and `github-releases` (milestones —
+this skill's iteration-field guidance is the Projects-board complement to
+`github-releases`'s milestone conventions). Anything you create here still
+follows those.
 
 ## Decide whether a board is warranted
 
