@@ -35,6 +35,8 @@ body:
       options:
         - github-issue-first
         - github-hygiene
+        - github-releases
+        - github-contributing
         - github-pr-review
         - github-repo-review
         - github-repo-bootstrap
