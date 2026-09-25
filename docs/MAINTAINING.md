@@ -1,12 +1,12 @@
 # Maintaining the skill set
 
-**Applies to:** v0.1.0
+**Applies to:** v0.2.0
 
-**Reviewed:** 2026-08-09
+**Reviewed:** 2026-09-25
 
 ## Cross-skill invariant review
 
-When a shared rule changes, inspect all eight `skills/*/SKILL.md` files, the
+When a shared rule changes, inspect all ten `skills/*/SKILL.md` files, the
 standalone repository-review prompt, the guide, workflow, platform guides,
 issue forms, PR template, release automation, and `docs/adr/` for any decision
 record the change would supersede. Human review must confirm that:
@@ -68,7 +68,7 @@ required companion file. Before release, verify all eight frontmatter names and
 OpenAI metadata, and ensure the tag without its leading `v` equals both version
 fields.
 
-The canonical eight-skill roster (names and required files) is independently
+The canonical ten-skill roster (names and required files) is independently
 hardcoded in three places: `contracts/skill-inventory.json`,
 `scripts/validate-skills.mjs`'s `CANONICAL_SKILLS`, and
 `scripts/install-skills.ps1`'s `$canonicalRequiredFiles`. This duplication is
@@ -77,7 +77,9 @@ JSON blindly — but it means adding, renaming, or changing a skill's required
 files means editing all three by hand. `tests/roster-consistency.test.mjs`
 fails automatically if the three ever diverge, so drift is caught as a test
 failure rather than discovered separately by two independent installer checks
-disagreeing.
+disagreeing. `scripts/install-skills.ps1` also derives its internal count
+guard and its dry-run/completion messages from the roster size rather than a
+hardcoded number (see ADR 0002) — no fourth place to edit by hand.
 
 ## Release hygiene
 

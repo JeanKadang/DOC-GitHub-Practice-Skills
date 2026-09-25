@@ -1,6 +1,6 @@
 ---
 name: github-pr-review
-description: Use when reviewing someone else's pull request, responding to review comments on your own PR, checking out a contributor's branch to test it, or handling a PR that came from a fork — before approving, requesting changes, or leaving line comments.
+description: Use when reviewing someone else's pull request, checking out a contributor's branch to test it, or handling a PR that came from a fork — before approving, requesting changes, or leaving line comments.
 ---
 
 # Reviewing pull requests
@@ -126,12 +126,7 @@ Contributions from forks behave differently and the differences bite:
 - **Ask for a rebase, don't rebase for them**, unless the branch is stale enough
   that CI can't run.
 
-## Responding to review on your own PR
-
-Covered in depth by `superpowers:receiving-code-review` — the short version:
-verify each point technically before implementing it, push back with evidence when
-a suggestion is wrong, and never make a change you can't explain. Reply to each
-thread and resolve it only once the change is pushed.
+Submitting a PR from a fork, syncing it with upstream, or responding to review on your own PR is `github-contributing`; this section covers reviewing someone else's fork PR, not submitting your own.
 
 ## Common mistakes
 
