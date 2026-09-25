@@ -10,6 +10,7 @@ export const CANONICAL_SKILLS = [
   { name: 'github-issue-first', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-pr-review', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-projects', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
+  { name: 'github-releases', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-repo-bootstrap', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   {
     name: 'github-repo-review',

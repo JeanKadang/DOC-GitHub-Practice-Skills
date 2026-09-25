@@ -21,6 +21,7 @@ $canonicalRequiredFiles = [ordered]@{
     'github-issue-first' = @('SKILL.md', 'agents/openai.yaml')
     'github-pr-review' = @('SKILL.md', 'agents/openai.yaml')
     'github-projects' = @('SKILL.md', 'agents/openai.yaml')
+    'github-releases' = @('SKILL.md', 'agents/openai.yaml')
     'github-repo-bootstrap' = @('SKILL.md', 'agents/openai.yaml')
     'github-repo-review' = @('SKILL.md', 'agents/openai.yaml', 'review-prompt.md')
     'github-security-response' = @('SKILL.md', 'agents/openai.yaml')
