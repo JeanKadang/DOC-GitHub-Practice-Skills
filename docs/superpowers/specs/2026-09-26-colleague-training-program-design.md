@@ -215,10 +215,11 @@ public repo verbatim. No real extracted values appear anywhere in
 ## Testing / validation
 
 No automated test suite applies to training content. Validation is:
-`npm run lint:markdown:docs` must pass (this repo's existing markdown
-lint covers `education/**` — it is not excluded the way
-`docs/superpowers/**` is, since this is durable published content, not
-ephemeral planning material). Beyond lint, the real validation is a dry
+`education/**` has its own markdownlint config
+(`.markdownlint-education.jsonc`, disabling only `MD013`) and its own
+`lint:markdown:education` script, mirroring the `skills/**` pattern —
+`npm run lint:markdown:education` (or the full `npm run check`) must
+pass. Beyond lint, the real validation is a dry
 run: the first live delivery of Session 1 is the actual test of the
 format, and the facilitator guide should get a "what to fix based on the
 first run" note added afterward — tracked as follow-up, not blocking
