@@ -114,7 +114,8 @@ Talking points:
 
 ## Section 4: Branch conventions and milestones (~15 min)
 
-**Source:** `skills/github-hygiene/SKILL.md` (PR flow, milestones)
+**Source:** `skills/github-hygiene/SKILL.md` (PR flow), `skills/github-releases/SKILL.md`
+(milestones)
 
 Talking points:
 
