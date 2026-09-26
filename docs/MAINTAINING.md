@@ -90,6 +90,27 @@ and green checks. Tag updated `main`, verify the published release and tag
 commit, close the milestone, confirm issue and epic closure, and prune merged
 branches. Never publish installed local copies or arbitrary branch state.
 
+### Two release tracks: skillset vs. education
+
+The skillset and `education/` are versioned and tagged independently —
+they have different consumption models (the skillset is installed via
+`install-skills.ps1`; `education/` is just read on GitHub) and there is no
+requirement to coordinate a release of one with a release of the other.
+
+| | Skillset | `education/` |
+| --- | --- | --- |
+| Tag prefix | `vX.Y.Z` (bare) | `education-vX.Y.Z` |
+| Changelog | `CHANGELOG.md` | `education/CHANGELOG.md` |
+| Purpose | Package version in inventory | Cohort reference point |
+| Release page | Yes, with generated notes | No — tag only |
+| CI on tag push | Full release pipeline | `lint:markdown:education` only |
+
+When you make a change, update whichever changelog matches what you
+touched — a change to `skills/*/SKILL.md` or the installer never touches
+`education/CHANGELOG.md`, and vice versa. If a single PR touches both
+(rare — they're deliberately decoupled), update both changelogs and it's
+fine for only one of the two tags to move.
+
 ## Public-content review
 
 Before every release, scan tracked content for secrets, private endpoints,
