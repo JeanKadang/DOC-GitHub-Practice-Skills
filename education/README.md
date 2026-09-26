@@ -16,10 +16,10 @@ they don't have.
 
 ```mermaid
 flowchart TD
-    Start[What's your git/GitHub background?] --> Q1{Never used version control before?}
+    Start[Your git/GitHub background?] --> Q1{Never used version control?}
     Q1 -- Yes --> S1[Start at Session 1: Getting Started]
-    Q1 -- No --> Q2{Already know GitHub, GitLab, or Azure DevOps?}
-    Q2 -- Yes --> Pre["Read the mapping skill first<br/>(github-for-ado-users, or the GitLab equivalent)"]
+    Q1 -- No --> Q2{Know GitHub, GitLab, or Azure DevOps?}
+    Q2 -- Yes --> Pre[Read the mapping skill first]
     Q2 -- No --> S2[Start at Session 2: Our Workflow]
     Pre --> S2
     S1 --> S2
@@ -27,7 +27,7 @@ flowchart TD
 ```
 
 | Background | Start here |
-|---|---|
+| --- | --- |
 | Never used version control | [Session 1: Getting Started](beginners/session-1-getting-started.md) |
 | Some git knowledge, new to this team's process | [Session 2: Our Workflow](intermediate/session-2-our-workflow.md) |
 | Already know GitHub, GitLab, or Azure DevOps | Read `skills/github-for-ado-users/SKILL.md` (or its GitLab equivalent, once it exists) as pre-reading, then [Session 2](intermediate/session-2-our-workflow.md) |
