@@ -51,15 +51,17 @@ verified installer environment: its dry run is a required check, and its test
 run is the only one that exercises junction/reparse-point rejection (three
 `tests/install-skills.test.mjs` cases are Windows-only by design, since
 reparse points are the concrete attack surface being guarded against there).
-Ubuntu and macOS `pwsh` also run the installer test suite and a live dry run
-in CI, but as an advisory (non-required) check, not yet promoted to a required
-branch-protection check. Ubuntu passes cleanly. **macOS currently fails**
-(`continue-on-error: true`, not a silent skip): its `/var` is itself a symlink
-to `/private/var`, which `Assert-NoReparseInExistingAncestry` treats as an
-attack signal on any path under the OS temp directory, unrelated to any
-symlink the tests actually create. See issue #23 — needs a real fix that
-distinguishes OS-baseline symlinks from attacker-planted ones, not a quick
-patch.
+Ubuntu `pwsh` also runs the installer test suite and a live dry run in CI, as
+an advisory (non-required) check, not yet promoted to a required
+branch-protection check. macOS is not tested — it was dropped from CI
+(see issue #23): its `/var` is itself a symlink to `/private/var`, which
+`Assert-NoReparseInExistingAncestry` treated as an attack signal on any path
+under the OS temp directory, unrelated to any symlink the tests actually
+create. Fixing that would need distinguishing OS-baseline symlinks from
+attacker-planted ones — real design work, not a quick patch — and wasn't
+worth the ongoing false-positive noise for a non-required check. If macOS
+support becomes a real requirement, that fix (and re-adding the CI leg) is
+the place to start.
 
 ## Manifest and version consistency
 

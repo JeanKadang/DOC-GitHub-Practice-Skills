@@ -71,9 +71,9 @@ metadata and read the same `SKILL.md` — GitHub's Agent Skills format is an
 open standard shared with Anthropic's, so no content translation is needed for
 Copilot. Node.js 20 or 22 validates the repository. Windows is the primary
 verified installer environment (a required CI check, and the only one that
-exercises junction/reparse-point rejection). Ubuntu and macOS `pwsh` also run
-the installer suite in CI as an advisory check — Ubuntu passes, **macOS
-currently fails** on a known issue (#23). See
+exercises junction/reparse-point rejection). Ubuntu `pwsh` also runs the
+installer suite in CI as an advisory check. macOS is not tested — dropped
+from CI due to a persistent false-positive (issue #23). See
 [docs/MAINTAINING.md](docs/MAINTAINING.md#compatibility-records) for what that
 does and doesn't cover.
 
