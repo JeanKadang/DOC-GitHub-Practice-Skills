@@ -5,14 +5,26 @@ into a terminal window VS Code already gives you, not writing a script.
 
 This covers the two ways this repository's skills reach VS Code: the
 **Claude VS Code extension** and **GitHub Copilot**'s built-in agent mode.
-(OpenAI Codex doesn't have a VS Code integration — see
-[docs/openai-codex.md](openai-codex.md) if you use Codex outside VS Code.)
+If you use OpenAI Codex, see [docs/openai-codex.md](openai-codex.md) instead
+— this guide's commands only cover the Claude and Copilot targets.
+
+## 0. Before you start
+
+- **PowerShell 7 (`pwsh`)** — Windows ships an older `powershell.exe` by
+  default, not `pwsh`. If the command in Step 3 says something like
+  `pwsh: term not recognized`, install PowerShell 7 from
+  [aka.ms/powershell](https://aka.ms/powershell) (or ask a colleague to run
+  the install for you) before continuing.
+- **git** — Step 2 assumes `git` is already available. If `git clone` isn't
+  recognized, install [Git for Windows](https://git-scm.com/downloads) first.
 
 ## 1. Open the integrated terminal
 
 In VS Code: **View → Terminal**, or press `` Ctrl+` `` (backtick). A terminal
-panel opens at the bottom of the window — this is a real PowerShell prompt
-running on your machine, the same as opening one separately.
+panel opens at the bottom of the window. VS Code's default terminal is
+usually PowerShell, but if yours opens something else (Command Prompt, Git
+Bash), the commands below still work the same way — they're not
+PowerShell-specific syntax, just plain commands run through `pwsh`.
 
 ## 2. Get a copy of this repository
 
@@ -28,23 +40,32 @@ cd DOC-GitHub-Practice-Skills
 Always preview first — this shows you exactly what would happen without
 changing anything:
 
+If you use the **Claude extension** in VS Code:
+
 ```powershell
-pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Both -DryRun
+pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Claude -DryRun
 ```
 
 Read the output: source, target, the skill list, and whether anything would
 be overwritten. If it looks right, run it for real:
 
 ```powershell
-pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Both
+pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Claude
 ```
 
-`-Target Both` installs for Claude and Codex. If you use GitHub Copilot
-(agent mode, Copilot Chat) in VS Code, also run:
+If you use **GitHub Copilot** (agent mode, Copilot Chat) in VS Code, run the
+same preview-then-install pair with `-Target Copilot` instead:
 
 ```powershell
+pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Copilot -DryRun
 pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Copilot
 ```
+
+Using both extensions? Run both pairs — each `-Target` only touches its own
+tool's skill directory, so running one doesn't affect the other. (`-Target
+Both` also exists and installs for Claude *and* Codex together — skip it
+here unless you specifically also use Codex outside VS Code; it won't do
+anything for Copilot.)
 
 Upgrading over a previous install needs `-Force`, which writes a timestamped
 backup first — see [docs/claude.md](claude.md) or
@@ -63,10 +84,11 @@ backup first — see [docs/claude.md](claude.md) or
   Code's extension host, which re-reads `~/.claude/skills`.
 - **GitHub Copilot (agent mode):** same command — **Developer: Reload
   Window** — or fully closing and reopening VS Code if that doesn't pick up
-  the change.
-
-If skills still don't appear after a reload, closing VS Code entirely and
-reopening it is the fallback that should always work.
+  the change. (If you're instead using Copilot through its CLI in a regular
+  terminal, not VS Code's agent mode, `/skills reload` inside that session
+  is the documented way — see [docs/copilot.md](copilot.md).)
+- If reloading the window doesn't work, closing VS Code entirely and
+  reopening it is the usual fallback.
 
 ## Where to go from here
 
