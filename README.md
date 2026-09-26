@@ -12,7 +12,8 @@ and people moving from Azure DevOps to GitHub.
 >
 > The `education/` program is versioned independently — see
 > `education/CHANGELOG.md` and `docs/MAINTAINING.md`'s release-hygiene
-> section for the `education-vX.Y.Z` tag convention.
+> section for the `education-vX.Y.Z` tag convention. The first tag is
+> `education-v1.0.0`.
 
 ## Skills
 

@@ -1,5 +1,7 @@
 # Education Program Changelog
 
+<!-- markdownlint-disable MD024 -->
+
 Independent of the skillset's [`CHANGELOG.md`](../CHANGELOG.md) — this file
 tracks `education/` only. Tags use the `education-vX.Y.Z` prefix (see
 `docs/MAINTAINING.md`'s release hygiene section for the full convention).

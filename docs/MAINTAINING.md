@@ -66,8 +66,8 @@ patch.
 `package.json` and `contracts/skill-inventory.json` must carry the same package
 version. The inventory must list every canonical `github-*` directory and each
 required companion file. Before release, verify all ten frontmatter names and
-OpenAI metadata, and ensure the tag without its leading `v` equals both version
-fields.
+OpenAI metadata, and ensure **the skillset's** git tag (without its leading
+`v`) equals both version fields.
 
 The canonical ten-skill roster (names and required files) is independently
 hardcoded in three places: `contracts/skill-inventory.json`,
@@ -103,7 +103,7 @@ requirement to coordinate a release of one with a release of the other.
 | Changelog | `CHANGELOG.md` | `education/CHANGELOG.md` |
 | Purpose | Package version in inventory | Cohort reference point |
 | Release page | Yes, with generated notes | No — tag only |
-| CI on tag push | Full release pipeline | `lint:markdown:education` only |
+| CI on tag push | Full release pipeline | `education-tag-check.yml` only |
 
 When you make a change, update whichever changelog matches what you
 touched — a change to `skills/*/SKILL.md` or the installer never touches
