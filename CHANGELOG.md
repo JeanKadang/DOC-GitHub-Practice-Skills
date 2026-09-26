@@ -18,6 +18,14 @@
 - `github-hygiene` narrowed to PR flow, the acceptance-criteria closure gate,
   and cleanup — release/ruleset/milestone content moved to `github-releases`.
 
+### Removed
+
+- macOS leg of the `installer-dry-run-cross-platform` CI job. It never
+  passed (`/var` → `/private/var` reparse-point false-positive, #23);
+  fixing the underlying guard needs real design work, not a quick patch,
+  and the ongoing red-but-non-blocking noise wasn't worth carrying for an
+  advisory check. Ubuntu coverage in that job is unaffected.
+
 ## [0.1.1] - 2026-08-11
 
 ### Added

@@ -48,11 +48,11 @@ pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Copilot -DryRun
 
 `-Target Both` means Codex + Claude only, for backward compatibility;
 installing all three needs two invocations. The installer is PowerShell-only.
-Windows is the primary verified environment (required CI check); Ubuntu and
-macOS `pwsh` also run it in CI as an advisory check — Ubuntu passes, macOS
-currently fails on a known reparse-point false-positive (`/var` is a symlink
-on macOS; see issue #23). `.github/workflows/validate.yml` runs `npm run
-check` plus the installer suite in CI; `.github/workflows/release.yml`
+Windows is the primary verified environment (required CI check); Ubuntu
+`pwsh` also runs it in CI as an advisory check. macOS is not tested —
+dropped from CI due to a persistent reparse-point false-positive (`/var` is
+a symlink on macOS; see issue #23). `.github/workflows/validate.yml` runs
+`npm run check` plus the installer suite in CI; `.github/workflows/release.yml`
 handles releases.
 
 ## Architecture
