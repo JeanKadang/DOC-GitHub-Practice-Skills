@@ -81,6 +81,44 @@ commits), and minimal seed content (a README plus one open practice
 issue with acceptance criteria, matching this repo's own issue
 conventions).
 
+### Visual aids (Mermaid diagrams)
+
+GitHub renders Mermaid natively in markdown (` ```mermaid ` fences), so
+diagrams live directly in the session files with no build step or
+external tool. Added wherever a picture genuinely clarifies a flow for a
+mixed-experience room — not decoratively, and not duplicating what prose
+already says clearly:
+
+- `education/README.md` — a small flowchart routing background →
+  entry point (the audience-tier table, visualized).
+- `education/beginners/session-1-getting-started.md` — a flowchart of the
+  walkthrough itself: clone → edit → commit → push branch → open PR →
+  review → merge → linked issue closes. This is the single highest-value
+  diagram in the whole program — it's the mental model true beginners are
+  missing.
+- `education/intermediate/session-2-our-workflow.md` — the issue-first /
+  closure-gate lifecycle as a diagram, complementing (not replacing) the
+  prose walkthrough. This repo already carries this exact lifecycle as
+  ASCII art in `skills/github-hygiene/SKILL.md` and
+  `skills/github-for-ado-users/SKILL.md` (deliberately duplicated there —
+  see ADR 0001) — the training doc's Mermaid version is a third,
+  presentation-oriented rendering of the same lifecycle, not a
+  fourth independent source of truth: it should visualize the identical
+  sequence those files already state in prose, not introduce a
+  differing one.
+- `education/advanced/session-3-advanced-github.md` — a diagram for
+  whichever topic benefits most (candidates: the ruleset/branch-protection
+  decision points, or the Projects-board-mirrors-issues relationship from
+  `github-projects`) — decided during implementation once the outline's
+  content is drafted, not prescribed here.
+- `education/facilitator-guide.md` — a simple sandbox-repo reset-cycle
+  diagram if the reset procedure has more than a couple of steps;
+  optional, only if it earns its place over a numbered list.
+
+Every diagram gets a one-line "what this shows" caption above it — never
+a diagram with no surrounding prose context, per the general documentation
+principle that a picture supplements the explanation, it doesn't replace it.
+
 ### Extracting real org settings (public-repo boundary)
 
 This repository is public, and its own `CONTRIBUTING.md` already states
@@ -111,19 +149,22 @@ public repo verbatim. No real extracted values appear anywhere in
 ## File-by-file breakdown
 
 - `education/README.md` — program overview, the audience-tier table
-  above, links to every other file.
+  above (plus its Mermaid routing flowchart), links to every other file.
 - `education/beginners/session-1-getting-started.md` — full content.
   Learning objectives; ~60 min timing budget broken into sections; setup
   (sandbox repo link, prerequisites: a GitHub account, nothing else);
   walkthrough (clone → edit a file → commit → push a branch → open a PR
   → get it reviewed → merge → watch the linked issue close), all via the
-  GitHub web UI, no CLI; wrap-up pointing at Session 2.
+  GitHub web UI, no CLI, illustrated with the workflow flowchart from
+  Visual aids above; wrap-up pointing at Session 2.
 - `education/intermediate/session-2-our-workflow.md` — outline + talking
   points. Sections: issue-first (why, `gh issue create` conventions),
   the closure gate (`Refs`/`Closes`, acceptance criteria, the connected-
   branch auto-close gotcha from ADR 0001 as a concrete cautionary
-  example), branch-per-issue, PR review etiquette, milestones. Each
-  section names the `skills/*/SKILL.md` file it draws from.
+  example), branch-per-issue, PR review etiquette, milestones — the
+  closure-gate lifecycle diagram from Visual aids sits with the
+  `Refs`/`Closes` section. Each section names the `skills/*/SKILL.md`
+  file it draws from.
 - `education/advanced/session-3-advanced-github.md` — outline + talking
   points. Sections: rulesets/branch protection, Projects boards
   (referencing `github-projects`'s multi-repo pattern), releases
