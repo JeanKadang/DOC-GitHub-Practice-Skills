@@ -91,8 +91,8 @@ jobs:
             }
           }
 
-  installer-dry-run-cross-platform:
-    name: Installer dry run (ubuntu-latest)
+  installer-dry-run-ubuntu:
+    name: Installer dry run (Ubuntu)
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
