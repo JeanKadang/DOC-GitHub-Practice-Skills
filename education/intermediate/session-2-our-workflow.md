@@ -47,13 +47,14 @@ time.
 ```mermaid
 stateDiagram-v2
     [*] --> Unevaluated: Issue filed with acceptance criteria
-    Unevaluated --> Met: Evidence recorded, criterion satisfied
-    Unevaluated --> Unmet: Criterion not yet satisfied
+    Unevaluated --> RefsOpen: PR opened with "Refs #N"
+    RefsOpen --> Unmet: Criterion checked, not yet satisfied
+    RefsOpen --> Met: Criterion checked, satisfied
     Unmet --> Met: Evidence recorded later
-    Met --> RefsOpen: PR opened with "Refs #N"
-    RefsOpen --> ClosesApplied: Every criterion Met, "Refs" changed to "Closes"
+    Met --> ClosesApplied: Every criterion Met, "Refs" changed to "Closes"
     ClosesApplied --> Closed: PR merges
     RefsOpen --> ClosedEarly: GitHub auto-closes via connected branch anyway
+    Unmet --> ClosedEarly: GitHub auto-closes via connected branch anyway
     ClosedEarly --> Unmet: Reopened immediately, reason recorded
     Closed --> [*]
 ```

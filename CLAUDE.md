@@ -16,6 +16,8 @@ home directory (`~/.codex`, `~/.claude`, and/or `~/.copilot`).
 Because the "code" here is largely prescriptive documentation that other AI
 agents will read and act on, precision and internal consistency across files
 matter more than usual — a wording change in one skill can contradict another.
+The `education/` folder is the one exception: it holds human-facing colleague
+training material, not agent-facing policy.
 
 ## Commands
 
@@ -23,7 +25,7 @@ matter more than usual — a wording change in one skill can contradict another.
 npm ci                 # install devDependencies (markdownlint-cli2, yaml)
 npm run validate       # scripts/validate-skills.mjs — manifest/skill checks
 npm test               # node --test (runs tests/*.test.mjs)
-npm run lint:markdown  # lint:markdown:docs + lint:markdown:skills
+npm run lint:markdown  # lint:markdown:docs + lint:markdown:skills + lint:markdown:education
 npm run check          # validate + test + lint:markdown, run before every PR
 ```
 
@@ -140,7 +142,8 @@ is now caught by a named test rather than only inferred indirectly.
 matches `package.json`, no unregistered `skills/github-*` directories, every
 mandatory file exists on disk, and each `SKILL.md` frontmatter `name` matches
 its directory name. Before a release, `package.json` version, the inventory's
-`packageVersion`, and the git tag (without leading `v`) must all agree.
+`packageVersion`, and **the skillset's** git tag (without leading `v`) must
+all agree.
 
 ### Installer safety model
 

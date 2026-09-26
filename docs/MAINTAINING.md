@@ -8,9 +8,9 @@
 
 When a shared rule changes, inspect all ten `skills/*/SKILL.md` files, the
 standalone repository-review prompt, the guide, workflow, platform guides,
-`CLAUDE.md`, issue forms, PR template, release automation, and `docs/adr/` for
-any decision record the change would supersede. Human review must confirm
-that:
+`CLAUDE.md`, issue forms, PR template, release automation, `education/`'s
+content, and `docs/adr/` for any decision record the change would supersede.
+Human review must confirm that:
 
 - issue-first work retains ownership, priority, category, milestone, and scope;
 - `Refs #N` remains until criterion evidence passes the closure gate;
@@ -66,8 +66,8 @@ patch.
 `package.json` and `contracts/skill-inventory.json` must carry the same package
 version. The inventory must list every canonical `github-*` directory and each
 required companion file. Before release, verify all ten frontmatter names and
-OpenAI metadata, and ensure the tag without its leading `v` equals both version
-fields.
+OpenAI metadata, and ensure **the skillset's** git tag (without its leading
+`v`) equals both version fields.
 
 The canonical ten-skill roster (names and required files) is independently
 hardcoded in three places: `contracts/skill-inventory.json`,
@@ -89,6 +89,27 @@ clean checkout, review generated notes, and merge only with explicit approval
 and green checks. Tag updated `main`, verify the published release and tag
 commit, close the milestone, confirm issue and epic closure, and prune merged
 branches. Never publish installed local copies or arbitrary branch state.
+
+### Two release tracks: skillset vs. education
+
+The skillset and `education/` are versioned and tagged independently —
+they have different consumption models (the skillset is installed via
+`install-skills.ps1`; `education/` is just read on GitHub) and there is no
+requirement to coordinate a release of one with a release of the other.
+
+| | Skillset | `education/` |
+| --- | --- | --- |
+| Tag prefix | `vX.Y.Z` (bare) | `education-vX.Y.Z` |
+| Changelog | `CHANGELOG.md` | `education/CHANGELOG.md` |
+| Purpose | Package version in inventory | Cohort reference point |
+| Release page | Yes, with generated notes | No — tag only |
+| CI on tag push | Full release pipeline | `education-tag-check.yml` only |
+
+When you make a change, update whichever changelog matches what you
+touched — a change to `skills/*/SKILL.md` or the installer never touches
+`education/CHANGELOG.md`, and vice versa. If a single PR touches both
+(rare — they're deliberately decoupled), update both changelogs and it's
+fine for only one of the two tags to move.
 
 ## Public-content review
 
