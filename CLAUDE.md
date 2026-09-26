@@ -142,7 +142,8 @@ is now caught by a named test rather than only inferred indirectly.
 matches `package.json`, no unregistered `skills/github-*` directories, every
 mandatory file exists on disk, and each `SKILL.md` frontmatter `name` matches
 its directory name. Before a release, `package.json` version, the inventory's
-`packageVersion`, and the git tag (without leading `v`) must all agree.
+`packageVersion`, and **the skillset's** git tag (without leading `v`) must
+all agree.
 
 ### Installer safety model
 

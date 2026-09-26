@@ -9,6 +9,11 @@ and people moving from Azure DevOps to GitHub.
 > is published. This checkout targets the upcoming v0.2.0 package contract
 > (ten skills); tag and publish the matching GitHub release per
 > `github-releases` before updating this line.
+>
+> The `education/` program is versioned independently — see
+> `education/CHANGELOG.md` and `docs/MAINTAINING.md`'s release-hygiene
+> section for the `education-vX.Y.Z` tag convention. The first tag is
+> `education-v1.0.0`.
 
 ## Skills
 
