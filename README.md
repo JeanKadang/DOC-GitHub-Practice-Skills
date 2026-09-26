@@ -56,6 +56,7 @@ installs Codex and Claude only; install Copilot separately with
 - [Workflow and closure gates](docs/WORKFLOW.md)
 - [Maintainer guide](docs/MAINTAINING.md)
 - [Azure DevOps migration mapping](docs/azure-devops-migration.md)
+- [Colleague training program](education/README.md)
 
 ## Compatibility
 

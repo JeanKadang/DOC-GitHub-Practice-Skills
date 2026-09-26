@@ -10,6 +10,8 @@
   notes, release recipe.
 - `github-contributing` skill — forking, syncing, and submitting a PR to a
   repository you don't maintain.
+- education/ folder — a colleague GitHub training program (README, three
+  sessions, a cheat sheet, and a facilitator guide).
 
 ### Changed
 

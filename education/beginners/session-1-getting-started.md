@@ -32,8 +32,8 @@ no software to install, no command line.
 ## The two things happening at once
 
 What this shows: every time you do this workflow, two things are true at
-once — what's happening to the *repository* (left) and what you're
-actually *clicking* (right). Beginners usually only see the second one;
+once — what's happening to the *repository* (above) and what you're
+actually *clicking* (below). Beginners usually only see the second one;
 this session teaches both.
 
 ```mermaid

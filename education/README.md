@@ -19,7 +19,7 @@ flowchart TD
     Start[Your git/GitHub background?] --> Q1{Never used version control?}
     Q1 -- Yes --> S1[Start at Session 1: Getting Started]
     Q1 -- No --> Q2{Know GitHub, GitLab, or Azure DevOps?}
-    Q2 -- Yes --> Pre[Read the mapping skill first]
+    Q2 -- Yes --> Pre[Read the mapping skill first<br/>github-for-ado-users]
     Q2 -- No --> S2[Start at Session 2: Our Workflow]
     Pre --> S2
     S1 --> S2

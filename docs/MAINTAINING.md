@@ -8,9 +8,9 @@
 
 When a shared rule changes, inspect all ten `skills/*/SKILL.md` files, the
 standalone repository-review prompt, the guide, workflow, platform guides,
-`CLAUDE.md`, issue forms, PR template, release automation, and `docs/adr/` for
-any decision record the change would supersede. Human review must confirm
-that:
+`CLAUDE.md`, issue forms, PR template, release automation, `education/`'s
+content, and `docs/adr/` for any decision record the change would supersede.
+Human review must confirm that:
 
 - issue-first work retains ownership, priority, category, milestone, and scope;
 - `Refs #N` remains until criterion evidence passes the closure gate;
