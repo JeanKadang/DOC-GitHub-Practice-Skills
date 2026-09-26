@@ -16,7 +16,7 @@
 - Every Mermaid diagram gets a one-line "what this shows" caption directly above its code fence — never a bare diagram with no prose context.
 - `education/intermediate/session-2-our-workflow.md` and `education/advanced/session-3-advanced-github.md` are **outline + talking points**, not full scripts (per the spec's Content depth decision) — don't over-author these into full prose scripts the way Session 1 is.
 - No real company/organization-specific settings, names, or values anywhere in `education/**` — this repo is public (`CONTRIBUTING.md`'s public-content boundary applies here same as everywhere else in the repo).
-- `npm run lint:markdown:docs` must pass after every task — unlike `docs/superpowers/**`, `education/**` is **not** excluded from this lint (it's durable published content, not ephemeral planning material).
+- `npm run lint:markdown:education` must pass after every task — `education/**` gets its own markdownlint config (`.markdownlint-education.jsonc`, mirroring the existing `skills/**` carve-out) with `MD013` (80-char line length) disabled, since that rule is incompatible with real table content and Mermaid diagram labels; every other rule (table pipe style, etc.) stays enforced. Unlike `docs/superpowers/**`, `education/**` is real, durable published content — it is linted, just under its own tailored config, not excluded outright.
 - Session 1 is GitHub-web-UI-only — no git CLI commands, no local git install assumed (per the spec's audience-tier decision: true beginners start in the browser).
 - Every commit message includes `Refs #36`.
 - Content must not contradict `skills/github-hygiene/SKILL.md`, `skills/github-issue-first/SKILL.md`, or `docs/adr/0001-refs-closes-connected-branch-closure.md` — cross-check before finalizing any section describing the closure gate.
@@ -117,7 +117,7 @@ mindmap
 
 - [ ] **Step 2: Run markdownlint**
 
-Run: `npm run lint:markdown:docs`
+Run: `npm run lint:markdown:education`
 Expected: pass, 0 issues.
 
 - [ ] **Step 3: Self-review against Global Constraints and Review Focus**
@@ -297,7 +297,7 @@ Next: [Session 2: Our Workflow](../intermediate/session-2-our-workflow.md)
 
 - [ ] **Step 2: Run markdownlint**
 
-Run: `npm run lint:markdown:docs`
+Run: `npm run lint:markdown:education`
 Expected: pass, 0 issues.
 
 - [ ] **Step 3: Self-review — no CLI, no local git**
@@ -466,7 +466,7 @@ Next: [Session 3: Advanced GitHub](../advanced/session-3-advanced-github.md) (op
 
 - [ ] **Step 2: Run markdownlint**
 
-Run: `npm run lint:markdown:docs`
+Run: `npm run lint:markdown:education`
 Expected: pass, 0 issues.
 
 - [ ] **Step 3: Self-review — ADR 0001 accuracy**
@@ -617,7 +617,7 @@ themselves are the reference for anything not covered live.
 
 - [ ] **Step 2: Run markdownlint**
 
-Run: `npm run lint:markdown:docs`
+Run: `npm run lint:markdown:education`
 Expected: pass, 0 issues.
 
 - [ ] **Step 3: Self-review — outline depth, no real org values**
@@ -703,7 +703,7 @@ One page. Keep this open in a tab while you work.
 
 - [ ] **Step 2: Run markdownlint**
 
-Run: `npm run lint:markdown:docs`
+Run: `npm run lint:markdown:education`
 Expected: pass, 0 issues.
 
 - [ ] **Step 3: Commit**
@@ -826,7 +826,7 @@ actual extracted values in your own private notes, not in this repo.
 
 - [ ] **Step 2: Run markdownlint**
 
-Run: `npm run lint:markdown:docs`
+Run: `npm run lint:markdown:education`
 Expected: pass, 0 issues.
 
 - [ ] **Step 3: Self-review — no real org values**
@@ -854,10 +854,10 @@ Refs #36"
 
 **Interfaces:** None — this task confirms every prior task's deliverable together.
 
-- [ ] **Step 1: Run the full markdown lint**
+- [ ] **Step 1: Run the full check**
 
-Run: `npm run lint:markdown:docs`
-Expected: pass, 0 issues, across all six new files plus everything else in the repo (this lint is not scoped to `education/` alone).
+Run: `npm run check`
+Expected: pass — `validate` (skills roster unaffected by this plan), the full test suite, and all three markdownlint passes (`lint:markdown:docs`, `lint:markdown:skills`, `lint:markdown:education`) covering all six new files plus everything else in the repo.
 
 - [ ] **Step 2: Cross-reference accuracy pass**
 
@@ -895,7 +895,7 @@ versions a few times first.
 - [ ] Session 2 has full narrative content, not bullet-point talking points, for each of its four sections.
 - [ ] Session 3 has full narrative content for each of its four sections.
 - [ ] Existing Mermaid diagrams and skill file cross-references are preserved.
-- [ ] npm run lint:markdown:docs passes.
+- [ ] npm run lint:markdown:education passes.
 EOF
 )" \
   --assignee "@me" \
