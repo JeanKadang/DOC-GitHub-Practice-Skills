@@ -21,7 +21,7 @@ Acceptance criteria are evaluated evidence requirements, not clerical boxes.
 
 ## Current v0.2.0 policy
 
-The following sections describe the canonical skills as they exist in v0.1.0.
+The following sections describe the canonical skills as they exist in v0.2.0.
 
 ### `github-issue-first`
 
@@ -219,7 +219,7 @@ current skills:
    issue volume grows enough that manual audits become unreliable.
 2. Add more PowerShell-native examples alongside the Bash-oriented ones in
    `skills/*/SKILL.md` — tracked as issue #19 rather than folded into this
-   triage, since it's a cross-cutting edit across all eight skill files.
+   triage, since it's a cross-cutting edit across all ten skill files.
 
 Maintainers must update the canonical skill contract and this policy section in
 separate, reviewed changes before either remaining proposal becomes current

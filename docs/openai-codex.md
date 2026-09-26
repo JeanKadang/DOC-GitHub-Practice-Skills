@@ -21,6 +21,9 @@ Then install:
 pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Codex
 ```
 
+Upgrading over a previous install of this package needs `-Force`, which
+writes a timestamped backup first.
+
 Use an explicit home when testing or when discovery is not appropriate:
 
 ```powershell

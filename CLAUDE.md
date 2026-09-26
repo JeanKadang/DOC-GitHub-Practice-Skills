@@ -65,7 +65,7 @@ copies are deployment outputs — never edit them; always edit the canonical
 same `SKILL.md`; only Codex also reads the `agents/openai.yaml` sidecar
 (Claude and Copilot both ignore it).
 
-### The eight canonical skills and their handoffs
+### The ten canonical skills and their handoffs
 
 Each skill has a narrow trigger and a boundary/handoff to the next skill. This
 chain is the core domain model of the repo (see `docs/GUIDE.md` for full
@@ -75,8 +75,13 @@ detail):
   security-sensitive findings to `github-security-response`; hands
   implementation to `github-hygiene`.
 - `github-hygiene` — owns branches, PR traceability, closure evidence,
-  milestones, releases, cleanup. Individual PR review belongs to
-  `github-pr-review`; merge/release still require explicit human approval.
+  cleanup. Individual PR review belongs to `github-pr-review`; releasing and
+  tagging hand off to `github-releases`; merge still requires explicit human
+  approval.
+- `github-releases` — owns milestones, branch protection/rulesets, release
+  notes, and the release recipe. PR merge and the closure gate stay with
+  `github-hygiene`; a release containing a security fix goes through
+  `github-security-response` first.
 - `github-pr-review` — reviews someone else's PR/fork PR against linked
   acceptance criteria. Approval is not merge approval.
 - `github-repo-review` — full-repository, evidence-based audit; findings
@@ -93,6 +98,10 @@ detail):
   default for a solo maintainer.
 - `github-for-ado-users` — explains Azure DevOps/TFS/Jira → GitHub concept
   mappings; does not mutate a repository itself.
+- `github-contributing` — forks, syncs with upstream, and submits a PR to a
+  repository you don't maintain, then responds to review as the PR's author.
+  Reviewing someone else's fork PR is `github-pr-review`, not this skill; it
+  never imposes this repo's `Refs`/`Closes` conventions on a foreign repo.
 
 ### The `Refs #N` / `Closes #N` closure gate
 
@@ -119,7 +128,7 @@ forms, and release automation).
 
 ### Validation and manifest consistency
 
-The canonical eight-skill roster (names + required files) is independently
+The canonical ten-skill roster (names + required files) is independently
 hardcoded three times, deliberately — `contracts/skill-inventory.json`, the
 `CANONICAL_SKILLS` constant in `scripts/validate-skills.mjs`, and
 `$canonicalRequiredFiles` in `scripts/install-skills.ps1` — as defense in
@@ -148,9 +157,11 @@ plan before running for real — this matches the guidance in
 
 `docs/adr/` holds immutable records of *why* a specific past decision landed
 where it did — for policy that gets re-litigated, not routine changes. ADR
-0001 covers the Refs/Closes connected-branch closure decision above. Check
-`docs/MAINTAINING.md`'s cross-skill invariant review list, which includes
-`docs/adr/`, before assuming a shared-policy change is unprecedented.
+0001 covers the Refs/Closes connected-branch closure decision above; ADR 0002
+covers the `github-hygiene` split into `github-hygiene`/`github-releases` and
+the `github-contributing` addition. Check `docs/MAINTAINING.md`'s cross-skill
+invariant review list, which includes `docs/adr/`, before assuming a
+shared-policy change is unprecedented.
 
 ## Content rules specific to this repo
 
@@ -158,7 +169,7 @@ where it did — for policy that gets re-litigated, not routine changes. ADR
   workflow policy belongs here. No company/customer names, private endpoints,
   credentials, internal policy, or screenshots of private systems.
 - Policy changes to any canonical `SKILL.md` must be considered against all
-  eight skills and all three consuming platforms, not just the one file
+  ten skills and all three consuming platforms, not just the one file
   touched.
 - Follow the issue-first workflow described above for changes to this repo
   itself, per `CONTRIBUTING.md` — issue with acceptance criteria → issue-linked

@@ -1,6 +1,6 @@
 ---
 name: github-hygiene
-description: Use when merging PRs, closing issues, reconciling acceptance criteria, or decomposing large work into sub-issues, or cleaning up branches at the end of a session — before running gh pr merge, gh issue close, or any merge step.
+description: Use when merging PRs, closing issues, reconciling acceptance criteria, decomposing large work into sub-issues, or cleaning up branches at the end of a session — before running gh pr merge, gh issue close, or any merge step.
 ---
 
 # GitHub Hygiene
