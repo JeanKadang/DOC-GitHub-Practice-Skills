@@ -145,11 +145,12 @@ them, not a flowchart for everything:
 Every diagram gets a one-line "what this shows" caption above it — never
 a diagram with no surrounding prose context, per the general documentation
 principle that a picture supplements the explanation, it doesn't replace it.
-That gives the program six diagrams across five Mermaid types (flowchart,
-mindmap, `gitGraph`, state diagram, sequence diagram, timeline) — chosen
-per concept, not for variety's own sake; Session 3's second diagram type
-is decided during implementation once the outline is drafted, but the
-timeline candidate above is the leading choice.
+That gives the program eight firm diagrams (nine counting the optional
+facilitator-guide one) across six Mermaid types (flowchart, mindmap,
+`gitGraph`, state diagram, sequence diagram, timeline) — chosen per
+concept, not for variety's own sake; Session 3's second diagram (the
+timeline above) is the leading choice but confirmed during
+implementation once that outline is drafted.
 
 ### Extracting real org settings (public-repo boundary)
 
