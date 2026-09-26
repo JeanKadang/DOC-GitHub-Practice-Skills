@@ -51,8 +51,9 @@ pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Both
 The installer validates the source, refuses unapproved overwrites, and can use
 `-Force` to back up a modified tracked installation before replacement. See the
 [OpenAI Codex guide](docs/openai-codex.md), [Claude guide](docs/claude.md), and
-[Copilot CLI guide](docs/copilot.md) for discovery details. `-Target Both`
-installs Codex and Claude only; install Copilot separately with
+[Copilot CLI guide](docs/copilot.md) for discovery details — or the
+[VS Code guide](docs/vscode.md) if you're not comfortable with PowerShell.
+`-Target Both` installs Codex and Claude only; install Copilot separately with
 `-Target Copilot`.
 
 ## Documentation
@@ -61,6 +62,7 @@ installs Codex and Claude only; install Copilot separately with
 - [Workflow and closure gates](docs/WORKFLOW.md)
 - [Maintainer guide](docs/MAINTAINING.md)
 - [Azure DevOps migration mapping](docs/azure-devops-migration.md)
+- [Installing from VS Code (no PowerShell experience needed)](docs/vscode.md)
 - [Colleague training program](education/README.md)
 
 ## Compatibility
