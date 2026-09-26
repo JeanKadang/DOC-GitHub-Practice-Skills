@@ -87,37 +87,69 @@ GitHub renders Mermaid natively in markdown (` ```mermaid ` fences), so
 diagrams live directly in the session files with no build step or
 external tool. Added wherever a picture genuinely clarifies a flow for a
 mixed-experience room — not decoratively, and not duplicating what prose
-already says clearly:
+already says clearly. Different concepts get the diagram type built for
+them, not a flowchart for everything:
 
-- `education/README.md` — a small flowchart routing background →
-  entry point (the audience-tier table, visualized).
-- `education/beginners/session-1-getting-started.md` — a flowchart of the
-  walkthrough itself: clone → edit → commit → push branch → open PR →
-  review → merge → linked issue closes. This is the single highest-value
-  diagram in the whole program — it's the mental model true beginners are
-  missing.
-- `education/intermediate/session-2-our-workflow.md` — the issue-first /
-  closure-gate lifecycle as a diagram, complementing (not replacing) the
-  prose walkthrough. This repo already carries this exact lifecycle as
-  ASCII art in `skills/github-hygiene/SKILL.md` and
-  `skills/github-for-ado-users/SKILL.md` (deliberately duplicated there —
-  see ADR 0001) — the training doc's Mermaid version is a third,
-  presentation-oriented rendering of the same lifecycle, not a
-  fourth independent source of truth: it should visualize the identical
-  sequence those files already state in prose, not introduce a
-  differing one.
-- `education/advanced/session-3-advanced-github.md` — a diagram for
-  whichever topic benefits most (candidates: the ruleset/branch-protection
-  decision points, or the Projects-board-mirrors-issues relationship from
-  `github-projects`) — decided during implementation once the outline's
-  content is drafted, not prescribed here.
-- `education/facilitator-guide.md` — a simple sandbox-repo reset-cycle
-  diagram if the reset procedure has more than a couple of steps;
-  optional, only if it earns its place over a numbered list.
+- `education/README.md`:
+  - **Flowchart** routing background → entry point (the audience-tier
+    table, visualized).
+  - **Mindmap** giving a bird's-eye view of what the three sessions cover,
+    so someone deciding whether to attend Session 3 can see its topics
+    without reading the full outline.
+- `education/beginners/session-1-getting-started.md`:
+  - **`gitGraph`** showing the actual git-internals view of what they're
+    about to do: `main`, a feature branch forked off it, commits landing
+    on that branch, then merging back — Mermaid supports git graphs
+    natively and this is the literal shape of a branch, which prose
+    alone doesn't convey well to someone who has never seen one.
+  - **Flowchart** of the GitHub-UI-level walkthrough: clone → edit →
+    commit → push branch → open PR → review → merge → linked issue
+    closes. This pair is deliberate — the `gitGraph` shows what happens
+    to the *repository*, the flowchart shows what the *person clicks*;
+    together they're the single highest-value visual content in the
+    whole program, since it's the mental model true beginners are
+    missing on both axes.
+- `education/intermediate/session-2-our-workflow.md`:
+  - **State diagram** for the closure-gate lifecycle (`Unmet`/
+    `Unevaluated` → `Met` → `Refs #N` → `Closes #N` → `Closed`, with the
+    "reopen" transition from ADR 0001's connected-branch gotcha as an
+    explicit edge) — a gate with named states and guarded transitions is
+    exactly what a state diagram is for, and it's a genuinely different
+    rendering from the ASCII sequence-flow already in
+    `skills/github-hygiene/SKILL.md` and
+    `skills/github-for-ado-users/SKILL.md` (deliberately duplicated there
+    — see ADR 0001), not a fourth independent source of truth: it must
+    describe the identical states and transitions those files already
+    state in prose.
+  - **Sequence diagram** for PR review etiquette — Author, Reviewer, and
+    Maintainer as three lanes, showing the back-and-forth (open PR →
+    review comment → push fix → approve → merge) that a flowchart
+    flattens but a sequence diagram naturally shows as interaction
+    over time.
+- `education/advanced/session-3-advanced-github.md`:
+  - **Flowchart** for the ruleset/branch-protection decision tree (public
+    repo, or private on Pro/Team? → rulesets available → required checks
+    configured?) — branching logic on real preconditions fits a decision
+    flowchart.
+  - **Timeline** for the release recipe's chronological steps (version
+    picked → branch cut → CHANGELOG updated → PR merged → tag pushed →
+    release published → milestone closed) — a chronological sequence of
+    one-time steps is exactly what a timeline communicates that a
+    flowchart's branching implies (misleadingly) isn't there.
+- `education/facilitator-guide.md`:
+  - **State diagram** for the sandbox repo's reset cycle (`Ready` →
+    `In use` → `Reset triggered` → `Recreating` → `Ready`) if the
+    procedure has more than a couple of steps; optional, only if it earns
+    its place over a numbered list.
 
 Every diagram gets a one-line "what this shows" caption above it — never
 a diagram with no surrounding prose context, per the general documentation
 principle that a picture supplements the explanation, it doesn't replace it.
+That gives the program six diagrams across five Mermaid types (flowchart,
+mindmap, `gitGraph`, state diagram, sequence diagram, timeline) — chosen
+per concept, not for variety's own sake; Session 3's second diagram type
+is decided during implementation once the outline is drafted, but the
+timeline candidate above is the leading choice.
 
 ### Extracting real org settings (public-repo boundary)
 
