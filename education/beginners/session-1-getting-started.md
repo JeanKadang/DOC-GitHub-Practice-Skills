@@ -46,6 +46,8 @@ gitGraph
    merge add-your-name id: "PR merged"
 ```
 
+What this shows: the same workflow from the repo's perspective (above), now as a sequence of clicks in the GitHub UI (below).
+
 ```mermaid
 flowchart LR
     A[File an issue] --> B[Create a branch]
@@ -84,7 +86,7 @@ behind why — this session is the hands-on version of it.
 - We never commit directly to `main` — a branch is your own space to work
   in until it's reviewed.
 
-### 3. Edit a file and commit (10 min)
+### 3. Edit a file and commit (5 min)
 
 - Navigate to `CONTRIBUTORS.md` in the sandbox repo, **on your branch**.
 - Click the pencil (edit) icon.
@@ -108,7 +110,7 @@ what and why. You just made one.
   deeper on this.)
 - Click **Create pull request**.
 
-### 5. Get it reviewed (10 min)
+### 5. Get it reviewed (5 min)
 
 - The facilitator (or a paired colleague) opens your PR, looks at the
   **Files changed** tab, and leaves a comment or an approval.
@@ -118,15 +120,15 @@ what and why. You just made one.
 
 ### 6. Merge (5 min)
 
-- On your PR, once approved, change the PR body from `Refs #42` to
-  `Closes #42` — this tells GitHub to close the issue when the PR merges.
+- On your PR, once approved, change the PR body from `Refs #<your issue number>`
+  to `Closes #<your issue number>` — this tells GitHub to close the issue when the PR merges.
   (Session 2 explains exactly when this switch is safe to make.)
 - Click **Merge pull request** → **Confirm merge**.
 
 ### 7. Watch it close
 
-- Go back to your issue (`#42`). It should now show as **Closed**, with a
-  note that it was closed by your merged PR.
+- Go back to your issue (the one you filed in step 1). It should now show as
+  **Closed**, with a note that it was closed by your merged PR.
 
 That's the full loop: **issue → branch → commit → PR → review → merge →
 issue closes.** Every contribution on this team follows this shape.
