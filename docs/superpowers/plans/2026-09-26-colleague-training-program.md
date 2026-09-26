@@ -662,7 +662,7 @@ One page. Keep this open in a tab while you work.
 ## Doing it in the web UI (no command line needed)
 
 | Action | Where |
-|---|---|
+| --- | --- |
 | File an issue | Repo → **Issues** tab → **New issue** |
 | Create a branch from an issue | On the issue page → **Create a branch** |
 | Edit a file on your branch | Navigate to the file → pencil icon → make sure your branch is selected before committing |
@@ -673,7 +673,7 @@ One page. Keep this open in a tab while you work.
 ## Doing it from the command line (once you're comfortable)
 
 | Action | Command |
-|---|---|
+| --- | --- |
 | Clone a repo | `git clone <url>` |
 | Create and switch to a branch | `git checkout -b <branch-name>` |
 | See what's changed | `git status` |
