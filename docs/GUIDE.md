@@ -80,6 +80,18 @@ The following sections describe the canonical skills as they exist in v0.2.0.
 - **Boundary and handoff:** The pre-issue exception ends after the shell;
   ongoing work hands off to the companion skills.
 
+### `github-repo-configure`
+
+- **Trigger:** Handed an already-existing repository (not brand-new) that
+  needs its org-optional settings configured.
+- **Responsibilities and outputs:** Elicit Wiki, Discussions, Project
+  attachment, and label-scheme decisions; offer generic, dual human/AI-triage
+  issue and PR templates for repos that don't have them yet.
+- **Boundary and handoff:** Never re-documents Wiki/Discussions/Projects
+  mechanics — defers to `github-repo-bootstrap`, `github-issue-first`, and
+  `github-projects` for those. Configuring settings is real work, so it goes
+  through `github-issue-first` like anything else.
+
 ### `github-security-response`
 
 - **Trigger:** A secret, vulnerability, security alert, or private reporting
@@ -140,9 +152,11 @@ evidence before merge.
 
 Security is a private branch in the flow: `github-security-response` replaces
 the public issue and PR path until coordinated disclosure is safe. Repository
-creation begins with `github-repo-bootstrap`. `github-projects` adds a view only
-when shared ownership justifies the maintenance. `github-for-ado-users` explains
-the mapping but does not mutate a repository by itself.
+creation begins with `github-repo-bootstrap`; configuring an already-existing
+repository's org-optional settings uses `github-repo-configure` instead.
+`github-projects` adds a view only when shared ownership justifies the
+maintenance. `github-for-ado-users` explains the mapping but does not mutate
+a repository by itself.
 
 ## Examples
 

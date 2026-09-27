@@ -26,6 +26,8 @@ and people moving from Azure DevOps to GitHub.
 - `github-pr-review` reviews pull requests and their linked acceptance criteria.
 - `github-repo-review` performs evidence-based, full-repository audits.
 - `github-repo-bootstrap` creates and verifies a new repository safely.
+- `github-repo-configure` elicits org-optional settings and issue/PR
+  templates for an already-existing repository.
 - `github-security-response` keeps exploitable findings and credentials private.
 - `github-projects` adds a maintained shared board when multiple maintainers
   need one.

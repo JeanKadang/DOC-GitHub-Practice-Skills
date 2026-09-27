@@ -69,7 +69,7 @@ copies are deployment outputs — never edit them; always edit the canonical
 same `SKILL.md`; only Codex also reads the `agents/openai.yaml` sidecar
 (Claude and Copilot both ignore it).
 
-### The ten canonical skills and their handoffs
+### The eleven canonical skills and their handoffs
 
 Each skill has a narrow trigger and a boundary/handoff to the next skill. This
 chain is the core domain model of the repo (see `docs/GUIDE.md` for full
@@ -94,6 +94,11 @@ detail):
 - `github-repo-bootstrap` — the only skill allowed to create repo content
   *before* an issue exists (the initial shell); everything after that shell
   goes through the normal issue-first flow.
+- `github-repo-configure` — elicits org-optional settings (Wiki,
+  Discussions, Project attachment, label scheme) for an already-existing
+  repo, and ships generic issue/PR templates. Distinct from
+  `github-repo-bootstrap`: this skill's repo already exists, so its work
+  goes through normal issue-first, not the pre-issue exception.
 - `github-security-response` — replaces the public issue/PR path until
   coordinated disclosure is safe: rotate credentials first, use private
   advisories, never file an unpatched exploitable finding publicly.
