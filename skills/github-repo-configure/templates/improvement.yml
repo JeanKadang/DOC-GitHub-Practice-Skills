@@ -1,0 +1,41 @@
+name: Improvement
+description: Propose a focused enhancement
+title: "Improvement: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What's limiting or missing today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What to do about it.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you weighed and why you didn't pick them. Optional.
+    validations:
+      required: false
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact if not done
+      description: What stays broken or limited if this doesn't happen.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else relevant. Optional.
+    validations:
+      required: false

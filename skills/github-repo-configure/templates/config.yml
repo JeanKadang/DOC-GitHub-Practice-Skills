@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: <repo-security-policy-url>
+    about: Read the security policy and use GitHub private vulnerability reporting. Never file a vulnerability as a public issue.
