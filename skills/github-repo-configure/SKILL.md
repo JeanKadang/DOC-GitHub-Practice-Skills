@@ -60,10 +60,16 @@ repo-agnostic files:
 Copy them into the target repo as `.github/ISSUE_TEMPLATE/bug.yml`,
 `.github/ISSUE_TEMPLATE/improvement.yml`, `.github/ISSUE_TEMPLATE/config.yml`,
 and `.github/pull_request_template.md` respectively. `config.yml`'s security
-contact link is a literal placeholder (`<repo-security-policy-url>`) — fill
+contact link is a literal placeholder
+(`https://github.com/<owner>/<repo>/security/policy`) — fill
 it in with the target repo's actual `SECURITY.md`/private-reporting URL
 before relying on it (see `github-security-response` if that doesn't exist
-yet).
+yet). Both forms' `labels:` line (`bug`, `enhancement`) reconciles with the
+label-scheme decision from step 4 above, not the other way around: if the
+target repo uses a different scheme, rewrite `labels:` to match it, and
+create those labels first if they don't already exist (see
+`github-issue-first`'s label section) — an auto-label pointing at a label
+that doesn't exist silently does nothing.
 
 Both issue forms are built for dual human/AI-agent use: every field renders
 under its own heading in the issue body, so a human reads it like a normal

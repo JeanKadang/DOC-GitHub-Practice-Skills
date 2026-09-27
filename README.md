@@ -7,7 +7,7 @@ and people moving from Azure DevOps to GitHub.
 
 > **Release status:** [v0.1.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.1.0)
 > is published. This checkout targets the upcoming v0.2.0 package contract
-> (ten skills); tag and publish the matching GitHub release per
+> (eleven skills); tag and publish the matching GitHub release per
 > `github-releases` before updating this line.
 >
 > The `education/` program is versioned independently — see
