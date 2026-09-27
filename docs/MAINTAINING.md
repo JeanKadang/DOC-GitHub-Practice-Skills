@@ -65,6 +65,46 @@ restored on that basis. If a future change reintroduces a similar
 false-positive, re-removing the leg (rather than weakening the guard to
 paper over it) is the same tradeoff made in #23/#46.
 
+## Bash and PowerShell examples in skills
+
+Every `skills/*/SKILL.md` command example is Bash-flavored by default, since
+that's the common denominator across platforms. When a command is a
+**multi-line invocation** (uses `\` line continuation, a heredoc, or a
+multi-flag `gh`/`jq` call spanning several lines), add a PowerShell-native
+equivalent directly below the Bash fenced block, introduced by a plain
+`PowerShell:` line, in its own ` ```powershell ` fence:
+
+````markdown
+```bash
+gh issue list --state closed --limit 1000 --json number,title,body,stateReason \
+  --jq '...'
+```
+
+PowerShell:
+
+```powershell
+gh issue list --state closed --limit 1000 --json number,title,body,stateReason `
+  --jq '...'
+```
+````
+
+A single-line command needs no PowerShell pair — bash and pwsh share
+identical syntax for a plain `gh`/`git` invocation with no continuation,
+heredoc, or shell-specific redirection; only the multi-line shape actually
+differs between shells. Where a command has no PowerShell peer for a
+different reason (a POSIX-only redirection like `2>/dev/null`, e.g.), use
+pwsh's `2>$null` and the shared `||`/`&&` chain operators (pwsh 7+ supports
+both directly — see the platform notes above) rather than inventing a
+different control-flow shape.
+
+**Verify every PowerShell example actually runs**, not just that it looks
+plausible — a single stray extra backslash inside a `--jq` string (an easy
+mistake: jq needs `\\s`/`\\[`/`\\]` for a literal regex escape but a single
+`\(...)`/`\t` for interpolation) can silently produce wrong output instead
+of an error. Test jq-bearing commands by writing the exact program to a file
+and running `gh ... --jq "$(Get-Content -Raw file)"` (or the Bash
+equivalent) against a real repo, rather than trusting a visual read.
+
 ## Manifest and version consistency
 
 `package.json` and `contracts/skill-inventory.json` must carry the same package

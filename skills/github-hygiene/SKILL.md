@@ -66,7 +66,14 @@ Audit for completed closures with unchecked task boxes:
 
 ```bash
 gh issue list --state closed --limit 1000 --json number,title,body,stateReason \
-  --jq '.[] | select(.stateReason=="COMPLETED") | select(.body | test("(?m)^\\s*- \\[ \\]")) | "#\\(.number)\\t\\(.title)"'
+  --jq '.[] | select(.stateReason=="COMPLETED") | select(.body | test("(?m)^\\s*- \\[ \\]")) | "#\(.number)\t\(.title)"'
+```
+
+PowerShell:
+
+```powershell
+gh issue list --state closed --limit 1000 --json number,title,body,stateReason `
+  --jq '.[] | select(.stateReason=="COMPLETED") | select(.body | test("(?m)^\\s*- \\[ \\]")) | "#\(.number)\t\(.title)"'
 ```
 
 ## PR flow

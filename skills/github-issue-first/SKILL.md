@@ -37,6 +37,17 @@ gh issue create \
   --label "<category-label(s)>"
 ```
 
+PowerShell:
+
+```powershell
+gh issue create `
+  --title "<short, specific, states the problem not the fix>" `
+  --body "<what's wrong, where (file:line if applicable), how you found it, and what fixing it would involve>" `
+  --assignee "@me" `
+  --label "<priority-label>" `
+  --label "<category-label(s)>"
+```
+
 **Title** states the defect or gap, not the task of fixing it — "CFO badge
 falls through to Engineer color" not "Fix badge bug." **Body** gives enough
 for someone (including future-you) to act without re-deriving the finding:
@@ -68,6 +79,13 @@ when you can't be sure of the starting state:
 
 ```bash
 gh label create P0 --color B60205 --description "..." 2>/dev/null \
+  || gh label edit  P0 --color B60205 --description "..."
+```
+
+PowerShell:
+
+```powershell
+gh label create P0 --color B60205 --description "..." 2>$null `
   || gh label edit  P0 --color B60205 --description "..."
 ```
 
@@ -228,6 +246,13 @@ assignee to confirm nothing slipped through unlabeled or unassigned:
 
 ```bash
 gh issue list --state open --json number,title,labels,assignees \
+  -q 'sort_by(.number) | .[] | "\(.number)\t\(.assignees[0].login)\t\([.labels[].name]|join(","))"'
+```
+
+PowerShell:
+
+```powershell
+gh issue list --state open --json number,title,labels,assignees `
   -q 'sort_by(.number) | .[] | "\(.number)\t\(.assignees[0].login)\t\([.labels[].name]|join(","))"'
 ```
 
