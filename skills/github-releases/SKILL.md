@@ -126,7 +126,12 @@ changelog:
 
 Categories are matched in order and `"*"` catches the rest, so it must be last.
 Labels here are the **PR's** labels, not the issue's — label PRs at open time or
-the categorisation silently falls through to Other.
+the categorisation silently falls through to Other. A repo can automate this: a
+`pull_request_target` workflow that reads the PR body's `Refs #N`/`Closes #N`
+line, copies the linked issue's category labels onto the PR, and skips
+gracefully when no reference or no matching label exists. Don't rely on this
+alone in a repo without it — confirm the automation exists before assuming
+labels appear automatically.
 
 **Every label named here must exist on the repo and actually be applied**, or the
 category silently never matches — a category keyed on a label nobody creates is
