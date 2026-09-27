@@ -291,6 +291,58 @@ test('Force rejects a destination skills junction before changing destination, b
   assert.equal(await exists(join(codexHome, 'skill-backups')), false);
 });
 
+test('a reparse point above the platform home does not block install (the macOS /var false positive, #45)', { skip: process.platform !== 'win32' }, async () => {
+  // Simulates macOS's /var -> /private/var: an ancestor *above* both the
+  // platform home and its immediate parent (the staging parent, which is
+  // still independently checked as its own leaf) is itself a reparse point,
+  // but nothing this script reads from or writes to lives up there. The
+  // real target directory tree is pre-created so this only exercises the
+  // ancestry check, not directory-creation-through-a-symlink behavior.
+  const root = await temporaryRoot();
+  const realOuter = join(root, 'real-outer');
+  const outerAlias = join(root, 'outer-alias');
+  await mkdir(join(realOuter, 'middle'), { recursive: true });
+  await symlink(realOuter, outerAlias, 'junction');
+  const codexHome = join(outerAlias, 'middle', 'codex-home');
+  const expectedNames = inventory.skills.map(({ name }) => name).sort();
+
+  await runInstaller({ codexHome, target: 'Codex' });
+
+  const names = (await readdir(join(realOuter, 'middle', 'codex-home', 'skills'), { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  assert.deepEqual(names, expectedNames);
+});
+
+test('a reparse point between two independently-checked levels is still rejected (#45 regression guard)', { skip: process.platform !== 'win32' }, async () => {
+  // skill-backups sits between PlatformPath (checked as a leaf) and
+  // backupParent (checked as a leaf) - it is never independently checked on
+  // its own, so this proves the bounded ancestry walk still covers that gap
+  // rather than only checking the two endpoints. Uses shallow/targeted
+  // assertions rather than a recursive tree snapshot, since the live
+  // junction itself is a direct child of codexHome here.
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  const name = inventory.skills[0].name;
+  const skillPath = join(codexHome, 'skills', name, 'SKILL.md');
+  await writeFile(skillPath, 'locally modified\n');
+  const decoyTarget = join(root, 'decoy-skill-backups');
+  await mkdir(decoyTarget, { recursive: true });
+  const backupsLink = join(codexHome, 'skill-backups');
+  await symlink(decoyTarget, backupsLink, 'junction');
+  const destinationBefore = (await readdir(join(codexHome, 'skills'))).sort();
+  const junctionTargetBefore = await readlink(backupsLink);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', force: true, expectFailure: true });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /reparse|junction|link/i);
+  assert.equal(await readFile(skillPath, 'utf8'), 'locally modified\n');
+  assert.deepEqual((await readdir(join(codexHome, 'skills'))).sort(), destinationBefore);
+  assert.equal(await readlink(backupsLink), junctionTargetBefore);
+  assert.deepEqual(await readdir(decoyTarget), []);
+});
+
 test('rejects substituted, duplicate, and incomplete canonical requiredFiles declarations', async () => {
   const variants = [
     ['substituted', ['SKILL.md', 'agents/openai.yaml', 'extra.md']],

@@ -123,3 +123,46 @@ jobs:
               Remove-Item -LiteralPath $testRoot -Recurse -Force
             }
           }
+
+  installer-dry-run-macos:
+    # Advisory, not required (see CLAUDE.md - macOS isn't a verified
+    # environment the same way Windows is). Restored per #45: its previous
+    # removal (#46) was because Assert-NoReparseInExistingAncestry always
+    # false-positived here, since macOS's runner temp dirs (and $TMPDIR
+    # generally) resolve under /var, which macOS itself symlinks to
+    # /private/var. That's exactly what this leg now proves fixed - every
+    # test in tests/install-skills.test.mjs builds its fixtures under
+    # os.tmpdir(), so a real, unsynthetic /var ancestor is already present
+    # on every run here, with no need to construct one.
+    name: Installer dry run (macOS)
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run installer tests
+        run: node --test tests/install-skills.test.mjs
+      - name: Run direct dry run against fresh homes
+        shell: pwsh
+        run: |
+          $testRoot = Join-Path $env:RUNNER_TEMP "installer-dry-run-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
+          $codexHome = Join-Path $testRoot 'codex'
+          $claudeHome = Join-Path $testRoot 'claude'
+          try {
+            & ./scripts/install-skills.ps1 -Target Both -SourceRoot $PWD.Path -CodexHome $codexHome -ClaudeHome $claudeHome -DryRun
+            if (Test-Path -LiteralPath $testRoot) {
+              throw "Dry run created the temporary home root: $testRoot"
+            }
+          }
+          finally {
+            if (Test-Path -LiteralPath $testRoot) {
+              Remove-Item -LiteralPath $testRoot -Recurse -Force
+            }
+          }

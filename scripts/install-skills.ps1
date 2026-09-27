@@ -49,18 +49,44 @@ function Test-PathOverlap {
 }
 
 function Assert-NoReparseInExistingAncestry {
+    # Walks upward from $Path checking each existing ancestor for a reparse
+    # point (junction/symlink), but only up to and including $StopAt - never
+    # past it. $StopAt must be the nearest ancestor this script itself owns
+    # (SourceRoot on the source side; a target's PlatformPath on the
+    # destination side) or, when there is no such ancestor (checking a root
+    # itself, e.g. PlatformPath or the resolved SourceRoot), $Path itself.
+    #
+    # This bound is deliberate, not an oversight: a reparse point *above* the
+    # nearest script-owned root is out of this guard's threat model. macOS
+    # symlinks /var, /tmp, and /etc at the OS level (unrelated to any specific
+    # install) - walking that far up produced a false positive on every macOS
+    # path under those roots (#23) with no corresponding security benefit,
+    # since this script never reads from or writes to anything above the
+    # root it was told to operate on. If an attacker already controls a
+    # directory that far up the tree (e.g. /Users or C:\Users itself), the
+    # machine is compromised well beyond anything a per-invocation ancestry
+    # check could meaningfully defend against. What this still catches:
+    # a reparse point planted anywhere between $Path and $StopAt inclusive -
+    # e.g. `~/.claude/skills` redirected to another location, or a specific
+    # skill's source directory replaced with a junction - which is the real,
+    # actionable attack surface for this installer.
     param(
         [Parameter(Mandatory)][string]$Path,
-        [Parameter(Mandatory)][string]$Description
+        [Parameter(Mandatory)][string]$Description,
+        [Parameter(Mandatory)][string]$StopAt
     )
 
     $currentPath = Get-FullPath -Path $Path
+    $stopAtPath = Get-FullPath -Path $StopAt
     while (-not [string]::IsNullOrEmpty($currentPath)) {
         if (Test-Path -LiteralPath $currentPath) {
             $item = Get-Item -LiteralPath $currentPath -Force
             if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
                 throw "$Description contains a reparse point: $currentPath"
             }
+        }
+        if ($currentPath.Equals($stopAtPath, [StringComparison]::OrdinalIgnoreCase)) {
+            break
         }
         $parentPath = [IO.Path]::GetDirectoryName($currentPath)
         if ([string]::IsNullOrEmpty($parentPath) -or
@@ -93,17 +119,17 @@ function Assert-SafeTargetPaths {
         [string]$BackupPath
     )
 
-    Assert-NoReparseInExistingAncestry -Path $Plan.SkillRoot -Description "$($Plan.Name) skill root"
+    Assert-NoReparseInExistingAncestry -Path $Plan.SkillRoot -Description "$($Plan.Name) skill root" -StopAt $Plan.PlatformPath
     if (-not [string]::IsNullOrEmpty($Destination)) {
         Assert-PathWithin -Path $Destination -Parent $Plan.SkillRoot -Description "$($Plan.Name) skill destination"
-        Assert-NoReparseInExistingAncestry -Path $Destination -Description "$($Plan.Name) skill destination"
+        Assert-NoReparseInExistingAncestry -Path $Destination -Description "$($Plan.Name) skill destination" -StopAt $Plan.PlatformPath
     }
     if (-not [string]::IsNullOrEmpty($BackupPath)) {
         $backupRoot = Join-Path $Plan.PlatformPath 'skill-backups'
         $backupParent = [IO.Path]::GetDirectoryName($BackupPath)
         Assert-PathWithin -Path $BackupPath -Parent $backupRoot -Description "$($Plan.Name) backup path"
-        Assert-NoReparseInExistingAncestry -Path $backupParent -Description "$($Plan.Name) backup parent"
-        Assert-NoReparseInExistingAncestry -Path $BackupPath -Description "$($Plan.Name) backup path"
+        Assert-NoReparseInExistingAncestry -Path $backupParent -Description "$($Plan.Name) backup parent" -StopAt $Plan.PlatformPath
+        Assert-NoReparseInExistingAncestry -Path $BackupPath -Description "$($Plan.Name) backup path" -StopAt $Plan.PlatformPath
     }
 }
 
@@ -202,7 +228,7 @@ if (-not (Test-Path -LiteralPath $SourceRoot -PathType Container)) {
     throw "Source repository does not exist: $SourceRoot"
 }
 $sourcePath = Get-FullPath -Path $SourceRoot
-Assert-NoReparseInExistingAncestry -Path $sourcePath -Description 'Source repository path'
+Assert-NoReparseInExistingAncestry -Path $sourcePath -Description 'Source repository path' -StopAt $sourcePath
 $resolvedSource = (Resolve-Path -LiteralPath $sourcePath).Path.TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar)
 $inventoryPath = Join-Path $resolvedSource (Join-Path 'contracts' 'skill-inventory.json')
 if (-not (Test-Path -LiteralPath $inventoryPath -PathType Leaf)) {
@@ -253,7 +279,7 @@ foreach ($skill in $inventory.skills) {
     if (-not (Test-Path -LiteralPath $skillSourceRoot -PathType Container)) {
         throw "Source skill directory is missing: $skillSourceRoot"
     }
-    Assert-NoReparseInExistingAncestry -Path $skillSourceRoot -Description "Source skill '$($skill.name)'"
+    Assert-NoReparseInExistingAncestry -Path $skillSourceRoot -Description "Source skill '$($skill.name)'" -StopAt $resolvedSource
     foreach ($relativeFile in $requiredFiles) {
         $requiredPath = Get-FullPath -Path (Join-Path $skillSourceRoot $relativeFile)
         $skillPrefix = $skillSourceRoot + [IO.Path]::DirectorySeparatorChar
@@ -263,7 +289,7 @@ foreach ($skill in $inventory.skills) {
         if (-not (Test-Path -LiteralPath $requiredPath -PathType Leaf)) {
             throw "Source inventory required file is missing: $requiredPath"
         }
-        Assert-NoReparseInExistingAncestry -Path $requiredPath -Description "Source required file '$relativeFile'"
+        Assert-NoReparseInExistingAncestry -Path $requiredPath -Description "Source required file '$relativeFile'" -StopAt $resolvedSource
         $requiredItem = Get-Item -LiteralPath $requiredPath -Force
         if ($requiredItem.PSIsContainer -or
             ($requiredItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
@@ -299,8 +325,8 @@ if ($Target -eq 'Copilot') {
 }
 
 foreach ($spec in $targetSpecs) {
-    Assert-NoReparseInExistingAncestry -Path $spec.PlatformPath -Description "$($spec.Name) platform-home path"
-    Assert-NoReparseInExistingAncestry -Path $spec.SkillRoot -Description "$($spec.Name) skill root"
+    Assert-NoReparseInExistingAncestry -Path $spec.PlatformPath -Description "$($spec.Name) platform-home path" -StopAt $spec.PlatformPath
+    Assert-NoReparseInExistingAncestry -Path $spec.SkillRoot -Description "$($spec.Name) skill root" -StopAt $spec.PlatformPath
     if (Test-PathOverlap -Left $resolvedSource -Right $spec.PlatformPath) {
         throw "Source and destination paths overlap: $resolvedSource and $($spec.PlatformPath)"
     }
@@ -328,18 +354,18 @@ foreach ($spec in $targetSpecs) {
     foreach ($skill in $inventory.skills) {
         $destination = Get-FullPath -Path (Join-Path $skillRoot $skill.name)
         Assert-PathWithin -Path $destination -Parent $skillRoot -Description "$($spec.Name) skill destination"
-        Assert-NoReparseInExistingAncestry -Path $destination -Description "$($spec.Name) skill destination"
+        Assert-NoReparseInExistingAncestry -Path $destination -Description "$($spec.Name) skill destination" -StopAt $spec.PlatformPath
         if (Test-Path -LiteralPath $destination) {
             $installedMarker = Join-Path $destination $markerName
             if (Test-Path -LiteralPath $installedMarker) {
                 Assert-PathWithin -Path $installedMarker -Parent $destination -Description "$($spec.Name) installed marker"
-                Assert-NoReparseInExistingAncestry -Path $installedMarker -Description "$($spec.Name) installed marker"
+                Assert-NoReparseInExistingAncestry -Path $installedMarker -Description "$($spec.Name) installed marker" -StopAt $spec.PlatformPath
             }
             foreach ($relativeFile in $skill.requiredFiles) {
                 $installedRequiredFile = Get-FullPath -Path (Join-Path $destination $relativeFile)
                 Assert-PathWithin -Path $installedRequiredFile -Parent $destination -Description "$($spec.Name) installed required file"
                 if (Test-Path -LiteralPath $installedRequiredFile) {
-                    Assert-NoReparseInExistingAncestry -Path $installedRequiredFile -Description "$($spec.Name) installed required file"
+                    Assert-NoReparseInExistingAncestry -Path $installedRequiredFile -Description "$($spec.Name) installed required file" -StopAt $spec.PlatformPath
                 }
             }
             $tracked = Test-TrackedSkill -SkillPath $destination -Skill $skill -Inventory $inventory
@@ -350,8 +376,8 @@ foreach ($spec in $targetSpecs) {
             $backupRoot = Join-Path $spec.PlatformPath 'skill-backups'
             $backupParent = [IO.Path]::GetDirectoryName($backupPath)
             Assert-PathWithin -Path $backupPath -Parent $backupRoot -Description "$($spec.Name) backup path"
-            Assert-NoReparseInExistingAncestry -Path $backupParent -Description "$($spec.Name) backup parent"
-            Assert-NoReparseInExistingAncestry -Path $backupPath -Description "$($spec.Name) backup path"
+            Assert-NoReparseInExistingAncestry -Path $backupParent -Description "$($spec.Name) backup parent" -StopAt $spec.PlatformPath
+            Assert-NoReparseInExistingAncestry -Path $backupPath -Description "$($spec.Name) backup path" -StopAt $spec.PlatformPath
             if ($Force -and (Test-Path -LiteralPath $backupPath)) {
                 throw "Backup path already exists: $backupPath"
             }
@@ -395,7 +421,7 @@ try {
     # Stage every selected target completely before changing either target.
     foreach ($plan in $plans) {
         New-Item -ItemType Directory -Path $plan.StageParent -Force | Out-Null
-        Assert-NoReparseInExistingAncestry -Path $plan.StageParent -Description "$($plan.Name) staging parent"
+        Assert-NoReparseInExistingAncestry -Path $plan.StageParent -Description "$($plan.Name) staging parent" -StopAt $plan.StageParent
         if (Test-Path -LiteralPath $plan.StagePath) {
             throw "Installer staging path already exists: $($plan.StagePath)"
         }

@@ -51,17 +51,19 @@ verified installer environment: its dry run is a required check, and its test
 run is the only one that exercises junction/reparse-point rejection (three
 `tests/install-skills.test.mjs` cases are Windows-only by design, since
 reparse points are the concrete attack surface being guarded against there).
-Ubuntu `pwsh` also runs the installer test suite and a live dry run in CI, as
-an advisory (non-required) check, not yet promoted to a required
-branch-protection check. macOS is not tested — it was dropped from CI
-(see issue #23): its `/var` is itself a symlink to `/private/var`, which
+Ubuntu and macOS `pwsh` also each run the installer test suite and a live dry
+run in CI, as advisory (non-required) checks, not promoted to a required
+branch-protection check. macOS was dropped from CI once (see issue #23): its
+`/var` is itself a symlink to `/private/var`, which
 `Assert-NoReparseInExistingAncestry` treated as an attack signal on any path
 under the OS temp directory, unrelated to any symlink the tests actually
-create. Fixing that would need distinguishing OS-baseline symlinks from
-attacker-planted ones — real design work, not a quick patch — and wasn't
-worth the ongoing false-positive noise for a non-required check. If macOS
-support becomes a real requirement, that fix (and re-adding the CI leg) is
-the place to start.
+create. #45 fixed this by bounding the ancestry walk at the nearest path this
+script itself owns (a target's platform home, or the resolved source root)
+instead of walking to the filesystem root — an ancestor above that boundary
+is out of the guard's threat model regardless of OS, and the macOS leg was
+restored on that basis. If a future change reintroduces a similar
+false-positive, re-removing the leg (rather than weakening the guard to
+paper over it) is the same tradeoff made in #23/#46.
 
 ## Manifest and version consistency
 
