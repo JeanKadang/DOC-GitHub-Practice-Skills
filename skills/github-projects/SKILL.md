@@ -72,6 +72,18 @@ gh project field-create <number> --owner <org> --name "Confidence" \
 gh project field-create <number> --owner <org> --name "Target date" --data-type DATE
 ```
 
+PowerShell:
+
+```powershell
+gh project field-create <number> --owner <org> --name "Priority" `
+  --data-type SINGLE_SELECT --single-select-options "P0,P1,P2,P3"
+gh project field-create <number> --owner <org> --name "Effort" `
+  --data-type SINGLE_SELECT --single-select-options "Small,Medium,Large,Unknown"
+gh project field-create <number> --owner <org> --name "Confidence" `
+  --data-type SINGLE_SELECT --single-select-options "High,Medium,Low"
+gh project field-create <number> --owner <org> --name "Target date" --data-type DATE
+```
+
 Match the `Priority` options to the repo's existing priority **labels** — if the
 repo uses `priority-high/medium/low`, the field options are those, not P0–P3. Two
 schemes side by side is the failure mode.
@@ -106,6 +118,21 @@ item_id=$(gh project item-list <number> --owner <org> --format json -L 200 \
 
 gh project item-edit --id "$item_id" --project-id "$project_id" \
   --field-id "$field_id" --single-select-option-id "$option_id"
+```
+
+PowerShell:
+
+```powershell
+$projectId = gh project view <number> --owner <org> --format json --jq .id
+$fieldId = gh project field-list <number> --owner <org> --format json `
+  --jq '.fields[] | select(.name=="Priority") | .id'
+$optionId = gh project field-list <number> --owner <org> --format json `
+  --jq '.fields[] | select(.name=="Priority") | .options[] | select(.name=="P1") | .id'
+$itemId = gh project item-list <number> --owner <org> --format json -L 200 `
+  --jq '.items[] | select(.content.number==<N>) | .id'
+
+gh project item-edit --id "$itemId" --project-id "$projectId" `
+  --field-id "$fieldId" --single-select-option-id "$optionId"
 ```
 
 `--text` / `--number` / `--date` set the other field types; `--clear` removes a

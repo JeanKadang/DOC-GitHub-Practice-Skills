@@ -73,6 +73,15 @@ gh api repos/{owner}/{repo}/code-scanning/alerts --jq \
   '.[] | select(.state=="open") | "\(.rule.security_severity_level)\t\(.rule.id)\t\(.most_recent_instance.location.path)"'
 ```
 
+PowerShell:
+
+```powershell
+gh api repos/{owner}/{repo}/dependabot/alerts --jq `
+  '.[] | select(.state=="open") | "\(.security_advisory.severity)\t\(.dependency.package.name)\t\(.security_advisory.summary)"'
+gh api repos/{owner}/{repo}/code-scanning/alerts --jq `
+  '.[] | select(.state=="open") | "\(.rule.security_severity_level)\t\(.rule.id)\t\(.most_recent_instance.location.path)"'
+```
+
 Severity is not priority. Judge each alert on **reachability**:
 
 | Situation | Treatment |
