@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-27
+
 ### Added
 
 - `github-releases` skill — milestones, branch protection/rulesets, release
@@ -12,6 +14,8 @@
   repository you don't maintain.
 - education/ folder — a colleague GitHub training program (README, three
   sessions, a cheat sheet, and a facilitator guide).
+- `docs/vscode.md` — install walkthrough for VS-Code-first users (Claude
+  extension and GitHub Copilot agent mode), linked from README.md.
 
 ### Changed
 
