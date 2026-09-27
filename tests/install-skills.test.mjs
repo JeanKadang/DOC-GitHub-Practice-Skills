@@ -42,6 +42,7 @@ async function runInstaller({
   dryRun = false,
   force = false,
   expectFailure = false,
+  env,
 }) {
   const args = [
     '-NoProfile',
@@ -57,11 +58,20 @@ async function runInstaller({
   if (dryRun) args.push('-DryRun');
   if (force) args.push('-Force');
 
+  // Strip these from the inherited environment by default so a developer's
+  // own shell (or a prior test) can't leak a real CLAUDE_HOME/CODEX_HOME/
+  // COPILOT_HOME into a test that isn't exercising env-var discovery.
+  const processEnv = { ...process.env };
+  delete processEnv.CODEX_HOME;
+  delete processEnv.CLAUDE_HOME;
+  delete processEnv.COPILOT_HOME;
+
   try {
     const result = await execFileAsync('pwsh', args, {
       encoding: 'utf8',
       maxBuffer: 1024 * 1024,
       timeout: 20_000,
+      env: { ...processEnv, ...env },
     });
     assert.equal(expectFailure, false, `installer unexpectedly succeeded:\n${result.stdout}`);
     return { ...result, exitCode: 0 };
@@ -176,6 +186,46 @@ test('Copilot target installs all ten skills under CopilotHome/skills', async ()
     .sort();
   assert.deepEqual(names, expectedNames);
   assert.equal(await exists(join(copilotHome, 'skills', expectedNames[0], 'SKILL.md')), true);
+});
+
+test('CODEX_HOME/CLAUDE_HOME/COPILOT_HOME env vars are discovered when no -Home flag is passed', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'env-codex-home');
+  const claudeHome = join(root, 'env-claude-home');
+  const copilotHome = join(root, 'env-copilot-home');
+  const expectedNames = inventory.skills.map(({ name }) => name).sort();
+
+  await runInstaller({
+    target: 'Both',
+    env: { CODEX_HOME: codexHome, CLAUDE_HOME: claudeHome },
+  });
+  await runInstaller({
+    target: 'Copilot',
+    env: { COPILOT_HOME: copilotHome },
+  });
+
+  for (const home of [codexHome, claudeHome, copilotHome]) {
+    const names = (await readdir(join(home, 'skills'), { withFileTypes: true }))
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .sort();
+    assert.deepEqual(names, expectedNames);
+  }
+});
+
+test('an explicit -ClaudeHome flag takes precedence over CLAUDE_HOME', async () => {
+  const root = await temporaryRoot();
+  const envHome = join(root, 'env-claude-home');
+  const flagHome = join(root, 'flag-claude-home');
+
+  await runInstaller({
+    codexHome: join(root, 'codex-home'),
+    claudeHome: flagHome,
+    env: { CLAUDE_HOME: envHome },
+  });
+
+  assert.equal(await exists(join(flagHome, 'skills', inventory.skills[0].name, 'SKILL.md')), true);
+  assert.equal(await exists(envHome), false);
 });
 
 for (const [label, targetHomes] of [
