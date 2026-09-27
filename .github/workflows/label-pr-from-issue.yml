@@ -1,0 +1,70 @@
+name: Label PR from linked issue
+
+# Copies category labels (bug, documentation, enhancement, etc.) from a PR's
+# linked issue (found via a "Refs #N" / "Closes #N" line in the PR body) onto
+# the PR itself. .github/release.yml categorizes generated release notes by
+# the PR's labels, not the issue's - without this, PRs are opened unlabeled
+# and every entry falls into "Other" (see #49).
+#
+# Uses pull_request_target (not pull_request) so this also runs for PRs from
+# forks, which get a read-only token under the plain pull_request event. This
+# is safe here specifically because the job never checks out the PR's head
+# ref or runs any of its code - it only reads PR/issue metadata over the API
+# and calls `gh pr edit`. Do not add an actions/checkout step to this job
+# without re-reviewing that reasoning.
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened]
+
+permissions:
+  pull-requests: write
+  issues: read
+
+jobs:
+  label:
+    name: Copy category labels from linked issue
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copy labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+
+          issue_number=$(printf '%s' "$PR_BODY" | grep -oE '(Refs|Closes) #[0-9]+' | head -1 | grep -oE '[0-9]+' || true)
+          if [ -z "${issue_number:-}" ]; then
+            echo "No Refs/Closes issue reference found in PR body; skipping."
+            exit 0
+          fi
+          echo "Linked issue: #$issue_number"
+
+          issue_labels=$(gh issue view "$issue_number" --repo "$REPO" --json labels -q '.labels[].name' 2>/dev/null || true)
+          if [ -z "$issue_labels" ]; then
+            echo "Issue #$issue_number has no labels or could not be read; skipping."
+            exit 0
+          fi
+
+          # Only copy category labels .github/release.yml groups release
+          # notes by - not priority (P0-P3), which stays issue-only.
+          allowed_categories="security enhancement bug documentation tooling github-actions npm maintenance dependencies process"
+
+          add_args=()
+          while IFS= read -r label; do
+            for allowed in $allowed_categories; do
+              if [ "$label" = "$allowed" ]; then
+                add_args+=(--add-label "$label")
+              fi
+            done
+          done <<< "$issue_labels"
+
+          if [ "${#add_args[@]}" -eq 0 ]; then
+            echo "No matching category labels on issue #$issue_number; nothing to add."
+            exit 0
+          fi
+
+          echo "Adding labels: ${add_args[*]}"
+          gh pr edit "$PR_NUMBER" --repo "$REPO" "${add_args[@]}"
