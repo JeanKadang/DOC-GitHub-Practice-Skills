@@ -15,9 +15,10 @@ tool's home directory" model already used for Codex and Claude. It does not
 write project-level skills into any other repository; that is a separate,
 per-repository decision outside this tool's scope.
 
-The installer uses `-CopilotHome` when supplied, otherwise it defaults to the
-current user's `.copilot` directory. Skill packages are installed beneath that
-home's `skills` directory.
+The installer uses `-CopilotHome` when supplied. Otherwise it discovers the
+home from `COPILOT_HOME`, then defaults to the current user's `.copilot`
+directory. Skill packages are installed beneath that home's `skills`
+directory.
 
 From a trusted checkout, always preview first:
 

@@ -3,9 +3,9 @@ param(
     [ValidateSet('Codex', 'Claude', 'Copilot', 'Both')]
     [string]$Target = 'Both',
     [string]$SourceRoot = (Split-Path $PSScriptRoot -Parent),
-    [string]$CodexHome = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex'),
-    [string]$ClaudeHome = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.claude'),
-    [string]$CopilotHome = (Join-Path ([Environment]::GetFolderPath('UserProfile')) '.copilot'),
+    [string]$CodexHome = $(if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex' }),
+    [string]$ClaudeHome = $(if ($env:CLAUDE_HOME) { $env:CLAUDE_HOME } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) '.claude' }),
+    [string]$CopilotHome = $(if ($env:COPILOT_HOME) { $env:COPILOT_HOME } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) '.copilot' }),
     [switch]$DryRun,
     [switch]$Force
 )
