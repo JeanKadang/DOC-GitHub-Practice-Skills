@@ -6,7 +6,7 @@
 
 ## Cross-skill invariant review
 
-When a shared rule changes, inspect all ten `skills/*/SKILL.md` files, the
+When a shared rule changes, inspect all eleven `skills/*/SKILL.md` files, the
 standalone repository-review prompt, the guide, workflow, platform guides,
 `CLAUDE.md`, issue forms, PR template, release automation, `education/`'s
 content, and `docs/adr/` for any decision record the change would supersede.
@@ -109,11 +109,11 @@ equivalent) against a real repo, rather than trusting a visual read.
 
 `package.json` and `contracts/skill-inventory.json` must carry the same package
 version. The inventory must list every canonical `github-*` directory and each
-required companion file. Before release, verify all ten frontmatter names and
+required companion file. Before release, verify all eleven frontmatter names and
 OpenAI metadata, and ensure **the skillset's** git tag (without its leading
 `v`) equals both version fields.
 
-The canonical ten-skill roster (names and required files) is independently
+The canonical eleven-skill roster (names and required files) is independently
 hardcoded in three places: `contracts/skill-inventory.json`,
 `scripts/validate-skills.mjs`'s `CANONICAL_SKILLS`, and
 `scripts/install-skills.ps1`'s `$canonicalRequiredFiles`. This duplication is

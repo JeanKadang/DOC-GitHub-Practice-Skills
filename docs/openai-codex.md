@@ -14,7 +14,7 @@ pwsh -NoProfile -File .\scripts\install-skills.ps1 `
   -Target Codex -DryRun
 ```
 
-Review the source, target, ten skills, overwrite decisions, and backup paths.
+Review the source, target, eleven skills, overwrite decisions, and backup paths.
 Then install:
 
 ```powershell

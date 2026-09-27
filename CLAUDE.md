@@ -137,7 +137,7 @@ forms, and release automation).
 
 ### Validation and manifest consistency
 
-The canonical ten-skill roster (names + required files) is independently
+The canonical eleven-skill roster (names + required files) is independently
 hardcoded three times, deliberately — `contracts/skill-inventory.json`, the
 `CANONICAL_SKILLS` constant in `scripts/validate-skills.mjs`, and
 `$canonicalRequiredFiles` in `scripts/install-skills.ps1` — as defense in
@@ -179,7 +179,7 @@ shared-policy change is unprecedented.
   workflow policy belongs here. No company/customer names, private endpoints,
   credentials, internal policy, or screenshots of private systems.
 - Policy changes to any canonical `SKILL.md` must be considered against all
-  ten skills and all three consuming platforms, not just the one file
+  eleven skills and all three consuming platforms, not just the one file
   touched.
 - Follow the issue-first workflow described above for changes to this repo
   itself, per `CONTRIBUTING.md` — issue with acceptance criteria → issue-linked
