@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Repo Configure"
+  short_description: "Configure an existing repo's org-optional settings"
+  default_prompt: "Use $github-repo-configure to configure this existing repository's org-optional settings."
