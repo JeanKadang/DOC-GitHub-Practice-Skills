@@ -73,20 +73,20 @@ backup first — see [docs/claude.md](claude.md) or
 
 ## 4. Make VS Code notice the new skills
 
-> **Needs verification** — the steps below are the standard VS Code
-> mechanism for picking up state that changed outside the editor, but
-> haven't been confirmed against a real Claude-extension-in-VS-Code and
-> Copilot-agent-mode-in-VS-Code session. If you hit something different,
-> please correct this section.
-
 - **Claude extension:** open the Command Palette (`Ctrl+Shift+P` /
   `Cmd+Shift+P`) and run **Developer: Reload Window**. This restarts VS
-  Code's extension host, which re-reads `~/.claude/skills`.
+  Code's extension host, which re-reads `~/.claude/skills`. Confirmed
+  against a real Claude-extension-in-VS-Code session — including
+  `-Force`-upgrading over an older tracked install — the new/updated
+  skills appeared after reload with no other steps needed.
 - **GitHub Copilot (agent mode):** same command — **Developer: Reload
   Window** — or fully closing and reopening VS Code if that doesn't pick up
   the change. (If you're instead using Copilot through its CLI in a regular
   terminal, not VS Code's agent mode, `/skills reload` inside that session
   is the documented way — see [docs/copilot.md](copilot.md).)
+  **Needs verification** — this Copilot-agent-mode step hasn't been
+  confirmed against a real session yet. If you hit something different,
+  please correct this note.
 - If reloading the window doesn't work, closing VS Code entirely and
   reopening it is the usual fallback.
 
