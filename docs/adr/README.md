@@ -32,3 +32,5 @@ documentation clarifications and typo-level fixes do not need one.
   closure semantics must account for GitHub's connected-branch auto-closure.
 - [0002](0002-split-hygiene-add-contributing-and-releases.md) — Split
   `github-hygiene` into hygiene + releases and added `github-contributing`.
+- [0003](0003-wiki-discussions-multirepo-projects.md) — Conditional Wiki
+  stance, substantive Discussions guidance, multi-repo Projects how-to.

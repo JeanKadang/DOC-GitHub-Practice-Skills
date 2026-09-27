@@ -309,19 +309,47 @@ Why `docs/adr/` and not the GitHub Wiki: the Wiki is a separate repo with no PRs
 no review, and no coupling to the branch that changed the behaviour. An ADR in the
 repo branches with the change that motivated it.
 
-### Brainstorming
+### Discussions (brainstorming and open-ended questions)
 
 `brainstorm.md` in a repo has no threading, no voting, no answer-marking, and
-every edit costs a PR. Use **Discussions** instead, with categories like `Ideas`,
-`Q&A`, and `RFC`.
+every edit costs a PR. Use **Discussions** instead — enable it under
+**Settings → General → Features** if the repo doesn't have it yet.
+
+**Categories** (create the ones a repo actually needs, don't cargo-cult all of
+them):
+
+| Category | For | Typical shape |
+|---|---|---|
+| `Ideas` | An unshaped proposal, "what if we..." | Open-ended, may never converge — that's fine |
+| `Q&A` | A question with one right answer | Gets an accepted answer, then closes itself |
+| `RFC` | A proposal specific enough to have real trade-offs | Converges to a decision — accept, reject, or convert to a `decision-needed` issue |
+| `Announcements` (maintainer-only posting) | Release notes, deprecations, policy changes | One-way; use sparingly, don't duplicate `CHANGELOG.md` |
+
+**Triage cadence:** when you touch a repo's Discussions (same moment as an
+issue triage pass, not a separate ritual), check for: a `Q&A` post with a
+correct answer buried in replies that was never marked accepted (mark it —
+that's what makes it findable later), an `RFC` that's converged but nobody
+converted it, and an `Ideas` post that's been actionable for a while without
+anyone noticing.
 
 **Convert a discussion to an issue at the moment it becomes actionable** — that
 conversion is the boundary between exploring and committing, and it is the whole
 reason to keep them separate. Exploration that never converges stays a discussion
-instead of rotting as a stale issue nobody can close.
+instead of rotting as a stale issue nobody can close. `gh discussion` is
+preview/GraphQL-only with no built-in convert command, so do it explicitly:
 
-Caveat: `gh discussion` is in preview and subject to change; script against the
-GraphQL API if you need stability.
+1. File the issue normally (title, body, labels, assignee, milestone — the
+   same as any other issue in this skill), with a line in the body linking
+   back: `Converted from discussion #<N>.`
+2. Comment on the discussion linking forward to the new issue (`Converted to
+   #<N>.`) so anyone landing on the discussion later finds the live work.
+3. Mark the discussion's status: an `RFC` that converged gets its accepted
+   answer noted (or is closed, if the category supports it); don't just
+   abandon it mid-thread once the issue exists.
+
+Never let a discussion silently duplicate an issue that already tracks the
+same work — link them together the moment you notice, the same way you'd
+record a dependency between two issues (see below).
 
 Coming from Azure DevOps or Jira, see `github-for-ado-users` for how these map to
 what you had.

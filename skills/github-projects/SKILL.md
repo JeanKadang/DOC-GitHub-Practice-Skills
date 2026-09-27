@@ -94,6 +94,30 @@ in the web UI (or via a GraphQL `createProjectV2Field` mutation). Don't fake one
 with a text field — say it needs the UI, or map iterations to milestones instead,
 which is usually the better answer anyway.
 
+### Multi-repo boards
+
+The org-level pattern from the decision table above (one board linked to
+several repos, not one board per repo) is the same `gh project create` and
+`gh project link` primitives shown earlier — just called once per repo
+instead of once total (see ADR 0003; this is a how-to for an already-decided
+pattern, not a policy question):
+
+```bash
+gh project create --owner <org> --title "Team roadmap"
+gh project link <number> --owner <org> --repo <org>/<repo-a>
+gh project link <number> --owner <org> --repo <org>/<repo-b>
+gh project link <number> --owner <org> --repo <org>/<repo-c>
+```
+
+Every field created above (`Priority`, `Effort`, `Confidence`, `Target date`)
+is shared across every linked repo's items automatically — there's no
+per-repo field configuration. The one thing a single-repo board doesn't
+need: keep the board's built-in **`Repository`** field visible in every
+view. Nothing else on a shared board tells you which repo an item belongs
+to, and a filtered/grouped view (group by `Repository`, or a saved view per
+repo) is what keeps a multi-repo board readable once it has more than a
+handful of items.
+
 ## Adding and updating items
 
 ```bash
