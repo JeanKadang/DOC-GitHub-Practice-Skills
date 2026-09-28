@@ -20,26 +20,29 @@ flowchart TD
     Q1 -- Yes --> S1[Start at Session 1: Getting Started]
     Q1 -- No --> Q2{Coming from GitLab or Azure DevOps, not GitHub?}
     Q2 -- Yes --> Pre[Read the mapping skill first:<br/>github-for-ado-users or<br/>github-for-gitlab-users]
-    Q2 -- No --> S2[Start at Session 2: Our Workflow]
-    Pre --> S2
-    S1 --> S2
-    S2 --> S3[Session 3: Advanced GitHub - optional]
+    Q2 -- No --> M2a[Start at Module 2a: Issue-first and the closure gate]
+    Pre --> M2a
+    S1 --> M2a
+    M2a --> M2b[Module 2b: PR review and branch conventions]
+    M2b --> M3[Modules 3a-3d: pick any, in any order - all optional]
 ```
 
 | Background | Start here |
 | --- | --- |
 | Never used version control | [Session 1: Getting Started](beginners/session-1-getting-started.md) |
-| Some git knowledge, new to this team's process | [Session 2: Our Workflow](intermediate/session-2-our-workflow.md) |
-| Already know GitLab or Azure DevOps, not GitHub | Read `skills/github-for-ado-users/SKILL.md` (Azure DevOps) or `skills/github-for-gitlab-users/SKILL.md` (GitLab) as pre-reading, then [Session 2](intermediate/session-2-our-workflow.md) |
+| Some git knowledge, new to this team's process | [Module 2a: Issue-first and the closure gate](intermediate/module-2a-issue-first-and-closure-gate.md) |
+| Already know GitLab or Azure DevOps, not GitHub | Read `skills/github-for-ado-users/SKILL.md` (Azure DevOps) or `skills/github-for-gitlab-users/SKILL.md` (GitLab) as pre-reading, then [Module 2a](intermediate/module-2a-issue-first-and-closure-gate.md) |
 
-Session 3 is optional and for anyone who wants to go deeper — attend it
-whenever, in any order relative to your own comfort level.
+Modules 2a and 2b build on each other — do 2a first. Modules 3a-3d are
+each independent and optional; read any subset, in any order, based on
+what's relevant to you. Each module is sized to fit a single sitting
+(15-40 minutes) rather than blocking out a full session.
 
 ## What's covered
 
-What this shows: the topic areas across all three sessions, at a glance,
-so you can judge whether Session 3 is relevant to you without reading its
-full script.
+What this shows: the topic areas across all six modules, at a glance, so
+you can judge which Module 3 topics are relevant to you without reading
+their full content.
 
 ```mermaid
 mindmap
@@ -49,22 +52,28 @@ mindmap
       Branches
       Pull Requests
       Code review basics
-    Session 2: Our Workflow
+    Module 2a: Issue-first and closure gate
       Issue-first
       Refs and Closes
       Acceptance criteria
+    Module 2b: PR review and branch conventions
+      PR review etiquette
       Branch conventions
-    Session 3: Advanced GitHub
-      Branch protection and rulesets
-      Projects boards
-      Releases
-      Security response basics
+      Milestones
+    Module 3a: Branch protection and rulesets
+    Module 3b: Projects boards
+    Module 3c: Releases
+    Module 3d: Security response basics
 ```
 
 ## Materials
 
 - [Session 1: Getting Started](beginners/session-1-getting-started.md) — ~60 min, hands-on, no prior experience needed.
-- [Session 2: Our Workflow](intermediate/session-2-our-workflow.md) — ~1-2 hr, this team's specific conventions.
-- [Session 3: Advanced GitHub](advanced/session-3-advanced-github.md) — ~1-2 hr, optional, deeper topics.
+- [Module 2a: Issue-first and the closure gate](intermediate/module-2a-issue-first-and-closure-gate.md) — ~40 min, this team's core workflow habit.
+- [Module 2b: PR review and branch conventions](intermediate/module-2b-pr-review-and-branch-conventions.md) — ~35 min, review etiquette and branch/milestone conventions.
+- [Module 3a: Branch protection and rulesets](advanced/module-3a-branch-protection-and-rulesets.md) — ~25 min, optional.
+- [Module 3b: Projects boards](advanced/module-3b-projects-boards.md) — ~20 min, optional.
+- [Module 3c: Releases](advanced/module-3c-releases.md) — ~25 min, optional.
+- [Module 3d: Security response basics](advanced/module-3d-security-response.md) — ~15 min, optional.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
