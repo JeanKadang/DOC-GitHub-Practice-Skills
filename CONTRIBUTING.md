@@ -47,5 +47,5 @@ systems, internal policies, or copied workplace material. Sanitize and review
 every example before committing it.
 
 Policy changes to a canonical `SKILL.md` must consider all twelve skills and all
-three consuming platforms (OpenAI Codex, Claude, GitHub Copilot). Installed
-copies are deployment outputs; propose changes in this repository.
+four consuming platforms (OpenAI Codex, Claude, GitHub Copilot, ChatGPT).
+Installed copies are deployment outputs; propose changes in this repository.

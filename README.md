@@ -57,7 +57,9 @@ The installer validates the source, refuses unapproved overwrites, and can use
 [Copilot CLI guide](docs/copilot.md) for discovery details — or the
 [VS Code guide](docs/vscode.md) if you're not comfortable with PowerShell.
 `-Target Both` installs Codex and Claude only; install Copilot separately with
-`-Target Copilot`.
+`-Target Copilot`. ChatGPT has no local skill directory to install into —
+`-Target ChatGPT` exports the skill files instead, for uploading to a Custom
+GPT; see the [ChatGPT guide](docs/chatgpt.md).
 
 ## Documentation
 
@@ -66,15 +68,21 @@ The installer validates the source, refuses unapproved overwrites, and can use
 - [Maintainer guide](docs/MAINTAINING.md)
 - [Azure DevOps migration mapping](docs/azure-devops-migration.md)
 - [Installing from VS Code (no PowerShell experience needed)](docs/vscode.md)
+- [Installing for ChatGPT (Custom GPT, no local skill directory)](docs/chatgpt.md)
 - [Colleague training program](education/README.md)
 
 ## Compatibility
 
-All three platforms consume the canonical packages under `skills/`. OpenAI
-Codex also reads `agents/openai.yaml`; Claude and Copilot both ignore that
-metadata and read the same `SKILL.md` — GitHub's Agent Skills format is an
-open standard shared with Anthropic's, so no content translation is needed for
-Copilot. Node.js 20 or 22 validates the repository. Windows is the primary
+All three CLI platforms (Codex, Claude, Copilot) consume the canonical
+packages under `skills/` the same way — a known local directory read every
+session. OpenAI Codex also reads `agents/openai.yaml`; Claude and Copilot
+both ignore that metadata and read the same `SKILL.md` — GitHub's Agent
+Skills format is an open standard shared with Anthropic's, so no content
+translation is needed for Copilot. ChatGPT is a fourth, structurally
+different target with no local directory to read — see
+[docs/chatgpt.md](docs/chatgpt.md) for what "installing" means there.
+
+Node.js 20 or 22 validates the repository. Windows is the primary
 verified installer environment (a required CI check, and the only one that
 exercises junction/reparse-point rejection). Ubuntu and macOS `pwsh` also
 each run the installer suite in CI as advisory checks. macOS was dropped
