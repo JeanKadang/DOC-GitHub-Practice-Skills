@@ -1,11 +1,12 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('Codex', 'Claude', 'Copilot', 'Both')]
+    [ValidateSet('Codex', 'Claude', 'Copilot', 'ChatGPT', 'Both')]
     [string]$Target = 'Both',
     [string]$SourceRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$CodexHome = $(if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex' }),
     [string]$ClaudeHome = $(if ($env:CLAUDE_HOME) { $env:CLAUDE_HOME } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) '.claude' }),
     [string]$CopilotHome = $(if ($env:COPILOT_HOME) { $env:COPILOT_HOME } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) '.copilot' }),
+    [string]$ChatGPTExportPath = (Join-Path ([Environment]::GetFolderPath('UserProfile')) 'chatgpt-skills-export'),
     [switch]$DryRun,
     [switch]$Force
 )
@@ -298,6 +299,61 @@ foreach ($skill in $inventory.skills) {
             throw "Source required file is not a regular file: $requiredPath"
         }
     }
+}
+
+if ($Target -eq 'ChatGPT') {
+    # ChatGPT has no local skill-directory discovery mechanism - there is no
+    # per-tool "home" this script installs into. Instead it flattens every
+    # skill's requiredFiles (skipping agents/openai.yaml, which is Codex-CLI
+    # sidecar metadata, not policy content) into one directory of
+    # individually-named files a human uploads as Custom GPT Knowledge. This
+    # deliberately skips the per-skill-directory/marker/backup machinery
+    # below - an export folder isn't a persistent, driftable install the way
+    # the other three targets are; it's a one-shot staging area regenerated
+    # before each upload. See ADR 0006 and docs/chatgpt.md.
+    $exportPath = Get-FullPath -Path $ChatGPTExportPath
+    Assert-NoReparseInExistingAncestry -Path $exportPath -Description 'ChatGPT export path' -StopAt $exportPath
+    if (Test-PathOverlap -Left $resolvedSource -Right $exportPath) {
+        throw "Source and ChatGPT export path overlap: $resolvedSource and $exportPath"
+    }
+
+    $exportFiles = [ordered]@{}
+    foreach ($skill in $inventory.skills) {
+        foreach ($relativeFile in $skill.requiredFiles) {
+            if ($relativeFile -eq 'agents/openai.yaml') {
+                continue
+            }
+            $flatName = "$($skill.name)-$($relativeFile -replace '[\\/]', '-')"
+            $exportFiles[$flatName] = Join-Path $resolvedSource (Join-Path 'skills' (Join-Path $skill.name $relativeFile))
+        }
+    }
+
+    if ($DryRun) {
+        Write-Output "Source: $resolvedSource"
+        Write-Output "ChatGPT export -> $exportPath"
+        Write-Output "Files ($($exportFiles.Count)):"
+        foreach ($name in $exportFiles.Keys) {
+            Write-Output "  $name"
+        }
+        exit 0
+    }
+
+    if (Test-Path -LiteralPath $exportPath) {
+        $existingEntries = @(Get-ChildItem -LiteralPath $exportPath -Force -ErrorAction SilentlyContinue)
+        if ($existingEntries.Count -gt 0 -and -not $Force) {
+            throw "ChatGPT export path already exists and is not empty: $exportPath (use -Force to write into it anyway)"
+        }
+    }
+    New-Item -ItemType Directory -Path $exportPath -Force | Out-Null
+    Assert-NoReparseInExistingAncestry -Path $exportPath -Description 'ChatGPT export path' -StopAt $exportPath
+    foreach ($name in $exportFiles.Keys) {
+        $exportDestination = Join-Path $exportPath $name
+        Assert-PathWithin -Path $exportDestination -Parent $exportPath -Description 'ChatGPT export file'
+        Copy-Item -LiteralPath $exportFiles[$name] -Destination $exportDestination -Force
+    }
+
+    Write-Output "Exported $($exportFiles.Count) files to: $exportPath"
+    exit 0
 }
 
 $targetSpecs = @()
