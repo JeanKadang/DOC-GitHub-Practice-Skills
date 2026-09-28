@@ -17,6 +17,16 @@ project. Requirements:
 - **Seed content:** a `README.md` explaining it's a practice repo, and a
   `CONTRIBUTORS.md` file with a header line and nothing else (attendees
   each add their own line to it during Session 1).
+- **For Modules 2a/2b's exercises:** at least one priority label (e.g.
+  `P0`-`P3`, matching `skills/github-issue-first/SKILL.md`'s scheme) and
+  one category label beyond GitHub's defaults, plus at least one open
+  milestone with any title — Module 2b's exercise attaches an issue to an
+  existing milestone, so the repo needs one to attach to.
+- **For Module 3b's exercise:** a Projects v2 board with at least one item
+  linked to a real issue, and one deliberately unlinked **draft item** (an
+  entry created only on the board) — the module's exercise asks attendees
+  to find exactly this draft item as a live example of the failure mode it
+  teaches.
 - **Reset between cohorts:** recreate the repo from a template rather
   than manually reverting commits — faster, and guarantees a clean state
   every time.
@@ -38,7 +48,12 @@ stateDiagram-v2
 - [ ] Confirm the sandbox repo is in the `Ready` state (recreated since the last run).
 - [ ] Confirm every attendee has at least write access to it.
 - [ ] For Session 1: confirm `CONTRIBUTORS.md` exists with just a header line.
-- [ ] Have this guide and the relevant session file open, ideally projected.
+- [ ] For Modules 2a/2b: confirm at least one priority label, one category
+      label, and one open milestone exist on the sandbox repo.
+- [ ] For Module 3b: confirm the sandbox repo has a Projects board with at
+      least one item linked to a real issue and one unlinked draft item.
+- [ ] Have this guide and the relevant session or module file open,
+      ideally projected.
 
 ## Running Session 1 for a single new hire
 

@@ -12,6 +12,8 @@ callouts mark optional group activities.
 - Understand how a Projects board relates to issues (and when a team
   actually needs one).
 
+## Projects boards
+
 **Source:** `skills/github-projects/SKILL.md`
 
 The one sentence worth repeating any time a Projects board comes up: **a
@@ -69,7 +71,7 @@ require write access.
   worth it?
 - What's wrong with a "draft item" that has no linked issue?
 
-Not confident on any of these? Re-read the section above.
+Not confident on any of these? Re-read "Projects boards" above.
 
 ## Feedback
 

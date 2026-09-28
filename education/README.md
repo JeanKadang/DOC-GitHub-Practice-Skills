@@ -38,6 +38,16 @@ each independent and optional; read any subset, in any order, based on
 what's relevant to you. Each module is sized to fit a single sitting
 (15-40 minutes) rather than blocking out a full session.
 
+This program is primarily self-paced: work through it solo, at your own
+pace, with the modules above as your only guide. A facilitator-led session
+is still fully supported — modules mark optional group activities inline,
+so either mode works from the same files. Modules 2a, 2b, 3a and 3b
+include hands-on steps in a shared **sandbox practice repo** (a throwaway
+repo set up for exactly this purpose, never a real project). Ask your
+team's facilitator or onboarding buddy for access to it before you start
+one of those modules — `education/facilitator-guide.md` has their setup
+checklist if you're the one setting it up.
+
 ## What's covered
 
 What this shows: the topic areas across all six modules, at a glance, so

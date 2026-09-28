@@ -11,6 +11,8 @@ callouts mark optional group activities.
 
 - Know the first moves in a security-sensitive situation.
 
+## Security response basics
+
 **Source:** `skills/github-security-response/SKILL.md`
 
 The instinct most people have here is backwards, so it's worth naming and
@@ -63,7 +65,7 @@ vulnerability — it's entirely a UI-navigation and writing exercise.
 - When describing where a secret was found, what do you include, and what
   do you deliberately leave out?
 
-Not confident on any of these? Re-read the section above.
+Not confident on any of these? Re-read "Security response basics" above.
 
 ## Feedback
 

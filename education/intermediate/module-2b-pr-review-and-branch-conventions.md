@@ -103,8 +103,8 @@ A solo-doable, mechanical exercise — no partner required:
    not after.
 2. From that issue, create a branch. Name it correctly for the kind of
    work it represents: `fix/<short-description>` if it's a bug,
-   `feat/<short-description>` if it's new functionality, `docs/<short-
-   description>` if it's documentation-only.
+   `feat/<short-description>` if it's new functionality,
+   `docs/<short-description>` if it's documentation-only.
 3. Confirm you branched from an up-to-date `main` (not a stale local copy)
    before making any change.
 

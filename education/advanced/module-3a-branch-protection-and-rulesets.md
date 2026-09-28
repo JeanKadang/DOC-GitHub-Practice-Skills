@@ -12,6 +12,8 @@ callouts mark optional group activities.
 - Understand what branch protection/rulesets do and don't guarantee, and
   when they're even available.
 
+## Branch protection and rulesets
+
 **Source:** `skills/github-releases/SKILL.md` (Rulesets section)
 
 What this diagram shows: whether branch protection is even available
@@ -61,7 +63,20 @@ This exercise is deliberately read-only — rulesets are admin-level
 settings, and a shared sandbox shouldn't have every self-paced learner
 creating or editing them simultaneously.
 
-1. Check whether the sandbox repo has any rulesets configured:
+1. Check the rules actually enforced on the sandbox repo's `main` branch.
+   This works with plain read access — no admin permission needed:
+
+   ```bash
+   gh api repos/<org>/<sandbox-repo>/rules/branches/main
+   ```
+
+   This lists every rule any ruleset applies to that branch (required
+   reviews, required status checks, force-push restrictions, and so on)
+   without needing permission to see the ruleset definitions themselves.
+
+2. If you have admin access to the sandbox (or a facilitator confirms you
+   do), you can also inspect the full ruleset definitions — this step
+   does need admin, unlike step 1:
 
    ```bash
    gh ruleset list --repo <org>/<sandbox-repo>
@@ -74,20 +89,18 @@ creating or editing them simultaneously.
    gh api repos/<org>/<sandbox-repo>/rulesets
    ```
 
-2. If the sandbox has no rulesets (or you don't have admin access to it),
-   use this repo's own public ruleset instead — it's called "Protect
-   main" and is visible to anyone:
+3. If you don't have admin access anywhere, use this repo's own branch
+   rules as a live example — step 1's command works here too, since it
+   only needs read access:
 
    ```bash
-   gh ruleset list --repo <this-repo-org>/<this-repo-name>
-   gh ruleset view <id> --repo <this-repo-org>/<this-repo-name>
-   gh ruleset check main --repo <this-repo-org>/<this-repo-name>
+   gh api repos/<this-repo-org>/<this-repo-name>/rules/branches/main
    ```
 
-3. Read the output of `gh ruleset view` and identify: is review required?
-   Is a status check required? Is force-push blocked? Match what you see
-   against the decision tree above — can you tell from the settings alone
-   whether this repo is solo-maintained or not?
+4. Read the output and identify: is review required? Is a status check
+   required? Is force-push blocked? Match what you see against the
+   decision tree above — can you tell from the settings alone whether a
+   repo is solo-maintained or not?
 
 > **Facilitator note (optional group activity):** as a group, look at two
 > or three different real repos' rulesets (this repo's own, plus any
@@ -103,7 +116,8 @@ creating or editing them simultaneously.
 - On a private, free-plan repo, what still happens to CI even though
   nothing enforces green-before-merge?
 
-Not confident on any of these? Re-read the decision-tree walkthrough above.
+Not confident on any of these? Re-read "Branch protection and rulesets"
+above.
 
 ## Feedback
 

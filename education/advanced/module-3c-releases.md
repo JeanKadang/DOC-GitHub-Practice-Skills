@@ -11,6 +11,8 @@ callouts mark optional group activities.
 
 - Walk through the shape of a release, end to end.
 
+## Releases
+
 **Source:** `skills/github-releases/SKILL.md` (Release recipe)
 
 What this diagram shows: a release is a fixed sequence of one-time steps,
@@ -45,19 +47,29 @@ auditing exactly what shipped. A hand-written changelog answers "what
 changed and why it matters" — useful for anyone who wants the human
 summary without reading a list of PR titles. Neither replaces the other.
 
-## Exercise: preview generated release notes (read-only)
+## Exercise: read a real release, end to end (read-only)
 
-1. Read the current version straight from this repo's version file
+This exercise runs against the `DOC-GitHub-Practice-Skills` repo itself —
+the one this training program lives in. It's public, so every step below
+works with no special access, and it has a real version file and a real
+hand-written changelog to compare against.
+
+1. Read the current version straight from its version file
    (`package.json`'s `"version"` field) — not from the last git tag.
-2. Preview what GitHub would generate as release notes for the *next*
-   version, without actually creating anything:
+2. Open its most recent published release on the **Releases** page
+   (`github.com/<owner>/<repo>/releases`) and read the generated notes
+   GitHub built for it. If you have the `gh` CLI, you can also preview
+   what generated notes would look like for a hypothetical next version,
+   without creating anything (this command needs push access to the
+   repo it targets, so it only works here, not against a repo you're a
+   read-only guest on):
 
    ```bash
-   gh api repos/<org>/<repo>/releases/generate-notes -f tag_name=v<next-version> --jq .body
+   gh api repos/<owner>/<repo>/releases/generate-notes -f tag_name=v<next-version> --jq .body
    ```
 
-3. Compare that generated output against the most recent hand-written
-   entry in this repo's own `CHANGELOG.md`. Notice the difference in what
+3. Compare that generated output against the matching entry in
+   `CHANGELOG.md` for the same version. Notice the difference in what
    each one tells you — one lists what merged, the other explains what
    changed and why.
 
@@ -69,7 +81,7 @@ summary without reading a list of PR titles. Neither replaces the other.
   CHANGELOG, instead of picking one?
 - What's the very last step in the release recipe timeline?
 
-Not confident on any of these? Re-read the timeline walkthrough above.
+Not confident on any of these? Re-read "Releases" above.
 
 ## Feedback
 
