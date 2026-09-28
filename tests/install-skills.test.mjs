@@ -38,6 +38,7 @@ async function runInstaller({
   codexHome,
   claudeHome,
   copilotHome,
+  chatGPTExportPath,
   target = 'Both',
   dryRun = false,
   force = false,
@@ -55,6 +56,7 @@ async function runInstaller({
   if (codexHome) args.push('-CodexHome', codexHome);
   if (claudeHome) args.push('-ClaudeHome', claudeHome);
   if (copilotHome) args.push('-CopilotHome', copilotHome);
+  if (chatGPTExportPath) args.push('-ChatGPTExportPath', chatGPTExportPath);
   if (dryRun) args.push('-DryRun');
   if (force) args.push('-Force');
 
@@ -186,6 +188,85 @@ test('Copilot target installs all twelve skills under CopilotHome/skills', async
     .sort();
   assert.deepEqual(names, expectedNames);
   assert.equal(await exists(join(copilotHome, 'skills', expectedNames[0], 'SKILL.md')), true);
+});
+
+function expectedChatGPTExportNames() {
+  const names = [];
+  for (const skill of inventory.skills) {
+    for (const relativeFile of skill.requiredFiles) {
+      if (relativeFile === 'agents/openai.yaml') continue;
+      names.push(`${skill.name}-${relativeFile.replace(/[\\/]/g, '-')}`);
+    }
+  }
+  return names.sort();
+}
+
+test('ChatGPT target dry-run reports the flattened export plan without writing anything', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+  const expectedNames = expectedChatGPTExportNames();
+
+  const result = await runInstaller({ chatGPTExportPath, target: 'ChatGPT', dryRun: true });
+
+  assert.equal(await exists(chatGPTExportPath), false);
+  assert.match(result.stdout, new RegExp(`Files \\(${expectedNames.length}\\)`, 'i'));
+  for (const name of expectedNames) {
+    assert.match(result.stdout, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'));
+  }
+  assert.doesNotMatch(result.stdout, /openai\.yaml/i);
+});
+
+test('ChatGPT target exports flattened per-skill files, excluding agents/openai.yaml', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+  const expectedNames = expectedChatGPTExportNames();
+
+  await runInstaller({ chatGPTExportPath, target: 'ChatGPT' });
+
+  const names = (await readdir(chatGPTExportPath, { withFileTypes: true }))
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+    .sort();
+  assert.deepEqual(names, expectedNames);
+
+  const issueFirstSkill = inventory.skills.find(({ name }) => name === 'github-issue-first');
+  const sourceContent = await readFile(join(repoRoot, 'skills', 'github-issue-first', 'SKILL.md'), 'utf8');
+  const exportedContent = await readFile(join(chatGPTExportPath, 'github-issue-first-SKILL.md'), 'utf8');
+  assert.equal(exportedContent, sourceContent);
+  assert.ok(issueFirstSkill, 'fixture assumption: github-issue-first must exist in the inventory');
+});
+
+test('ChatGPT export refuses to overwrite a non-empty destination without Force', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+  await mkdir(chatGPTExportPath, { recursive: true });
+  await writeFile(join(chatGPTExportPath, 'unrelated-file.txt'), 'do not touch\n');
+
+  const result = await runInstaller({ chatGPTExportPath, target: 'ChatGPT', expectFailure: true });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /not empty|Force/i);
+  const names = (await readdir(chatGPTExportPath)).sort();
+  assert.deepEqual(names, ['unrelated-file.txt']);
+});
+
+test('ChatGPT export with Force writes into a non-empty destination without deleting unrelated files', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+  await mkdir(chatGPTExportPath, { recursive: true });
+  await writeFile(join(chatGPTExportPath, 'unrelated-file.txt'), 'not part of this export\n');
+  const expectedNames = expectedChatGPTExportNames();
+
+  await runInstaller({ chatGPTExportPath, target: 'ChatGPT', force: true });
+
+  const names = (await readdir(chatGPTExportPath, { withFileTypes: true }))
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+    .sort();
+  // Force permits writing into a non-empty directory - it does not wipe
+  // content this export doesn't own, the same "never destroy what you
+  // don't own" posture the rest of this script already follows.
+  assert.deepEqual(names, [...expectedNames, 'unrelated-file.txt'].sort());
+  assert.equal(await readFile(join(chatGPTExportPath, 'unrelated-file.txt'), 'utf8'), 'not part of this export\n');
 });
 
 test('CODEX_HOME/CLAUDE_HOME/COPILOT_HOME env vars are discovered when no -Home flag is passed', async () => {

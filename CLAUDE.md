@@ -182,8 +182,8 @@ shared-policy change is unprecedented.
   workflow policy belongs here. No company/customer names, private endpoints,
   credentials, internal policy, or screenshots of private systems.
 - Policy changes to any canonical `SKILL.md` must be considered against all
-  twelve skills and all three consuming platforms, not just the one file
-  touched.
+  twelve skills and all four consuming platforms (Codex, Claude, Copilot,
+  ChatGPT), not just the one file touched.
 - Follow the issue-first workflow described above for changes to this repo
   itself, per `CONTRIBUTING.md` — issue with acceptance criteria → issue-linked
   branch via `gh issue develop` → conventional commits → PR starting `Refs #N`

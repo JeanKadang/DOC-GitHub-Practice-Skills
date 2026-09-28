@@ -4,6 +4,13 @@
 
 ## [Unreleased]
 
+### Added
+
+- `-Target ChatGPT` in `install-skills.ps1` — exports every skill's content
+  as flattened, individually-named files for uploading to a Custom GPT's
+  Knowledge, since ChatGPT has no local skill-directory discovery
+  mechanism. See `docs/chatgpt.md` and ADR 0006.
+
 ## [0.3.0] - 2026-09-28
 
 ### Added

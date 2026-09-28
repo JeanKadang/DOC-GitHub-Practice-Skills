@@ -39,3 +39,5 @@ documentation clarifications and typo-level fixes do not need one.
 - [0005](0005-add-github-for-gitlab-users.md) — Added
   `github-for-gitlab-users` as a 12th skill, mirroring
   `github-for-ado-users`'s shape.
+- [0006](0006-chatgpt-coverage.md) — ChatGPT coverage via a Custom GPT
+  export target, not an installer directory-copy or an Actions schema.
