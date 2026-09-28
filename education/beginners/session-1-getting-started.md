@@ -141,4 +141,4 @@ change, from a one-line doc fix to a major feature. Session 2 covers the
 (labels, milestones, the exact wording of `Refs`/`Closes`) that make this
 team's process work at scale.
 
-Next: [Session 2: Our Workflow](../intermediate/session-2-our-workflow.md)
+Next: [Module 2a: Issue-first and the closure gate](../intermediate/module-2a-issue-first-and-closure-gate.md)
