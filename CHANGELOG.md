@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-09-28
+
 ### Added
 
 - `github-repo-configure` skill — elicits Wiki, Discussions, Project
@@ -12,6 +14,37 @@
 - `github-for-gitlab-users` skill — maps GitLab concepts to GitHub, covering
   the `.gitlab-ci.yml` → Actions rewrite, milestones-vs-iterations, and the
   Groups/subgroups gap.
+- Substantive Discussions guidance in `github-issue-first`, a conditional
+  Wiki stance in `github-repo-bootstrap` (leave an established one alone,
+  never proactively enable a fresh one), and a multi-repo Projects how-to
+  in `github-projects` — see ADR 0003.
+- `CLAUDE_HOME`/`CODEX_HOME`/`COPILOT_HOME` environment-variable discovery
+  in `install-skills.ps1`, matching what the platform docs already claimed.
+- PowerShell-native examples alongside the existing Bash ones across every
+  `skills/*/SKILL.md` with a multi-line command.
+- A workflow that copies a linked issue's category labels onto its PR, so
+  generated release notes categorize correctly instead of defaulting to
+  "Other."
+- Session 2 and Session 3 of the colleague training program are now full
+  facilitator scripts, at the same depth as Session 1.
+- `tests/issue-form-templates.test.mjs` — validates every bundled GitHub
+  issue-form template's shape.
+
+### Changed
+
+- Bounded `Assert-NoReparseInExistingAncestry`'s ancestry walk to the
+  nearest path the installer itself owns, instead of walking to the
+  filesystem root — fixes the recurring macOS `/var` false positive
+  without weakening the guard's real protection. The macOS CI leg is
+  restored (advisory).
+
+### Fixed
+
+- `education/README.md`'s onboarding flowchart no longer mis-routes GitLab
+  (or GitHub-native) readers to the Azure DevOps mapping skill.
+- `github-hygiene`'s closed-issue audit command's jq interpolation was
+  double-backslashed and silently printed a placeholder string instead of
+  real issue numbers/titles.
 
 ## [0.2.0] - 2026-09-27
 
