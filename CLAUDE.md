@@ -69,7 +69,7 @@ copies are deployment outputs — never edit them; always edit the canonical
 same `SKILL.md`; only Codex also reads the `agents/openai.yaml` sidecar
 (Claude and Copilot both ignore it).
 
-### The eleven canonical skills and their handoffs
+### The twelve canonical skills and their handoffs
 
 Each skill has a narrow trigger and a boundary/handoff to the next skill. This
 chain is the core domain model of the repo (see `docs/GUIDE.md` for full
@@ -107,6 +107,9 @@ detail):
   default for a solo maintainer.
 - `github-for-ado-users` — explains Azure DevOps/TFS/Jira → GitHub concept
   mappings; does not mutate a repository itself.
+- `github-for-gitlab-users` — explains GitLab → GitHub concept mappings
+  (Merge Requests, Epics, Issue Boards, `.gitlab-ci.yml`); does not mutate a
+  repository itself.
 - `github-contributing` — forks, syncs with upstream, and submits a PR to a
   repository you don't maintain, then responds to review as the PR's author.
   Reviewing someone else's fork PR is `github-pr-review`, not this skill; it
@@ -137,7 +140,7 @@ forms, and release automation).
 
 ### Validation and manifest consistency
 
-The canonical eleven-skill roster (names + required files) is independently
+The canonical twelve-skill roster (names + required files) is independently
 hardcoded three times, deliberately — `contracts/skill-inventory.json`, the
 `CANONICAL_SKILLS` constant in `scripts/validate-skills.mjs`, and
 `$canonicalRequiredFiles` in `scripts/install-skills.ps1` — as defense in
@@ -179,7 +182,7 @@ shared-policy change is unprecedented.
   workflow policy belongs here. No company/customer names, private endpoints,
   credentials, internal policy, or screenshots of private systems.
 - Policy changes to any canonical `SKILL.md` must be considered against all
-  eleven skills and all three consuming platforms, not just the one file
+  twelve skills and all three consuming platforms, not just the one file
   touched.
 - Follow the issue-first workflow described above for changes to this repo
   itself, per `CONTRIBUTING.md` — issue with acceptance criteria → issue-linked

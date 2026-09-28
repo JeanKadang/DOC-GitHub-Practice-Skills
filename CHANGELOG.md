@@ -9,6 +9,9 @@
 - `github-repo-configure` skill — elicits Wiki, Discussions, Project
   attachment, and label-scheme decisions for an already-existing repo, and
   ships four generic issue/PR template files.
+- `github-for-gitlab-users` skill — maps GitLab concepts to GitHub, covering
+  the `.gitlab-ci.yml` → Actions rewrite, milestones-vs-iterations, and the
+  Groups/subgroups gap.
 
 ## [0.2.0] - 2026-09-27
 

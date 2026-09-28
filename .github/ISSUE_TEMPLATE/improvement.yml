@@ -44,6 +44,7 @@ body:
         - github-security-response
         - github-projects
         - github-for-ado-users
+        - github-for-gitlab-users
         - Installer, validation, or documentation only
     validations:
       required: true

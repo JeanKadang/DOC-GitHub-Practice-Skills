@@ -120,6 +120,16 @@ The following sections describe the canonical skills as they exist in v0.2.0.
 - **Boundary and handoff:** Do not reproduce an organization's process;
   workflow execution hands off to the relevant GitHub skill.
 
+### `github-for-gitlab-users`
+
+- **Trigger:** Someone asks how a GitLab concept (Merge Request, Epic, Issue
+  Board, group, `.gitlab-ci.yml`) maps to GitHub.
+- **Responsibilities and outputs:** Explain neutral mappings, the traps where
+  a familiar word means something different, and the genuine gaps
+  (Groups/subgroups have no equivalent).
+- **Boundary and handoff:** Do not reproduce an organization's process;
+  workflow execution hands off to the relevant GitHub skill.
+
 ### `github-contributing`
 
 - **Trigger:** Submitting a pull request to a repository you don't maintain.
@@ -155,8 +165,8 @@ the public issue and PR path until coordinated disclosure is safe. Repository
 creation begins with `github-repo-bootstrap`; configuring an already-existing
 repository's org-optional settings uses `github-repo-configure` instead.
 `github-projects` adds a view only when shared ownership justifies the
-maintenance. `github-for-ado-users` explains the mapping but does not mutate
-a repository by itself.
+maintenance. `github-for-ado-users` and `github-for-gitlab-users` each
+explain a mapping but do not mutate a repository by themselves.
 
 ## Examples
 

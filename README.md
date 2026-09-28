@@ -7,7 +7,7 @@ and people moving from Azure DevOps to GitHub.
 
 > **Release status:** [v0.1.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.1.0)
 > is published. This checkout targets the upcoming v0.2.0 package contract
-> (eleven skills); tag and publish the matching GitHub release per
+> (twelve skills); tag and publish the matching GitHub release per
 > `github-releases` before updating this line.
 >
 > The `education/` program is versioned independently — see
@@ -33,6 +33,8 @@ and people moving from Azure DevOps to GitHub.
   need one.
 - `github-for-ado-users` maps Azure DevOps concepts to GitHub without importing
   organization-specific policy.
+- `github-for-gitlab-users` maps GitLab concepts to GitHub, including the
+  `.gitlab-ci.yml` → Actions rewrite.
 
 ## Safe quick install
 

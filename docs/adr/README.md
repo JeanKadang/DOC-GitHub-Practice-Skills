@@ -36,3 +36,6 @@ documentation clarifications and typo-level fixes do not need one.
   stance, substantive Discussions guidance, multi-repo Projects how-to.
 - [0004](0004-add-github-repo-configure.md) — Added `github-repo-configure`
   as an 11th skill for configuring an already-existing repository.
+- [0005](0005-add-github-for-gitlab-users.md) — Added
+  `github-for-gitlab-users` as a 12th skill, mirroring
+  `github-for-ado-users`'s shape.
