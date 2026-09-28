@@ -30,10 +30,10 @@ test.after(async () => {
   await Promise.all(fixtureRoots.map((root) => rm(root, { recursive: true, force: true })));
 });
 
-test('accepts the canonical eleven-skill checkout', async () => {
+test('accepts the canonical twelve-skill checkout', async () => {
   const result = await validateRepository(repoRoot);
   assert.deepEqual(result.errors, []);
-  assert.equal(result.skills.length, 11);
+  assert.equal(result.skills.length, 12);
 });
 
 test('rejects an unregistered github skill directory', async () => {

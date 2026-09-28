@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub for GitLab Users"
+  short_description: "Map GitLab concepts to GitHub"
+  default_prompt: "Use $github-for-gitlab-users to map my GitLab workflow to GitHub."

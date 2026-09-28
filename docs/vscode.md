@@ -94,7 +94,7 @@ backup first — see [docs/claude.md](claude.md) or
 
 - [README.md](../README.md)'s `## Skills` list — what each skill covers.
 - [docs/GUIDE.md](GUIDE.md) — the full trigger/handoff model across all
-  eleven skills.
+  twelve skills.
 - [docs/claude.md](claude.md) / [docs/copilot.md](copilot.md) — the
   CLI-oriented versions of this same install process, with more detail on
   flags like `-ClaudeHome`/`-CopilotHome` and `-Force`.
