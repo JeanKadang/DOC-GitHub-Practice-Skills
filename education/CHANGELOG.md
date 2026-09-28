@@ -11,6 +11,35 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **Breaking:** `education/intermediate/session-2-our-workflow.md` and
+  `education/advanced/session-3-advanced-github.md` are removed. Their
+  content is split across six new self-paced modules:
+  `education/intermediate/module-2a-issue-first-and-closure-gate.md`,
+  `education/intermediate/module-2b-pr-review-and-branch-conventions.md`,
+  `education/advanced/module-3a-branch-protection-and-rulesets.md`,
+  `education/advanced/module-3b-projects-boards.md`,
+  `education/advanced/module-3c-releases.md`, and
+  `education/advanced/module-3d-security-response.md`. Any external link
+  or bookmark to the old two-session paths will 404 — see issue #65 and
+  `docs/superpowers/specs/2026-09-28-education-v2-self-training-design.md`
+  for the rationale.
+- The program's primary delivery mode is now self-paced/solo, not
+  facilitator-narrated; facilitator-led delivery is still supported via
+  inline "Facilitator note" callouts in each module.
+- `education/README.md`'s routing flowchart, table, and topic mindmap
+  updated to route into the six modules.
+- `education/facilitator-guide.md` updated for module-aware completion
+  tracking and to explain the facilitator-note callout convention.
+
+### Added
+
+- Each of the six new modules includes a hands-on exercise (Module 2a's
+  live `Refs`/`Closes` connected-branch gotcha trigger is the centerpiece),
+  a self-graded self-check, and a feedback prompt pointing at this repo's
+  Discussions (Ideas category).
+
 ## [1.0.0] - 2026-09-26
 
 ### Added
