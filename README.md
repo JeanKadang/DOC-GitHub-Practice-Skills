@@ -3,12 +3,11 @@
 [![Validate](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/actions/workflows/validate.yml/badge.svg)](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/actions/workflows/validate.yml)
 
 Versioned GitHub workflow skills for OpenAI Codex, Claude, GitHub Copilot CLI,
-and people moving from Azure DevOps to GitHub.
+and people moving from Azure DevOps or GitLab to GitHub.
 
-> **Release status:** [v0.1.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.1.0)
-> is published. This checkout targets the upcoming v0.2.0 package contract
-> (twelve skills); tag and publish the matching GitHub release per
-> `github-releases` before updating this line.
+> **Release status:** [v0.3.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.3.0)
+> is published (twelve skills). Tag and publish the matching GitHub release
+> per `github-releases` before updating this line for the next version.
 >
 > The `education/` program is versioned independently — see
 > `education/CHANGELOG.md` and `docs/MAINTAINING.md`'s release-hygiene

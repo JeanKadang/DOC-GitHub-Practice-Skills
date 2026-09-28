@@ -1,8 +1,8 @@
 # Maintaining the skill set
 
-**Applies to:** v0.2.0
+**Applies to:** v0.3.0
 
-**Reviewed:** 2026-09-25
+**Reviewed:** 2026-09-28
 
 ## Cross-skill invariant review
 

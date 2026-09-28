@@ -2,9 +2,8 @@
 
 ## Supported release
 
-The project is preparing its v0.1.0 public preview. Until a release is
-published, report findings against the current repository state. After releases
-exist, identify the affected tag in the private report.
+The latest published release is v0.3.0 — identify the affected tag (or the
+current `main` state, if unreleased) in the private report.
 
 ## Reporting a vulnerability
 

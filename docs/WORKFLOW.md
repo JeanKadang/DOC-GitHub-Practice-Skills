@@ -1,8 +1,8 @@
 # Workflow and closure gates
 
-**Applies to:** v0.1.0
+**Applies to:** v0.3.0
 
-**Reviewed:** 2026-08-09
+**Reviewed:** 2026-09-28
 
 ## Lifecycle
 

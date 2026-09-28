@@ -1,8 +1,8 @@
 # GitHub practice skills guide
 
-**Policy version:** v0.2.0
+**Policy version:** v0.3.0
 
-**Reviewed:** 2026-09-25
+**Reviewed:** 2026-09-28
 
 The common delivery path is:
 
@@ -231,9 +231,12 @@ left stale: parent-epic reconciliation is an explicit step in
 `skills/github-hygiene/SKILL.md`'s sub-issue section; issue-versus-PR object
 type verification and recording tested GitHub CLI/API versions are both
 covered by `docs/MAINTAINING.md`. Milestone semantics (release-based, not
-thematic) are now codified in `docs/WORKFLOW.md`'s lifecycle step 2.
+thematic) are now codified in `docs/WORKFLOW.md`'s lifecycle step 2. A fourth
+item — adding PowerShell-native examples alongside the Bash-oriented ones in
+`skills/*/SKILL.md` — shipped in v0.3.0 (issue #19) and is removed here for
+the same reason, during the #41 accuracy sweep.
 
-Two candidates remain genuinely open, not requirements implemented by the
+One candidate remains genuinely open, not a requirement implemented by the
 current skills:
 
 1. Automate audits for completed issues with unchecked criteria and stale
@@ -241,10 +244,7 @@ current skills:
    scheduled automation exists yet and the repo's current scale (a handful of
    issues) doesn't yet justify the added CI/API-quota surface. Revisit if
    issue volume grows enough that manual audits become unreliable.
-2. Add more PowerShell-native examples alongside the Bash-oriented ones in
-   `skills/*/SKILL.md` — tracked as issue #19 rather than folded into this
-   triage, since it's a cross-cutting edit across all ten skill files.
 
 Maintainers must update the canonical skill contract and this policy section in
-separate, reviewed changes before either remaining proposal becomes current
+a separate, reviewed change before this remaining proposal becomes current
 behavior.
