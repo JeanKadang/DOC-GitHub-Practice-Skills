@@ -160,7 +160,7 @@ test('dry-run reports the complete plan without changing the filesystem', async 
   assert.match(result.stdout, new RegExp(repoRoot.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'));
   assert.match(result.stdout, /Target:\s+Codex/i);
   assert.match(result.stdout, /Target:\s+Claude/i);
-  assert.match(result.stdout, /Skills \(10\)/i);
+  assert.match(result.stdout, /Skills \(11\)/i);
   assert.match(result.stdout, /backup/i);
 });
 
@@ -173,7 +173,7 @@ test('SourceRoot defaults to the repository containing the installer', async () 
   assert.equal(await exists(join(codexHome, 'skills', inventory.skills[0].name, 'SKILL.md')), true);
 });
 
-test('Copilot target installs all ten skills under CopilotHome/skills', async () => {
+test('Copilot target installs all eleven skills under CopilotHome/skills', async () => {
   const root = await temporaryRoot();
   const copilotHome = join(root, 'copilot-home');
   const expectedNames = inventory.skills.map(({ name }) => name).sort();
@@ -372,7 +372,7 @@ test('rejects substituted, duplicate, and incomplete canonical requiredFiles dec
   }
 });
 
-test('Both installs exactly ten skills per target with matching SKILL.md hashes', async () => {
+test('Both installs exactly eleven skills per target with matching SKILL.md hashes', async () => {
   const root = await temporaryRoot();
   const { codexHome, claudeHome } = await installOnce(root);
   const expectedNames = inventory.skills.map(({ name }) => name).sort();

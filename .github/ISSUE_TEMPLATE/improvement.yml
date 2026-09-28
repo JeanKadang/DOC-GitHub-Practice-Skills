@@ -40,6 +40,7 @@ body:
         - github-pr-review
         - github-repo-review
         - github-repo-bootstrap
+        - github-repo-configure
         - github-security-response
         - github-projects
         - github-for-ado-users

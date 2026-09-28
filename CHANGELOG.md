@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- `github-repo-configure` skill — elicits Wiki, Discussions, Project
+  attachment, and label-scheme decisions for an already-existing repo, and
+  ships four generic issue/PR template files.
+
 ## [0.2.0] - 2026-09-27
 
 ### Added

@@ -165,7 +165,9 @@ fields) beat markdown templates because required fields are actually enforced an
 `labels:`/`assignees:` are applied automatically. Add `config.yml` with
 `blank_issues_enabled: false` plus contact links to route questions away from the
 tracker. Recommend it, don't silently add it — templates change what every future
-contributor sees.
+contributor sees. `github-repo-configure` ships ready-to-copy, generic
+Bug Report/Improvement forms plus a matching `config.yml` — reuse those
+rather than drafting new ones from scratch.
 
 ### Assignment
 

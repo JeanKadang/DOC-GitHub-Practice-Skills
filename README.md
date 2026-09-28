@@ -7,7 +7,7 @@ and people moving from Azure DevOps to GitHub.
 
 > **Release status:** [v0.1.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.1.0)
 > is published. This checkout targets the upcoming v0.2.0 package contract
-> (ten skills); tag and publish the matching GitHub release per
+> (eleven skills); tag and publish the matching GitHub release per
 > `github-releases` before updating this line.
 >
 > The `education/` program is versioned independently — see
@@ -26,6 +26,8 @@ and people moving from Azure DevOps to GitHub.
 - `github-pr-review` reviews pull requests and their linked acceptance criteria.
 - `github-repo-review` performs evidence-based, full-repository audits.
 - `github-repo-bootstrap` creates and verifies a new repository safely.
+- `github-repo-configure` elicits org-optional settings and issue/PR
+  templates for an already-existing repository.
 - `github-security-response` keeps exploitable findings and credentials private.
 - `github-projects` adds a maintained shared board when multiple maintainers
   need one.

@@ -69,7 +69,7 @@ copies are deployment outputs — never edit them; always edit the canonical
 same `SKILL.md`; only Codex also reads the `agents/openai.yaml` sidecar
 (Claude and Copilot both ignore it).
 
-### The ten canonical skills and their handoffs
+### The eleven canonical skills and their handoffs
 
 Each skill has a narrow trigger and a boundary/handoff to the next skill. This
 chain is the core domain model of the repo (see `docs/GUIDE.md` for full
@@ -94,6 +94,11 @@ detail):
 - `github-repo-bootstrap` — the only skill allowed to create repo content
   *before* an issue exists (the initial shell); everything after that shell
   goes through the normal issue-first flow.
+- `github-repo-configure` — elicits org-optional settings (Wiki,
+  Discussions, Project attachment, label scheme) for an already-existing
+  repo, and ships generic issue/PR templates. Distinct from
+  `github-repo-bootstrap`: this skill's repo already exists, so its work
+  goes through normal issue-first, not the pre-issue exception.
 - `github-security-response` — replaces the public issue/PR path until
   coordinated disclosure is safe: rotate credentials first, use private
   advisories, never file an unpatched exploitable finding publicly.
@@ -132,7 +137,7 @@ forms, and release automation).
 
 ### Validation and manifest consistency
 
-The canonical ten-skill roster (names + required files) is independently
+The canonical eleven-skill roster (names + required files) is independently
 hardcoded three times, deliberately — `contracts/skill-inventory.json`, the
 `CANONICAL_SKILLS` constant in `scripts/validate-skills.mjs`, and
 `$canonicalRequiredFiles` in `scripts/install-skills.ps1` — as defense in
@@ -174,7 +179,7 @@ shared-policy change is unprecedented.
   workflow policy belongs here. No company/customer names, private endpoints,
   credentials, internal policy, or screenshots of private systems.
 - Policy changes to any canonical `SKILL.md` must be considered against all
-  ten skills and all three consuming platforms, not just the one file
+  eleven skills and all three consuming platforms, not just the one file
   touched.
 - Follow the issue-first workflow described above for changes to this repo
   itself, per `CONTRIBUTING.md` — issue with acceptance criteria → issue-linked

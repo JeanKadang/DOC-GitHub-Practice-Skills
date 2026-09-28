@@ -107,7 +107,10 @@ security event, `github-projects` only when shared board governance is warranted
 release and its rulesets, and `github-repo-review` for a broad repository audit.
 Use `github-for-ado-users` for general ADO migration guidance and
 `github-contributing` if the bootstrap work is itself a fork PR to a template
-repo; keep workplace-specific material private.
+repo; keep workplace-specific material private. If the repository already
+existed before this session — inherited, or handed to you already
+non-empty — this skill's pre-issue exception never applied; use
+`github-repo-configure` instead to elicit its org-optional settings.
 
 ## 12. Common mistakes
 

@@ -34,3 +34,5 @@ documentation clarifications and typo-level fixes do not need one.
   `github-hygiene` into hygiene + releases and added `github-contributing`.
 - [0003](0003-wiki-discussions-multirepo-projects.md) — Conditional Wiki
   stance, substantive Discussions guidance, multi-repo Projects how-to.
+- [0004](0004-add-github-repo-configure.md) — Added `github-repo-configure`
+  as an 11th skill for configuring an already-existing repository.
