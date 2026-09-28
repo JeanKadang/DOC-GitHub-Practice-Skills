@@ -50,15 +50,29 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Session 1 + 2)" to whatever onboarding checklist or issue already exists
-for new hires. That's the entire mechanism; don't build more than this
-needs.
+(Session 1 / Intermediate modules 2a-2b / Advanced modules 3a-3d)" to
+whatever onboarding checklist or issue already exists for new hires. Track
+at that coarse, three-bucket granularity — not one checkbox per module —
+since per-module tracking is more overhead than this mechanism needs.
+That's the entire mechanism; don't build more than this needs.
 
-## Extract your org's real settings before Session 2/3
+## Facilitator-note callouts in self-paced modules
 
-Session 2 and 3's talking points on branch protection, required
-approvals, and Actions permissions will vary by employer. **Run these in
-your own environment** — never commit real output from these into this
+The six modules under `intermediate/` and `advanced/` are written primarily
+for solo, self-paced reading — but they still support a facilitator-led
+session. Optional group activities are marked inline as blockquotes
+starting with `**Facilitator note`. When running a live session, watch for
+these as you go and decide in the moment whether to run the group activity
+or let attendees read past it — they're written so either choice works
+without breaking the flow of the module. A solo self-paced learner reading
+the same file will naturally skip these, since nothing about them is
+required to complete the module.
+
+## Extract your org's real settings before the advanced modules
+
+Modules 3a-3d's talking points on branch protection, required approvals,
+and Actions permissions will vary by employer. **Run these in your own
+environment** — never commit real output from these into this
 public repository:
 
 ```bash
@@ -75,9 +89,9 @@ gh api orgs/{org}/rulesets --jq '.[] | {name, target, enforcement}'
 gh api repos/{org}/{repo} --jq '.security_and_analysis'
 ```
 
-Use the output to adapt Session 3's branch-protection and security
-talking points to what's actually true at your organization — for
-example, if rulesets are already enforced org-wide, say so explicitly
+Use the output to adapt the advanced modules' branch-protection and
+security talking points to what's actually true at your organization —
+for example, if rulesets are already enforced org-wide, say so explicitly
 rather than presenting it as a hypothetical decision tree. Keep the
 actual extracted values in your own private notes, not in this repo.
 
@@ -88,6 +102,6 @@ actual extracted values in your own private notes, not in this repo.
   issue/PR trail is the point.
 - **"What if I mess up my branch?"** — You can't break `main` from a
   branch. Worst case, delete the branch and start over from step 2.
-- **"Do I need to install anything?"** — No, for Session 1. Session 2
+- **"Do I need to install anything?"** — No, for Session 1. Module 2a
   onward introduces the command-line equivalents for people who want
   them, but the web UI remains a fully valid way to work.
