@@ -18,6 +18,7 @@ $packageName = 'doc-github-practice-skills'
 $canonicalRequiredFiles = [ordered]@{
     'github-contributing' = @('SKILL.md', 'agents/openai.yaml')
     'github-for-ado-users' = @('SKILL.md', 'agents/openai.yaml')
+    'github-for-gitlab-users' = @('SKILL.md', 'agents/openai.yaml')
     'github-hygiene' = @('SKILL.md', 'agents/openai.yaml')
     'github-issue-first' = @('SKILL.md', 'agents/openai.yaml')
     'github-pr-review' = @('SKILL.md', 'agents/openai.yaml')
