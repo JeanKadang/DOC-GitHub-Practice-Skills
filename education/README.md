@@ -39,7 +39,7 @@ whenever, in any order relative to your own comfort level.
 
 What this shows: the topic areas across all three sessions, at a glance,
 so you can judge whether Session 3 is relevant to you without reading its
-full outline.
+full script.
 
 ```mermaid
 mindmap
