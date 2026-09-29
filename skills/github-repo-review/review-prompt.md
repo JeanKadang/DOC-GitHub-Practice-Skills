@@ -46,6 +46,7 @@ Beyond the code, review:
 | `.github/dependabot.yml` | Dependency + action update PRs | Any repo with dependencies or Actions |
 | `CODEOWNERS` | Automatic review routing by path | Two or more maintainers |
 | `CONTRIBUTING.md` | Branch/commit/PR conventions | Any outside contributors |
+| `CODE_OF_CONDUCT.md` | Community behavior standards + a working enforcement contact | Any public repo — one of GitHub's own Community Standards checklist items |
 | `SECURITY.md` + private vulnerability reporting | Where to report privately | Any public repo |
 | `docs/adr/` | Immutable architecture decision records | Any repo where design choices get re-litigated |
 | Ruleset on the default branch | Required checks, no force-push | Public repos, or private on Pro/Team — see below; review requirement only with 2+ maintainers |
