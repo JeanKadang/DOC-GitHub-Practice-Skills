@@ -21,6 +21,11 @@
 
 ### Fixed
 
+- The installer test helper's per-invocation timeout is now 60 s (override with
+  `INSTALLER_TEST_TIMEOUT_MS`), a timeout is reported as a timeout with the
+  signal, command, stdout, and stderr, and CI warms up PowerShell before the
+  installer tests. A cold first `pwsh` start had exceeded the old 20 s limit and
+  failed a required check on `main` (#117).
 - `-Target ChatGPT` re-exports no longer need `-Force`. The export now
   writes `manifest.json` (package version, source commit, original path and
   SHA-256 per file) and a `LICENSE` copy; a re-export overwrites only the

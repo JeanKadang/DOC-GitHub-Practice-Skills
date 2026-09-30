@@ -23,6 +23,11 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Warm up PowerShell
+        shell: pwsh
+        # A cold first pwsh start on a shared runner can exceed the installer
+        # tests' per-invocation timeout (#117).
+        run: pwsh -NoProfile -Command exit
       - name: Validate skills and tests
         run: npm run validate && npm test
 
@@ -39,6 +44,11 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Warm up PowerShell
+        shell: pwsh
+        # A cold first pwsh start on a shared runner can exceed the installer
+        # tests' per-invocation timeout (#117).
+        run: pwsh -NoProfile -Command exit
       - name: Validate skills and tests
         run: npm run validate && npm test
 
@@ -71,6 +81,11 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Warm up PowerShell
+        shell: pwsh
+        # A cold first pwsh start on a shared runner can exceed the installer
+        # tests' per-invocation timeout (#117).
+        run: pwsh -NoProfile -Command exit
       - name: Run installer tests
         run: node --test tests/install-skills.test.mjs
       - name: Run direct dry run against fresh homes
@@ -104,6 +119,11 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Warm up PowerShell
+        shell: pwsh
+        # A cold first pwsh start on a shared runner can exceed the installer
+        # tests' per-invocation timeout (#117).
+        run: pwsh -NoProfile -Command exit
       - name: Run installer tests
         run: node --test tests/install-skills.test.mjs
       - name: Run direct dry run against fresh homes
@@ -147,6 +167,11 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Warm up PowerShell
+        shell: pwsh
+        # A cold first pwsh start on a shared runner can exceed the installer
+        # tests' per-invocation timeout (#117).
+        run: pwsh -NoProfile -Command exit
       - name: Run installer tests
         run: node --test tests/install-skills.test.mjs
       - name: Run direct dry run against fresh homes
