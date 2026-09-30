@@ -270,6 +270,7 @@ Discussions section.
 
 ---
 
-Next: [Module 3.1: Branch protection and rulesets](../3_advanced/module-3-1-branch-protection-and-rulesets.md)
+Next: [Module 2.5: Triage and backlog hygiene](module-2-5-triage-and-backlog-hygiene.md),
+then the optional [Module 3.1: Branch protection and rulesets](../3_advanced/module-3-1-branch-protection-and-rulesets.md)
 (Modules 3.1 to 3.6 are independent — read them in any order, or only the
 ones relevant to you)
