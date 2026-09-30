@@ -21,6 +21,12 @@
 
 ### Fixed
 
+- `-Target ChatGPT` re-exports no longer need `-Force`. The export now
+  writes `manifest.json` (package version, source commit, original path and
+  SHA-256 per file) and a `LICENSE` copy; a re-export overwrites only the
+  files the previous manifest lists, removes listed files the source no
+  longer has, prints what was added, changed, and removed, and never touches
+  unrelated files. `docs/chatgpt.md` now describes this accurately (#127).
 - `install-skills.ps1` no longer deletes user-added files inside a tracked
   skill directory on an ordinary reinstall. An added file now counts as a
   local modification: the installer refuses without `-Force`, and `-Force`

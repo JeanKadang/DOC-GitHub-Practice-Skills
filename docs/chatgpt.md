@@ -37,6 +37,15 @@ that carry companion files (`github-repo-review`'s `review-prompt.md`;
 `github-repo-configure`'s four bundled templates). Each file is named
 `<skill-name>-<relative-path>`, e.g. `github-repo-configure-templates-bug.yml`,
 so all 17 sit flat in one folder with no name collisions.
+The export also writes `LICENSE` (the licence text, for attribution) and
+`manifest.json`: the package version, the source commit when available, and
+for every file its original path and SHA-256. The manifest is the
+original-to-exported name map. For example, `review-prompt.md` inside
+`github-repo-review` is exported as `github-repo-review-review-prompt.md`,
+even though the skill text still calls it `review-prompt.md`. Upload the 17
+skill files. `LICENSE` and `manifest.json` are for provenance; if you upload
+them too the total is 19.
+
 `agents/openai.yaml` sidecars are deliberately excluded — that file is Codex
 CLI-specific metadata, not policy content a ChatGPT assistant needs.
 
@@ -44,9 +53,14 @@ CLI-specific metadata, not policy content a ChatGPT assistant needs.
 future skill addition pushes the export past 20, that ceiling needs revisiting
 before this stops working — check the exported file count against it.
 
-Re-running the export overwrites the same 17 filenames; add `-Force` if the
-export folder already has unrelated content in it (the export never deletes
-files it doesn't own — see the script's own behavior for details).
+Re-running the export needs no `-Force`. The script reads the previous
+`manifest.json` to learn which files it owns: it overwrites those, removes
+any it listed before that the source no longer has, and prints what
+changed, for example `changed: github-issue-first-SKILL.md` or
+`removed: <file>`, plus a count of unchanged files. A folder with files the
+export does not own (including an export made before manifests existed)
+is refused without `-Force`; with `-Force` those files are left alone and
+never deleted. `-DryRun` shows the same comparison without writing.
 
 ## 2. Create the Custom GPT
 
@@ -93,8 +107,10 @@ by name.
 
 There's no "reload" step the way Claude/Codex/Copilot CLI have — a Custom
 GPT's Knowledge files are static uploads. After pulling a repo update, re-run
-the export and re-upload any changed files (ChatGPT lets you replace an
-existing Knowledge file without recreating the whole GPT).
+the export and re-upload only the files it reports as `added` or `changed`,
+and delete the ones it reports as `removed` from the GPT's Knowledge
+(ChatGPT lets you replace an existing Knowledge file without recreating the
+whole GPT).
 
 ## If you don't have Custom GPT access
 
