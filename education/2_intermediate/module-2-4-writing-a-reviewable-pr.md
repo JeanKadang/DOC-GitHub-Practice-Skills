@@ -130,6 +130,13 @@ an administrator merge. A merge also needs the maintainer's explicit
 approval: approving a pull request and merging it are separate decisions, as
 Module 2.2 showed.
 
+If the repository allows auto-merge, remember that switching it on *is* the
+merge approval, because GitHub merges the moment the required checks pass. Only
+the maintainer turns it on, only when the evidence for every criterion is
+already recorded, and never on a pull request with `Closes #N` unless every
+criterion is met. Otherwise an auto-merge closes the issue before anyone can
+check it.
+
 When a check goes red, read the failure before doing anything else. The
 failing step's log tells you which of three situations you are in:
 

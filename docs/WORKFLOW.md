@@ -20,7 +20,8 @@
 8. After every in-scope criterion is met, record the evidence, update checkboxes
    with a newline-preserving body file, and change the PR to `Closes #N`.
 9. Merge only after explicit maintainer approval and every applicable check is
-   green. Verify the issue state after merge.
+   green. Enabling auto-merge is itself the merge approval and is the
+   maintainer's call (see `github-hygiene`). Verify the issue state after merge.
 10. Reconcile the parent epic or native sub-issue relationship and the milestone.
 11. Release from updated `main`, then close the milestone and clean branches.
 
