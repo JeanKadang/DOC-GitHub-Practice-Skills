@@ -110,4 +110,5 @@ Discussions section.
 
 ---
 
-Back to [Education Program overview](../README.md).
+Next: [Module 3f: Rebase, Cherry-Pick, and Reflog Recovery](module-3f-rebase-cherry-pick-and-reflog.md),
+or back to [Education Program overview](../README.md).

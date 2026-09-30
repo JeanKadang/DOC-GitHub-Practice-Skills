@@ -99,6 +99,14 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `docs/repo-settings-snapshot.md` and `github-issue-first`'s "Scaling
   ceremony to repo risk" section (added in #92) rather than duplicating
   them. See issue #102.
+- `education/advanced/module-3f-rebase-cherry-pick-and-reflog.md` —
+  resolves issue #69 (decision: add the module, not scope out). Interactive
+  rebase for cleaning up commit history, cherry-pick for moving one commit
+  between branches, and `git reflog` for recovering from a `reset --hard`
+  that looks unrecoverable — all three framed under the same
+  don't-rewrite-pushed-history rule Session 2 established for `reset
+  --hard`. Two Mermaid diagrams. `education/README.md` routing updated;
+  Module 3e's ending now hands off to 3f.
 
 ## [1.0.0] - 2026-09-26
 
