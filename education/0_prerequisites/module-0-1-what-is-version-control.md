@@ -24,31 +24,61 @@ is new, five minutes here saves confusion later.
 ## Protect your account before you need to
 
 This is the one section here that isn't about concepts — it's a checklist,
-and it matters before you touch anything else. A colleague recently lost
-GitHub access after a phone replacement: no recovery codes saved anywhere,
-and the authenticator entry didn't carry over automatically. Losing account
-access is disruptive and avoidable; do these once, now:
+and it matters before you touch anything else. People do lose GitHub access
+after a phone replacement: no recovery codes saved anywhere, and the
+authenticator entry didn't carry over automatically. Losing access is
+disruptive and avoidable, and GitHub Support cannot restore an account that
+has two-factor authentication enabled if you lose your credentials. Do these
+once, now:
 
-- **Enable two-factor authentication (2FA)**, and add GitHub to your
-  authenticator app — on a company device, use the company's shared/managed
-  authenticator setup (e.g. Microsoft Authenticator), not a personal-only
-  arrangement nobody else could help recover.
-- **Save your recovery codes somewhere durable and independent of any
-  single device** — a password manager, not a note on the phone you might
-  replace. GitHub shows these once, at 2FA setup; there's no second chance
-  to view the same set later.
-- **Before replacing a device, transfer or re-register 2FA first.** It does
-  not carry over automatically just because you're signed into other
-  services on the new phone.
+- **Enable two-factor authentication (2FA) on your own account**, and set up
+  **two or more** methods, for example an authenticator app plus a passkey or
+  a security key. GitHub recommends more than one, so that losing a single
+  device doesn't lock you out.
+- **Download your recovery codes and keep them in a password manager**, not
+  in a note on the phone you might replace. You can download them again at any
+  time after enabling 2FA, so a lost copy is not a lost account. Generating a
+  new set *invalidates* the old one, so it is not a way to re-read the codes
+  you already have: when you generate new ones, replace the stored copy.
+- **Keep your authentication factors and recovery codes to yourself.** They
+  belong to your account alone. GitHub's guidance is not to share or
+  distribute recovery codes, and that includes colleagues and administrators.
+- **Before replacing a device, move or re-register 2FA first.** It does not
+  carry over automatically just because you're signed into other services on
+  the new phone.
 - **GitHub Mobile** (iOS/Android) is a legitimate way to check
   notifications and review or approve PRs from your phone — genuinely
   useful, but approving a merge from a phone deserves the same care as
   from a laptop, not less.
-- **If you're already locked out**, use GitHub's account recovery flow
-  (Settings → Password and authentication → recovery options, from a
-  device where you're still signed in, or the sign-in page's "recover
-  account" link if not). For an organization-owned repo, your org's admin
-  can also help re-establish access — know who that is before you need it.
+
+### If you're already locked out
+
+GitHub's recovery options are, in order of convenience: your saved recovery
+codes; a passkey or security key you set up earlier; a fallback SMS number if
+you added one; and, as a last resort, a one-time password sent to a verified
+email address that you confirm with an SSH key, a device you have used before,
+or a personal access token. Start from the sign-in page's recovery link, or
+from a device where you are still signed in. If none of these works, the
+account can't be recovered, although you can unlink its email address and use
+it with a new account.
+
+### Who can help, and who can't
+
+- **Your personal account:** only you and GitHub's own recovery flow. Your
+  organization's administrators can't recover it or bypass its 2FA, and GitHub's
+  documentation treats recovery as the account holder's responsibility.
+- **Your organization access:** once your account works again, an
+  administrator can help you regain access to the organization's repositories
+  and teams. Know who that is before you need them.
+- **Managed accounts:** some organizations manage accounts through their own
+  sign-in system. If yours does, recovery is handled there and not by the
+  personal flow above, so ask your administrator which applies to you.
+
+*Sources, checked against GitHub Docs on 2026-10-01:*
+[Configuring two-factor authentication recovery methods](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication-recovery-methods)
+and
+[Recovering your account if you lose your 2FA credentials](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/recovering-your-account-if-you-lose-your-2fa-credentials).
+GitHub's steps change, so check the current pages before you rely on them.
 
 ## What version control actually is
 
