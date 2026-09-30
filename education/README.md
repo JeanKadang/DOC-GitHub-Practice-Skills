@@ -23,7 +23,10 @@ flowchart TD
     Q2 -- No --> M2a[Start at Module 2a: Issue-first and the closure gate]
     Pre --> M2a
     S0 --> S1[Session 1: Getting Started]
-    S1 --> M2a
+    S1 --> Q3{Want the command line,<br/>not just the web UI?}
+    Q3 -- Yes --> S2[Session 2: Local Git Basics]
+    Q3 -- No --> M2a
+    S2 --> M2a
     M2a --> M2b[Module 2b: PR review and branch conventions]
     M2b --> M3[Modules 3a-3d: pick any, in any order - all optional]
 ```
@@ -31,8 +34,14 @@ flowchart TD
 | Background | Start here |
 | --- | --- |
 | Never used version control | [Session 0: What Is Version Control?](beginners/session-0-what-is-version-control.md), then [Session 1: Getting Started](beginners/session-1-getting-started.md) |
+| Comfortable in the GitHub web UI, ready for the command line | [Session 2: Local Git Basics](beginners/session-2-local-git-basics.md) |
 | Some git knowledge, new to this team's process | [Module 2a: Issue-first and the closure gate](intermediate/module-2a-issue-first-and-closure-gate.md) |
 | Already know GitLab or Azure DevOps, not GitHub | [Session 0](beginners/session-0-what-is-version-control.md)'s GitLab/ADO comparison table for a quick orientation, then `skills/github-for-ado-users/SKILL.md` (Azure DevOps) or `skills/github-for-gitlab-users/SKILL.md` (GitLab) for full depth, then [Module 2a](intermediate/module-2a-issue-first-and-closure-gate.md) |
+
+Planning to work from the command line at all? Do [Session 2: Local Git
+Basics](beginners/session-2-local-git-basics.md) before Module 2a — it
+covers staging, conflicts, and undoing a mistake, none of which the web-UI
+path in Session 1 touches.
 
 Modules 2a and 2b build on each other — do 2a first. Modules 3a-3d are
 each independent and optional; read any subset, in any order, based on
@@ -42,7 +51,7 @@ what's relevant to you. Each module is sized to fit a single sitting
 This program is primarily self-paced: work through it solo, at your own
 pace, with the modules above as your only guide. A facilitator-led session
 is still fully supported — modules mark optional group activities inline,
-so either mode works from the same files. Modules 2a, 2b, 3a and 3b
+so either mode works from the same files. Session 2 and Modules 2a, 2b, 3a and 3b
 include hands-on steps in a shared **sandbox practice repo** (a throwaway
 repo set up for exactly this purpose, never a real project). Ask your
 team's facilitator or onboarding buddy for access to it before you start
@@ -67,6 +76,11 @@ mindmap
       Branches
       Pull Requests
       Code review basics
+    Session 2: Local Git Basics
+      Working tree vs staging vs commit
+      Clone, push, pull
+      Resolving a merge conflict
+      Undo: restore, revert, reset
     Module 2a: Issue-first and closure gate
       Issue-first
       Refs and Closes
@@ -85,6 +99,7 @@ mindmap
 
 - [Session 0: What Is Version Control?](beginners/session-0-what-is-version-control.md) — ~15 min, reading only, plain-terms vocabulary plus a GitHub/GitLab/ADO comparison.
 - [Session 1: Getting Started](beginners/session-1-getting-started.md) — ~60 min, hands-on, no prior experience needed.
+- [Session 2: Local Git Basics](beginners/session-2-local-git-basics.md) — ~45 min, hands-on command-line git — staging, conflicts, and undoing a mistake.
 - [Module 2a: Issue-first and the closure gate](intermediate/module-2a-issue-first-and-closure-gate.md) — ~40 min, this team's core workflow habit.
 - [Module 2b: PR review and branch conventions](intermediate/module-2b-pr-review-and-branch-conventions.md) — ~35 min, review etiquette and branch/milestone conventions.
 - [Module 3a: Branch protection and rulesets](advanced/module-3a-branch-protection-and-rulesets.md) — ~25 min, optional.

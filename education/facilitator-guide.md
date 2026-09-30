@@ -17,6 +17,12 @@ project. Requirements:
 - **Seed content:** a `README.md` explaining it's a practice repo, and a
   `CONTRIBUTORS.md` file with a header line and nothing else (attendees
   each add their own line to it during Session 1).
+- **For Session 2's exercises:** each attendee needs `git` installed locally
+  and clone access to the sandbox repo — nothing on the repo itself beyond
+  what Session 1 already needs (`CONTRIBUTORS.md` with a header line).
+  Attendees push throwaway branches (`conflict-a`, `conflict-b`, scratch
+  branches for the undo exercises); the cohort reset already handles
+  cleaning these up, no extra step needed.
 - **For Modules 2a/2b's exercises:** at least one priority label (e.g.
   `P0`-`P3`, matching `skills/github-issue-first/SKILL.md`'s scheme) and
   one category label beyond GitHub's defaults, plus at least one open
@@ -48,6 +54,7 @@ stateDiagram-v2
 - [ ] Confirm the sandbox repo is in the `Ready` state (recreated since the last run).
 - [ ] Confirm every attendee has at least write access to it.
 - [ ] For Session 1: confirm `CONTRIBUTORS.md` exists with just a header line.
+- [ ] For Session 2: confirm every attendee has `git` installed and can clone the sandbox repo.
 - [ ] For Modules 2a/2b: confirm at least one priority label, one category
       label, and one open milestone exist on the sandbox repo.
 - [ ] For Module 3b: confirm the sandbox repo has a Projects board with at
@@ -65,7 +72,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Session 1 / Intermediate modules 2a-2b / Advanced modules 3a-3d)" to
+(Beginner sessions 0-2 / Intermediate modules 2a-2b / Advanced modules 3a-3d)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.
@@ -117,6 +124,6 @@ actual extracted values in your own private notes, not in this repo.
   issue/PR trail is the point.
 - **"What if I mess up my branch?"** — You can't break `main` from a
   branch. Worst case, delete the branch and start over from step 2.
-- **"Do I need to install anything?"** — No, for Session 1. Module 2a
-  onward introduces the command-line equivalents for people who want
-  them, but the web UI remains a fully valid way to work.
+- **"Do I need to install anything?"** — No, for any of it. Session 2
+  introduces the command line for people who want it, but every module,
+  including 2a onward, still works entirely through the web UI.
