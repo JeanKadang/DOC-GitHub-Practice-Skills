@@ -95,8 +95,10 @@ Only overwrite colour/description this way for labels you are bootstrapping. Don
 ### Milestone
 
 Every filed issue also gets a milestone before you move on — not just labels
-and an assignee. `gh issue create` has no `--milestone` flag, so attach it as
-a follow-up: `gh issue edit <N> --milestone "<title>"`. Full milestone
+and an assignee. `gh issue create` supports `--milestone "<title>"` directly
+when you already know which existing milestone the issue belongs to; when
+you don't (or the right milestone doesn't exist yet), attach it as a
+follow-up instead: `gh issue edit <N> --milestone "<title>"`. Full milestone
 conventions (what to name it, when to reuse vs. create, when to close it) live
 in `github-releases` — check there rather than improvising a naming scheme.
 
