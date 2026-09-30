@@ -1,8 +1,8 @@
-# Module 3b: Projects boards
+# Module 3.2: Projects boards
 
-**Audience:** Anyone who's completed Module 2b, or is already comfortable
+**Audience:** Anyone who's completed Module 2.2, or is already comfortable
 with this team's basic workflow and wants to go deeper. Optional, and
-independent of Modules 3a, 3c, 3d — read in any order.
+independent of Modules 3.1, 3.3, 3.4 — read in any order.
 **Format:** Self-paced — read and do each step yourself. Facilitator-note
 callouts mark optional group activities.
 **Timing:** ~20 min.
@@ -83,4 +83,4 @@ Discussions section.
 
 ---
 
-Next: [Module 3c: Releases](module-3c-releases.md)
+Next: [Module 3.3: Releases](module-3-3-releases.md)

@@ -1,8 +1,8 @@
-# Module 3e: GitHub Actions, runners, and the Copilot coding agent
+# Module 3.5: GitHub Actions, runners, and the Copilot coding agent
 
-**Audience:** Anyone who's completed Module 2b, or is already comfortable
+**Audience:** Anyone who's completed Module 2.2, or is already comfortable
 with this team's basic workflow and wants to go deeper. Optional, and
-independent of Modules 3a-3d — read in any order.
+independent of Modules 3.1-3.4 — read in any order.
 **Format:** Self-paced — read and do each step yourself.
 **Timing:** ~15-20 min.
 
@@ -110,5 +110,5 @@ Discussions section.
 
 ---
 
-Next: [Module 3f: Rebase, Cherry-Pick, and Reflog Recovery](module-3f-rebase-cherry-pick-and-reflog.md),
+Next: [Module 3.6: Rebase, Cherry-Pick, and Reflog Recovery](module-3-6-rebase-cherry-pick-and-reflog.md),
 or back to [Education Program overview](../README.md).

@@ -1,24 +1,24 @@
-# Session 0: What Is Version Control?
+# Module 0.1: What Is Version Control?
 
-**Audience:** Anyone about to start Session 1 — including people who've
+**Audience:** Anyone about to start Module 1.1 — including people who've
 never touched Git, GitHub, GitLab, or Azure DevOps, and people who've used
 one of those tools and want the vocabulary lined up before they touch a
 new one.
 
-**Format:** Reading only. No account needed, nothing to click. Session 1
+**Format:** Reading only. No account needed, nothing to click. Module 1.1
 is where the hands-on part starts.
 
 **Timing budget:** ~15 minutes.
 
 ## Why this exists
 
-Session 1 teaches you to file an issue, branch, commit, and open a pull
+Module 1.1 teaches you to file an issue, branch, commit, and open a pull
 request — by clicking through the real GitHub UI. It assumes you already
 know, loosely, what those words mean. This page is that grounding, so
-Session 1 can spend its time on *doing* instead of *defining*.
+Module 1.1 can spend its time on *doing* instead of *defining*.
 
 If you already know what a commit and a branch are, skip straight to
-[Session 1](../1_beginners/session-1-getting-started.md). If any of the vocabulary below
+[Module 1.1](../1_beginners/module-1-1-getting-started.md). If any of the vocabulary below
 is new, five minutes here saves confusion later.
 
 ## Protect your account before you need to
@@ -104,7 +104,7 @@ matter how small.
 ## How GitHub specifically puts this together
 
 GitHub's shape of the workflow, at the concept level (no clicking yet —
-that's Session 1):
+that's Module 1.1):
 
 1. Work starts with an **issue** — what needs to happen, and why.
 2. A **branch** is created for that issue, so the change has its own space.
@@ -123,7 +123,7 @@ one part of it.
 Git and GitHub give you the *mechanism*. This team adds specific
 *conventions* on top of it — when to say `Refs #N` vs `Closes #N`, how
 branches get named, what a PR needs before it can merge. Those aren't
-universal Git rules; they're this team's habits, and Session 1 onward
+universal Git rules; they're this team's habits, and Module 1.1 onward
 teaches them hands-on.
 
 **One honest caveat: this level of rigor isn't one-size-fits-all.** The
@@ -175,7 +175,7 @@ on GitHub day to day.
   something different (or doesn't exist) on GitHub.
 
 Not confident on any of these? Re-read the section above before starting
-Session 1 — it only gets more concrete from here, not less.
+Module 1.1 — it only gets more concrete from here, not less.
 
 ## Feedback
 
@@ -188,7 +188,7 @@ Discussions section.
 ---
 
 Next: [LLM Track — Pre-requisite: What Is an LLM Assistant?](prerequisite-what-is-an-llm-assistant.md)
-(also required reading before Session 1 if you'll be using an AI coding
+(also required reading before Module 1.1 if you'll be using an AI coding
 assistant — most colleagues will), then
-[Session 1: Getting Started](../1_beginners/session-1-getting-started.md) —
+[Module 1.1: Getting Started](../1_beginners/module-1-1-getting-started.md) —
 the hands-on version of everything defined above.

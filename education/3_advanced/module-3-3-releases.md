@@ -1,8 +1,8 @@
-# Module 3c: Releases
+# Module 3.3: Releases
 
-**Audience:** Anyone who's completed Module 2b, or is already comfortable
+**Audience:** Anyone who's completed Module 2.2, or is already comfortable
 with this team's basic workflow and wants to go deeper. Optional, and
-independent of Modules 3a, 3b, 3d — read in any order.
+independent of Modules 3.1, 3.2, 3.4 — read in any order.
 **Format:** Self-paced — read and do each step yourself. Facilitator-note
 callouts mark optional group activities.
 **Timing:** ~25 min.
@@ -93,4 +93,4 @@ Discussions section.
 
 ---
 
-Next: [Module 3d: Security response basics](module-3d-security-response.md)
+Next: [Module 3.4: Security response basics](module-3-4-security-response.md)

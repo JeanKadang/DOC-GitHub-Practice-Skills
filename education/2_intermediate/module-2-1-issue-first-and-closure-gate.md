@@ -1,6 +1,6 @@
-# Module 2a: Issue-first and the closure gate
+# Module 2.1: Issue-first and the closure gate
 
-**Audience:** Anyone who's done Session 1, or already knows git/GitHub/
+**Audience:** Anyone who's done Module 1.1, or already knows git/GitHub/
 GitLab/Azure DevOps and read the mapping skill as pre-reading.
 **Format:** Self-paced — read and do each step yourself. Facilitator-note
 callouts mark optional group activities.
@@ -100,7 +100,7 @@ Now walk the diagram's right-hand branch slowly, because this is the part
 that catches almost everyone the first time they hear it: **using
 `Refs #N` does not guarantee the issue stays open.** If GitHub created a
 "connected branch" link — for example, by using "Create a branch" directly
-from the issue, the same way Session 1 did it — merging the PR can
+from the issue, the same way Module 1.1 did it — merging the PR can
 auto-close the linked issue anyway, even though the PR body only ever said
 `Refs`, never `Closes`. This isn't a hypothetical edge case: it actually
 happened once in this repo's own history (see ADR 0001 for the full
@@ -131,7 +131,7 @@ is muscle memory instead of a thing you were told about once.
 1. File an issue in the sandbox repo. Give it a title, a one-line body, one
    priority label, one category label, and assign it to yourself.
 2. From the issue page, click **Create a branch** (this is what creates the
-   "connected branch" link — the same mechanic Session 1 used).
+   "connected branch" link — the same mechanic Module 1.1 used).
 3. Make a small edit on that branch (a one-line change to any file is
    enough) and commit it.
 4. Open a pull request from that branch. Write the PR body as `Refs #<N>`
@@ -144,7 +144,7 @@ If the issue auto-closed even though the PR body only said `Refs`, you've
 just reproduced the gotcha directly. Now practice the actual habit: reopen
 the issue with a comment explaining why (something like: "Reopening — this
 closed automatically via the connected branch; recording that as expected
-practice for Module 2a's exercise, not a real unmet criterion."). The point
+practice for Module 2.1's exercise, not a real unmet criterion."). The point
 isn't that this toy issue had a real unmet criterion — it didn't. The point
 is rehearsing the mechanical "check, reopen, record" reflex under real
 conditions, so it's already a habit by the time it matters on real work.
@@ -172,4 +172,4 @@ Discussions section.
 
 ---
 
-Next: [Module 2b: PR review and branch conventions](module-2b-pr-review-and-branch-conventions.md)
+Next: [Module 2.2: PR review and branch conventions](module-2-2-pr-review-and-branch-conventions.md)
