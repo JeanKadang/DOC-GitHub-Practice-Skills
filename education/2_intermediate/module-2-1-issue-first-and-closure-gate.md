@@ -4,7 +4,7 @@
 GitLab/Azure DevOps and read the mapping skill as pre-reading.
 **Format:** Self-paced — read and do each step yourself. Facilitator-note
 callouts mark optional group activities.
-**Timing:** ~40 min.
+**Timing:** ~50 min.
 
 This module covers the two habits everything else in this team's workflow
 is built on: filing work as an issue before touching it, and knowing the
@@ -128,26 +128,50 @@ This is the module's core hands-on piece — you're going to make the exact
 thing described above happen, on purpose, in the sandbox repo, so the habit
 is muscle memory instead of a thing you were told about once.
 
-1. File an issue in the sandbox repo. Give it a title, a one-line body, one
-   priority label, one category label, and assign it to yourself.
+1. File an issue in the sandbox repo. Give it a title, one priority label,
+   one category label, the sandbox's open milestone, and assign it to
+   yourself. Write the body with **two** acceptance criteria, for example:
+
+   ```text
+   Add my name and a one-line note to CONTRIBUTORS.md.
+
+   - [ ] CONTRIBUTORS.md contains a line with my name.
+   - [ ] CONTRIBUTORS.md contains a line that says what I'm learning.
+   ```
+
 2. From the issue page, click **Create a branch** (this is what creates the
    "connected branch" link — the same mechanic Module 1.1 used).
-3. Make a small edit on that branch (a one-line change to any file is
-   enough) and commit it.
-4. Open a pull request from that branch. Write the PR body as `Refs #<N>`
-   — deliberately not `Closes`, even though this toy change is trivially
-   "done."
+3. On that branch, do **only the first criterion**: add the line with your
+   name, and commit it. Leave the second criterion for later on purpose.
+4. Open a pull request from that branch. Write the PR body as `Refs #<N>`,
+   plus one line saying which criterion this PR covers and where the
+   evidence is (the diff).
 5. Merge the PR.
-6. Go back to the issue. Check its state.
+6. Go back to the issue. Check its state, **and** check the criteria.
 
-If the issue auto-closed even though the PR body only said `Refs`, you've
-just reproduced the gotcha directly. Now practice the actual habit: reopen
-the issue with a comment explaining why (something like: "Reopening — this
-closed automatically via the connected branch; recording that as expected
-practice for Module 2.1's exercise, not a real unmet criterion."). The point
-isn't that this toy issue had a real unmet criterion — it didn't. The point
-is rehearsing the mechanical "check, reopen, record" reflex under real
-conditions, so it's already a habit by the time it matters on real work.
+The issue probably auto-closed even though the PR body only said `Refs`. This
+time the criterion you left undone is *really* unmet, so you've reproduced
+the gotcha for a real reason. Now do the habit: reopen the issue with a
+comment saying which criterion is still unmet and that the closure was
+automatic. Tick the first criterion's checkbox and record its evidence in a
+comment (a link to the merged PR's diff).
+
+Finish the work properly:
+
+1. Create a second branch from the issue, add the second line, and commit.
+2. Open a second pull request with `Refs #<N>`. Record the evidence for the
+   second criterion in a comment, tick the box, and only then change the PR
+   body to `Closes #<N>`.
+3. Merge it and audit again: the issue should be closed, both boxes ticked,
+   each with recorded evidence, and the milestone still attached.
+
+**Final state of your practice issue:** closed, both criteria checked with
+evidence comments, milestone set. Delete your two branches from the
+repository's branch list afterwards. Leave the issue closed: don't reopen it
+again. The point is the reflex — "check the state, check the criteria,
+reopen and record if one is unmet" — rehearsed on a criterion that was
+really pending, so it's already a habit by the time it matters on real
+work.
 
 ## Self-check
 

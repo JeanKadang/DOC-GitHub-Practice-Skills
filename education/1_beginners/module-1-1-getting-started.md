@@ -71,11 +71,20 @@ moving on.
 
 - Go to the sandbox repo's **Issues** tab → **New issue**.
 - Title: `Add <your name> to CONTRIBUTORS.md`.
-- Body: one sentence is fine — "Adding myself as a contributor."
+- Body: one sentence on why, then one **acceptance criterion** — a check
+  that says when the work is done. Paste this, with your own name:
+
+  ```text
+  Adding myself as a contributor.
+
+  - [ ] CONTRIBUTORS.md contains a line with my name.
+  ```
+
 - Click **Submit new issue**. Note your issue number (e.g. `#42`) — you'll need it later.
 
 This is the first habit to build: **work starts with an issue**, not with
-editing a file. `skills/github-issue-first/SKILL.md` is the full policy
+editing a file — and the issue says what "done" looks like, so you can prove
+it later. `skills/github-issue-first/SKILL.md` is the full policy
 behind why — this session is the hands-on version of it.
 
 ### 2. Create a branch (5 min)
@@ -109,6 +118,8 @@ what and why. You just made one.
   `skills/github-hygiene/SKILL.md`'s traceability chain — Module 2.1 goes
   deeper on this.)
 - Click **Create pull request**.
+- Open the **Files changed** tab. The line you added is the *evidence* for
+  your criterion: you can see it in the diff.
 
 ### 5. Get it reviewed (5 min)
 
@@ -120,15 +131,22 @@ what and why. You just made one.
 
 ### 6. Merge (5 min)
 
-- On your PR, once approved, change the PR body from `Refs #<your issue number>`
-  to `Closes #<your issue number>` — this tells GitHub to close the issue when the PR merges.
-  (Module 2.1 explains exactly when this switch is safe to make.)
+- First check your criterion against the evidence. Add a comment on your PR
+  (or your issue) saying what you checked, for example: "Criterion met: the
+  Files changed tab shows my name added to CONTRIBUTORS.md."
+- Only now, change the PR body from `Refs #<your issue number>` to
+  `Closes #<your issue number>` — this tells GitHub to close the issue when
+  the PR merges. The order matters: **criterion, then evidence, then
+  `Closes`.** (Module 2.1 explains exactly when this switch is safe to make.)
 - Click **Merge pull request** → **Confirm merge**.
 
 ### 7. Watch it close
 
 - Go back to your issue (the one you filed in step 1). It should now show as
   **Closed**, with a note that it was closed by your merged PR.
+- Check it the way you'd check any merged work: the issue is closed, **and**
+  your criterion is met. Tick the criterion's checkbox (edit the issue, change
+  `[ ]` to `[x]`) now that the evidence is recorded.
 
 That's the full loop: **issue → branch → commit → PR → review → merge →
 issue closes.** Every contribution on this team follows this shape.
