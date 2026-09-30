@@ -24,8 +24,11 @@ flowchart TD
     Pre --> M2a
     S0 --> S1[Session 1: Getting Started]
     S1 --> Q3{Want the command line,<br/>not just the web UI?}
-    Q3 -- Yes --> S2[Session 2: Local Git Basics]
+    Q3 -- Yes --> Q4{Git and VS Code<br/>already installed?}
     Q3 -- No --> M2a
+    Q4 -- No --> Extra[Extra: Setup Local Dev Environment]
+    Q4 -- Yes --> S2[Session 2: Local Git Basics]
+    Extra --> S2
     S2 --> M2a
     M2a --> M2b[Module 2b: PR review and branch conventions]
     M2b --> M3[Modules 3a-3d: pick any, in any order - all optional]
@@ -34,7 +37,8 @@ flowchart TD
 | Background | Start here |
 | --- | --- |
 | Never used version control | [Session 0: What Is Version Control?](beginners/session-0-what-is-version-control.md), then [Session 1: Getting Started](beginners/session-1-getting-started.md) |
-| Comfortable in the GitHub web UI, ready for the command line | [Session 2: Local Git Basics](beginners/session-2-local-git-basics.md) |
+| Comfortable in the GitHub web UI, ready for the command line, Git/VS Code already installed | [Session 2: Local Git Basics](beginners/session-2-local-git-basics.md) |
+| Ready for the command line but no Git or VS Code installed yet | [Extra: Setting Up Your Local Dev Environment](extra/setup-local-dev-environment.md), then [Session 2](beginners/session-2-local-git-basics.md) |
 | Some git knowledge, new to this team's process | [Module 2a: Issue-first and the closure gate](intermediate/module-2a-issue-first-and-closure-gate.md) |
 | Already know GitLab or Azure DevOps, not GitHub | [Session 0](beginners/session-0-what-is-version-control.md)'s GitLab/ADO comparison table for a quick orientation, then `skills/github-for-ado-users/SKILL.md` (Azure DevOps) or `skills/github-for-gitlab-users/SKILL.md` (GitLab) for full depth, then [Module 2a](intermediate/module-2a-issue-first-and-closure-gate.md) |
 
@@ -93,6 +97,11 @@ mindmap
     Module 3b: Projects boards
     Module 3c: Releases
     Module 3d: Security response basics
+    Extra: Setup Local Dev Environment
+      Install Git
+      Install VS Code
+      Connect to GitHub Enterprise
+      Recommended extensions
 ```
 
 ## Materials
@@ -106,5 +115,6 @@ mindmap
 - [Module 3b: Projects boards](advanced/module-3b-projects-boards.md) — ~20 min, optional.
 - [Module 3c: Releases](advanced/module-3c-releases.md) — ~25 min, optional.
 - [Module 3d: Security response basics](advanced/module-3d-security-response.md) — ~15 min, optional.
+- [Extra: Setting Up Your Local Dev Environment](extra/setup-local-dev-environment.md) — ~30 min, mostly install time. Installing Git and VS Code, connecting to GitHub Enterprise, recommended extensions. Optional — only needed if you don't already have these.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.

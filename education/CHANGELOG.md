@@ -65,6 +65,15 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   device, GitHub Mobile as a legitimate option, and the locked-out
   recovery path. Prompted by a colleague actually losing GitHub access
   after a device replacement with no recovery codes saved. See issue #90.
+- `education/extra/setup-local-dev-environment.md` — new Extra-tier
+  content (per ADR 0007's tier scheme): installing Git on Windows,
+  installing VS Code, connecting VS Code to GitHub Enterprise, and a
+  recommended-extensions list (Markdown, Mermaid preview, PowerShell,
+  GitHub Pull Requests and Issues) with why each one earns its place.
+  Optional, doesn't gate any other module — Session 2 already assumed
+  Git was installed; this is where that assumption gets satisfied. See
+  issue #93. `education/README.md`'s routing flowchart, table, mindmap,
+  and materials list updated.
 
 ## [1.0.0] - 2026-09-26
 
