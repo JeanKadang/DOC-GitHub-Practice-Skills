@@ -263,4 +263,5 @@ Discussions section.
 
 ---
 
-Next: [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)
+Next: [Module 1.4: Finding your way around a repository](module-1-4-finding-your-way-around-a-repo.md),
+then [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)

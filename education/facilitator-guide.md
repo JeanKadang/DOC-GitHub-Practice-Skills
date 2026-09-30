@@ -36,6 +36,11 @@ project. Requirements:
   Each attendee needs the issue and merged pull request they made in Module 1.1
   (the exercise links to both), so run it after 1.1 in the same sandbox. They
   close their practice issue as "Not planned" themselves.
+- **For Module 1.4's exercise:** read-only, so no setup beyond Module 1.1's.
+  Each attendee needs their own Module 1.1 issue and merged pull request, and
+  `CONTRIBUTORS.md` with at least their own line. Do not rewrite `main` between
+  1.1 and 1.4, or the blame question
+  loses its answer.
 - **For Modules 2.1/2.2's exercises:** at least one priority label (e.g.
   `P0`-`P3`, matching `skills/github-issue-first/SKILL.md`'s scheme) and
   one category label beyond GitHub's defaults, plus at least one open
@@ -103,6 +108,8 @@ stateDiagram-v2
 - [ ] For Module 1.2: confirm every attendee has `git` installed and can clone the sandbox repo.
 - [ ] For Module 1.3: confirm each attendee still has their Module 1.1 issue and
       merged pull request to link to.
+- [ ] For Module 1.4: confirm the same, and that `CONTRIBUTORS.md` still has
+      each attendee's line (the blame question depends on it).
 - [ ] For Modules 2.1/2.2: confirm at least one priority label, one category
       label, and one open milestone exist on the sandbox repo.
 - [ ] For Module 2.3: confirm the seeded vague issue ("Fix the badge bug")
@@ -130,7 +137,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.3 / Intermediate modules 2.1-2.7 / Advanced modules 3.1-3.6)" to
+(Beginner modules 0.1-1.4 / Intermediate modules 2.1-2.7 / Advanced modules 3.1-3.6)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.
