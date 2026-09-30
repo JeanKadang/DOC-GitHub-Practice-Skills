@@ -28,6 +28,11 @@ project. Requirements:
   one category label beyond GitHub's defaults, plus at least one open
   milestone with any title — Module 2.2's exercise attaches an issue to an
   existing milestone, so the repo needs one to attach to.
+- **For Module 2.3's exercise:** one seeded issue titled "Fix the badge bug"
+  whose body says only "it's broken sometimes", with no labels, milestone, or
+  assignee, plus the same priority labels, category label, and open milestone
+  as Modules 2.1/2.2. Attendees rewrite it, then close it as "not planned"
+  with a short comment; recreate the seeded issue for each cohort.
 - **For Module 3.2's exercise:** a Projects v2 board with at least one item
   linked to a real issue, and one deliberately unlinked **draft item** (an
   entry created only on the board) — the module's exercise asks attendees
@@ -57,6 +62,8 @@ stateDiagram-v2
 - [ ] For Module 1.2: confirm every attendee has `git` installed and can clone the sandbox repo.
 - [ ] For Modules 2.1/2.2: confirm at least one priority label, one category
       label, and one open milestone exist on the sandbox repo.
+- [ ] For Module 2.3: confirm the seeded vague issue ("Fix the badge bug")
+      exists, unlabeled and unassigned.
 - [ ] For Module 3.2: confirm the sandbox repo has a Projects board with at
       least one item linked to a real issue and one unlinked draft item.
 - [ ] Have this guide and the relevant session or module file open,
@@ -72,7 +79,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.2 / Intermediate modules 2.1-2.2 / Advanced modules 3.1-3.6)" to
+(Beginner modules 0.1-1.2 / Intermediate modules 2.1-2.3 / Advanced modules 3.1-3.6)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.

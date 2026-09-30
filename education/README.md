@@ -49,7 +49,8 @@ flowchart TD
     Extra --> S2
     S2 --> M2a
     M2a --> M2b[Module 2.2: PR review and branch conventions]
-    M2b --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
+    M2b --> M2c[Module 2.3: Writing a good issue]
+    M2c --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
 ```
 
 | Background | Start here |
@@ -58,6 +59,7 @@ flowchart TD
 | Comfortable in the GitHub web UI, ready for the command line, Git/VS Code already installed | [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) |
 | Ready for the command line but no Git or VS Code installed yet | [Setting Up Your Local Dev Environment](0_prerequisites/setup-local-dev-environment.md), then [Module 1.2](1_beginners/module-1-2-local-git-basics.md) |
 | Some git knowledge, new to this team's process | [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
+| Comfortable with the workflow, want your issues to be easier for others to act on | [Module 2.3: Writing a good issue](2_intermediate/module-2-3-writing-a-good-issue.md) |
 | Already know GitLab or Azure DevOps, not GitHub | [Module 0.1](0_prerequisites/module-0-1-what-is-version-control.md)'s GitLab/ADO comparison table for a quick orientation, then `skills/github-for-ado-users/SKILL.md` (Azure DevOps) or `skills/github-for-gitlab-users/SKILL.md` (GitLab) for full depth, then [Module 2.1](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
 
 **Whatever your background: read the [LLM Track — Pre-requisite: What Is
@@ -71,7 +73,8 @@ Basics](1_beginners/module-1-2-local-git-basics.md) before Module 2.1 — it
 covers staging, conflicts, and undoing a mistake, none of which the web-UI
 path in Module 1.1 touches.
 
-Modules 2.1 and 2.2 build on each other — do 2.1 first. Modules 3.1-3.6 are
+Modules 2.1 and 2.2 build on each other — do 2.1 first. Module 2.3 builds on
+2.1 and is best read after 2.2. Modules 3.1-3.6 are
 each independent and optional; read any subset, in any order, based on
 what's relevant to you. Each module is sized to fit a single sitting
 (15-40 minutes) rather than blocking out a full session.
@@ -79,8 +82,8 @@ what's relevant to you. Each module is sized to fit a single sitting
 This program is primarily self-paced: work through it solo, at your own
 pace, with the modules above as your only guide. A facilitator-led session
 is still fully supported — modules mark optional group activities inline,
-so either mode works from the same files. Module 1.2 and Modules 2.1, 2.2, 3.1,
-3.2, and 3.6 include hands-on steps in a shared **sandbox practice repo** (a
+so either mode works from the same files. Module 1.2 and Modules 2.1, 2.2, 2.3,
+3.1, 3.2, and 3.6 include hands-on steps in a shared **sandbox practice repo** (a
 throwaway repo set up for exactly this purpose, never a real project). Ask
 your team's facilitator or onboarding buddy for access to it before you
 start one of those modules — `education/facilitator-guide.md` has their
@@ -129,6 +132,10 @@ mindmap
         PR review etiquette
         Branch conventions
         Milestones
+      Module 2.3: Writing a good issue
+        Title and body
+        Observable acceptance criteria
+        Priority, category, milestone, assignee
     3: Advanced
       Module 3.1: Branch protection and rulesets
       Module 3.2: Projects boards
@@ -147,6 +154,7 @@ mindmap
 - [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) — ~45 min, hands-on command-line git — staging, conflicts, and undoing a mistake.
 - [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md) — ~40 min, this team's core workflow habit.
 - [Module 2.2: PR review and branch conventions](2_intermediate/module-2-2-pr-review-and-branch-conventions.md) — ~35 min, review etiquette and branch/milestone conventions.
+- [Module 2.3: Writing a good issue](2_intermediate/module-2-3-writing-a-good-issue.md) — ~30 min, hands-on, the reasons behind each rule in `github-issue-first`.
 - [Module 3.1: Branch protection and rulesets](3_advanced/module-3-1-branch-protection-and-rulesets.md) — ~25 min, optional.
 - [Module 3.2: Projects boards](3_advanced/module-3-2-projects-boards.md) — ~20 min, optional.
 - [Module 3.3: Releases](3_advanced/module-3-3-releases.md) — ~25 min, optional.
