@@ -599,7 +599,8 @@ test('an unmodified install from an older release upgrades without Force or a ba
   assert.notEqual(await sha256(skillPath), await sha256(join(repoRoot, 'skills', name, 'SKILL.md')));
 
   const preview = await runInstaller({ codexHome, target: 'Codex', dryRun: true });
-  assert.match(preview.stdout, new RegExp(`${name}: upgrade from v0\.0\.1 to v${inventory.packageVersion.replace(/./g, '\.')}; backup: none`));
+  const expectedLine = `${name}: upgrade from v0.0.1 to v${inventory.packageVersion}; backup: none`;
+  assert.ok(preview.stdout.includes(expectedLine), `preview must contain "${expectedLine}":\n${preview.stdout}`);
 
   await runInstaller({ codexHome, target: 'Codex' });
 
