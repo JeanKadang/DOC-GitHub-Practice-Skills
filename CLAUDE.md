@@ -21,7 +21,13 @@ Because the "code" here is largely prescriptive documentation that other AI
 agents will read and act on, precision and internal consistency across files
 matter more than usual — a wording change in one skill can contradict another.
 The `education/` folder is the one exception: it holds human-facing colleague
-training material, not agent-facing policy.
+training material, not agent-facing policy. As of ADR 0007 it covers two
+parallel tracks — GitHub workflow (the original content) and LLM/VS Code
+tooling (how a colleague uses Copilot/Claude Code day to day) — each staged
+across the same five tiers: Pre-requisite, Basics, Intermediate, Advanced,
+Extra. The LLM track is about colleague *usage* of AI tooling; it does not
+change what `skills/*/SKILL.md` covers, which stays GitHub-workflow-only
+policy for the agent itself.
 
 ## Commands
 
