@@ -32,6 +32,10 @@ project. Requirements:
   Attendees push throwaway branches (`conflict-a`, `conflict-b`, scratch
   branches for the undo exercises); the cohort reset already handles
   cleaning these up, no extra step needed.
+- **For Module 1.3's exercise:** nothing beyond what Module 1.1 leaves behind.
+  Each attendee needs the issue and merged pull request they made in Module 1.1
+  (the exercise links to both), so run it after 1.1 in the same sandbox. They
+  close their practice issue as "Not planned" themselves.
 - **For Modules 2.1/2.2's exercises:** at least one priority label (e.g.
   `P0`-`P3`, matching `skills/github-issue-first/SKILL.md`'s scheme) and
   one category label beyond GitHub's defaults, plus at least one open
@@ -97,6 +101,8 @@ stateDiagram-v2
 - [ ] Confirm every attendee has at least write access to it.
 - [ ] For Module 1.1: confirm `CONTRIBUTORS.md` exists with just a header line.
 - [ ] For Module 1.2: confirm every attendee has `git` installed and can clone the sandbox repo.
+- [ ] For Module 1.3: confirm each attendee still has their Module 1.1 issue and
+      merged pull request to link to.
 - [ ] For Modules 2.1/2.2: confirm at least one priority label, one category
       label, and one open milestone exist on the sandbox repo.
 - [ ] For Module 2.3: confirm the seeded vague issue ("Fix the badge bug")
@@ -124,7 +130,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.2 / Intermediate modules 2.1-2.7 / Advanced modules 3.1-3.6)" to
+(Beginner modules 0.1-1.3 / Intermediate modules 2.1-2.7 / Advanced modules 3.1-3.6)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.

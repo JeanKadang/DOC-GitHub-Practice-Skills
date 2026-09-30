@@ -47,7 +47,8 @@ flowchart TD
     Pre --> LLM0
     S0 --> LLM0
     LLM0 --> S1[Module 1.1: Getting Started]
-    S1 --> Q3{Want the command line,<br/>not just the web UI?}
+    S1 --> S3[Module 1.3: Markdown for issues and pull requests]
+    S3 --> Q3{Want the command line,<br/>not just the web UI?}
     Q3 -- Yes --> Q4{Git and VS Code<br/>already installed?}
     Q3 -- No --> M2a[Module 2.1: Issue-first and the closure gate]
     Q4 -- No --> Extra[Setup Local Dev Environment]
@@ -66,6 +67,7 @@ flowchart TD
 | Background | Start here |
 | --- | --- |
 | Never used version control | [Module 0.1: What Is Version Control?](0_prerequisites/module-0-1-what-is-version-control.md), then [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) |
+| You write issues or pull requests and want them to read well | [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) |
 | Comfortable in the GitHub web UI, ready for the command line, Git/VS Code already installed | [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) |
 | Ready for the command line but no Git or VS Code installed yet | [Setting Up Your Local Dev Environment](0_prerequisites/setup-local-dev-environment.md), then [Module 1.2](1_beginners/module-1-2-local-git-basics.md) |
 | Some git knowledge, new to this team's process | [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
@@ -96,7 +98,7 @@ what's relevant to you. Each module is sized to fit a single sitting
 This program is primarily self-paced: work through it solo, at your own
 pace, with the modules above as your only guide. A facilitator-led session
 is still fully supported — modules mark optional group activities inline,
-so either mode works from the same files. Module 1.2 and Modules 2.1, 2.2, 2.3,
+so either mode works from the same files. Modules 1.2 and 1.3 and Modules 2.1, 2.2, 2.3,
 2.4, 2.5, 2.6, 3.1, 3.2, and 3.6 include hands-on steps in a shared **sandbox practice repo** (a
 throwaway repo set up for exactly this purpose, never a real project). Ask
 your team's facilitator or onboarding buddy for access to it before you
@@ -139,6 +141,11 @@ mindmap
         Clone, push, pull
         Resolving a merge conflict
         Undo: restore, revert, reset
+      Module 1.3: Markdown for issues and pull requests
+        Headings and task lists
+        Code fences and collapsible sections
+        Links and mentions
+        Preview before submitting
     2: Intermediate
       Module 2.1: Issue-first and closure gate
         Issue-first
@@ -184,6 +191,7 @@ mindmap
 - [Setting Up Your Local Dev Environment](0_prerequisites/setup-local-dev-environment.md) — ~30 min, mostly install time. Installing Git and VS Code, connecting to GitHub Enterprise, recommended extensions. Optional — only needed if you don't already have these.
 - [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) — ~60 min, hands-on, no prior experience needed.
 - [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) — ~45 min, hands-on command-line git — staging, conflicts, and undoing a mistake.
+- [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) — ~20 min, hands-on, web UI only. Headings, task lists, code fences, links, and previewing.
 - [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md) — ~50 min, this team's core workflow habit.
 - [Module 2.2: PR review and branch conventions](2_intermediate/module-2-2-pr-review-and-branch-conventions.md) — ~35 min, review etiquette and branch/milestone conventions.
 - [Module 2.3: Writing a good issue](2_intermediate/module-2-3-writing-a-good-issue.md) — ~30 min, hands-on, the reasons behind each rule in `github-issue-first`.
