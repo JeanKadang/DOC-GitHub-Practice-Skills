@@ -99,6 +99,10 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `docs/repo-settings-snapshot.md` and `github-issue-first`'s "Scaling
   ceremony to repo risk" section (added in #92) rather than duplicating
   them. See issue #102.
+- `education/extra/setup-local-dev-environment.md`'s recommended-
+  extensions table gained a **Markdown PDF** row (exports to PDF/HTML,
+  renders Mermaid diagrams in the export) — offline reading and printing
+  weren't covered. See issue #106.
 
 ## [1.0.0] - 2026-09-26
 
