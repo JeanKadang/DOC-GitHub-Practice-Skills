@@ -2,6 +2,15 @@
 
 This file is for whoever is **running** a session, not for attendees.
 
+## Tools policy
+
+For now, everyone does all Git activity in **VS Code or on the command line**.
+The lessons and exercises assume one of those two, and GitHub Desktop and other
+Git clients are deliberately not covered (maintainer decision, issue #178). If
+an attendee arrives using another client, ask them to switch to VS Code or the
+command line for the session. Do not improvise steps for a client the material
+does not cover; the commands and button names will not match the lesson.
+
 ## Sandbox repo requirements
 
 Sessions need one shared practice repository, separate from any real
