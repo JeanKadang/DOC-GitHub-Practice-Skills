@@ -128,6 +128,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   extensions table gained a **Markdown PDF** row (exports to PDF/HTML,
   renders Mermaid diagrams in the export) — offline reading and printing
   weren't covered. See issue #106.
+- `education/examples/mermaid-diagram-types-showcase.md` expanded from
+  12 to 23 diagram types, split into "Established" (added requirement,
+  C4 context, Sankey, XY chart) and "Newer/extended" tiers (architecture,
+  block, kanban, radar, packet, ZenUML, treemap) — the latter explicitly
+  flagged as unconfirmed on GitHub.com rather than claimed working,
+  since GitHub's own diagram-support announcement predates them. See
+  issue #111.
 
 ## [1.0.0] - 2026-09-26
 
