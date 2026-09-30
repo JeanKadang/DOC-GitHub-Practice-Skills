@@ -1,6 +1,6 @@
 ---
 name: github-issue-first
-description: Use whenever you are working in a git repository that has a GitHub remote and you notice a bug, gap, stale doc, missing test, CI failure, or any other improvement worth doing. Before fixing it, discussing it at length, or otherwise acting on it, file it as a GitHub issue first via gh issue create — labeled (priority + category) and assigned to the current user. Trigger this proactively and automatically, without being asked, the moment you spot something worth tracking — not only when the user explicitly says "file an issue" or "track this." Also use this skill when the user asks you to prioritize, triage, reprioritize, or map dependencies between existing issues on a repo.
+description: Use whenever you are working in a git repository that has a GitHub remote and you notice a bug, gap, stale doc, missing test, CI failure, or any other improvement worth doing. Before fixing it, discussing it at length, or otherwise acting on it, file it as a GitHub issue first via gh issue create — labeled (priority + category) and assigned to the current user. Trigger this proactively when you spot something worth tracking, not only when the user explicitly says "file an issue" or "track this" — but file only in a repo where you have write or triage permission, and confirm once per repo per session before the first filing. In someone else's repo, use github-contributing instead. Also use this skill when the user asks you to prioritize, triage, reprioritize, or map dependencies between existing issues on a repo.
 ---
 
 # GitHub issue-first workflow
@@ -11,20 +11,55 @@ test, a CI failure, a backlog item, anything — the default move is: **file the
 issue before you do anything else with it.** Not after you fix it, not only
 when the user remembers to ask. The issue tracker is the source of truth for
 "things we know about," and if a finding only ever lived in chat, it's gone
-the moment the conversation scrolls past.
+the moment the conversation scrolls past. Spotting it is automatic; filing it is gated by the
+Preconditions below (permission first, then one confirmation per repo per session).
 
 The one exception: if the user has explicitly said "just fix it" / "don't
 bother filing an issue for this" / equivalent, for this specific thing, skip
 the ceremony and just do the work. Read that as scoped to what they said, not
 a blanket opt-out for the rest of the session.
 
-## Before filing anything
+## Preconditions
 
-Check this is actually a GitHub-backed repo — `git remote -v` shows a
-`github.com` remote, or `gh repo view` succeeds. If there's no GitHub remote
-(no repo, or a non-GitHub host), this workflow doesn't apply; don't invent an
-issue tracker that isn't there. If `gh auth status` isn't logged in, say so
-and ask before proceeding rather than silently skipping.
+Filing an issue is an outward-facing record, and on a public repo it is public.
+Check all three before the first `gh issue create` in a repo:
+
+1. **A GitHub-backed repo.** `git remote -v` shows a `github.com` remote, or
+   `gh repo view` succeeds. If there's no GitHub remote (no repo, or a
+   non-GitHub host), this workflow doesn't apply; don't invent an issue tracker
+   that isn't there. If `gh auth status` isn't logged in, say so and ask before
+   proceeding rather than silently skipping.
+2. **Permission to file here.** Look at what the viewer can do:
+
+   ```bash
+   gh repo view --json viewerPermission,visibility,isFork
+   ```
+
+   `viewerPermission` is `ADMIN`, `MAINTAIN`, `WRITE`, `TRIAGE`, or `READ`. File
+   only with `TRIAGE` or higher, in a repo the user maintains or belongs to.
+   With `READ`, or when the problem is in someone else's upstream repo (including
+   a fork you are contributing from), **do not file**. You are an outside
+   contributor there: hand off to `github-contributing` and follow that repo's own
+   `CONTRIBUTING.md` for how to report it.
+3. **Confirm once per repo per session.** The first time in a session you
+   would file in a given repo, say where (repo and visibility) and what (the
+   title), and get a yes. After that, further issues in that repo this session
+   need no new confirmation unless the user says otherwise. Three things already
+   count as the confirmation and need no extra question: the user asked you to
+   file this issue; the maintainer approved an issue-creation plan
+   (`github-repo-review`); or it is the bootstrap issue under
+   `github-repo-bootstrap`.
+
+If a precondition fails, put the finding in your reply instead (what, where,
+why it matters) and do not file it.
+
+| Situation | Permission | What you do |
+|---|---|---|
+| The user's own repo; you notice a stale doc | `ADMIN` | Confirm once (repo, visibility, title), then file |
+| A teammate's private repo where you have triage | `TRIAGE` | Same: confirm once, then file |
+| An open-source repo you only cloned; you hit a bug | `READ` | Do not file. Report it the way that repo asks, via `github-contributing` |
+| Your fork of someone else's repo; the bug is upstream's | fork (`isFork`) | Do not file. Same hand-off |
+| The user says "file an issue for this" | `TRIAGE` or higher | File it; the request is the confirmation |
 
 ## Scaling ceremony to repo risk
 
@@ -198,7 +233,9 @@ rather than drafting new ones from scratch.
 
 ### Assignment
 
-Always `--assignee "@me"` unless the user has told you a different assignee
+Always `--assignee "@me"` (it needs `TRIAGE` or higher, which the Preconditions already
+require; if `gh` still refuses the assignment, file without it and say so) unless the user
+has told you a different assignee
 convention for this repo (e.g. "assign backend issues to X"). Don't leave
 issues unassigned — an unassigned finding is easy to lose track of.
 
