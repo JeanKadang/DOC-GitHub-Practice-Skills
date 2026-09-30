@@ -229,7 +229,7 @@ test('ChatGPT target exports flattened per-skill files, excluding agents/openai.
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name)
     .sort();
-  assert.deepEqual(names, expectedNames);
+  assert.deepEqual(names, [...expectedNames, 'LICENSE', 'manifest.json'].sort());
 
   const issueFirstSkill = inventory.skills.find(({ name }) => name === 'github-issue-first');
   const sourceContent = await readFile(join(repoRoot, 'skills', 'github-issue-first', 'SKILL.md'), 'utf8');
@@ -267,8 +267,111 @@ test('ChatGPT export with Force writes into a non-empty destination without dele
   // Force permits writing into a non-empty directory - it does not wipe
   // content this export doesn't own, the same "never destroy what you
   // don't own" posture the rest of this script already follows.
-  assert.deepEqual(names, [...expectedNames, 'unrelated-file.txt'].sort());
+  assert.deepEqual(names, [...expectedNames, 'LICENSE', 'manifest.json', 'unrelated-file.txt'].sort());
   assert.equal(await readFile(join(chatGPTExportPath, 'unrelated-file.txt'), 'utf8'), 'not part of this export\n');
+});
+
+async function readExportManifest(exportPath) {
+  return JSON.parse(await readFile(join(exportPath, 'manifest.json'), 'utf8'));
+}
+
+test('ChatGPT export writes a manifest with version, source map, hashes, and the licence (#127)', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+
+  await runInstaller({ chatGPTExportPath, target: 'ChatGPT' });
+
+  const manifest = await readExportManifest(chatGPTExportPath);
+  assert.equal(manifest.schemaVersion, 1);
+  assert.equal(manifest.packageVersion, inventory.packageVersion);
+  assert.ok('sourceCommit' in manifest, 'manifest records the source commit (null when unavailable)');
+  const expected = [...expectedChatGPTExportNames(), 'LICENSE'].sort();
+  assert.deepEqual(Object.keys(manifest.files).sort(), expected);
+  const entry = manifest.files['github-repo-review-review-prompt.md'];
+  assert.equal(entry.source, 'skills/github-repo-review/review-prompt.md');
+  assert.equal(entry.sha256, await sha256(join(chatGPTExportPath, 'github-repo-review-review-prompt.md')));
+  assert.equal(manifest.files.LICENSE.source, 'LICENSE');
+  assert.equal(await readFile(join(chatGPTExportPath, 'LICENSE'), 'utf8'), await readFile(join(repoRoot, 'LICENSE'), 'utf8'));
+});
+
+test('ChatGPT re-export over a previous export succeeds without Force and reports nothing changed (#127)', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+  await runInstaller({ chatGPTExportPath, target: 'ChatGPT' });
+
+  const result = await runInstaller({ chatGPTExportPath, target: 'ChatGPT' });
+
+  assert.match(result.stdout, /unchanged: \d+/i);
+  assert.doesNotMatch(result.stdout, /\b(added|changed|removed):/i);
+});
+
+test('ChatGPT re-export prints which files changed (#127)', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+  await runInstaller({ chatGPTExportPath, target: 'ChatGPT' });
+  const exportedSkill = join(chatGPTExportPath, 'github-issue-first-SKILL.md');
+  await writeFile(exportedSkill, 'stale content from an older export\n');
+  const manifest = await readExportManifest(chatGPTExportPath);
+  manifest.files['github-issue-first-SKILL.md'].sha256 = await sha256(exportedSkill);
+  await writeFile(join(chatGPTExportPath, 'manifest.json'), JSON.stringify(manifest, null, 2));
+
+  const result = await runInstaller({ chatGPTExportPath, target: 'ChatGPT' });
+
+  assert.match(result.stdout, /changed: .*github-issue-first-SKILL\.md/i);
+  assert.equal(
+    await readFile(exportedSkill, 'utf8'),
+    await readFile(join(repoRoot, 'skills', 'github-issue-first', 'SKILL.md'), 'utf8'),
+  );
+});
+
+test('ChatGPT re-export removes files the previous manifest lists but the source no longer has, and leaves unrelated files (#127)', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+  await runInstaller({ chatGPTExportPath, target: 'ChatGPT' });
+  const goneName = 'github-retired-skill-SKILL.md';
+  await writeFile(join(chatGPTExportPath, goneName), 'from a removed skill\n');
+  const manifest = await readExportManifest(chatGPTExportPath);
+  manifest.files[goneName] = { source: 'skills/github-retired-skill/SKILL.md', sha256: 'a'.repeat(64) };
+  await writeFile(join(chatGPTExportPath, 'manifest.json'), JSON.stringify(manifest, null, 2));
+  await writeFile(join(chatGPTExportPath, 'unrelated-file.txt'), 'mine\n');
+
+  const refused = await runInstaller({ chatGPTExportPath, target: 'ChatGPT', expectFailure: true });
+  assert.match(`${refused.stdout}
+${refused.stderr}`, /not part of|unrelated|Force/i);
+  assert.equal(await exists(join(chatGPTExportPath, goneName)), true, 'a refused run must change nothing');
+
+  const result = await runInstaller({ chatGPTExportPath, target: 'ChatGPT', force: true });
+
+  assert.match(result.stdout, /removed: .*github-retired-skill-SKILL\.md/i);
+  assert.equal(await exists(join(chatGPTExportPath, goneName)), false);
+  assert.equal(await readFile(join(chatGPTExportPath, 'unrelated-file.txt'), 'utf8'), 'mine\n');
+});
+
+test('ChatGPT export never deletes outside its folder because of a tampered manifest (#127)', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+  await runInstaller({ chatGPTExportPath, target: 'ChatGPT' });
+  const outside = join(root, 'outside.txt');
+  await writeFile(outside, 'keep me\n');
+  const manifest = await readExportManifest(chatGPTExportPath);
+  manifest.files['../outside.txt'] = { source: 'x', sha256: 'a'.repeat(64) };
+  await writeFile(join(chatGPTExportPath, 'manifest.json'), JSON.stringify(manifest, null, 2));
+
+  await runInstaller({ chatGPTExportPath, target: 'ChatGPT', force: true });
+
+  assert.equal(await readFile(outside, 'utf8'), 'keep me\n');
+});
+
+test('ChatGPT dry run previews changes against the previous export without writing (#127)', async () => {
+  const root = await temporaryRoot();
+  const chatGPTExportPath = join(root, 'chatgpt-export');
+  await runInstaller({ chatGPTExportPath, target: 'ChatGPT' });
+  const before = await treeSnapshot(chatGPTExportPath);
+
+  const result = await runInstaller({ chatGPTExportPath, target: 'ChatGPT', dryRun: true });
+
+  assert.match(result.stdout, /unchanged: \d+/i);
+  assert.deepEqual(await treeSnapshot(chatGPTExportPath), before);
 });
 
 test('CODEX_HOME/CLAUDE_HOME/COPILOT_HOME env vars are discovered when no -Home flag is passed', async () => {
