@@ -41,3 +41,6 @@ documentation clarifications and typo-level fixes do not need one.
   `github-for-ado-users`'s shape.
 - [0006](0006-chatgpt-coverage.md) — ChatGPT coverage via a Custom GPT
   export target, not an installer directory-copy or an Actions schema.
+- [0007](0007-two-track-education-program.md) — Split `education/` into a
+  GitHub track and an LLM/VS Code tooling track, both staged across the
+  same five tiers.
