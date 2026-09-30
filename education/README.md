@@ -136,3 +136,5 @@ mindmap
 - [LLM Track — Pre-requisite: What Is an LLM Assistant?](llm/prerequisite-what-is-an-llm-assistant.md) — ~15 min, reading only. Core vocabulary, the agentic-behavior surprise, and the confidently-wrong caveat. First page of the LLM track (ADR 0007); more to come.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
+- [Examples: Markdown formatting showcase](examples/markdown-formatting-showcase.md) — lookup reference, not a lesson.
+- [Examples: Mermaid diagram types showcase](examples/mermaid-diagram-types-showcase.md) — one example of each major diagram type, lookup reference.
