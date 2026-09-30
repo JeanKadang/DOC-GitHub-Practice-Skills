@@ -36,6 +36,47 @@ test('accepts the canonical twelve-skill checkout', async () => {
   assert.equal(result.skills.length, 12);
 });
 
+async function appendToSkill(root, name, text) {
+  const path = join(root, 'skills', name, 'SKILL.md');
+  const current = await readFile(path, 'utf8');
+  await writeFile(path, current + "\n" + text + "\n");
+}
+
+test('rejects a plugin:skill reference that is not in the roster (#119)', async () => {
+  const root = await fixtureFromRepo();
+  await appendToSkill(root, 'github-contributing', 'See `superpowers:receiving-code-review` for more.');
+  const result = await validateRepository(root);
+  assert.match(result.errors.join("\n"), /github-contributing.*superpowers:receiving-code-review/s);
+});
+
+test('rejects an unmarked reference to a file that only exists in this repository (#119)', async () => {
+  const root = await fixtureFromRepo();
+  await appendToSkill(root, 'github-issue-first', 'Read `docs/repo-settings-snapshot.md` first.');
+  const result = await validateRepository(root);
+  assert.match(result.errors.join("\n"), /github-issue-first.*docs\/repo-settings-snapshot\.md/s);
+});
+
+test('accepts a repository-only reference that is explicitly marked (#119)', async () => {
+  const root = await fixtureFromRepo();
+  await appendToSkill(root, 'github-issue-first', 'Read `docs/repo-settings-snapshot.md` (this repository only).');
+  const result = await validateRepository(root);
+  assert.deepEqual(result.errors, []);
+});
+
+test('rejects an unmarked ADR number reference (#119)', async () => {
+  const root = await fixtureFromRepo();
+  await appendToSkill(root, 'github-projects', 'The reasoning is in ADR 0003.');
+  const result = await validateRepository(root);
+  assert.match(result.errors.join("\n"), /github-projects.*ADR 0003/s);
+});
+
+test('accepts generic directory advice and label examples (#119)', async () => {
+  const root = await fixtureFromRepo();
+  await appendToSkill(root, 'github-issue-first', 'Keep decisions in `docs/adr/` and encode the area as `area:auth`.');
+  const result = await validateRepository(root);
+  assert.deepEqual(result.errors, []);
+});
+
 test('rejects an unregistered github skill directory', async () => {
   const root = await fixtureFromRepo();
   await mkdir(join(root, 'skills', 'github-unregistered'));

@@ -26,7 +26,7 @@ behind it.
 1. **Wiki** — "Does this repo already have an established, actively-used
    Wiki?" If yes, leave it — treat its content as source of truth for what
    it covers. If no, don't enable one unless explicitly asked. See
-   `github-repo-bootstrap`'s scaffolding matrix and ADR 0003 for the full
+   `github-repo-bootstrap`'s scaffolding matrix for the full
    reasoning behind this conditional stance.
 2. **Discussions** — "Enable Discussions? If yes, which categories does this
    repo actually need?" See `github-issue-first`'s Discussions section for

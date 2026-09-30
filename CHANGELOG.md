@@ -21,6 +21,15 @@
 
 ### Fixed
 
+- Installed skills no longer point at files that are not installed with them.
+  `github-issue-first` inlines its repo-risk checks instead of citing
+  `docs/repo-settings-snapshot.md`; the ADR 0003 citations and the
+  `superpowers:receiving-code-review` reference are gone; `github-hygiene`
+  no longer hardcodes this repository's merge method and branch-deletion
+  setting and tells the agent to check the repo's own; `github-projects` no
+  longer suggests repurposing milestones as iterations; and the repo-review
+  prompt now says "up to 10" so exactly ten issues has a defined path.
+  `npm run validate` now fails a skill that adds such a reference (#119).
 - The installer test helper's per-invocation timeout is now 60 s (override with
   `INSTALLER_TEST_TIMEOUT_MS`), a timeout is reported as a timeout with the
   signal, command, stdout, and stderr, and CI warms up PowerShell before the

@@ -84,13 +84,14 @@ gh issue list --state closed --limit 1000 --json number,title,body,stateReason `
 ## PR flow
 
 - One branch per issue: `fix/…`, `feat/…`, `ci/…`, `test/…`, `docs/…`, `release/x.y.z`. Branch from a fresh `git pull`ed main — never commit on main.
+- `main` in these steps means the repo's default branch. Look it up with `gh repo view --json defaultBranchRef -q .defaultBranchRef.name` and substitute it where it differs.
 - Prefer `gh issue develop <N> --name <branch> --base main --checkout` to start work: it creates the branch and links it to the issue. Start the PR body with `Refs #N`; replace it with `Closes #N` only after the acceptance gate passes. When falling back to `git checkout -b`, add the same `Refs #N` link manually.
 - Commit style: conventional (`fix:`, `feat:`, `ci:`, `test:`, `release:`), subject ≤ 50 chars, body says why. PR body states what changed and how it was verified.
 - Wait for CI green on **every** matrix leg (e.g. windows + ubuntu) before merge — `gh pr checks <N> --watch`. Never merge on a red or pending check, and never bypass required checks with an admin merge.
 - **Merging needs the maintainer's explicit approval — ask once per batch** ("merge these N when green?"). The maintainer sometimes merges from the GitHub UI mid-session: before acting on a PR, `git pull` and re-check `gh pr view <N>` state rather than assuming.
 - **A closing keyword needs acceptance approval too.** Do not merge a PR carrying
   `Closes #N` until the closure-gate procedure above passes for issue #N.
-- Merge with `gh pr merge <N> --merge` (repo history is merge commits, not squash). The repo setting *delete_branch_on_merge* is ON — remote branches clean themselves up.
+- Merge with the repo's configured method. Check `gh repo view --json mergeCommitAllowed,squashMergeAllowed,rebaseMergeAllowed`, use the matching flag (`gh pr merge <N> --merge`, `--squash`, or `--rebase`), and when several are allowed follow the repo's existing history. If `gh repo view --json deleteBranchOnMerge` reports false, delete the merged remote branch yourself.
 
 ### When CI goes red
 

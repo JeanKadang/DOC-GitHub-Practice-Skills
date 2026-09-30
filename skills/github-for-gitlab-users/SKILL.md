@@ -72,7 +72,7 @@ Unlike Azure DevOps (which has no wiki-equivalent gap to worry about),
 GitLab's Wiki is a genuinely first-class, actively-relied-on feature for many
 teams — a separate git repo, but one plenty of GitLab shops use well. Don't
 apply a blanket "never" here. `github-repo-bootstrap`'s conditional stance
-(ADR 0003) is the actual policy: leave an already-established, actively-used
+is the actual policy: leave an already-established, actively-used
 wiki alone and treat its content as source of truth for what it covers; don't
 proactively enable a fresh GitHub Wiki on a repo that doesn't already have
 one in active use. If the team is migrating *because* their GitLab wiki
@@ -156,7 +156,7 @@ Rough order, with the skill that covers each:
 | Rebuilding GitLab's multi-level Epic hierarchy as issue levels | Epic + sub-issues, one level |
 | Assuming scoped labels (`key::value`) carry over | Labels are flat — encode the key manually if grouping matters |
 | Assuming Groups/subgroups have a GitHub equivalent | Genuine hole — GitHub orgs are flat, plan for it |
-| Defaulting the Wiki to "off" because that's the usual policy | GitLab's Wiki is often genuinely first-class — see ADR 0003, decide per repo |
+| Defaulting the Wiki to "off" because that's the usual policy | GitLab's Wiki is often genuinely first-class — decide per repo |
 | Exploratory ideas filed as issues | Discussions; convert when it becomes actionable |
 | Expecting Approval Rules' granularity from Rulesets | Less granular — CODEOWNERS + a required-review count, no per-group approver counts |
 | A board as the source of truth | The board mirrors issues; labels and milestones are authoritative |

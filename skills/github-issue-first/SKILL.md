@@ -32,8 +32,16 @@ Not every repo warrants full issue-first ceremony by default. A repo with
 no CI, no branch protection, and no code that gets built, deployed, or
 tested — a static team-description page, a wiki-style content repo — is
 lower-stakes than one with real branch protection and required checks.
-`docs/repo-settings-snapshot.md` has the read-only commands to check which
-category a repo falls into before assuming either way.
+These read-only checks show which category a repo falls into, so you don't
+assume either way:
+
+```bash
+gh repo view --json visibility,defaultBranchRef,deleteBranchOnMerge
+gh api repos/{owner}/{repo}/rulesets      # a 403 means plan-gated, not "none"
+gh api repos/{owner}/{repo}/actions/workflows --jq '.workflows[].name'
+```
+
+No rulesets (and no 403), no workflows, and no tests points to low-stakes.
 
 For a repo that's clearly low-stakes by that check, **ask the maintainer
 once, up front**, whether they want the full issue → branch → PR ceremony

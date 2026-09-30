@@ -91,15 +91,16 @@ schemes side by side is the failure mode.
 **Iteration fields cannot be created from the CLI.** `gh project field-create`
 only accepts `TEXT`, `SINGLE_SELECT`, `DATE`, `NUMBER`. Iterations must be added
 in the web UI (or via a GraphQL `createProjectV2Field` mutation). Don't fake one
-with a text field — say it needs the UI, or map iterations to milestones instead,
-which is usually the better answer anyway.
+with a text field, and don't repurpose milestones for it: milestones are delivery
+buckets, not cadence (see `github-releases`). Say it needs the UI or GraphQL, or
+agree with the maintainer to go without cadence tracking.
 
 ### Multi-repo boards
 
 The org-level pattern from the decision table above (one board linked to
 several repos, not one board per repo) is the same `gh project create` and
 `gh project link` primitives shown earlier — just called once per repo
-instead of once total (see ADR 0003; this is a how-to for an already-decided
+instead of once total (this is a how-to for an already-decided
 pattern, not a policy question):
 
 ```bash
@@ -220,7 +221,7 @@ A board without these is just a nicer-looking backlog:
 | `gh project ...` fails with a scope error | `gh auth refresh -s project` (`read:org` too for org boards) — the user must run it |
 | Creating a board for a solo repo | Don't; milestones + labels are the system |
 | `item-edit --field-id Priority` | Field, option, item and project all need real IDs — resolve via `field-list`/`item-list --format json` |
-| Trying to create an Iteration field from the CLI | Not supported; web UI or GraphQL, or map iterations to milestones |
+| Trying to create an Iteration field from the CLI | Not supported; use the web UI or GraphQL, or go without cadence tracking. Don't repurpose milestones |
 | Draft items standing in for issues | File the issue, then `item-add` the URL |
 | Board Priority drifting from the priority label | Label is source of truth; fix the field |
 | One board per repo for a team working across repos | One org board, linked to each repo |

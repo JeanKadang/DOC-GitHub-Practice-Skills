@@ -34,6 +34,49 @@ export const CANONICAL_SKILLS = [
 
 const CANONICAL_NAMES = CANONICAL_SKILLS.map(({ name }) => name);
 
+// A skill is installed or exported on its own, without this repository's
+// docs/, education/, or ADRs, and without any third-party plugin. A reference
+// to one of those therefore dangles on a consumer machine (#119). Pointers
+// that are deliberately repository-specific carry this marker on the same line.
+export const REPOSITORY_ONLY_MARKER = '(this repository only)';
+
+export function findPortabilityProblems(source) {
+  const problems = [];
+  let inFence = false;
+  source.split(/\r?\n/).forEach((text, index) => {
+    if (/^\s*(?:```|~~~)/.test(text)) {
+      inFence = !inFence;
+      return;
+    }
+    if (inFence) {
+      return;
+    }
+    const marked = text.includes(REPOSITORY_ONLY_MARKER);
+    for (const match of text.matchAll(/`([^`]+)`/g)) {
+      const token = match[1];
+      if (/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*:[a-z][a-z0-9]*(?:-[a-z0-9]+)+$/.test(token)) {
+        problems.push({
+          line: index + 1,
+          message: `plugin reference \`${token}\` is not a skill in this roster; inline the guidance instead`,
+        });
+      } else if (!marked && /^(?:docs|education|platforms)\/[^\s*…]+\.[A-Za-z0-9]+$/.test(token)) {
+        problems.push({
+          line: index + 1,
+          message: `\`${token}\` exists only in this repository and is not installed with the skill; inline the guidance or mark it ${REPOSITORY_ONLY_MARKER}`,
+        });
+      }
+    }
+    const adr = text.match(/\bADR \d{4}\b/);
+    if (adr && !marked) {
+      problems.push({
+        line: index + 1,
+        message: `${adr[0]} is not installed with the skill; state the reasoning inline or mark it ${REPOSITORY_ONLY_MARKER}`,
+      });
+    }
+  });
+  return problems;
+}
+
 async function isFile(path) {
   try {
     return (await stat(path)).isFile();
@@ -216,6 +259,16 @@ export async function validateRepository(root = process.cwd()) {
         }
       } catch (error) {
         errors.push(`Skill ${canonical.name} frontmatter is invalid: ${error.message}`);
+      }
+    }
+
+    for (const requiredFile of canonical.requiredFiles.filter((file) => file.endsWith('.md'))) {
+      const filePath = join(skillRoot, requiredFile);
+      if (!(await isFile(filePath))) {
+        continue;
+      }
+      for (const problem of findPortabilityProblems(await readFile(filePath, 'utf8'))) {
+        errors.push(`Skill ${canonical.name} ${requiredFile}:${problem.line}: ${problem.message}`);
       }
     }
 
