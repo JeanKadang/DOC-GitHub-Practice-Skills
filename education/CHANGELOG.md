@@ -58,6 +58,15 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `education/facilitator-guide.md` updated with its sandbox
   requirements (git installed locally, clone access; no new repo
   scaffolding beyond what Session 1 already needs).
+- `education/extra/setup-local-dev-environment.md` — new Extra-tier
+  content (per ADR 0007's tier scheme): installing Git on Windows,
+  installing VS Code, connecting VS Code to GitHub Enterprise, and a
+  recommended-extensions list (Markdown, Mermaid preview, PowerShell,
+  GitHub Pull Requests and Issues) with why each one earns its place.
+  Optional, doesn't gate any other module — Session 2 already assumed
+  Git was installed; this is where that assumption gets satisfied. See
+  issue #93. `education/README.md`'s routing flowchart, table, mindmap,
+  and materials list updated.
 
 ## [1.0.0] - 2026-09-26
 
