@@ -145,7 +145,7 @@ jobs:
           }
 
   installer-dry-run-macos:
-    # Advisory, not required (see CLAUDE.md - macOS isn't a verified
+    # Advisory, not required (see AGENTS.md - macOS isn't a verified
     # environment the same way Windows is). Restored per #45: its previous
     # removal (#46) was because Assert-NoReparseInExistingAncestry always
     # false-positived here, since macOS's runner temp dirs (and $TMPDIR

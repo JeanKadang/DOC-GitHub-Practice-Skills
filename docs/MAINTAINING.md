@@ -8,13 +8,13 @@
 
 When a shared rule changes, inspect all twelve `skills/*/SKILL.md` files, the
 standalone repository-review prompt, the guide, workflow, platform guides,
-`CLAUDE.md`, issue forms, PR template, release automation, `education/`'s
-content, `CHANGELOG.md`'s `[Unreleased]` section, and `docs/adr/` for any
-decision record the change would supersede. A roster addition or removal is
-exactly this class of change — ADR 0002's own consequences list, this
-feature's design spec, and its implementation plan each independently missed
-`CHANGELOG.md` before this line existed to catch it.
-Human review must confirm that:
+`AGENTS.md` (the single source `CLAUDE.md` imports, ADR 0010), issue forms, PR
+template, release automation, `education/`'s content, `CHANGELOG.md`'s
+`[Unreleased]` section, and `docs/adr/` for any decision record the change would
+supersede. A roster addition or removal is exactly this class of change — ADR
+0002's own consequences list, this feature's design spec, and its implementation
+plan each independently missed `CHANGELOG.md` before this line existed to catch
+it. Human review must confirm that:
 
 - issue-first work retains ownership, priority, category, milestone, and scope;
 - `Refs #N` remains until criterion evidence passes the closure gate;

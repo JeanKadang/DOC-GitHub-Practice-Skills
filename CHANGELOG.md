@@ -13,6 +13,11 @@
 
 ### Changed
 
+- `AGENTS.md` is now the single agent-guidance file and `CLAUDE.md` only
+  imports it (`@AGENTS.md`), so Codex, Copilot, and Claude Code read the same
+  text. `tests/agent-guidance.test.mjs` fails if the import is lost or the file
+  cites a missing path, names a platform twice, or omits a skill. See ADR 0010
+  (#116).
 - `install-skills.ps1` upgrades an unmodified install from an earlier release
   in place, with no `-Force` and no backup, by checking installed files
   against the hashes in their own marker. Reinstalling the current release is

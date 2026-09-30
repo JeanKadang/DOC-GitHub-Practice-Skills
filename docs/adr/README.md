@@ -50,3 +50,5 @@ documentation clarifications and typo-level fixes do not need one.
 - [0009](0009-education-numbered-folders.md) — Numbered `education/`
   folders for reading order, refining ADR 0007; promoted the LLM track's
   Pre-requisite page to required reading.
+- [0010](0010-single-agent-guidance-file.md) — `AGENTS.md` is the one canonical
+  agent-guidance file and `CLAUDE.md` imports it, enforced by a test.
