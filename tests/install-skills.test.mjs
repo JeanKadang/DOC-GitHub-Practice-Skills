@@ -42,6 +42,7 @@ async function runInstaller({
   target = 'Both',
   dryRun = false,
   force = false,
+  keepBackups,
   expectFailure = false,
   env,
 }) {
@@ -59,6 +60,7 @@ async function runInstaller({
   if (chatGPTExportPath) args.push('-ChatGPTExportPath', chatGPTExportPath);
   if (dryRun) args.push('-DryRun');
   if (force) args.push('-Force');
+  if (keepBackups !== undefined) args.push('-KeepBackups', String(keepBackups));
 
   // Strip these from the inherited environment by default so a developer's
   // own shell (or a prior test) can't leak a real CLAUDE_HOME/CODEX_HOME/
@@ -569,10 +571,102 @@ test('a dry run of an unmodified reinstall does not advertise a backup that will
 
   const result = await runInstaller({ codexHome, target: 'Codex', dryRun: true });
 
-  assert.match(result.stdout, /overwrite/i);
+  assert.match(result.stdout, /already current/i);
   assert.match(result.stdout, /backup: none/i);
   assert.doesNotMatch(result.stdout, /skill-backups/i);
   assert.deepEqual(await treeSnapshot(root), before);
+});
+
+async function installOldRelease(root, codexHome, { tamper } = {}) {
+  const sourceRoot = await sourceFixture(join(root, 'old'));
+  const inventoryPath = join(sourceRoot, 'contracts', 'skill-inventory.json');
+  const oldInventory = JSON.parse(await readFile(inventoryPath, 'utf8'));
+  oldInventory.packageVersion = '0.0.1';
+  await writeFile(inventoryPath, JSON.stringify(oldInventory, null, 2));
+  const oldSkill = join(sourceRoot, 'skills', inventory.skills[0].name, 'SKILL.md');
+  await writeFile(oldSkill, `${await readFile(oldSkill, 'utf8')}
+old release text
+`);
+  await runInstaller({ sourceRoot, codexHome, target: 'Codex' });
+}
+
+test('an unmodified install from an older release upgrades without Force or a backup (#118)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+  await installOldRelease(root, codexHome);
+  const name = inventory.skills[0].name;
+  const skillPath = join(codexHome, 'skills', name, 'SKILL.md');
+  assert.notEqual(await sha256(skillPath), await sha256(join(repoRoot, 'skills', name, 'SKILL.md')));
+
+  const preview = await runInstaller({ codexHome, target: 'Codex', dryRun: true });
+  assert.match(preview.stdout, new RegExp(`${name}: upgrade from v0\.0\.1 to v${inventory.packageVersion.replace(/./g, '\.')}; backup: none`));
+
+  await runInstaller({ codexHome, target: 'Codex' });
+
+  assert.equal(await sha256(skillPath), await sha256(join(repoRoot, 'skills', name, 'SKILL.md')));
+  assert.equal(await exists(join(codexHome, 'skill-backups')), false);
+  const marker = JSON.parse(await readFile(join(codexHome, 'skills', name, '.doc-github-practice-skills.json'), 'utf8'));
+  assert.equal(marker.packageVersion, inventory.packageVersion);
+});
+
+test('a user-edited file in an older-release install is still refused without Force (#118)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+  await installOldRelease(root, codexHome);
+  await writeFile(join(codexHome, 'skills', inventory.skills[0].name, 'SKILL.md'), 'edited locally\n');
+  const before = await treeSnapshot(codexHome);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', expectFailure: true });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /modified|hash/i);
+  assert.deepEqual(await treeSnapshot(codexHome), before);
+});
+
+test('an older-release marker naming a path outside the skill is refused (#118)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+  await installOldRelease(root, codexHome);
+  const markerPath = join(codexHome, 'skills', inventory.skills[0].name, '.doc-github-practice-skills.json');
+  const marker = JSON.parse(await readFile(markerPath, 'utf8'));
+  marker.requiredFiles['../../escape.txt'] = 'a'.repeat(64);
+  await writeFile(markerPath, JSON.stringify(marker, null, 2));
+  const before = await treeSnapshot(codexHome);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', expectFailure: true });
+
+  assert.match(`${result.stdout}
+${result.stderr}`, /hash data|modified|marker/i);
+  assert.deepEqual(await treeSnapshot(codexHome), before);
+});
+
+test('reinstalling the current release is a no-op that changes nothing (#118)', async () => {
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  const before = await treeSnapshot(codexHome);
+
+  await runInstaller({ codexHome, target: 'Codex' });
+
+  assert.deepEqual(await treeSnapshot(codexHome), before);
+  assert.equal(await exists(join(codexHome, 'skill-backups')), false);
+});
+
+test('KeepBackups bounds skill-backups to the newest N sets (#118)', async () => {
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  await runInstaller({ codexHome, target: 'Codex', force: true });
+  await runInstaller({ codexHome, target: 'Codex', force: true });
+  const earlier = await readdir(join(codexHome, 'skill-backups'));
+  assert.equal(earlier.length, 2);
+
+  const preview = await runInstaller({ codexHome, target: 'Codex', force: true, keepBackups: 1, dryRun: true });
+  assert.match(preview.stdout, /prune/i);
+  assert.equal((await readdir(join(codexHome, 'skill-backups'))).length, 2);
+
+  await runInstaller({ codexHome, target: 'Codex', force: true, keepBackups: 1 });
+
+  const remaining = await readdir(join(codexHome, 'skill-backups'));
+  assert.equal(remaining.length, 1);
+  assert.equal(earlier.includes(remaining[0]), false, 'the newest backup set must survive');
 });
 
 test('Force creates a byte-preserving backup before replacing a skill', async () => {

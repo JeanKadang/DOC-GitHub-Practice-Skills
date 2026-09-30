@@ -21,8 +21,12 @@ Then install:
 pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Codex
 ```
 
-Upgrading over a previous install of this package needs `-Force`, which
-writes a timestamped backup first.
+Upgrading over an unmodified earlier install of this package needs no
+`-Force` and makes no backup: the installer recognizes its own marker and
+replaces the skill in place. Reinstalling the same release changes nothing.
+`-Force` is for a skill you changed locally (or an untracked directory): it
+backs the whole directory up first. Add `-KeepBackups N` to keep only the
+newest N backup sets under `skill-backups`.
 
 Installed skill directories belong to the installer, which tracks them with a
 marker file. A file you add inside `skills/<name>/` counts as a local

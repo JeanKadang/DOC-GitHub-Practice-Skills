@@ -7,6 +7,8 @@ param(
     [string]$ClaudeHome = $(if ($env:CLAUDE_HOME) { $env:CLAUDE_HOME } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) '.claude' }),
     [string]$CopilotHome = $(if ($env:COPILOT_HOME) { $env:COPILOT_HOME } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) '.copilot' }),
     [string]$ChatGPTExportPath = (Join-Path ([Environment]::GetFolderPath('UserProfile')) 'chatgpt-skills-export'),
+    [ValidateRange(-1, 1000)]
+    [int]$KeepBackups = -1,
     [switch]$DryRun,
     [switch]$Force
 )
@@ -216,39 +218,71 @@ function Test-TrackedSkill {
     if (($markerProperties -join "`n") -ne ($expectedMarkerProperties -join "`n") -or
         $marker.schemaVersion -ne 1 -or
         $marker.packageName -ne $packageName -or
-        $marker.packageVersion -ne $Inventory.packageVersion -or
+        [string]::IsNullOrWhiteSpace([string]$marker.packageVersion) -or
         $marker.skillName -ne $Skill.name) {
         return [pscustomobject]@{ Valid = $false; Reason = "untracked existing skill '$($Skill.name)' has a non-matching marker" }
     }
 
+    # A marker from the current release is checked against the current source,
+    # which also exposes an edited marker. A marker from an earlier release is
+    # checked against its own recorded hashes: the source has moved on, so the
+    # only question is whether the user changed the installed files (#118).
+    $isCurrent = ($marker.packageVersion -eq $Inventory.packageVersion)
     $markerKeys = @(Get-OrdinalSortedStrings -Values $marker.requiredFiles.psobject.Properties.Name)
     $requiredKeys = @(Get-OrdinalSortedStrings -Values $Skill.requiredFiles)
-    if (($markerKeys -join "`n") -ne ($requiredKeys -join "`n")) {
-        return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' has invalid hash data" }
+    if ($isCurrent) {
+        if (($markerKeys -join "`n") -ne ($requiredKeys -join "`n")) {
+            return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' has invalid hash data" }
+        }
+    }
+    else {
+        if ($markerKeys.Count -eq 0) {
+            return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' has invalid hash data" }
+        }
+        foreach ($markerKey in $markerKeys) {
+            if ([string]::IsNullOrWhiteSpace($markerKey) -or
+                [IO.Path]::IsPathRooted($markerKey) -or
+                (($markerKey -split '[\\/]') -contains '..')) {
+                return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' has invalid hash data" }
+            }
+        }
     }
 
-    foreach ($relativeFile in $requiredKeys) {
+    foreach ($relativeFile in $markerKeys) {
         $installedFile = Join-Path $SkillPath $relativeFile
         if (-not (Test-Path -LiteralPath $installedFile -PathType Leaf)) {
             return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' is modified: missing '$relativeFile'" }
         }
         $recordedHash = $marker.requiredFiles.psobject.Properties[$relativeFile].Value
-        $sourceFile = Join-Path $resolvedSource (Join-Path 'skills' (Join-Path $Skill.name $relativeFile))
-        $sourceHash = Get-FileHashHex -LiteralPath $sourceFile
         if ($recordedHash -notmatch '^[0-9a-fA-F]{64}$' -or
-            $recordedHash -ne $sourceHash -or
-            (Get-FileHashHex -LiteralPath $installedFile) -ne $sourceHash) {
+            (Get-FileHashHex -LiteralPath $installedFile) -ne $recordedHash) {
             return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' is modified: hash mismatch for '$relativeFile'" }
+        }
+        if ($isCurrent) {
+            $sourceFile = Join-Path $resolvedSource (Join-Path 'skills' (Join-Path $Skill.name $relativeFile))
+            if ($recordedHash -ne (Get-FileHashHex -LiteralPath $sourceFile)) {
+                return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' is modified: hash mismatch for '$relativeFile'" }
+            }
         }
     }
 
-    # An entry the source skill does not ship (and that is not the marker) is
+    # An entry the release does not ship (and that is not the marker) is
     # user-added content. Treat it as a modification so an ordinary reinstall
     # cannot silently delete it (#140); -Force backs up the whole directory.
-    $sourceSkillRoot = Join-Path $resolvedSource (Join-Path 'skills' $Skill.name)
     $expectedEntries = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
-    foreach ($relativeEntry in @(Get-RelativeEntries -Root $sourceSkillRoot)) {
-        [void]$expectedEntries.Add($relativeEntry)
+    if ($isCurrent) {
+        $sourceSkillRoot = Join-Path $resolvedSource (Join-Path 'skills' $Skill.name)
+        foreach ($relativeEntry in @(Get-RelativeEntries -Root $sourceSkillRoot)) {
+            [void]$expectedEntries.Add($relativeEntry)
+        }
+    }
+    else {
+        foreach ($markerKey in $markerKeys) {
+            $parts = @(($markerKey -replace '\\', '/') -split '/')
+            for ($i = 1; $i -le $parts.Count; $i++) {
+                [void]$expectedEntries.Add(($parts[0..($i - 1)] -join '/'))
+            }
+        }
     }
     [void]$expectedEntries.Add($markerName)
     foreach ($relativeEntry in @(Get-RelativeEntries -Root $SkillPath)) {
@@ -257,7 +291,30 @@ function Test-TrackedSkill {
         }
     }
 
-    return [pscustomobject]@{ Valid = $true; Reason = $null }
+    return [pscustomobject]@{ Valid = $true; Reason = $null; IsCurrent = $isCurrent; InstalledVersion = [string]$marker.packageVersion }
+}
+
+function Get-PrunableBackupSets {
+    # Backup sets are direct children of skill-backups named by the
+    # timestamp format used below. Returns all but the newest $Keep of them.
+    param(
+        [Parameter(Mandatory)][string]$BackupRoot,
+        [Parameter(Mandatory)][int]$Keep
+    )
+
+    if ($Keep -lt 0 -or -not (Test-Path -LiteralPath $BackupRoot -PathType Container)) {
+        return @()
+    }
+    $sets = @(Get-ChildItem -LiteralPath $BackupRoot -Directory -Force |
+        Where-Object {
+            $_.Name -match '^\d{8}T\d{13}Z$' -and
+            -not ($_.Attributes -band [IO.FileAttributes]::ReparsePoint)
+        } |
+        Sort-Object -Property Name -Descending)
+    if ($sets.Count -le $Keep) {
+        return @()
+    }
+    return @($sets | Select-Object -Skip $Keep)
 }
 
 # Validate the complete canonical source before inspecting or creating destinations.
@@ -473,10 +530,13 @@ foreach ($spec in $targetSpecs) {
             if ($Force -and (Test-Path -LiteralPath $backupPath)) {
                 throw "Backup path already exists: $backupPath"
             }
+            $mode = if ($Force) { 'Backup' } elseif ($tracked.IsCurrent) { 'Skip' } else { 'Upgrade' }
             $replacements += [pscustomobject]@{
                 Skill = $skill
                 Destination = $destination
                 BackupPath = $backupPath
+                Mode = $mode
+                InstalledVersion = $(if ($tracked.Valid) { $tracked.InstalledVersion } else { $null })
             }
         }
     }
@@ -498,16 +558,21 @@ if ($DryRun) {
         foreach ($skill in $inventory.skills) {
             $replacement = $plan.Replacements | Where-Object { $_.Skill.name -eq $skill.name }
             if ($null -ne $replacement) {
-                if ($Force) {
-                    Write-Output "  $($skill.name): overwrite; backup: $($replacement.BackupPath)"
-                }
-                else {
-                    Write-Output "  $($skill.name): overwrite (unmodified install); backup: none"
+                switch ($replacement.Mode) {
+                    'Backup' { Write-Output "  $($skill.name): overwrite; backup: $($replacement.BackupPath)" }
+                    'Upgrade' { Write-Output "  $($skill.name): upgrade from v$($replacement.InstalledVersion) to v$($inventory.packageVersion); backup: none" }
+                    default { Write-Output "  $($skill.name): already current; backup: none" }
                 }
             }
             else {
                 Write-Output "  $($skill.name): install; backup: none"
             }
+        }
+        if ($KeepBackups -ge 0) {
+            $willBackUp = @($plan.Replacements | Where-Object { $_.Mode -eq 'Backup' }).Count -gt 0
+            $existingKeep = if ($willBackUp) { [Math]::Max(0, $KeepBackups - 1) } else { $KeepBackups }
+            $prunable = @(Get-PrunableBackupSets -BackupRoot (Join-Path $plan.PlatformPath 'skill-backups') -Keep $existingKeep)
+            Write-Output "  Backups: keeping the newest $KeepBackups; would prune $($prunable.Count) existing set(s)"
         }
     }
     exit 0
@@ -538,8 +603,11 @@ try {
         foreach ($skill in $inventory.skills) {
             $destination = Join-Path $plan.SkillRoot $skill.name
             $replacement = $plan.Replacements | Where-Object { $_.Skill.name -eq $skill.name }
+            if ($null -ne $replacement -and $replacement.Mode -eq 'Skip') {
+                continue
+            }
             if ($null -ne $replacement) {
-                if ($Force) {
+                if ($replacement.Mode -eq 'Backup') {
                     $backupParent = [IO.Path]::GetDirectoryName($replacement.BackupPath)
                     Assert-SafeTargetPaths -Plan $plan -Destination $replacement.Destination -BackupPath $replacement.BackupPath
                     New-Item -ItemType Directory -Path $backupParent -Force | Out-Null
@@ -577,6 +645,17 @@ finally {
             if ($isOwnedName -and $isDirectChild -and -not $isReparse) {
                 Remove-Item -LiteralPath $resolvedStage -Recurse -Force
             }
+        }
+    }
+}
+
+if ($KeepBackups -ge 0) {
+    foreach ($plan in $plans) {
+        $backupRoot = Join-Path $plan.PlatformPath 'skill-backups'
+        foreach ($set in @(Get-PrunableBackupSets -BackupRoot $backupRoot -Keep $KeepBackups)) {
+            Assert-PathWithin -Path $set.FullName -Parent $backupRoot -Description "$($plan.Name) backup set"
+            Remove-Item -LiteralPath $set.FullName -Recurse -Force
+            Write-Output "Pruned $($plan.Name) backup set: $($set.Name)"
         }
     }
 }

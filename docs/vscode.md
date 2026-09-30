@@ -67,9 +67,10 @@ Both` also exists and installs for Claude *and* Codex together — skip it
 here unless you specifically also use Codex outside VS Code; it won't do
 anything for Copilot.)
 
-Upgrading over a previous install needs `-Force`, which writes a timestamped
-backup first — see [docs/claude.md](claude.md) or
-[docs/copilot.md](copilot.md) for that flag's full behavior.
+Upgrading over an unmodified earlier install needs no `-Force` and makes no
+backup. `-Force` is only for a skill you changed locally — see
+[docs/claude.md](claude.md) or [docs/copilot.md](copilot.md) for the full
+behavior, including `-KeepBackups`.
 
 ## 4. Make VS Code notice the new skills
 
