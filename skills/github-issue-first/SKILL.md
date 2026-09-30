@@ -26,6 +26,23 @@ Check this is actually a GitHub-backed repo — `git remote -v` shows a
 issue tracker that isn't there. If `gh auth status` isn't logged in, say so
 and ask before proceeding rather than silently skipping.
 
+## Scaling ceremony to repo risk
+
+Not every repo warrants full issue-first ceremony by default. A repo with
+no CI, no branch protection, and no code that gets built, deployed, or
+tested — a static team-description page, a wiki-style content repo — is
+lower-stakes than one with real branch protection and required checks.
+`docs/repo-settings-snapshot.md` has the read-only commands to check which
+category a repo falls into before assuming either way.
+
+For a repo that's clearly low-stakes by that check, **ask the maintainer
+once, up front**, whether they want the full issue → branch → PR ceremony
+or a lighter touch (e.g. direct edits with a clear commit message) — don't
+unilaterally decide to skip it, and don't ask again once they've told you
+for that repo. Any repo with CI, tests, deployment, or existing branch
+protection keeps the default full ceremony without asking; that signal
+alone is enough to know it's warranted.
+
 ## Filing a single issue
 
 ```bash
