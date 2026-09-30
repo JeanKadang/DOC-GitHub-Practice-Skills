@@ -33,6 +33,13 @@ project. Requirements:
   assignee, plus the same priority labels, category label, and open milestone
   as Modules 2.1/2.2. Attendees rewrite it, then close it as "not planned"
   with a short comment; recreate the seeded issue for each cohort.
+- **For Module 2.4's exercise:** a branch named `practice/oversized` with one
+  commit that changes two unrelated files (a typo fix in `README.md` and a new
+  line in `CONTRIBUTORS.md`), a pull-request template, and at least one open
+  issue for attendees to reference. The template in
+  `skills/github-repo-configure/templates/pull_request_template.md` is a good
+  generic one to copy. Attendees close their pull requests unmerged and delete
+  their branches; recreate the seeded branch for each cohort.
 - **For Module 3.2's exercise:** a Projects v2 board with at least one item
   linked to a real issue, and one deliberately unlinked **draft item** (an
   entry created only on the board) — the module's exercise asks attendees
@@ -64,6 +71,8 @@ stateDiagram-v2
       label, and one open milestone exist on the sandbox repo.
 - [ ] For Module 2.3: confirm the seeded vague issue ("Fix the badge bug")
       exists, unlabeled and unassigned.
+- [ ] For Module 2.4: confirm the `practice/oversized` branch exists and the
+      sandbox has a pull-request template and an open issue.
 - [ ] For Module 3.2: confirm the sandbox repo has a Projects board with at
       least one item linked to a real issue and one unlinked draft item.
 - [ ] Have this guide and the relevant session or module file open,
@@ -79,7 +88,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.2 / Intermediate modules 2.1-2.3 / Advanced modules 3.1-3.6)" to
+(Beginner modules 0.1-1.2 / Intermediate modules 2.1-2.4 / Advanced modules 3.1-3.6)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.
