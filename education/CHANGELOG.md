@@ -74,6 +74,15 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Git was installed; this is where that assumption gets satisfied. See
   issue #93. `education/README.md`'s routing flowchart, table, mindmap,
   and materials list updated.
+- `education/advanced/module-3e-actions-runners-and-agents.md` — what a
+  GitHub Actions workflow is, GitHub-hosted vs. self-hosted runners (and
+  the security caveat on self-hosted runners against a public repo), and
+  GitHub's Copilot coding agent — with the key point that a PR it opens
+  goes through the exact same review/merge gate as a human-authored one.
+  Deliberately scoped to the GitHub platform feature, not ADR 0007's LLM
+  track (personal AI-tool usage). See issue #96. `education/README.md`
+  routing updated; Module 3d's "last module" pointer updated to hand off
+  to 3e.
 - `education/llm/prerequisite-what-is-an-llm-assistant.md` — the first
   content in ADR 0007's LLM track: core vocabulary (model, prompt, context
   window, chat vs. agent mode), the agentic file/commit-editing behavior

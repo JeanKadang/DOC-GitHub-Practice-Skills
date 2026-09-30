@@ -77,6 +77,7 @@ Discussions section.
 
 ---
 
-This is the last of the six modules. From here, the `skills/*/SKILL.md`
-files themselves are the reference for anything not covered in this
-program. Back to [Education Program overview](../README.md).
+Next: [Module 3e: Actions, runners, and the Copilot coding agent](module-3e-actions-runners-and-agents.md),
+or back to [Education Program overview](../README.md). From here, the
+`skills/*/SKILL.md` files themselves are the reference for anything not
+covered in this program.
