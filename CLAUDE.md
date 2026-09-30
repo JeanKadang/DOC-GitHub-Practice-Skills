@@ -6,12 +6,16 @@ code in this repository.
 ## What this repository is
 
 This is **not** an application — it's a versioned package of GitHub workflow
-skills (`skills/github-*/SKILL.md`) consumed by three AI coding platforms:
-OpenAI Codex, Claude Code, and GitHub Copilot CLI (GitHub's Agent Skills
-format is an explicit open standard shared with Anthropic's, so no content
-translation is needed for Copilot). The repo's product is policy text plus a
-validated manifest and an installer that copies that policy into a consumer's
-home directory (`~/.codex`, `~/.claude`, and/or `~/.copilot`).
+skills (`skills/github-*/SKILL.md`) consumed by four AI coding platforms:
+OpenAI Codex, Claude Code, GitHub Copilot CLI, and ChatGPT (GitHub's Agent
+Skills format is an explicit open standard shared with Anthropic's, so no
+content translation is needed for Copilot; ChatGPT consumes the same raw
+`SKILL.md` content verbatim as Custom GPT Knowledge files — see ADR 0006).
+The repo's product is policy text plus a validated manifest and an installer
+that copies that policy into a consumer's home directory (`~/.codex`,
+`~/.claude`, and/or `~/.copilot`) — or, for ChatGPT, which has no such home
+directory to install into, exports a flattened file set for upload as Custom
+GPT Knowledge (`docs/chatgpt.md`).
 
 Because the "code" here is largely prescriptive documentation that other AI
 agents will read and act on, precision and internal consistency across files
@@ -65,9 +69,13 @@ handles releases.
 (`scripts/install-skills.ps1`) copies these directories into a consumer's
 `.codex/skills`, `.claude/skills`, and/or `.copilot/skills`. **Installed
 copies are deployment outputs — never edit them; always edit the canonical
-`skills/` tree and let the installer redeploy.** All three platforms read the
-same `SKILL.md`; only Codex also reads the `agents/openai.yaml` sidecar
-(Claude and Copilot both ignore it).
+`skills/` tree and let the installer redeploy.** All four platforms consume
+the same `SKILL.md` content verbatim; only Codex also reads the
+`agents/openai.yaml` sidecar (Claude and Copilot both ignore it). ChatGPT is
+the odd one out on *mechanism*, not content: it has no local skills
+directory to copy into, so the installer instead flattens the same content
+into individually-named files for a Custom GPT Knowledge upload — see
+`docs/chatgpt.md` and ADR 0006.
 
 ### The twelve canonical skills and their handoffs
 
