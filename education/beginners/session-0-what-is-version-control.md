@@ -21,6 +21,35 @@ If you already know what a commit and a branch are, skip straight to
 [Session 1](session-1-getting-started.md). If any of the vocabulary below
 is new, five minutes here saves confusion later.
 
+## Protect your account before you need to
+
+This is the one section here that isn't about concepts — it's a checklist,
+and it matters before you touch anything else. A colleague recently lost
+GitHub access after a phone replacement: no recovery codes saved anywhere,
+and the authenticator entry didn't carry over automatically. Losing account
+access is disruptive and avoidable; do these once, now:
+
+- **Enable two-factor authentication (2FA)**, and add GitHub to your
+  authenticator app — on a company device, use the company's shared/managed
+  authenticator setup (e.g. Microsoft Authenticator), not a personal-only
+  arrangement nobody else could help recover.
+- **Save your recovery codes somewhere durable and independent of any
+  single device** — a password manager, not a note on the phone you might
+  replace. GitHub shows these once, at 2FA setup; there's no second chance
+  to view the same set later.
+- **Before replacing a device, transfer or re-register 2FA first.** It does
+  not carry over automatically just because you're signed into other
+  services on the new phone.
+- **GitHub Mobile** (iOS/Android) is a legitimate way to check
+  notifications and review or approve PRs from your phone — genuinely
+  useful, but approving a merge from a phone deserves the same care as
+  from a laptop, not less.
+- **If you're already locked out**, use GitHub's account recovery flow
+  (Settings → Password and authentication → recovery options, from a
+  device where you're still signed in, or the sign-in page's "recover
+  account" link if not). For an organization-owned repo, your org's admin
+  can also help re-establish access — know who that is before you need it.
+
 ## What version control actually is
 
 Version control is a history of every saved change to a set of files,

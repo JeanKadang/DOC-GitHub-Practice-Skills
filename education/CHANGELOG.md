@@ -58,6 +58,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `education/facilitator-guide.md` updated with its sandbox
   requirements (git installed locally, clone access; no new repo
   scaffolding beyond what Session 1 already needs).
+- `education/beginners/session-0-what-is-version-control.md` gained a
+  "Protect your account before you need to" section: 2FA/authenticator
+  setup (shared company authenticator over a personal-only device),
+  durable recovery-code storage, re-registering 2FA before replacing a
+  device, GitHub Mobile as a legitimate option, and the locked-out
+  recovery path. Prompted by a colleague actually losing GitHub access
+  after a device replacement with no recovery codes saved. See issue #90.
 
 ## [1.0.0] - 2026-09-26
 
