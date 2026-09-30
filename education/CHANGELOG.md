@@ -39,6 +39,14 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   live `Refs`/`Closes` connected-branch gotcha trigger is the centerpiece),
   a self-graded self-check, and a feedback prompt pointing at this repo's
   Discussions (Ideas category).
+- `education/beginners/session-0-what-is-version-control.md` — a
+  reading-only primer positioned before Session 1: what version control
+  is, plain-terms vocabulary (commit/branch/push/pull/PR/merge), how
+  GitHub's workflow assembles them, and a short GitHub vs GitLab vs Azure
+  DevOps terminology table that points to the full `github-for-ado-users`
+  and `github-for-gitlab-users` skills for depth. See issue #72.
+  `education/README.md`'s routing flowchart, table, mindmap, and
+  materials list updated to route into it ahead of Session 1.
 
 ## [1.0.0] - 2026-09-26
 
