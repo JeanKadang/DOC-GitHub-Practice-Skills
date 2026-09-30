@@ -22,7 +22,8 @@ One page. Keep this open in a tab while you work.
 | Action | Command |
 | --- | --- |
 | Clone a repo | `git clone <url>` |
-| Create and switch to a branch | `git checkout -b <branch-name>` |
+| Create a branch **linked to an issue** (preferred) | `gh issue develop <N> --name <branch-name> --base main --checkout` |
+| Create and switch to a branch (no issue link — add `Refs #N` to the PR body yourself) | `git checkout -b <branch-name>` |
 | See what's changed | `git status` |
 | Stage and commit | `git add <file>` then `git commit -m "message"` |
 | Push a new branch | `git push -u origin <branch-name>` |
