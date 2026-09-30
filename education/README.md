@@ -31,7 +31,7 @@ flowchart TD
     Extra --> S2
     S2 --> M2a
     M2a --> M2b[Module 2b: PR review and branch conventions]
-    M2b --> M3[Modules 3a-3d: pick any, in any order - all optional]
+    M2b --> M3[Modules 3a-3e: pick any, in any order - all optional]
 ```
 
 | Background | Start here |
@@ -47,7 +47,7 @@ Basics](beginners/session-2-local-git-basics.md) before Module 2a — it
 covers staging, conflicts, and undoing a mistake, none of which the web-UI
 path in Session 1 touches.
 
-Modules 2a and 2b build on each other — do 2a first. Modules 3a-3d are
+Modules 2a and 2b build on each other — do 2a first. Modules 3a-3e are
 each independent and optional; read any subset, in any order, based on
 what's relevant to you. Each module is sized to fit a single sitting
 (15-40 minutes) rather than blocking out a full session.
@@ -64,7 +64,7 @@ checklist if you're the one setting it up.
 
 ## What's covered
 
-What this shows: the topic areas across all six modules, at a glance, so
+What this shows: the topic areas across all seven modules, at a glance, so
 you can judge which Module 3 topics are relevant to you without reading
 their full content.
 
@@ -97,6 +97,10 @@ mindmap
     Module 3b: Projects boards
     Module 3c: Releases
     Module 3d: Security response basics
+    Module 3e: Actions, runners, and the Copilot coding agent
+      Workflows and .github/workflows
+      Hosted vs self-hosted runners
+      Copilot coding agent - same review gate
     Extra: Setup Local Dev Environment
       Install Git
       Install VS Code
@@ -115,6 +119,7 @@ mindmap
 - [Module 3b: Projects boards](advanced/module-3b-projects-boards.md) — ~20 min, optional.
 - [Module 3c: Releases](advanced/module-3c-releases.md) — ~25 min, optional.
 - [Module 3d: Security response basics](advanced/module-3d-security-response.md) — ~15 min, optional.
+- [Module 3e: Actions, runners, and the Copilot coding agent](advanced/module-3e-actions-runners-and-agents.md) — ~15-20 min, optional.
 - [Extra: Setting Up Your Local Dev Environment](extra/setup-local-dev-environment.md) — ~30 min, mostly install time. Installing Git and VS Code, connecting to GitHub Enterprise, recommended extensions. Optional — only needed if you don't already have these.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
