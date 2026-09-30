@@ -155,7 +155,8 @@ request, that is one issue, not five.
   triage permission first, and confirms once per repository per session
   before the first filing, because an issue on a public repository is public.
   In a repository you only read, report the problem the way that repository
-  asks. A later module covers contributing to someone else's repository.
+  asks. [Module 2.7](module-2-7-contributing-to-someone-elses-repo.md) covers
+  contributing to someone else's repository.
 - **"Just fix it" is scoped.** If someone says to skip the issue for one
   specific thing, skip it for that thing only. It is not a blanket opt-out for
   the rest of the session.

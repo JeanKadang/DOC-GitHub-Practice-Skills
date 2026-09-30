@@ -59,7 +59,8 @@ flowchart TD
     M2c --> M2d[Module 2.4: Writing a reviewable pull request]
     M2d --> M2e[Module 2.5: Triage and backlog hygiene]
     M2e --> M2f[Module 2.6: Where does this thought belong?]
-    M2f --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
+    M2f --> M2g[Module 2.7: Contributing to someone else's repository]
+    M2g --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
 ```
 
 | Background | Start here |
@@ -72,6 +73,7 @@ flowchart TD
 | You open pull requests and want them to be quick to review | [Module 2.4: Writing a reviewable pull request](2_intermediate/module-2-4-writing-a-reviewable-pr.md) |
 | You help keep the backlog in order: ranking, linking, and closing issues | [Module 2.5: Triage and backlog hygiene](2_intermediate/module-2-5-triage-and-backlog-hygiene.md) |
 | You are unsure whether something is an issue, a Discussion, or a recorded decision | [Module 2.6: Where does this thought belong?](2_intermediate/module-2-6-where-does-this-thought-belong.md) |
+| You want to propose a change to a repository you do not maintain | [Module 2.7: Contributing to someone else's repository](2_intermediate/module-2-7-contributing-to-someone-elses-repo.md) |
 | Already know GitLab or Azure DevOps, not GitHub | [Module 0.1](0_prerequisites/module-0-1-what-is-version-control.md)'s GitLab/ADO comparison table for a quick orientation, then `skills/github-for-ado-users/SKILL.md` (Azure DevOps) or `skills/github-for-gitlab-users/SKILL.md` (GitLab) for full depth, then [Module 2.1](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
 
 **Whatever your background: read the [LLM Track — Pre-requisite: What Is
@@ -85,7 +87,7 @@ Basics](1_beginners/module-1-2-local-git-basics.md) before Module 2.1 — it
 covers staging, conflicts, and undoing a mistake, none of which the web-UI
 path in Module 1.1 touches.
 
-Modules 2.1 and 2.2 build on each other — do 2.1 first. Modules 2.3 to 2.6 build on
+Modules 2.1 and 2.2 build on each other — do 2.1 first. Modules 2.3 to 2.7 build on
 2.1 and are best read after 2.2. Modules 3.1-3.6 are
 each independent and optional; read any subset, in any order, based on
 what's relevant to you. Each module is sized to fit a single sitting
@@ -99,7 +101,9 @@ so either mode works from the same files. Module 1.2 and Modules 2.1, 2.2, 2.3,
 throwaway repo set up for exactly this purpose, never a real project). Ask
 your team's facilitator or onboarding buddy for access to it before you
 start one of those modules — `education/facilitator-guide.md` has their
-setup checklist if you're the one setting it up.
+setup checklist if you're the one setting it up. Module 2.7 instead uses a
+separate public practice repository, because a private sandbox can't normally
+be forked.
 
 ## What's covered
 
@@ -160,6 +164,10 @@ mindmap
         Issue, Discussion, or ADR
         Converting a Discussion to an issue
         Writing a decision record
+      Module 2.7: Contributing to someone else's repository
+        Fork, sync, and branch
+        Following the target's rules
+        Responding to review
     3: Advanced
       Module 3.1: Branch protection and rulesets
       Module 3.2: Projects boards
@@ -182,6 +190,7 @@ mindmap
 - [Module 2.4: Writing a reviewable pull request](2_intermediate/module-2-4-writing-a-reviewable-pr.md) — ~30 min, hands-on, the reasons behind the pull-request rules in `github-hygiene` and `github-pr-review`.
 - [Module 2.5: Triage and backlog hygiene](2_intermediate/module-2-5-triage-and-backlog-hygiene.md) — ~30 min, hands-on, the reasons behind the triage rules in `github-issue-first` and `github-releases`.
 - [Module 2.6: Where does this thought belong?](2_intermediate/module-2-6-where-does-this-thought-belong.md) — ~25 min, hands-on, the issue-versus-Discussion-versus-decision rules in `github-issue-first`.
+- [Module 2.7: Contributing to someone else's repository](2_intermediate/module-2-7-contributing-to-someone-elses-repo.md) — ~30 min, hands-on, the reasons behind `github-contributing`.
 - [Module 3.1: Branch protection and rulesets](3_advanced/module-3-1-branch-protection-and-rulesets.md) — ~25 min, optional.
 - [Module 3.2: Projects boards](3_advanced/module-3-2-projects-boards.md) — ~20 min, optional.
 - [Module 3.3: Releases](3_advanced/module-3-3-releases.md) — ~25 min, optional.
