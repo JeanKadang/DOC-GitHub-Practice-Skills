@@ -56,6 +56,11 @@ project. Requirements:
   and "Add scheduled exports". Also the priority labels and at least one open
   milestone. Attendees close two of them and edit the rest; recreate the six
   issues for each cohort.
+- **For Module 2.6's exercise:** a `decision-needed` label, and (optional, for
+  the Discussion step) Discussions enabled with an Ideas category. Attendees
+  open a draft pull request for a practice decision record and close it
+  unmerged, and file one practice issue that they close as "not planned";
+  reset the sandbox between cohorts.
 - **For Module 3.2's exercise:** a Projects v2 board with at least one item
   linked to a real issue, and one deliberately unlinked **draft item** (an
   entry created only on the board) — the module's exercise asks attendees
@@ -91,6 +96,8 @@ stateDiagram-v2
       sandbox has a pull-request template and an open issue.
 - [ ] For Module 2.5: confirm the six seeded triage issues exist, all `P2`
       and without a milestone.
+- [ ] For Module 2.6: confirm the `decision-needed` label exists and, if you want
+      the Discussion step, that Discussions is enabled with an Ideas category.
 - [ ] For Module 3.2: confirm the sandbox repo has a Projects board with at
       least one item linked to a real issue and one unlinked draft item.
 - [ ] Have this guide and the relevant session or module file open,
@@ -106,7 +113,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.2 / Intermediate modules 2.1-2.5 / Advanced modules 3.1-3.6)" to
+(Beginner modules 0.1-1.2 / Intermediate modules 2.1-2.6 / Advanced modules 3.1-3.6)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.
