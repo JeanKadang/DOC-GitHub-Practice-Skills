@@ -159,4 +159,6 @@ change, from a one-line doc fix to a major feature. Module 2.1 covers the
 (labels, milestones, the exact wording of `Refs`/`Closes`) that make this
 team's process work at scale.
 
-Next: [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)
+Next: [Module 1.3: Markdown for issues and pull requests](module-1-3-markdown-for-issues-and-prs.md)
+(web UI only), or [Module 1.2: Local Git Basics](module-1-2-local-git-basics.md)
+if you want the command line first.

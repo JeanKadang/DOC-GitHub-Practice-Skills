@@ -202,4 +202,5 @@ Discussions section.
 
 ---
 
-Next: [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)
+Next: [Module 1.3: Markdown for issues and pull requests](module-1-3-markdown-for-issues-and-prs.md),
+then [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)
