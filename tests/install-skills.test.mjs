@@ -26,6 +26,30 @@ const inventory = JSON.parse(
   await readFile(join(repoRoot, 'contracts', 'skill-inventory.json'), 'utf8'),
 );
 const temporaryRoots = [];
+// A cold pwsh start on a shared CI runner can take well over 20 s, so the
+// per-invocation limit is generous and can be raised without editing the
+// test file (#117).
+const installerTimeoutMs = Number(process.env.INSTALLER_TEST_TIMEOUT_MS) || 60_000;
+
+function describeSpawnFailure(error, timeoutMs) {
+  // execFile kills the child on timeout and reports only a generic
+  // "Command failed" with empty stderr. Spell out what actually happened.
+  const timedOut = error.killed === true;
+  const headline = timedOut
+    ? `installer timed out after ${timeoutMs} ms (killed=${error.killed}, signal=${error.signal})`
+    : `installer failed (exit code ${error.code}, signal=${error.signal})`;
+  return new Error(
+    [
+      headline,
+      `command: ${error.cmd}`,
+      `stdout:`,
+      String(error.stdout ?? ''),
+      `stderr:`,
+      String(error.stderr ?? ''),
+    ].join(String.fromCharCode(10)),
+    { cause: error },
+  );
+}
 
 async function temporaryRoot() {
   const root = await mkdtemp(join(tmpdir(), 'install-skills-'));
@@ -43,6 +67,7 @@ async function runInstaller({
   dryRun = false,
   force = false,
   keepBackups,
+  timeoutMs = installerTimeoutMs,
   expectFailure = false,
   env,
 }) {
@@ -74,14 +99,14 @@ async function runInstaller({
     const result = await execFileAsync('pwsh', args, {
       encoding: 'utf8',
       maxBuffer: 1024 * 1024,
-      timeout: 20_000,
+      timeout: timeoutMs,
       env: { ...processEnv, ...env },
     });
     assert.equal(expectFailure, false, `installer unexpectedly succeeded:\n${result.stdout}`);
     return { ...result, exitCode: 0 };
   } catch (error) {
     if (error.code === 'ERR_ASSERTION') throw error;
-    if (!expectFailure) throw error;
+    if (!expectFailure) throw describeSpawnFailure(error, timeoutMs);
     assert.notEqual(error.code, 0, 'installer failure must return a non-zero exit code');
     return {
       stdout: error.stdout ?? '',
@@ -150,6 +175,24 @@ async function sourceFixture(root) {
 
 test.after(async () => {
   await Promise.all(temporaryRoots.map((root) => rm(root, { recursive: true, force: true })));
+});
+
+test('a spawned installer that hits the timeout reports the timeout, signal, command, and output (#117)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+
+  await assert.rejects(
+    runInstaller({ codexHome, target: 'Codex', dryRun: true, timeoutMs: 1 }),
+    (error) => {
+      assert.match(error.message, /timed out after 1 ms/i);
+      assert.match(error.message, /killed=true/);
+      assert.match(error.message, /signal=SIGTERM/);
+      assert.match(error.message, /command: .*install-skills\.ps1/);
+      assert.match(error.message, /stdout:/);
+      assert.match(error.message, /stderr:/);
+      return true;
+    },
+  );
 });
 
 test('dry-run reports the complete plan without changing the filesystem', async () => {
