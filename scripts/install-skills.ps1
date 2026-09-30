@@ -170,6 +170,25 @@ function Get-MarkerJson {
     return ($marker | ConvertTo-Json -Depth 6) + "`n"
 }
 
+function Get-RelativeEntries {
+    # Lists every file and directory under $Root as a '/'-separated relative
+    # path. Does not descend into reparse points, so a planted junction cannot
+    # make the walk leave the skill directory.
+    param(
+        [Parameter(Mandatory)][string]$Root,
+        [string]$Prefix = ''
+    )
+
+    $current = if ($Prefix) { Join-Path $Root $Prefix } else { $Root }
+    foreach ($item in @(Get-ChildItem -LiteralPath $current -Force)) {
+        $relative = if ($Prefix) { "$Prefix/$($item.Name)" } else { $item.Name }
+        $relative
+        if ($item.PSIsContainer -and -not ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
+            Get-RelativeEntries -Root $Root -Prefix $relative
+        }
+    }
+}
+
 function Test-TrackedSkill {
     param(
         [Parameter(Mandatory)][string]$SkillPath,
@@ -220,6 +239,21 @@ function Test-TrackedSkill {
             $recordedHash -ne $sourceHash -or
             (Get-FileHashHex -LiteralPath $installedFile) -ne $sourceHash) {
             return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' is modified: hash mismatch for '$relativeFile'" }
+        }
+    }
+
+    # An entry the source skill does not ship (and that is not the marker) is
+    # user-added content. Treat it as a modification so an ordinary reinstall
+    # cannot silently delete it (#140); -Force backs up the whole directory.
+    $sourceSkillRoot = Join-Path $resolvedSource (Join-Path 'skills' $Skill.name)
+    $expectedEntries = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    foreach ($relativeEntry in @(Get-RelativeEntries -Root $sourceSkillRoot)) {
+        [void]$expectedEntries.Add($relativeEntry)
+    }
+    [void]$expectedEntries.Add($markerName)
+    foreach ($relativeEntry in @(Get-RelativeEntries -Root $SkillPath)) {
+        if (-not $expectedEntries.Contains($relativeEntry)) {
+            return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' is modified: unregistered added entry '$relativeEntry'" }
         }
     }
 
@@ -464,7 +498,12 @@ if ($DryRun) {
         foreach ($skill in $inventory.skills) {
             $replacement = $plan.Replacements | Where-Object { $_.Skill.name -eq $skill.name }
             if ($null -ne $replacement) {
-                Write-Output "  $($skill.name): overwrite; backup: $($replacement.BackupPath)"
+                if ($Force) {
+                    Write-Output "  $($skill.name): overwrite; backup: $($replacement.BackupPath)"
+                }
+                else {
+                    Write-Output "  $($skill.name): overwrite (unmodified install); backup: none"
+                }
             }
             else {
                 Write-Output "  $($skill.name): install; backup: none"

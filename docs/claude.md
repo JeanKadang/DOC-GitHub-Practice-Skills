@@ -24,6 +24,12 @@ pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Claude
 Upgrading over a previous install of this package needs `-Force`, which
 writes a timestamped backup first.
 
+Installed skill directories belong to the installer, which tracks them with a
+marker file. A file you add inside `skills/<name>/` counts as a local
+modification: the installer refuses to reinstall that skill without `-Force`,
+and with `-Force` the whole directory, including your file, is backed up
+first. Keep personal notes outside the installed skill directories.
+
 Use an explicit home for isolated testing:
 
 ```powershell

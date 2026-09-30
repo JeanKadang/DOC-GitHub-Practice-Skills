@@ -520,6 +520,61 @@ test('a modified tracked skill cannot be concealed by editing its marker hash', 
   assert.deepEqual(await treeSnapshot(codexHome), before);
 });
 
+test('a user-added extra file in a tracked skill is refused without Force and preserved (#140)', async () => {
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  const name = inventory.skills[0].name;
+  const notePath = join(codexHome, 'skills', name, 'user-note.txt');
+  await writeFile(notePath, 'mine\n');
+  const before = await treeSnapshot(codexHome);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', expectFailure: true });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /unregistered|extra|added/i);
+  assert.equal(await readFile(notePath, 'utf8'), 'mine\n');
+  assert.deepEqual(await treeSnapshot(codexHome), before);
+  assert.equal(await exists(join(codexHome, 'skill-backups')), false);
+});
+
+test('a dry run refuses a tracked skill with a user-added extra file without Force (#140)', async () => {
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  await writeFile(join(codexHome, 'skills', inventory.skills[0].name, 'user-note.txt'), 'mine\n');
+  const before = await treeSnapshot(root);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', dryRun: true, expectFailure: true });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /unregistered|extra|added/i);
+  assert.deepEqual(await treeSnapshot(root), before);
+});
+
+test('Force backs up a user-added extra file before replacing the skill (#140)', async () => {
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  const name = inventory.skills[0].name;
+  const noteBytes = Buffer.from([0, 7, 13, 10, 200]);
+  await writeFile(join(codexHome, 'skills', name, 'user-note.txt'), noteBytes);
+
+  await runInstaller({ codexHome, target: 'Codex', force: true });
+
+  const [stamp] = await readdir(join(codexHome, 'skill-backups'));
+  assert.deepEqual(await readFile(join(codexHome, 'skill-backups', stamp, name, 'user-note.txt')), noteBytes);
+  assert.equal(await exists(join(codexHome, 'skills', name, 'user-note.txt')), false);
+});
+
+test('a dry run of an unmodified reinstall does not advertise a backup that will not be made (#140)', async () => {
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  const before = await treeSnapshot(root);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', dryRun: true });
+
+  assert.match(result.stdout, /overwrite/i);
+  assert.match(result.stdout, /backup: none/i);
+  assert.doesNotMatch(result.stdout, /skill-backups/i);
+  assert.deepEqual(await treeSnapshot(root), before);
+});
+
 test('Force creates a byte-preserving backup before replacing a skill', async () => {
   const root = await temporaryRoot();
   const { codexHome } = await installOnce(root, 'Codex');
