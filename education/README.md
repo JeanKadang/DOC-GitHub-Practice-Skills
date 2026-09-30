@@ -6,7 +6,11 @@ GitHub and how this team specifically works. It's a different surface from
 Where this program describes a policy the skills already state precisely
 (the closure gate, issue-first, branch conventions), it points at the
 relevant skill file by name rather than restating it, so the two can't
-silently drift apart.
+silently drift apart. Moving or releasing `education/` on its own means
+bundling the specific skill files it references alongside it, not copying
+this repo's `skills/` folder wholesale or rewriting their content into
+education prose — see ADR 0008 (the bundling mechanism itself is a
+separate, not-yet-built follow-up).
 
 **Two tracks (per ADR 0007):** everything below this point is the
 **GitHub track** (version control and this team's workflow). A second
