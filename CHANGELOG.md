@@ -11,6 +11,14 @@
   Knowledge, since ChatGPT has no local skill-directory discovery
   mechanism. See `docs/chatgpt.md` and ADR 0006.
 
+### Fixed
+
+- `install-skills.ps1` no longer deletes user-added files inside a tracked
+  skill directory on an ordinary reinstall. An added file now counts as a
+  local modification: the installer refuses without `-Force`, and `-Force`
+  backs up the whole directory. The dry-run preview now reports
+  `backup: none` when no backup will be made (#140).
+
 ## [0.3.0] - 2026-09-28
 
 ### Added
