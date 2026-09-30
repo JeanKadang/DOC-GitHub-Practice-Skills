@@ -13,6 +13,12 @@
 
 ### Changed
 
+- `github-hygiene` now says auto-merge is the maintainer's switch: enabling
+  it is the merge approval, it needs recorded evidence for every criterion
+  first, and it is never combined with `Closes #N` unless every in-scope
+  criterion is met, because an auto-merged `Closes` closes the issue before
+  the closure gate can run. `docs/WORKFLOW.md` and education Modules 2.2 and
+  2.4 say the same, and a test keeps the rule in place (#184).
 - `github-issue-first` no longer files issues "without being asked" in any repo
   it touches. Noticing work is still automatic, but filing now needs a
   Preconditions check: `gh repo view --json viewerPermission` must show triage

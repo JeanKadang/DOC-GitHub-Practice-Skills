@@ -42,6 +42,11 @@ does both, they're still two separate checks happening one after another —
 approval says "this change is good," merging says "and now is the right
 time to ship it."
 
+Auto-merge, where a repository allows it, is a third thing: a merge that fires
+the moment the required checks pass. Whoever switches it on is making the merge
+decision at that moment, which is why it is the maintainer's call (see
+[Module 2.4](module-2-4-writing-a-reviewable-pr.md)).
+
 The vocabulary of GitHub's actual review actions, since people often use
 them loosely: `Request changes` means "this genuinely can't merge yet" —
 it's a real blocker, not a strong suggestion. `Comment` means "I have
