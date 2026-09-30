@@ -23,6 +23,12 @@ today's Module 3.6 — candidate modules, none built yet. `examples/`,
 `cheat-sheet.md`, and `facilitator-guide.md` sit outside the numbered
 sequence — lookup references, not steps to work through in order.
 
+**Tools:** for now, all Git activity in this program is done in **VS Code or on
+the command line**. Every lesson and exercise assumes one of those two. GitHub
+Desktop and other Git clients are deliberately not covered (maintainer decision,
+issue #178), so if you use one, switch to VS Code or the command line while
+you work through the program.
+
 ## Where do I start?
 
 What this shows: how your existing background routes you to the right
