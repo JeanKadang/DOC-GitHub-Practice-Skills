@@ -91,6 +91,14 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   exactly these things. See issue #98. `education/README.md` gained a
   "Two tracks" pointer section and a materials-list entry — full
   GitHub/LLM track routing stays deferred per ADR 0007's Consequences.
+- `education/beginners/session-0-what-is-version-control.md` gained a
+  caveat: this program's full issue-branch-PR-review ceremony isn't
+  one-size-fits-all — it earns its keep on higher-stakes repos, a
+  low-stakes repo may reasonably use a lighter subset, ask the
+  maintainer rather than assuming either way. Cross-references
+  `docs/repo-settings-snapshot.md` and `github-issue-first`'s "Scaling
+  ceremony to repo risk" section (added in #92) rather than duplicating
+  them. See issue #102.
 
 ## [1.0.0] - 2026-09-26
 

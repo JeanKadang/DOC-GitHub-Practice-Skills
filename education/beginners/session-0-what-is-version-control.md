@@ -126,6 +126,19 @@ branches get named, what a PR needs before it can merge. Those aren't
 universal Git rules; they're this team's habits, and Session 1 onward
 teaches them hands-on.
 
+**One honest caveat: this level of rigor isn't one-size-fits-all.** The
+full issue → branch → PR → review ceremony this program teaches earns its
+keep on repos with real stakes — CI, deployed code, multiple contributors
+relying on a stable history. A low-stakes repo (no CI, no deployed code, a
+handful of people) doesn't automatically need the same weight — but that
+doesn't mean no structure at all either; even a light repo benefits from
+basic guardrails like branch protection on `main` or a habit of tracking
+work somewhere. Don't assume either way on a repo you're new to — ask
+whoever maintains it. `docs/repo-settings-snapshot.md` has read-only
+commands to check what a repo actually has configured before assuming,
+and `skills/github-issue-first/SKILL.md`'s "Scaling ceremony to repo risk"
+section is the fuller version of this same judgment call.
+
 ## If you're coming from GitLab or Azure DevOps
 
 The core mechanism above (commit, branch, push, pull, review, merge) is the
