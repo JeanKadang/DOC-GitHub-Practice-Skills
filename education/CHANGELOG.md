@@ -74,6 +74,14 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Git was installed; this is where that assumption gets satisfied. See
   issue #93. `education/README.md`'s routing flowchart, table, mindmap,
   and materials list updated.
+- `education/llm/prerequisite-what-is-an-llm-assistant.md` — the first
+  content in ADR 0007's LLM track: core vocabulary (model, prompt, context
+  window, chat vs. agent mode), the agentic file/commit-editing behavior
+  surprise named directly, and the confidently-wrong (hallucination)
+  caveat. Prompted by colleagues new to LLM tooling being surprised by
+  exactly these things. See issue #98. `education/README.md` gained a
+  "Two tracks" pointer section and a materials-list entry — full
+  GitHub/LLM track routing stays deferred per ADR 0007's Consequences.
 
 ## [1.0.0] - 2026-09-26
 

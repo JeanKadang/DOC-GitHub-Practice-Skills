@@ -8,6 +8,14 @@ Where this program describes a policy the skills already state precisely
 relevant skill file by name rather than restating it, so the two can't
 silently drift apart.
 
+**Two tracks (per ADR 0007):** everything below this point is the
+**GitHub track** (version control and this team's workflow). A second
+**LLM track** (using AI coding assistants day to day) is starting to take
+shape — its first page is
+[LLM Track — Pre-requisite: What Is an LLM Assistant?](llm/prerequisite-what-is-an-llm-assistant.md).
+More LLM-track content lands here as it's written; this section will grow
+into full routing once there's enough of it to route between.
+
 ## Where do I start?
 
 What this shows: how your existing background routes you to the right
@@ -116,5 +124,6 @@ mindmap
 - [Module 3c: Releases](advanced/module-3c-releases.md) — ~25 min, optional.
 - [Module 3d: Security response basics](advanced/module-3d-security-response.md) — ~15 min, optional.
 - [Extra: Setting Up Your Local Dev Environment](extra/setup-local-dev-environment.md) — ~30 min, mostly install time. Installing Git and VS Code, connecting to GitHub Enterprise, recommended extensions. Optional — only needed if you don't already have these.
+- [LLM Track — Pre-requisite: What Is an LLM Assistant?](llm/prerequisite-what-is-an-llm-assistant.md) — ~15 min, reading only. Core vocabulary, the agentic-behavior surprise, and the confidently-wrong caveat. First page of the LLM track (ADR 0007); more to come.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
