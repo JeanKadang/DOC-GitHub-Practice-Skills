@@ -136,6 +136,7 @@ Discussions section.
 
 ---
 
-Next: [Module 3.1: Branch protection and rulesets](../3_advanced/module-3-1-branch-protection-and-rulesets.md)
-(all four Module 3 topics are independent — read them in any order, or only
-the ones relevant to you)
+Next: [Module 2.3: Writing a good issue](module-2-3-writing-a-good-issue.md),
+then the optional [Module 3.1: Branch protection and rulesets](../3_advanced/module-3-1-branch-protection-and-rulesets.md)
+(Modules 3.1 to 3.6 are independent — read them in any order, or only the
+ones relevant to you)
