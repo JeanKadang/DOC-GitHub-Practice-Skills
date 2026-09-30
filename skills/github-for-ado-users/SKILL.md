@@ -10,7 +10,22 @@ is not the concepts that are missing — those are obvious. It is the ones that 
 *almost*, where a familiar word means something different and the process quietly
 breaks weeks later.
 
-**The single most expensive mistake: treating milestones as sprints.** See below.
+**If your team's Azure DevOps or TFS project uses TFVC rather than Git
+repos, everything below is the wrong layer to start at.** This mapping
+table is GitHub-vs-ADO *process* vocabulary — work items, boards, pipelines.
+TFVC vs Git is a different, more fundamental jump: TFVC checks files out
+from one central server one at a time, and only one person can hold the
+lock on a file at once; Git gives every clone the entire history, and
+every commit happens locally, before anyone pushes anywhere — there's no
+central lock to wait for. No amount of relabeling nouns bridges that gap;
+it has to be learned as its own concept before the table below is useful.
+If this repo's colleague-training program is available, its
+`education/beginners/session-0-what-is-version-control.md` covers the
+concept in plain terms — but the two sentences above are enough to name
+the jump even without it.
+
+**The single most expensive mistake (once you're on Git): treating
+milestones as sprints.** See below.
 
 ## Mapping table
 
