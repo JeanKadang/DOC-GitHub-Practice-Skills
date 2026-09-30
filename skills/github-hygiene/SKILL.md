@@ -7,6 +7,11 @@ description: Use when merging PRs, closing issues, reconciling acceptance criter
 
 Conventions for PR flow, closure, and cleanup. Follow this instead of re-deriving from git history. Issue filing/triage is covered by the separate `github-issue-first` skill — file the issue first, then start work here. Cutting a release, tagging, branch protection, and milestones are `github-releases` — merge here, then ship there. Reviewing a PR before it reaches the merge decision is `github-pr-review`; multi-maintainer board setup is `github-projects`; a release that contains a security fix goes through `github-security-response` first.
 
+This skill's PR/merge ceremony assumes a repo that warrants it. For a
+clearly low-stakes repo (no CI, no branch protection, no code that gets
+built/deployed/tested), see `github-issue-first`'s "Scaling ceremony to
+repo risk" section before applying the full flow below by default.
+
 ## The traceability chain
 
 Every change follows one path, and each link is enforced by the tool rather than by memory:
