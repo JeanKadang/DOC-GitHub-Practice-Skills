@@ -23,11 +23,14 @@ matter more than usual — a wording change in one skill can contradict another.
 The `education/` folder is the one exception: it holds human-facing colleague
 training material, not agent-facing policy. As of ADR 0007 it covers two
 parallel tracks — GitHub workflow (the original content) and LLM/VS Code
-tooling (how a colleague uses Copilot/Claude Code day to day) — each staged
-across the same five tiers: Pre-requisite, Basics, Intermediate, Advanced,
-Extra. The LLM track is about colleague *usage* of AI tooling; it does not
-change what `skills/*/SKILL.md` covers, which stays GitHub-workflow-only
-policy for the agent itself.
+tooling (how a colleague uses Copilot/Claude Code day to day). The LLM track
+is about colleague *usage* of AI tooling; it does not change what
+`skills/*/SKILL.md` covers, which stays GitHub-workflow-only policy for the
+agent itself. Per ADR 0009, folders are numbered for reading order
+(`0_prerequisites/` → `1_beginners/` → `2_intermediate/` → `3_advanced/`,
+with a `4_next-level/` tier reserved but not yet populated), and the LLM
+track's Pre-requisite page is required reading, not optional — its later
+tiers (Basics, Intermediate, Advanced, Extra) stay optional as written.
 
 ## Commands
 

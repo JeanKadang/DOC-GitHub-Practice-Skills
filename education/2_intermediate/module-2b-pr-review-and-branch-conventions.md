@@ -136,6 +136,6 @@ Discussions section.
 
 ---
 
-Next: [Module 3a: Branch protection and rulesets](../advanced/module-3a-branch-protection-and-rulesets.md)
+Next: [Module 3a: Branch protection and rulesets](../3_advanced/module-3a-branch-protection-and-rulesets.md)
 (all four Module 3 topics are independent — read them in any order, or only
 the ones relevant to you)

@@ -2,7 +2,9 @@
 
 **Audience:** Anyone about to use an AI coding assistant (Claude, GitHub
 Copilot, ChatGPT, or similar) for the first time — no prior experience
-assumed.
+assumed. **Required reading**, not optional — most colleagues end up using
+one of these tools, and the two surprises below are the ones that
+actually catch people.
 
 **Format:** Reading only. Nothing to install yet.
 
@@ -14,7 +16,7 @@ Colleagues new to this tooling have consistently been surprised by the
 same handful of things — not because the tools are unusual, but because
 nobody explained the mechanics before they started using them. This page
 is that grounding, the LLM-track equivalent of
-[Session 0](../beginners/session-0-what-is-version-control.md) for the
+[Session 0](session-0-what-is-version-control.md) for the
 GitHub track: read this before your first real session with any of these
 tools, and the surprises below stop being surprises.
 
@@ -66,7 +68,7 @@ confident right answer and a confident wrong one; fluency is not evidence
 of accuracy.
 
 This is exactly why this program's GitHub track never treats "an AI wrote
-it" as a reason to skip review — see [Module 3e](../advanced/module-3e-actions-runners-and-agents.md)'s
+it" as a reason to skip review — see [Module 3e](../3_advanced/module-3e-actions-runners-and-agents.md)'s
 point that a PR opened by Copilot's coding agent goes through the same
 review gate as a human-authored one. The same principle applies here at
 the individual-use level: verify claims, run the tests, read the diff —
@@ -94,11 +96,12 @@ Discussions section.
 
 ---
 
-This is the first page in the LLM track (per ADR 0007) — Basics,
-Intermediate, Advanced, and Extra content for this track are still to be
-written; each will be linked from [Education Program
-overview](../README.md) as it lands. For getting a specific tool installed
-right now, see [docs/claude.md](../../docs/claude.md),
+This page is required; the rest of the LLM track (Basics, Intermediate,
+Advanced, Extra — per ADR 0007) is still being written and stays optional
+as it lands, linked from [Education Program overview](../README.md). For
+getting a specific tool installed right now, see
+[docs/claude.md](../../docs/claude.md),
 [docs/copilot.md](../../docs/copilot.md),
 [docs/openai-codex.md](../../docs/openai-codex.md), or
-[docs/chatgpt.md](../../docs/chatgpt.md).
+[docs/chatgpt.md](../../docs/chatgpt.md) — or, for the rest of your local
+setup, [Setting Up Your Local Dev Environment](setup-local-dev-environment.md).

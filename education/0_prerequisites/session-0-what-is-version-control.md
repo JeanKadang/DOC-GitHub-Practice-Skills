@@ -18,7 +18,7 @@ know, loosely, what those words mean. This page is that grounding, so
 Session 1 can spend its time on *doing* instead of *defining*.
 
 If you already know what a commit and a branch are, skip straight to
-[Session 1](session-1-getting-started.md). If any of the vocabulary below
+[Session 1](../1_beginners/session-1-getting-started.md). If any of the vocabulary below
 is new, five minutes here saves confusion later.
 
 ## Protect your account before you need to
@@ -187,5 +187,8 @@ Discussions section.
 
 ---
 
-Next: [Session 1: Getting Started](session-1-getting-started.md) — the
-hands-on version of everything defined above.
+Next: [LLM Track — Pre-requisite: What Is an LLM Assistant?](prerequisite-what-is-an-llm-assistant.md)
+(also required reading before Session 1 if you'll be using an AI coding
+assistant — most colleagues will), then
+[Session 1: Getting Started](../1_beginners/session-1-getting-started.md) —
+the hands-on version of everything defined above.

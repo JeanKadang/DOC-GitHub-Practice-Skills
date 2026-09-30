@@ -4,7 +4,7 @@ A lookup reference — one minimal example of each major Mermaid diagram
 type, so you can copy the shape you need instead of searching external
 docs. Every example here is confirmed to render on GitHub.com; if you're
 viewing this in an editor instead, the Mermaid preview extension from
-[Extra: Setting Up Your Local Dev Environment](../extra/setup-local-dev-environment.md)
+[Extra: Setting Up Your Local Dev Environment](../0_prerequisites/setup-local-dev-environment.md)
 renders these locally too. Mermaid has more diagram types than this page
 covers (some are newer or still experimental) — this is the established
 core, not the complete list.
@@ -93,7 +93,7 @@ erDiagram
 
 ## Git graph
 
-Already used in `education/beginners/session-1-getting-started.md` —
+Already used in `education/1_beginners/session-1-getting-started.md` —
 commits, branches, and merges, drawn the way `git log --graph` would show
 them.
 

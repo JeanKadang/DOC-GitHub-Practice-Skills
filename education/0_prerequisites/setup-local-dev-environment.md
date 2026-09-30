@@ -118,7 +118,7 @@ Discussions section.
 
 ---
 
-Next: [Session 2: Local Git Basics](../beginners/session-2-local-git-basics.md)
+Next: [Session 2: Local Git Basics](../1_beginners/session-2-local-git-basics.md)
 now that `git` is installed — or, if you're setting up VS Code specifically
 to use this repository's own skills (Claude/Copilot), see
 [docs/vscode.md](../../docs/vscode.md) for that install step instead.

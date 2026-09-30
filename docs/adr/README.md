@@ -47,3 +47,6 @@ documentation clarifications and typo-level fixes do not need one.
 - [0008](0008-education-portability-via-bundling.md) — Made `education/`
   portable by bundling the skill files it references, not duplicating
   their content, reusing ADR 0006's ChatGPT export precedent.
+- [0009](0009-education-numbered-folders.md) — Numbered `education/`
+  folders for reading order, refining ADR 0007; promoted the LLM track's
+  Pre-requisite page to required reading.
