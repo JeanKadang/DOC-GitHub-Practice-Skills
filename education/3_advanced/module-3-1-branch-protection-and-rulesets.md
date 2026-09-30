@@ -1,8 +1,8 @@
-# Module 3a: Branch protection and rulesets
+# Module 3.1: Branch protection and rulesets
 
-**Audience:** Anyone who's completed Module 2b, or is already comfortable
+**Audience:** Anyone who's completed Module 2.2, or is already comfortable
 with this team's basic workflow and wants to go deeper. Optional, and
-independent of Modules 3b-3d — read in any order.
+independent of Modules 3.2-3.4 — read in any order.
 **Format:** Self-paced — read and do each step yourself. Facilitator-note
 callouts mark optional group activities.
 **Timing:** ~25 min.
@@ -129,4 +129,4 @@ Discussions section.
 
 ---
 
-Next: [Module 3b: Projects boards](module-3b-projects-boards.md)
+Next: [Module 3.2: Projects boards](module-3-2-projects-boards.md)

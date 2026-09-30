@@ -52,3 +52,6 @@ documentation clarifications and typo-level fixes do not need one.
   Pre-requisite page to required reading.
 - [0010](0010-single-agent-guidance-file.md) — `AGENTS.md` is the one canonical
   agent-guidance file and `CLAUDE.md` imports it, enforced by a test.
+- [0011](0011-education-module-numbering.md) — `module-X-Y` file names for every
+  numbered education lesson, and `4_next-step/` replaces the reserved
+  `4_next-level/`.

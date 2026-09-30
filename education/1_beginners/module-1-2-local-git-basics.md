@@ -1,12 +1,12 @@
-# Session 2: Local Git Basics
+# Module 1.2: Local Git Basics
 
-**Audience:** Anyone who's done Session 1 (or already works comfortably in
+**Audience:** Anyone who's done Module 1.1 (or already works comfortably in
 the GitHub web UI) and is ready to use `git` on the command line.
 **Format:** Self-paced, hands-on, in a terminal against the shared sandbox
 repo. Facilitator-note callouts mark optional group activities.
 **Timing:** ~45 min.
 
-Session 1 taught the workflow entirely through the GitHub web UI — no
+Module 1.1 taught the workflow entirely through the GitHub web UI — no
 install, no command line. That's a genuinely valid way to work, and plenty
 of people stay there. This session is for when you want (or need) the
 command line: it teaches the four things the web UI hides from you that
@@ -15,7 +15,7 @@ undoing a mistake — plus the everyday clone/push/pull loop.
 
 Nothing later requires it — every module from here on still works entirely
 through the web UI. This session is for if and when you want the command
-line for yourself; do it before Module 2a if you plan to use `git`/`gh`
+line for yourself; do it before Module 2.1 if you plan to use `git`/`gh`
 locally while working through the rest of the program.
 
 ## Learning objectives
@@ -69,7 +69,7 @@ echo "My scratch line" >> CONTRIBUTORS.md
 git status                 # working tree: modified, not staged
 git add CONTRIBUTORS.md
 git status                 # staged: ready to commit
-git commit -m "Scratch line for Session 2"
+git commit -m "Scratch line for Module 1.2"
 git status                 # working tree clean — it's in history now
 ```
 
@@ -195,4 +195,4 @@ Discussions section.
 
 ---
 
-Next: [Module 2a: Issue-first and the closure gate](../2_intermediate/module-2a-issue-first-and-closure-gate.md)
+Next: [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)

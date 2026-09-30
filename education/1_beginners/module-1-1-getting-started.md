@@ -1,4 +1,4 @@
-# Session 1: Getting Started with GitHub
+# Module 1.1: Getting Started with GitHub
 
 **Audience:** Never used version control before.
 **Format:** Hands-on, in the GitHub web UI — no command line, nothing to install.
@@ -106,7 +106,7 @@ what and why. You just made one.
 - Title: leave the default or make it clearer.
 - Body: type `Refs #<your issue number>` (e.g. `Refs #42`) — this is how
   we link a PR to the issue it's working on. (Full reasoning:
-  `skills/github-hygiene/SKILL.md`'s traceability chain — Module 2a goes
+  `skills/github-hygiene/SKILL.md`'s traceability chain — Module 2.1 goes
   deeper on this.)
 - Click **Create pull request**.
 
@@ -122,7 +122,7 @@ what and why. You just made one.
 
 - On your PR, once approved, change the PR body from `Refs #<your issue number>`
   to `Closes #<your issue number>` — this tells GitHub to close the issue when the PR merges.
-  (Module 2a explains exactly when this switch is safe to make.)
+  (Module 2.1 explains exactly when this switch is safe to make.)
 - Click **Merge pull request** → **Confirm merge**.
 
 ### 7. Watch it close
@@ -136,9 +136,9 @@ issue closes.** Every contribution on this team follows this shape.
 ## Wrap-up
 
 You've now done, by hand, the entire workflow this team uses for every
-change, from a one-line doc fix to a major feature. Module 2a covers the
+change, from a one-line doc fix to a major feature. Module 2.1 covers the
 *why* behind each step in more depth, and the specific conventions
 (labels, milestones, the exact wording of `Refs`/`Closes`) that make this
 team's process work at scale.
 
-Next: [Module 2a: Issue-first and the closure gate](../2_intermediate/module-2a-issue-first-and-closure-gate.md)
+Next: [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)

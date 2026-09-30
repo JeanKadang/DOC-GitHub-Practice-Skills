@@ -1,9 +1,9 @@
-# Module 3f: Rebase, Cherry-Pick, and Reflog Recovery
+# Module 3.6: Rebase, Cherry-Pick, and Reflog Recovery
 
-**Audience:** Anyone who's done Session 2 (local git basics) and wants the
+**Audience:** Anyone who's done Module 1.2 (local git basics) and wants the
 next level of git mechanics — cleaning up commit history, moving a single
 commit between branches, and recovering from a mistake that looks
-unrecoverable. Optional, and independent of Modules 3a-3e — read in any
+unrecoverable. Optional, and independent of Modules 3.1-3.5 — read in any
 order.
 
 **Format:** Self-paced, hands-on, in a terminal against the shared sandbox
@@ -21,7 +21,7 @@ repo.
 
 ## The one rule that makes all three of these safe
 
-Session 2 introduced this rule for `git reset --hard`; it applies with
+Module 1.2 introduced this rule for `git reset --hard`; it applies with
 even more force here, because rebase *rewrites commit history* by design:
 **only rewrite history that hasn't been pushed, or that you're certain
 nobody else has pulled.** Every technique in this module changes commit
@@ -40,7 +40,7 @@ typo"`, `"actually working now"` — and you'd rather the history read as
 one clean commit before anyone reviews it.
 
 ```bash
-git checkout -b module-3f-<your-name>
+git checkout -b module-3-6-<your-name>
 echo "draft" >> CONTRIBUTORS.md
 git commit -m "wip"
 echo "draft fixed" >> CONTRIBUTORS.md
@@ -87,14 +87,14 @@ git cherry-pick <commit-hash>
 ```
 
 If the cherry-picked change conflicts with something already on your
-branch, git stops exactly like a merge conflict (Session 2 covered
+branch, git stops exactly like a merge conflict (Module 1.2 covered
 resolving these) — fix the file, `git add`, then `git cherry-pick
 --continue`.
 
 ## Reflog: recovering from "I think I just lost my work"
 
 `git reflog` is the safety net underneath every other command in this
-module (and underneath `reset --hard` from Session 2). Git doesn't
+module (and underneath `reset --hard` from Module 1.2). Git doesn't
 actually delete a commit the moment nothing points at it anymore — it
 keeps a log of every place `HEAD` has pointed, recently, even commits no
 branch currently references.

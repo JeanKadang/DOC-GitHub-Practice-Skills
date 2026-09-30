@@ -16,7 +16,7 @@ Colleagues new to this tooling have consistently been surprised by the
 same handful of things — not because the tools are unusual, but because
 nobody explained the mechanics before they started using them. This page
 is that grounding, the LLM-track equivalent of
-[Session 0](session-0-what-is-version-control.md) for the
+[Module 0.1](module-0-1-what-is-version-control.md) for the
 GitHub track: read this before your first real session with any of these
 tools, and the surprises below stop being surprises.
 
@@ -68,7 +68,7 @@ confident right answer and a confident wrong one; fluency is not evidence
 of accuracy.
 
 This is exactly why this program's GitHub track never treats "an AI wrote
-it" as a reason to skip review — see [Module 3e](../3_advanced/module-3e-actions-runners-and-agents.md)'s
+it" as a reason to skip review — see [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md)'s
 point that a PR opened by Copilot's coding agent goes through the same
 review gate as a human-authored one. The same principle applies here at
 the individual-use level: verify claims, run the tests, read the diff —

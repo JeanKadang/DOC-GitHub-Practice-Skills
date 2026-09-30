@@ -1,6 +1,6 @@
-# Module 2b: PR review and branch conventions
+# Module 2.2: PR review and branch conventions
 
-**Audience:** Anyone who's completed Module 2a.
+**Audience:** Anyone who's completed Module 2.1.
 **Format:** Self-paced — read and do each step yourself. Facilitator-note
 callouts mark optional group activities.
 **Timing:** ~35 min.
@@ -76,7 +76,7 @@ one branch per issue, named for the kind of work it is (`fix/…` for bug
 fixes, `feat/…` for new functionality, `docs/…` for documentation-only
 changes, and so on). Branch from an up-to-date `main` every time — pull
 first, then branch — and never commit directly to `main`. This is the same
-"we don't work directly on `main`" habit from Module 2a's exercise, just
+"we don't work directly on `main`" habit from Module 2.1's exercise, just
 stated as policy now instead of as a click-by-click instruction.
 
 Milestones are the point where most people's mental model needs
@@ -89,7 +89,7 @@ doesn't hold. If cadence tracking is wanted alongside release tracking,
 that's a separate mechanism (a Projects iteration field), not a second
 meaning bolted onto milestones.
 
-Same discipline as Module 2a's issue-filing checklist: every issue gets a
+Same discipline as Module 2.1's issue-filing checklist: every issue gets a
 milestone at filing time, alongside its priority and category labels — not
 as an afterthought once the issue has already been triaged and forgotten.
 
@@ -136,6 +136,6 @@ Discussions section.
 
 ---
 
-Next: [Module 3a: Branch protection and rulesets](../3_advanced/module-3a-branch-protection-and-rulesets.md)
+Next: [Module 3.1: Branch protection and rulesets](../3_advanced/module-3-1-branch-protection-and-rulesets.md)
 (all four Module 3 topics are independent — read them in any order, or only
 the ones relevant to you)

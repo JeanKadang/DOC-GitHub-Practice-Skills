@@ -13,6 +13,29 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- **Breaking:** every numbered lesson is renamed to `module-<tier>-<n>-<name>.md`
+  and referred to as "Module `<tier>.<n>`" (ADR 0011, issue #161). Links and
+  bookmarks to the old file names will 404; there are no redirects. Content is
+  unchanged apart from titles, numbers, and cross-references.
+
+  | Old file | New file |
+  | --- | --- |
+  | `0_prerequisites/session-0-what-is-version-control.md` | `0_prerequisites/module-0-1-what-is-version-control.md` |
+  | `1_beginners/session-1-getting-started.md` | `1_beginners/module-1-1-getting-started.md` |
+  | `1_beginners/session-2-local-git-basics.md` | `1_beginners/module-1-2-local-git-basics.md` |
+  | `2_intermediate/module-2a-issue-first-and-closure-gate.md` | `2_intermediate/module-2-1-issue-first-and-closure-gate.md` |
+  | `2_intermediate/module-2b-pr-review-and-branch-conventions.md` | `2_intermediate/module-2-2-pr-review-and-branch-conventions.md` |
+  | `3_advanced/module-3a-branch-protection-and-rulesets.md` | `3_advanced/module-3-1-branch-protection-and-rulesets.md` |
+  | `3_advanced/module-3b-projects-boards.md` | `3_advanced/module-3-2-projects-boards.md` |
+  | `3_advanced/module-3c-releases.md` | `3_advanced/module-3-3-releases.md` |
+  | `3_advanced/module-3d-security-response.md` | `3_advanced/module-3-4-security-response.md` |
+  | `3_advanced/module-3e-actions-runners-and-agents.md` | `3_advanced/module-3-5-actions-runners-and-agents.md` |
+  | `3_advanced/module-3f-rebase-cherry-pick-and-reflog.md` | `3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md` |
+
+- The reserved `4_next-level/` tier is now `4_next-step/`, created with
+  `module-plan.md`, a plan of candidate advanced modules (none built). The
+  facilitator guide's completion line now lists modules 0.1 to 3.6.
+
 - **Breaking:** `education/intermediate/session-2-our-workflow.md` and
   `education/advanced/session-3-advanced-github.md` are removed. Their
   content is split across six new self-paced modules:

@@ -1,6 +1,6 @@
 # Extra: Setting Up Your Local Dev Environment
 
-**Audience:** Anyone about to start Session 2 (or any command-line work)
+**Audience:** Anyone about to start Module 1.2 (or any command-line work)
 without Git or VS Code installed yet, or without VS Code connected to the
 company's GitHub Enterprise account.
 
@@ -11,7 +11,7 @@ reading.
 
 ## Why this exists
 
-Session 2 assumes `git` is already installed and working. This is where
+Module 1.2 assumes `git` is already installed and working. This is where
 that assumption gets satisfied — install Git, install VS Code, connect VS
 Code to GitHub Enterprise, and pick up a few extensions worth having from
 day one. Extra tier, not core curriculum: come back to this whenever you
@@ -22,7 +22,7 @@ flowchart LR
     A[Install Git] --> B[Install VS Code]
     B --> C[Sign in to<br/>GitHub Enterprise]
     C --> D[Install<br/>recommended extensions]
-    D --> E[Ready for<br/>Session 2]
+    D --> E[Ready for<br/>Module 1.2]
 ```
 
 What this shows: four one-time setup steps, in order — each one is
@@ -77,7 +77,7 @@ useful later for opening folders from a terminal (`code .`).
 | **Markdown All in One** (or similar) | Live preview and formatting help for `.md` files — this program's material, and most team documentation, is Markdown. |
 | **Markdown Preview Mermaid Support** | Renders Mermaid diagrams (like the flowcharts in this very page) inline in VS Code's Markdown preview, not just on GitHub.com. |
 | **PowerShell** | Syntax highlighting and linting for `.ps1` scripts — relevant if you ever read or run this repo's own `install-skills.ps1`, or any other PowerShell tooling. |
-| **GitHub Pull Requests and Issues** | Review, comment on, and manage PRs and issues from inside VS Code instead of switching to a browser — pairs directly with what Session 2 teaches on the command line. |
+| **GitHub Pull Requests and Issues** | Review, comment on, and manage PRs and issues from inside VS Code instead of switching to a browser — pairs directly with what Module 1.2 teaches on the command line. |
 | **Markdown PDF** | Exports a `.md` file to PDF (or HTML) for offline reading or printing — renders Mermaid diagrams in the export too, which matters given how much this program's own content uses them. |
 
 Install any of these from VS Code's Extensions view (the four-squares icon
@@ -118,7 +118,7 @@ Discussions section.
 
 ---
 
-Next: [Session 2: Local Git Basics](../1_beginners/session-2-local-git-basics.md)
+Next: [Module 1.2: Local Git Basics](../1_beginners/module-1-2-local-git-basics.md)
 now that `git` is installed — or, if you're setting up VS Code specifically
 to use this repository's own skills (Claude/Copilot), see
 [docs/vscode.md](../../docs/vscode.md) for that install step instead.

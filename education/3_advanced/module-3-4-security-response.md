@@ -1,8 +1,8 @@
-# Module 3d: Security response basics
+# Module 3.4: Security response basics
 
-**Audience:** Anyone who's completed Module 2b, or is already comfortable
+**Audience:** Anyone who's completed Module 2.2, or is already comfortable
 with this team's basic workflow and wants to go deeper. Optional, and
-independent of Modules 3a, 3b, 3c — read in any order.
+independent of Modules 3.1, 3.2, 3.3 — read in any order.
 **Format:** Self-paced — read and do each step yourself. Facilitator-note
 callouts mark optional group activities.
 **Timing:** ~15 min.
@@ -77,7 +77,7 @@ Discussions section.
 
 ---
 
-Next: [Module 3e: Actions, runners, and the Copilot coding agent](module-3e-actions-runners-and-agents.md),
+Next: [Module 3.5: Actions, runners, and the Copilot coding agent](module-3-5-actions-runners-and-agents.md),
 or back to [Education Program overview](../README.md). From here, the
 `skills/*/SKILL.md` files themselves are the reference for anything not
 covered in this program.
