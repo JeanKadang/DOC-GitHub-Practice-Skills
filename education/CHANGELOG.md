@@ -47,6 +47,17 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   and `github-for-gitlab-users` skills for depth. See issue #72.
   `education/README.md`'s routing flowchart, table, mindmap, and
   materials list updated to route into it ahead of Session 1.
+- `education/beginners/session-2-local-git-basics.md` — hands-on
+  command-line git, positioned after Session 1 and before Module 2a:
+  working tree vs staging vs commit, the clone/push/pull loop, causing
+  and resolving a real merge conflict on purpose, and the difference
+  between `git restore`, `git revert`, and `git reset` for undoing a
+  mistake. Entirely optional — every later module still works through
+  the web UI alone. See issue #68. `education/README.md`'s routing
+  flowchart, table, mindmap, and materials list updated, and
+  `education/facilitator-guide.md` updated with its sandbox
+  requirements (git installed locally, clone access; no new repo
+  scaffolding beyond what Session 1 already needs).
 
 ## [1.0.0] - 2026-09-26
 
