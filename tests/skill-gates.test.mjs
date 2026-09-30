@@ -59,3 +59,32 @@ test('github-contributing routes findings in a repo you only read to that repo\'
   assert.match(text, /github-issue-first/);
   assert.match(text, /read access/i);
 });
+
+// Auto-merge (#184): enabling it is the merge approval, so the rule about who
+// may enable it and when must stay in the policy and in the lessons.
+async function text(path) {
+  return readFile(join(repoRoot, path), 'utf8');
+}
+
+test('github-hygiene says auto-merge is the maintainer\'s switch and never pairs with an unmet Closes (#184)', async () => {
+  const hygiene = await skill('github-hygiene');
+  const line = hygiene.split(/\r?\n/).find((l) => /auto-merge/i.test(l));
+  assert.ok(line, 'github-hygiene must mention auto-merge');
+  const flat = hygiene.replace(/\s+/g, ' ');
+  assert.match(flat, /Auto-merge is the maintainer's switch/i);
+  assert.match(flat, /enabling it is the merge approval/i);
+  assert.match(flat, /never[^.]{0,80}Closes #N[^.]{0,120}every in-scope criterion/i);
+  assert.match(flat, /gh pr merge <N> --auto/);
+});
+
+test('WORKFLOW and Modules 2.2 and 2.4 state the auto-merge rule too (#184)', async () => {
+  for (const path of [
+    'docs/WORKFLOW.md',
+    'education/2_intermediate/module-2-2-pr-review-and-branch-conventions.md',
+    'education/2_intermediate/module-2-4-writing-a-reviewable-pr.md',
+  ]) {
+    const flat = (await text(path)).replace(/\s+/g, ' ');
+    assert.match(flat, /auto-merge/i, `${path} must mention auto-merge`);
+    assert.match(flat, /merge approval|merge decision/i, `${path} must tie auto-merge to the merge approval`);
+  }
+});
