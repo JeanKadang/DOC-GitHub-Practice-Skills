@@ -107,6 +107,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   don't-rewrite-pushed-history rule Session 2 established for `reset
   --hard`. Two Mermaid diagrams. `education/README.md` routing updated;
   Module 3e's ending now hands off to 3f.
+- `education/examples/markdown-formatting-showcase.md` and
+  `education/examples/mermaid-diagram-types-showcase.md` — lookup
+  references, not lessons: every GitHub-Flavored-Markdown feature worth
+  knowing with raw syntax + rendered output side by side, and one minimal
+  example of each major Mermaid diagram type confirmed to render on
+  GitHub.com. See issue #104. Linked from `education/README.md`'s
+  materials list.
 
 ## [1.0.0] - 2026-09-26
 
