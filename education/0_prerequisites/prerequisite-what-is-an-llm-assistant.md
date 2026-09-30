@@ -96,6 +96,10 @@ Discussions section.
 
 ---
 
+Not sure what kind of tool a product name is (assistant, coding assistant,
+agent, or a command-line tool)? The [developer and AI tooling taxonomy](../examples/ai-tooling-taxonomy.md)
+is a lookup page that sorts them, with product names checked on a stated date.
+
 This page is required; the rest of the LLM track (Basics, Intermediate,
 Advanced, Extra — per ADR 0007) is still being written and stays optional
 as it lands, linked from [Education Program overview](../README.md). For
