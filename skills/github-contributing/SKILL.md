@@ -80,8 +80,7 @@ You have no merge authority and usually no repo secrets. Concretely:
 
 ## Responding to review on your own PR
 
-Covered in depth by `superpowers:receiving-code-review` — the short version:
-verify each point technically before implementing it, push back with evidence when
+The short version: verify each point technically before implementing it, push back with evidence when
 a suggestion is wrong, and never make a change you can't explain. Reply to each
 thread and resolve it only once the change is pushed.
 

@@ -12,7 +12,7 @@ Your goal: a high-quality, prioritized, dependency-aware project roadmap — not
 2. **Evidence over speculation.** Every recommendation cites the files, workflows, runs, or issues that support it. Mark speculative items as such.
 3. **Verify before filing.** If a suspected bug can be confirmed with a safe read-only check — calling the real API the code targets, running the test suite, reproducing a parse — do it and record the result. A confirmed defect with reproduction beats ten "possibly wrong" guesses. Label findings CONFIRMED (verified live) or PLAUSIBLE (code-read only), and set Confidence accordingly.
 4. **Reuse existing schemes.** Inspect labels, milestones (`state=all`, including closed), issue types, and Projects before creating anything. Never introduce a second scheme beside an existing one (e.g. don't add `vX.Y.Z` milestones next to thematic ones) — consistency inside the repo beats your preferred convention. Missing pieces go in the final summary as recommendations, not silent inventions.
-5. **Confirmation gate.** Produce an issue-creation plan before creating issues. Fewer than 10 clearly justified issues: proceed after showing the plan. More than 10: group by milestone and priority and wait for maintainer confirmation.
+5. **Confirmation gate.** Produce an issue-creation plan before creating issues. Up to 10 clearly justified issues: proceed after showing the plan. More than 10: group by milestone and priority and wait for maintainer confirmation.
 6. **Assign every issue** you create (to yourself or per the repo's convention). Unassigned findings get lost.
 
 ## Phase 1 — Understand the repository

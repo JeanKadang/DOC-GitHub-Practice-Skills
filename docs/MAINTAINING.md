@@ -69,6 +69,18 @@ restored on that basis. If a future change reintroduces a similar
 false-positive, re-removing the leg (rather than weakening the guard to
 paper over it) is the same tradeoff made in #23/#46.
 
+## Skills must stand alone
+
+A skill is installed or exported by itself, without this repository's `docs/`,
+`education/`, or ADRs, and without any third-party plugin. `npm run validate`
+therefore fails a `SKILL.md` (or companion Markdown file) that cites a
+`plugin:skill-name` reference, an inline-code path to a file under `docs/`,
+`education/`, or `platforms/`, or an `ADR NNNN` number. State the guidance
+inline. A pointer that is deliberately specific to this repository carries the
+marker `(this repository only)` on the same line, which the validator accepts.
+Generic advice about a consumer's own `docs/` folder or `docs/adr/` directory
+is fine because it names a directory, not a file shipped here.
+
 ## Bash and PowerShell examples in skills
 
 Every `skills/*/SKILL.md` command example is Bash-flavored by default, since

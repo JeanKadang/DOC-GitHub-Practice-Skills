@@ -46,7 +46,7 @@ work an issue-first exception after the minimum shell exists.
 | Dependabot | The repository has supported dependencies or Actions | No supported ecosystem is present |
 | Projects board | Multiple contributors need a maintained board and an owner | It is cosmetic, unmaintained, or solo work can use issues, labels, and milestones |
 | CODEOWNERS | Real review routing requires named owners | A solo maintainer has no routing need |
-| GitHub Wiki | The repository already has one, established and actively used — leave it as-is and treat its content as source of truth for what it covers | It has no Wiki yet; never proactively enable one during bootstrap (see ADR 0003) |
+| GitHub Wiki | The repository already has one, established and actively used — leave it as-is and treat its content as source of truth for what it covers | It has no Wiki yet; never proactively enable one during bootstrap |
 
 ## 6. Repository and Actions settings
 
@@ -118,7 +118,7 @@ non-empty — this skill's pre-issue exception never applied; use
 |---|---|
 | "Setup is not real work, so no issue is needed" | End the exception after the shell; create the bootstrap issue and linked branch now. |
 | "Enable Wiki or a board to look professional" | Never enable a fresh Wiki; create a board only for an owned multi-contributor workflow. |
-| "This repo already has a Wiki, migrate it into the repo or ignore it" | Leave an already-established, actively-used Wiki alone — treat its content as source of truth for what it covers (see ADR 0003). |
+| "This repo already has a Wiki, migrate it into the repo or ignore it" | Leave an already-established, actively-used Wiki alone — treat its content as source of truth for what it covers. |
 | "Add CODEOWNERS and self-approval rules by default" | Require a real routing need and a merge path a solo maintainer can use. |
 | "Copy local files now and review later" | Publish only preflighted, allowlisted content; never copy private history or workplace artifacts. |
 | "Configure required checks before CI exists" | Run CI first and use its observed job names. |
