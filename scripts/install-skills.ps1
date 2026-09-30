@@ -619,7 +619,7 @@ try {
                 }
                 else {
                     Assert-SafeTargetPaths -Plan $plan -Destination $replacement.Destination
-                    Remove-Item -LiteralPath $replacement.Destination -Recurse
+                    Remove-Item -LiteralPath $replacement.Destination -Recurse -Force
                 }
             }
             Assert-SafeTargetPaths -Plan $plan -Destination $destination
