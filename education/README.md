@@ -156,4 +156,4 @@ mindmap
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
 - [Examples: Markdown formatting showcase](examples/markdown-formatting-showcase.md) — lookup reference, not a lesson.
-- [Examples: Mermaid diagram types showcase](examples/mermaid-diagram-types-showcase.md) — one example of each major diagram type, lookup reference.
+- [Examples: Mermaid diagram types showcase](examples/mermaid-diagram-types-showcase.md) — every documented diagram type, established and newer, lookup reference.
