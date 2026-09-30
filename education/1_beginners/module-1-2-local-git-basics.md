@@ -147,13 +147,20 @@ radius.
 
 | Command | Undoes | Rewrites history? | Safe on a pushed/shared branch? |
 | --- | --- | --- | --- |
-| `git restore <file>` | Uncommitted changes in the working tree | No — nothing was committed yet | Always safe — nothing shared is touched |
+| `git restore <file>` | Uncommitted changes in the working tree | No — nothing was committed yet | Nothing shared is touched, but the discarded edit is gone for good: git never recorded it |
 | `git revert <commit>` | An already-committed change | No — adds a new commit that undoes the old one | Yes — safe on shared branches |
-| `git reset <commit>` | Moves the branch pointer itself | Yes — can discard commits entirely (`--hard`) | Only on a branch nobody else has pulled |
+| `git reset <commit>` | Moves the branch pointer itself | Yes — can discard commits entirely (`--hard`) | Only on a branch nobody else has pulled. `--hard` also discards uncommitted edits, which the reflog can't bring back |
 
-Try each one on your scratch branch from earlier:
+Try each one on your scratch branch from earlier. First get back onto it, since
+the conflict exercise left you on `conflict-b` with a merge commit, and
+`git revert HEAD` on a merge commit fails (git can't tell which parent to
+undo):
 
 ```bash
+git checkout session-2-<your-name>
+git status                       # checkpoint: on your scratch branch, clean tree
+git log --oneline -1             # checkpoint: shows "Scratch line for Module 1.2"
+
 # restore: throw away an uncommitted edit
 echo "oops" >> CONTRIBUTORS.md
 git restore CONTRIBUTORS.md      # the "oops" line is gone, no trace

@@ -41,15 +41,25 @@ one clean commit before anyone reviews it.
 
 ```bash
 git checkout -b module-3-6-<your-name>
+git status                      # checkpoint: clean working tree, on your new branch
+
 echo "draft" >> CONTRIBUTORS.md
+git add CONTRIBUTORS.md         # a commit records only what you've staged
 git commit -m "wip"
 echo "draft fixed" >> CONTRIBUTORS.md
+git add CONTRIBUTORS.md
 git commit -m "fix typo"
 echo "final" >> CONTRIBUTORS.md
+git add CONTRIBUTORS.md
 git commit -m "actually working now"
+
+git log --oneline -3            # checkpoint: exactly three new commits
 
 git rebase -i HEAD~3
 ```
+
+Without the `git add` lines, `git commit` refuses: git only commits what
+you've staged (Module 1.2, "Three things, one file").
 
 This opens your editor with the three commits listed, oldest first, each
 prefixed `pick`. To squash the last two into the first:
@@ -78,7 +88,12 @@ a sequence of commits with a cleaner sequence telling the same story.
 Cherry-pick applies a single commit's changes onto your current branch,
 as a new commit — useful when a fix landed on the wrong branch, or when
 one specific change from someone else's branch is needed without the rest
-of it.
+of it. The original commit stays where it is, and nothing already pushed is
+rewritten: the copy is a new commit with a new hash, so cherry-picking is
+safe on a shared branch. (The "rewrite only unpushed history" rule above
+applies to rebase and `reset`, not to this.) If the original branch is later
+merged too, the same change can show up twice, which is worth knowing before
+you do both.
 
 ```bash
 git log other-branch --oneline    # find the commit hash you need
@@ -117,9 +132,16 @@ flowchart LR
 
 What this shows: `reset --hard` moves where your branch *points*; it
 doesn't immediately erase the commit itself. `reflog` is how you find
-your way back before git eventually garbage-collects it (typically after
-about 90 days of being unreferenced — recover sooner rather than later,
-but "immediately" isn't the actual deadline).
+your way back before git eventually garbage-collects it. Reflog entries
+expire: by default, 90 days for entries still reachable from the branch tip
+and 30 days for entries that aren't (like your "lost" commit). Both are
+configurable, and `git gc` can prune sooner, so treat these as defaults and
+not a guarantee — recover promptly.
+
+This only works for work you **committed**. A change that was never committed
+(an uncommitted edit wiped by `reset --hard` or `restore`) was never in the
+reflog, and there is nothing to recover. Also, the reflog is local to your
+clone: it isn't pushed, and a fresh clone doesn't have it.
 
 ## Self-check
 
