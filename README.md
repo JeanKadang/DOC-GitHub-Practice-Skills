@@ -70,6 +70,7 @@ GPT; see the [ChatGPT guide](docs/chatgpt.md).
 - [Installing from VS Code (no PowerShell experience needed)](docs/vscode.md)
 - [Installing for ChatGPT (Custom GPT, no local skill directory)](docs/chatgpt.md)
 - [Colleague training program](education/README.md)
+- [Repo settings snapshot (read-only audit reference)](docs/repo-settings-snapshot.md)
 
 ## Compatibility
 
