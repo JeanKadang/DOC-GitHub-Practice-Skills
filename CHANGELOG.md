@@ -13,6 +13,15 @@
 
 ### Changed
 
+- `github-issue-first` no longer files issues "without being asked" in any repo
+  it touches. Noticing work is still automatic, but filing now needs a
+  Preconditions check: `gh repo view --json viewerPermission` must show triage
+  or higher (otherwise hand off to `github-contributing`), and the first filing
+  in a repo each session is confirmed once, because an issue on a public repo is
+  public. An explicit request, an approved `github-repo-review` plan, or the
+  bootstrap issue already counts as the confirmation. `github-contributing` now
+  says findings in a repo you only read go through that repo's own channels
+  (#120).
 - `AGENTS.md` is now the single agent-guidance file and `CLAUDE.md` only
   imports it (`@AGENTS.md`), so Codex, Copilot, and Claude Code read the same
   text. `tests/agent-guidance.test.mjs` fails if the import is lost or the file

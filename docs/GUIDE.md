@@ -30,7 +30,9 @@ The following sections describe the canonical skills as they exist in v0.2.0.
 - **Responsibilities and outputs:** Create or triage an assigned issue with
   priority, category, milestone, scope, evidence, and testable criteria.
 - **Boundary and handoff:** Send security-sensitive findings to
-  `github-security-response`; hand implementation to `github-hygiene`.
+  `github-security-response`; hand implementation to `github-hygiene`. Files
+  only where the viewer has triage or write permission, confirming once per
+  repo per session; outside contributors go to `github-contributing`.
 
 ### `github-hygiene`
 

@@ -10,6 +10,11 @@ This one is the other side: you're proposing a change to a repo you don't own.
 The target repo's own `CONTRIBUTING.md`, issue templates, and conventions govern,
 not this repository's. Read them before opening anything.
 
+That includes problems you notice along the way. With only read access, a bug
+you hit or a doc error you spot is reported through that repo's own channels,
+not through `github-issue-first`, whose Preconditions stop at repos you can
+write to or triage.
+
 ## Forking and staying in sync
 
 ```bash
