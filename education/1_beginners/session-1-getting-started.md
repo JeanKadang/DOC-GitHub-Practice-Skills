@@ -141,4 +141,4 @@ change, from a one-line doc fix to a major feature. Module 2a covers the
 (labels, milestones, the exact wording of `Refs`/`Closes`) that make this
 team's process work at scale.
 
-Next: [Module 2a: Issue-first and the closure gate](../intermediate/module-2a-issue-first-and-closure-gate.md)
+Next: [Module 2a: Issue-first and the closure gate](../2_intermediate/module-2a-issue-first-and-closure-gate.md)

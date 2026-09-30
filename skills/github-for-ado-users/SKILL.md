@@ -20,7 +20,7 @@ every commit happens locally, before anyone pushes anywhere — there's no
 central lock to wait for. No amount of relabeling nouns bridges that gap;
 it has to be learned as its own concept before the table below is useful.
 If this repo's colleague-training program is available, its
-`education/beginners/session-0-what-is-version-control.md` covers the
+`education/0_prerequisites/session-0-what-is-version-control.md` covers the
 concept in plain terms — but the two sentences above are enough to name
 the jump even without it.
 

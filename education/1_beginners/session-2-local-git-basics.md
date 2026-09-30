@@ -195,4 +195,4 @@ Discussions section.
 
 ---
 
-Next: [Module 2a: Issue-first and the closure gate](../intermediate/module-2a-issue-first-and-closure-gate.md)
+Next: [Module 2a: Issue-first and the closure gate](../2_intermediate/module-2a-issue-first-and-closure-gate.md)

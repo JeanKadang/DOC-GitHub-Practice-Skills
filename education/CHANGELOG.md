@@ -32,6 +32,16 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   updated to route into the six modules.
 - `education/facilitator-guide.md` updated for module-aware completion
   tracking and to explain the facilitator-note callout convention.
+- **Breaking:** `education/beginners/`, `education/intermediate/`,
+  `education/advanced/`, `education/extra/`, and `education/llm/` are
+  renamed/merged to `education/0_prerequisites/`, `education/1_beginners/`,
+  `education/2_intermediate/`, and `education/3_advanced/` — numbered for
+  reading order (ADR 0009, refining ADR 0007). `0_prerequisites/` holds
+  Session 0, the (now required) LLM Pre-requisite page, and the
+  (conditional) local-dev-setup page together. Any external link or
+  bookmark to the old folder paths will 404 — see issue #109 and ADR 0009
+  for the rationale. All content unchanged beyond internal cross-reference
+  paths; files moved via `git mv` to preserve history.
 
 ### Added
 
