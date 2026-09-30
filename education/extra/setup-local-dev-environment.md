@@ -78,6 +78,7 @@ useful later for opening folders from a terminal (`code .`).
 | **Markdown Preview Mermaid Support** | Renders Mermaid diagrams (like the flowcharts in this very page) inline in VS Code's Markdown preview, not just on GitHub.com. |
 | **PowerShell** | Syntax highlighting and linting for `.ps1` scripts — relevant if you ever read or run this repo's own `install-skills.ps1`, or any other PowerShell tooling. |
 | **GitHub Pull Requests and Issues** | Review, comment on, and manage PRs and issues from inside VS Code instead of switching to a browser — pairs directly with what Session 2 teaches on the command line. |
+| **Markdown PDF** | Exports a `.md` file to PDF (or HTML) for offline reading or printing — renders Mermaid diagrams in the export too, which matters given how much this program's own content uses them. |
 
 Install any of these from VS Code's Extensions view (the four-squares icon
 in the left sidebar, or `Ctrl+Shift+X`) — search the name, click Install.
@@ -88,6 +89,7 @@ flowchart TD
     VSCode --> Mermaid[Mermaid Preview Support]
     VSCode --> PS[PowerShell]
     VSCode --> GH[GitHub Pull Requests<br/>and Issues]
+    VSCode --> PDF[Markdown PDF]
     VSCode -->|Accounts icon| GHE[GitHub Enterprise<br/>sign-in]
     Git[Git, installed separately] -.->|Source Control view uses it| VSCode
 ```

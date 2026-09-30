@@ -106,6 +106,10 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   example of each major Mermaid diagram type confirmed to render on
   GitHub.com. See issue #104. Linked from `education/README.md`'s
   materials list.
+- `education/extra/setup-local-dev-environment.md`'s recommended-
+  extensions table gained a **Markdown PDF** row (exports to PDF/HTML,
+  renders Mermaid diagrams in the export) — offline reading and printing
+  weren't covered. See issue #106.
 
 ## [1.0.0] - 2026-09-26
 
