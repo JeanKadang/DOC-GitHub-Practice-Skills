@@ -158,6 +158,11 @@ child is closed.
 - `git checkout main && git pull && git fetch --prune` — local branch listings lie until pruned; verify remote state with `gh api repos/{owner}/{repo}/branches` before reporting leftover branches.
 - Delete merged local branches: `git branch --merged main | grep -v main | xargs -r git branch -d`.
 - Working tree clean, everything pushed, no open PRs left unmentioned.
+- Run the closed-with-unchecked-boxes audit query (above, under "Acceptance
+  criteria are closure gates") against any issue closed this session — the
+  PR template's checkbox catches it at merge time for one PR, but this
+  catches anything closed a different way (bulk triage, manual `gh issue
+  close`) that skipped the reminder.
 
 ## Common mistakes
 

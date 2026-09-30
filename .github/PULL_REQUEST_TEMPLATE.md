@@ -19,6 +19,9 @@ with a closing keyword only after the issue's complete evidence gate passes.
 - [ ] Installer dry run for affected targets
 - [ ] Public-content scan and manual review when content changes
 - [ ] Cross-skill invariant review when shared policy changes
+- [ ] If this PR uses a closing keyword: a completion-evidence comment is
+      posted on each closed issue (not just this PR description) before or
+      immediately after merge — see `github-hygiene`'s closure gate
 
 ## Public-content confirmation
 
