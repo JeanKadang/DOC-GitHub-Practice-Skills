@@ -61,6 +61,15 @@ project. Requirements:
   open a draft pull request for a practice decision record and close it
   unmerged, and file one practice issue that they close as "not planned";
   reset the sandbox between cohorts.
+- **For Module 2.7's exercise:** a separate **public** practice repository
+  (for example `practice-contributions`), because the private sandbox can't
+  normally be forked. It needs a `CONTRIBUTORS.md`, and a `CONTRIBUTING.md`
+  whose rules differ from this team's habits (for example a title prefix such
+  as `[docs]`, a one-sentence description, and no issue reference), so
+  attendees practise following the target's rules. Optionally add a workflow
+  job that needs a secret, so attendees see it skipped on a fork pull request.
+  Attendees close their pull requests unmerged; delete stray forks and branches
+  between cohorts.
 - **For Module 3.2's exercise:** a Projects v2 board with at least one item
   linked to a real issue, and one deliberately unlinked **draft item** (an
   entry created only on the board) — the module's exercise asks attendees
@@ -98,6 +107,8 @@ stateDiagram-v2
       and without a milestone.
 - [ ] For Module 2.6: confirm the `decision-needed` label exists and, if you want
       the Discussion step, that Discussions is enabled with an Ideas category.
+- [ ] For Module 2.7: confirm the public practice repository exists, is public,
+      and has a `CONTRIBUTORS.md` and a `CONTRIBUTING.md`.
 - [ ] For Module 3.2: confirm the sandbox repo has a Projects board with at
       least one item linked to a real issue and one unlinked draft item.
 - [ ] Have this guide and the relevant session or module file open,
@@ -113,7 +124,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.2 / Intermediate modules 2.1-2.6 / Advanced modules 3.1-3.6)" to
+(Beginner modules 0.1-1.2 / Intermediate modules 2.1-2.7 / Advanced modules 3.1-3.6)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.
