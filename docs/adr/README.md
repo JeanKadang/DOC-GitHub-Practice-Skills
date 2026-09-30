@@ -44,3 +44,6 @@ documentation clarifications and typo-level fixes do not need one.
 - [0007](0007-two-track-education-program.md) — Split `education/` into a
   GitHub track and an LLM/VS Code tooling track, both staged across the
   same five tiers.
+- [0008](0008-education-portability-via-bundling.md) — Made `education/`
+  portable by bundling the skill files it references, not duplicating
+  their content, reusing ADR 0006's ChatGPT export precedent.
