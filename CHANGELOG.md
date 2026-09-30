@@ -11,6 +11,14 @@
   Knowledge, since ChatGPT has no local skill-directory discovery
   mechanism. See `docs/chatgpt.md` and ADR 0006.
 
+### Changed
+
+- `install-skills.ps1` upgrades an unmodified install from an earlier release
+  in place, with no `-Force` and no backup, by checking installed files
+  against the hashes in their own marker. Reinstalling the current release is
+  a no-op. `-Force` remains the path for locally modified or untracked skills.
+  New `-KeepBackups N` keeps only the newest N sets under `skill-backups` (#118).
+
 ### Fixed
 
 - `install-skills.ps1` no longer deletes user-added files inside a tracked
