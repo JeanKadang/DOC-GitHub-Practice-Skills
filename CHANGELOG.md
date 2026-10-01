@@ -13,6 +13,9 @@
   require every skill on each surface that lists the roster, keep version stamps
   and release-note labels consistent, and cap the ChatGPT export at 20 files.
   `docs/MAINTAINING.md` lists what each check guards (#129).
+- The validator warns (without failing) when a `SKILL.md` is over 400 lines, and
+  the check for false `Refs` open-state promises now covers every published
+  Markdown file, not seven (#129).
 - ADRs 0007 to 0011: the two-track education program, education portability by
   bundling, numbered education folders, the single agent-guidance file, and
   education module numbering. `docs/repo-settings-snapshot.md` is a read-only

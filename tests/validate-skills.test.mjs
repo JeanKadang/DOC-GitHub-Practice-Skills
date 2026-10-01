@@ -228,3 +228,17 @@ test('rejects a cross-reference to a skill that does not exist (#129)', async ()
   const result = await validateRepository(root);
   assert.match(result.errors.join('\n'), /github-contributing.*github-hygine.*not a skill in this roster/s);
 });
+
+test('findLengthWarning warns past 400 lines and stays quiet below it (#129)', async () => {
+  const { findLengthWarning } = await import('../scripts/validate-skills.mjs');
+  assert.equal(findLengthWarning('line\n'.repeat(399)), null);
+  assert.match(findLengthWarning('line\n'.repeat(450)), /451 lines, over 400/);
+});
+
+test('the validator reports a long skill as a warning, not an error (#129)', async () => {
+  const root = await fixtureFromRepo();
+  await appendToSkill(root, 'github-hygiene', 'Extra line.\n'.repeat(250));
+  const result = await validateRepository(root);
+  assert.deepEqual(result.errors, []);
+  assert.match(result.warnings.join('\n'), /github-hygiene SKILL\.md is \d+ lines, over 400/);
+});
