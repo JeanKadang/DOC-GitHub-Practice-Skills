@@ -41,6 +41,28 @@ pwsh -NoProfile -File .\scripts\install-skills.ps1 `
   -Target Codex -CodexHome C:\path\to\codex-home -DryRun
 ```
 
+## Where Codex looks for skills
+
+OpenAI's documentation (checked 2026-10-01) lists `.agents/skills` in the
+repository and `~/.agents/skills` for personal skills, and does not mention
+`~/.codex/skills`, which is where this installer puts skills by default.
+
+That default still works. On 2026-10-01, with Codex CLI 0.159.3 on Windows, a
+test skill in `~/.codex/skills` and another in `~/.agents/skills` were both
+listed in the skills Codex gives the model; `codex debug prompt-input "hello"`
+prints that list without calling the model. Two cautions follow:
+
+- The `~/.codex/skills` path is not in OpenAI's current documentation, so a later
+  Codex version could stop reading it. If installed skills stop appearing, check
+  this first, and install with `-CodexHome` pointing at a home whose `skills`
+  folder Codex reads.
+- If the same skill is installed in both places, Codex lists it twice (seen with
+  `github-hygiene`). Keep one copy of each.
+
+To re-check after a Codex update, create a skill with a unique name in each
+folder, run the `debug prompt-input` command above, search its output for those
+names, and delete the test skills afterwards.
+
 Restart Codex or trigger its available skill rediscovery after installation if
 the new skills do not appear immediately. Validate the repository with `npm run
 check` before packaging or installing a release.
