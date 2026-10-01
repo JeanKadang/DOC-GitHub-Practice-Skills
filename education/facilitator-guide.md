@@ -73,6 +73,12 @@ project. Requirements:
   open a draft pull request for a practice decision record and close it
   unmerged, and file one practice issue that they close as "not planned";
   reset the sandbox between cohorts.
+- **For Module 1.6's exercise:** nothing on the repo itself. Each attendee needs
+  a local clone (Module 1.2), VS Code, and GitHub Copilot Chat available to them,
+  and nothing is committed. If Copilot isn't licensed for someone, they can use
+  the instruction-file location for the tool they do have (the module's first
+  table). **For Module 2.9:** nothing; it is a reading and review exercise with
+  made-up values, and nothing is installed.
 - **For Module 2.8's exercise:** nothing. It is a reading and writing exercise
   with no sandbox use.
 - **For Module 2.7's exercise:** a separate **public** practice repository
@@ -116,6 +122,8 @@ stateDiagram-v2
 - [ ] For Module 1.2: confirm every attendee has `git` installed and can clone the sandbox repo.
 - [ ] For Module 1.3: confirm each attendee still has their Module 1.1 issue and
       merged pull request to link to.
+- [ ] For Module 1.6: confirm each attendee has VS Code, a local clone, and a
+      way to run an AI assistant chat (Copilot Chat or another tool).
 - [ ] For Module 1.5: confirm every attendee has a local clone (same as Module 1.2).
 - [ ] For Module 1.4: confirm the same, and that `CONTRIBUTORS.md` still has
       each attendee's line (the blame question depends on it).
@@ -147,7 +155,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.5 / Intermediate modules 2.1-2.8 / Advanced modules 3.1-3.6)" to
+(Beginner modules 0.1-1.6 / Intermediate modules 2.1-2.9 / Advanced modules 3.1-3.6)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.
