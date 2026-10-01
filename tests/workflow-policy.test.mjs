@@ -57,3 +57,19 @@ test('policy never claims Refs guarantees an issue remains open', async () => {
 test('false assurance detector rejects the former merge claim', () => {
   assert.match('The PR may merge, but the issue stays open.', falseOpenAssurance);
 });
+
+// Release notes (#147): the skillset's generated notes list merged pull
+// requests, so education-only pull requests must be labelled and excluded.
+test('release notes exclude education-only pull requests and the label is copied from the issue (#147)', async () => {
+  const releaseConfig = await readFile(join(repoRoot, '.github', 'release.yml'), 'utf8');
+  const excludeBlock = /exclude:\s*\r?\n\s*labels:\s*\r?\n((?:\s*-\s*\S+\r?\n)+)/.exec(releaseConfig);
+  assert.ok(excludeBlock, 'release.yml must have changelog.exclude.labels');
+  assert.match(excludeBlock[1], /-\s*education\b/);
+  const labeler = await readFile(
+    join(repoRoot, '.github', 'workflows', 'label-pr-from-issue.yml'),
+    'utf8',
+  );
+  assert.match(labeler, /allowed_categories="[^"]*\beducation\b[^"]*"/);
+  const maintaining = await readFile(join(repoRoot, 'docs', 'MAINTAINING.md'), 'utf8');
+  assert.match(maintaining.replace(/\s+/g, ' '), /must carry the `education` label/);
+});

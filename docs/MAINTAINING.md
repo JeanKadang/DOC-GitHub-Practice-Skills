@@ -165,6 +165,13 @@ requirement to coordinate a release of one with a release of the other.
 | Release page | Yes, with generated notes | No — tag only |
 | CI on tag push | Full release pipeline | `education-tag-check.yml` only |
 
+The skillset's generated release notes list merged pull requests since the
+previous `vX.Y.Z` tag, so a pull request that only changes `education/` must
+carry the `education` label. `.github/release.yml` excludes that label, which
+keeps education-only work out of the skillset's notes, and the label-copy
+workflow copies it from the linked issue. Label the issue `education` when you
+file it. A pull request that touches both products leaves the label off.
+
 When you make a change, update whichever changelog matches what you
 touched — a change to `skills/*/SKILL.md` or the installer never touches
 `education/CHANGELOG.md`, and vice versa. If a single PR touches both
