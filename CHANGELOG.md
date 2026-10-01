@@ -37,6 +37,14 @@
 
 ### Changed
 
+- CI tests Node.js 22 and 24 and `package.json` requires `>=22` (Node 20 is end
+  of life, and the locked `markdownlint` already needs 22). The installer jobs
+  are one OS matrix, the installer suite runs only on the OS legs
+  (`npm run test:installer`) and everything else once per Node version
+  (`npm run test:unit`), the dry run covers every target, and the workflow has
+  `concurrency` and `timeout-minutes`. `docs/MAINTAINING.md` lists the required
+  check names, and a test keeps the workflow, `engines`, and README in step
+  (#130).
 - `education/` has its own changelog (`education/CHANGELOG.md`) and tags, so
   the many education modules added since v0.3.0 are listed there, not here.
 - `github-issue-first` and `github-hygiene` now scale ceremony to repository

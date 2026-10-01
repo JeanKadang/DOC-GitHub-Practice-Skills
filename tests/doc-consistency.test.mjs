@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import test from 'node:test';
+import { parse } from 'yaml';
 
 import { CANONICAL_SKILLS } from '../scripts/validate-skills.mjs';
 import { repoRoot } from './helpers/markdown.mjs';
@@ -168,4 +169,64 @@ test('the ChatGPT export stays within the 20-file Knowledge limit', async () => 
     count <= CHATGPT_KNOWLEDGE_FILE_LIMIT,
     `the export is ${count} files, over ChatGPT's ${CHATGPT_KNOWLEDGE_FILE_LIMIT}-file Knowledge limit (ADR 0006)`,
   );
+});
+
+// CI shape (#130). Required status checks match job names, so a matrix change
+// can orphan a required check, and a Node version that CI stopped testing must
+// not stay claimed in package.json or the README.
+export function validateWorkflowProblems(workflow, packageJson, readme, maintaining) {
+  const problems = [];
+  const jobs = workflow.jobs ?? {};
+  const nodes = jobs.validate?.strategy?.matrix?.node ?? [];
+  if (nodes.length === 0) problems.push('validate job must have a matrix of Node versions');
+  const lowest = Math.min(...nodes);
+  const engineMajor = Number(/(\d+)/.exec(packageJson.engines?.node ?? '')?.[1]);
+  if (engineMajor !== lowest) {
+    problems.push(`package.json engines says ${packageJson.engines?.node}; the lowest tested Node is ${lowest}`);
+  }
+  for (const node of nodes) {
+    if (!readme.includes(String(node))) problems.push(`README does not mention tested Node ${node}`);
+    if (!maintaining.includes(`Validate skills (Node ${node})`)) {
+      problems.push(`MAINTAINING does not list required check "Validate skills (Node ${node})"`);
+    }
+  }
+  if (!maintaining.includes('Installer dry run (Windows)')) {
+    problems.push('MAINTAINING does not list required check "Installer dry run (Windows)"');
+  }
+  const windows = (jobs.installer?.strategy?.matrix?.include ?? []).find((leg) => leg.label === 'Windows');
+  if (!windows || windows.advisory !== false) {
+    problems.push('the Windows installer leg must exist and must not be advisory');
+  }
+  if (!workflow.concurrency?.group) problems.push('workflow must set concurrency');
+  for (const [name, job] of Object.entries(jobs)) {
+    if (typeof job['timeout-minutes'] !== 'number') problems.push(`job ${name} must set timeout-minutes`);
+  }
+  return problems;
+}
+
+test('validateWorkflowProblems flags a seeded mismatch', () => {
+  const workflow = {
+    concurrency: { group: 'g' },
+    jobs: {
+      validate: { 'timeout-minutes': 5, strategy: { matrix: { node: [20, 22] } } },
+      installer: { strategy: { matrix: { include: [{ label: 'Windows', advisory: true }] } } },
+    },
+  };
+  const problems = validateWorkflowProblems(workflow, { engines: { node: '>=22' } }, 'Node 22', '');
+  assert.ok(problems.some((p) => /lowest tested Node is 20/.test(p)));
+  assert.ok(problems.some((p) => /README does not mention tested Node 20/.test(p)));
+  assert.ok(problems.some((p) => /Validate skills \(Node 22\)/.test(p)));
+  assert.ok(problems.some((p) => /Windows installer leg/.test(p)));
+  assert.ok(problems.some((p) => /job installer must set timeout-minutes/.test(p)));
+});
+
+test('the workflow, package.json engines, README, and MAINTAINING agree on Node and required checks', async () => {
+  const workflow = parse(await read('.github/workflows/validate.yml'));
+  const problems = validateWorkflowProblems(
+    workflow,
+    JSON.parse(await read('package.json')),
+    await read('README.md'),
+    await read('docs/MAINTAINING.md'),
+  );
+  assert.deepEqual(problems, []);
 });

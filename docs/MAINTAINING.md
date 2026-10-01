@@ -66,6 +66,10 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
   or record past states).
 - **Skill length** (`scripts/validate-skills.mjs`): a warning, not a failure, when
   a `SKILL.md` passes 400 lines. A long skill costs every task that loads it.
+- **CI shape** (`tests/doc-consistency.test.mjs`): a Node version claimed in
+  `package.json` or the README that CI does not test, a required check name that
+  no job produces, a non-required Windows installer leg, or a job without
+  `timeout-minutes`.
 - **Installer behaviour** (`tests/install-skills.test.mjs`): data loss, wrong
   backups, or a broken export.
 
@@ -97,6 +101,31 @@ evidence before merge.
 GitHub issue and PR numbers share a repository number sequence. Before editing
 metadata or closing an object from a bare `#N`, query it and confirm whether it
 is an issue or pull request. Never assume the object type from the number alone.
+
+## Required status checks
+
+The ruleset on the default branch requires these checks by name, with branches
+up to date before merge:
+
+- `Validate skills (Node 22)`: the `validate` job in
+  `.github/workflows/validate.yml`, matrix leg `node: 22`. It runs the
+  validator, the unit tests, and the Markdown lint.
+- `Validate skills (Node 24)`: the same job, matrix leg `node: 24`.
+- `Installer dry run (Windows)`: the `installer` job, matrix leg `Windows`. It
+  runs the installer suite and a dry run of every target.
+
+The Ubuntu and macOS installer legs report but are not required, and the macOS
+leg is also `continue-on-error`. Node.js 22 and 24 are the supported LTS lines,
+and `package.json` `engines` matches the lowest of them. A test fails if the
+workflow matrix, `engines`, and the README disagree.
+
+**Renaming or adding a job, or changing the matrix, changes a required check
+name.** A required check that no job produces blocks every pull request forever,
+so change the ruleset in the same change: add the new name only once a pull
+request has shown it passing, and remove an old name only when its job is gone.
+List the current requirements with
+`gh api repos/{owner}/{repo}/rulesets/<id> --jq '.rules[] | select(.type=="required_status_checks")'`.
+Node.js 20 left support in 2026, so a Node 20 leg should not come back.
 
 ## Compatibility records
 

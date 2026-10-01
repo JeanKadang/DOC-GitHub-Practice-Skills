@@ -84,7 +84,8 @@ translation is needed for Copilot. ChatGPT is a fourth, structurally
 different target with no local directory to read — see
 [docs/chatgpt.md](docs/chatgpt.md) for what "installing" means there.
 
-Node.js 20 or 22 validates the repository. Windows is the primary
+Node.js 22 or 24 (the supported LTS lines; `package.json` requires 22 or newer)
+validates the repository. Windows is the primary
 verified installer environment (a required CI check, and the only one that
 exercises junction/reparse-point rejection). Ubuntu and macOS `pwsh` also
 each run the installer suite in CI as advisory checks. macOS was dropped
