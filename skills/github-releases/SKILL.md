@@ -10,8 +10,8 @@ Conventions for milestones, branch protection, and cutting a release. Issue fili
 ## Milestones
 
 - **Attach at filing time, not just at scoping.** Every `gh issue create` (from `github-issue-first`) should leave the issue with a milestone before moving on — an issue with no milestone is as incomplete as one with no priority label. Check what exists first (next bullet); if nothing fits yet, create one rather than leaving the issue unbucketed.
-- **Check what exists before creating one**: `gh api "repos/{owner}/{repo}/milestones?state=all"`. The repo may have thematic milestones already (e.g. "v2.7 - quality & reliability"); attach to the existing bucket rather than minting a competing `vX.Y.Z` one. Two schemes in one repo is worse than either.
-- Absent any existing scheme, group each planned release's issues under a milestone named `vX.Y.Z`. A batch of related findings that isn't yet tied to a specific release version can use a short thematic name instead (e.g. "Role Catalog Consistency") — rename or fold it into a `vX.Y.Z` milestone once a release actually scopes it.
+- **Check what exists before creating one**: `gh api "repos/{owner}/{repo}/milestones?state=all"`. The repo may have thematic milestones already (e.g. "Reliability Hardening"); attach to the existing bucket rather than minting a competing `vX.Y.Z` one. Two schemes in one repo is worse than either.
+- Absent any existing scheme, group each planned release's issues under a milestone named `vX.Y.Z`. A batch of related findings that isn't yet tied to a specific release version can use a short thematic name instead (e.g. "Naming Consistency") — rename or fold it into a `vX.Y.Z` milestone once a release actually scopes it.
 - Attach with `gh issue edit <N> --milestone "<title>"` — including already-closed issues that ship in that release.
 - Close the milestone right after the release publishes: `gh api -X PATCH repos/{owner}/{repo}/milestones/<id> -f state=closed`.
 
@@ -178,7 +178,7 @@ A release is its own PR, separate from feature PRs, then a tag. The shape is the
 6. **Tag on updated default branch**: `git checkout main && git pull && git tag vx.y.z && git push origin vx.y.z`. Tagging a stale local main ships the wrong commit.
 7. **Confirm and close out**: `gh release view vx.y.z` (and `gh run list --workflow release.yml` if it did not appear), then close the milestone.
 
-**Worked example — `cve-reporting`:** version lives in `ModuleVersion` in `WinCVEReport.psd1`; `release.yml` extracts the CHANGELOG section on tag push and hard-fails if it is missing; verification is `Test-ModuleManifest ./WinCVEReport.psd1` plus a full Pester run.
+**Worked example — a small PowerShell module, `example-module`:** version lives in `ModuleVersion` in `ExampleModule.psd1`; `release.yml` extracts the CHANGELOG section on tag push and hard-fails if it is missing; verification is `Test-ModuleManifest ./ExampleModule.psd1` plus a full Pester run.
 
 ## Common mistakes
 

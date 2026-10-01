@@ -1,6 +1,6 @@
 ---
 name: github-repo-configure
-description: Use when handed an existing repository (already created, possibly already has commits) that needs its org-optional settings configured beyond whatever the company already mandates — not when creating a brand-new repo from scratch (that's github-repo-bootstrap). Covers eliciting decisions on Wiki, Discussions, Project attachment, and label scheme, plus providing dual human/AI-triage issue and PR templates for repos that don't have them yet.
+description: Use when handed an existing repository (already created, possibly already has commits) that needs its org-optional settings configured beyond whatever your organization already mandates — not when creating a brand-new repo from scratch (that's github-repo-bootstrap). Covers eliciting decisions on Wiki, Discussions, Project attachment, and label scheme, plus providing dual human/AI-triage issue and PR templates for repos that don't have them yet.
 ---
 
 # Configuring an already-existing repository
@@ -9,7 +9,7 @@ description: Use when handed an existing repository (already created, possibly a
 initial shell is still incomplete. This skill owns a different, more common
 moment: someone handed you a repository that already exists — maybe empty,
 maybe with a commit or two, maybe inherited mid-project — and you need to
-configure its org-optional settings beyond whatever the company already
+configure its org-optional settings beyond whatever your organization already
 mandates. Issues, PRs, and milestones being in use is presumed already a
 given; this skill never asks about those.
 

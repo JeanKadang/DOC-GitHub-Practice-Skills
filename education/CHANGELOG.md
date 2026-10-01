@@ -44,6 +44,9 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- Examples that read as drawn from a real workplace were replaced with invented,
+  neutral ones, and the setup page says "your organization" and "work tool"
+  instead of "the company" (#122).
 - **Breaking:** every numbered lesson is renamed to `module-<tier>-<n>-<name>.md`
   and referred to as "Module `<tier>.<n>`" (ADR 0011, issue #161). Links and
   bookmarks to the old file names will 404; there are no redirects. Content is
@@ -124,11 +127,11 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   scaffolding beyond what Session 1 already needs).
 - `education/beginners/session-0-what-is-version-control.md` gained a
   "Protect your account before you need to" section: 2FA/authenticator
-  setup (shared company authenticator over a personal-only device),
-  durable recovery-code storage, re-registering 2FA before replacing a
+  setup, durable recovery-code storage, re-registering 2FA before replacing a
   device, GitHub Mobile as a legitimate option, and the locked-out
-  recovery path. Prompted by a colleague actually losing GitHub access
-  after a device replacement with no recovery codes saved. See issue #90.
+  recovery path. Prompted by the common failure of losing access after a
+  device replacement with no recovery codes saved. See issue #90. (The advice
+  about a shared authenticator in this first version was removed in #143.)
 - `education/extra/setup-local-dev-environment.md` — new Extra-tier
   content (per ADR 0007's tier scheme): installing Git on Windows,
   installing VS Code, connecting VS Code to GitHub Enterprise, and a

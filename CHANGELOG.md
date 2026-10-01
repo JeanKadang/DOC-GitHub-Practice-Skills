@@ -37,6 +37,10 @@
 
 ### Changed
 
+- The worked and example text in `github-releases`, `github-issue-first`, and
+  `github-repo-configure` is now invented and neutral (a generic PowerShell module
+  release example, "Reliability Hardening", "Naming Consistency", and a status
+  badge title), and "the company" became "your organization" (#122).
 - `docs/openai-codex.md` records where Codex looks for skills: OpenAI documents
   `~/.agents/skills`, the installer's `~/.codex/skills` still works on Codex CLI
   0.159.3 (tested 2026-10-01), and a skill installed in both places is listed

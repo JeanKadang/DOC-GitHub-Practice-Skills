@@ -2,7 +2,7 @@
 
 **Audience:** Anyone about to start Module 1.2 (or any command-line work)
 without Git or VS Code installed yet, or without VS Code connected to the
-company's GitHub Enterprise account.
+organization's GitHub Enterprise account.
 
 **Format:** Hands-on installs, done once. Mostly waiting on installers, not
 reading.
@@ -65,7 +65,7 @@ useful later for opening folders from a terminal (`code .`).
   facilitator or admin which applies to you before starting this step).
 - This opens a browser window to complete sign-in; if your organization
   requires SSO (single sign-on) on top of your GitHub credentials, you'll
-  be prompted for that too — same as signing into any other company tool.
+  be prompted for that too — same as signing into any other work tool.
 - Once signed in, the Accounts icon shows your GitHub username, and VS
   Code's Source Control view can now clone, push, and pull against
   repositories you have access to without re-entering credentials each
