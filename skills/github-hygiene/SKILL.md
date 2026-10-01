@@ -154,7 +154,22 @@ Keep a **checklist in the parent issue's body** alongside the native links —
 `- [x] #84 -- batch name (16 files) -- done, PR #90` — since the native
 sub-issue UI shows open/closed state but not which PR closed it; the
 checklist is what a human skimming the issue actually reads. Update it each
-time a batch merges (`gh issue edit <parent> --body "..."`).
+time a batch merges. Edit it through a newline-preserving body file, not an
+inline `--body "..."` string (same hazard as the closure-evidence step above):
+
+```bash
+gh issue view <parent> --json body --jq .body > parent-body.md
+# edit parent-body.md: tick the finished child, add the PR number
+gh issue edit <parent> --body-file parent-body.md
+```
+
+PowerShell:
+
+```powershell
+gh issue view <parent> --json body --jq .body | Set-Content -Encoding utf8 parent-body.md
+# edit parent-body.md: tick the finished child, add the PR number
+gh issue edit <parent> --body-file parent-body.md
+```
 
 Close each child issue individually as its PR merges (`Closes #<child>` in
 the PR body does this automatically); leave the parent open until every
