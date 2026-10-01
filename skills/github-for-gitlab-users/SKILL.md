@@ -68,9 +68,8 @@ split right.
 
 ### 3. The Wiki isn't automatically off-limits
 
-Unlike Azure DevOps (which has no wiki-equivalent gap to worry about),
-GitLab's Wiki is a genuinely first-class, actively-relied-on feature for many
-teams — a separate git repo, but one plenty of GitLab shops use well. Don't
+Like Azure DevOps (which also has a Git-backed project Wiki), GitLab's Wiki is
+a genuinely first-class, actively-relied-on feature for many teams — a separate git repo, but one plenty of GitLab shops use well. Don't
 apply a blanket "never" here. `github-repo-bootstrap`'s conditional stance
 is the actual policy: leave an already-established, actively-used
 wiki alone and treat its content as source of truth for what it covers; don't
@@ -137,7 +136,9 @@ Rough order, with the skill that covers each:
 2. Milestones for releases, **not** iterations — `github-releases`
 3. Ruleset on the default branch (required checks + review, replacing Approval Rules) —
    `github-releases`
-4. CODEOWNERS, CONTRIBUTING.md, issue forms, PR template — `github-repo-review`
+4. Issue forms and PR template — `github-repo-configure`; CODEOWNERS and
+   CONTRIBUTING.md — `github-repo-bootstrap` for a new repository,
+   `github-repo-review` to audit an existing one
 5. Rewrite `.gitlab-ci.yml` as Actions workflows — budget real time, don't
    port syntax line-by-line
 6. `.github/release.yml` for categorised release notes — `github-releases`
