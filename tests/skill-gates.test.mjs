@@ -119,3 +119,41 @@ test('github-contributing, github-releases, and github-pr-review do not assume m
   const review = await skill('github-pr-review');
   assert.doesNotMatch(review, /^git checkout main\b/m);
 });
+
+// Cross-skill handoffs (#124): template work routes to the skill that ships
+// templates, companion lists cover every sibling, and the ADO Wiki stance
+// agrees with the GitLab one (conditional, not a blanket ban).
+test('mapping skills route issue forms and PR template to github-repo-configure (#124)', async () => {
+  for (const name of ['github-for-ado-users', 'github-for-gitlab-users']) {
+    const body = (await skill(name)).replace(/\s+/g, ' ');
+    assert.match(body, /Issue forms and PR template — `github-repo-configure`/, name);
+    assert.doesNotMatch(body, /issue forms, PR template — `github-repo-review`/, name);
+  }
+});
+
+test('github-repo-review lists every sibling skill as a companion (#124)', async () => {
+  const inventory = JSON.parse(
+    await readFile(join(repoRoot, 'contracts', 'skill-inventory.json'), 'utf8'),
+  );
+  const names = inventory.skills.map((entry) => entry.name);
+  const body = await skill('github-repo-review');
+  const companions = body.split(/\r?\n/).find((line) => line.startsWith('**Companion skills:**'));
+  assert.ok(companions, 'github-repo-review must have a Companion skills line');
+  const missing = names.filter((name) => name !== 'github-repo-review' && !companions.includes(`\`${name}\``));
+  assert.deepEqual(missing, [], `missing from the companion list: ${missing.join(', ')}`);
+});
+
+test('github-repo-bootstrap hands off to both mapping skills (#124)', async () => {
+  const body = await skill('github-repo-bootstrap');
+  assert.match(body, /`github-for-ado-users`/);
+  assert.match(body, /`github-for-gitlab-users`/);
+});
+
+test('the ADO Wiki stance is conditional and the GitLab skill does not deny ADO has a Wiki (#124)', async () => {
+  const ado = (await skill('github-for-ado-users')).replace(/\s+/g, ' ');
+  assert.match(ado, /established,\s+actively-used Wiki/);
+  assert.doesNotMatch(ado, /### 3\. The Wiki is a trap\b/);
+  const gitlab = (await skill('github-for-gitlab-users')).replace(/\s+/g, ' ');
+  assert.doesNotMatch(gitlab, /no wiki-equivalent gap/i);
+  assert.match(gitlab, /Azure DevOps[^.]{0,40}also has a Git-backed project Wiki/);
+});

@@ -18,6 +18,13 @@
 
 ### Changed
 
+- The ADO and GitLab mapping skills now send issue forms and the PR template to
+  `github-repo-configure` (which ships them) instead of `github-repo-review`
+  (which only audits). `github-repo-review` lists every sibling skill as a
+  companion and `github-repo-bootstrap` mentions the GitLab skill. The GitLab skill
+  no longer says Azure DevOps has no wiki, and the ADO skill's Wiki section is
+  conditional like ADR 0003 and the GitLab skill: don't start a new Wiki, but an
+  established one may stay (#124).
 - Skills no longer assume the default branch is `main`. `github-contributing`,
   `github-releases`, and `github-hygiene` say `main` stands for the repository's
   default branch and show how to look it up, `github-pr-review` uses
