@@ -37,8 +37,9 @@ and people moving from Azure DevOps or GitLab to GitHub.
 
 ## Safe quick install
 
-The verified v0.1.0 installer platform is Windows PowerShell. From a trusted
-checkout, inspect the plan before allowing writes:
+The installer is PowerShell-only. Windows with PowerShell 7 (`pwsh`) is the
+primary verified platform; Ubuntu and macOS `pwsh` also run it in CI as
+advisory checks. From a trusted checkout, inspect the plan before allowing writes:
 
 ```powershell
 pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Both -DryRun
