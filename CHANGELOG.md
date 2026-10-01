@@ -37,6 +37,13 @@
 
 ### Changed
 
+- The release workflow is split into a read-only `check` job and a `publish` job
+  that alone has `contents: write`. `check` checks out without stored
+  credentials, installs with `npm ci --ignore-scripts`, and runs
+  `scripts/verify-release.mjs`, which also requires the tag to be on `main` and
+  to have a CHANGELOG section. A manual run of the workflow tests the guards
+  without publishing. `github-releases` says to keep dependency code away from a
+  write token (#128).
 - The worked and example text in `github-releases`, `github-issue-first`, and
   `github-repo-configure` is now invented and neutral (a generic PowerShell module
   release example, "Reliability Hardening", "Naming Consistency", and a status
