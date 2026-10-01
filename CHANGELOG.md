@@ -37,6 +37,10 @@
 
 ### Changed
 
+- `docs/openai-codex.md` records where Codex looks for skills: OpenAI documents
+  `~/.agents/skills`, the installer's `~/.codex/skills` still works on Codex CLI
+  0.159.3 (tested 2026-10-01), and a skill installed in both places is listed
+  twice. It also shows how to re-check after an update (#200).
 - `github-releases` warns that renaming a CI job or changing a matrix orphans a
   required check (it never reports, so every PR is blocked) and gives the order
   for changing the ruleset in the same change. `github-repo-review`'s CI/CD audit
