@@ -196,6 +196,9 @@ mindmap
     3: Advanced
       Module 3.1: Branch protection and rulesets
       Module 3.2: Projects boards
+        Board as a view, not the source of truth
+        Milestones on a board
+        Which board and which view
       Module 3.3: Releases
       Module 3.4: Security response basics
       Module 3.5: Actions, runners, and the Copilot coding agent
@@ -221,7 +224,7 @@ mindmap
 - [Module 2.7: Contributing to someone else's repository](2_intermediate/module-2-7-contributing-to-someone-elses-repo.md) — ~30 min, hands-on, the reasons behind `github-contributing`.
 - [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md) — ~35 min, reading and a short writing exercise, the failure behind each of six rules.
 - [Module 3.1: Branch protection and rulesets](3_advanced/module-3-1-branch-protection-and-rulesets.md) — ~25 min, optional.
-- [Module 3.2: Projects boards](3_advanced/module-3-2-projects-boards.md) — ~20 min, optional.
+- [Module 3.2: Projects boards](3_advanced/module-3-2-projects-boards.md) — ~35 min, optional. What a board mirrors, showing and filtering by milestone, which board and view to use when.
 - [Module 3.3: Releases](3_advanced/module-3-3-releases.md) — ~25 min, optional.
 - [Module 3.4: Security response basics](3_advanced/module-3-4-security-response.md) — ~15 min, optional.
 - [Module 3.5: Actions, runners, and the Copilot coding agent](3_advanced/module-3-5-actions-runners-and-agents.md) — ~15-20 min, optional.

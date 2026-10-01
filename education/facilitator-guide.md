@@ -85,10 +85,13 @@ project. Requirements:
   Attendees close their pull requests unmerged; delete stray forks and branches
   between cohorts.
 - **For Module 3.2's exercise:** a Projects v2 board with at least one item
-  linked to a real issue, and one deliberately unlinked **draft item** (an
-  entry created only on the board) — the module's exercise asks attendees
-  to find exactly this draft item as a live example of the failure mode it
-  teaches.
+  linked to a real issue **that has a milestone**, a custom **Priority** field
+  (ideally with one item whose value disagrees with its issue's priority label),
+  and one deliberately unlinked **draft item** (an entry created only on the
+  board). The exercise asks attendees to find the milestone, filter and group by
+  it, compare the Priority field with the label, and find the draft item. The
+  board needs a Table view, and attendees can show the Milestone column
+  themselves. The exercise is read-only for attendees.
 - **Reset between cohorts:** recreate the repo from a template rather
   than manually reverting commits — faster, and guarantees a clean state
   every time.
@@ -129,7 +132,8 @@ stateDiagram-v2
 - [ ] For Module 2.7: confirm the public practice repository exists, is public,
       and has a `CONTRIBUTORS.md` and a `CONTRIBUTING.md`.
 - [ ] For Module 3.2: confirm the sandbox repo has a Projects board with at
-      least one item linked to a real issue and one unlinked draft item.
+      least one item linked to an issue that has a milestone, a Priority field,
+      and one unlinked draft item.
 - [ ] Have this guide and the relevant session or module file open,
       ideally projected.
 
