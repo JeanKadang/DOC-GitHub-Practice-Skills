@@ -60,10 +60,17 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
 - **Mermaid diagrams** (`tests/mermaid-diagrams.test.mjs`): a diagram that does
   not parse under the pinned Mermaid.
 - **Policy wording** (`tests/workflow-policy.test.mjs`,
-  `tests/skill-gates.test.mjs`, `tests/agent-guidance.test.mjs`): false
-  closure-safety claims and lost gates.
+  `tests/skill-gates.test.mjs`, `tests/agent-guidance.test.mjs`): lost gates in
+  the policy files, and a false claim that `Refs` keeps an issue open in any
+  published Markdown file (ADRs and `docs/review/` are skipped, since they quote
+  or record past states).
+- **Skill length** (`scripts/validate-skills.mjs`): a warning, not a failure, when
+  a `SKILL.md` passes 400 lines. A long skill costs every task that loads it.
 - **Installer behaviour** (`tests/install-skills.test.mjs`): data loss, wrong
   backups, or a broken export.
+
+Not yet automated: a public-content scan (#209) and a check of education
+module prerequisites (#210).
 
 The checks prove structure and syntax. They do not prove that a snippet does the
 right thing, that a link points at the right page, or that two documents agree in

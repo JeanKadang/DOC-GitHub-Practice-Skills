@@ -94,6 +94,18 @@ export function findDescriptionProblems(description) {
   return [];
 }
 
+// A skill is loaded into an assistant's context when it triggers, so a very long
+// one costs every task that uses it (#139). This is a warning, not a failure:
+// length alone is not a defect, but it is worth seeing in every run.
+export const SKILL_LENGTH_WARNING_LINES = 400;
+
+export function findLengthWarning(source) {
+  const lines = source.split(/\r?\n/).length;
+  return lines > SKILL_LENGTH_WARNING_LINES
+    ? `SKILL.md is ${lines} lines, over ${SKILL_LENGTH_WARNING_LINES}; consider moving detail into a companion file (#139).`
+    : null;
+}
+
 export function findDefaultPromptProblems(defaultPrompt, skillName) {
   if (typeof defaultPrompt !== 'string' || !defaultPrompt.includes(`$${skillName}`)) {
     return [`interface.default_prompt must invoke the skill as $${skillName}`];
@@ -311,7 +323,12 @@ export async function validateRepository(root = process.cwd()) {
     const skillPath = join(skillRoot, 'SKILL.md');
     if (await isFile(skillPath)) {
       try {
-        const frontmatter = parseFrontmatter(await readFile(skillPath, 'utf8'));
+        const skillSource = await readFile(skillPath, 'utf8');
+        const lengthWarning = findLengthWarning(skillSource);
+        if (lengthWarning) {
+          warnings.push(`Skill ${canonical.name} ${lengthWarning}`);
+        }
+        const frontmatter = parseFrontmatter(skillSource);
         if (frontmatter?.name !== canonical.name) {
           errors.push(`Skill ${canonical.name} frontmatter name must match its directory.`);
         }
