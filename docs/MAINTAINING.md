@@ -70,6 +70,9 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
   `package.json` or the README that CI does not test, a required check name that
   no job produces, a non-required Windows installer leg, or a job without
   `timeout-minutes`.
+- **Release guards** (`tests/release.test.mjs`): a release workflow where dependency
+  code runs with a write token, a tag not on `main`, a missing changelog section,
+  or versions that disagree with the tag.
 - **Installer behaviour** (`tests/install-skills.test.mjs`): data loss, wrong
   backups, or a broken export.
 
@@ -285,6 +288,21 @@ guard and its dry-run/completion messages from the roster size rather than a
 hardcoded number (see ADR 0002) — no fourth place to edit by hand.
 
 ## Release hygiene
+
+### The release workflow
+
+`.github/workflows/release.yml` has two jobs. `check` is read-only: it checks out
+the tag with no stored credentials, installs with `npm ci --ignore-scripts`, runs
+`npm run check`, and runs `scripts/verify-release.mjs`, which fails unless the tag
+is a plain `vX.Y.Z`, matches `package.json` and the skill inventory, has a
+`## [X.Y.Z]` section in `CHANGELOG.md`, and points at a commit reachable from
+`main`. Only `publish`, which `needs` `check`, has `contents: write`.
+
+To try the guards without publishing, run the workflow by hand from the Actions
+tab ("Run workflow") or with
+`gh workflow run release.yml -f ref=<tag-or-branch> -f tag=<vX.Y.Z>`. A manual run
+stops after `check`; it never creates a release. It does not attach release
+assets, checksums, or a provenance attestation; add those as a separate change.
 
 Use a release issue and dedicated branch. Update the changelog, validate from a
 clean checkout, review generated notes, and merge only with explicit approval

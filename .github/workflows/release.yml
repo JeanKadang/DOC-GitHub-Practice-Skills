@@ -4,42 +4,65 @@ on:
   push:
     tags:
       - "v*"
+  # A dry run: runs every guard against a ref without publishing anything.
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Tag or branch to check out and verify (no release is created)"
+        required: true
+      tag:
+        description: "The tag name to verify the ref against, for example v0.3.0"
+        required: true
 
+# Nothing gets write access unless a job asks for it. Only the publish job does.
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: release-${{ github.event.inputs.tag || github.ref_name }}
+  cancel-in-progress: false
 
 jobs:
-  release:
-    name: Validate and publish release
+  check:
+    name: Verify release
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - name: Check out tag
+      - name: Check out ref
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ github.event.inputs.ref || github.ref }}
+          # Full history so the tag can be checked against main, and no token
+          # left in .git/config while dependency code runs.
+          fetch-depth: 0
+          persist-credentials: false
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
           node-version: 22
           cache: npm
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies without running install scripts
+        run: npm ci --ignore-scripts
       - name: Run repository checks
         run: npm run check
-      - name: Verify tag and manifest versions
-        shell: pwsh
-        run: |
-          $tagVersion = $env:GITHUB_REF_NAME -replace '^v', ''
-          $packageVersion = (Get-Content package.json -Raw | ConvertFrom-Json).version
-          $inventoryVersion = (Get-Content contracts/skill-inventory.json -Raw | ConvertFrom-Json).packageVersion
-          if ($packageVersion -ne $tagVersion) {
-            throw "package.json version '$packageVersion' does not match tag '$tagVersion'."
-          }
-          if ($inventoryVersion -ne $tagVersion) {
-            throw "Inventory version '$inventoryVersion' does not match tag '$tagVersion'."
-          }
+      - name: Verify the tag, versions, changelog, and main ancestry
+        env:
+          RELEASE_TAG: ${{ github.event.inputs.tag || github.ref_name }}
+        run: node scripts/verify-release.mjs "$RELEASE_TAG" origin/main
+
+  publish:
+    name: Publish release
+    needs: check
+    # A dry run stops after the guards.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
       - name: Create GitHub release
-        shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create $env:GITHUB_REF_NAME --verify-tag --generate-notes --title $env:GITHUB_REF_NAME
+          RELEASE_TAG: ${{ github.ref_name }}
+          REPOSITORY: ${{ github.repository }}
+        run: gh release create "$RELEASE_TAG" --repo "$REPOSITORY" --verify-tag --generate-notes --title "$RELEASE_TAG"

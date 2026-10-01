@@ -179,3 +179,12 @@ test('github-repo-review audits supported runtimes, declared minimums, and requi
   assert.match(prompt, /declared minimum.*?agrees with what CI tests/);
   assert.match(prompt, /required check name in the ruleset still matches a job that runs/);
 });
+
+// Release workflow hygiene (#128).
+test('github-releases says to keep dependency code away from a write token (#128)', async () => {
+  const body = (await skill('github-releases')).replace(/\s+/g, ' ');
+  assert.match(body, /does not run dependency code[^.]*while holding a write token/);
+  assert.match(body, /credentials not persisted and install scripts disabled/);
+  assert.match(body, /publish from a separate job that needs it and alone has write permission/);
+  assert.match(body, /tagged commit is on the default branch and that the changelog section exists/);
+});

@@ -171,7 +171,7 @@ readers.
 A release is its own PR, separate from feature PRs, then a tag. The shape is the same in every repo; only the version file and the verification command change.
 
 1. **Pick the version**: patch = fixes only; minor = new behavior; major = breaking. Read the current value from the repo's version source (`*.psd1` `ModuleVersion`, `package.json` `version`, `pyproject.toml`, etc.), not from the last tag — they drift.
-2. **Check the release trigger first**: `cat .github/workflows/release.yml` (or equivalent). Does it fire on tag push or on a published release? Does it extract a CHANGELOG section? Whatever it parses is load-bearing — a missing section means a hard fail after the tag is already public.
+2. **Check the release trigger first**: `cat .github/workflows/release.yml` (or equivalent). Does it fire on tag push or on a published release? Does it extract a CHANGELOG section? Whatever it parses is load-bearing — a missing section means a hard fail after the tag is already public. Also check that the workflow does not run dependency code (install, build, tests) while holding a write token: verify in a read-only job, with credentials not persisted and install scripts disabled, and publish from a separate job that needs it and alone has write permission. Verify the tagged commit is on the default branch and that the changelog section exists before publishing.
 3. **Branch `release/x.y.z`**: bump the version file; add a `## [x.y.z] - YYYY-MM-DD` section at the top of `CHANGELOG.md` (Added/Changed/Fixed/Security, referencing issue numbers).
 4. **Verify locally** before the PR: the repo's manifest/lint check plus its full test suite.
 5. **PR titled `release: x.y.z`**; merge on green (with approval, per `github-hygiene`'s PR flow).
