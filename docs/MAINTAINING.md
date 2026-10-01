@@ -122,10 +122,24 @@ defect: either fix the setting or record why it changed.
 - **Merge method: merge commits only.** Squash and rebase are off, auto-merge is
   allowed, and merged branches are deleted.
 
+- **Actions: full-SHA pinning required, GitHub-owned actions only.** Every
+  `uses:` in a workflow must name a full commit SHA, and only `actions/*` and
+  `github/*` may run (GitHub's own CodeQL setup is covered). The default token is
+  read-only and Actions cannot approve pull requests. A test checks the workflow
+  files against both rules, so a change that would be blocked fails before it
+  runs. If a workflow genuinely needs another action, add it to the allow-list
+  deliberately, pinned to a SHA, and record why here.
+- **Secret scanning and push protection: on.** The optional non-provider-pattern
+  and validity-check features could not be switched on through the API (the
+  request was accepted but they stayed disabled), so check them in Settings, Code
+  security, if they are available on the plan.
+
 Check them with:
 
 ```bash
 gh repo view --json hasWikiEnabled,hasProjectsEnabled,hasDiscussionsEnabled,mergeCommitAllowed,squashMergeAllowed,rebaseMergeAllowed,deleteBranchOnMerge
+gh api repos/{owner}/{repo}/actions/permissions
+gh api repos/{owner}/{repo}/actions/permissions/selected-actions
 ```
 
 ## Required status checks
@@ -169,6 +183,12 @@ investigate, not noise.
 - `Analyze (actions)`, `Analyze (javascript-typescript)`, and `CodeQL`: code
   scanning. A new alert on a pull request fails the `CodeQL` check and should be
   fixed or dismissed with a reason before merge.
+
+- `Lint workflows`: actionlint and zizmor (pinned versions) on any change under
+  `.github/workflows/`. Advisory, and deliberately not required, because a
+  path-filtered check that does not run on other pull requests would block them
+  if it were required. Treat a failure as a real finding: fix the workflow, or,
+  for a deliberate exception, record it with its reason in `.github/zizmor.yml`.
 
 **Managed by GitHub, not in `.github/workflows/`:**
 
