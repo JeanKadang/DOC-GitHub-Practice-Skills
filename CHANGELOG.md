@@ -37,6 +37,10 @@
 
 ### Changed
 
+- The repository's Wiki and Projects settings are now off (there were no Wiki
+  pages and no boards), matching `github-repo-bootstrap`'s defaults.
+  `docs/MAINTAINING.md` records the settings this repository expects, with a
+  command to check them (#135).
 - `docs/openai-codex.md` records where Codex looks for skills: OpenAI documents
   `~/.agents/skills`, the installer's `~/.codex/skills` still works on Codex CLI
   0.159.3 (tested 2026-10-01), and a skill installed in both places is listed

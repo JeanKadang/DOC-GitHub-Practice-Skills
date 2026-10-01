@@ -102,6 +102,29 @@ GitHub issue and PR numbers share a repository number sequence. Before editing
 metadata or closing an object from a bare `#N`, query it and confirm whether it
 is an issue or pull request. Never assume the object type from the number alone.
 
+## Repository settings this repository expects
+
+Recorded 2026-10-01 so an audit (see `docs/repo-settings-snapshot.md`) has a
+baseline to compare against. A difference is a finding, not necessarily a
+defect: either fix the setting or record why it changed.
+
+- **Wiki: off.** Documentation lives in the repository where it is reviewed with
+  the code. There were no Wiki pages when it was switched off, and the
+  `github-repo-bootstrap` default is never to enable a fresh one.
+- **Projects: off.** One maintainer, so milestones and labels are the tracking
+  system (`github-projects`). Enable it, with a board created before a second
+  maintainer arrives, when that changes.
+- **Discussions: on.** Open-ended ideas and feedback (education modules point
+  readers to the Ideas category).
+- **Merge method: merge commits only.** Squash and rebase are off, auto-merge is
+  allowed, and merged branches are deleted.
+
+Check them with:
+
+```bash
+gh repo view --json hasWikiEnabled,hasProjectsEnabled,hasDiscussionsEnabled,mergeCommitAllowed,squashMergeAllowed,rebaseMergeAllowed,deleteBranchOnMerge
+```
+
 ## Required status checks
 
 The ruleset on the default branch requires these checks by name, with branches
