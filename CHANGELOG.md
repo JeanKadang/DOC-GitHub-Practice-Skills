@@ -37,6 +37,11 @@
 
 ### Changed
 
+- `docs/MAINTAINING.md` lists the advisory checks and known failures: which
+  checks are advisory, the GitHub-managed "Code scanning AI findings" run that
+  failed with `The requested model is not supported` from 2026-09-30 to
+  2026-10-01 and has passed since, and what to do about a red advisory check
+  (#131).
 - The repository's Wiki and Projects settings are now off (there were no Wiki
   pages and no boards), matching `github-repo-bootstrap`'s defaults.
   `docs/MAINTAINING.md` records the settings this repository expects, with a
