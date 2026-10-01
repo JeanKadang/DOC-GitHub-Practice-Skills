@@ -229,4 +229,6 @@ Discussions section.
 
 ---
 
-Next: [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)
+Next: [Module 1.5: What never goes in a repository](module-1-5-what-never-goes-in-a-repo.md)
+(needs the command line from Module 1.2), then
+[Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)
