@@ -26,6 +26,51 @@ it. Human review must confirm that:
 
 Automation validates structure. It cannot establish semantic consistency.
 
+## What the automated checks guard
+
+`npm run check` runs all of these, and CI runs the same command. Each fails on
+a seeded violation in its own tests, so a rule that stops working is noticed.
+
+- **Inventory, mandatory files, frontmatter name** (`scripts/validate-skills.mjs`):
+  a missing, unregistered, or misnamed skill.
+- **Description present and at most 1024 characters**
+  (`scripts/validate-skills.mjs`): a description a platform truncates or rejects,
+  which hides when to use the skill.
+- **`default_prompt` names its skill** (`scripts/validate-skills.mjs`): a Codex
+  prompt that invokes the wrong skill.
+- **Cross-reference tokens name real skills** (`scripts/validate-skills.mjs`): a
+  rename that leaves a `github-...` reference pointing at nothing.
+- **No dangling paths, ADRs, or plugin references**
+  (`scripts/validate-skills.mjs`): a skill that cites a file or plugin that is
+  not installed with it.
+- **Roster agrees in three files** (`tests/roster-consistency.test.mjs`):
+  inventory, validator, and installer drifting apart.
+- **Roster appears on every surface** (`tests/doc-consistency.test.mjs`): a skill
+  missing from the README, AGENTS.md, GUIDE, ChatGPT instructions, or issue forms.
+- **Version stamps** (`tests/doc-consistency.test.mjs`): a policy document naming
+  an old version. SECURITY.md may lag the package version, never lead it.
+- **Release-note labels** (`tests/doc-consistency.test.mjs`): a release category
+  the label-copy workflow never applies.
+- **ChatGPT export size** (`tests/doc-consistency.test.mjs`): an export over the
+  20-file Knowledge limit.
+- **Relative links and anchors** (`tests/links.test.mjs`): a link to a file or
+  heading that no longer exists.
+- **Shell snippet syntax** (`tests/snippets.test.mjs`): a bash or PowerShell
+  example that does not parse.
+- **Mermaid diagrams** (`tests/mermaid-diagrams.test.mjs`): a diagram that does
+  not parse under the pinned Mermaid.
+- **Policy wording** (`tests/workflow-policy.test.mjs`,
+  `tests/skill-gates.test.mjs`, `tests/agent-guidance.test.mjs`): false
+  closure-safety claims and lost gates.
+- **Installer behaviour** (`tests/install-skills.test.mjs`): data loss, wrong
+  backups, or a broken export.
+
+The checks prove structure and syntax. They do not prove that a snippet does the
+right thing, that a link points at the right page, or that two documents agree in
+meaning, so human review stays as described above. The point-in-time reports in
+`docs/review/` are not link- or snippet-checked, because they record what a
+reviewer saw against an earlier commit.
+
 ## Closure reconciliation
 
 Before marking a parent epic complete, query native sub-issues and compare them

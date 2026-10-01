@@ -1,73 +1,17 @@
 import assert from 'node:assert/strict';
-import { readFile, readdir } from 'node:fs/promises';
-import { dirname, join, relative } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { readFile } from 'node:fs/promises';
+import { join, relative } from 'node:path';
 import test from 'node:test';
 import { JSDOM } from 'jsdom';
 
-const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
-
-// Folders that hold no published Markdown, or that hold planning artifacts
-// tracked separately (docs/superpowers, issue #137).
-const SKIPPED_DIRECTORIES = new Set([
-  '.git',
-  '.github',
-  '.superpowers',
-  'node_modules',
-  'superpowers',
-]);
+import { extractFences, findMarkdownFiles, repoRoot } from './helpers/markdown.mjs';
 
 // Diagram types that need a renderer integration which the pinned Mermaid
 // parser does not include. The showcase file documents this for ZenUML.
 const UNSUPPORTED_TYPES = new Set(['zenuml']);
 
-async function findMarkdownFiles(directory) {
-  const files = [];
-  for (const entry of await readdir(directory, { withFileTypes: true })) {
-    if (entry.isDirectory()) {
-      if (SKIPPED_DIRECTORIES.has(entry.name)) continue;
-      files.push(...(await findMarkdownFiles(join(directory, entry.name))));
-    } else if (entry.isFile() && entry.name.endsWith('.md')) {
-      files.push(join(directory, entry.name));
-    }
-  }
-  return files;
-}
-
-/**
- * Returns every ```mermaid fence in a Markdown source, with the 1-based line
- * of its opening fence. A fence nested inside a longer fence (a Markdown
- * sample that shows a mermaid block) is example text, not a diagram, so it is
- * skipped.
- */
 export function extractMermaidFences(source) {
-  const lines = source.split(/\r?\n/);
-  const fences = [];
-  let open = null;
-  for (let index = 0; index < lines.length; index += 1) {
-    const line = lines[index];
-    const match = /^\s*(`{3,}|~{3,})\s*([^`\s]*)/.exec(line);
-    if (!open) {
-      if (match) {
-        open = { marker: match[1], language: match[2], line: index + 1, body: [] };
-      }
-      continue;
-    }
-    const closes =
-      match &&
-      match[1][0] === open.marker[0] &&
-      match[1].length >= open.marker.length &&
-      line.trim() === match[1];
-    if (closes) {
-      if (open.language === 'mermaid') {
-        fences.push({ line: open.line, source: open.body.join('\n') });
-      }
-      open = null;
-    } else {
-      open.body.push(line);
-    }
-  }
-  return fences;
+  return extractFences(source).filter((fence) => fence.language === 'mermaid');
 }
 
 function diagramType(source) {

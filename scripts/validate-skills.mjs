@@ -77,6 +77,64 @@ export function findPortabilityProblems(source) {
   return problems;
 }
 
+// Agent Skills platforms cap the frontmatter description at 1024 characters
+// (VS Code and Copilot document the limit); a longer one can be truncated or
+// rejected, which hides the "when to use" trigger the skill depends on (#129).
+export const MAX_DESCRIPTION_LENGTH = 1024;
+
+export function findDescriptionProblems(description) {
+  if (typeof description !== 'string' || description.trim() === '') {
+    return ['frontmatter description is missing or empty'];
+  }
+  if (description.length > MAX_DESCRIPTION_LENGTH) {
+    return [
+      `frontmatter description is ${description.length} characters; the limit is ${MAX_DESCRIPTION_LENGTH}`,
+    ];
+  }
+  return [];
+}
+
+export function findDefaultPromptProblems(defaultPrompt, skillName) {
+  if (typeof defaultPrompt !== 'string' || !defaultPrompt.includes(`$${skillName}`)) {
+    return [`interface.default_prompt must invoke the skill as $${skillName}`];
+  }
+  return [];
+}
+
+// An inline-code `github-...` token outside a code fence must name a skill in
+// the roster, or a rename leaves a cross-reference pointing at nothing (#129).
+// `github-actions` is a label, not a skill.
+const NON_SKILL_GITHUB_TOKENS = new Set(['github-actions']);
+
+export function findUnknownSkillReferences(source, skillNames = CANONICAL_NAMES) {
+  const known = new Set(skillNames);
+  const problems = [];
+  let inFence = false;
+  source.split(/\r?\n/).forEach((text, index) => {
+    if (/^\s*(?:```|~~~)/.test(text)) {
+      inFence = !inFence;
+      return;
+    }
+    if (inFence) {
+      return;
+    }
+    for (const match of text.matchAll(/`([^`]+)`/g)) {
+      const token = match[1];
+      if (
+        /^github-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(token) &&
+        !known.has(token) &&
+        !NON_SKILL_GITHUB_TOKENS.has(token)
+      ) {
+        problems.push({
+          line: index + 1,
+          message: `\`${token}\` is not a skill in this roster; fix the reference or rename it`,
+        });
+      }
+    }
+  });
+  return problems;
+}
+
 async function isFile(path) {
   try {
     return (await stat(path)).isFile();
@@ -257,6 +315,9 @@ export async function validateRepository(root = process.cwd()) {
         if (frontmatter?.name !== canonical.name) {
           errors.push(`Skill ${canonical.name} frontmatter name must match its directory.`);
         }
+        for (const problem of findDescriptionProblems(frontmatter?.description)) {
+          errors.push(`Skill ${canonical.name} ${problem}.`);
+        }
       } catch (error) {
         errors.push(`Skill ${canonical.name} frontmatter is invalid: ${error.message}`);
       }
@@ -267,7 +328,11 @@ export async function validateRepository(root = process.cwd()) {
       if (!(await isFile(filePath))) {
         continue;
       }
-      for (const problem of findPortabilityProblems(await readFile(filePath, 'utf8'))) {
+      const fileSource = await readFile(filePath, 'utf8');
+      for (const problem of [
+        ...findPortabilityProblems(fileSource),
+        ...findUnknownSkillReferences(fileSource),
+      ]) {
         errors.push(`Skill ${canonical.name} ${requiredFile}:${problem.line}: ${problem.message}`);
       }
     }
@@ -276,6 +341,12 @@ export async function validateRepository(root = process.cwd()) {
     if (await isFile(metadataPath)) {
       try {
         const metadata = parse(await readFile(metadataPath, 'utf8'));
+        for (const problem of findDefaultPromptProblems(
+          metadata?.interface?.default_prompt,
+          canonical.name,
+        )) {
+          errors.push(`Skill ${canonical.name} agents/openai.yaml: ${problem}.`);
+        }
         for (const field of ['display_name', 'short_description', 'default_prompt']) {
           const value = metadata?.interface?.[field];
           if (typeof value !== 'string' || value.trim() === '') {
