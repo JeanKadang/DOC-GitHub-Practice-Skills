@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
+
+import { findMarkdownFiles, repoRoot as markdownRoot } from './helpers/markdown.mjs';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const policyFiles = [
@@ -72,4 +74,20 @@ test('release notes exclude education-only pull requests and the label is copied
   assert.match(labeler, /allowed_categories="[^"]*\beducation\b[^"]*"/);
   const maintaining = await readFile(join(repoRoot, 'docs', 'MAINTAINING.md'), 'utf8');
   assert.match(maintaining.replace(/\s+/g, ' '), /must carry the `education` label/);
+});
+
+// The closure-safety wording used to be scanned in seven files. A false claim
+// that Refs keeps an issue open can appear in any lesson or skill, so scan every
+// published Markdown file. docs/review holds point-in-time reports, docs/adr
+// records past decisions (ADR 0001 quotes the claim it corrected), and
+// docs/superpowers holds unlinted planning artifacts (#137).
+test('no published Markdown promises that Refs keeps an issue open (#129)', async () => {
+  const skipped = ['docs/review/', 'docs/adr/'];
+  const offenders = [];
+  for (const file of await findMarkdownFiles()) {
+    const relativePath = relative(markdownRoot, file).split(sep).join('/');
+    if (skipped.some((prefix) => relativePath.startsWith(prefix))) continue;
+    if (falseOpenAssurance.test(await readFile(file, 'utf8'))) offenders.push(relativePath);
+  }
+  assert.deepEqual(offenders, [], `files that promise Refs controls issue state: ${offenders.join(', ')}`);
 });
