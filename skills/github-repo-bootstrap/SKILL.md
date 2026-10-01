@@ -105,7 +105,8 @@ Use `github-issue-first` for ordinary work after the bootstrap boundary,
 security event, `github-projects` only when shared board governance is warranted,
 `github-hygiene` for PR merges and cleanup, `github-releases` for the first
 release and its rulesets, and `github-repo-review` for a broad repository audit.
-Use `github-for-ado-users` for general ADO migration guidance and
+Use `github-for-ado-users` for general ADO migration guidance,
+`github-for-gitlab-users` for general GitLab migration guidance, and
 `github-contributing` if the bootstrap work is itself a fork PR to a template
 repo; keep workplace-specific material private. If the repository already
 existed before this session — inherited, or handed to you already

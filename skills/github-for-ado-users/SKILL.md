@@ -39,7 +39,7 @@ milestones as sprints.** See below.
 | Boards | Projects v2 | A *view* over issues, never the source of truth |
 | Backlog | Issue list, ordered by priority label | No ranked backlog with drag-order outside a board |
 | Queries (WIQL) | `gh issue list --search`, Projects saved views | Far weaker; no cross-repo query language |
-| Wiki | `docs/` in the repo | GitHub's Wiki exists — don't use it, see below |
+| Wiki | `docs/` in the repo | GitHub's Wiki exists, but don't start a new one; see below |
 | Pipelines | Actions | YAML in `.github/workflows/` |
 | Branch policies | **Rulesets** | Supersede branch protection; `gh ruleset` is view-only |
 | Pull Request | Pull Request | Straight mapping |
@@ -84,12 +84,21 @@ setting up an org, define issue types early — retrofitting them across an exis
 backlog is manual. Keep them coarse (Bug, Feature, Task, Epic); the priority and
 area axes stay on labels.
 
-### 3. The Wiki is a trap
+### 3. A new Wiki is a trap; an established one is not
 
 GitHub's Wiki is a separate git repo with no pull requests, no review, no CI, and
-no coupling to the branch that changed the behaviour it documents. Docs that
-matter go in `docs/` in the repo, where they are versioned with the code, reviewed
-in the same PR, and greppable.
+no coupling to the branch that changed the behaviour it documents. For a repository
+with no Wiki in use, docs that matter go in `docs/` in the repo, where they are
+versioned with the code, reviewed in the same PR, and greppable. Don't enable a
+Wiki to hold them.
+
+That is a rule about *starting* one, not about an existing one. Azure DevOps also
+has a Git-backed project Wiki, so a team arriving with an established,
+actively-used Wiki (here or there) may keep it: leave it alone and treat its
+content as the source of truth for what it covers, as `github-repo-bootstrap`
+does. If they are migrating because the wiki
+sprawled unreviewed, that is the moment to suggest `docs/`, but it is a call
+about their wiki, not about wikis in general.
 
 Use Discussions for the conversational content that would have been a wiki page in
 ADO (how-do-I, RFCs, announcements).
@@ -151,7 +160,9 @@ Rough order, with the skill that covers each:
 2. Issue types, if you are in an org — `github-issue-first`
 3. Milestones for releases, **not** sprints — `github-releases`
 4. Ruleset on the default branch (required checks + review) — `github-releases`
-5. CODEOWNERS, CONTRIBUTING.md, issue forms, PR template — `github-repo-review`
+5. Issue forms and PR template — `github-repo-configure`; CODEOWNERS and
+   CONTRIBUTING.md — `github-repo-bootstrap` for a new repository,
+   `github-repo-review` to audit an existing one
 6. `.github/release.yml` for categorised release notes — `github-releases`
 7. Projects board **only if more than one maintainer** — `github-projects`
 8. Discussions enabled, with categories
@@ -163,7 +174,7 @@ Rough order, with the skill that covers each:
 | Milestones used as sprints | Milestones = releases; iterations = Projects iteration field |
 | Rebuilding Epic→Feature→Story as three issue levels | Epic + sub-issues, one level |
 | Expecting `gh issue create --type` to work on a personal repo | Issue types are org-only; use labels |
-| Putting docs in the GitHub Wiki | `docs/` in the repo — versioned, reviewable, greppable |
+| Starting a new GitHub Wiki for docs | `docs/` in the repo — versioned, reviewable, greppable (an established, actively-used Wiki can stay) |
 | Exploratory ideas filed as issues | Discussions; convert when it becomes actionable |
 | Looking for Test Plans | No equivalent — decide where test cases live before you need them |
 | Expecting WIQL-grade queries | `gh issue list --search` + Projects views; plan for less |

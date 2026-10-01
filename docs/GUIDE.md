@@ -19,9 +19,9 @@ issue with ownership, labels, milestone, and acceptance criteria
 Acceptance criteria are evaluated evidence requirements, not clerical boxes.
 [WORKFLOW.md](WORKFLOW.md) defines the closure gates in detail.
 
-## Current v0.2.0 policy
+## Current policy
 
-The following sections describe the canonical skills as they exist in v0.2.0.
+The following sections describe the canonical skills as they exist in v0.3.0.
 
 ### `github-issue-first`
 
@@ -227,19 +227,8 @@ then add a plan-supported ruleset that does not require solo self-approval.
 
 ## Proposed improvements, not current policy
 
-Triaged 2026-08-11 (issue #10). Three items from the original v0.1.0 list were
-already implemented by the time of triage and are removed here rather than
-left stale: parent-epic reconciliation is an explicit step in
-`skills/github-hygiene/SKILL.md`'s sub-issue section; issue-versus-PR object
-type verification and recording tested GitHub CLI/API versions are both
-covered by `docs/MAINTAINING.md`. Milestone semantics (release-based, not
-thematic) are now codified in `docs/WORKFLOW.md`'s lifecycle step 2. A fourth
-item — adding PowerShell-native examples alongside the Bash-oriented ones in
-`skills/*/SKILL.md` — shipped in v0.3.0 (issue #19) and is removed here for
-the same reason, during the #41 accuracy sweep.
-
-One candidate remains genuinely open, not a requirement implemented by the
-current skills:
+One candidate remains open. It is not a requirement implemented by the current
+skills:
 
 1. Automate audits for completed issues with unchecked criteria and stale
    epic checkboxes. Deferred: real value once the issue count grows, but no

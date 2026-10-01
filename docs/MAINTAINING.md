@@ -21,8 +21,8 @@ it. Human review must confirm that:
 - security-sensitive findings never enter a public issue or branch;
 - approval, merge, release, and destructive operations remain explicit gates;
 - a Projects board remains optional and mirrors issue metadata; and
-- Claude, OpenAI Codex, and GitHub Copilot consume the same canonical
-  `SKILL.md` content.
+- Claude, OpenAI Codex, GitHub Copilot, and ChatGPT consume the same canonical
+  `SKILL.md` content (ChatGPT as flattened Custom GPT Knowledge files, ADR 0006).
 
 Automation validates structure. It cannot establish semantic consistency.
 
@@ -109,9 +109,10 @@ identical syntax for a plain `gh`/`git` invocation with no continuation,
 heredoc, or shell-specific redirection; only the multi-line shape actually
 differs between shells. Where a command has no PowerShell peer for a
 different reason (a POSIX-only redirection like `2>/dev/null`, e.g.), use
-pwsh's `2>$null` and the shared `||`/`&&` chain operators (pwsh 7+ supports
-both directly — see the platform notes above) rather than inventing a
-different control-flow shape.
+pwsh's `2>$null` and the shared `||`/`&&` chain operators (PowerShell 7+
+supports both directly; Windows PowerShell 5.1 does not, which is why these
+docs and the installer require `pwsh`) rather than inventing a different
+control-flow shape.
 
 **Verify every PowerShell example actually runs**, not just that it looks
 plausible — a single stray extra backslash inside a `--jq` string (an easy
