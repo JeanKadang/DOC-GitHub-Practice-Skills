@@ -260,6 +260,7 @@ Discussions section.
 
 ---
 
-Next: [Module 3.1: Branch protection and rulesets](../3_advanced/module-3-1-branch-protection-and-rulesets.md)
+Next: [Module 2.8: Why the rules exist](module-2-8-why-the-rules-exist.md),
+then the optional [Module 3.1: Branch protection and rulesets](../3_advanced/module-3-1-branch-protection-and-rulesets.md)
 (Modules 3.1 to 3.6 are independent — read them in any order, or only the
 ones relevant to you)
