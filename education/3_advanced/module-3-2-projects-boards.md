@@ -2,7 +2,7 @@
 
 **Audience:** Anyone who's completed Module 2.2 (and ideally Module 2.5), or is
 already comfortable with this team's basic workflow and wants to go deeper.
-Optional, and independent of Modules 3.1, 3.3, 3.4 — read in any order.
+Optional, and independent of Modules 3.1 and 3.3-3.6 — read in any order.
 **Format:** Self-paced — read and do each step yourself. Facilitator-note
 callouts mark optional group activities.
 **Timing:** ~35 min.
