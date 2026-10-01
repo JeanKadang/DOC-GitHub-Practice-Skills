@@ -10,6 +10,11 @@
   as flattened, individually-named files for uploading to a Custom GPT's
   Knowledge, since ChatGPT has no local skill-directory discovery
   mechanism. See `docs/chatgpt.md` and ADR 0006.
+- `tests/mermaid-diagrams.test.mjs` parses every published Mermaid fence under
+  a pinned Mermaid (11.17.2, with jsdom) on every pull request, so a diagram that
+  stops parsing fails CI. ZenUML is skipped because it needs a renderer
+  integration. The diagram showcase now states the checked version and the dated
+  GitHub rendering result (#148).
 
 ### Changed
 

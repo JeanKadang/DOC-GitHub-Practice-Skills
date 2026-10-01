@@ -41,6 +41,18 @@ when working locally. The later examples need particular renderer features;
 ZenUML additionally needs its integration. Their support notes are part of the
 copy-and-preview guidance, not a promise of identical GitHub rendering.
 
+**Checked against Mermaid 11.17.2.** Every example here except ZenUML parses
+under that version, which is pinned in `package.json` and checked by
+`tests/mermaid-diagrams.test.mjs` on every pull request, so a diagram that
+stops parsing fails CI. A parse check proves the syntax is valid for that
+version; it does not prove a viewer draws it the same way.
+
+**GitHub rendering (checked by hand on 2026-09-30):** every example rendered on
+github.com except ZenUML, which GitHub does not render because it needs the
+integration described below. That result is a dated one-off check and can
+change when GitHub updates its Mermaid version, so re-check before you rely on a
+newer diagram type there.
+
 ## Workflow and structure
 
 ### Flowchart
