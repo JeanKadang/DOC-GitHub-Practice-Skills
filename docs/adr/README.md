@@ -55,3 +55,6 @@ documentation clarifications and typo-level fixes do not need one.
 - [0011](0011-education-module-numbering.md) — `module-X-Y` file names for every
   numbered education lesson, and `4_next-step/` replaces the reserved
   `4_next-level/`.
+- [0012](0012-milestone-scheme.md) — Milestones are release-named for the
+  skillset and "Education Program vN" for `education/`; a thematic skillset
+  milestone lasts only until a release scopes it.

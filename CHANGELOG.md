@@ -37,6 +37,11 @@
 
 ### Changed
 
+- ADR 0012 records the milestone scheme: release-named (`vX.Y.Z`) for the
+  skillset, "Education Program vN" for `education/`, and a thematic skillset
+  milestone only until a release scopes it. `docs/WORKFLOW.md` says the same.
+  The eight open issues in the two stale thematic milestones moved to `v0.4.0`
+  and those milestones were closed (#123).
 - `docs/MAINTAINING.md` lists the advisory checks and known failures: which
   checks are advisory, the GitHub-managed "Code scanning AI findings" run that
   failed with `The requested model is not supported` from 2026-09-30 to
