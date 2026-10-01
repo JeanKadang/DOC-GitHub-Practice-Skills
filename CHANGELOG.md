@@ -37,6 +37,11 @@
 
 ### Changed
 
+- ADR 0012 records the milestone scheme: release-named (`vX.Y.Z`) for the
+  skillset, "Education Program vN" for `education/`, and a thematic skillset
+  milestone only until a release scopes it. `docs/WORKFLOW.md` says the same.
+  The eight open issues in the two stale thematic milestones moved to `v0.4.0`
+  and those milestones were closed (#123).
 - `docs/openai-codex.md` records where Codex looks for skills: OpenAI documents
   `~/.agents/skills`, the installer's `~/.codex/skills` still works on Codex CLI
   0.159.3 (tested 2026-10-01), and a skill installed in both places is listed

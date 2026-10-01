@@ -9,9 +9,12 @@
 1. Confirm the repository and existing conventions.
 2. File or select an assigned issue with one priority, relevant categories, a
    milestone, explicit scope, and observable acceptance criteria. This repo's
-   milestones are release-based (named after the target tag, e.g. `v0.1.1`),
-   not thematic buckets — reuse that scheme rather than introducing a second
-   one alongside it.
+   skillset milestones are release-based (named after the target tag, e.g.
+   `v0.4.0`), not thematic buckets: a thematic name is allowed only until a
+   release scopes the work, then its issues move to the `vX.Y.Z` milestone and
+   it is closed. Work on `education/` uses "Education Program vN" milestones,
+   because that track is tagged separately. Reuse these two schemes rather than
+   introducing a third (ADR 0012).
 3. Create the branch with `gh issue develop` so GitHub records the link.
 4. Make a focused change and conventional commits on that branch.
 5. Open a pull request beginning with `Refs #N` and state the validation run.
