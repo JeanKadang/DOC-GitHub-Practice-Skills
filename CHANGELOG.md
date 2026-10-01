@@ -6,6 +6,13 @@
 
 ### Added
 
+- New checks in `npm run check`: the validator now rejects a skill description
+  over 1024 characters, a `default_prompt` that does not name its skill, and a
+  `github-...` cross-reference that is not a skill. New tests check every
+  relative link and heading anchor, parse every bash and PowerShell snippet,
+  require every skill on each surface that lists the roster, keep version stamps
+  and release-note labels consistent, and cap the ChatGPT export at 20 files.
+  `docs/MAINTAINING.md` lists what each check guards (#129).
 - ADRs 0007 to 0011: the two-track education program, education portability by
   bundling, numbered education folders, the single agent-guidance file, and
   education module numbering. `docs/repo-settings-snapshot.md` is a read-only

@@ -5,7 +5,12 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
-import { validateRepository } from '../scripts/validate-skills.mjs';
+import {
+  findDefaultPromptProblems,
+  findDescriptionProblems,
+  findUnknownSkillReferences,
+  validateRepository,
+} from '../scripts/validate-skills.mjs';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const fixtureRoots = [];
@@ -167,4 +172,59 @@ test('rejects a frontmatter name that differs from its directory', async () => {
   await writeFile(join(root, 'skills', 'github-hygiene', 'SKILL.md'), '---\nname: wrong\n---\n');
   const result = await validateRepository(root);
   assert.match(result.errors.join('\n'), /frontmatter name/i);
+});
+
+// Validator rules added for #129: each fails on a seeded violation.
+test('findDescriptionProblems rejects a missing, empty, or over-long description (#129)', () => {
+  assert.deepEqual(findDescriptionProblems('Use when merging pull requests.'), []);
+  assert.equal(findDescriptionProblems(undefined).length, 1);
+  assert.equal(findDescriptionProblems('   ').length, 1);
+  assert.match(findDescriptionProblems('x'.repeat(1025))[0], /1025 characters; the limit is 1024/);
+  assert.deepEqual(findDescriptionProblems('x'.repeat(1024)), []);
+});
+
+test('findDefaultPromptProblems requires the prompt to invoke the skill by name (#129)', () => {
+  assert.deepEqual(findDefaultPromptProblems('Use $github-hygiene to merge.', 'github-hygiene'), []);
+  assert.equal(findDefaultPromptProblems('Use $github-releases to merge.', 'github-hygiene').length, 1);
+  assert.equal(findDefaultPromptProblems('Merge the pull request.', 'github-hygiene').length, 1);
+  assert.equal(findDefaultPromptProblems(undefined, 'github-hygiene').length, 1);
+});
+
+test('findUnknownSkillReferences flags a github- token that is not a skill (#129)', () => {
+  const source = [
+    'See `github-hygiene` and the `github-actions` label.',
+    'Hand off to `github-hygine` instead.',
+    '```text',
+    '`github-in-a-fence`',
+    '```',
+  ].join('\n');
+  const problems = findUnknownSkillReferences(source);
+  assert.equal(problems.length, 1);
+  assert.equal(problems[0].line, 2);
+  assert.match(problems[0].message, /github-hygine/);
+});
+
+test('rejects an over-long description in a skill (#129)', async () => {
+  const root = await fixtureFromRepo();
+  const path = join(root, 'skills', 'github-hygiene', 'SKILL.md');
+  const current = await readFile(path, 'utf8');
+  await writeFile(path, current.replace(/^description: .*$/m, `description: ${'x'.repeat(1100)}`));
+  const result = await validateRepository(root);
+  assert.match(result.errors.join('\n'), /github-hygiene.*1100 characters; the limit is 1024/s);
+});
+
+test('rejects a default_prompt that does not name its skill (#129)', async () => {
+  const root = await fixtureFromRepo();
+  const path = join(root, 'skills', 'github-hygiene', 'agents', 'openai.yaml');
+  const current = await readFile(path, 'utf8');
+  await writeFile(path, current.replace('$github-hygiene', 'the hygiene skill'));
+  const result = await validateRepository(root);
+  assert.match(result.errors.join('\n'), /github-hygiene.*default_prompt must invoke the skill as \$github-hygiene/s);
+});
+
+test('rejects a cross-reference to a skill that does not exist (#129)', async () => {
+  const root = await fixtureFromRepo();
+  await appendToSkill(root, 'github-contributing', 'Hand this to `github-hygine`.');
+  const result = await validateRepository(root);
+  assert.match(result.errors.join('\n'), /github-contributing.*github-hygine.*not a skill in this roster/s);
 });
