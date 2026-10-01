@@ -6,6 +6,15 @@
 
 ### Added
 
+- ADRs 0007 to 0011: the two-track education program, education portability by
+  bundling, numbered education folders, the single agent-guidance file, and
+  education module numbering. `docs/repo-settings-snapshot.md` is a read-only
+  reference of a repository's settings to check before acting.
+- Two repository audit reviews under `docs/review/` (a Claude review and a
+  ChatGPT review), each finding tracked as its own issue (#113).
+- The `education` label. `.github/release.yml` excludes it and the label-copy
+  workflow copies it, so education-only pull requests stay out of the skillset's
+  release notes; `docs/MAINTAINING.md` says to apply it (#147).
 - `-Target ChatGPT` in `install-skills.ps1` — exports every skill's content
   as flattened, individually-named files for uploading to a Custom GPT's
   Knowledge, since ChatGPT has no local skill-directory discovery
@@ -18,13 +27,25 @@
 
 ### Changed
 
-- The ADO and GitLab mapping skills now send issue forms and the PR template to
-  `github-repo-configure` (which ships them) instead of `github-repo-review`
-  (which only audits). `github-repo-review` lists every sibling skill as a
-  companion and `github-repo-bootstrap` mentions the GitLab skill. The GitLab skill
-  no longer says Azure DevOps has no wiki, and the ADO skill's Wiki section is
-  conditional like ADR 0003 and the GitLab skill: don't start a new Wiki, but an
-  established one may stay (#124).
+- `education/` has its own changelog (`education/CHANGELOG.md`) and tags, so
+  the many education modules added since v0.3.0 are listed there, not here.
+- `github-issue-first` and `github-hygiene` now scale ceremony to repository
+  risk: on a repository with no CI, protection, or tests they ask the
+  maintainer once, up front, whether to use the full issue, branch, and pull
+  request routine or a lighter one. Both skills remind you to leave a
+  closure-evidence comment at the point of action.
+- `github-for-ado-users` names the TFVC-to-Git conceptual gap, and
+  `github-repo-review`'s scaffolding baseline includes `CODE_OF_CONDUCT.md`.
+  A stale claim that `gh issue create` has no `--milestone` flag is corrected.
+- The ADO and GitLab mapping skills send issue forms and the PR template to
+  `github-repo-configure`, `github-repo-review` lists every sibling skill, and
+  the ADO Wiki section is conditional like ADR 0003 (#124).
+- `github-hygiene`'s sub-issue section edits the parent checklist through a
+  body file, with Bash and PowerShell forms, as its own closure step already
+  required (#121).
+- `README.md` and `docs/` no longer cite v0.1.0 or v0.2.0 as current, drop
+  issue-history narrative from `docs/GUIDE.md`, and `docs/MAINTAINING.md` names
+  all four consuming platforms (#125).
 - Skills no longer assume the default branch is `main`. `github-contributing`,
   `github-releases`, and `github-hygiene` say `main` stands for the repository's
   default branch and show how to look it up, `github-pr-review` uses
