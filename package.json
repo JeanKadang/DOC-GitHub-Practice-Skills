@@ -3,9 +3,11 @@
   "version": "0.3.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": { "node": ">=22" },
   "scripts": {
     "test": "node --test",
+    "test:unit": "node scripts/run-tests.mjs --skip-installer",
+    "test:installer": "node scripts/run-tests.mjs --only-installer",
     "validate": "node scripts/validate-skills.mjs",
     "lint:markdown": "npm run lint:markdown:docs && npm run lint:markdown:skills && npm run lint:markdown:education",
     "lint:markdown:docs": "markdownlint-cli2 \"**/*.md\" \"#node_modules/**\" \"#skills/**\" \"#docs/superpowers/**\" \"#.superpowers/**\" \"#education/**\"",

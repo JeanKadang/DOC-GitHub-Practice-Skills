@@ -9,31 +9,73 @@ on:
 permissions:
   contents: read
 
+# A new push to a pull request supersedes the run in progress. Runs on main are
+# never cancelled, so every merge gets a complete result.
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Required status checks are matched by job name. The ruleset requires
+# "Validate skills (Node 22)", "Validate skills (Node 24)", and
+# "Installer dry run (Windows)", so renaming a job orphans a required check
+# (see docs/MAINTAINING.md, "Required status checks").
 jobs:
-  validate-node-20:
-    name: Validate skills (Node 20)
+  validate:
+    name: Validate skills (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        # Supported Node.js LTS lines only; package.json engines matches.
+        node: [22, 24]
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
-          node-version: 20
+          node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
         run: npm ci
       - name: Warm up PowerShell
         shell: pwsh
-        # A cold first pwsh start on a shared runner can exceed the installer
-        # tests' per-invocation timeout (#117).
+        # A cold first pwsh start on a shared runner can exceed a test's
+        # per-invocation timeout (#117). The snippet-syntax test uses pwsh.
         run: pwsh -NoProfile -Command exit
-      - name: Validate skills and tests
-        run: npm run validate && npm test
+      # Everything except the installer suite, which runs once per OS below.
+      - name: Validate skills, run tests, and lint Markdown
+        run: npm run validate && npm run test:unit && npm run lint:markdown
 
-  validate-node-22:
-    name: Validate skills (Node 22)
-    runs-on: ubuntu-latest
+  installer:
+    name: Installer dry run (${{ matrix.label }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    # Only Windows is a required check. The other legs report but never block.
+    continue-on-error: ${{ matrix.advisory }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            label: Windows
+            advisory: false
+          - os: ubuntu-latest
+            label: Ubuntu
+            advisory: false
+          # Advisory, not required (see AGENTS.md - macOS isn't a verified
+          # environment the same way Windows is). Restored per #45: its previous
+          # removal (#46) was because Assert-NoReparseInExistingAncestry always
+          # false-positived here, since macOS's runner temp dirs (and $TMPDIR
+          # generally) resolve under /var, which macOS itself symlinks to
+          # /private/var. That's exactly what this leg proves fixed - every test
+          # in tests/install-skills.test.mjs builds its fixtures under
+          # os.tmpdir(), so a real, unsynthetic /var ancestor is already
+          # present on every run here, with no need to construct one.
+          - os: macos-latest
+            label: macOS
+            advisory: true
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -46,142 +88,23 @@ jobs:
         run: npm ci
       - name: Warm up PowerShell
         shell: pwsh
-        # A cold first pwsh start on a shared runner can exceed the installer
-        # tests' per-invocation timeout (#117).
-        run: pwsh -NoProfile -Command exit
-      - name: Validate skills and tests
-        run: npm run validate && npm test
-
-  markdown-lint:
-    name: Markdown lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
-        with:
-          node-version: 22
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint Markdown
-        run: npm run lint:markdown
-
-  installer-dry-run:
-    name: Installer dry run (Windows)
-    runs-on: windows-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
-        with:
-          node-version: 22
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Warm up PowerShell
-        shell: pwsh
-        # A cold first pwsh start on a shared runner can exceed the installer
-        # tests' per-invocation timeout (#117).
+        # See the note on the validate job (#117).
         run: pwsh -NoProfile -Command exit
       - name: Run installer tests
-        run: node --test tests/install-skills.test.mjs
-      - name: Run direct dry run against fresh homes
+        run: npm run test:installer
+      - name: Run direct dry runs against fresh homes
         shell: pwsh
+        # Every target, not only Both: a dry run must not create anything.
         run: |
           $testRoot = Join-Path $env:RUNNER_TEMP "installer-dry-run-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
           $codexHome = Join-Path $testRoot 'codex'
           $claudeHome = Join-Path $testRoot 'claude'
+          $copilotHome = Join-Path $testRoot 'copilot'
+          $chatGPTExport = Join-Path $testRoot 'chatgpt'
           try {
             & ./scripts/install-skills.ps1 -Target Both -SourceRoot $PWD.Path -CodexHome $codexHome -ClaudeHome $claudeHome -DryRun
-            if (Test-Path -LiteralPath $testRoot) {
-              throw "Dry run created the temporary home root: $testRoot"
-            }
-          }
-          finally {
-            if (Test-Path -LiteralPath $testRoot) {
-              Remove-Item -LiteralPath $testRoot -Recurse -Force
-            }
-          }
-
-  installer-dry-run-ubuntu:
-    name: Installer dry run (Ubuntu)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
-        with:
-          node-version: 22
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Warm up PowerShell
-        shell: pwsh
-        # A cold first pwsh start on a shared runner can exceed the installer
-        # tests' per-invocation timeout (#117).
-        run: pwsh -NoProfile -Command exit
-      - name: Run installer tests
-        run: node --test tests/install-skills.test.mjs
-      - name: Run direct dry run against fresh homes
-        shell: pwsh
-        run: |
-          $testRoot = Join-Path $env:RUNNER_TEMP "installer-dry-run-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
-          $codexHome = Join-Path $testRoot 'codex'
-          $claudeHome = Join-Path $testRoot 'claude'
-          try {
-            & ./scripts/install-skills.ps1 -Target Both -SourceRoot $PWD.Path -CodexHome $codexHome -ClaudeHome $claudeHome -DryRun
-            if (Test-Path -LiteralPath $testRoot) {
-              throw "Dry run created the temporary home root: $testRoot"
-            }
-          }
-          finally {
-            if (Test-Path -LiteralPath $testRoot) {
-              Remove-Item -LiteralPath $testRoot -Recurse -Force
-            }
-          }
-
-  installer-dry-run-macos:
-    # Advisory, not required (see AGENTS.md - macOS isn't a verified
-    # environment the same way Windows is). Restored per #45: its previous
-    # removal (#46) was because Assert-NoReparseInExistingAncestry always
-    # false-positived here, since macOS's runner temp dirs (and $TMPDIR
-    # generally) resolve under /var, which macOS itself symlinks to
-    # /private/var. That's exactly what this leg now proves fixed - every
-    # test in tests/install-skills.test.mjs builds its fixtures under
-    # os.tmpdir(), so a real, unsynthetic /var ancestor is already present
-    # on every run here, with no need to construct one.
-    name: Installer dry run (macOS)
-    runs-on: macos-latest
-    continue-on-error: true
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
-        with:
-          node-version: 22
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Warm up PowerShell
-        shell: pwsh
-        # A cold first pwsh start on a shared runner can exceed the installer
-        # tests' per-invocation timeout (#117).
-        run: pwsh -NoProfile -Command exit
-      - name: Run installer tests
-        run: node --test tests/install-skills.test.mjs
-      - name: Run direct dry run against fresh homes
-        shell: pwsh
-        run: |
-          $testRoot = Join-Path $env:RUNNER_TEMP "installer-dry-run-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
-          $codexHome = Join-Path $testRoot 'codex'
-          $claudeHome = Join-Path $testRoot 'claude'
-          try {
-            & ./scripts/install-skills.ps1 -Target Both -SourceRoot $PWD.Path -CodexHome $codexHome -ClaudeHome $claudeHome -DryRun
+            & ./scripts/install-skills.ps1 -Target Copilot -SourceRoot $PWD.Path -CopilotHome $copilotHome -DryRun
+            & ./scripts/install-skills.ps1 -Target ChatGPT -SourceRoot $PWD.Path -ChatGPTExportPath $chatGPTExport -DryRun
             if (Test-Path -LiteralPath $testRoot) {
               throw "Dry run created the temporary home root: $testRoot"
             }
