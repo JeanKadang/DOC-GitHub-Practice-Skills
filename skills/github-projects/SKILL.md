@@ -206,8 +206,8 @@ a repo secret — document the secret if you add it.
 
 A board without these is just a nicer-looking backlog:
 
-- **Branch protection on main**: required CI status checks + at least one review;
-  nobody pushes to main.
+- **Branch protection on the default branch**: required CI status checks + at
+  least one review; nobody pushes to it directly.
 - **CODEOWNERS** so reviews route automatically.
 - **CONTRIBUTING.md** stating the branch/commit/PR conventions (see `github-hygiene`).
 - **Native blocked-by/blocks relations** plus `Depends on: #N` body lines, so

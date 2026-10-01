@@ -79,7 +79,7 @@ self-approval. Explain why the first bootstrap pull request precedes the ruleset
 Open the bootstrap pull request with `Refs #N`, criterion evidence, content-scan
 results, and local validation. Inspect its scope and every CI leg; merge only with
 explicit maintainer approval and all applicable checks green. If the repository
-ships a versioned artifact, tag updated `main`, publish generated release notes,
+ships a versioned artifact, tag the updated default branch, publish generated release notes,
 and verify the release before closing the bootstrap issue.
 
 `Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue

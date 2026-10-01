@@ -17,6 +17,10 @@ Conventions for milestones, branch protection, and cutting a release. Issue fili
 
 ## Rulesets (protecting main)
 
+Throughout this skill `main` means the repository's default branch. If yours is
+named differently, find it with `gh repo view --json defaultBranchRef -q
+.defaultBranchRef.name` and use that name in the commands.
+
 **Rulesets supersede classic branch protection.** They stack (several can apply to
 one branch), support bypass actors, and can be scoped by name pattern. Prefer them
 for anything new; a repo already on classic branch protection works fine, just
@@ -157,7 +161,7 @@ A release is its own PR, separate from feature PRs, then a tag. The shape is the
 3. **Branch `release/x.y.z`**: bump the version file; add a `## [x.y.z] - YYYY-MM-DD` section at the top of `CHANGELOG.md` (Added/Changed/Fixed/Security, referencing issue numbers).
 4. **Verify locally** before the PR: the repo's manifest/lint check plus its full test suite.
 5. **PR titled `release: x.y.z`**; merge on green (with approval, per `github-hygiene`'s PR flow).
-6. **Tag on updated main**: `git checkout main && git pull && git tag vx.y.z && git push origin vx.y.z`. Tagging a stale local main ships the wrong commit.
+6. **Tag on updated default branch**: `git checkout main && git pull && git tag vx.y.z && git push origin vx.y.z`. Tagging a stale local main ships the wrong commit.
 7. **Confirm and close out**: `gh release view vx.y.z` (and `gh run list --workflow release.yml` if it did not appear), then close the milestone.
 
 **Worked example — `cve-reporting`:** version lives in `ModuleVersion` in `WinCVEReport.psd1`; `release.yml` extracts the CHANGELOG section on tag push and hard-fails if it is missing; verification is `Test-ModuleManifest ./WinCVEReport.psd1` plus a full Pester run.

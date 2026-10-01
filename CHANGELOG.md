@@ -18,6 +18,12 @@
 
 ### Changed
 
+- Skills no longer assume the default branch is `main`. `github-contributing`,
+  `github-releases`, and `github-hygiene` say `main` stands for the repository's
+  default branch and show how to look it up, `github-pr-review` uses
+  `<default-branch>`, and the mapping, projects, security, and bootstrap skills
+  say "default branch" in prose. A test fails if a skill names `main` in a
+  command without saying so (#119).
 - `github-hygiene` now says auto-merge is the maintainer's switch: enabling
   it is the merge approval, it needs recorded evidence for every criterion
   first, and it is never combined with `Closes #N` unless every in-scope

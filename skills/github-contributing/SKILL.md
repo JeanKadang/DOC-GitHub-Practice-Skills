@@ -40,12 +40,17 @@ git merge upstream/main       # or: git rebase upstream/main, if you haven't pus
 git push origin main
 ```
 
+In these commands `main` stands for the default branch. Upstream and your fork
+may call it something else (`trunk`, `master`); look it up with
+`gh repo view <owner>/<repo> --json defaultBranchRef -q .defaultBranchRef.name`
+and use that name wherever `main` appears here.
+
 **Sync before every new branch, not just once.** A fork that drifts weeks behind
 upstream turns an easy PR into a painful rebase later.
 
 ## Branching and submitting
 
-Branch from your synced fork main, same conventions as working in your own repo
+Branch from your synced fork's default branch, same conventions as working in your own repo
 (see `github-hygiene`'s PR flow for the general shape) — but the commit and PR
 body conventions are the **target repo's**, not this one's. Don't impose `Refs #N`
 / `Closes #N` discipline on a repo that doesn't use it; check its `CONTRIBUTING.md`
