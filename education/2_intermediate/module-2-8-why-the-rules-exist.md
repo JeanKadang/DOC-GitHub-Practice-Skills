@@ -261,6 +261,7 @@ Discussions section.
 
 ---
 
-Next: the optional [Module 3.1: Branch protection and rulesets](../3_advanced/module-3-1-branch-protection-and-rulesets.md)
+Next: [Module 2.9: Safety with skills and MCP servers](module-2-9-safety-with-skills-and-mcp-servers.md)
+(if you use an AI assistant), then the optional [Module 3.1: Branch protection and rulesets](../3_advanced/module-3-1-branch-protection-and-rulesets.md)
 (Modules 3.1 to 3.6 are independent — read them in any order, or only the
 ones relevant to you)
