@@ -11,6 +11,37 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added (since `education-v1.0.0`)
+
+- Beginner modules 1.3 (Markdown for issues and pull requests), 1.4 (finding
+  your way around a repository), 1.5 (what never goes in a repository), and 1.6
+  (skills, instruction files, and MCP servers).
+- Intermediate modules 2.3 (writing a good issue), 2.4 (writing a reviewable
+  pull request), 2.5 (triage and backlog hygiene), 2.6 (where does this thought
+  belong?), 2.7 (contributing to someone else's repository), 2.8 (why the rules
+  exist), and 2.9 (safety with skills and MCP servers).
+- Module 3.2 now covers milestones on a board and which board and view to use.
+- `examples/ai-tooling-taxonomy.md`, a reference page that classifies developer
+  and AI tools and marks which ones the program covers.
+- A tools policy: all Git activity in the program is done in VS Code or on the
+  command line (GitHub Desktop is out of scope).
+- The setup page's extensions section is now two tiers (recommended and
+  suggested), with Marketplace links checked on 2026-10-01.
+
+### Fixed
+
+- Module 3.6 and Module 1.2 example commands now work as written (staging
+  before commits, returning to the scratch branch before the undo exercise),
+  and the reflog expiry defaults are stated correctly.
+- Modules 1.1 and 2.1 teach criterion, then evidence, then `Closes`, and the
+  Module 2.1 exercise now has a genuinely pending criterion.
+- Module 0.1's account-recovery advice now matches GitHub's documentation.
+- `facilitator-guide.md` setup list and checklist cover every module that uses
+  the sandbox, and the Advanced modules' "independent of" lists cover all of
+  Modules 3.1 to 3.6.
+- The setup page is no longer titled "Extra:", matching its role as a
+  conditional prerequisite (ADR 0009).
+
 ### Changed
 
 - **Breaking:** every numbered lesson is renamed to `module-<tier>-<n>-<name>.md`

@@ -90,6 +90,14 @@ project. Requirements:
   job that needs a secret, so attendees see it skipped on a fork pull request.
   Attendees close their pull requests unmerged; delete stray forks and branches
   between cohorts.
+- **For Module 3.1's exercise:** read-only for attendees. The sandbox's default
+  branch should have an active ruleset (or classic branch protection) so the
+  inspection has something to show, and attendees need read access to the
+  repository's rules. If the plan blocks rulesets, say so up front: the module
+  covers that case.
+- **For Module 3.6's exercise:** each attendee needs Git and a local clone (as
+  for Module 1.2) and works on a scratch branch they never push, so nothing on
+  the repository itself is needed.
 - **For Module 3.2's exercise:** a Projects v2 board with at least one item
   linked to a real issue **that has a milestone**, a custom **Priority** field
   (ideally with one item whose value disagrees with its issue's priority label),
@@ -139,6 +147,9 @@ stateDiagram-v2
       the Discussion step, that Discussions is enabled with an Ideas category.
 - [ ] For Module 2.7: confirm the public practice repository exists, is public,
       and has a `CONTRIBUTORS.md` and a `CONTRIBUTING.md`.
+- [ ] For Module 3.1: confirm the sandbox's default branch has a ruleset or branch
+      protection to inspect, and attendees can read its rules.
+- [ ] For Module 3.6: confirm every attendee has a local clone (same as Module 1.2).
 - [ ] For Module 3.2: confirm the sandbox repo has a Projects board with at
       least one item linked to an issue that has a milestone, a Priority field,
       and one unlinked draft item.
@@ -163,7 +174,7 @@ That's the entire mechanism; don't build more than this needs.
 
 ## Facilitator-note callouts in self-paced modules
 
-The six modules under `intermediate/` and `advanced/` are written primarily
+The modules under `2_intermediate/` and `3_advanced/` are written primarily
 for solo, self-paced reading — but they still support a facilitator-led
 session. Optional group activities are marked inline as blockquotes
 starting with `**Facilitator note`. When running a live session, watch for

@@ -1,4 +1,4 @@
-# Extra: Setting Up Your Local Dev Environment
+# Setting Up Your Local Dev Environment
 
 **Audience:** Anyone about to start Module 1.2 (or any command-line work)
 without Git or VS Code installed yet, or without VS Code connected to the
@@ -14,8 +14,9 @@ reading.
 Module 1.2 assumes `git` is already installed and working. This is where
 that assumption gets satisfied — install Git, install VS Code, connect VS
 Code to GitHub Enterprise, and pick up a few extensions worth having from
-day one. Extra tier, not core curriculum: come back to this whenever you
-need it, it doesn't gate anything else in the program.
+day one. This is a conditional prerequisite, not core reading: you
+need it only if you don't already have Git and VS Code set up for
+command-line work, and nothing else in the program depends on it.
 
 ```mermaid
 flowchart LR
