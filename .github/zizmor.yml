@@ -1,0 +1,10 @@
+# zizmor configuration (see .github/workflows/lint-workflows.yml).
+rules:
+  dangerous-triggers:
+    ignore:
+      # pull_request_target is deliberate here: the job copies labels onto pull
+      # requests from forks, which a plain pull_request run cannot do. It never
+      # checks out or runs the pull request's code, passes untrusted text only
+      # through environment variables, and is documented at the top of the file.
+      # Re-review that reasoning before adding a checkout step to it.
+      - label-pr-from-issue.yml

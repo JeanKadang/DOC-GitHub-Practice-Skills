@@ -37,6 +37,13 @@
 
 ### Changed
 
+- Actions hardening (#132): the repository now requires full-SHA pinning and
+  allows only GitHub-owned actions (all workflows already complied), every
+  checkout sets `persist-credentials: false`, the education tag check no longer
+  uses an npm cache, and a new advisory `Lint workflows` job runs actionlint and
+  zizmor on workflow changes. A test keeps workflows within the pinning and
+  ownership rules. `.github/zizmor.yml` records the one deliberate exception
+  (the `pull_request_target` label workflow, which never checks out code).
 - The release workflow is split into a read-only `check` job and a `publish` job
   that alone has `contents: write`. `check` checks out without stored
   credentials, installs with `npm ci --ignore-scripts`, and runs
