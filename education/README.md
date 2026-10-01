@@ -55,7 +55,8 @@ flowchart TD
     Q4 -- No --> Extra[Setup Local Dev Environment]
     Q4 -- Yes --> S2[Module 1.2: Local Git Basics]
     Extra --> S2
-    S2 --> M2a
+    S2 --> S5[Module 1.5: What never goes in a repository]
+    S5 --> M2a
     M2a --> M2b[Module 2.2: PR review and branch conventions]
     M2b --> M2c[Module 2.3: Writing a good issue]
     M2c --> M2d[Module 2.4: Writing a reviewable pull request]
@@ -70,6 +71,7 @@ flowchart TD
 | Never used version control | [Module 0.1: What Is Version Control?](0_prerequisites/module-0-1-what-is-version-control.md), then [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) |
 | You write issues or pull requests and want them to read well | [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) |
 | You want to find out what changed in a repository, and why, or whether something is already reported | [Module 1.4: Finding your way around a repository](1_beginners/module-1-4-finding-your-way-around-a-repo.md) |
+| You are about to commit files and want to know what must never go in a repository | [Module 1.5: What never goes in a repository](1_beginners/module-1-5-what-never-goes-in-a-repo.md) (do Module 1.2 first) |
 | Comfortable in the GitHub web UI, ready for the command line, Git/VS Code already installed | [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) |
 | Ready for the command line but no Git or VS Code installed yet | [Setting Up Your Local Dev Environment](0_prerequisites/setup-local-dev-environment.md), then [Module 1.2](1_beginners/module-1-2-local-git-basics.md) |
 | Some git knowledge, new to this team's process | [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
@@ -100,7 +102,7 @@ what's relevant to you. Each module is sized to fit a single sitting
 This program is primarily self-paced: work through it solo, at your own
 pace, with the modules above as your only guide. A facilitator-led session
 is still fully supported — modules mark optional group activities inline,
-so either mode works from the same files. Modules 1.2, 1.3, and 1.4 and Modules 2.1, 2.2, 2.3,
+so either mode works from the same files. Modules 1.2 to 1.5 and Modules 2.1, 2.2, 2.3,
 2.4, 2.5, 2.6, 3.1, 3.2, and 3.6 include hands-on steps in a shared **sandbox practice repo** (a
 throwaway repo set up for exactly this purpose, never a real project). Ask
 your team's facilitator or onboarding buddy for access to it before you
@@ -153,6 +155,10 @@ mindmap
         History and blame
         Searching with qualifiers
         Reading a pull request
+      Module 1.5: What never goes in a repository
+        Secrets, personal data, large binaries
+        .gitignore and git status
+        Rotate first after a leak
     2: Intermediate
       Module 2.1: Issue-first and closure gate
         Issue-first
@@ -200,6 +206,7 @@ mindmap
 - [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) — ~45 min, hands-on command-line git — staging, conflicts, and undoing a mistake.
 - [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) — ~20 min, hands-on, web UI only. Headings, task lists, code fences, links, and previewing.
 - [Module 1.4: Finding your way around a repository](1_beginners/module-1-4-finding-your-way-around-a-repo.md) — ~25 min, hands-on, web UI only. The Code tab, history and blame, search qualifiers, and reading a pull request.
+- [Module 1.5: What never goes in a repository](1_beginners/module-1-5-what-never-goes-in-a-repo.md) — ~20 min, hands-on, needs Git from Module 1.2. What stays out, `.gitignore`, and rotating first after a leaked secret.
 - [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md) — ~50 min, this team's core workflow habit.
 - [Module 2.2: PR review and branch conventions](2_intermediate/module-2-2-pr-review-and-branch-conventions.md) — ~35 min, review etiquette and branch/milestone conventions.
 - [Module 2.3: Writing a good issue](2_intermediate/module-2-3-writing-a-good-issue.md) — ~30 min, hands-on, the reasons behind each rule in `github-issue-first`.
