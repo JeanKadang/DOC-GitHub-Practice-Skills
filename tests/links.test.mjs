@@ -6,10 +6,19 @@ import test from 'node:test';
 import { findMarkdownFiles, repoRoot, stripFences } from './helpers/markdown.mjs';
 
 /** GitHub's heading anchor: lowercase, punctuation dropped, spaces to hyphens. */
+function withoutTags(text) {
+  // Repeat until stable so a tag nested inside another cannot survive one pass.
+  let current = text;
+  let previous;
+  do {
+    previous = current;
+    current = current.replace(/<[^<>]*>/g, '');
+  } while (current !== previous);
+  return current;
+}
+
 export function slugify(heading) {
-  return heading
-    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/<[^>]+>/g, '')
+  return withoutTags(heading.replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1'))
     .trim()
     .toLowerCase()
     .replace(/[^\p{L}\p{N}\p{M} _-]/gu, '')
