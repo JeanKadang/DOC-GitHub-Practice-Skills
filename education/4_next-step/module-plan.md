@@ -35,6 +35,7 @@ and want to go further. Modules built from this plan are named
 | 4.8 | Working across many repositories | [Module 3.1](../3_advanced/module-3-1-branch-protection-and-rulesets.md), [Module 3.2](../3_advanced/module-3-2-projects-boards.md) | 30 min |
 | 4.9 | Using Copilot as a pull request reviewer | [Module 2.2](../2_intermediate/module-2-2-pr-review-and-branch-conventions.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 30 min |
 | 4.10 | Assigning issues to the Copilot coding agent | [Module 2.1](../2_intermediate/module-2-1-issue-first-and-closure-gate.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
+| 4.11 | Publishing and consuming packages (GitHub Packages) | [Module 3.3](../3_advanced/module-3-3-releases.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 35 min |
 
 ## Candidates
 
@@ -172,6 +173,32 @@ and want to go further. Modules built from this plan are named
   briefly, so this module should add the practice, not repeat the explanation.
 - **Candidate issue title:** "Education: add Module 4.10, assigning issues to the
   Copilot coding agent".
+
+### Module 4.11: Publishing and consuming packages (GitHub Packages)
+
+- **Status:** demand is unconfirmed. The maintainer said on 2026-10-01 that the
+  team does not use GitHub Packages now and might later, so build this only when
+  a team starts to publish or consume versioned artifacts. It is a standalone
+  module, not a section in Module 3.3, because its exercise (publishing from a
+  workflow with a restricted token) fits poorly in a releases module.
+- **Audience:** anyone who publishes or consumes a versioned artifact (an npm
+  package, a container image, a NuGet package) from a repository.
+- **Prerequisites:** Module 3.3 and Module 3.5.
+- **Objectives:** tell a package apart from a release and from a build
+  artifact; publish a package from a workflow using a least-privilege token;
+  explain who can read a package and how that access relates to the repository;
+  consume a package with a token that can only read packages; explain why a
+  published version is immutable in practice and how cleanup works; never
+  publish a secret inside a package.
+- **Exercise idea:** in the sandbox, publish a tiny package version from a
+  workflow, read it back with a read-only token, and then say what you would do
+  if the package had contained a credential (rotate first, per Module 3.4).
+- **Verify before building:** which registries the workplace plan supports,
+  storage and retention limits, the current authentication rules, and whether
+  package visibility can differ from the repository's. None of this has been
+  checked.
+- **Candidate issue title:** "Education: add Module 4.11, publishing and
+  consuming packages".
 
 ## Also considered, not proposed
 
