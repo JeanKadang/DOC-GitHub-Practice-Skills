@@ -198,8 +198,11 @@ investigate, not noise.
   then passed on each of the next 7 runs. The cause is on GitHub's side, so
   there is nothing to fix in this repository. If it fails again with that error,
   treat it as a known non-blocking failure: note it in the pull request and merge
-  on the required checks. A different error from this check is not covered here
-  and needs a look.
+  on the required checks. It also failed on 2026-10-01 with
+  `You have exceeded your monthly quota` (status 402) from the Copilot service it
+  calls; that is a usage limit on the account, not a defect in the repository,
+  and is likewise non-blocking. Any other error from this check is not covered
+  here and needs a look.
 
 **A red advisory check.** The maintainer owns the decision. Read the failure
 first (see `github-hygiene`, "When CI goes red"). If it is a real defect, fix it
