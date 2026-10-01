@@ -135,7 +135,7 @@ Rough order, with the skill that covers each:
 1. Labels (priority + category — flatten any scoped labels) —
    `github-issue-first`
 2. Milestones for releases, **not** iterations — `github-releases`
-3. Ruleset on `main` (required checks + review, replacing Approval Rules) —
+3. Ruleset on the default branch (required checks + review, replacing Approval Rules) —
    `github-releases`
 4. CODEOWNERS, CONTRIBUTING.md, issue forms, PR template — `github-repo-review`
 5. Rewrite `.gitlab-ci.yml` as Actions workflows — budget real time, don't

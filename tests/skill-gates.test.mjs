@@ -88,3 +88,34 @@ test('WORKFLOW and Modules 2.2 and 2.4 state the auto-merge rule too (#184)', as
     assert.match(flat, /merge approval|merge decision/i, `${path} must tie auto-merge to the merge approval`);
   }
 });
+
+// Default branch (#119): a recipe that hardcodes `main` in a git or gh command
+// is wrong on a repository whose default branch is named differently, so any
+// skill that does so must also say that `main` stands for the default branch.
+test('a skill whose commands name main also says main means the default branch (#119)', async () => {
+  const { readdir } = await import('node:fs/promises');
+  const skillsRoot = join(repoRoot, 'skills');
+  const offenders = [];
+  for (const entry of await readdir(skillsRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const body = await skill(entry.name).catch(() => null);
+    if (body === null) continue;
+    const namesMainInACommand = body
+      .split(/\r?\n/)
+      .some((line) => /\b(?:git|gh)\b[^\n]*(?:\bmain\b|origin\/main|upstream\/main)/.test(line));
+    if (namesMainInACommand && !/default branch/i.test(body)) {
+      offenders.push(entry.name);
+    }
+  }
+  assert.deepEqual(offenders, [], `skills with a hardcoded main and no default-branch note: ${offenders.join(', ')}`);
+});
+
+test('github-contributing, github-releases, and github-pr-review do not assume main (#119)', async () => {
+  const contributing = (await skill('github-contributing')).replace(/\s+/g, ' ');
+  assert.match(contributing, /`main` stands for the default branch/);
+  assert.match(contributing, /defaultBranchRef/);
+  const releases = (await skill('github-releases')).replace(/\s+/g, ' ');
+  assert.match(releases, /`main` means the repository's default branch/);
+  const review = await skill('github-pr-review');
+  assert.doesNotMatch(review, /^git checkout main\b/m);
+});

@@ -110,7 +110,7 @@ detection; this is the response):
   find one, treat it as a P0.
 - **Pin third-party actions to a commit SHA**, not a mutable tag.
 - **Secrets never interpolated into `run:` strings** where they land in logs.
-- **Branch protection on main** with required checks and review.
+- **Branch protection on the default branch** with required checks and review.
 - **Self-hosted runners on a public repo** let any fork PR run code on your
   machine — a finding in its own right.
 
