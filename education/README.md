@@ -63,7 +63,8 @@ flowchart TD
     M2d --> M2e[Module 2.5: Triage and backlog hygiene]
     M2e --> M2f[Module 2.6: Where does this thought belong?]
     M2f --> M2g[Module 2.7: Contributing to someone else's repository]
-    M2g --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
+    M2g --> M2h[Module 2.8: Why the rules exist]
+    M2h --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
 ```
 
 | Background | Start here |
@@ -80,6 +81,7 @@ flowchart TD
 | You help keep the backlog in order: ranking, linking, and closing issues | [Module 2.5: Triage and backlog hygiene](2_intermediate/module-2-5-triage-and-backlog-hygiene.md) |
 | You are unsure whether something is an issue, a Discussion, or a recorded decision | [Module 2.6: Where does this thought belong?](2_intermediate/module-2-6-where-does-this-thought-belong.md) |
 | You want to propose a change to a repository you do not maintain | [Module 2.7: Contributing to someone else's repository](2_intermediate/module-2-7-contributing-to-someone-elses-repo.md) |
+| You want the reasons behind this team's rules, to follow them with judgment | [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md) |
 | Already know GitLab or Azure DevOps, not GitHub | [Module 0.1](0_prerequisites/module-0-1-what-is-version-control.md)'s GitLab/ADO comparison table for a quick orientation, then `skills/github-for-ado-users/SKILL.md` (Azure DevOps) or `skills/github-for-gitlab-users/SKILL.md` (GitLab) for full depth, then [Module 2.1](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
 
 **Whatever your background: read the [LLM Track — Pre-requisite: What Is
@@ -93,11 +95,11 @@ Basics](1_beginners/module-1-2-local-git-basics.md) before Module 2.1 — it
 covers staging, conflicts, and undoing a mistake, none of which the web-UI
 path in Module 1.1 touches.
 
-Modules 2.1 and 2.2 build on each other — do 2.1 first. Modules 2.3 to 2.7 build on
+Modules 2.1 and 2.2 build on each other — do 2.1 first. Modules 2.3 to 2.8 build on
 2.1 and are best read after 2.2. Modules 3.1-3.6 are
 each independent and optional; read any subset, in any order, based on
 what's relevant to you. Each module is sized to fit a single sitting
-(15-40 minutes) rather than blocking out a full session.
+(15-50 minutes) rather than blocking out a full session.
 
 This program is primarily self-paced: work through it solo, at your own
 pace, with the modules above as your only guide. A facilitator-led session
@@ -188,6 +190,9 @@ mindmap
         Fork, sync, and branch
         Following the target's rules
         Responding to review
+      Module 2.8: Why the rules exist
+        Six rules and the failures behind them
+        When a lighter process is reasonable
     3: Advanced
       Module 3.1: Branch protection and rulesets
       Module 3.2: Projects boards
@@ -214,6 +219,7 @@ mindmap
 - [Module 2.5: Triage and backlog hygiene](2_intermediate/module-2-5-triage-and-backlog-hygiene.md) — ~30 min, hands-on, the reasons behind the triage rules in `github-issue-first` and `github-releases`.
 - [Module 2.6: Where does this thought belong?](2_intermediate/module-2-6-where-does-this-thought-belong.md) — ~25 min, hands-on, the issue-versus-Discussion-versus-decision rules in `github-issue-first`.
 - [Module 2.7: Contributing to someone else's repository](2_intermediate/module-2-7-contributing-to-someone-elses-repo.md) — ~30 min, hands-on, the reasons behind `github-contributing`.
+- [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md) — ~35 min, reading and a short writing exercise, the failure behind each of six rules.
 - [Module 3.1: Branch protection and rulesets](3_advanced/module-3-1-branch-protection-and-rulesets.md) — ~25 min, optional.
 - [Module 3.2: Projects boards](3_advanced/module-3-2-projects-boards.md) — ~20 min, optional.
 - [Module 3.3: Releases](3_advanced/module-3-3-releases.md) — ~25 min, optional.

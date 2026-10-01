@@ -73,6 +73,8 @@ project. Requirements:
   open a draft pull request for a practice decision record and close it
   unmerged, and file one practice issue that they close as "not planned";
   reset the sandbox between cohorts.
+- **For Module 2.8's exercise:** nothing. It is a reading and writing exercise
+  with no sandbox use.
 - **For Module 2.7's exercise:** a separate **public** practice repository
   (for example `practice-contributions`), because the private sandbox can't
   normally be forked. It needs a `CONTRIBUTORS.md`, and a `CONTRIBUTING.md`
@@ -141,7 +143,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.5 / Intermediate modules 2.1-2.7 / Advanced modules 3.1-3.6)" to
+(Beginner modules 0.1-1.5 / Intermediate modules 2.1-2.8 / Advanced modules 3.1-3.6)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.
