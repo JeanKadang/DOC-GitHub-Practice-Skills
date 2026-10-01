@@ -157,3 +157,25 @@ test('the ADO Wiki stance is conditional and the GitLab skill does not deny ADO 
   assert.doesNotMatch(gitlab, /no wiki-equivalent gap/i);
   assert.match(gitlab, /Azure DevOps[^.]{0,40}also has a Git-backed project Wiki/);
 });
+
+// CI guidance (#213): lessons from changing this repository's own CI. Removing
+// either piece would reintroduce a blocked-PR trap or a silent unsupported
+// runtime in an audit.
+test('github-releases warns that renaming a job orphans a required check and gives the order (#213)', async () => {
+  const body = (await skill('github-releases')).replace(/\s+/g, ' ');
+  assert.match(body, /Renaming a job, or changing a CI matrix, changes the check names/);
+  assert.match(body, /never reports, so it blocks every pull request/);
+  assert.match(body, /add a new name only after a pull request has shown that check passing/);
+  assert.match(body, /remove an old name only when its job is gone/);
+  assert.match(body, /repository-settings change/);
+});
+
+test('github-repo-review audits supported runtimes, declared minimums, and required check names (#213)', async () => {
+  const prompt = (await readFile(join(repoRoot, 'skills', 'github-repo-review', 'review-prompt.md'), 'utf8')).replace(
+    /\s+/g,
+    ' ',
+  );
+  assert.match(prompt, /runtime versions CI tests are still supported/);
+  assert.match(prompt, /declared minimum.*?agrees with what CI tests/);
+  assert.match(prompt, /required check name in the ruleset still matches a job that runs/);
+});

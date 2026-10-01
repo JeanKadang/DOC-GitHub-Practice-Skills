@@ -103,6 +103,20 @@ review rule when a second maintainer arrives.
 `~DEFAULT_BRANCH` and `~ALL` are the two special ref names. Status-check contexts
 must match the **job name** as it appears in `gh pr checks`, not the workflow name.
 
+**Renaming a job, or changing a CI matrix, changes the check names.** A required
+check that no job produces never reports, so it blocks every pull request until
+the ruleset changes. Change the ruleset in the same change as the workflow, in
+this order: add a new name only after a pull request has shown that check passing,
+and remove an old name only when its job is gone. Read the current requirements
+before and after:
+
+```bash
+gh api repos/{owner}/{repo}/rulesets/<id> --jq '.rules[] | select(.type=="required_status_checks") | .parameters.required_status_checks[].context'
+```
+
+Editing a ruleset is a repository-settings change, so get the maintainer's
+approval first, and keep a copy of the old definition so it can be restored.
+
 ## Release notes configuration
 
 GitHub generates release notes from merged PRs for free — but unconfigured, it is
@@ -175,6 +189,7 @@ A release is its own PR, separate from feature PRs, then a tag. The shape is the
 | `gh ruleset create` | Doesn't exist — `gh ruleset` is read-only; create via `gh api -X POST .../rulesets` |
 | Recommending a ruleset on a free-plan private repo | 403 — branch protection needs a public repo or Pro/Team; check `gh api .../rulesets` first |
 | Reading `gh ruleset list`'s empty output as "none configured" | It prints nothing and exits 0 when the plan blocks it — use the API call to tell *none* from *unavailable* |
+| Renaming a CI job or matrix leg without updating the ruleset | The old required check never reports and blocks every PR; update the ruleset in the same change (add the new name after it passes, drop the old when its job is gone) |
 | Requiring 1 approval on a solo repo | Locks you out; require status checks only until a second maintainer exists |
 | Release notes all landing in "Other Changes" | Categories match **PR** labels — label the PR, not just the issue |
 | A `release.yml` category keyed on a label that doesn't exist | Silently never matches; cross-check against `gh label list` |

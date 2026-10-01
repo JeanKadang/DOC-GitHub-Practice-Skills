@@ -37,6 +37,12 @@
 
 ### Changed
 
+- `github-releases` warns that renaming a CI job or changing a matrix orphans a
+  required check (it never reports, so every PR is blocked) and gives the order
+  for changing the ruleset in the same change. `github-repo-review`'s CI/CD audit
+  now also checks that the runtimes CI tests are still supported, that the
+  declared minimum agrees with CI and the lockfile, and that required check
+  names still match running jobs (#213).
 - CI tests Node.js 22 and 24 and `package.json` requires `>=22` (Node 20 is end
   of life, and the locked `markdownlint` already needs 22). The installer jobs
   are one OS matrix, the installer suite runs only on the OS legs
