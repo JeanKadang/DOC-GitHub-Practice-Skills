@@ -193,7 +193,7 @@ and want to go further. Modules built from this plan are named
 - **Exercise idea:** in the sandbox, publish a tiny package version from a
   workflow, read it back with a read-only token, and then say what you would do
   if the package had contained a credential (rotate first, per Module 3.4).
-- **Verify before building:** which registries the workplace plan supports,
+- **Verify before building:** which registries your plan supports,
   storage and retention limits, the current authentication rules, and whether
   package visibility can differ from the repository's. None of this has been
   checked.

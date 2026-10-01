@@ -37,6 +37,10 @@
 
 ### Changed
 
+- The worked and example text in `github-releases`, `github-issue-first`, and
+  `github-repo-configure` is now invented and neutral (a generic PowerShell module
+  release example, "Reliability Hardening", "Naming Consistency", and a status
+  badge title), and "the company" became "your organization" (#122).
 - ADR 0012 records the milestone scheme: release-named (`vX.Y.Z`) for the
   skillset, "Education Program vN" for `education/`, and a thematic skillset
   milestone only until a release scopes it. `docs/WORKFLOW.md` says the same.

@@ -108,8 +108,8 @@ gh issue create `
   --label "<category-label(s)>"
 ```
 
-**Title** states the defect or gap, not the task of fixing it — "CFO badge
-falls through to Engineer color" not "Fix badge bug." **Body** gives enough
+**Title** states the defect or gap, not the task of fixing it — "Status badge
+falls through to the default color" not "Fix badge bug." **Body** gives enough
 for someone (including future-you) to act without re-deriving the finding:
 what's broken, concrete location, how it was found, rough scope of the fix.
 
