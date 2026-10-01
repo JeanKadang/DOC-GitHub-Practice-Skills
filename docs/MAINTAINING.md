@@ -100,11 +100,12 @@ is an issue or pull request. Never assume the object type from the number alone.
 The ruleset on the default branch requires these checks by name, with branches
 up to date before merge:
 
-| Required check | Job in `.github/workflows/validate.yml` |
-| --- | --- |
-| `Validate skills (Node 22)` | `validate`, matrix leg `node: 22` (validate, unit tests, Markdown lint) |
-| `Validate skills (Node 24)` | `validate`, matrix leg `node: 24` |
-| `Installer dry run (Windows)` | `installer`, matrix leg `Windows` (installer suite and dry runs for every target) |
+- `Validate skills (Node 22)`: the `validate` job in
+  `.github/workflows/validate.yml`, matrix leg `node: 22`. It runs the
+  validator, the unit tests, and the Markdown lint.
+- `Validate skills (Node 24)`: the same job, matrix leg `node: 24`.
+- `Installer dry run (Windows)`: the `installer` job, matrix leg `Windows`. It
+  runs the installer suite and a dry run of every target.
 
 The Ubuntu and macOS installer legs report but are not required, and the macOS
 leg is also `continue-on-error`. Node.js 22 and 24 are the supported LTS lines,

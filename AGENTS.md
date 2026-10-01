@@ -40,8 +40,8 @@ tiers (Basics, Intermediate, Advanced, Extra) stay optional as written.
 npm ci                 # install devDependencies (markdownlint-cli2, yaml)
 npm run validate       # scripts/validate-skills.mjs — manifest/skill checks
 npm test               # node --test (runs tests/*.test.mjs)
-npm run test:unit      # everything except the installer suite (what CI runs per Node version)
-npm run test:installer # only tests/install-skills.test.mjs (what CI runs per OS)
+npm run test:unit      # all but the installer suite (CI: once per Node version)
+npm run test:installer # only the installer suite (CI: once per OS)
 npm run lint:markdown  # lint:markdown:docs + lint:markdown:skills + lint:markdown:education
 npm run check          # validate + test + lint:markdown, run before every PR
 ```
