@@ -37,6 +37,11 @@
 
 ### Changed
 
+- `docs/MAINTAINING.md` lists the advisory checks and known failures: which
+  checks are advisory, the GitHub-managed "Code scanning AI findings" run that
+  failed with `The requested model is not supported` from 2026-09-30 to
+  2026-10-01 and has passed since, and what to do about a red advisory check
+  (#131).
 - `docs/openai-codex.md` records where Codex looks for skills: OpenAI documents
   `~/.agents/skills`, the installer's `~/.codex/skills` still works on Codex CLI
   0.159.3 (tested 2026-10-01), and a skill installed in both places is listed

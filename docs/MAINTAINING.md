@@ -127,6 +127,43 @@ List the current requirements with
 `gh api repos/{owner}/{repo}/rulesets/<id> --jq '.rules[] | select(.type=="required_status_checks")'`.
 Node.js 20 left support in 2026, so a Node 20 leg should not come back.
 
+## Advisory checks and known failures
+
+A pull request can show checks beyond the three required ones. `github-hygiene`
+says never to merge on a red check, so each non-required check needs a stated
+status. Keep this list current, and a failure that is not on it is a surprise to
+investigate, not noise.
+
+**Advisory, reported but not required:**
+
+- `Installer dry run (Ubuntu)`: runs and reports. A failure fails the run, but
+  the ruleset does not require it.
+- `Installer dry run (macOS)`: also `continue-on-error`, so a failure is shown on
+  the job without failing the run. It is kept visible on purpose.
+- `Analyze (actions)`, `Analyze (javascript-typescript)`, and `CodeQL`: code
+  scanning. A new alert on a pull request fails the `CodeQL` check and should be
+  fixed or dismissed with a reason before merge.
+
+**Managed by GitHub, not in `.github/workflows/`:**
+
+- `Code scanning AI findings`: a dynamic GitHub workflow, not a required check.
+  It failed with `CAPIError: 400 The requested model is not supported` on every
+  pull request run from 2026-09-30 16:49 UTC until 2026-10-01 06:31 UTC (48 runs),
+  then passed on each of the next 7 runs. The cause is on GitHub's side, so
+  there is nothing to fix in this repository. If it fails again with that error,
+  treat it as a known non-blocking failure: note it in the pull request and merge
+  on the required checks. A different error from this check is not covered here
+  and needs a look.
+
+**A red advisory check.** The maintainer owns the decision. Read the failure
+first (see `github-hygiene`, "When CI goes red"). If it is a real defect, fix it
+before merge. If it is a known failure on this list, or an outage outside the
+repository, say so in the pull request and merge on the required checks. If it is
+new and unexplained, hold the merge until it is understood, and add it here if it
+turns out to be a standing exception. Never hide a failure to make a pull request
+look green: `continue-on-error` keeps the result visible, and that is why it is
+used.
+
 ## Compatibility records
 
 For changes that depend on GitHub CLI, API, Actions, Node.js, or PowerShell
