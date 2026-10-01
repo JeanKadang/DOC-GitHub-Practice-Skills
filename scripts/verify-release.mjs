@@ -13,8 +13,9 @@ import { fileURLToPath } from 'node:url';
 const TAG_PATTERN = /^v(\d+\.\d+\.\d+)$/;
 
 export function changelogHasSection(changelog, version) {
-  const escaped = version.replace(/\./g, '\\.');
-  return new RegExp(`^## \\[${escaped}\\]`, 'm').test(changelog);
+  // Plain string comparison, not a pattern built from the version.
+  const heading = `## [${version}]`;
+  return changelog.split(/\r?\n/).some((line) => line.startsWith(heading));
 }
 
 /** Returns a list of problems; an empty list means the release may go ahead. */
