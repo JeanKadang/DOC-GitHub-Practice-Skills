@@ -9,6 +9,43 @@ such mechanism: there is no local filesystem it reads from, so there is no
 reasoning behind the shape below, and why an Actions schema or
 documentation-only coverage were rejected.
 
+## Availability: read this first
+
+Custom GPTs are being retired, so check which route you can use before you
+export anything.
+
+- **You can create or edit a Custom GPT today:** sections 1 to 4 below work
+  until the retirement date. Plan to migrate.
+- **Your workspace no longer allows new Custom GPTs, or you have no access:**
+  paste the relevant `SKILL.md` content into a conversation (see the last
+  section). It works on any account and does not depend on Custom GPTs.
+- **Custom GPTs have retired:** use the paste route. If you migrated your GPT
+  to a plugin, re-export (section 1) and re-upload the changed files to its
+  reference files. That route is untested.
+
+**What has been announced.** As reported by news outlets citing OpenAI's
+migration FAQ (checked on 2026-10-04): Custom GPTs retire on **2026-12-11**
+across ChatGPT plans, and OpenAI describes the replacement as Plugins and
+Skills. A GPT's instructions become a skill and its Knowledge files become
+reference files. Custom Actions, conversations, and sharing settings do not
+transfer, and the GPT's selected model is not kept. Affected Enterprise
+workspaces follow an earlier schedule (new creation reported to end around
+2026-10-26, with approved deferrals reported to run to 2027-02-11), and OpenAI
+says migration and plugin access may differ by account or workspace.
+
+**How far to trust this.** OpenAI's own help pages could not be opened when
+this was written, so these dates come from secondary reporting, for example
+[Virtualization Review](https://virtualizationreview.com/articles/2026/09/28/openai-to-retire-custom-gpts-replace-them-with-plugins.aspx)
+and [ADTmag](https://adtmag.com/articles/2026/09/28/openai-custom-gpt-retirement-puts-integrations-on-the-migration-checklist.aspx).
+Confirm the current dates and your own account's or workspace's options in
+OpenAI's help center before relying on them. Which plans can create a Custom GPT
+today was not tested.
+
+**What has not been tested.** This walkthrough has not been re-run in ChatGPT
+since the retirement was announced, and the exported files have not been tried
+as plugin reference files. Treat both as unverified. A plugin-based route is
+tracked separately (see issue #227).
+
 ## What "installing" means here
 
 The closest ChatGPT equivalent to a persistent local skill directory is a
@@ -114,8 +151,9 @@ whole GPT).
 
 ## If you don't have Custom GPT access
 
-Custom GPTs need a paid ChatGPT plan. Without one, paste the relevant
-`skills/<name>/SKILL.md` content directly into a conversation before asking
-about that topic — the content is the same, it just isn't persistent across
-conversations. `docs/GUIDE.md` lists what each skill covers so you can find
-the right one to paste.
+Creating a Custom GPT has required a paid plan or an eligible workspace, and
+Custom GPTs are retiring (see "Availability" above). If you cannot create one,
+or after they retire, paste the relevant `skills/<name>/SKILL.md` content
+directly into a conversation before asking about that topic. The content is the
+same; it just is not persistent across conversations. `docs/GUIDE.md` lists what
+each skill covers so you can find the right one to paste.
