@@ -55,6 +55,9 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
   20-file Knowledge limit.
 - **Relative links and anchors** (`tests/links.test.mjs`): a link to a file or
   heading that no longer exists.
+- **Education prerequisites and README Materials list**
+  (`tests/education-modules.test.mjs`): a module whose Audience line names a
+  module that does not exist, or a module file the README Materials list omits.
 - **Shell snippet syntax** (`tests/snippets.test.mjs`): a bash or PowerShell
   example that does not parse.
 - **Mermaid diagrams** (`tests/mermaid-diagrams.test.mjs`): a diagram that does
