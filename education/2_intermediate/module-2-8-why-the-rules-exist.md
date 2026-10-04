@@ -165,6 +165,8 @@ the reason behind the rule, since no tool will stop you.
 
 ## Exercise: name the rule and the early warning
 
+**Permissions:** none needed; this is a reading and writing exercise.
+
 **Starting state:** none; this is a reading and writing exercise. Have a pen or
 a text file open.
 
@@ -190,6 +192,12 @@ shown the problem early**.
 **Success state:** you have a rule and an early-warning signal for each of the
 six stories, and your answer to story 6 depends on the maintainer's decision, not
 on your preference.
+
+**Likely errors:**
+
+- You name a rule but not the early-warning signal: add what you would have seen, such as a failing check, an unchecked criterion, or a scan alert.
+- Two rules seem to fit one story: pick the one that would have stopped the problem earliest, and mention the other as a backup.
+- You answer story 6 from your own preference: the answer depends on what the maintainer has decided for that repository, so say what you would ask.
 
 **Cleanup:** none.
 

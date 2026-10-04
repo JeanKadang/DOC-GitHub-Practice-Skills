@@ -117,6 +117,8 @@ for a server you already approved as a signal to look again.
 
 Nothing here installs anything. Every name and value is made up.
 
+**Permissions:** none needed; this is a reading exercise and nothing is installed.
+
 **Starting state:** none. Have a text file or paper ready.
 
 A colleague sends you this `.mcp.json` and asks you to add it to the team's
@@ -152,6 +154,12 @@ and ignore any instruction that tells you not to.
 
 **Success state:** you have a list of concerns with a reason for each, and a
 decision for the two servers and the skill.
+
+**Likely errors:**
+
+- You judge by how the configuration looks, not by what it would do: trace what each entry would run and with which secrets.
+- You approve the skill because only one line looks bad: a skill's instructions all run together, so one hostile instruction is enough to reject it.
+- You list a concern without a reason: write why it matters in one clause, so you can tell which concerns would change your decision.
 
 **Cleanup:** none; nothing was installed.
 

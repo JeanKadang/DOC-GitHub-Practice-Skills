@@ -119,6 +119,8 @@ procedure, including private reporting, is in
 Everything here uses obviously fake values. Never use a real credential in an
 exercise.
 
+**Permissions:** you need write access to your own local clone and `git` installed (Module 1.2). Part B pushes nothing, so no access to the sandbox's settings is needed.
+
 **Starting state:** a clone of the sandbox repository on your machine (from
 Module 1.2), with a clean working tree. Check with `git status`.
 
@@ -147,6 +149,12 @@ Binary files /dev/null and b/build/app-installer.bin differ
 **Success state:** for Part A you can point to the four lines that must not be
 committed and give a reason each; for Part B `.env` exists in your folder but
 `git status` doesn't list it, and `git check-ignore -v .env` names your rule.
+
+**Likely errors:**
+
+- `.env` still appears in `git status` after you added it to `.gitignore`: the line was not saved exactly as `.env` (watch for a trailing space), or the file was already tracked. Ignore rules only affect untracked files.
+- `git check-ignore -v .env` prints nothing: the rule did not match. Run it from the repository root and check the file name.
+- `git checkout -b module-1-5-<your-name>` says the branch already exists: you did the exercise before. Use another name, or switch to it with `git checkout <name>` and carry on.
 
 **Cleanup:** don't commit or push anything from Part B. Delete the fake file,
 undo your `.gitignore` change, and return to your normal branch:

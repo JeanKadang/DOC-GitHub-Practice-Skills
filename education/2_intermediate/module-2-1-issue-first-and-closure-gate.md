@@ -124,6 +124,21 @@ itself, not implied by the fact that the code shipped.
 
 ## Exercise: trigger the gotcha yourself
 
+**Permissions:** you need write access and the Triage role in the sandbox: to file and label issues, create branches, merge pull requests, and reopen an issue.
+
+**Starting state:** the sandbox has priority and category labels and an open milestone, and `CONTRIBUTORS.md` exists on `main`.
+
+**Success state:** your practice issue is closed, both criteria are ticked with an evidence comment each, and the milestone is still set.
+
+**Likely errors:**
+
+- The issue does not auto-close after the first merge: the branch was not created from the issue page. That is fine for the exercise. Continue, record the evidence anyway, and create the second branch from the issue.
+- There is no **Create a branch** option on the issue: create the branch from the command line with `gh issue develop <N> --name <branch> --checkout`.
+- You cannot reopen the issue: you lack the Triage role. Ask for it, or comment on the issue and ask the owner to reopen it.
+- The merge is blocked by a required check: wait for it to finish, and do not bypass it.
+
+**Cleanup:** delete your two branches from the repository's branch list, and leave the issue closed.
+
 This is the module's core hands-on piece — you're going to make the exact
 thing described above happen, on purpose, in the sandbox repo, so the habit
 is muscle memory instead of a thing you were told about once.

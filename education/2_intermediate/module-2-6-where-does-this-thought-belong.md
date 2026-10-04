@@ -173,6 +173,8 @@ three homes, each at the moment it fit.
 
 ## Exercise: sort eight statements, then write one record
 
+**Permissions:** you need write access to push a branch and open a pull request in the sandbox. Step 3 also needs Discussions to be enabled there.
+
 **Starting state:** the sandbox repo has a `decision-needed` label. If
 Discussions is enabled there, it has the Ideas category (the facilitator
 guide lists both).
@@ -193,7 +195,7 @@ guide lists both).
    | 8 | We are reversing the PostgreSQL decision in favour of a hosted service |
 
 2. Write the record for statement 3 in the sandbox. Create a branch
-   `docs/adr-0001-postgresql`, add `docs/adr/0001-use-postgresql.md` with the
+   `docs/adr-0001-postgresql-<your-name>`, add `docs/adr/0001-use-postgresql.md` with the
    four parts from the example above, commit it, push it, and open a **draft**
    pull request titled `docs: ADR 0001, use PostgreSQL` whose body says
    `Status: Proposed`.
@@ -205,6 +207,12 @@ guide lists both).
 **Success state:** your sorting matches the model answer, the draft pull
 request contains a four-part record, and (if you did step 3) the Discussion and
 the issue link to each other.
+
+**Likely errors:**
+
+- There is no Discussions tab or no Ideas category: Discussions is off in this sandbox. Skip step 3; the rest of the exercise does not depend on it.
+- You cannot open the pull request as a draft: some plans do not offer draft pull requests on private repositories. Open it normally and start the title with `Draft:`.
+- `git push` is rejected because the branch exists: the branch name includes your name; if you already have one from an earlier try, add `-2`.
 
 **Cleanup:** close the draft pull request without merging it and delete the
 branch. Close the practice issue as *not planned* with a short comment, and

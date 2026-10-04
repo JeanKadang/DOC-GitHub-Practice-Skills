@@ -55,6 +55,18 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   instructions, and human decision gates, with answer criteria on the
   self-check. Timing is now about 25 minutes. A Module 4.1 on reviewing agent
   changes is tracked in #230 (#152).
+- Every module with an exercise now states, as bold labels, the **Permissions**
+  it needs, its **Starting state**, its **Success state**, its **Likely errors**
+  with the cause and fix of each, and its **Cleanup**. Modules 1.1, 1.2, 2.1,
+  2.2, 3.1, 3.3, 3.4, and 3.6 gained the whole block; the others gained
+  Permissions and Likely errors. Modules 0.1 and 3.5 are reading only. A test
+  now enforces this (#151).
+- Exercises no longer have every learner push the same branch name. Module 1.2's
+  `conflict-a` and `conflict-b`, Module 2.4's two `docs/` branches, and Module
+  2.6's ADR branch now include your name (#151).
+- Module 3.2 now tells issue, pull request, and draft items apart by icon and
+  number. Before, it said any item without an issue number is a draft, which is
+  wrong for a pull request item (#151).
 - Examples that read as drawn from a real workplace were replaced with invented,
   neutral ones, and the setup page says "your organization" and "work tool"
   instead of "the company" (#122).

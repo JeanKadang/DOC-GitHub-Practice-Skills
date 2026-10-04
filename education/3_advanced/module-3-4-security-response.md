@@ -40,6 +40,20 @@ lives.
 
 ## Exercise: practice the reporting flow (no real secret involved)
 
+**Permissions:** you need read access to a repository's Security tab. You must not submit a report.
+
+**Starting state:** a browser, and a repository to look at (this one's is fine).
+
+**Success state:** you found where private vulnerability reporting is, saw what it asks for, and wrote a one-sentence description that names a file and a rough location and contains no secret value.
+
+**Likely errors:**
+
+- There is no **Report a vulnerability** button: private vulnerability reporting is switched off for that repository. Read its security policy for the contact route instead.
+- You cannot see the Security tab: you lack access to that repository. Use this repository's own.
+- Your sentence includes a made-up key or password: remove it. The report names where the secret is, never what it is.
+
+**Cleanup:** if you opened the report form, close it without submitting.
+
 Nothing in this exercise touches a real credential or a real
 vulnerability — it's entirely a UI-navigation and writing exercise.
 
