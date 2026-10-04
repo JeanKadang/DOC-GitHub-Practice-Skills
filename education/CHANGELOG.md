@@ -13,6 +13,11 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added (since `education-v1.0.0`)
 
+- Module 4.1, reviewing changes an AI agent wrote: how an agent's pull request
+  differs (scope creep, invented APIs, claimed checks that did not happen,
+  special cases that pass, weakened safety nets), a review order, and a paper
+  exercise on an invented flawed pull request with a model answer. It is the
+  first module in `4_next-step/` and is optional (#230).
 - Beginner modules 1.3 (Markdown for issues and pull requests), 1.4 (finding
   your way around a repository), 1.5 (what never goes in a repository), and 1.6
   (skills, instruction files, and MCP servers).

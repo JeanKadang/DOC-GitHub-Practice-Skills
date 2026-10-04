@@ -18,9 +18,8 @@ commit, and file hashes (ADR 0013).
 `0_prerequisites/` holds required reading (Module 0.1, and the LLM track's
 Pre-requisite page — most colleagues use an AI coding assistant, so that
 page is no longer optional) plus one conditional page (local dev
-environment setup, only if you don't already have Git/VS Code). A future
-[`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
-today's Module 3.6 — candidate modules, none built yet. `examples/`,
+environment setup, only if you don't already have Git/VS Code). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
+Module 3.6, and the first module built from it, Module 4.1. `examples/`,
 `cheat-sheet.md`, and `facilitator-guide.md` sit outside the numbered
 sequence — lookup references, not steps to work through in order.
 
@@ -87,6 +86,7 @@ flowchart TD
 | You want the reasons behind this team's rules, to follow them with judgment | [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md) |
 | You use an AI assistant and want to know about skills, instruction files, and MCP servers | [Module 1.6: Skills, instruction files, and MCP servers](1_beginners/module-1-6-skills-instructions-and-mcp.md) (after the LLM prerequisite) |
 | You are about to add a skill or an MCP server you did not write | [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) (after Module 1.6) |
+| You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
 | Already know GitLab or Azure DevOps, not GitHub | [Module 0.1](0_prerequisites/module-0-1-what-is-version-control.md)'s GitLab/ADO comparison table for a quick orientation, then `skills/github-for-ado-users/SKILL.md` (Azure DevOps) or `skills/github-for-gitlab-users/SKILL.md` (GitLab) for full depth, then [Module 2.1](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
 
 **Whatever your background: read the [LLM Track — Pre-requisite: What Is
@@ -216,6 +216,8 @@ mindmap
       Module 3.4: Security response basics
       Module 3.5: Actions, runners, and the Copilot coding agent
       Module 3.6: Rebase, cherry-pick, and reflog recovery
+    4: Next step
+      Module 4.1: Reviewing changes an AI agent wrote
 ```
 
 ## Materials
@@ -244,7 +246,8 @@ mindmap
 - [Module 3.4: Security response basics](3_advanced/module-3-4-security-response.md) — ~15 min, optional.
 - [Module 3.5: Actions, runners, and the Copilot coding agent](3_advanced/module-3-5-actions-runners-and-agents.md) — ~15-20 min, optional.
 - [Module 3.6: Rebase, cherry-pick, and reflog recovery](3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md) — ~25 min, hands-on, in a terminal (needs Git and Module 1.2), optional.
-- [Next-step module plan](4_next-step/module-plan.md) — a plan of candidate advanced modules, none built yet.
+- [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) — ~30 min, a paper review of an invented agent pull request, optional. Scope creep, invented APIs, claimed checks, and why a green check is not a decision.
+- [Next-step module plan](4_next-step/module-plan.md) — a plan of candidate advanced modules; only Module 4.1 is built.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
 - [Examples: Markdown formatting showcase](examples/markdown-formatting-showcase.md) — lookup reference, not a lesson.
