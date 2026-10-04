@@ -242,7 +242,7 @@ mindmap
 - [Module 3.3: Releases](3_advanced/module-3-3-releases.md) — ~25 min, optional.
 - [Module 3.4: Security response basics](3_advanced/module-3-4-security-response.md) — ~15 min, optional.
 - [Module 3.5: Actions, runners, and the Copilot coding agent](3_advanced/module-3-5-actions-runners-and-agents.md) — ~15-20 min, optional.
-- [Module 3.6: Rebase, cherry-pick, and reflog recovery](3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md) — ~25 min, hands-on, optional.
+- [Module 3.6: Rebase, cherry-pick, and reflog recovery](3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md) — ~25 min, hands-on, in a terminal (needs Git and Module 1.2), optional.
 - [Next-step module plan](4_next-step/module-plan.md) — a plan of candidate advanced modules, none built yet.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
