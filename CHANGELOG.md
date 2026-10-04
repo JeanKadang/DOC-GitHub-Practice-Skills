@@ -6,6 +6,11 @@
 
 ### Added
 
+- A weekly, report-only closure audit (`.github/workflows/closure-audit.yml`,
+  `scripts/closure-audit.mjs`): it lists issues closed as completed that still
+  have an unchecked criterion in one tracking issue, and changes no other issue.
+  `docs/MAINTAINING.md` documents the owner, the actions for each row, and the
+  `closure-audit-reviewed` label (#115).
 - New checks in `npm run check`: the validator now rejects a skill description
   over 1024 characters, a `default_prompt` that does not name its skill, and a
   `github-...` cross-reference that is not a skill. New tests check every

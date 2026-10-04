@@ -1,0 +1,51 @@
+name: Closure audit
+
+# Weekly, report-only audit for issues closed as completed that still have an
+# unchecked acceptance criterion (#115). It rewrites one tracking issue and never
+# reopens, edits, or closes any other issue. A red result is never expected: the
+# report is the output, and the maintainer owns each row (docs/MAINTAINING.md,
+# "Closure audit").
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: closure-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Closure audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPORT_TITLE: "Closure audit: completed issues with unchecked criteria"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Build the report
+        run: |
+          gh issue list --state closed --limit 1000 \
+            --json number,title,body,stateReason,closedAt,labels > issues.json
+          node scripts/closure-audit.mjs "$(date -u +%F)" < issues.json > report.md
+      - name: Update the single tracking issue
+        run: |
+          existing="$(gh issue list --state open --search "\"$REPORT_TITLE\" in:title" \
+            --json number,title \
+            --jq "map(select(.title == \"$REPORT_TITLE\"))[0].number // empty")"
+          if [ -n "$existing" ]; then
+            gh issue edit "$existing" --body-file report.md
+          else
+            gh issue create --title "$REPORT_TITLE" --body-file report.md
+          fi
