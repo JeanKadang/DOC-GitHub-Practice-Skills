@@ -30,6 +30,9 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- The facilitator guide no longer says every module works entirely through the
+  web UI: Modules 1.2, 1.5, and 3.6 need a terminal and Git. The README entry
+  for Module 3.6 now says so before you pick it (#126).
 - Module 3.6 and Module 1.2 example commands now work as written (staging
   before commits, returning to the scratch branch before the undo exercise),
   and the reflog expiry defaults are stated correctly.
