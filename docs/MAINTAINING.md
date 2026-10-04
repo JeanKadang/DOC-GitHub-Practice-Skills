@@ -105,6 +105,24 @@ GitHub issue and PR numbers share a repository number sequence. Before editing
 metadata or closing an object from a bare `#N`, query it and confirm whether it
 is an issue or pull request. Never assume the object type from the number alone.
 
+## Closure audit
+
+`.github/workflows/closure-audit.yml` runs every Monday (and on demand) and
+lists issues closed as completed that still have an unchecked acceptance
+criterion, using `scripts/closure-audit.mjs`. It is report-only: it rewrites one
+open tracking issue titled "Closure audit: completed issues with unchecked
+criteria" (creating it if none is open) and never reopens, comments on, or edits
+any other issue. Its token has `issues: write` only for that.
+
+The maintainer owns the report. For each row, either record evidence and tick the
+box, reopen the issue and record why, or record a scope decision (superseded or
+not applicable) and add the `closure-audit-reviewed` label so the row stops
+appearing. The label does not exist by default; create it once before using it.
+Boxes inside fenced code blocks, and issues closed as not planned or duplicate,
+are not counted. Run the same query by hand with the one in `github-hygiene`
+("Acceptance criteria are closure gates"); a run of the workflow can be started
+from the Actions tab.
+
 ## Repository settings this repository expects
 
 Recorded 2026-10-01 so an audit (see `docs/repo-settings-snapshot.md`) has a
