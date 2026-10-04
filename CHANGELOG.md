@@ -42,6 +42,11 @@
 
 ### Changed
 
+- `docs/chatgpt.md`, `platforms/chatgpt/README.md`, and `README.md` now say that
+  OpenAI has announced Custom GPTs retire on 2026-12-11, with the dates
+  attributed to secondary reporting, dated, and qualified, and a table of which
+  route to use. The Custom GPT export and walkthrough stay, and the paste route
+  is the route after retirement. A plugin-based route is tracked in #227 (#144).
 - `docs/MAINTAINING.md` records that GitHub's AI code-scanning check
   (`github-advanced-security`) was turned off on 2026-10-04 after repeated
   failures, with its history, and says what a reappearing check means (#225).

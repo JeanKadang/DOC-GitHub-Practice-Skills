@@ -60,7 +60,8 @@ The installer validates the source, refuses unapproved overwrites, and can use
 `-Target Both` installs Codex and Claude only; install Copilot separately with
 `-Target Copilot`. ChatGPT has no local skill directory to install into —
 `-Target ChatGPT` exports the skill files instead, for uploading to a Custom
-GPT; see the [ChatGPT guide](docs/chatgpt.md).
+GPT, which OpenAI has announced it will retire on 2026-12-11; see the
+[ChatGPT guide](docs/chatgpt.md), "Availability", before exporting.
 
 ## Documentation
 
@@ -69,7 +70,7 @@ GPT; see the [ChatGPT guide](docs/chatgpt.md).
 - [Maintainer guide](docs/MAINTAINING.md)
 - [Azure DevOps migration mapping](docs/azure-devops-migration.md)
 - [Installing from VS Code (no PowerShell experience needed)](docs/vscode.md)
-- [Installing for ChatGPT (Custom GPT, no local skill directory)](docs/chatgpt.md)
+- [Installing for ChatGPT (Custom GPT until its announced retirement, then paste)](docs/chatgpt.md)
 - [Colleague training program](education/README.md)
 - [Repo settings snapshot (read-only audit reference)](docs/repo-settings-snapshot.md)
 
