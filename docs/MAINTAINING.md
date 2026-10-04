@@ -126,6 +126,27 @@ are not counted. Run the same query by hand with the one in `github-hygiene`
 ("Acceptance criteria are closure gates"); a run of the workflow can be started
 from the Actions tab.
 
+## Education bundle
+
+`education/` links to files outside its folder, so a copy of it alone breaks. To
+move or hand it out, build a bundle:
+
+```bash
+node scripts/package-education.mjs --out <folder>
+```
+
+Add `--dry-run` to list the files without writing. The script derives what to
+carry from the pages themselves (relative links, and `skills/<name>/` paths with
+the files each skill's inventory entry lists, plus the LICENSE), keeps relative
+positions so links resolve, writes `BUNDLE.json` (skillset version, education
+version, licence, source commit and whether the tree was dirty, referenced
+skills, and a SHA-256 per file), and then checks every link in the bundle. It
+writes only into an empty folder or one holding a previous `BUNDLE.json`.
+
+A bundle is a point-in-time export: rebuild it after any change, never edit it.
+Only links and `skills/<name>/` paths are followed, so a reference that is only
+in backticks will not travel; make it a link if it must. See ADR 0013.
+
 ## Repository settings this repository expects
 
 Recorded 2026-10-01 so an audit (see `docs/repo-settings-snapshot.md`) has a

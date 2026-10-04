@@ -58,3 +58,5 @@ documentation clarifications and typo-level fixes do not need one.
 - [0012](0012-milestone-scheme.md) — Milestones are release-named for the
   skillset and "Education Program vN" for `education/`; a thematic skillset
   milestone lasts only until a release scopes it.
+- [0013](0013-education-bundle-script.md) — The education bundle is built by a
+  Node script with derived dependencies and a manifest, implementing ADR 0008.

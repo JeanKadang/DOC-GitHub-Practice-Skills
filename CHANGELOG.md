@@ -6,6 +6,11 @@
 
 ### Added
 
+- `scripts/package-education.mjs` builds a portable copy of `education/`: it
+  derives the files the pages link to and the skills they name, keeps relative
+  paths so links resolve, and writes `BUNDLE.json` with versions, licence, source
+  commit, and file hashes. ADR 0013 records the choice of a Node script;
+  `docs/MAINTAINING.md` describes its use (#146).
 - A test that every education module's Audience line names only modules that
   exist, and that the education README Materials list names every module file.
   It fails on a seeded nonexistent prerequisite and on a module missing from the
