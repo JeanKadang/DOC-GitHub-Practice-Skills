@@ -47,6 +47,14 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- The LLM prerequisite no longer presents chat versus agent as the only
+  distinction. Its vocabulary now separates product, model, instructions,
+  context, tools, and permission; the diagram shows that what an assistant can
+  do depends on enabled and permitted tools; and a new paper exercise covers
+  scoping a task, checking actual actions, sensitive input, untrusted
+  instructions, and human decision gates, with answer criteria on the
+  self-check. Timing is now about 25 minutes. A Module 4.1 on reviewing agent
+  changes is tracked in #230 (#152).
 - Every module with an exercise now states, as bold labels, the **Permissions**
   it needs, its **Starting state**, its **Success state**, its **Likely errors**
   with the cause and fix of each, and its **Cleanup**. Modules 1.1, 1.2, 2.1,
