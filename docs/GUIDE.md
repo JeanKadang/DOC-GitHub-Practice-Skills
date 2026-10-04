@@ -227,15 +227,8 @@ then add a plan-supported ruleset that does not require solo self-approval.
 
 ## Proposed improvements, not current policy
 
-One candidate remains open. It is not a requirement implemented by the current
-skills:
-
-1. Automate audits for completed issues with unchecked criteria and stale
-   epic checkboxes. Deferred: real value once the issue count grows, but no
-   scheduled automation exists yet and the repo's current scale (a handful of
-   issues) doesn't yet justify the added CI/API-quota surface. Revisit if
-   issue volume grows enough that manual audits become unreliable.
-
-Maintainers must update the canonical skill contract and this policy section in
-a separate, reviewed change before this remaining proposal becomes current
-behavior.
+No candidate remains open. The last one, automating audits for completed issues
+with unchecked criteria, is now a weekly report-only workflow
+(`.github/workflows/closure-audit.yml`, described in `docs/MAINTAINING.md`,
+"Closure audit"). It reports to one tracking issue and changes no other issue.
+Add a new candidate here only with a recorded disposition.
