@@ -145,6 +145,8 @@ read the unformatted version.
 
 ## Exercise: rewrite a bug report
 
+**Permissions:** you need to be able to create and edit issues in the sandbox repository (the Triage or Write role). You do not need access to its settings.
+
 **Starting state:** you have completed Module 1.1 in the sandbox repository, so
 you have one closed issue and one merged pull request of your own. Open both in
 other tabs and note their numbers and your username.
@@ -179,6 +181,13 @@ other tabs and note their numbers and your username.
 **Success state:** the submitted issue shows three headings, a fenced error, a
 folded log, two checkboxes (one ticked), and working links to your two earlier
 items, and each of those items shows the new issue as a reference.
+
+**Likely errors:**
+
+- The Preview tab shows `<details>` as plain text instead of a fold: a blank line is missing after `</summary>` or before `</details>`. Add the blank lines and preview again.
+- Your `#N` shows as plain text, not a link: the number is inside backticks or has a space after the `#`. Remove the backticks and keep `#` attached to the digits.
+- The checkbox will not tick on the submitted issue: the list item is missing the exact form `- [ ]` (dash, space, bracket, space, bracket), or you cannot edit the issue. Check the form first, then your role.
+- You cannot find a Preview tab: you are in a comment box with a different layout. Use the new-issue form, which has Write and Preview tabs.
 
 **Cleanup:** close the issue as **Not planned** with a short comment saying it
 was a practice exercise. Nothing else needs undoing.

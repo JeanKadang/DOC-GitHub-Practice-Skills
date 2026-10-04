@@ -113,6 +113,8 @@ OpenAI's documentation if you rely on them.
 This exercise uses VS Code with GitHub Copilot Chat. If you use another tool,
 use its instruction file from the first table instead.
 
+**Permissions:** you need Copilot Chat available in VS Code (an account with access, and your organisation allowing it). If you do not have it, read the exercise and skip to the success state; nothing here needs write access to the sandbox.
+
 **Starting state:** a local clone of the sandbox repository open in VS Code
 (Module 1.2), a clean working tree (`git status`), and Copilot Chat available.
 Don't commit or push anything in this exercise.
@@ -137,6 +139,12 @@ Don't commit or push anything in this exercise.
 
 **Success state:** you saw the reply's behaviour change after step 2 and revert
 after step 5, and `git status` is clean again.
+
+**Likely errors:**
+
+- The reply does not start with "Ahoy": you are still in the old chat. Start a **new** chat, and check the file is exactly `.github/copilot-instructions.md`. Your organisation may also switch instruction files off; ask your admin if a fresh chat still ignores it.
+- Copilot Chat is greyed out or asks you to sign in: your account is not signed in, or has no Copilot access. Sign in first, then ask your admin.
+- `git status` shows the file as modified, not untracked: a file with that name already exists. Do not delete it; pick another instruction file name for the test, or stop here and keep the module as reading.
 
 **Cleanup:** the file is already removed in step 5. Confirm with `git status`
 that nothing is left over.

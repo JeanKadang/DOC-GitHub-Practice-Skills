@@ -33,6 +33,23 @@ diverging versions of "the same" history that don't reconcile cleanly.
 If you're not sure whether a branch is safe to rewrite, it isn't — push
 what you have as-is, or ask first.
 
+## Before you start
+
+**Permissions:** you need `git` installed and a local clone of the sandbox. You only push if a step tells you to, so write access to the sandbox is not needed for the rest.
+
+**Starting state:** a clean `git status` on `main`, and the scratch branch `module-3-6-<your-name>` does not exist yet.
+
+**Success state:** you cleaned three commits into one with an interactive rebase, moved a single commit with cherry-pick, and recovered a commit that looked lost, using `git reflog`.
+
+**Likely errors:**
+
+- `git rebase -i` opens an editor you cannot use: in vim type `:wq`, in nano press Ctrl+X. If you want to abandon the rebase, run `git rebase --abort`.
+- A rebase stops with a conflict: fix the file, `git add` it, and `git rebase --continue`, or `git rebase --abort` to go back to before you started.
+- `git checkout -b module-3-6-<your-name>` says the branch exists: use a new name, or switch to it with `git checkout`.
+- A commit seems gone after `git reset --hard`: it is not. Run `git reflog`, find the commit's hash, and use `git checkout -b recovered <hash>`.
+
+**Cleanup:** when you are done, return to `main` and delete your scratch branches locally with `git branch -D <name>`. Do not push them; if you did, remove them with `git push origin --delete <name>`.
+
 ## Interactive rebase: cleaning up commit history
 
 You made three commits while figuring something out — `"wip"`, `"fix

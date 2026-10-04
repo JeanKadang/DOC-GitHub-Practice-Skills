@@ -59,6 +59,21 @@ CLI listing's silence.
 
 ## Exercise: inspect real rulesets (read-only)
 
+**Permissions:** read access to the sandbox is enough for steps 1, 3, and 4. Step 2 needs admin access, so skip it if you do not have that.
+
+**Starting state:** `gh` is installed and signed in (`gh auth status`), and you have replaced `<org>/<sandbox-repo>` with the real names.
+
+**Success state:** you can say whether review is required, whether a status check is required, and whether force-push is blocked on `main`, and whether the settings look like a solo or a team repository.
+
+**Likely errors:**
+
+- The command returns 404: the organisation or repository name is wrong, or you have no access. Check the spelling with `gh repo view <org>/<sandbox-repo>`.
+- `gh ruleset list` says nothing or "Resource not accessible": you lack admin access. That is expected; use step 1's command instead.
+- `gh ruleset list` is empty: that does not prove no rules exist. Run the API command in the step to tell "none" from "not available on this plan".
+- The rules output is empty: no rule applies to that branch. That is a valid answer; note it.
+
+**Cleanup:** none; this exercise is read-only and changed nothing.
+
 This exercise is deliberately read-only — rulesets are admin-level
 settings, and a shared sandbox shouldn't have every self-paced learner
 creating or editing them simultaneously.

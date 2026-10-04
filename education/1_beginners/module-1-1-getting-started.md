@@ -29,6 +29,21 @@ You need: a GitHub account with access to the sandbox repo (the
 facilitator will confirm this before the session starts). Nothing else —
 no software to install, no command line.
 
+**Permissions:** you need the Write role on the sandbox repository, because you create an issue, a branch, and a pull request and merge it yourself. If a step says you cannot, you probably lack the role: ask whoever manages the sandbox before going on.
+
+**Starting state:** the sandbox repository has a `CONTRIBUTORS.md` file on `main`, and you are signed in to GitHub in your browser.
+
+**Success state:** your issue is closed by your merged pull request, `CONTRIBUTORS.md` on `main` contains your name, and your issue's checkbox is ticked.
+
+**Likely errors:**
+
+- There is no **Create a branch** link on the issue: use the repository's branch dropdown and type a new branch name instead.
+- GitHub will not let you commit to `main`: that is branch protection working. Switch to your own branch and commit there.
+- The **Merge pull request** button is greyed out: a required review or check is still missing. Wait for the review, or ask who owns the sandbox.
+- The issue did not close when you merged: the pull request body still said `Refs`. Check the criterion, tick the box, and close the issue yourself with a comment pointing at the merged pull request.
+
+**Cleanup:** nothing needs undoing. You may delete your branch from the merged pull request page.
+
 ## The two things happening at once
 
 What this shows: every time you do this workflow, two things are true at
@@ -63,9 +78,9 @@ flowchart LR
 
 ## Walkthrough
 
-Everyone does this on their own, in the shared sandbox repo, at the same
-time — the facilitator narrates each step and checks the room before
-moving on.
+You do this on your own, in the shared sandbox repo. In a group session the
+facilitator narrates each step and checks the room before moving on; working
+solo, read each step and do it before you read the next.
 
 ### 1. File your own issue (5 min)
 

@@ -170,6 +170,8 @@ Same change, same care, their format.
 
 ## Exercise: fork, sync, and open a pull request upstream
 
+**Permissions:** any GitHub account can fork a public repository, so you need no access to the training sandbox. You need `git` and `gh` installed and signed in (`gh auth status`).
+
 **Starting state:** the facilitator has created a public practice repository
 called `practice-contributions` (named below as `<owner>/practice-contributions`).
 It has a `CONTRIBUTORS.md`, and a `CONTRIBUTING.md` whose rules differ from this
@@ -198,6 +200,13 @@ separate public repository.
 **Success state:** a pull request is open against the *original* repository
 (not your fork), it follows the practice repository's rules and not ours, and
 you can say why a secret-dependent job didn't run.
+
+**Likely errors:**
+
+- `gh repo fork` fails: you are not signed in, or you already have a fork. Run `gh auth status`; if the fork exists, clone it instead.
+- `git remote -v` shows no `upstream`: you cloned without `--remote`. Add it with `git remote add upstream <original-url>`.
+- `git merge upstream/main` says "Already up to date": that is the expected answer when nothing changed upstream.
+- Your pull request opened against your own fork: you did not name the original. Close it, and rerun with `--repo <owner>/practice-contributions`.
 
 **Cleanup:** close the pull request without merging it (you couldn't merge it
 anyway) and delete the branch from your fork. You may keep the fork; if you

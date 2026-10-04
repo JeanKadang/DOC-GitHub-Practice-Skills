@@ -138,6 +138,14 @@ flowchart TD
 
 **Source:** `skills/github-projects/SKILL.md`
 
+**Three kinds of item, told apart by their icon and number.** An **issue**
+item shows an issue icon and an issue number such as `#12`. A **pull request**
+item shows a pull request icon and a pull request number, which is also written
+`#34`, so a missing issue number does not mean a draft. A **draft** item shows a
+draft icon and has no number at all, because it exists only on the board. Open
+the item: an issue or pull request opens its own page in the repository, and a
+draft opens only inside the board.
+
 **A draft item is not a substitute for an issue.** A draft is a board entry
 created only on the board, with no linked issue. It has no labels, no assignee,
 no URL, and is invisible to `gh issue list`. It looks like tracked work from the
@@ -158,6 +166,8 @@ up by a facilitator, per `education/facilitator-guide.md`. If it doesn't,
 substitute any Projects board you have read access to; the questions below
 don't require write access. Don't change anything you find.
 
+**Permissions:** read access to the project and its repository is enough. Filtering and grouping affect only your own view unless you save them, so do not save.
+
 **Starting state:** the board is open in its **Table** view, and you have the
 Issues tab open in another tab.
 
@@ -175,12 +185,20 @@ Issues tab open in another tab.
    board contains.
 6. Clear the filter, then **group** the view by Milestone and note the sections.
    Then remove the grouping.
-7. Look for any item with no linked issue number at all. That is a draft item,
-   the first failure mode, live.
+7. Look for any item that has no number at all and shows the draft icon. That is
+   a draft item, the first failure mode, live. An item with a pull request icon
+   and a number is a pull request, not a draft.
 
 **Success state:** you have answers to three questions: do the board's Priority
 and Status agree with the issue, does the board's milestone match the issue's,
 and does the board contain any draft item.
+
+**Likely errors:**
+
+- The Milestone column is not shown: add it from the view's menu under **Fields**.
+- The filter returns no items: the milestone name needs the exact spelling inside quotes, or that milestone has no items on this board. Check the spelling first.
+- The board's count and the milestone page disagree: the board may also contain draft items or items from other repositories. Subtract those before deciding something is wrong.
+- You find no draft item: that is a valid result. Say so, and note that a board with no drafts is the healthy case.
 
 **Cleanup:** clear your filter and remove the grouping, so the view is as you
 found it. Nothing else changed.
@@ -198,7 +216,8 @@ and Status should agree too unless the facilitator seeded a mismatch; if they
 disagree, the label and the issue's real state are the correct values. The
 filtered count equals the number of board items in that milestone, which may be
 smaller than the milestone's total if some of its issues aren't on the board.
-Any item without an issue number is a draft item.
+Only an item with no number at all, shown with the draft icon, is a draft item;
+an item with a pull request number is a pull request.
 
 ## Self-check
 
