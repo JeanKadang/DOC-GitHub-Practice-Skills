@@ -42,6 +42,9 @@
 
 ### Changed
 
+- `docs/MAINTAINING.md` records that GitHub's AI code-scanning check
+  (`github-advanced-security`) was turned off on 2026-10-04 after repeated
+  failures, with its history, and says what a reappearing check means (#225).
 - Actions hardening (#132): the repository now requires full-SHA pinning and
   allows only GitHub-owned actions (all workflows already complied), every
   checkout sets `persist-credentials: false`, the education tag check no longer
