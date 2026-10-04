@@ -6,6 +6,10 @@
 
 ### Added
 
+- A test that every education module's Audience line names only modules that
+  exist, and that the education README Materials list names every module file.
+  It fails on a seeded nonexistent prerequisite and on a module missing from the
+  list (#210).
 - A weekly, report-only closure audit (`.github/workflows/closure-audit.yml`,
   `scripts/closure-audit.mjs`): it lists issues closed as completed that still
   have an unchecked criterion in one tracking issue, and changes no other issue.
