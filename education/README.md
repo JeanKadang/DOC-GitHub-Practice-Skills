@@ -9,8 +9,9 @@ relevant skill file by name rather than restating it, so the two can't
 silently drift apart. Moving or releasing `education/` on its own means
 bundling the specific skill files it references alongside it, not copying
 this repo's `skills/` folder wholesale or rewriting their content into
-education prose — see ADR 0008 (the bundling mechanism itself is a
-separate, not-yet-built follow-up).
+education prose — see ADR 0008. `node scripts/package-education.mjs --out
+<folder>` builds that bundle, with a manifest of versions, licence, source
+commit, and file hashes (ADR 0013).
 
 **Folder numbers signal reading order** (per ADR 0009, refining ADR 0007):
 `0_prerequisites/` → `1_beginners/` → `2_intermediate/` → `3_advanced/`.
