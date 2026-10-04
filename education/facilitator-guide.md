@@ -218,6 +218,8 @@ actual extracted values in your own private notes, not in this repo.
   issue/PR trail is the point.
 - **"What if I mess up my branch?"** — You can't break `main` from a
   branch. Worst case, delete the branch and start over from step 2.
-- **"Do I need to install anything?"** — No, for any of it. Module 1.2
-  introduces the command line for people who want it, but every module,
-  including 2.1 onward, still works entirely through the web UI.
+- **"Do I need to install anything?"** — Not for Module 1.1, which works
+  entirely through the web UI, and not for most of what follows. Three
+  modules need a terminal and Git: Module 1.2 (local Git basics), Module 1.5
+  (what never goes in a repository), and Module 3.6 (rebase, cherry-pick, and
+  reflog). Each says so in its header, so check it before assigning one.
