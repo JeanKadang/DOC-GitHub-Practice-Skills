@@ -43,6 +43,21 @@ cd <sandbox-repo-name>
 Everything below happens on your own branch, in your own clone — nothing
 here can break `main` or anyone else's work.
 
+**Permissions:** you need write access to the sandbox repository to push branches, `git` installed, and working credentials (for example from `gh auth login`).
+
+**Starting state:** a local clone of the sandbox on `main`, with a clean `git status`.
+
+**Success state:** you can explain working tree, staging area, and commit in your own words; your own branch is pushed; you have resolved a real conflict; you have used `git restore`, `git revert`, and `git reset` on three different mistakes; and `git status` is clean.
+
+**Likely errors:**
+
+- `git push` is refused or asks for a password: your credentials are not set up, or the remote is the wrong address. Run `git remote -v`, and sign in again with `gh auth login`.
+- `git merge` says "Already up to date" and no conflict appears: you did not commit on **both** branches, or you edited different lines. Edit the **same first line** of `CONTRIBUTORS.md` on each.
+- `git commit` opens an editor you cannot leave: in vim type `:wq`, in nano press Ctrl+X, or avoid it with `git commit -m "message"`.
+- Conflict markers (`<<<<<<<`) are still in the file: search for them and remove all of them before `git add`. If you want to start over, `git merge --abort` puts you back where you were.
+
+**Cleanup:** when you finish, return to `main` (`git checkout main`), delete both conflict branches and your scratch branch locally (`git branch -D <name>`), and delete the ones you pushed (`git push origin --delete <name>`). Check that `git branch` and `git status` look the way they did at the start.
+
 ## Three things, one file
 
 The single most common point of confusion in git: **working tree**,
@@ -96,22 +111,23 @@ Conflicts feel alarming the first time only because nobody's shown you one
 on purpose yet. Here's a safe one, guaranteed to happen:
 
 1. Make sure `main` is current: `git checkout main && git pull`.
-2. Create two branches from it:
+2. Create two branches from it. Put your own name in both, because everyone
+   pushes to the same sandbox and a shared name would collide:
 
    ```bash
-   git checkout -b conflict-a
+   git checkout -b conflict-a-<your-name>
    git checkout main
-   git checkout -b conflict-b
+   git checkout -b conflict-b-<your-name>
    ```
 
-3. On `conflict-a`, edit the **first line** of `CONTRIBUTORS.md`, commit,
+3. On `conflict-a-<your-name>`, edit the **first line** of `CONTRIBUTORS.md`, commit,
    and push it.
-4. Switch to `conflict-b` (`git checkout conflict-b`), edit that **same
+4. Switch to `conflict-b-<your-name>` (`git checkout conflict-b-<your-name>`), edit that **same
    first line** to something different, commit, and try to merge
-   `conflict-a` into it:
+   `conflict-a-<your-name>` into it:
 
    ```bash
-   git merge conflict-a
+   git merge conflict-a-<your-name>
    ```
 
 5. Git stops and tells you it can't auto-merge. Open `CONTRIBUTORS.md` —
@@ -121,8 +137,8 @@ on purpose yet. Here's a safe one, guaranteed to happen:
    <<<<<<< HEAD
    your version of the line
    =======
-   conflict-a's version of the line
-   >>>>>>> conflict-a
+   the other branch's version of the line
+   >>>>>>> conflict-a-<your-name>
    ```
 
 6. Edit the file by hand: delete the markers, keep whichever line (or a
@@ -152,7 +168,7 @@ radius.
 | `git reset <commit>` | Moves the branch pointer itself | Yes — can discard commits entirely (`--hard`) | Only on a branch nobody else has pulled. `--hard` also discards uncommitted edits, which the reflog can't bring back |
 
 Try each one on your scratch branch from earlier. First get back onto it, since
-the conflict exercise left you on `conflict-b` with a merge commit, and
+the conflict exercise left you on `conflict-b-<your-name>` with a merge commit, and
 `git revert HEAD` on a merge commit fails (git can't tell which parent to
 undo):
 

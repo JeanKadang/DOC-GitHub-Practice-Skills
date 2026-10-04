@@ -100,6 +100,21 @@ as an afterthought once the issue has already been triaged and forgotten.
 
 ## Exercise: branch naming and milestone-at-filing
 
+**Permissions:** you need write access to the sandbox to create an issue and a branch, and `gh` signed in if you use the command line.
+
+**Starting state:** the sandbox has an open milestone, and your local `main` is up to date with `git pull`.
+
+**Success state:** your issue had a milestone from the moment you filed it, your branch is named `fix/`, `feat/`, or `docs/` plus a short description and is linked to the issue, and you confirmed you branched from an up-to-date `main`.
+
+**Likely errors:**
+
+- `gh issue edit --milestone` cannot find the milestone: the title must match exactly. List the titles with `gh api repos/{owner}/{repo}/milestones --jq '.[].title'`.
+- No milestone is offered in the web UI: none is open. Ask whoever manages the sandbox to open one.
+- Your branch name is rejected or looks wrong: use hyphens, no spaces or capitals, and one of the three prefixes.
+- You are not sure your `main` is current: run `git fetch origin` and `git status`; "behind" means pull first.
+
+**Cleanup:** delete the branch, and close your practice issue as *not planned* with a short comment saying it was practice.
+
 A solo-doable, mechanical exercise — no partner required:
 
 1. In the sandbox repo, file a new issue. Before you do anything else with

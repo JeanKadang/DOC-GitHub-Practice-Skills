@@ -143,6 +143,8 @@ is answered there.
 
 ## Exercise: five questions about the sandbox
 
+**Permissions:** read access to the sandbox repository is enough. You change nothing.
+
 **Starting state:** you have completed Module 1.1 in the sandbox repository, so
 you have a closed issue and a merged pull request of your own. You only need to
 read; you will not change anything.
@@ -166,6 +168,13 @@ Answer each question, and write down *where* you found the answer:
 **Success state:** you have an answer and a location for all five, and for
 question 3 the pull request you found is your own Module 1.1 one, and its
 description references your Module 1.1 issue.
+
+**Likely errors:**
+
+- Blame shows a different commit than you expected: you are on another branch, or a later commit reformatted the line. Switch to the default branch and use **View blame prior to this change** to step back.
+- A search returns nothing: a qualifier is mistyped or in the wrong state (`is:closed` versus open). Remove qualifiers one at a time until results appear.
+- The Checks tab is empty: the sandbox may have no checks. That is a valid answer; write it down.
+- Your answer to question 2 differs from a colleague's: one of you is on a different branch. Compare the branch name first.
 
 **Cleanup:** none; nothing was changed.
 

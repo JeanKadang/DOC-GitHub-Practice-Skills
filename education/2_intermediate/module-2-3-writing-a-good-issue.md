@@ -204,6 +204,8 @@ maps to a row of the anatomy table.
 
 ## Exercise: rewrite a vague issue
 
+**Permissions:** you need to edit issues in the sandbox, set labels and a milestone, and assign yourself (the Triage or Write role).
+
 **Starting state:** the facilitator has seeded the sandbox repo with an issue
 titled "Fix the badge bug" whose body says "it's broken sometimes". The
 priority labels, a category label, and an open milestone already exist (the
@@ -223,6 +225,12 @@ same setup Modules 2.1 and 2.2 use).
 5. Scroll down to the model answer only now, and compare.
 
 **Success state:** your issue passes all six checks.
+
+**Likely errors:**
+
+- The label or milestone pickers are empty or missing the ones you need: you lack the role, or the facilitator has not created them yet. Ask for the Triage role, or for the missing label or milestone.
+- You cannot assign yourself: you are not a collaborator on the sandbox. Ask for access.
+- Your edit does not appear: you edited a comment instead of the issue body. Use the pencil on the issue's first post.
 
 **Cleanup:** close the issue as *not planned* with a short comment saying it
 was a practice issue. A closed issue with a stated reason is what the skill

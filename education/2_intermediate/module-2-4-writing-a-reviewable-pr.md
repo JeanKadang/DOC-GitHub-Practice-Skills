@@ -180,6 +180,8 @@ test; the config option gets its own discussion.
 
 ## Exercise: split an oversized change and describe each part
 
+**Permissions:** you need write access to the sandbox, to push branches and open pull requests, and `git` and `gh` installed and signed in.
+
 **Starting state:** the facilitator has created a branch called
 `practice/oversized` in the sandbox repo. It has one commit that changes two
 unrelated files: it fixes a typo in `README.md` and adds a line to
@@ -193,19 +195,19 @@ you can reference.
    branch:
 
    ```bash
-   git checkout -b docs/fix-readme-typo main
+   git checkout -b docs/fix-readme-typo-<your-name> main
    git checkout practice/oversized -- README.md
    git commit -m "docs: fix typo in README"
-   git push -u origin docs/fix-readme-typo
+   git push -u origin docs/fix-readme-typo-<your-name>
    ```
 
 3. Do the same for the other change, on its own branch:
 
    ```bash
-   git checkout -b docs/add-contributor-line main
+   git checkout -b docs/add-contributor-line-<your-name> main
    git checkout practice/oversized -- CONTRIBUTORS.md
    git commit -m "docs: add contributor line"
-   git push -u origin docs/add-contributor-line
+   git push -u origin docs/add-contributor-line-<your-name>
    ```
 
 4. Open a pull request for each branch. In each description write what
@@ -217,6 +219,13 @@ you can reference.
    diff.
 
 **Success state:** two small pull requests, each passing all five checks.
+
+**Likely errors:**
+
+- `git checkout practice/oversized -- README.md` says the pathspec did not match: you have not fetched the branch. Run `git fetch origin` first.
+- `git push` is rejected because the branch exists: another run used the same name. The branch names here include your name; if you already have one from an earlier try, add `-2`.
+- Your pull request shows both changes: you branched from the wrong place. Create the branch from `main`, as in the commands.
+- The description box is empty, with no template: the template is not on the default branch of the sandbox. Write the three parts yourself.
 
 **Cleanup:** close both pull requests without merging and delete their
 branches (`git push origin --delete <branch>` or the button on the closed pull

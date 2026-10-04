@@ -184,6 +184,8 @@ for being quiet.
 
 ## Exercise: triage six issues
 
+**Permissions:** you need the Triage or Write role in the sandbox, and the GitHub CLI signed in (`gh auth status`).
+
 **Starting state:** the facilitator has seeded the six issues above in the
 sandbox repo, all priority P2 with no milestone. The priority labels and at
 least one open milestone exist.
@@ -207,6 +209,13 @@ least one open milestone exist.
    age.
 
 **Success state:** the six-issue backlog matches the checks in step 7.
+
+**Likely errors:**
+
+- `gh` says authentication is required: run `gh auth login`, then retry.
+- `gh issue edit --milestone` cannot find the milestone: the title must match exactly. List the titles with `gh api repos/{owner}/{repo}/milestones --jq '.[].title'`.
+- `gh issue edit --add-label P1` fails: the label does not exist yet. Ask the facilitator, or create it only if you own the sandbox.
+- `gh issue close --reason` is rejected: your `gh` is older than the flag. Update `gh`, or close the issue in the web UI with the same reason.
 
 **Cleanup:** none needed; the facilitator recreates the six seeded issues for
 the next cohort.

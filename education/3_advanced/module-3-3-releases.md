@@ -49,6 +49,20 @@ summary without reading a list of PR titles. Neither replaces the other.
 
 ## Exercise: read a real release, end to end (read-only)
 
+**Permissions:** none beyond a web browser: the practice repository is public. The `gh api ... generate-notes` command in step 2 needs push access to the repository it targets, so it works only against a repository you can write to.
+
+**Starting state:** a browser, and optionally `gh` signed in for step 2.
+
+**Success state:** you can say what the generated release notes list (what merged) compared with the changelog entry (what changed and why).
+
+**Likely errors:**
+
+- `gh api ... generate-notes` returns 403 or 404: you do not have push access to that repository. Skip it and read the release page instead.
+- `package.json`'s version and the latest tag differ: that can be normal between releases. Write down both and which one you used.
+- The Releases page shows nothing: the repository has no published release yet. Use a repository that does, or read the changelog alone.
+
+**Cleanup:** none; nothing was created.
+
 This exercise runs against the `DOC-GitHub-Practice-Skills` repo itself —
 the one this training program lives in. It's public, so every step below
 works with no special access, and it has a real version file and a real
