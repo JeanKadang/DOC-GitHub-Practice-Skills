@@ -1,7 +1,7 @@
 # Next-step modules: plan
 
-**Status:** a plan, not built. Nothing here is required reading, and no module
-below exists yet. Each entry is an outline that is ready to become an issue.
+**Status:** a plan. Nothing here is required reading. Module 4.1 is built; every
+other entry is an outline that is ready to become an issue.
 
 The tiers before this one end at Module 3.6. This folder is for what comes
 after: material for people who already work comfortably in the GitHub workflow
@@ -25,7 +25,7 @@ and want to go further. Modules built from this plan are named
 
 | Module | Working title | Builds on | Rough size |
 | --- | --- | --- | --- |
-| 4.1 | Reviewing changes an AI agent wrote | [LLM prerequisite](../0_prerequisites/prerequisite-what-is-an-llm-assistant.md), [Module 2.2](../2_intermediate/module-2-2-pr-review-and-branch-conventions.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 30 min |
+| 4.1 | [Reviewing changes an AI agent wrote](module-4-1-reviewing-changes-an-ai-agent-wrote.md) (built) | [LLM prerequisite](../0_prerequisites/prerequisite-what-is-an-llm-assistant.md), [Module 2.2](../2_intermediate/module-2-2-pr-review-and-branch-conventions.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 30 min |
 | 4.2 | Writing your own agent skill | [Module 2.1](../2_intermediate/module-2-1-issue-first-and-closure-gate.md) | 40 min |
 | 4.3 | Authoring a GitHub Actions workflow | [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
 | 4.4 | Securing the supply chain | [Module 3.4](../3_advanced/module-3-4-security-response.md) | 35 min |
@@ -41,17 +41,7 @@ and want to go further. Modules built from this plan are named
 
 ### Module 4.1: Reviewing changes an AI agent wrote
 
-- **Audience:** anyone who accepts pull requests from an AI coding assistant or
-  the Copilot coding agent.
-- **Prerequisites:** the LLM prerequisite, Module 2.2, and Module 3.5.
-- **Objectives:** read an agent's diff for scope creep and invented APIs; check
-  the claimed verification against what ran; decide between approve, request
-  changes, and comment with evidence.
-- **Exercise idea:** review an intentionally flawed agent-style pull request in
-  the sandbox that passes CI but hard-codes a value, edits an unrelated file,
-  and claims a test it never added.
-- **Candidate issue title:** "Education: add Module 4.1, reviewing changes an AI
-  agent wrote".
+Built: [Module 4.1](module-4-1-reviewing-changes-an-ai-agent-wrote.md).
 
 ### Module 4.2: Writing your own agent skill
 

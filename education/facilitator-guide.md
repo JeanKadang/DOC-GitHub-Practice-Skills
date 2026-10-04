@@ -166,7 +166,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.6 / Intermediate modules 2.1-2.9 / Advanced modules 3.1-3.6)" to
+(Beginner modules 0.1-1.6 / Intermediate modules 2.1-2.9 / Advanced modules 3.1-3.6; Module 4.1 is optional)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.
