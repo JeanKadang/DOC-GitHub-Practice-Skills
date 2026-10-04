@@ -192,16 +192,21 @@ investigate, not noise.
 
 **Managed by GitHub, not in `.github/workflows/`:**
 
-- `Code scanning AI findings`: a dynamic GitHub workflow, not a required check.
-  It failed with `CAPIError: 400 The requested model is not supported` on every
-  pull request run from 2026-09-30 16:49 UTC until 2026-10-01 06:31 UTC (48 runs),
-  then passed on each of the next 7 runs. The cause is on GitHub's side, so
-  there is nothing to fix in this repository. If it fails again with that error,
-  treat it as a known non-blocking failure: note it in the pull request and merge
-  on the required checks. It also failed on 2026-10-01 with
-  `You have exceeded your monthly quota` (status 402) from the Copilot service it
-  calls; that is a usage limit on the account, not a defect in the repository,
-  and is likewise non-blocking. Any other error from this check is not covered
+- `Code scanning AI findings` (reported as the `github-advanced-security` check):
+  a dynamic GitHub workflow, never a required check, and **turned off by the
+  maintainer on 2026-10-04** in the repository's Settings, Advanced Security,
+  Code scanning ("AI findings"). It had failed with
+  `CAPIError: 400 The requested model is not supported` on every pull request
+  run from 2026-09-30 16:49 UTC until 2026-10-01 06:31 UTC (48 runs), then
+  passed on the next 7 runs, and then failed with
+  `You have exceeded your monthly quota` (status 402), a usage limit on the
+  Copilot account behind it. Nothing in the repository caused either. It is
+  separate from `CodeQL`, `Analyze (actions)`, and
+  `Analyze (javascript-typescript)`, which still run. If a
+  `github-advanced-security` check appears on a pull request again, the setting
+  was switched back on (by the maintainer, an organization policy, or GitHub's
+  defaults): read its error, and treat it as a decision for the maintainer, not
+  as a defect to fix in a pull request. Any other failing check is not covered
   here and needs a look.
 
 **A red advisory check.** The maintainer owns the decision. Read the failure
