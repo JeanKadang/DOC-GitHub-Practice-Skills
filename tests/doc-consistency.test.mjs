@@ -138,6 +138,27 @@ test('every release-note category label is copied by the label workflow', async 
   assert.deepEqual(missing, [], `categories not in the label workflow allow-list: ${missing.join(', ')}`);
 });
 
+// The other direction (#134): a label the workflow copies onto a pull request
+// must be one release.yml either groups or deliberately excludes, or the copy
+// is wasted and the notes still land in "Other".
+export function releaseExcludedLabels(releaseYaml) {
+  const block = /exclude:\s*\r?\n\s*labels:\s*\r?\n((?:\s*-\s+\S+\r?\n)+)/.exec(releaseYaml);
+  return block ? [...block[1].matchAll(/-\s+(\S+)/g)].map((match) => match[1]).sort() : [];
+}
+
+test('every label the workflow copies is grouped or excluded by release.yml (#134)', async () => {
+  const release = await read('.github/release.yml');
+  const known = new Set([...releaseCategoryLabels(release), ...releaseExcludedLabels(release)]);
+  const copied = workflowAllowedCategories(await read('.github/workflows/label-pr-from-issue.yml'));
+  const orphans = copied.filter((label) => !known.has(label));
+  assert.deepEqual(orphans, [], `copied labels release.yml neither groups nor excludes: ${orphans.join(', ')}`);
+});
+
+test('releaseExcludedLabels reads the exclude list (#134)', () => {
+  const yaml = 'changelog:\n  exclude:\n    labels:\n      - ignore-for-release\n      - education\n  categories:\n    - title: Fixes\n';
+  assert.deepEqual(releaseExcludedLabels(yaml), ['education', 'ignore-for-release']);
+});
+
 // ChatGPT Custom GPT Knowledge accepts at most 20 files (ADR 0006, and
 // docs/chatgpt.md). The export is one file per required skill file, so adding a
 // skill or a bundled file can push it past the limit without any other check
