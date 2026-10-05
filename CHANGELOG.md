@@ -72,6 +72,14 @@
 
 ### Changed
 
+- Documentation papercuts (#138): the settings snapshot no longer uses `head` or
+  a POSIX redirection (with a PowerShell pair for the one `grep`);
+  `CODE_OF_CONDUCT.md` follows Contributor Covenant 2.1 and is linked from the
+  README and `CONTRIBUTING.md`; `.gitattributes` normalizes text to LF (skills keep
+  their bytes) and `.editorconfig` and `.node-version` (24) are added;
+  `package.json` carries description, license, repository, bugs, and homepage;
+  `.claude/settings.local.json` is ignored in this repository; the ADR index shows
+  each ADR's status; and a comment in `github-pr-review` is clearer.
 - The portable improvement form (`skills/github-repo-configure/templates/`) now
   has a required Expected outcome field, and both portable forms say a maintainer
   turns it into acceptance criteria when triaging. `github-repo-configure` and

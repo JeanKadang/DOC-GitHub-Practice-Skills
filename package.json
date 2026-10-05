@@ -2,6 +2,16 @@
   "name": "doc-github-practice-skills",
   "version": "0.3.0",
   "private": true,
+  "description": "Versioned GitHub workflow skills for OpenAI Codex, Claude, and GitHub Copilot CLI, with a validated manifest, an installer, and colleague training material.",
+  "license": "MIT",
+  "homepage": "https://github.com/JeanKadang/DOC-GitHub-Practice-Skills#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeanKadang/DOC-GitHub-Practice-Skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues"
+  },
   "type": "module",
   "engines": { "node": "^22.22.2 || ^24.15.0 || >=26.0.0" },
   "scripts": {
