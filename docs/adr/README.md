@@ -28,6 +28,10 @@ documentation clarifications and typo-level fixes do not need one.
 
 ## Index
 
+Every ADR below is Accepted unless its entry says more. When a later ADR
+supersedes part of an earlier one, both entries say so and the earlier ADR's own
+text is not edited.
+
 - [0001](0001-refs-closes-connected-branch-closure.md) — `Refs`/`Closes`
   closure semantics must account for GitHub's connected-branch auto-closure.
 - [0002](0002-split-hygiene-add-contributing-and-releases.md) — Split
@@ -43,18 +47,20 @@ documentation clarifications and typo-level fixes do not need one.
   export target, not an installer directory-copy or an Actions schema.
 - [0007](0007-two-track-education-program.md) — Split `education/` into a
   GitHub track and an LLM/VS Code tooling track, both staged across the
-  same five tiers.
+  same five tiers. Status: Accepted; its folder-naming specifics are
+  superseded by ADR 0009.
 - [0008](0008-education-portability-via-bundling.md) — Made `education/`
   portable by bundling the skill files it references, not duplicating
   their content, reusing ADR 0006's ChatGPT export precedent.
 - [0009](0009-education-numbered-folders.md) — Numbered `education/`
   folders for reading order, refining ADR 0007; promoted the LLM track's
-  Pre-requisite page to required reading.
+  Pre-requisite page to required reading. Status: Accepted; its reserved
+  `4_next-level/` folder name is superseded by ADR 0011.
 - [0010](0010-single-agent-guidance-file.md) — `AGENTS.md` is the one canonical
   agent-guidance file and `CLAUDE.md` imports it, enforced by a test.
 - [0011](0011-education-module-numbering.md) — `module-X-Y` file names for every
   numbered education lesson, and `4_next-step/` replaces the reserved
-  `4_next-level/`.
+  `4_next-level/`. Status: Accepted; supersedes that part of ADR 0009.
 - [0012](0012-milestone-scheme.md) — Milestones are release-named for the
   skillset and "Education Program vN" for `education/`; a thematic skillset
   milestone lasts only until a release scopes it.

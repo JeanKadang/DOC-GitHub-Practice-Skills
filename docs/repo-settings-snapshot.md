@@ -24,8 +24,12 @@ gh api repos/OWNER/REPO/rulesets --jq '.[] | {name, target, enforcement}'
 gh api repos/OWNER/REPO/rulesets/RULESET_ID   # full detail, once you have its id
 
 # Classic protection, only if the above is empty
-gh api repos/OWNER/REPO/branches/main/protection 2>&1 | head -20
+gh api repos/OWNER/REPO/branches/main/protection --jq keys
 ```
+
+The last command lists which classic protections are configured; leave off
+`--jq keys` for their full settings. A `404 Branch not protected` means there
+is no classic protection.
 
 A private repo on GitHub Free returns `403 Upgrade to GitHub Pro or make
 this repository public` for both of the above — that's a plan constraint,
@@ -49,7 +53,7 @@ otherwise seems.
 ## CODEOWNERS
 
 ```bash
-gh api repos/OWNER/REPO/contents/CODEOWNERS 2>&1 | head -3
+gh api repos/OWNER/REPO/contents/CODEOWNERS --jq .path
 ```
 
 ## Labels, milestones, and existing automation
@@ -68,6 +72,13 @@ won't show secrets).
 ```bash
 gh secret list --repo OWNER/REPO
 grep -rn "secrets\." OWNER-REPO-LOCAL-CHECKOUT/.github/workflows/ 2>/dev/null
+```
+
+PowerShell:
+
+```powershell
+gh secret list --repo OWNER/REPO
+Select-String -Path OWNER-REPO-LOCAL-CHECKOUT/.github/workflows/* -Pattern 'secrets\.'
 ```
 
 Cross-check the two by hand: a secret set but never referenced, and a

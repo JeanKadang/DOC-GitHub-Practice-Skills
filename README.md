@@ -69,6 +69,7 @@ GPT, which OpenAI has announced it will retire on 2026-12-11; see the
 - [Workflow and closure gates](docs/WORKFLOW.md)
 - [Maintainer guide](docs/MAINTAINING.md)
 - [Skill behavior scenarios (a manual rubric)](docs/skill-scenarios.md)
+- [Platform compatibility record (what has been checked, and what has not)](docs/compatibility.md)
 - [Azure DevOps migration mapping](docs/azure-devops-migration.md)
 - [Installing from VS Code (no PowerShell experience needed)](docs/vscode.md)
 - [Installing for ChatGPT (Custom GPT until its announced retirement, then paste)](docs/chatgpt.md)
@@ -103,5 +104,7 @@ does and doesn't cover.
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a change. Report
 security vulnerabilities through GitHub private vulnerability reporting as
 described in [SECURITY.md](SECURITY.md), never through a public issue.
+Everyone taking part is expected to follow the
+[Code of Conduct](CODE_OF_CONDUCT.md).
 
 This project is available under the [MIT License](LICENSE).

@@ -95,6 +95,14 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
   that does not exist, or a skill name that is not a canonical skill. The
   scenarios are a manual rubric; the test keeps it checkable, and does not run
   any agent.
+- **Compatibility record** (`tests/compatibility-record.test.mjs`): a row in
+  `docs/compatibility.md` with no explicit Verified or Unverified status, or a
+  Verified row with no date.
+- **Planning-artifact index** (`tests/superpowers-index.test.mjs`): a plan or
+  spec in `docs/superpowers/` missing from its README, a link there that does not
+  resolve, or an ADR that cites a file that is gone. The plans and specs
+  themselves are left out of the lint, link, and snippet checks on purpose: they
+  are historical, and the README says so.
 - **Installer behaviour** (`tests/install-skills.test.mjs`): data loss, wrong
   backups, or a broken export.
 
@@ -292,6 +300,11 @@ look green: `continue-on-error` keeps the result visible, and that is why it is
 used.
 
 ## Compatibility records
+
+`docs/compatibility.md` is the standing record of which tools have been checked
+against these skills; update it in the same pull request that records new
+evidence. The rest of this section is about changes that depend on a tool's
+behavior.
 
 For changes that depend on GitHub CLI, API, Actions, Node.js, or PowerShell
 behavior, record the tested versions, operating system, command, and outcome in
