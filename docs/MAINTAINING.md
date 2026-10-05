@@ -76,11 +76,21 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
 - **Release guards** (`tests/release.test.mjs`): a release workflow where dependency
   code runs with a write token, a tag not on `main`, a missing changelog section,
   or versions that disagree with the tag.
+- **Public-content scan** (`scripts/scan-public-content.mjs`,
+  `tests/public-content-scan.test.mjs`; run alone with `npm run scan:public`): a
+  token-shaped string (GitHub, AWS, Google, Slack, `sk-` keys, private key
+  blocks), a private IP address, an internal-looking hostname (`.internal`,
+  `.corp`, `.local` and similar), or an email address in tracked Markdown, YAML,
+  JSON, script, and text files. The allowlist is next to the rules in the
+  script: addresses at `example.test`, `example.com`, `example.org`,
+  `example.net` (and subdomains), `*.invalid`, or `noreply.github.com`; a line
+  carrying `public-scan: allow` plus the reason it is fake; and
+  `package-lock.json`. It cannot catch a company or customer name, internal
+  policy, a screenshot of a private system, or a secret with no known prefix, so
+  the public-content review in `CONTRIBUTING.md` still applies, and workplace-derived
+  wording stays with #122.
 - **Installer behaviour** (`tests/install-skills.test.mjs`): data loss, wrong
   backups, or a broken export.
-
-Not yet automated: a public-content scan (#209) and a check of education
-module prerequisites (#210).
 
 The checks prove structure and syntax. They do not prove that a snippet does the
 right thing, that a link points at the right page, or that two documents agree in
