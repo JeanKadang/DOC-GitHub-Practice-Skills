@@ -19,7 +19,7 @@ body:
     id: expected
     attributes:
       label: Expected behavior
-      description: What should have happened.
+      description: What should have happened. A maintainer turns this into acceptance criteria when triaging.
     validations:
       required: true
   - type: textarea
