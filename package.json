@@ -11,7 +11,7 @@
     "validate": "node scripts/validate-skills.mjs",
     "scan:public": "node scripts/scan-public-content.mjs",
     "lint:markdown": "npm run lint:markdown:docs && npm run lint:markdown:skills && npm run lint:markdown:education",
-    "lint:markdown:docs": "markdownlint-cli2 \"**/*.md\" \"#node_modules/**\" \"#skills/**\" \"#docs/superpowers/**\" \"#.superpowers/**\" \"#education/**\"",
+    "lint:markdown:docs": "markdownlint-cli2 \"**/*.md\" \"#node_modules/**\" \"#skills/**\" \"#docs/superpowers/**\" \"docs/superpowers/README.md\" \"#.superpowers/**\" \"#education/**\"",
     "lint:markdown:skills": "markdownlint-cli2 \"skills/**/*.md\" --config .markdownlint-skills.jsonc",
     "lint:markdown:education": "markdownlint-cli2 \"education/**/*.md\" --config .markdownlint-education.jsonc",
     "check": "npm run validate && npm test && npm run lint:markdown"

@@ -6,6 +6,11 @@
 
 ### Added
 
+- `docs/superpowers/README.md` marks the ten plans and specs there as historical,
+  explains the directory name (decision records cite these files by path), and
+  indexes each with what came of it. The README is linted, and
+  `tests/superpowers-index.test.mjs` fails on an unlisted file, a broken link, or
+  an ADR citation of a missing file (#137).
 - The weekly audit (`scripts/closure-audit.mjs`) now also reports open issues with
   no milestone, open milestones with no open issues, and closed milestones that
   still have open issues, still report-only. Bot-written issues are exempt. The
