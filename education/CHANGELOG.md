@@ -11,6 +11,15 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- The Mermaid diagram showcase now covers the ten diagram types added in
+  Mermaid 12 (use case, Venn, Ishikawa, Wardley, tree view, railroad, Cynefin,
+  event modeling, agent flow, and swimlane), 33 types in all, each with a
+  fictional example that parses under Mermaid 12.0.0 in CI. They are listed in a
+  new section and in the chooser table, with a note that they need a Mermaid 12
+  renderer (#239).
+
 ## [2.0.0] - 2026-10-05
 
 ### Added (since `education-v1.0.0`)
