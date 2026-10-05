@@ -41,11 +41,19 @@ when working locally. The later examples need particular renderer features;
 ZenUML additionally needs its integration. Their support notes are part of the
 copy-and-preview guidance, not a promise of identical GitHub rendering.
 
-**Checked against Mermaid 11.17.2.** Every example here except ZenUML parses
+**Checked against Mermaid 12.0.0.** Every example here except ZenUML parses
 under that version, which is pinned in `package.json` and checked by
 `tests/mermaid-diagrams.test.mjs` on every pull request, so a diagram that
 stops parsing fails CI. A parse check proves the syntax is valid for that
 version; it does not prove a viewer draws it the same way.
+
+Mermaid 12 changed the defaults. Per its 12.0.0 release notes, flowchart, class,
+state, entity-relationship, and requirement diagrams that do not name a layout
+are now laid out by ELK instead of dagre, and the default look is new, so a
+diagram can be arranged differently from an earlier screenshot or from a viewer
+still on Mermaid 11. To keep the previous arrangement, add `layout: dagre` (and
+`look: classic` for the old look) to the diagram's configuration. The examples
+below set their own colours; the parse check does not render them.
 
 **GitHub rendering (checked by hand on 2026-09-30):** every example rendered on
 github.com except ZenUML, which GitHub does not render because it needs the

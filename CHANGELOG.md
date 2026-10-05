@@ -51,6 +51,12 @@
 
 ### Changed
 
+- The Mermaid parse check now runs under Mermaid 12.0.0 (was 11.17.2) with jsdom
+  30.1.1 (was 26.1.0), both test-only dependencies. Every published diagram still
+  parses. `package.json` `engines` now matches `jsdom` 30's floor (22.22.2 or
+  newer on 22, 24.15 or newer on 24, or 26 and later; Mermaid 12 needs 22.12),
+  and the diagram showcase names the new version and Mermaid 12's changed layout
+  and look defaults.
 - `docs/chatgpt.md`, `platforms/chatgpt/README.md`, and `README.md` now say that
   OpenAI has announced Custom GPTs retire on 2026-12-11, with the dates
   attributed to secondary reporting, dated, and qualified, and a table of which
