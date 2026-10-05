@@ -59,7 +59,7 @@ a review and a skim.
 ```bash
 gh pr checkout <N>                 # works for fork PRs too — sets up the remote
 <run the repo's test suite>
-git checkout <default-branch>      # the repo's default branch; `gh pr checkout` is a real branch switch
+git checkout <default-branch>      # switch back: `gh pr checkout` left you on the PR's branch
 ```
 
 `gh pr checkout` puts a contributor's code on your machine. Treat it as untrusted:

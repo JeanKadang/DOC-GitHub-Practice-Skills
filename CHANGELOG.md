@@ -13,6 +13,11 @@
   marked unverified, with file-byte and consumer-recognition evidence kept
   apart. `tests/compatibility-record.test.mjs` fails on a row without an
   explicit status or a verified row without a date (#149).
+- `docs/superpowers/README.md` marks the ten plans and specs there as historical,
+  explains the directory name (decision records cite these files by path), and
+  indexes each with what came of it. The README is linted, and
+  `tests/superpowers-index.test.mjs` fails on an unlisted file, a broken link, or
+  an ADR citation of a missing file (#137).
 - The weekly audit (`scripts/closure-audit.mjs`) now also reports open issues with
   no milestone, open milestones with no open issues, and closed milestones that
   still have open issues, still report-only. Bot-written issues are exempt. The
@@ -74,6 +79,20 @@
 
 ### Changed
 
+- Documentation papercuts (#138): the settings snapshot no longer uses `head` or
+  a POSIX redirection (with a PowerShell pair for the one `grep`);
+  `CODE_OF_CONDUCT.md` follows Contributor Covenant 2.1 and is linked from the
+  README and `CONTRIBUTING.md`; `.gitattributes` normalizes text to LF (skills keep
+  their bytes) and `.editorconfig` and `.node-version` (24) are added;
+  `package.json` carries description, license, repository, bugs, and homepage;
+  `.claude/settings.local.json` is ignored in this repository; the ADR index shows
+  each ADR's status; and a comment in `github-pr-review` is clearer.
+- The portable improvement form (`skills/github-repo-configure/templates/`) now
+  has a required Expected outcome field, and both portable forms say a maintainer
+  turns it into acceptance criteria when triaging. `github-repo-configure` and
+  `github-issue-first` make that triage step explicit, so no issue reaches
+  implementation without an observable completion contract. The form tests now
+  check field types, unique ids, dropdown options, and the contract field (#145).
 - The Mermaid parse check now runs under Mermaid 12.0.0 (was 11.17.2) with jsdom
   30.1.1 (was 26.1.0), both test-only dependencies. Every published diagram still
   parses. `package.json` `engines` now matches `jsdom` 30's floor (22.22.2 or

@@ -2,6 +2,16 @@
   "name": "doc-github-practice-skills",
   "version": "0.3.0",
   "private": true,
+  "description": "Versioned GitHub workflow skills for OpenAI Codex, Claude, and GitHub Copilot CLI, with a validated manifest, an installer, and colleague training material.",
+  "license": "MIT",
+  "homepage": "https://github.com/JeanKadang/DOC-GitHub-Practice-Skills#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeanKadang/DOC-GitHub-Practice-Skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues"
+  },
   "type": "module",
   "engines": { "node": "^22.22.2 || ^24.15.0 || >=26.0.0" },
   "scripts": {
@@ -11,7 +21,7 @@
     "validate": "node scripts/validate-skills.mjs",
     "scan:public": "node scripts/scan-public-content.mjs",
     "lint:markdown": "npm run lint:markdown:docs && npm run lint:markdown:skills && npm run lint:markdown:education",
-    "lint:markdown:docs": "markdownlint-cli2 \"**/*.md\" \"#node_modules/**\" \"#skills/**\" \"#docs/superpowers/**\" \"#.superpowers/**\" \"#education/**\"",
+    "lint:markdown:docs": "markdownlint-cli2 \"**/*.md\" \"#node_modules/**\" \"#skills/**\" \"#docs/superpowers/**\" \"docs/superpowers/README.md\" \"#.superpowers/**\" \"#education/**\"",
     "lint:markdown:skills": "markdownlint-cli2 \"skills/**/*.md\" --config .markdownlint-skills.jsonc",
     "lint:markdown:education": "markdownlint-cli2 \"education/**/*.md\" --config .markdownlint-education.jsonc",
     "check": "npm run validate && npm test && npm run lint:markdown"

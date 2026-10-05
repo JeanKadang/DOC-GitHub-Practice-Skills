@@ -19,6 +19,13 @@ body:
     validations:
       required: true
   - type: textarea
+    id: outcome
+    attributes:
+      label: Expected outcome
+      description: What someone could see or do once this is finished. A maintainer turns this into acceptance criteria when triaging.
+    validations:
+      required: true
+  - type: textarea
     id: alternatives
     attributes:
       label: Alternatives considered

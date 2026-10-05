@@ -93,6 +93,11 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
 - **Compatibility record** (`tests/compatibility-record.test.mjs`): a row in
   `docs/compatibility.md` with no explicit Verified or Unverified status, or a
   Verified row with no date.
+- **Planning-artifact index** (`tests/superpowers-index.test.mjs`): a plan or
+  spec in `docs/superpowers/` missing from its README, a link there that does not
+  resolve, or an ADR that cites a file that is gone. The plans and specs
+  themselves are left out of the lint, link, and snippet checks on purpose: they
+  are historical, and the README says so.
 - **Installer behaviour** (`tests/install-skills.test.mjs`): data loss, wrong
   backups, or a broken export.
 

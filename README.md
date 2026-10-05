@@ -103,5 +103,7 @@ does and doesn't cover.
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a change. Report
 security vulnerabilities through GitHub private vulnerability reporting as
 described in [SECURITY.md](SECURITY.md), never through a public issue.
+Everyone taking part is expected to follow the
+[Code of Conduct](CODE_OF_CONDUCT.md).
 
 This project is available under the [MIT License](LICENSE).
