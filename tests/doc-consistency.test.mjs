@@ -251,3 +251,38 @@ test('the workflow, package.json engines, README, and MAINTAINING agree on Node 
   );
   assert.deepEqual(problems, []);
 });
+
+// README release status and unreleased banner (#133). The README names the
+// published release, which may lag package.json but never lead it, and says
+// that main is ahead whenever CHANGELOG.md has unreleased entries.
+export function unreleasedEntries(changelog) {
+  const section = /^## \[Unreleased\][^\n]*\n([\s\S]*?)(?=^## \[|(?![\s\S]))/m.exec(changelog);
+  return section ? (section[1].match(/^- /gm) ?? []).length : 0;
+}
+
+test('unreleasedEntries counts the bullets under [Unreleased] only', () => {
+  const changelog = '# Changelog\n\n## [Unreleased]\n\n### Added\n\n- one\n- two\n\n## [1.0.0] - 2026-01-01\n\n- old\n';
+  assert.equal(unreleasedEntries(changelog), 2);
+  assert.equal(unreleasedEntries('## [Unreleased]\n\n## [1.0.0]\n- old\n'), 0);
+  assert.equal(unreleasedEntries('no sections'), 0);
+});
+
+test('README names a published release no newer than the package version (#133)', async () => {
+  const packageVersion = parseVersion(JSON.parse(await read('package.json')).version);
+  const match = /\*\*Release status:\*\*\s*\[(v?\d+\.\d+\.\d+)\]/.exec(await read('README.md'));
+  assert.ok(match, 'README must carry a Release status line naming the published release');
+  assert.notEqual(
+    compareVersions(parseVersion(match[1]), packageVersion),
+    1,
+    `README names ${match[1]}, newer than package.json ${packageVersion.join('.')}`,
+  );
+});
+
+test('README says main is ahead of the release while CHANGELOG has unreleased entries (#133)', async () => {
+  const readme = await read('README.md');
+  if (unreleasedEntries(await read('CHANGELOG.md')) === 0) return;
+  assert.match(readme, /\*\*Unreleased on `main`:\*\*/, 'README must carry the "Unreleased on main" banner');
+  const status = /\*\*Release status:\*\*\s*\[(v?\d+\.\d+\.\d+)\]/.exec(readme)?.[1];
+  assert.ok(readme.includes(`main\` is ahead of ${status}`), 'the banner must name the same release as the Release status line');
+  assert.ok(readme.includes(`--branch ${status} `), 'the clone command must use the published release tag');
+});

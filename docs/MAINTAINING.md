@@ -406,6 +406,27 @@ and green checks. Tag updated `main`, verify the published release and tag
 commit, close the milestone, confirm issue and epic closure, and prune merged
 branches. Never publish installed local copies or arbitrary branch state.
 
+### Version stamps in a skillset release
+
+Version numbers are written by hand in several places. Update them in the
+release pull request, in this order, and run `npm run check`:
+
+1. `package.json` `version` and `contracts/skill-inventory.json`
+   `packageVersion`: the same value.
+2. The stamps in `docs/GUIDE.md` (`Policy version`), `docs/MAINTAINING.md` and
+   `docs/WORKFLOW.md` (`Applies to`): the same value. A test fails if one
+   disagrees with `package.json`.
+3. A `## [X.Y.Z]` section in `CHANGELOG.md`, taken from `[Unreleased]`, so the
+   release workflow finds it.
+
+Two places name the *published* release, so they change only after the tag and
+the GitHub release exist, in a follow-up pull request: `SECURITY.md` ("latest
+published release") and the README "Release status" line, including the
+version in the "Unreleased on `main`" banner and its clone command. They may
+lag `package.json` between the version bump and the release but never lead it,
+and a test enforces that. While `[Unreleased]` in `CHANGELOG.md` has entries,
+the README banner must stay; a test fails if it is removed.
+
 ### Two release tracks: skillset vs. education
 
 The skillset and `education/` are versioned and tagged independently —

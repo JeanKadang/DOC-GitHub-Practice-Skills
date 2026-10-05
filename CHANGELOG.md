@@ -6,6 +6,12 @@
 
 ### Added
 
+- The README now says which behavior is unreleased: an "Unreleased on `main`"
+  banner with the clone command for the released tag, `-Target ChatGPT` marked
+  as not in v0.3.0, and the current education tags. Two new tests fail when the
+  README names a release newer than `package.json` or drops the banner while
+  `[Unreleased]` has entries, and `docs/MAINTAINING.md` lists the version
+  stamps to update in a release (#133).
 - The weekly audit (`scripts/closure-audit.mjs`) now also reports open issues with
   no milestone, open milestones with no open issues, and closed milestones that
   still have open issues, still report-only. Bot-written issues are exempt. The
