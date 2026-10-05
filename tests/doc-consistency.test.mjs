@@ -251,3 +251,12 @@ test('the workflow, package.json engines, README, and MAINTAINING agree on Node 
   );
   assert.deepEqual(problems, []);
 });
+
+// .node-version (#138) is read by version managers; it must name a Node major
+// that the validate job actually tests, or a contributor develops on an untested one.
+test('.node-version names a Node major that CI tests (#138)', async () => {
+  const workflow = parse(await read('.github/workflows/validate.yml'));
+  const tested = (workflow.jobs.validate.strategy.matrix.node ?? []).map(Number);
+  const wanted = Number(/^v?(\d+)/.exec((await read('.node-version')).trim())?.[1]);
+  assert.ok(tested.includes(wanted), `.node-version says ${wanted}; CI tests ${tested.join(', ')}`);
+});

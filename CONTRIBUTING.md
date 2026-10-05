@@ -3,6 +3,9 @@
 Thank you for improving the GitHub practice skills. Keep every contribution
 public, reviewable, and traceable.
 
+Everyone taking part is expected to follow the
+[Code of Conduct](CODE_OF_CONDUCT.md), which says how to report a problem.
+
 ## Workflow
 
 1. File or identify an issue before starting work. Give it an owner, priority,

@@ -1,0 +1,10 @@
+# Editor settings. Line endings are left to Git (.gitattributes), because the
+# skill metadata files under skills/ deliberately keep their original endings.
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true

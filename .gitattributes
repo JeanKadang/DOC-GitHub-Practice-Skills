@@ -1,2 +1,5 @@
+# Normalize text to LF in the repository; skills/ keeps its bytes (below).
+* text=auto
+
 skills/** -text
 skills/**/agents/openai.yaml whitespace=cr-at-eol
