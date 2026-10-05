@@ -6,6 +6,11 @@
 
 ### Added
 
+- `developer-experience` and `testing` now group under "Tooling & CI" in
+  `.github/release.yml` and are copied by the label workflow, and a test fails
+  when the workflow copies a label `release.yml` neither groups nor excludes.
+  `decision-needed` stays out of the categories on purpose: it marks a pending
+  decision, not a kind of change (#134).
 - A public-content scan (`scripts/scan-public-content.mjs`, `npm run scan:public`,
   covered by `tests/public-content-scan.test.mjs`, so it runs in `npm run check`
   and CI). It fails on token-shaped strings, private IP addresses, internal-looking

@@ -50,7 +50,7 @@ jobs:
 
           # Only copy category labels .github/release.yml groups release
           # notes by - not priority (P0-P3), which stays issue-only.
-          allowed_categories="security enhancement bug documentation tooling github-actions npm maintenance dependencies process education"
+          allowed_categories="security enhancement bug documentation tooling github-actions npm developer-experience testing maintenance dependencies process education"
 
           add_args=()
           while IFS= read -r label; do

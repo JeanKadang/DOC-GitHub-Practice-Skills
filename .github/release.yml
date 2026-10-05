@@ -21,6 +21,8 @@ changelog:
         - tooling
         - github-actions
         - npm
+        - developer-experience
+        - testing
     - title: Maintenance
       labels:
         - maintenance

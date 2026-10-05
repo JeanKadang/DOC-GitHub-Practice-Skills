@@ -50,7 +50,8 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
 - **Version stamps** (`tests/doc-consistency.test.mjs`): a policy document naming
   an old version. SECURITY.md may lag the package version, never lead it.
 - **Release-note labels** (`tests/doc-consistency.test.mjs`): a release category
-  the label-copy workflow never applies.
+  the label-copy workflow never applies, or a label the workflow copies that
+  `release.yml` neither groups nor excludes.
 - **ChatGPT export size** (`tests/doc-consistency.test.mjs`): an export over the
   20-file Knowledge limit.
 - **Relative links and anchors** (`tests/links.test.mjs`): a link to a file or
