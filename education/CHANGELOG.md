@@ -11,6 +11,8 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-10-05
+
 ### Added (since `education-v1.0.0`)
 
 - Module 4.1, reviewing changes an AI agent wrote: how an agent's pull request
