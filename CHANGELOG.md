@@ -6,6 +6,12 @@
 
 ### Added
 
+- A public-content scan (`scripts/scan-public-content.mjs`, `npm run scan:public`,
+  covered by `tests/public-content-scan.test.mjs`, so it runs in `npm run check`
+  and CI). It fails on token-shaped strings, private IP addresses, internal-looking
+  hostnames, and email addresses outside a documented allowlist, and the
+  repository passes it. `docs/MAINTAINING.md` lists what it guards and what it
+  cannot catch (#209).
 - `scripts/package-education.mjs` builds a portable copy of `education/`: it
   derives the files the pages link to and the skills they name, keeps relative
   paths so links resolve, and writes `BUNDLE.json` with versions, licence, source
