@@ -90,6 +90,9 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
   policy, a screenshot of a private system, or a secret with no known prefix, so
   the public-content review in `CONTRIBUTING.md` still applies, and workplace-derived
   wording stays with #122.
+- **Compatibility record** (`tests/compatibility-record.test.mjs`): a row in
+  `docs/compatibility.md` with no explicit Verified or Unverified status, or a
+  Verified row with no date.
 - **Installer behaviour** (`tests/install-skills.test.mjs`): data loss, wrong
   backups, or a broken export.
 
@@ -287,6 +290,11 @@ look green: `continue-on-error` keeps the result visible, and that is why it is
 used.
 
 ## Compatibility records
+
+`docs/compatibility.md` is the standing record of which tools have been checked
+against these skills; update it in the same pull request that records new
+evidence. The rest of this section is about changes that depend on a tool's
+behavior.
 
 For changes that depend on GitHub CLI, API, Actions, Node.js, or PowerShell
 behavior, record the tested versions, operating system, command, and outcome in

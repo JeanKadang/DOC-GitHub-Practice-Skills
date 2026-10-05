@@ -6,6 +6,13 @@
 
 ### Added
 
+- `docs/compatibility.md`: a dated record of what has been checked against each
+  tool. Claude Code 2.1.286 and OpenAI Codex 0.160.0 are verified on Windows
+  (discovery, a sample invocation for Claude, and the upgrade dry run); Copilot
+  CLI, Copilot in VS Code, ChatGPT, and every repository or cloud scope are
+  marked unverified, with file-byte and consumer-recognition evidence kept
+  apart. `tests/compatibility-record.test.mjs` fails on a row without an
+  explicit status or a verified row without a date (#149).
 - The weekly audit (`scripts/closure-audit.mjs`) now also reports open issues with
   no milestone, open milestones with no open issues, and closed milestones that
   still have open issues, still report-only. Bot-written issues are exempt. The
