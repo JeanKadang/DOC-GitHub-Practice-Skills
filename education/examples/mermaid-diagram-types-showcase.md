@@ -1,6 +1,6 @@
 # Mermaid Diagram Types Showcase
 
-Copyable examples of 23 diagram types, built around familiar documentation,
+Copyable examples of 33 diagram types, built around familiar documentation,
 review, and learning workflows. Each example has one visual job: follow a
 process, understand a relationship, or compare a small set of values.
 
@@ -8,12 +8,14 @@ process, understand a relationship, or compare a small set of values.
 
 | What you want to explain | Start with | Also useful |
 | --- | --- | --- |
-| Steps and decisions | [Flowchart](#flowchart) | [State](#state-diagram), [Kanban](#kanban) |
-| Who talks to whom | [Sequence](#sequence-diagram) | [C4](#c4-diagram-context-level), [ZenUML](#zenuml) |
-| Structure and relationships | [Class](#class-diagram) | [ER](#entity-relationship-diagram), [Architecture](#architecture-diagram), [Block](#block-diagram) |
+| Steps and decisions | [Flowchart](#flowchart) | [State](#state-diagram), [Kanban](#kanban), [Agent flow](#agent-flow-diagram), [Swimlane](#swimlane-diagram) |
+| Who talks to whom | [Sequence](#sequence-diagram) | [C4](#c4-diagram-context-level), [ZenUML](#zenuml), [Use case](#use-case-diagram), [Event modeling](#event-modeling-diagram) |
+| Structure and relationships | [Class](#class-diagram) | [ER](#entity-relationship-diagram), [Architecture](#architecture-diagram), [Block](#block-diagram), [Tree view](#tree-view) |
 | Branches or topic groups | [Git graph](#git-graph) | [Mindmap](#mindmap), [Requirements](#requirement-diagram) |
 | Time and experience | [Gantt](#gantt-chart) | [Timeline](#timeline), [Journey](#user-journey) |
-| Quantities and comparisons | [XY](#xy-chart) | [Pie](#pie-chart), [Quadrant](#quadrant-chart), [Sankey](#sankey-diagram), [Radar](#radar-chart), [Treemap](#treemap) |
+| Quantities and comparisons | [XY](#xy-chart) | [Pie](#pie-chart), [Quadrant](#quadrant-chart), [Sankey](#sankey-diagram), [Radar](#radar-chart), [Treemap](#treemap), [Venn](#venn-diagram) |
+| Causes, strategy, and how predictable work is | [Ishikawa](#ishikawa-fishbone-diagram) | [Wardley](#wardley-map), [Cynefin](#cynefin-diagram) |
+| The shape of a text rule | [Railroad](#railroad-diagram) | Use for a grammar or a naming pattern |
 | A binary field layout | [Packet](#packet-diagram) | Use when bit positions matter |
 
 ## Read, copy, and adapt
@@ -814,6 +816,301 @@ treemap-beta
     "GitHub lessons": 6
     "LLM lessons": 2
     "Example pages": 2
+```
+
+## Added in Mermaid 12
+
+Mermaid 12.0.0 added the ten types below. They need a Mermaid 12 renderer: a
+viewer on an older version shows an error instead of a diagram, and each keyword
+ends in `-beta` (except event modeling), which is part of the syntax. The
+parse check proves these examples are valid for Mermaid 12.0.0; it does not
+prove how any viewer draws them, so preview them in the viewer your readers will
+use. Their content is fictional.
+
+### Use case diagram
+
+**Use for:** Who does what with a system. A reader works through modules and a maintainer reviews pull
+requests; reviewing includes checking the acceptance criteria. The boundary names the
+system, and the people sit outside it.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+usecase-beta
+  actor Reader
+  actor Maintainer
+  systemBoundary Training["Training program"]
+    ReadModule(Read a module)
+    DoExercise(Do the exercise)
+    ReviewPr(Review a pull request)
+    CheckCriteria(Check the criteria)
+  end
+  Reader --> ReadModule
+  Reader --> DoExercise
+  Maintainer --> ReviewPr
+  ReviewPr --include--> CheckCriteria
+```
+
+### Venn diagram
+
+**Use for:** What two groups share. The fictional counts show modules done in a web browser, modules
+done in a terminal, and the few that need both. The overlap is its own labelled region.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+venn-beta
+  title "Modules by how you do them"
+  set Web["Web UI"]: 10
+  set Terminal["Terminal"]: 4
+  union Web,Terminal["Mixed"]: 2
+```
+
+### Ishikawa (fishbone) diagram
+
+**Use for:** Causes behind one problem, grouped by category. The first line is the effect, and each
+indented group lists its causes.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+ishikawa-beta
+    Release is late
+    Process
+        Unclear acceptance criteria
+        Changelog reviewed at the end
+    People
+        One maintainer
+    Tools
+        Slow checks
+```
+
+### Wardley map
+
+**Use for:** Where the parts of a service sit by visibility to the user and maturity. Each component
+has two coordinates between 0 and 1, links show dependency, and an `evolve` line shows
+where a component is expected to move.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+wardley-beta
+title Documentation site
+anchor Reader [0.95, 0.63]
+component Training module [0.78, 0.62]
+component Diagram showcase [0.55, 0.45]
+component Mermaid renderer [0.30, 0.75]
+Reader -> Training module
+Training module -> Diagram showcase
+Diagram showcase -> Mermaid renderer
+evolve Mermaid renderer 0.9
+```
+
+### Tree view
+
+**Use for:** A folder or hierarchy as an indented tree. The fictional tree shows three of the
+education folders, each with one file.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+treeView-beta
+    "education"
+        "0_prerequisites"
+            "module-0-1-what-is-version-control.md"
+        "1_beginners"
+            "module-1-1-getting-started.md"
+        "4_next-step"
+            "module-4-1-reviewing-changes-an-ai-agent-wrote.md"
+```
+
+### Railroad diagram
+
+**Use for:** The shape of a text rule. This one is an EBNF grammar for a branch name: a type, a
+slash, then words joined by hyphens. Alternatives branch, and `{ ... }` repeats. The
+keyword `railroad-ebnf-beta` selects EBNF notation; the same family has other keywords
+for other notations, and only the EBNF form is shown here.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+railroad-ebnf-beta
+  branch = type , "/" , description ;
+  type = "fix" | "feat" | "docs" | "test" | "ci" ;
+  description = word , { "-" , word } ;
+  word = letter , { letter | digit } ;
+```
+
+### Cynefin diagram
+
+**Use for:** Sorting work by how predictable it is: clear, complicated, complex, or chaotic. Each
+domain lists fictional items, so a reader can see which kind of response each needs.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+cynefin-beta
+  title Where does this work belong
+  complex
+    "Try a new teaching format"
+  complicated
+    "Plan a release"
+  clear
+    "Fix a typo"
+  chaotic
+    "Respond to a leaked secret"
+```
+
+### Event modeling diagram
+
+**Use for:** A system as a timeline of frames. Each numbered frame is a command (`cmd`), an event
+(`evt`), or a read model (`rmo`). Names are single words. The keyword has no `-beta`.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+eventmodeling
+  tf 01 cmd OpenPullRequest
+  tf 02 evt PullRequestOpened
+  tf 03 rmo ReviewQueue
+  tf 04 cmd ApproveChange
+  tf 05 evt ChangeApproved
+```
+
+### Agent flow diagram
+
+**Use for:** The loop an AI agent follows, with the point where a person decides. It uses the same
+node and arrow syntax as a flowchart. The agent plans, acts, checks, and repeats; a
+maintainer, not the agent, merges.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+agentflow-beta
+  start((Task)) --> plan[Plan the change]
+  plan --> act[Run a tool]
+  act --> check{Checks pass?}
+  check -->|yes| review[Human reviews the diff]
+  check -->|no| plan
+  review --> done((Merged by a maintainer))
+```
+
+### Swimlane diagram
+
+**Use for:** Handoffs between roles in one process. It reuses flowchart syntax, and each `subgraph`
+is a lane: a reader works through a module, then hands the result to a maintainer.
+
+```mermaid
+---
+config:
+  theme: "base"
+  themeVariables:
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#172554"
+    primaryBorderColor: "#3b82f6"
+    secondaryColor: "#ccfbf1"
+    tertiaryColor: "#fef3c7"
+    lineColor: "#64748b"
+    fontFamily: "Segoe UI, Arial, sans-serif"
+---
+swimlane-beta
+  subgraph Reader
+    A[Open the module] --> B[Do the exercise]
+  end
+  subgraph Maintainer
+    C[Review the pull request]
+  end
+  B --> C
 ```
 
 ## Make your own diagram clearer
