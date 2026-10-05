@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": { "node": "^22.22.2 || ^24.15.0 || >=26.0.0" },
   "scripts": {
     "test": "node --test",
     "test:unit": "node scripts/run-tests.mjs --skip-installer",
