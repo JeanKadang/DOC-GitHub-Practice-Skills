@@ -6,6 +6,13 @@
 
 ### Added
 
+- `docs/skill-scenarios.md`: a manual rubric of eight behavior scenarios (partial
+  delivery, connected-branch closure, an already-authorized merge, solo review,
+  private findings, a low-stakes repository, a foreign repository's conventions,
+  and a reference that is not installed) plus a skill-selection list. Each has
+  observable expected actions, prohibited actions or disclosures, and a source
+  in the skills. `tests/skill-scenarios.test.mjs` keeps every scenario
+  complete and every named skill and source real (#150).
 - The weekly audit (`scripts/closure-audit.mjs`) now also reports open issues with
   no milestone, open milestones with no open issues, and closed milestones that
   still have open issues, still report-only. Bot-written issues are exempt. The

@@ -90,6 +90,11 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
   policy, a screenshot of a private system, or a secret with no known prefix, so
   the public-content review in `CONTRIBUTING.md` still applies, and workplace-derived
   wording stays with #122.
+- **Behavior scenarios** (`tests/skill-scenarios.test.mjs`): a scenario in
+  `docs/skill-scenarios.md` with no Expected or Prohibited list, a Source file
+  that does not exist, or a skill name that is not a canonical skill. The
+  scenarios are a manual rubric; the test keeps it checkable, and does not run
+  any agent.
 - **Installer behaviour** (`tests/install-skills.test.mjs`): data loss, wrong
   backups, or a broken export.
 
