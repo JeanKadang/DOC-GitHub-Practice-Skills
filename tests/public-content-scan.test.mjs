@@ -21,16 +21,16 @@ test('flags seeded token-shaped strings (#209)', () => {
 });
 
 test('flags seeded private addresses and internal hostnames (#209)', () => {
-  assert.deepEqual(rules('curl http://10.20.30.40/api'), ['Private IP address']);
-  assert.deepEqual(rules('host 192.168.1.5'), ['Private IP address']);
-  assert.deepEqual(rules('ssh build01.corp'), ['Internal-looking hostname']);
-  assert.deepEqual(rules('https://git.team.internal/repo'), ['Internal-looking hostname']);
+  assert.deepEqual(rules('curl http://10.20.30.40/api'), ['Private IP address']); // public-scan: allow (seeded fixture)
+  assert.deepEqual(rules('host 192.168.1.5'), ['Private IP address']); // public-scan: allow (seeded fixture)
+  assert.deepEqual(rules('ssh build01.corp'), ['Internal-looking hostname']); // public-scan: allow (seeded fixture)
+  assert.deepEqual(rules('https://git.team.internal/repo'), ['Internal-looking hostname']); // public-scan: allow (seeded fixture)
 });
 
 test('flags a personal email and allows the neutral example domains (#209)', () => {
-  assert.deepEqual(rules('contact jane.doe@gmail.com'), ['Email address outside the allowlist']);
+  assert.deepEqual(rules('contact jane.doe@gmail.com'), ['Email address outside the allowlist']); // public-scan: allow (seeded fixture)
   assert.deepEqual(rules('contact jane@example.test and a@example.com'), []);
-  assert.deepEqual(rules('1+x@users.noreply.github.com'), ['Email address outside the allowlist']);
+  assert.deepEqual(rules('1+x@users.noreply.github.com'), ['Email address outside the allowlist']); // public-scan: allow (seeded fixture)
   assert.deepEqual(rules('noreply@noreply.github.com'), []);
 });
 
