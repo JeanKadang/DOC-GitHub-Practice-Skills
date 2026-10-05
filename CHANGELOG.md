@@ -72,6 +72,12 @@
 
 ### Changed
 
+- The portable improvement form (`skills/github-repo-configure/templates/`) now
+  has a required Expected outcome field, and both portable forms say a maintainer
+  turns it into acceptance criteria when triaging. `github-repo-configure` and
+  `github-issue-first` make that triage step explicit, so no issue reaches
+  implementation without an observable completion contract. The form tests now
+  check field types, unique ids, dropdown options, and the contract field (#145).
 - The Mermaid parse check now runs under Mermaid 12.0.0 (was 11.17.2) with jsdom
   30.1.1 (was 26.1.0), both test-only dependencies. Every published diagram still
   parses. `package.json` `engines` now matches `jsdom` 30's floor (22.22.2 or

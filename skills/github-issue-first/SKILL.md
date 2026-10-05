@@ -118,7 +118,9 @@ the issue's completion contract, not an optional checklist. Phrase each criterio
 as an observable outcome that can later be supported by a test, CI run, diff,
 document, screenshot, or reproducible verification. Investigation and
 decision-needed issues use explicit exit criteria for the evidence or decision
-they must produce.
+they must produce. An issue that arrives through an intake form collecting only
+an expected outcome (the `github-repo-configure` forms) gets its criteria at
+triage: write them into the issue body before implementation starts.
 
 ### Labels
 
