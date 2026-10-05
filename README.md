@@ -68,6 +68,7 @@ GPT, which OpenAI has announced it will retire on 2026-12-11; see the
 - [Layered skill guide](docs/GUIDE.md)
 - [Workflow and closure gates](docs/WORKFLOW.md)
 - [Maintainer guide](docs/MAINTAINING.md)
+- [Skill behavior scenarios (a manual rubric)](docs/skill-scenarios.md)
 - [Platform compatibility record (what has been checked, and what has not)](docs/compatibility.md)
 - [Azure DevOps migration mapping](docs/azure-devops-migration.md)
 - [Installing from VS Code (no PowerShell experience needed)](docs/vscode.md)

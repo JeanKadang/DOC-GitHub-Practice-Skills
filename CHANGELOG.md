@@ -6,6 +6,13 @@
 
 ### Added
 
+- `docs/skill-scenarios.md`: a manual rubric of eight behavior scenarios (partial
+  delivery, connected-branch closure, an already-authorized merge, solo review,
+  private findings, a low-stakes repository, a foreign repository's conventions,
+  and a reference that is not installed) plus a skill-selection list. Each has
+  observable expected actions, prohibited actions or disclosures, and a source
+  in the skills. `tests/skill-scenarios.test.mjs` keeps every scenario
+  complete and every named skill and source real (#150).
 - `docs/compatibility.md`: a dated record of what has been checked against each
   tool. Claude Code 2.1.286 and OpenAI Codex 0.160.0 are verified on Windows
   (discovery, a sample invocation for Claude, and the upgrade dry run); Copilot
