@@ -80,7 +80,6 @@
   `package.json` carries description, license, repository, bugs, and homepage;
   `.claude/settings.local.json` is ignored in this repository; the ADR index shows
   each ADR's status; and a comment in `github-pr-review` is clearer.
-
 - The portable improvement form (`skills/github-repo-configure/templates/`) now
   has a required Expected outcome field, and both portable forms say a maintainer
   turns it into acceptance criteria when triaging. `github-repo-configure` and
