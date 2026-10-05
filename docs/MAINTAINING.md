@@ -121,12 +121,13 @@ is an issue or pull request. Never assume the object type from the number alone.
 
 ## Closure audit
 
-`.github/workflows/closure-audit.yml` runs every Monday (and on demand) and
-lists issues closed as completed that still have an unchecked acceptance
-criterion, using `scripts/closure-audit.mjs`. It is report-only: it rewrites one
-open tracking issue titled "Closure audit: completed issues with unchecked
-criteria" (creating it if none is open) and never reopens, comments on, or edits
-any other issue. Its token has `issues: write` only for that.
+`.github/workflows/closure-audit.yml` runs every Monday (and on demand) and,
+using `scripts/closure-audit.mjs`, reports two things: issues closed as completed
+that still have an unchecked acceptance criterion, and milestone consistency (#243).
+It is report-only: it rewrites one open tracking issue titled "Repository audit:
+closure evidence and milestone consistency" (creating it if none is open) and never
+reopens, comments on, assigns, or edits any other issue or milestone. Its token
+has `issues: write` only for that.
 
 The maintainer owns the report. For each row, either record evidence and tick the
 box, reopen the issue and record why, or record a scope decision (superseded or
@@ -136,6 +137,20 @@ Boxes inside fenced code blocks, and issues closed as not planned or duplicate,
 are not counted. Run the same query by hand with the one in `github-hygiene`
 ("Acceptance criteria are closure gates"); a run of the workflow can be started
 from the Actions tab.
+
+The milestone section has three rows, each with its action:
+
+- **Open issues without a milestone:** give the issue a milestone, or record
+  on it why it has none. Issues written by a bot, such as the tracking issue
+  itself, are not listed, because they are reports and not planned work.
+- **Open milestones with no open issues:** close the milestone if its goal shipped,
+  or move the work that belongs to it into it. An empty open milestone usually means
+  a follow-up issue was filed without one.
+- **Closed milestones that still have open issues:** reopen the milestone, or move
+  the open issues to a milestone that is still open.
+
+After every merge, `github-hygiene` already asks for issue state and milestone
+membership to be verified; this report is the backstop when that step is missed.
 
 ## Education bundle
 

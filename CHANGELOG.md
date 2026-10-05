@@ -6,6 +6,11 @@
 
 ### Added
 
+- The weekly audit (`scripts/closure-audit.mjs`) now also reports open issues with
+  no milestone, open milestones with no open issues, and closed milestones that
+  still have open issues, still report-only. Bot-written issues are exempt. The
+  tracking issue is now titled "Repository audit: closure evidence and milestone
+  consistency", and `docs/MAINTAINING.md` describes each row and its action (#243).
 - `developer-experience` and `testing` now group under "Tooling & CI" in
   `.github/release.yml` and are copied by the label workflow, and a test fails
   when the workflow copies a label `release.yml` neither groups nor excludes.
