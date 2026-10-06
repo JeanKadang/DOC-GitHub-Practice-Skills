@@ -57,7 +57,40 @@ prints that list without calling the model. Two cautions follow:
   this first, and install with `-CodexHome` pointing at a home whose `skills`
   folder Codex reads.
 - If the same skill is installed in both places, Codex lists it twice (seen with
-  `github-hygiene`). Keep one copy of each.
+  `github-hygiene`), and the two copies can be different versions, so the model
+  sees two versions of the same policy. Keep one copy of each.
+
+### Installing to the documented path
+
+The installer treats `-CodexHome` as a home that holds a `skills` folder, so
+pointing it at `~/.agents` installs to `~/.agents/skills`, the path OpenAI
+documents. Nothing else changes; the default stays `~/.codex` for existing
+installs.
+
+```powershell
+pwsh -NoProfile -File .scriptsinstall-skills.ps1 `
+  -Target Codex -CodexHome $HOME.agents -DryRun
+```
+
+Do not set the `CODEX_HOME` environment variable to `~/.agents`: Codex uses that
+variable for its own configuration home. Pass `-CodexHome` on the command line
+instead. `~/.agents/skills` is also read by other agents, so it may hold skills
+that are not from this package; the installer only touches the twelve it owns.
+
+### Duplicate copies are reported, never removed
+
+When the target is Codex, the installer checks the other place Codex reads
+(`~/.codex/skills` or `~/.agents/skills`, next to the target home) for skills
+that carry this package's marker file. If it finds any, a dry run and a real run
+both print a warning that lists each skill with its installed version and the
+folder it is in. The warning does not change the exit status, and the installer
+never edits or removes the other copy. Choose one location, install there, and
+delete the other copies yourself. A skill folder without this package's marker is
+yours and is never reported.
+
+When to move the default: only if OpenAI documents `~/.codex/skills` as removed
+or `codex debug prompt-input` stops listing skills from it. Re-check on each
+Codex minor release; `docs/compatibility.md` records the last check.
 
 To re-check after a Codex update, create a skill with a unique name in each
 folder, run the `debug prompt-input` command above, search its output for those
