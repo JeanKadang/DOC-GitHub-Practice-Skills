@@ -93,3 +93,64 @@ test('the showcase states the Mermaid version its examples are checked against',
     `the showcase must name the checked version "Mermaid ${pinned}"`,
   );
 });
+
+// Diagram types GitHub's viewer cannot draw (#254). GitHub printed Mermaid
+// 11.17.2 on 2026-10-06 and showed "Syntax error in text" for these three: ZenUML
+// needs an integration core Mermaid lacks, and use case and agent flow need
+// Mermaid 12. A reader on GitHub sees an empty frame, so each fence must be
+// preceded by a note saying so. Remove a type from this list when GitHub draws it.
+const GITHUB_GAPS = ['zenuml', 'usecase-beta', 'agentflow-beta'];
+
+// The first keyword after any YAML front matter (a fence that sets its theme
+// starts with a --- block, which diagramType above does not skip).
+export function typeAfterFrontMatter(source) {
+  const lines = source.split(/\r?\n/);
+  let index = 0;
+  if (lines[0]?.trim() === '---') {
+    const close = lines.findIndex((line, i) => i > 0 && line.trim() === '---');
+    index = close === -1 ? 0 : close + 1;
+  }
+  while (index < lines.length && (!lines[index].trim() || lines[index].trim().startsWith('%%'))) index += 1;
+  return (lines[index] ?? '').trim().split(/[\s{]/)[0].toLowerCase();
+}
+
+test('typeAfterFrontMatter skips front matter and comments', () => {
+  const withFrontMatter = ['---', 'config:', '  theme: base', '---', '%% note', 'usecase-beta', '  x'].join('\n');
+  assert.equal(typeAfterFrontMatter(withFrontMatter), 'usecase-beta');
+  assert.equal(typeAfterFrontMatter('zenuml\n  title x'), 'zenuml');
+  assert.equal(typeAfterFrontMatter(''), '');
+});
+
+export function paragraphAbove(lines, fenceLine) {
+  const paragraph = [];
+  let index = fenceLine - 2;
+  while (index >= 0 && lines[index].trim() === '') index -= 1;
+  while (index >= 0 && lines[index].trim() !== '') {
+    paragraph.unshift(lines[index].trim());
+    index -= 1;
+  }
+  return paragraph.join(' ');
+}
+
+test('paragraphAbove returns the paragraph directly above a fence', () => {
+  const lines = ['text before', '', '**On GitHub:** this', 'continues here.', '', '```mermaid', 'zenuml', '```'];
+  assert.equal(paragraphAbove(lines, 6), '**On GitHub:** this continues here.');
+  assert.equal(paragraphAbove(['```mermaid'], 1), '');
+});
+
+test('diagrams GitHub cannot draw carry a note directly above them (#254)', async () => {
+  const file = join(repoRoot, 'education', 'examples', 'mermaid-diagram-types-showcase.md');
+  const source = await readFile(file, 'utf8');
+  const lines = source.split(/\r?\n/);
+  const fences = extractMermaidFences(source);
+  const missing = [];
+  const seen = new Set();
+  for (const fence of fences) {
+    const type = typeAfterFrontMatter(fence.source);
+    if (!GITHUB_GAPS.includes(type)) continue;
+    seen.add(type);
+    if (!paragraphAbove(lines, fence.line).startsWith('**On GitHub')) missing.push(type);
+  }
+  assert.deepEqual(missing, [], `these diagrams need an "On GitHub" note above them: ${missing.join(', ')}`);
+  assert.deepEqual([...seen].sort(), [...GITHUB_GAPS].sort(), 'every known gap should still appear in the showcase');
+});

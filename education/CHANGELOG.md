@@ -13,12 +13,16 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- The Mermaid diagram showcase now covers the ten diagram types added in
-  Mermaid 12 (use case, Venn, Ishikawa, Wardley, tree view, railroad, Cynefin,
-  event modeling, agent flow, and swimlane), 33 types in all, each with a
-  fictional example that parses under Mermaid 12.0.0 in CI. They are listed in a
-  new section and in the chooser table, with a note that they need a Mermaid 12
-  renderer (#239).
+- The Mermaid diagram showcase now covers the ten newest diagram types (use
+  case, Venn, Ishikawa, Wardley, tree view, railroad, Cynefin, event modeling,
+  agent flow, and swimlane), 33 types in all, each with a fictional example that
+  parses under Mermaid 12.0.0 in CI. They are listed in a new section and in the
+  chooser table (#239).
+- The showcase records how it renders on GitHub, checked on 2026-10-06: GitHub's
+  viewer is on Mermaid 11.17.2, so ZenUML, use case, and agent flow show as an
+  empty frame with "Syntax error in text" there, and each now has a note saying
+  so. The other 30 draw. An earlier version of the showcase said all ten newest
+  types needed Mermaid 12; only use case and agent flow do (#254).
 
 ## [2.0.0] - 2026-10-05
 
