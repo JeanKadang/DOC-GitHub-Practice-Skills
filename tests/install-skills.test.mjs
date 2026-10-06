@@ -951,7 +951,9 @@ test('dry-run warns, read-only, when a skill is also installed in the other Code
   const result = await runInstaller({ codexHome, target: 'Codex', dryRun: true });
 
   assert.deepEqual(await treeSnapshot(root), before, 'a dry run must not change anything');
-  const otherSkills = join(otherHome, 'skills');
+  // Compare the tail only: on a CI runner the temp directory can be reported in
+  // 8.3 short form by Node and in long form by PowerShell.
+  const otherSkills = join('.agents', 'skills');
   assert.ok(
     result.stdout.includes(`Warning: ${inventory.skills.length} skill(s)`),
     'the warning counts every skill found in the other location',
@@ -1006,7 +1008,7 @@ test('installing to the documented path warns about an older copy in the default
 
   const result = await runInstaller({ codexHome: join(root, '.agents'), target: 'Codex', dryRun: true });
 
-  assert.ok(result.stdout.includes(join(defaultHome, 'skills')), 'the warning names the default location');
+  assert.ok(result.stdout.includes(join('.codex', 'skills')), 'the warning names the default location');
   assert.match(result.stdout, /Warning:/);
 });
 
