@@ -49,6 +49,14 @@ under that version, which is pinned in `package.json` and checked by
 stops parsing fails CI. A parse check proves the syntax is valid for that
 version; it does not prove a viewer draws it the same way.
 
+**On GitHub.** GitHub's viewer printed Mermaid 11.17.2 when this page was
+checked on 2026-10-06. Three diagrams here need more than that, and GitHub shows
+each as an empty frame or "Syntax error in text": ZenUML (it needs an
+integration that core Mermaid does not include), use case, and agent flow (both
+need Mermaid 12). Each has a note above it. They still render in a Mermaid 12
+viewer, and should start to on GitHub when it updates. The other 30 draw on
+GitHub today.
+
 Mermaid 12 changed the defaults. Per its 12.0.0 release notes, flowchart, class,
 state, entity-relationship, and requirement diagrams that do not name a layout
 are now laid out by ELK instead of dagre, and the default look is new, so a
@@ -779,6 +787,10 @@ packet-beta
 the assistant reads criteria and inspects evidence through GitHub. Nesting shows that
 these calls happen inside the review request.
 
+**On GitHub:** this shows as an empty frame with "Syntax error in text", because
+GitHub's viewer does not include the ZenUML integration. View it in a viewer that
+registers it (see the preview note below), or use the sequence diagram.
+
 ```mermaid
 zenuml
     title Review interactions
@@ -818,20 +830,26 @@ treemap-beta
     "Example pages": 2
 ```
 
-## Added in Mermaid 12
+## Newest diagram types
 
-Mermaid 12.0.0 added the ten types below. They need a Mermaid 12 renderer: a
-viewer on an older version shows an error instead of a diagram, and each keyword
-ends in `-beta` (except event modeling), which is part of the syntax. The
-parse check proves these examples are valid for Mermaid 12.0.0; it does not
-prove how any viewer draws them, so preview them in the viewer your readers will
-use. Their content is fictional.
+These ten are the newest types, and each keyword ends in `-beta` (except event
+modeling), which is part of the syntax. Not every viewer has them. On
+2026-10-06 GitHub's viewer, on Mermaid 11.17.2, drew eight of the ten (Venn,
+Ishikawa, Wardley, tree view, railroad, Cynefin, event modeling, and swimlane)
+but not **use case** or **agent flow**, which need Mermaid 12. The parse check
+proves these examples are valid for Mermaid 12.0.0; it does not prove how any
+viewer draws them, so preview them in the viewer your readers will use. Their
+content is fictional.
 
 ### Use case diagram
 
 **Use for:** Who does what with a system. A reader works through modules and a maintainer reviews pull
 requests; reviewing includes checking the acceptance criteria. The boundary names the
 system, and the people sit outside it.
+
+**On GitHub (checked 2026-10-06):** this shows as an empty frame with "Syntax
+error in text", because GitHub's viewer is on Mermaid 11.17.2 and use case needs
+Mermaid 12. It renders in a Mermaid 12 viewer.
 
 ```mermaid
 ---
@@ -1062,6 +1080,10 @@ eventmodeling
 **Use for:** The loop an AI agent follows, with the point where a person decides. It uses the same
 node and arrow syntax as a flowchart. The agent plans, acts, checks, and repeats; a
 maintainer, not the agent, merges.
+
+**On GitHub (checked 2026-10-06):** this shows as an empty frame with "Syntax
+error in text", because GitHub's viewer is on Mermaid 11.17.2 and agent flow
+needs Mermaid 12. It renders in a Mermaid 12 viewer.
 
 ```mermaid
 ---
