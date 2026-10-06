@@ -53,6 +53,7 @@ here can break `main` or anyone else's work.
 
 - `git push` is refused or asks for a password: your credentials are not set up, or the remote is the wrong address. Run `git remote -v`, and sign in again with `gh auth login`.
 - `git merge` says "Already up to date" and no conflict appears: you did not commit on **both** branches, or you edited different lines. Edit the **same first line** of `CONTRIBUTORS.md` on each.
+- `git commit` says "Author identity unknown" or "Please tell me who you are", or your commits show the wrong name: Git does not know your name and email yet. Set them as in [step 2 of the local setup page](../0_prerequisites/setup-local-dev-environment.md#2-tell-git-who-you-are), then run the commit again.
 - `git commit` opens an editor you cannot leave: in vim type `:wq`, in nano press Ctrl+X, or avoid it with `git commit -m "message"`.
 - Conflict markers (`<<<<<<<`) are still in the file: search for them and remove all of them before `git add`. If you want to start over, `git merge --abort` puts you back where you were.
 
