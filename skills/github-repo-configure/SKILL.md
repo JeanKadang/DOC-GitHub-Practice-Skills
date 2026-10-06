@@ -79,6 +79,15 @@ apart itself. Priority is deliberately left unset by the form — auto-labeling
 the category (`bug`/`enhancement`) is safe and mechanical, but P0–P3 needs
 judgment using the Impact field as input, not a form default.
 
+The forms collect an **expected outcome** in plain language (the bug form's
+Expected behavior, the improvement form's Expected outcome), not acceptance
+criteria: a reporter should not have to design a test just to report a problem.
+Turning that outcome into observable acceptance criteria is a triage step. The
+maintainer who triages the issue writes them into the issue body before
+implementation starts, and an issue without them is not ready to implement
+(`github-issue-first`). Forms that collect criteria directly, like this
+package's own, are fine where reporters are maintainers.
+
 These are a first pass, not a final or polished set — expect to refine the
 exact fields as real repos actually use them.
 

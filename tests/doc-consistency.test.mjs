@@ -286,3 +286,12 @@ test('README says main is ahead of the release while CHANGELOG has unreleased en
   assert.ok(readme.includes(`main\` is ahead of ${status}`), 'the banner must name the same release as the Release status line');
   assert.ok(readme.includes(`--branch ${status} `), 'the clone command must use the published release tag');
 });
+
+// .node-version (#138) is read by version managers; it must name a Node major
+// that the validate job actually tests, or a contributor develops on an untested one.
+test('.node-version names a Node major that CI tests (#138)', async () => {
+  const workflow = parse(await read('.github/workflows/validate.yml'));
+  const tested = (workflow.jobs.validate.strategy.matrix.node ?? []).map(Number);
+  const wanted = Number(/^v?(\d+)/.exec((await read('.node-version')).trim())?.[1]);
+  assert.ok(tested.includes(wanted), `.node-version says ${wanted}; CI tests ${tested.join(', ')}`);
+});
