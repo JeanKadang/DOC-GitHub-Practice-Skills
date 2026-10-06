@@ -99,6 +99,13 @@
 
 ### Changed
 
+- `github-repo-bootstrap` now carries command examples in the sections that
+  act on GitHub state (repository and Actions settings, security settings, CI
+  and the ruleset, and the post-bootstrap audit). Each shows the read before
+  the write, uses `{owner}/{repo}` placeholders, and leaves the Wiki rule to
+  the existing text. No policy wording changed.
+  `tests/bootstrap-examples.test.mjs` fails if a section loses its example, a
+  write comes before a read, or the skill passes 250 lines (#251).
 - Documentation papercuts (#138): the settings snapshot no longer uses `head` or
   a POSIX redirection (with a PowerShell pair for the one `grep`);
   `CODE_OF_CONDUCT.md` follows Contributor Covenant 2.1 and is linked from the
