@@ -191,6 +191,60 @@ function Get-RelativeEntries {
     }
 }
 
+function Get-OtherCodexCopies {
+    # Read-only (#215). Codex reads skills from both ~/.codex/skills and
+    # ~/.agents/skills, and lists a skill once per location. Report any skill of
+    # this package that is installed in the other place, so a duplicate (often a
+    # different version) is visible. The other place is derived from the target
+    # home's parent, so an isolated test home never looks at the real profile.
+    # The marker file is what makes it safe to call a copy ours. Nothing found
+    # here is ever modified or removed.
+    param(
+        [Parameter(Mandatory)][string]$PlatformPath,
+        [Parameter(Mandatory)]$Inventory
+    )
+
+    $parent = [IO.Path]::GetDirectoryName($PlatformPath)
+    if (-not $parent) { return @() }
+    $ownRoot = Get-FullPath -Path (Join-Path $PlatformPath 'skills')
+    $copies = @()
+    foreach ($leaf in @('.codex', '.agents')) {
+        $root = Get-FullPath -Path (Join-Path (Join-Path $parent $leaf) 'skills')
+        if ([string]::Equals($root, $ownRoot, [StringComparison]::OrdinalIgnoreCase)) { continue }
+        foreach ($skill in $Inventory.skills) {
+            $skillPath = Join-Path $root $skill.name
+            $markerPath = Join-Path $skillPath $markerName
+            try {
+                if (-not (Test-Path -LiteralPath $markerPath -PathType Leaf)) { continue }
+                if ((Get-Item -LiteralPath $skillPath -Force).Attributes -band [IO.FileAttributes]::ReparsePoint) { continue }
+                $marker = Get-Content -LiteralPath $markerPath -Raw | ConvertFrom-Json
+                if ($marker.packageName -eq $packageName -and $marker.skillName -eq $skill.name) {
+                    $copies += [pscustomobject]@{ Root = $root; Skill = $skill.name; Version = $marker.packageVersion }
+                }
+            }
+            catch {
+                continue
+            }
+        }
+    }
+    return $copies
+}
+
+function Write-DuplicateCodexWarning {
+    param([Parameter(Mandatory)]$Plan)
+
+    if ($Plan.Name -ne 'Codex') { return }
+    $copies = @(Get-OtherCodexCopies -PlatformPath $Plan.PlatformPath -Inventory $inventory)
+    if ($copies.Count -eq 0) { return }
+    foreach ($group in @($copies | Group-Object -Property Root)) {
+        Write-Output "  Warning: $($group.Count) skill(s) from this package are also installed in $($group.Name), so Codex will list each of them twice:"
+        foreach ($copy in $group.Group) {
+            Write-Output "    $($copy.Skill) v$($copy.Version)"
+        }
+    }
+    Write-Output '  Keep one copy and remove the other yourself; this installer never deletes it. See docs/openai-codex.md, "Where Codex looks for skills".'
+}
+
 function Test-TrackedSkill {
     param(
         [Parameter(Mandatory)][string]$SkillPath,
@@ -692,6 +746,7 @@ if ($DryRun) {
                 Write-Output "  $($skill.name): install; backup: none"
             }
         }
+        Write-DuplicateCodexWarning -Plan $plan
         if ($KeepBackups -ge 0) {
             $willBackUp = @($plan.Replacements | Where-Object { $_.Mode -eq 'Backup' }).Count -gt 0
             $existingKeep = if ($willBackUp) { [Math]::Max(0, $KeepBackups - 1) } else { $KeepBackups }
@@ -782,6 +837,10 @@ if ($KeepBackups -ge 0) {
             Write-Output "Pruned $($plan.Name) backup set: $($set.Name)"
         }
     }
+}
+
+foreach ($plan in $plans) {
+    Write-DuplicateCodexWarning -Plan $plan
 }
 
 Write-Output "Installed $($inventory.skills.Count) skills to: $($targetSpecs.Name -join ', ')"

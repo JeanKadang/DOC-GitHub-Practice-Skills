@@ -6,6 +6,13 @@
 
 ### Added
 
+- `install-skills.ps1` now warns, read-only, when the Codex target's skills are
+  also installed in the other place Codex reads (`~/.codex/skills` and
+  `~/.agents/skills`), listing each skill with its version. Codex lists a skill
+  once per place, and the copies can differ in version. The installer never
+  edits or removes the other copy, and the default target is unchanged.
+  `docs/openai-codex.md` documents `-CodexHome ~/.agents` as the route to the
+  documented path (#215).
 - The README now says which behavior is unreleased: an "Unreleased on `main`"
   banner with the clone command for the released tag, `-Target ChatGPT` marked
   as not in v0.3.0, and the current education tags. Two new tests fail when the

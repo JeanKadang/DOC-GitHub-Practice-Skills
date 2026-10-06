@@ -930,3 +930,118 @@ test('markers deterministically represent every required file and release identi
     }
   }
 });
+
+// Duplicate Codex locations (#215). Codex reads skills from both ~/.codex/skills
+// and ~/.agents/skills and lists a skill once per place. The installer reports,
+// read-only, any skill of this package already installed in the other place. The
+// other place is derived from the target home's parent, so these tests use a
+// temporary parent and never look at the real profile.
+async function installOtherCodexCopy(root) {
+  const otherHome = join(root, '.agents');
+  await runInstaller({ codexHome: otherHome, target: 'Codex' });
+  return otherHome;
+}
+
+test('dry-run warns, read-only, when a skill is also installed in the other Codex location (#215)', async () => {
+  const root = await temporaryRoot();
+  const otherHome = await installOtherCodexCopy(root);
+  const codexHome = join(root, '.codex');
+  const before = await treeSnapshot(root);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', dryRun: true });
+
+  assert.deepEqual(await treeSnapshot(root), before, 'a dry run must not change anything');
+  const otherSkills = join(otherHome, 'skills');
+  assert.ok(
+    result.stdout.includes(`Warning: ${inventory.skills.length} skill(s)`),
+    'the warning counts every skill found in the other location',
+  );
+  assert.ok(result.stdout.includes(otherSkills), 'the warning names the other location');
+  assert.ok(
+    result.stdout.includes(`github-issue-first v${inventory.packageVersion}`),
+    'the warning names each skill with its installed version',
+  );
+  assert.match(result.stdout, /never deletes it/);
+});
+
+test('a real install warns about the other Codex location and leaves that copy untouched (#215)', async () => {
+  const root = await temporaryRoot();
+  const otherHome = await installOtherCodexCopy(root);
+  const otherBefore = await treeSnapshot(otherHome);
+  const codexHome = join(root, '.codex');
+
+  const result = await runInstaller({ codexHome, target: 'Codex' });
+
+  assert.equal(result.exitCode, 0);
+  assert.match(result.stdout, /Warning: \d+ skill\(s\)/);
+  assert.match(result.stdout, /Installed \d+ skills/);
+  assert.ok(await exists(join(codexHome, 'skills', 'github-issue-first', 'SKILL.md')), 'the install itself still happens');
+  assert.deepEqual(await treeSnapshot(otherHome), otherBefore, 'the other copy must not be modified or removed');
+});
+
+test('no warning when the other Codex location has no copy of this package (#215)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, '.codex');
+
+  const result = await runInstaller({ codexHome, target: 'Codex', dryRun: true });
+
+  assert.doesNotMatch(result.stdout, /Warning:/);
+});
+
+test('a same-named skill without this package\'s marker is not reported as a duplicate (#215)', async () => {
+  const root = await temporaryRoot();
+  const own = join(root, '.agents', 'skills', 'github-hygiene');
+  await mkdir(own, { recursive: true });
+  await writeFile(join(own, 'SKILL.md'), '# a personal skill with the same name\n');
+
+  const result = await runInstaller({ codexHome: join(root, '.codex'), target: 'Codex', dryRun: true });
+
+  assert.doesNotMatch(result.stdout, /Warning:/);
+});
+
+test('installing to the documented path warns about an older copy in the default path (#215)', async () => {
+  const root = await temporaryRoot();
+  const defaultHome = join(root, '.codex');
+  await runInstaller({ codexHome: defaultHome, target: 'Codex' });
+
+  const result = await runInstaller({ codexHome: join(root, '.agents'), target: 'Codex', dryRun: true });
+
+  assert.ok(result.stdout.includes(join(defaultHome, 'skills')), 'the warning names the default location');
+  assert.match(result.stdout, /Warning:/);
+});
+
+test('only Codex warns: the Claude and Copilot targets stay quiet (#215)', async () => {
+  const root = await temporaryRoot();
+  await installOtherCodexCopy(root);
+
+  const claude = await runInstaller({ claudeHome: join(root, '.claude'), target: 'Claude', dryRun: true });
+  const copilot = await runInstaller({ copilotHome: join(root, '.copilot'), target: 'Copilot', dryRun: true });
+
+  assert.doesNotMatch(claude.stdout, /Warning:/);
+  assert.doesNotMatch(copilot.stdout, /Warning:/);
+});
+
+test('a marker from another package or another skill name is not reported as ours (#215)', async () => {
+  const root = await temporaryRoot();
+  const skills = join(root, '.agents', 'skills');
+  const foreign = join(skills, 'github-hygiene');
+  await mkdir(foreign, { recursive: true });
+  await writeFile(
+    join(foreign, '.doc-github-practice-skills.json'),
+    JSON.stringify({ schemaVersion: 1, packageName: 'some-other-package', packageVersion: '9.9.9', skillName: 'github-hygiene' }),
+  );
+  const renamed = join(skills, 'github-releases');
+  await mkdir(renamed, { recursive: true });
+  await writeFile(
+    join(renamed, '.doc-github-practice-skills.json'),
+    JSON.stringify({ schemaVersion: 1, packageName: 'doc-github-practice-skills', packageVersion: '9.9.9', skillName: 'github-hygiene' }),
+  );
+  const broken = join(skills, 'github-issue-first');
+  await mkdir(broken, { recursive: true });
+  await writeFile(join(broken, '.doc-github-practice-skills.json'), '{ not json');
+
+  const result = await runInstaller({ codexHome: join(root, '.codex'), target: 'Codex', dryRun: true });
+
+  assert.equal(result.exitCode, 0, 'an unreadable marker must not make the installer fail');
+  assert.doesNotMatch(result.stdout, /Warning:/);
+});
