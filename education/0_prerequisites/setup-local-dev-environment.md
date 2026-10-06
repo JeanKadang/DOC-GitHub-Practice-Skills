@@ -60,24 +60,46 @@ settings. Set them once. Without them Git refuses to commit ("Author identity
 unknown") or records a wrong author, and the commit is not linked to your
 GitHub profile, so history cannot show who did what.
 
+**For company repositories, follow the company rule:** your name is your
+company initials only, and your email is your company email. Use exactly what
+your organization requires, not your full name or a personal address.
+
+```powershell
+git config --global user.name "XX"
+git config --global user.email "xx@company.example"  # replace with your company email (public-scan: allow, placeholder address)
+```
+
+Replace `XX` with your company initials and the email with your company email.
+Both lines above are placeholders. If you are unsure of either, ask your
+facilitator or admin before your first commit.
+
+### Addendum: personal and private repositories
+
+The company rule applies to company repositories. For your own personal or
+private repositories, as a rule of thumb **use the GitHub noreply address**, so
+your real email is not written into every commit (and so stays out of public
+history, where it can be scraped).
+
+| Option | Use it when |
+| --- | --- |
+| GitHub **noreply** address | Recommended for personal repositories. It links commits to your profile without exposing your real email, and it keeps working if your account blocks pushes that expose a private email. Copy it from **Settings, Emails** on GitHub (it appears under "Keep my email addresses private"). Copy it rather than typing it: the number in it is yours |
+| Your own email | It must be a **verified** email on your GitHub account, otherwise your commits are not linked to your profile. It will be visible in the history |
+
+The noreply address has the shape `ID+USERNAME@users.noreply.github.com`. <!-- public-scan: allow (placeholder shape, not a real address) -->
+
 ```powershell
 git config --global user.name "Your Name"
 git config --global user.email "12345678+octocat@users.noreply.github.com"  # replace with yours (public-scan: allow, fake example address)
 ```
 
-Replace `Your Name` with the name you want shown on your commits. The email
-above is only an example of the shape.
+`--global` applies to every repository on this machine. If you use one machine
+for both company and personal work, keep the company values in `--global` and
+set the personal values inside each personal repository instead:
 
-Which email to use:
-
-| Option | Use it when |
-| --- | --- |
-| GitHub **noreply** address | Recommended. It links commits to your profile without exposing your real email, and it keeps working if your account blocks pushes that expose a private email. Copy it from **Settings, Emails** on GitHub (it appears under "Keep my email addresses private"). Copy it rather than typing it: the number in it is yours |
-| Your own email | It must be a **verified** email on your GitHub account, otherwise your commits are not linked to your profile |
-
-The noreply address has the shape `ID+USERNAME@users.noreply.github.com`. <!-- public-scan: allow (placeholder shape, not a real address) -->
-On GitHub Enterprise the same **Settings, Emails** page shows the address to
-use. If it is not there, ask your facilitator or admin.
+```powershell
+git config --local user.name "Your Name"
+git config --local user.email "12345678+octocat@users.noreply.github.com"  # replace with yours (public-scan: allow, fake example address)
+```
 
 Check it took:
 
@@ -193,7 +215,8 @@ pick only the group your work needs.
 
 - Can you open a terminal in VS Code and run `git --version` successfully?
 - Do `git config --global user.name` and `git config --global user.email` print
-  your name and your noreply or verified email?
+  your company initials and your company email (or, on a personal machine, your
+  name and your noreply address)?
 - Does the Accounts icon show your GitHub username, not a "Sign in" prompt?
 - If you installed the GitHub CLI: does `gh auth status` say you are logged in?
 - Can you find the Extensions view without help?
