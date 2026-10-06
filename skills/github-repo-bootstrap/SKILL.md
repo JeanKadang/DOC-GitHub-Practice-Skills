@@ -58,6 +58,22 @@ maintainer explicitly asks — never enable one by default during bootstrap.
 Set Actions permissions to the least privilege that works and disable Actions
 approval of pull-request reviews unless an approved design requires it.
 
+Run these in a clone of the repository, where `gh` fills in `{owner}/{repo}`.
+Read the current state first:
+
+```bash
+gh repo view --json visibility,defaultBranchRef,deleteBranchOnMerge,hasIssuesEnabled,hasProjectsEnabled,hasWikiEnabled,hasDiscussionsEnabled,mergeCommitAllowed,squashMergeAllowed,rebaseMergeAllowed
+gh api repos/{owner}/{repo}/actions/permissions/workflow
+```
+
+Then change only what the recorded decisions say. The flags below are an
+example; do not pass `--enable-wiki` here, because the Wiki rule above governs it.
+
+```bash
+gh repo edit --delete-branch-on-merge --enable-projects=false --enable-merge-commit --enable-squash-merge=false --enable-rebase-merge=false
+gh api -X PUT repos/{owner}/{repo}/actions/permissions/workflow -f default_workflow_permissions=read -F can_approve_pull_request_reviews=false
+```
+
 ## 7. Security settings
 
 Enable private vulnerability reporting, secret scanning, push protection,
@@ -66,6 +82,23 @@ approved design requires them. Verify each endpoint's actual result; record an
 unavailable control rather than claiming it is enabled. Route security reports
 through SECURITY.md, never an ordinary public issue form.
 
+Read what the API reports before enabling anything. A 403 or 404 is a result to
+record: some controls need admin access or a plan that includes them.
+
+```bash
+gh api repos/{owner}/{repo} --jq '.security_and_analysis'
+gh api repos/{owner}/{repo}/private-vulnerability-reporting --jq .enabled
+```
+
+Enable what the approved design requires, then read it back with the commands
+above.
+
+```bash
+gh api -X PUT repos/{owner}/{repo}/private-vulnerability-reporting
+gh api -X PUT repos/{owner}/{repo}/vulnerability-alerts
+gh api -X PATCH repos/{owner}/{repo} -f 'security_and_analysis[secret_scanning][status]=enabled' -f 'security_and_analysis[secret_scanning_push_protection][status]=enabled'
+```
+
 ## 8. CI first, ruleset second
 
 Add and run CI before creating required-status rules. Use the exact observed job
@@ -73,6 +106,22 @@ names and create a ruleset only when the visibility and account plan support it.
 Protect deletion and non-fast-forward updates as approved. For a solo repository,
 require zero approvals or a permitted maintainer path; never require impossible
 self-approval. Explain why the first bootstrap pull request precedes the ruleset.
+
+Find the exact job names CI reports and use those as the required check names:
+
+```bash
+gh run list --limit 1 --json databaseId --jq '.[0].databaseId'
+gh run view <run-id> --json jobs --jq '.jobs[].name'
+```
+
+Check the plan before scripting a ruleset: a 403 means the plan does not allow
+one, which is not the same as having none. Then create it from a `ruleset.json`
+written as in `github-releases`, which holds the example rules.
+
+```bash
+gh api repos/{owner}/{repo}/rulesets
+gh api -X POST repos/{owner}/{repo}/rulesets --input ruleset.json
+```
 
 ## 9. Initial pull request and release
 
@@ -97,6 +146,15 @@ Query GitHub after setup and compare actual state with the approved design:
 visibility, default branch, merge methods, branch deletion, Issues, Projects,
 Wiki, Actions permissions, security controls, rulesets, and release state. Fix or
 record every difference before declaring bootstrap complete.
+
+```bash
+gh repo view --json visibility,defaultBranchRef,deleteBranchOnMerge,hasIssuesEnabled,hasProjectsEnabled,hasWikiEnabled,mergeCommitAllowed,squashMergeAllowed,rebaseMergeAllowed
+gh api repos/{owner}/{repo}/actions/permissions/workflow
+gh api repos/{owner}/{repo} --jq '.security_and_analysis'
+gh api repos/{owner}/{repo}/private-vulnerability-reporting --jq .enabled
+gh api repos/{owner}/{repo}/rulesets --jq '.[] | {name, enforcement}'
+gh release list --limit 3
+```
 
 ## 11. Handoffs to companion skills
 
