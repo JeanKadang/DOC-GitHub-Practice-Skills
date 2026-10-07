@@ -27,7 +27,7 @@ Windows 11 (10.0.22631) with Node 26.10 and PowerShell 7.6.
 | OpenAI Codex (CLI) | 0.160.0 | **Verified** 2026-10-05 |
 | GitHub Copilot CLI | not installed | **Unverified** |
 | GitHub Copilot in VS Code | not checked | **Unverified** |
-| ChatGPT (Custom GPT) | not applicable | **Unverified** |
+| ChatGPT (Custom GPT, or plugin skills) | not applicable | **Unverified** |
 
 ### Claude Code
 

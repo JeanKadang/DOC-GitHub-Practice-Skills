@@ -68,8 +68,9 @@ The installer validates the source, refuses unapproved overwrites, and can use
 `-Target Copilot`. ChatGPT has no local skill directory to install into —
 `-Target ChatGPT` (not in v0.3.0; on `main` only) exports the skill files
 instead, for uploading to a Custom
-GPT, which OpenAI has announced it will retire on 2026-12-11; see the
-[ChatGPT guide](docs/chatgpt.md), "Availability", before exporting.
+GPT, which OpenAI's help center says retires on 2026-12-11; see the
+[ChatGPT guide](docs/chatgpt.md), "Availability", before exporting. The
+replacement route, uploading the skill folders as ChatGPT skills, is untested.
 
 ## Documentation
 

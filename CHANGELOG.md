@@ -126,6 +126,14 @@
   newer on 22, 24.15 or newer on 24, or 26 and later; Mermaid 12 needs 22.12),
   and the diagram showcase names the new version and Mermaid 12's changed layout
   and look defaults.
+- `docs/chatgpt.md`, `platforms/chatgpt/README.md`, `README.md`, and
+  `docs/compatibility.md` now cite OpenAI's own help center for the Custom GPT
+  retirement dates (2026-12-11, and 2027-02-11 for Enterprise deferrals, checked
+  2026-10-07, read from a search excerpt because the page refuses automated
+  fetches) and add a "plugin and skills route" section: OpenAI's developer docs
+  describe a ChatGPT skill as a `SKILL.md` folder, the same shape as
+  `skills/<name>/`, with a smoke test to run in an eligible workspace. The route
+  is untested and ADR 0006 stands until it is (#144, #227).
 - `docs/chatgpt.md`, `platforms/chatgpt/README.md`, and `README.md` now say that
   OpenAI has announced Custom GPTs retire on 2026-12-11, with the dates
   attributed to secondary reporting, dated, and qualified, and a table of which
