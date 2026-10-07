@@ -1,35 +1,38 @@
 # Setting Up Your Local Dev Environment
 
 **Audience:** Anyone about to start Module 1.2 (or any command-line work)
-without Git or VS Code installed yet, or without VS Code connected to the
-organization's GitHub Enterprise account.
+without Git or VS Code installed yet, without a Git identity set, or without
+VS Code connected to the organization's GitHub Enterprise account.
 
 **Format:** Hands-on installs, done once. Mostly waiting on installers, not
 reading.
 
-**Timing budget:** ~30 minutes, most of it install time.
+**Timing budget:** ~35 minutes, most of it install time.
 
 ## Why this exists
 
-Module 1.2 assumes `git` is already installed and working. This is where
-that assumption gets satisfied — install Git, install VS Code, connect VS
-Code to GitHub Enterprise, and pick up a few extensions worth having from
-day one. This is a conditional prerequisite, not core reading: you
+Module 1.2 assumes `git` is already installed and working, and that Git knows
+who you are. This is where those assumptions get satisfied — install Git, tell
+Git your name and email, install VS Code, connect VS Code to GitHub Enterprise,
+optionally install the GitHub CLI, and pick up a few extensions worth having
+from day one. This is a conditional prerequisite, not core reading: you
 need it only if you don't already have Git and VS Code set up for
 command-line work, and nothing else in the program depends on it.
 
 ```mermaid
 flowchart LR
-    A[Install Git] --> B[Install VS Code]
-    B --> C[Sign in to<br/>GitHub Enterprise]
-    C --> D[Install<br/>recommended extensions]
-    D --> E[Ready for<br/>Module 1.2]
+    A[Install Git] --> B[Tell Git<br/>who you are]
+    B --> C[Install VS Code]
+    C --> D[Sign in to<br/>GitHub Enterprise]
+    D --> E[Install the GitHub CLI<br/>only if you use gh]
+    E --> F[Install<br/>recommended extensions]
+    F --> G[Ready for<br/>Module 1.2]
 ```
 
-What this shows: four one-time setup steps, in order — each one is
+What this shows: six one-time setup steps, in order — each one is
 independent and skippable if already done, but do them in this order the
-first time since VS Code's GitHub sign-in step goes more smoothly with Git
-already present.
+first time since the later steps go more smoothly with Git already present
+and configured. Only the GitHub CLI step is optional.
 
 ## 1. Install Git (Windows)
 
@@ -50,14 +53,76 @@ windows already open):
 git --version
 ```
 
-## 2. Install VS Code
+## 2. Tell Git who you are
+
+Every commit records an author: the name and email stored in your Git
+settings. Set them once. Without them Git refuses to commit ("Author identity
+unknown") or records a wrong author, and the commit is not linked to your
+GitHub profile, so history cannot show who did what.
+
+**For company repositories, follow the company rule:** your name is your
+company initials only, and your email is your company email. Use exactly what
+your organization requires, not your full name or a personal address.
+
+```powershell
+git config --global user.name "XX"
+git config --global user.email "xx@company.example"  # replace with your company email (public-scan: allow, placeholder address)
+```
+
+Replace `XX` with your company initials and the email with your company email.
+Both lines above are placeholders. If you are unsure of either, ask your
+facilitator or admin before your first commit.
+
+### Addendum: personal and private repositories
+
+The company rule applies to company repositories. For your own personal or
+private repositories, as a rule of thumb **use the GitHub noreply address**, so
+your real email is not written into every commit (and so stays out of public
+history, where it can be scraped).
+
+| Option | Use it when |
+| --- | --- |
+| GitHub **noreply** address | Recommended for personal repositories. It links commits to your profile without exposing your real email, and it keeps working if your account blocks pushes that expose a private email. Copy it from **Settings, Emails** on GitHub (it appears under "Keep my email addresses private"). Copy it rather than typing it: the number in it is yours |
+| Your own email | It must be a **verified** email on your GitHub account, otherwise your commits are not linked to your profile. It will be visible in the history |
+
+The noreply address has the shape `ID+USERNAME@users.noreply.github.com`. <!-- public-scan: allow (placeholder shape, not a real address) -->
+
+```powershell
+git config --global user.name "Your Name"
+git config --global user.email "12345678+octocat@users.noreply.github.com"  # replace with yours (public-scan: allow, fake example address)
+```
+
+`--global` applies to every repository on this machine. If you use one machine
+for both company and personal work, keep the company values in `--global` and
+set the personal values inside each personal repository instead:
+
+```powershell
+git config --local user.name "Your Name"
+git config --local user.email "12345678+octocat@users.noreply.github.com"  # replace with yours (public-scan: allow, fake example address)
+```
+
+Check it took:
+
+```powershell
+git config --global user.name
+git config --global user.email
+```
+
+After your first commit, confirm the author with
+`git log -1 --format="%an <%ae>"`. Commits you already made keep the old
+author; only new commits use the new settings. If new commits still show the
+wrong name, a setting inside the repository overrides the global one: run
+`git config --local --list` in that repository and remove `user.name` and
+`user.email` from it with `git config --local --unset`.
+
+## 3. Install VS Code
 
 Download from [code.visualstudio.com](https://code.visualstudio.com) and
 run the installer — default options are fine here too. On first launch,
 VS Code offers to install the command-line `code` command; accept it, it's
 useful later for opening folders from a terminal (`code .`).
 
-## 3. Connect VS Code to GitHub Enterprise
+## 4. Connect VS Code to GitHub Enterprise
 
 - Click the **Accounts** icon (bottom-left corner of VS Code).
 - **Sign in with GitHub** (or **GitHub Enterprise** if your organization
@@ -71,7 +136,29 @@ useful later for opening folders from a terminal (`code .`).
   repositories you have access to without re-entering credentials each
   time.
 
-## 4. Recommended extensions
+## 5. Install and sign in to the GitHub CLI (only if you use `gh`)
+
+Skip this step if you only work in VS Code. Modules 2.5, 2.7 and 3.1 use the
+GitHub CLI (`gh`), and signing in to VS Code does not sign in `gh`; they are
+separate.
+
+```powershell
+winget install --id GitHub.cli -e --source winget
+```
+
+Open a **new** terminal, then sign in and check:
+
+```powershell
+gh auth login
+gh auth status
+```
+
+`gh auth login` asks which GitHub to use and how to sign in. Choose the option
+your organization uses (the same one you chose in step 4, ask your
+facilitator or admin if unsure) and finish in the browser. `gh auth status`
+should report that you are logged in as your own account.
+
+## 6. Recommended extensions
 
 There are two tiers: a short **recommended** list that helps almost everyone
 who works with this repository, and a longer **suggested if needed** list you
@@ -127,7 +214,11 @@ pick only the group your work needs.
 ## Self-check
 
 - Can you open a terminal in VS Code and run `git --version` successfully?
+- Do `git config --global user.name` and `git config --global user.email` print
+  your company initials and your company email (or, on a personal machine, your
+  name and your noreply address)?
 - Does the Accounts icon show your GitHub username, not a "Sign in" prompt?
+- If you installed the GitHub CLI: does `gh auth status` say you are logged in?
 - Can you find the Extensions view without help?
 
 Not confident on any of these? Re-run the relevant numbered step above —

@@ -13,6 +13,14 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- The local setup page now has a step for telling Git who you are (`user.name`,
+  `user.email`; company initials and company email for company repositories, an
+  addendum recommending the GitHub noreply address for personal repositories,
+  a check and what to do when commits show the wrong author) and an optional
+  step to install and sign in to the GitHub CLI. The diagram, self-check, timing
+  (~35 minutes) and the education README entry follow, and Module 1.2 lists the
+  "Author identity unknown" error with a link to the new step (#256).
+
 - The Mermaid diagram showcase now covers the ten newest diagram types (use
   case, Venn, Ishikawa, Wardley, tree view, railroad, Cynefin, event modeling,
   agent flow, and swimlane), 33 types in all, each with a fictional example that
