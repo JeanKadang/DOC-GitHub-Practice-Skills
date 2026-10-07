@@ -6,7 +6,8 @@ target. Coverage here means a **Custom GPT** with this repo's skill files
 uploaded as Knowledge, exported via `-Target ChatGPT` instead of installed
 into a directory. Full walkthrough, the Custom GPT Instructions text to
 paste, and the manual-paste fallback for accounts without Custom GPT access
-(Custom GPTs are announced to retire on 2026-12-11; read its
-"Availability" section first):
+(OpenAI's help center gives 2026-12-11 as the retirement date; read its
+"Availability" section first, and "The plugin and skills route" for the
+untested replacement):
 [`docs/chatgpt.md`](../../docs/chatgpt.md). See ADR 0006 for why this shape
 was chosen over an Actions schema or documentation-only coverage.
