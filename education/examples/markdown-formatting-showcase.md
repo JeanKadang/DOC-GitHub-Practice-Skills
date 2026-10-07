@@ -4,6 +4,9 @@ A lookup reference for GitHub-Flavored Markdown — every entry shows the
 raw syntax and what it renders as, so you can copy what you need instead
 of searching external docs. Not a lesson; skim to the section you need.
 
+To see the same formatting working together in one realistic document, read the
+[Markdown showcase document](markdown-showcase.md).
+
 ## Headings
 
 Six levels, `#` through `######`. Only one `#` (H1) per document — it's
