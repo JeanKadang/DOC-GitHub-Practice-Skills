@@ -1,0 +1,37 @@
+name: Dependency audit
+
+# Daily, report-by-failure audit of the npm dependency tree (#262). Dependabot
+# alerts only cover advisories GitHub has already indexed, so this catches a new
+# moderate-or-higher advisory within a day. It is deliberately not a pull request
+# check: an advisory published after a branch was cut must not block unrelated
+# work. Accepted risks live in .github/audit-accepted.json with a review date
+# (docs/MAINTAINING.md, "Dependency audit").
+
+on:
+  schedule:
+    - cron: "43 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependency-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 24
+      - name: Audit dependencies
+        run: node scripts/dependency-audit.mjs
