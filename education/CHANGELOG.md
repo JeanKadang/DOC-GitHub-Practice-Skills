@@ -13,6 +13,12 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- A Markdown showcase document in `education/examples/`: one fictional sample
+  handbook that uses every kind of GitHub-rendered Markdown formatting in context
+  (headings, alerts, task lists, tables, code and diff blocks, Mermaid, reference
+  links, footnotes, math, escaping and more), linked to and from the existing
+  lookup reference (#264).
+
 - The local setup page now has a step for telling Git who you are (`user.name`,
   `user.email`; company initials and company email for company repositories, an
   addendum recommending the GitHub noreply address for personal repositories,
