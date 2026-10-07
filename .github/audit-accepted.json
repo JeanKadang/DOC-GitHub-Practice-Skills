@@ -1,0 +1,7 @@
+[
+  {
+    "id": "GHSA-vfj7-8cjw-p6xm",
+    "reason": "braces stack-exhaustion DoS; no patched release exists (3.0.3 is the latest). Dev-only, reached through markdownlint-cli2 -> micromatch, and only on this repository's own glob patterns. Tracked in #260.",
+    "reviewBy": "2026-11-06"
+  }
+]

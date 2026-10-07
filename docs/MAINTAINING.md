@@ -132,6 +132,25 @@ GitHub issue and PR numbers share a repository number sequence. Before editing
 metadata or closing an object from a bare `#N`, query it and confirm whether it
 is an issue or pull request. Never assume the object type from the number alone.
 
+## Dependency audit
+
+`.github/workflows/dependency-audit.yml` runs every day (and on demand) and
+runs `scripts/dependency-audit.mjs` over `npm audit --json`. It fails on any
+moderate-or-higher advisory that is not listed in `.github/audit-accepted.json`,
+so a new advisory in the dev toolchain surfaces within a day, before Dependabot
+has indexed it (#262). It is not a pull request check, so an advisory published
+after a branch was cut never blocks unrelated work. A failed scheduled run is
+the signal; GitHub notifies the maintainer through its normal workflow-failure
+notification.
+
+When it fails, fix the advisory (an `overrides` entry in `package.json` when a
+parent pins an old range, as in #258 and #260). When no patched release exists,
+record the decision instead: add `{ "id", "reason", "reviewBy" }` to
+`.github/audit-accepted.json` with a review date no more than 30 days out and
+link the tracking issue in the reason. An entry past its `reviewBy` date fails
+the run, so the decision is revisited. Remove an entry once its advisory is
+fixed; the script prints a note when an accepted advisory is no longer reported.
+
 ## Closure audit
 
 `.github/workflows/closure-audit.yml` runs every Monday (and on demand) and,
