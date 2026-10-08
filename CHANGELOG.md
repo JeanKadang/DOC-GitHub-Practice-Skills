@@ -6,6 +6,13 @@
 
 ### Added
 
+- `.github/workflows/dependency-audit.yml` runs `scripts/dependency-audit.mjs`
+  over `npm audit --json` every day and on demand, and fails on any
+  moderate-or-higher advisory that is not in `.github/audit-accepted.json`, so a
+  new advisory in the dev toolchain surfaces within a day instead of waiting for
+  Dependabot. Each accepted entry has a reason and a review date and fails once
+  expired; `braces` (no patched release yet) is the first entry. It is not a pull
+  request check. `docs/MAINTAINING.md` has a "Dependency audit" section (#262).
 - `install-skills.ps1` now warns, read-only, when the Codex target's skills are
   also installed in the other place Codex reads (`~/.codex/skills` and
   `~/.agents/skills`), listing each skill with its version. Codex lists a skill
@@ -99,6 +106,9 @@
 
 ### Changed
 
+- Documentation accuracy and consistency sweep across the root documents
+  (`README.md`, `SECURITY.md`, `docs/GUIDE.md`, `docs/MAINTAINING.md`,
+  `docs/WORKFLOW.md`) and `education/README.md` (#41).
 - `github-repo-bootstrap` now carries command examples in the sections that
   act on GitHub state (repository and Actions settings, security settings, CI
   and the ruleset, and the post-bootstrap audit). Each shows the read before
@@ -245,6 +255,13 @@
 
 ### Fixed
 
+- Dev-dependency advisories: `overrides` entries for `lodash-es` (4.18.x,
+  GHSA-r5fr-rjxr-66jc and GHSA-f23m-r3pf-42rh, Dependabot alerts #3 and #4),
+  `smol-toml` (1.9.x, GHSA-r4xh-jqrq-34v2) and `katex` (0.18.x,
+  GHSA-238p-pmpm-9mq7), because `mermaid` and `markdownlint-cli2` pin older
+  ranges. `braces` (GHSA-vfj7-8cjw-p6xm, high) has no patched release and is an
+  accepted, dated risk in `.github/audit-accepted.json`. All dev-only; nothing
+  shipped changes (#258, #260).
 - Installed skills no longer point at files that are not installed with them.
   `github-issue-first` inlines its repo-risk checks instead of citing
   `docs/repo-settings-snapshot.md`; the ADR 0003 citations and the
