@@ -12,7 +12,8 @@ Do not treat repository creation as permission to publish unreviewed local files
 ## 1. Required decisions before external state
 
 Record the owner, name availability, purpose, visibility, licence, description,
-topics, default branch, expected maintainers, and release intent. Verify GitHub
+topics, default branch, expected maintainers, release intent, and the source
+layout (stack, distributable folder name, see "Starting layout" below). Verify GitHub
 authentication, the exact local source directory, and feature or plan availability.
 Obtain the maintainer's approval before creating, merging, or releasing.
 
@@ -47,6 +48,43 @@ work an issue-first exception after the minimum shell exists.
 | Projects board | Multiple contributors need a maintained board and an owner | It is cosmetic, unmaintained, or solo work can use issues, labels, and milestones |
 | CODEOWNERS | Real review routing requires named owners | A solo maintainer has no routing need |
 | GitHub Wiki | The repository already has one, established and actively used — leave it as-is and treat its content as source of truth for what it covers | It has no Wiki yet; never proactively enable one during bootstrap |
+
+### Starting layout
+
+Decide the source layout while the repository is small. Restructuring later is
+cheap in a ten-file repository and disruptive once it has a backlog, open pull
+requests, and consumers with hard-coded paths. Apply the principles below, then
+use the stack row as a starting point. Judge each repository against "Use when"
+rather than copying the whole tree, and say why for the parts you keep.
+
+Principles:
+
+1. **The distributable unit lives in a folder named after the package.** Some
+   ecosystems require it (a PowerShell module folder must match the module name to
+   be published or found on the module path); the rest benefit from it.
+2. **Separate public surface from internals, and split by responsibility** once a
+   source file holds more than a handful of units: one file per public command or
+   class, shared helpers in their own place.
+3. **Keep tests out of the distributable and mirror a unit/integration split** when
+   both kinds exist.
+4. **Put developer scripts (test runner, build, release helpers) in `build/` or
+   `scripts/`**, not at the repository root.
+5. **Keep only example configuration in the repository**, never real configuration;
+   verify the ignore rules track the example and nothing real.
+6. **Keep long-form documentation in `docs/`**; community and licence files stay at
+   the root (`README`, `LICENSE`, `CHANGELOG`, `SECURITY`, `CONTRIBUTING`).
+
+| Stack | Starting layout | Use when |
+|---|---|---|
+| PowerShell module | `<Module>/` (manifest, root `.psm1` that loads `Public/` and `Private/`), `tests/Unit`, `tests/Integration`, `build/`, `config/` | More than a couple of functions, or any plan to publish |
+| Node / TypeScript package | `src/`, `test/`, `scripts/`, `docs/`, build output ignored | Always for a package; a single-file script can stay flat |
+| Python package | `src/<package>/`, `tests/`, `docs/`, `pyproject.toml` | A package or library; a one-file script can stay flat |
+| Single script or notes repository | Flat root with `README` and `LICENSE` | One file with no plan to grow; do not invent folders |
+
+After creating the layout, check that blanket ignore rules (for example `*.yml` or
+`*.json`) do not hide tracked files such as workflows or example configuration:
+`git check-ignore -v <path>` for each new path. Record the layout decision in the
+bootstrap issue's acceptance criteria.
 
 ## 6. Repository and Actions settings
 
@@ -180,5 +218,6 @@ non-empty — this skill's pre-issue exception never applied; use
 | "This repo already has a Wiki, migrate it into the repo or ignore it" | Leave an already-established, actively-used Wiki alone — treat its content as source of truth for what it covers. |
 | "Add CODEOWNERS and self-approval rules by default" | Require a real routing need and a merge path a solo maintainer can use. |
 | "Copy local files now and review later" | Publish only preflighted, allowlisted content; never copy private history or workplace artifacts. |
+| "Everything in one root file or a flat root is fine for now" | Pick the starting layout during bootstrap; restructuring later costs history, open pull requests, and consumers' paths. A genuinely one-file repo stays flat. |
 | "Configure required checks before CI exists" | Run CI first and use its observed job names. |
 | "The requested setting probably applied" | Audit the API result and record unavailable controls or differences. |

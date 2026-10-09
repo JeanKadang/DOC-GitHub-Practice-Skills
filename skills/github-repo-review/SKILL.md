@@ -5,7 +5,7 @@ description: Use when asked for a full repository quality review, repo audit, ba
 
 # GitHub Repository Quality Review
 
-Run the complete methodology in [review-prompt.md](review-prompt.md) — read that file now; it is the skill. It covers operating rules (analysis-only, evidence, live verification of suspected bugs, reuse of existing label/milestone schemes, the >10-issue confirmation gate), the audit phases (code, CI/CD, supply chain, release health, repo hygiene, generated-artifact accessibility, existing-issue triage), the P0–P3 priority model with blocking-fan-out bumps, roadmap structure (milestones vs priority, dependencies, epics, when Projects boards are and are not worth it), the per-issue quality bar and template, and the final summary format.
+Run the complete methodology in [review-prompt.md](review-prompt.md) — read that file now; it is the skill. It covers operating rules (analysis-only, evidence, live verification of suspected bugs, reuse of existing label/milestone schemes, the >10-issue confirmation gate), the audit phases (code, CI/CD, supply chain, release health, repo hygiene, repository structure, generated-artifact accessibility, existing-issue triage), the P0–P3 priority model with blocking-fan-out bumps, roadmap structure (milestones vs priority, dependencies, epics, when Projects boards are and are not worth it), the per-issue quality bar and template, and the final summary format.
 
 `review-prompt.md` is also the standalone, tool-agnostic version shared with colleagues who are not running these skills — keep it self-contained. It deliberately restates the priority model and Projects guidance that also appear in the companion skills; don't DRY that duplication away by moving content out of it into this wrapper.
 

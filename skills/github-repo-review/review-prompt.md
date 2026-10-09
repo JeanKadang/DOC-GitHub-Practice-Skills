@@ -28,9 +28,26 @@ Beyond the code, review:
 - **Workflow permissions & secrets**: every workflow should declare an explicit least-privilege `permissions:` block — an absent one inherits the repo default, which is often write-all. Flag `pull_request_target` combined with a checkout of untrusted head code (the classic token-exfiltration path), `GITHUB_TOKEN` handed to third-party actions, `secrets` interpolated into `run:` strings where they can leak into logs, and self-hosted runners on a public repo. Cross-check `gh secret list` against the secrets workflows actually reference: secrets set but unused, and referenced but unset, are both defects — the second fails only at release time.
 - **Release health**: does the version in the manifest/package file match the latest tag? Are there merged changes with no release? Is there a CHANGELOG, and does release automation exist and actually work?
 - **Repo hygiene**: stale merged branches (fetch with prune, or query the API — local listings lie); template files left unedited (a boilerplate SECURITY.md with a fictitious version table is worse than none); LICENSE and manifest metadata.
+- **Repository structure**: judge the source layout against the checks in "The structure baseline" below. Report structure findings as one grouped recommendation, sized by how much the repository will grow and how many consumers depend on its paths; a restructure is cheapest now and dearer with every feature added.
 - **Scaffolding baseline**: check each of the files in the table below. A missing one is a finding; a present-but-boilerplate one is a worse finding. Report them as a single grouped recommendation rather than one issue per file — they are usually one PR.
 - **Generated artifacts**: if the project emits HTML/reports/UI, check accessibility basics — keyboard operability, labeled inputs, WCAG AA contrast — and offline/self-containment claims.
 - **Existing issues**: for each, is it clear, actionable, still relevant, duplicated, mis-sized, missing context/acceptance criteria/labels/milestone/priority/dependencies? Is it already fixed? Improve existing issues rather than duplicating them; recommend closing outdated ones with reasons. Also audit issues closed as completed that still contain unchecked task boxes. A merged PR or green CI is only a lead: evaluate every acceptance criterion against concrete evidence, reopen any issue with unmet or unevaluated in-scope criteria, and check criteria only when the evidence supports them.
+
+### The structure baseline
+
+| Check | A finding when | Not a finding when |
+|---|---|---|
+| Distributable unit in a folder named after the package | The package, module, or library sits loose at the repository root, or its folder name cannot match what the ecosystem requires to install or publish it (for example a PowerShell module whose folder differs from the module name) | A single-file script with no plan to publish |
+| Public surface separated from internals; split by responsibility | One source file holds many unrelated units, or public and private code are mixed, and the roadmap adds more | A small file that is still easy to read and review in one sitting |
+| Tests outside the distributable, split by kind | Tests ship inside the package, or unit and integration tests are mixed in one large file | Only one kind of test exists and the file is small |
+| Developer scripts in `build/` or `scripts/` | Test runners and build helpers clutter the repository root | The root holds only one such script |
+| Example configuration only | Real configuration or a template that needs secrets is tracked; or the example is ignored by the repository's own rules | — |
+| Ignore rules do not hide tracked paths | A blanket rule such as `*.yml` or `*.json` hides workflows or example configuration (`git check-ignore -v <path>` shows the rule) | — |
+| Long-form docs in `docs/`; community files at the root | Documentation is scattered across the root | A short README is the only documentation |
+
+A restructure is a behaviour-preserving change. Propose it as its own issue and
+pull request, using `git mv` so history follows, with tests green before and
+after. Do not recommend a layout the repository's size does not warrant.
 
 ### The scaffolding baseline
 

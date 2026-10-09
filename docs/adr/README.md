@@ -66,3 +66,6 @@ text is not edited.
   milestone lasts only until a release scopes it.
 - [0013](0013-education-bundle-script.md) — The education bundle is built by a
   Node script with derived dependencies and a manifest, implementing ADR 0008.
+- [0014](0014-repository-layout-guidance.md) — Repository layout guidance lives
+  in `github-repo-bootstrap`, with a structure check in `github-repo-review` and
+  an early restructure prompt in `github-hygiene`; no new skill.
