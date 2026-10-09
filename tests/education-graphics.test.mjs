@@ -14,9 +14,9 @@ import { repoRoot } from './helpers/markdown.mjs';
 // accessible name, and an SVG that could run code or load something from
 // elsewhere (#270).
 const EDUCATION = join(repoRoot, 'education');
-// Lesson pages only: numbered modules, the prerequisite, and the setup page. The
-// next-step plan (module-plan.md) is a plan, not a lesson.
-const PAGE_FILE = /^(module-\d+-\d+-.+|prerequisite-.+|setup-.+)\.md$/;
+// Lesson pages only: the numbered modules. The next-step plan (module-plan.md)
+// is a plan, not a lesson.
+const PAGE_FILE = /^module-\d+-\d+-.+\.md$/;
 const NUMBERED_FOLDER = /^\d+_/;
 const EMBED = /!\[([^\]]*)\]\((\.\.\/graphics\/[^)\s]+\.svg)\)/g;
 

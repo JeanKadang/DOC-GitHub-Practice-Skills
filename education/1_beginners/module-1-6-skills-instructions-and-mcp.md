@@ -1,7 +1,7 @@
 # Module 1.6: Skills, instruction files, and MCP servers
 
 **Audience:** Anyone who has read the
-[LLM prerequisite](../0_prerequisites/prerequisite-what-is-an-llm-assistant.md)
+[LLM prerequisite](../0_prerequisites/module-0-6-what-is-an-llm-assistant.md)
 and uses (or is about to use) an AI assistant in VS Code or on the command line.
 **Format:** Self-paced — read and do each step yourself. Facilitator-note
 callouts mark optional group activities.
@@ -29,7 +29,7 @@ anything you didn't write yourself.
 
 ## The three things, in plain terms
 
-**Source:** `education/0_prerequisites/prerequisite-what-is-an-llm-assistant.md`
+**Source:** `education/0_prerequisites/module-0-6-what-is-an-llm-assistant.md`
 
 | Term | What it is | Think of it as |
 | --- | --- | --- |
