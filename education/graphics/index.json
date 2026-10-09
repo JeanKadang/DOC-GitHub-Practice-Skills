@@ -259,5 +259,13 @@
     "title": "Six patterns in an agent’s pull request",
     "takeaway": "A green check shows the checks that exist passed, not that they cover the change.",
     "alt": "Six patterns to watch for and how to check each: scope creep, an invented API, a claimed check that did not happen, a special case that passes, weakened safety nets, and an intention told as fact."
+  },
+  {
+    "file": "module-4-12-moving-a-gitlab-pipeline-to-actions.svg",
+    "page": "4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md",
+    "title": "Rewrite, do not rename",
+    "takeaway": "Rewrite the pipeline from its intent. A file rename only moves the bugs.",
+    "alt": "Four GitLab CI ideas and where each lands in GitHub Actions: stages become needs, rules become on and if, passed-on artifacts become an explicit upload and download because each job gets a fresh machine, and a masked variable becomes a scoped secret with least-privilege permissions.",
+    "rule": "A job in Actions starts on a fresh machine: upload and download the files it needs."
   }
 ]

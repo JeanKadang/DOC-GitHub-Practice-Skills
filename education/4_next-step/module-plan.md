@@ -1,7 +1,7 @@
 # Next-step modules: plan
 
-**Status:** a plan. Nothing here is required reading. Module 4.1 is built; every
-other entry is an outline that is ready to become an issue.
+**Status:** a plan. Nothing here is required reading. Modules 4.1 and 4.12 are
+built; every other entry is an outline that is ready to become an issue.
 
 The tiers before this one end at Module 3.6. This folder is for what comes
 after: material for people who already work comfortably in the GitHub workflow
@@ -36,6 +36,7 @@ and want to go further. Modules built from this plan are named
 | 4.9 | Using Copilot as a pull request reviewer | [Module 2.2](../2_intermediate/module-2-2-pr-review-and-branch-conventions.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 30 min |
 | 4.10 | Assigning issues to the Copilot coding agent | [Module 2.1](../2_intermediate/module-2-1-issue-first-and-closure-gate.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
 | 4.11 | Publishing and consuming packages (GitHub Packages) | [Module 3.3](../3_advanced/module-3-3-releases.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 35 min |
+| 4.12 | [Moving a GitLab pipeline to GitHub Actions](module-4-12-moving-a-gitlab-pipeline-to-actions.md) (built) | [Module 0.4](../0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 1.1](../1_beginners/module-1-1-getting-started.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
 
 ## Candidates
 
@@ -189,6 +190,13 @@ Built: [Module 4.1](module-4-1-reviewing-changes-an-ai-agent-wrote.md).
   checked.
 - **Candidate issue title:** "Education: add Module 4.11, publishing and
   consuming packages".
+
+### Module 4.12: Moving a GitLab pipeline to GitHub Actions
+
+Built: [Module 4.12](module-4-12-moving-a-gitlab-pipeline-to-actions.md). It
+stands on its own and is not part of Module 4.3: it starts from a GitLab pipeline
+and teaches the rewrite, while Module 4.3 stays the general lesson on authoring a
+workflow from scratch. The numbering is by order of building, not by reading order.
 
 ## Also considered, not proposed
 

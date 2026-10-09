@@ -21,7 +21,7 @@ assistants — most colleagues use an AI coding assistant, so that page is no
 longer optional) plus three conditional pages (Module 0.4 for teams moving from
 GitLab, and Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
 assistant, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
-Module 3.6, and the first module built from it, Module 4.1. `examples/`,
+Module 3.6, and the modules built from it so far, Modules 4.1 and 4.12. `examples/`,
 `cheat-sheet.md`, and `facilitator-guide.md` sit outside the numbered
 sequence — lookup references, not steps to work through in order.
 
@@ -93,6 +93,7 @@ flowchart TD
 | You use an AI assistant and want to know about skills, instruction files, and MCP servers | [Module 1.6: Skills, instruction files, and MCP servers](1_beginners/module-1-6-skills-instructions-and-mcp.md) (after the LLM prerequisite) |
 | You are about to add a skill or an MCP server you did not write | [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) (after Module 1.6) |
 | You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
+| Your team's CI is a `.gitlab-ci.yml` and you must move it to GitHub Actions | [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md) (after Module 0.4, Module 1.1, and Module 3.5) |
 | Already know GitLab or Azure DevOps, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) (including account protection), then [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md) with its GitLab/ADO comparison table for a quick orientation, then `skills/github-for-gitlab-users/SKILL.md` (GitLab) or `skills/github-for-ado-users/SKILL.md` (Azure DevOps) for the full mapping |
 
 **Whatever your background: read [Module 0.5: What kinds of tools are these?](0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md)
@@ -238,6 +239,7 @@ mindmap
       Module 3.6: Rebase, cherry-pick, and reflog recovery
     4: Next step
       Module 4.1: Reviewing changes an AI agent wrote
+      Module 4.12: Moving a GitLab pipeline to GitHub Actions
 ```
 
 ## Materials
@@ -272,7 +274,8 @@ mindmap
 - [Module 3.5: Actions, runners, and the Copilot coding agent](3_advanced/module-3-5-actions-runners-and-agents.md) — ~15-20 min, optional.
 - [Module 3.6: Rebase, cherry-pick, and reflog recovery](3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md) — ~25 min, hands-on, in a terminal (needs Git and Module 1.2), optional.
 - [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) — ~30 min, a paper review of an invented agent pull request, optional. Scope creep, invented APIs, claimed checks, and why a green check is not a decision.
-- [Next-step module plan](4_next-step/module-plan.md) — a plan of candidate advanced modules; only Module 4.1 is built.
+- [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md) — ~40 min, hands-on in the sandbox, conditional (for teams moving from GitLab CI), optional. Translate a small pipeline, then fix the first failed run from its log.
+- [Next-step module plan](4_next-step/module-plan.md) — a plan of candidate advanced modules; Modules 4.1 and 4.12 are built.
 - [At a glance](at-a-glance.md) — one picture and one sentence for every lesson page, the five-minute version, with a "do not skip" line where a rule matters. Generated from the graphics index; the module text wins.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
@@ -328,3 +331,4 @@ graphic and that each file has a title and description and no script.
 - [Tidy, copy, recover](graphics/module-3-6-rebase-cherry-pick-and-reflog.svg) — Module 3.6.
 - [Inspect the work, not the summary](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote.svg) — Module 4.1.
 - [Six patterns in an agent’s pull request](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote-patterns.svg) — Module 4.1.
+- [Rewrite, do not rename](graphics/module-4-12-moving-a-gitlab-pipeline-to-actions.svg) — Module 4.12.

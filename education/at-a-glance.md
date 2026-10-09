@@ -324,6 +324,16 @@ Read the module: [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/m
 
 Read the module: [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md)
 
+### Module 4.12: Rewrite, do not rename
+
+![Four GitLab CI ideas and where each lands in GitHub Actions: stages become needs, rules become on and if, passed-on artifacts become an explicit upload and download because each job gets a fresh machine, and a masked variable becomes a scoped secret with least-privilege permissions.](graphics/module-4-12-moving-a-gitlab-pipeline-to-actions.svg)
+
+**In one sentence:** Rewrite the pipeline from its intent. A file rename only moves the bugs.
+
+**Do not skip:** A job in Actions starts on a fresh machine: upload and download the files it needs.
+
+Read the module: [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md)
+
 ---
 
 Back to the [education README](README.md).
