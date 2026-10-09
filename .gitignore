@@ -6,3 +6,6 @@ node_modules/
 # SDD/worktree scratch (local only)
 .worktrees/
 .superpowers/
+
+# Output of npm run export:graphics and npm run slides:data (local only)
+.export/

@@ -91,6 +91,16 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
   run `npm run glance` to regenerate the at-a-glance page. The index is where the
   one-line takeaway and the optional "do not skip" rule live, so a slide deck or
   an export reads from it, not from the SVG text.
+- **PNG export and slide deck data** (`tests/export-graphics.test.mjs`): the
+  export job list, the file naming, and the slide fields built from the index.
+  `npm run export:graphics` renders every SVG to a light and a dark PNG in
+  `.export/education-graphics/` (git-ignored; options `--out`, `--theme`,
+  `--scale`) with Chromium through `playwright-core`; it needs a Chrome or
+  Chromium binary, given with `--chrome` or the `CHROME_PATH` variable, and
+  downloads no browser. `npm run slides:data` writes `.export/education-deck/deck.json`
+  (one slide per index entry, with the "(part k of n)" label where a module has
+  more than one graphic). Neither command changes tracked files; build the deck
+  from that data and the light PNGs.
 - **Public-content scan** (`scripts/scan-public-content.mjs`,
   `tests/public-content-scan.test.mjs`; run alone with `npm run scan:public`): a
   token-shaped string (GitHub, AWS, Google, Slack, `sk-` keys, private key

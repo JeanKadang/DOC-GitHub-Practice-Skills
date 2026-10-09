@@ -25,11 +25,25 @@ export function moduleLabel(page) {
   return match ? `Module ${match[1]}.${match[2]}` : page;
 }
 
-function tierOf(page) {
+export function tierOf(page) {
   return Number(page.split('/')[0].split('_')[0]);
 }
 
+// "Module 4.1" for a page with one graphic, "Module 4.1 (part 1 of 2)" for a page
+// with several, so two entries for one module do not read as a duplicate.
+export function entryLabels(index) {
+  const total = {};
+  for (const entry of index) total[entry.page] = (total[entry.page] ?? 0) + 1;
+  const seen = {};
+  return index.map((entry) => {
+    seen[entry.page] = (seen[entry.page] ?? 0) + 1;
+    const label = moduleLabel(entry.page);
+    return total[entry.page] > 1 ? `${label} (part ${seen[entry.page]} of ${total[entry.page]})` : label;
+  });
+}
+
 export function renderGlance(index, readHeading) {
+  const labels = entryLabels(index);
   const lines = [
     '# At a glance',
     '',
@@ -49,7 +63,7 @@ export function renderGlance(index, readHeading) {
     for (const entry of inTier) {
       lines.push(
         // A heading may not end in punctuation (markdownlint MD026).
-        `### ${moduleLabel(entry.page)}: ${entry.title.replace(/[.:;,!]+$/, '')}`,
+        `### ${labels[index.indexOf(entry)]}: ${entry.title.replace(/[.:;,!]+$/, '')}`,
         '',
         `![${entry.alt}](graphics/${entry.file})`,
         '',
