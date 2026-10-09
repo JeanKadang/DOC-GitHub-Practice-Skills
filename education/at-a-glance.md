@@ -26,7 +26,7 @@ Read the module: [Module 0.1: What Is Version Control?](0_prerequisites/module-0
 
 Read the module: [Module 0.2: What Is Git?](0_prerequisites/module-0-2-what-is-git.md)
 
-### Module 0.3: What GitHub adds to Git
+### Module 0.3 (part 1 of 2): What GitHub adds to Git
 
 ![Three cards: hosting a shared copy, review so changes are checked before they count, and a paper trail of issues that record what was done and why.](graphics/module-0-3-what-is-github.svg)
 
@@ -36,7 +36,7 @@ Read the module: [Module 0.2: What Is Git?](0_prerequisites/module-0-2-what-is-g
 
 Read the module: [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md)
 
-### Module 0.3: Protect the account before you need to
+### Module 0.3 (part 2 of 2): Protect the account before you need to
 
 ![Four steps: turn on two-factor with two or more methods, save recovery codes in a password manager, keep codes and factors to yourself, and re-register two-factor before replacing a device.](graphics/module-0-3-what-is-github-account-protection.svg)
 
@@ -94,7 +94,7 @@ Read the module: [Module 0.8: Connect VS Code to Git, GitHub and an AI assistant
 
 Read the module: [Module 1.1: Getting Started with GitHub](1_beginners/module-1-1-getting-started.md)
 
-### Module 1.2: Add packs the box. Commit seals it
+### Module 1.2 (part 1 of 2): Add packs the box. Commit seals it
 
 ![Three files on a desk. Two are packed into a staging box with git add; the box is sealed and labeled with git commit. The third file stays on the desk.](graphics/module-1-2-local-git-basics.svg)
 
@@ -102,7 +102,7 @@ Read the module: [Module 1.1: Getting Started with GitHub](1_beginners/module-1-
 
 Read the module: [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md)
 
-### Module 1.2: Three undos, three different jobs
+### Module 1.2 (part 2 of 2): Three undos, three different jobs
 
 ![Three undo commands: restore is a pencil eraser and the edit is gone, revert is a void slip that adds a correction and is safe to share, reset tears out pages and rewrites history.](graphics/module-1-2-local-git-basics-undo.svg)
 
@@ -128,7 +128,7 @@ Read the module: [Module 1.3: Markdown for issues and pull requests](1_beginners
 
 Read the module: [Module 1.4: Finding your way around a repository](1_beginners/module-1-4-finding-your-way-around-a-repo.md)
 
-### Module 1.5: Change the lock before the cleanup
+### Module 1.5 (part 1 of 2): Change the lock before the cleanup
 
 ![A secret key pushed to a repository has already been copied. Deleting the file does not help. The order is rotate the key, tell the maintainer privately, then clean up.](graphics/module-1-5-what-never-goes-in-a-repo.svg)
 
@@ -138,7 +138,7 @@ Read the module: [Module 1.4: Finding your way around a repository](1_beginners/
 
 Read the module: [Module 1.5: What never goes in a repository](1_beginners/module-1-5-what-never-goes-in-a-repo.md)
 
-### Module 1.5: A .gitignore is a net, not a vault
+### Module 1.5 (part 2 of 2): A .gitignore is a net, not a vault
 
 ![What stays out of a repository, a sample gitignore file, and how to check it with git status. Two limits: it only affects files Git is not tracking yet, and it does not protect a secret anywhere else.](graphics/module-1-5-what-never-goes-in-a-repo-gitignore.svg)
 
@@ -166,7 +166,7 @@ Read the module: [Module 1.6: Skills, instruction files, and MCP servers](1_begi
 
 Read the module: [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md)
 
-### Module 2.2: Approving is not merging
+### Module 2.2 (part 1 of 2): Approving is not merging
 
 ![Author, reviewer and maintainer. The reviewer gives an Approved stamp and the maintainer gives a separate Merged stamp. Below, Request changes is a real blocker and Comment gives no verdict.](graphics/module-2-2-pr-review-and-branch-conventions.svg)
 
@@ -176,7 +176,7 @@ Read the module: [Module 2.1: Issue-first and the closure gate](2_intermediate/m
 
 Read the module: [Module 2.2: PR review and branch conventions](2_intermediate/module-2-2-pr-review-and-branch-conventions.md)
 
-### Module 2.2: A milestone is a release bucket, not a sprint
+### Module 2.2 (part 2 of 2): A milestone is a release bucket, not a sprint
 
 ![Two cards: branch names start with fix, feat or docs, one branch per issue from an up-to-date main; a milestone is a release bucket that answers what ships next, and sprint cadence belongs in a Projects iteration field.](graphics/module-2-2-pr-review-and-branch-conventions-milestones.svg)
 
@@ -232,7 +232,7 @@ Read the module: [Module 2.7: Contributing to someone else's repository](2_inter
 
 Read the module: [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md)
 
-### Module 2.9: A note under the door can steer your assistant
+### Module 2.9 (part 1 of 2): A note under the door can steer your assistant
 
 ![Untrusted text reaches an assistant that reads it and may obey, leading to an action with your access. Three places to break the chain: fewer untrusted sources, review what it proposes, and limit its access.](graphics/module-2-9-safety-with-skills-and-mcp-servers.svg)
 
@@ -242,7 +242,7 @@ Read the module: [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why
 
 Read the module: [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md)
 
-### Module 2.9: Seven questions before you add one
+### Module 2.9 (part 2 of 2): Seven questions before you add one
 
 ![A checklist of seven questions to answer before adding a skill or an MCP server: who publishes it, what it runs, what it can reach, what it needs to know, what it may do without asking, who else gets it, and whether there is a policy.](graphics/module-2-9-safety-with-skills-and-mcp-servers-checklist.svg)
 
@@ -306,7 +306,7 @@ Read the module: [Module 3.6: Rebase, Cherry-Pick, and Reflog Recovery](3_advanc
 
 ## Next step
 
-### Module 4.1: Inspect the work, not the summary
+### Module 4.1 (part 1 of 2): Inspect the work, not the summary
 
 ![An agent's pull request description claims all tests pass and no other changes. Compare it with the diff: an unrelated file changed, a call to something that does not exist, and a claimed test missing.](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote.svg)
 
@@ -316,7 +316,7 @@ Read the module: [Module 3.6: Rebase, Cherry-Pick, and Reflog Recovery](3_advanc
 
 Read the module: [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md)
 
-### Module 4.1: Six patterns in an agent’s pull request
+### Module 4.1 (part 2 of 2): Six patterns in an agent’s pull request
 
 ![Six patterns to watch for and how to check each: scope creep, an invented API, a claimed check that did not happen, a special case that passes, weakened safety nets, and an intention told as fact.](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote-patterns.svg)
 

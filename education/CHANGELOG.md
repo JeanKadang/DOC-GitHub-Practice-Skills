@@ -13,6 +13,10 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `npm run export:graphics` renders every explainer graphic to a light and a
+  dark PNG, and `npm run slides:data` writes the slide data for a deck, both
+  read from `education/graphics/index.json`. The at-a-glance page now labels a
+  module with two graphics "part 1 of 2" and "part 2 of 2".
 - A coverage audit of the explainer graphics against each module's learning
   objectives, and the gaps it found filled: five second graphics (account
   protection in Module 0.3, what stays out of a repository and `.gitignore` in
