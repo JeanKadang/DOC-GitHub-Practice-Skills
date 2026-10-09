@@ -114,6 +114,10 @@
 
 ### Changed
 
+- `AGENTS.md` and the README now state the repository's priorities: the GitHub
+  skills are the primary product, `education/` is secondary, and the skills come
+  first when the two compete for effort, with education growing after each skill
+  milestone (#295). Wording only; no skill text, test, or behaviour changed.
 - Documentation accuracy and consistency sweep across the root documents
   (`README.md`, `SECURITY.md`, `docs/GUIDE.md`, `docs/MAINTAINING.md`,
   `docs/WORKFLOW.md`) and `education/README.md` (#41).

@@ -19,6 +19,16 @@ that copies that policy into a consumer's home directory (`~/.codex`,
 directory to install into, exports a flattened file set for upload as Custom
 GPT Knowledge (`docs/chatgpt.md`).
 
+**Priorities.** The primary product is the set of GitHub skills: best-in-class
+workflow policy that the maintainer uses across most of their repositories and
+shares so others get a first-class GitHub experience. The secondary product is
+the educational material in `education/`, training for colleagues that also
+reaches beyond GitHub (the LLM and tooling track). When the two compete for
+effort, the skills come first: skill correctness, evidence that each platform
+finds and follows them, and a trustworthy release take precedence over new
+lessons. Education is not paused by this: it keeps growing, sequenced after the
+skill milestones.
+
 Because the "code" here is largely prescriptive documentation that other AI
 agents will read and act on, precision and internal consistency across files
 matter more than usual — a wording change in one skill can contradict another.
