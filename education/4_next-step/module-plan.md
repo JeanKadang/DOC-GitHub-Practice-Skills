@@ -1,7 +1,7 @@
 # Next-step modules: plan
 
-**Status:** a plan. Nothing here is required reading. Modules 4.1, 4.9, 4.10 and 4.12
-are built; every other entry is an outline that is ready to become an issue.
+**Status:** a plan. Nothing here is required reading. Modules 4.1, 4.9, 4.10, 4.12 and
+4.13 are built; every other entry is an outline that is ready to become an issue.
 
 The tiers before this one end at Module 3.6. This folder is for what comes
 after: material for people who already work comfortably in the GitHub workflow
@@ -37,6 +37,7 @@ and want to go further. Modules built from this plan are named
 | 4.10 | [Assigning issues to the Copilot coding agent](module-4-10-assigning-issues-to-the-copilot-coding-agent.md) (built) | [Module 2.1](../2_intermediate/module-2-1-issue-first-and-closure-gate.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
 | 4.11 | Publishing and consuming packages (GitHub Packages) | [Module 3.3](../3_advanced/module-3-3-releases.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 35 min |
 | 4.12 | [Moving a GitLab pipeline to GitHub Actions](module-4-12-moving-a-gitlab-pipeline-to-actions.md) (built) | [Module 0.4](../0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 1.1](../1_beginners/module-1-1-getting-started.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
+| 4.13 | [Writing an instruction file for your repository](module-4-13-writing-an-instruction-file-for-your-repository.md) (built) | [Module 1.6](../1_beginners/module-1-6-skills-instructions-and-mcp.md), [Module 2.9](../2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) | 35 min |
 
 ## Candidates
 
@@ -45,6 +46,10 @@ and want to go further. Modules built from this plan are named
 Built: [Module 4.1](module-4-1-reviewing-changes-an-ai-agent-wrote.md).
 
 ### Module 4.2: Writing your own agent skill
+
+Do [Module 4.13](module-4-13-writing-an-instruction-file-for-your-repository.md)
+first: an instruction file is the smaller step, and most conventions belong there
+rather than in a skill.
 
 - **Audience:** maintainers who want an assistant to follow a team convention.
 - **Prerequisites:** Module 2.1.
@@ -166,6 +171,12 @@ Built: [Module 4.12](module-4-12-moving-a-gitlab-pipeline-to-actions.md). It
 stands on its own and is not part of Module 4.3: it starts from a GitLab pipeline
 and teaches the rewrite, while Module 4.3 stays the general lesson on authoring a
 workflow from scratch. The numbering is by order of building, not by reading order.
+
+### Module 4.13: Writing an instruction file for your repository
+
+Built: [Module 4.13](module-4-13-writing-an-instruction-file-for-your-repository.md).
+It sits before Module 4.2 in reading order and builds on Modules 1.6 and 2.9. The
+number follows the order of building, not the reading order.
 
 ## Also considered, not proposed
 
