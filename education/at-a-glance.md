@@ -334,6 +334,16 @@ Read the module: [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/m
 
 Read the module: [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md)
 
+### Module 4.10: Write the issue like a prompt
+
+![A vague issue and a specific one side by side. The vague one leaves scope, criteria, limits and the check unsaid. The specific one states one line in one file, observable criteria, a rule to touch no other file, and the evidence to look for, so the pull request can be reviewed against it.](graphics/module-4-10-assigning-issues-to-the-copilot-coding-agent.svg)
+
+**In one sentence:** An agent builds what the issue says, so write it like a prompt.
+
+**Do not skip:** Your approval of an agent's pull request does not count toward the required number: another reviewer must approve.
+
+Read the module: [Module 4.10: Assigning issues to the Copilot coding agent](4_next-step/module-4-10-assigning-issues-to-the-copilot-coding-agent.md)
+
 ---
 
 Back to the [education README](README.md).

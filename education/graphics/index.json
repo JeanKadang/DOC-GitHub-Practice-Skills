@@ -267,5 +267,13 @@
     "takeaway": "Rewrite the pipeline from its intent. A file rename only moves the bugs.",
     "alt": "Four GitLab CI ideas and where each lands in GitHub Actions: stages become needs, rules become on and if, passed-on artifacts become an explicit upload and download because each job gets a fresh machine, and a masked variable becomes a scoped secret with least-privilege permissions.",
     "rule": "A job in Actions starts on a fresh machine: upload and download the files it needs."
+  },
+  {
+    "file": "module-4-10-assigning-issues-to-the-copilot-coding-agent.svg",
+    "page": "4_next-step/module-4-10-assigning-issues-to-the-copilot-coding-agent.md",
+    "title": "Write the issue like a prompt",
+    "takeaway": "An agent builds what the issue says, so write it like a prompt.",
+    "alt": "A vague issue and a specific one side by side. The vague one leaves scope, criteria, limits and the check unsaid. The specific one states one line in one file, observable criteria, a rule to touch no other file, and the evidence to look for, so the pull request can be reviewed against it.",
+    "rule": "Your approval of an agent's pull request does not count toward the required number: another reviewer must approve."
   }
 ]

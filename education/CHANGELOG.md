@@ -13,6 +13,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 4.10, assigning issues to the Copilot coding agent (optional, ~40 min,
+  hands-on in the sandbox with a paper path for learners without agent access) in
+  `4_next-step/`, with an explainer graphic, a Mermaid diagram, and a vendor-facts
+  table dated 2026-10-09 (availability, assignment, branches and rules, review and
+  approval, workflows). The exercise compares a vague and a specific issue and ends
+  with the closure-gate check from Module 2.1 on the better pull request. The
+  README, plan and at-a-glance page list it.
 - Module 4.12, moving a GitLab pipeline to GitHub Actions (conditional, ~40 min,
   hands-on in the sandbox) in `4_next-step/`, with an explainer graphic, a Mermaid
   diagram, and a vendor-facts table dated 2026-10-09 (GitHub Actions Importer

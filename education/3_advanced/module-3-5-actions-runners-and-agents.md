@@ -92,6 +92,11 @@ flowchart LR
 What this shows: the agent's work enters the exact same pipeline a human
 contributor's PR would — the only thing that's different is who opened it.
 
+To practise writing an issue an agent can act on and handing it over, see
+[Module 4.10](../4_next-step/module-4-10-assigning-issues-to-the-copilot-coding-agent.md);
+for reviewing what it wrote, see
+[Module 4.1](../4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md).
+
 ## Self-check
 
 - Where does a GitHub Actions workflow file live, and what triggers it?
