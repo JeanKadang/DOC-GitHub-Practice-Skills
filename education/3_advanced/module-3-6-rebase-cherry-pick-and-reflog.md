@@ -11,6 +11,8 @@ repo.
 
 **Timing:** ~25 min.
 
+![Three cards: rebase turns three messy commits into one, cherry-pick copies one commit to another branch, and the reflog still holds a commit that looks lost.](../graphics/module-3-6-rebase-cherry-pick-and-reflog.svg)
+
 ## Learning objectives
 
 - Use interactive rebase to clean up a messy commit history — safely,

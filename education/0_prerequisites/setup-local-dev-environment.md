@@ -9,6 +9,8 @@ reading.
 
 **Timing budget:** ~35 minutes, most of it install time.
 
+![Six tiles in order: install Git, set your Git name, install VS Code, connect VS Code to GitHub, sign in to the GitHub CLI if you use it, and add the recommended extensions.](../graphics/setup-local-dev-environment.svg)
+
 ## Why this exists
 
 Module 1.2 assumes `git` is already installed and working, and that Git knows

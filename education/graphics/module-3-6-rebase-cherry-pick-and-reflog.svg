@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 390" width="560" height="390"><title>Tidy, copy, recover</title><desc>Three cards: rebase turns three messy commits into one, cherry-pick copies one commit to another branch, and the reflog still holds a commit that looks lost.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="390" rx="16"/><rect class="paper" x="12.0" y="22" width="170.66666666666666" height="262" rx="14"/><rect class="ta" x="71.33333333333333" y="60" width="44" height="28" rx="5"/><rect class="ta" x="79.33333333333333" y="70" width="44" height="28" rx="5"/><rect class="ta" x="87.33333333333333" y="80" width="44" height="28" rx="5"/><rect class="ln" x="95.33333333333333" y="90" width="22" height="5" rx="2"/><text class="lb mid" x="97.33333333333333" y="156">Rebase</text><text class="sm mid" x="97.33333333333333" y="184">three commits</text><text class="sm mid" x="97.33333333333333" y="204">become one</text><rect class="ta" x="28.913333333333327" y="236" width="136.84" height="32" rx="16"/><text class="mns atxt mid" x="97.33333333333333" y="257">unpushed only</text><rect class="paper" x="194.66666666666666" y="22" width="170.66666666666666" height="262" rx="14"/><path class="st" d="M262.0,58 V110"/><path class="st" d="M298.0,74 V110"/><path class="st" d="M262.0,86 Q262.0,74 298.0,74"/><circle class="paper" cx="262.0" cy="58" r="6"/><circle class="paper" cx="262.0" cy="110" r="6"/><circle class="tg" cx="298.0" cy="92" r="7"/><path class="arw-g" d="M272.0,92 H288.0"/><text class="lb mid" x="280.0" y="156">Cherry-pick</text><text class="sm mid" x="280.0" y="184">copy one commit</text><text class="sm mid" x="280.0" y="204">to another branch</text><rect class="tg" x="224.6" y="236" width="110.8" height="32" rx="16"/><text class="mns gtxt mid" x="280.0" y="257">one commit</text><rect class="paper" x="377.3333333333333" y="22" width="170.66666666666666" height="262" rx="14"/><rect class="paper" x="434.66666666666663" y="56" width="56" height="56" rx="8"/><rect class="ln" x="442.66666666666663" y="64" width="40" height="6" rx="3"/><rect class="ln" x="442.66666666666663" y="77" width="40" height="6" rx="3"/><rect class="tg" x="442.66666666666663" y="90" width="40" height="6" rx="3"/><rect class="ln" x="442.66666666666663" y="103" width="40" height="6" rx="3"/><text class="lb mid" x="462.66666666666663" y="156">Reflog</text><text class="sm mid" x="462.66666666666663" y="184">a lost commit</text><text class="sm mid" x="462.66666666666663" y="204">is in the log</text><rect class="tg" x="402.9266666666666" y="236" width="119.48" height="32" rx="16"/><text class="mns gtxt mid" x="462.66666666666663" y="257">recoverable</text><rect class="tg" x="14" y="310" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="338">Rewrite only history that nobody else has</text><text class="bn mid" x="280.0" y="360">pulled.</text></svg>

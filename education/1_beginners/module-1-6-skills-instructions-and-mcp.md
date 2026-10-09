@@ -15,6 +15,8 @@ for them, and walks you through adding one instruction and removing it again.
 Module 2.9 covers the safety side, and you should read it before you add
 anything you didn't write yourself.
 
+![An instruction file is a poster on the wall, always read. A skill is a recipe card pulled out when the dish matches. An MCP server is a hatch to another kitchen and runs code, so review it first.](../graphics/module-1-6-skills-instructions-and-mcp.svg)
+
 ## Learning objectives
 
 - Explain what an instruction file, a skill, and an MCP server each are, and how

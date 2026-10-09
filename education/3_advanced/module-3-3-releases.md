@@ -7,6 +7,8 @@ independent of Modules 3.1, 3.2, and 3.4-3.6 — read in any order.
 callouts mark optional group activities.
 **Timing:** ~25 min.
 
+![Seven steps in order: pick the version, make a release branch, verify, open the release pull request, tag main, confirm the release, and close the milestone. A note says to read the version file, not the last tag.](../graphics/module-3-3-releases.svg)
+
 ## Learning objectives
 
 - Walk through the shape of a release, end to end.

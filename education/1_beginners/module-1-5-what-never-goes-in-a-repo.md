@@ -13,6 +13,8 @@ module names what must stay out, shows the everyday tool for keeping it out, and
 teaches the one thing to do first after a slip. The full incident procedure is
 Module 3.4; here you only need the first step and why it is first.
 
+![A secret key pushed to a repository has already been copied. Deleting the file does not help. The order is rotate the key, tell the maintainer privately, then clean up.](../graphics/module-1-5-what-never-goes-in-a-repo.svg)
+
 ## Learning objectives
 
 - Name what never belongs in a repository: secrets, tokens, personal data, and

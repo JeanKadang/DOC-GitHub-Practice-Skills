@@ -6,6 +6,8 @@ independent of Modules 3.1-3.4 and 3.6 — read in any order.
 **Format:** Self-paced — read and do each step yourself.
 **Timing:** ~15-20 min.
 
+![An event triggers a workflow, which runs jobs on a runner. A GitHub-hosted runner is a fresh machine per job and the default. A self-hosted runner needs upkeep and is a risk on public repositories.](../graphics/module-3-5-actions-runners-and-agents.svg)
+
 ## Learning objectives
 
 - Know what a GitHub Actions workflow is and where it lives.

@@ -15,6 +15,8 @@ does not move. What moves is where the mistakes hide: an agent writes fluent,
 confident descriptions, it is fast, and it will happily make a change that looks
 right and was never checked.
 
+![An agent's pull request description claims all tests pass and no other changes. Compare it with the diff: an unrelated file changed, a call to something that does not exist, and a claimed test missing.](../graphics/module-4-1-reviewing-changes-an-ai-agent-wrote.svg)
+
 ## Learning objectives
 
 - Read an agent's diff for changes beyond the task, and for calls to things that

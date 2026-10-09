@@ -13,6 +13,8 @@ small slice of Markdown you need for that. For a full syntax reference, keep
 [the Markdown formatting showcase](../examples/markdown-formatting-showcase.md)
 open in another tab.
 
+![An issue body drawn as a form with a heading, a code block, a task list and a collapsed section, each annotated with why it helps the reader.](../graphics/module-1-3-markdown-for-issues-and-prs.svg)
+
 ## Learning objectives
 
 - Format an issue body with headings, task lists, code fences, and a

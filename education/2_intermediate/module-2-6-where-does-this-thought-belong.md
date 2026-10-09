@@ -12,6 +12,8 @@ into noise. This module explains the reasons behind the "what does not belong
 in an issue" rules in `github-issue-first`: where each kind of thought lives,
 and why.
 
+![Four cards: a Discussion for open exploration, an issue for committed work, an ADR file for a decision already made, and a decision-needed issue for a decision still to make. An arrow shows a Discussion converting to an issue.](../graphics/module-2-6-where-does-this-thought-belong.svg)
+
 ## Learning objectives
 
 - Choose between an issue (committed work), a Discussion (open exploration),

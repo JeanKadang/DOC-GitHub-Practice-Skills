@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 388" width="560" height="388"><title>Your copy, their rules</title><desc>Upstream is forked into your fork, you branch from it, and a pull request goes back to upstream. A strip says the maintainers rules decide, and to sync before every branch.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="388" rx="16"/><rect class="paper" x="12" y="24" width="150" height="118" rx="14"/><path class="paper" d="M57,52 L87,26 L117,52"/><rect class="paper" x="63" y="52" width="48" height="34" rx="4"/><rect class="ln" x="81" y="64" width="12" height="22" rx="3"/><text class="lb mid" x="87" y="112" style="font-size:17px">Upstream</text><text class="sm mid" x="87" y="132" style="font-size:13px">their repository</text><rect class="paper" x="205" y="24" width="150" height="118" rx="14"/><rect class="paper" x="246.0" y="22.0" width="44" height="56" rx="6"/><rect class="ln" x="255.0" y="34.0" width="26" height="6" rx="3"/><rect class="ln" x="255.0" y="48.0" width="16" height="6" rx="3"/><rect class="tg" x="270.0" y="36.0" width="44" height="56" rx="6"/><rect class="ln" x="279.0" y="48.0" width="26" height="6" rx="3"/><rect class="ln" x="279.0" y="62.0" width="16" height="6" rx="3"/><text class="lb mid" x="280" y="112" style="font-size:17px">Your fork</text><text class="sm mid" x="280" y="132" style="font-size:13px">origin: your copy</text><rect class="paper" x="398" y="24" width="150" height="118" rx="14"/><path class="st" d="M455,30 V82"/><path class="st" d="M491,46 V82"/><path class="st" d="M455,58 Q455,46 491,46"/><circle class="paper" cx="455" cy="30" r="6"/><circle class="paper" cx="455" cy="82" r="6"/><circle class="tg" cx="491" cy="64" r="7"/><path class="arw-g" d="M465,64 H481"/><text class="lb mid" x="473" y="112" style="font-size:17px">Your branch</text><text class="sm mid" x="473" y="132" style="font-size:13px">fix/short-name</text><path class="arw" d="M166,80 L202,80"/><text class="mns mid" x="184" y="66" style="font-size:12px">fork</text><path class="arw" d="M359,80 L395,80"/><text class="mns mid" x="377" y="66" style="font-size:11px">branch</text><path class="arw-g" d="M473,148 V186 H87 V150"/><text class="mns mid" x="280" y="178">pull request, against upstream</text><rect class="ta" x="12" y="214" width="536" height="44" rx="12"/><text class="lb mid" x="280" y="242" style="font-size:16px">Their rules decide. Read CONTRIBUTING.md first.</text><text class="sm mid" x="280" y="284">Sync your fork with upstream before every new branch.</text><rect class="tg" x="14" y="308" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="336">Contribute the way the maintainers ask, not the</text><text class="bn mid" x="280.0" y="358">way you usually do.</text></svg>

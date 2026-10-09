@@ -7,6 +7,8 @@ independent of Modules 3.2-3.6 — read in any order.
 callouts mark optional group activities.
 **Timing:** ~25 min.
 
+![Public repositories and private repositories on a paid plan can use rulesets. A private free-plan repository cannot: CI runs but nothing blocks a merge. Solo maintainers require checks only; teams add one review.](../graphics/module-3-1-branch-protection-and-rulesets.svg)
+
 ## Learning objectives
 
 - Understand what branch protection/rulesets do and don't guarantee, and

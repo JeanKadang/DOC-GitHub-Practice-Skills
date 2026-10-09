@@ -4,6 +4,8 @@
 **Format:** Hands-on, in the GitHub web UI — no command line, nothing to install.
 **Timing budget:** ~60 minutes total.
 
+![An original page labeled main is photocopied into a branch, edited, reviewed through a pull request, and merged back, which closes the linked issue.](../graphics/module-1-1-getting-started.svg)
+
 ## Learning objectives
 
 By the end of this session, you will have:

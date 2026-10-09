@@ -5,6 +5,8 @@
 callouts mark optional group activities.
 **Timing:** ~35 min.
 
+![Author, reviewer and maintainer. The reviewer gives an Approved stamp and the maintainer gives a separate Merged stamp. Below, Request changes is a real blocker and Comment gives no verdict.](../graphics/module-2-2-pr-review-and-branch-conventions.svg)
+
 ## Learning objectives
 
 - Know the branch and PR-review conventions well enough to follow them

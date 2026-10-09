@@ -13,6 +13,8 @@ can bend sensibly when the situation really is different. This module walks
 through the rules that new people question most and names the failure each one
 prevents.
 
+![Six rule cards, each with what goes wrong if it is skipped: audit the issue after merge, read a red check before re-running, never approve your own pull request, branch before committing, rotate a leaked secret first, and give evidence for every criterion.](../graphics/module-2-8-why-the-rules-exist.svg)
+
 ## Learning objectives
 
 - Trace at least six rules to the incident or mistake behind them.

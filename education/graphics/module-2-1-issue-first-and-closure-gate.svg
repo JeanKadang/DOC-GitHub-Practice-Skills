@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0.0 560 432.0" width="560" height="432.0"><title>Merged is not done</title><desc>A pull request starts with Refs #N. Every acceptance criterion needs evidence such as a diff, test or CI run. Only then does the pull request say Closes #N. After a merge, check that the issue did not close early.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0.0" width="560" height="432.0" rx="16"/>
+    <rect class="ta" x="22" y="64" width="132" height="86" rx="6" transform="rotate(-4 88 107)"/>
+    <text class="mn mid" x="88" y="112" transform="rotate(-4 88 107)">Refs #N</text>
+    <text class="sm mid" x="88" y="176">starts every PR</text>
+    <path class="arw" d="M164,110 H196"/>
+    <rect class="paper" x="204" y="36" width="170" height="168" rx="10"/>
+    <g><rect class="tg" x="222" y="62" width="22" height="22" rx="4"/><path class="st-g" d="M227,73 l5,5 l8,-10"/><text class="mn" x="256" y="80">diff</text>
+    <rect class="tg" x="222" y="104" width="22" height="22" rx="4"/><path class="st-g" d="M227,115 l5,5 l8,-10"/><text class="mn" x="256" y="122">test</text>
+    <rect class="tg" x="222" y="146" width="22" height="22" rx="4"/><path class="st-g" d="M227,157 l5,5 l8,-10"/><text class="mn" x="256" y="164">CI run</text></g>
+    <text class="sm mid" x="289" y="228">every box has evidence</text>
+    <path class="arw-g" d="M384,110 H418"/>
+    <g transform="rotate(-8 484 110)"><circle class="tg" cx="484" cy="110" r="58"/><circle class="tg" cx="484" cy="110" r="48"/>
+    <text class="lbb mid" x="484" y="106">Closes</text><text class="mn mid" x="484" y="130">#N</text></g>
+    <text class="sm mid" x="484" y="196">only now</text>
+    <rect class="ta" x="22" y="264" width="516" height="50" rx="12"/>
+    <path class="st-a" d="M52,276 v14 M52,300 v1"/>
+    <text class="lb" x="76" y="296">After a merge, check the issue did not close early.</text>
+  <rect class="tg" x="14" y="352.0" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="380.0">Refs links the work. Closes comes only after</text><text class="bn mid" x="280.0" y="402.0">every criterion has evidence.</text></svg>

@@ -77,6 +77,12 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
 - **Release guards** (`tests/release.test.mjs`): a release workflow where dependency
   code runs with a write token, a tag not on `main`, a missing changelog section,
   or versions that disagree with the tag.
+- **Education graphics** (`tests/education-graphics.test.mjs`): a lesson page
+  with no explainer graphic, an embed that points at a missing file or has no
+  alt text, a graphic file no page embeds, an SVG without a `<title>` and
+  `<desc>`, and an SVG with a script, event handler, link, embedded image, or
+  reference to anything outside the file. It cannot tell whether a graphic still
+  agrees with its module text, so changing a module means rereading its graphic.
 - **Public-content scan** (`scripts/scan-public-content.mjs`,
   `tests/public-content-scan.test.mjs`; run alone with `npm run scan:public`): a
   token-shaped string (GitHub, AWS, Google, Slack, `sk-` keys, private key

@@ -13,6 +13,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- An explainer graphic on every lesson page: 26 standalone SVG files in
+  `education/graphics/` (Module 1.2 has two), each drawing one idea as an
+  everyday picture, with alt text, a title and description, and light and dark
+  themes. The module text stays the source of truth. A test checks that every
+  page embeds its graphic and that each file is safe and accessible; the README
+  lists them all (#270).
+
 - A Markdown showcase document in `education/examples/`: one fictional sample
   handbook that uses every kind of GitHub-rendered Markdown formatting in context
   (headings, alerts, task lists, tables, code and diff blocks, Mermaid, reference

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 408" width="560" height="408"><title>A gate that exists only on some plans</title><desc>Public repositories and private repositories on a paid plan can use rulesets. A private free-plan repository cannot: CI runs but nothing blocks a merge. Solo maintainers require checks only; teams add one review.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="408" rx="16"/><rect class="paper" x="12" y="20" width="210" height="52" rx="12"/><text class="lb" x="26" y="52" style="font-size:16px">Public repository</text><path class="arw" d="M226,46 L262,46"/><rect class="tg" x="270" y="20" width="278" height="52" rx="12"/><circle class="tg" cx="298" cy="46" r="12"/><path class="st-g" d="M292.6,46.6 l4.2,4.8 l7.2,-9.0"/><text class="lb" x="320" y="52" style="font-size:16px">Rulesets available</text><rect class="paper" x="12" y="82" width="210" height="52" rx="12"/><text class="lb" x="26" y="114" style="font-size:16px">Private, paid plan</text><path class="arw" d="M226,108 L262,108"/><rect class="tg" x="270" y="82" width="278" height="52" rx="12"/><circle class="tg" cx="298" cy="108" r="12"/><path class="st-g" d="M292.6,108.6 l4.2,4.8 l7.2,-9.0"/><text class="lb" x="320" y="114" style="font-size:16px">Rulesets available</text><rect class="paper" x="12" y="144" width="210" height="52" rx="12"/><text class="lb" x="26" y="176" style="font-size:16px">Private, free plan</text><path class="arw" d="M226,170 L262,170"/><rect class="tr" x="270" y="144" width="278" height="52" rx="12"/><text class="lb" x="286" y="166" style="font-size:16px">No ruleset</text><text class="sm" x="286" y="186" style="font-size:13px">CI runs, nothing blocks merge</text><text class="sm mid" x="280" y="224">Once it is available:</text><rect class="paper" x="12" y="236" width="266" height="66" rx="14"/><text class="lb" x="26" y="262" style="font-size:16px">Solo maintainer</text><text class="sm" x="26" y="286" style="font-size:14px">require status checks only</text><rect class="paper" x="290" y="236" width="258" height="66" rx="14"/><text class="lb" x="304" y="262" style="font-size:16px">Two or more maintainers</text><text class="sm" x="304" y="286" style="font-size:14px">checks + at least 1 review</text><rect class="tg" x="14" y="328" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="356">Availability depends on plan and visibility</text><text class="bn mid" x="280.0" y="378">before it depends on your choices.</text></svg>
