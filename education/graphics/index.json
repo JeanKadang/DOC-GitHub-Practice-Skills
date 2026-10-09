@@ -269,6 +269,14 @@
     "rule": "A job in Actions starts on a fresh machine: upload and download the files it needs."
   },
   {
+    "file": "module-4-9-using-copilot-as-a-pull-request-reviewer.svg",
+    "page": "4_next-step/module-4-9-using-copilot-as-a-pull-request-reviewer.md",
+    "title": "Copilot comments, you decide",
+    "takeaway": "Copilot comments. You decide. Merging is still the maintainer's call.",
+    "alt": "What Copilot code review does and what you do in return: it leaves a comment review that is never an approval, so you give your own verdict; it labels each comment high, medium or low, so you judge each as right, wrong or missing; it may repeat dismissed comments, so you dismiss once with a reason; and it reads its instructions file from the head branch, so a pull request can change that file and you review it too.",
+    "rule": "An automated review is input to your verdict: it never counts as the approval or the merge decision."
+  },
+  {
     "file": "module-4-10-assigning-issues-to-the-copilot-coding-agent.svg",
     "page": "4_next-step/module-4-10-assigning-issues-to-the-copilot-coding-agent.md",
     "title": "Write the issue like a prompt",

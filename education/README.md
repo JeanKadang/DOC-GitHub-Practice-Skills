@@ -21,7 +21,7 @@ assistants — most colleagues use an AI coding assistant, so that page is no
 longer optional) plus three conditional pages (Module 0.4 for teams moving from
 GitLab, and Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
 assistant, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
-Module 3.6, and the modules built from it so far, Modules 4.1, 4.10 and 4.12. `examples/`,
+Module 3.6, and the modules built from it so far, Modules 4.1, 4.9, 4.10 and 4.12. `examples/`,
 `cheat-sheet.md`, and `facilitator-guide.md` sit outside the numbered
 sequence — lookup references, not steps to work through in order.
 
@@ -239,6 +239,7 @@ mindmap
       Module 3.6: Rebase, cherry-pick, and reflog recovery
     4: Next step
       Module 4.1: Reviewing changes an AI agent wrote
+      Module 4.9: Using Copilot as a pull request reviewer
       Module 4.10: Assigning issues to the Copilot coding agent
       Module 4.12: Moving a GitLab pipeline to GitHub Actions
 ```
@@ -275,9 +276,10 @@ mindmap
 - [Module 3.5: Actions, runners, and the Copilot coding agent](3_advanced/module-3-5-actions-runners-and-agents.md) — ~15-20 min, optional.
 - [Module 3.6: Rebase, cherry-pick, and reflog recovery](3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md) — ~25 min, hands-on, in a terminal (needs Git and Module 1.2), optional.
 - [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) — ~30 min, a paper review of an invented agent pull request, optional. Scope creep, invented APIs, claimed checks, and why a green check is not a decision.
+- [Module 4.9: Using Copilot as a pull request reviewer](4_next-step/module-4-9-using-copilot-as-a-pull-request-reviewer.md) — ~30 min, hands-on in the sandbox (with a paper path if you have no Copilot review), optional. Judge each Copilot comment right, wrong or noise, list what it missed, and give your own verdict.
 - [Module 4.10: Assigning issues to the Copilot coding agent](4_next-step/module-4-10-assigning-issues-to-the-copilot-coding-agent.md) — ~40 min, hands-on in the sandbox (with a paper path if you have no agent access), optional. Write an issue an agent can act on, hand it over, and run the closure gate on the result.
 - [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md) — ~40 min, hands-on in the sandbox, conditional (for teams moving from GitLab CI), optional. Translate a small pipeline, then fix the first failed run from its log.
-- [Next-step module plan](4_next-step/module-plan.md) — a plan of candidate advanced modules; Modules 4.1, 4.10 and 4.12 are built.
+- [Next-step module plan](4_next-step/module-plan.md) — a plan of candidate advanced modules; Modules 4.1, 4.9, 4.10 and 4.12 are built.
 - [At a glance](at-a-glance.md) — one picture and one sentence for every lesson page, the five-minute version, with a "do not skip" line where a rule matters. Generated from the graphics index; the module text wins.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
@@ -333,5 +335,6 @@ graphic and that each file has a title and description and no script.
 - [Tidy, copy, recover](graphics/module-3-6-rebase-cherry-pick-and-reflog.svg) — Module 3.6.
 - [Inspect the work, not the summary](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote.svg) — Module 4.1.
 - [Six patterns in an agent’s pull request](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote-patterns.svg) — Module 4.1.
+- [Copilot comments, you decide](graphics/module-4-9-using-copilot-as-a-pull-request-reviewer.svg) — Module 4.9.
 - [Write the issue like a prompt](graphics/module-4-10-assigning-issues-to-the-copilot-coding-agent.svg) — Module 4.10.
 - [Rewrite, do not rename](graphics/module-4-12-moving-a-gitlab-pipeline-to-actions.svg) — Module 4.12.

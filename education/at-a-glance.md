@@ -334,6 +334,16 @@ Read the module: [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/m
 
 Read the module: [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md)
 
+### Module 4.9: Copilot comments, you decide
+
+![What Copilot code review does and what you do in return: it leaves a comment review that is never an approval, so you give your own verdict; it labels each comment high, medium or low, so you judge each as right, wrong or missing; it may repeat dismissed comments, so you dismiss once with a reason; and it reads its instructions file from the head branch, so a pull request can change that file and you review it too.](graphics/module-4-9-using-copilot-as-a-pull-request-reviewer.svg)
+
+**In one sentence:** Copilot comments. You decide. Merging is still the maintainer's call.
+
+**Do not skip:** An automated review is input to your verdict: it never counts as the approval or the merge decision.
+
+Read the module: [Module 4.9: Using Copilot as a pull request reviewer](4_next-step/module-4-9-using-copilot-as-a-pull-request-reviewer.md)
+
 ### Module 4.10: Write the issue like a prompt
 
 ![A vague issue and a specific one side by side. The vague one leaves scope, criteria, limits and the check unsaid. The specific one states one line in one file, observable criteria, a rule to touch no other file, and the evidence to look for, so the pull request can be reviewed against it.](graphics/module-4-10-assigning-issues-to-the-copilot-coding-agent.svg)
