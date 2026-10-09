@@ -138,6 +138,12 @@
   `CODEOWNERS` locations (`.github/`, the root, and `docs/`), and has a table that
   separates a confirmed absence from "you cannot tell" and from "unavailable" (#138).
   The table's wording was observed with `gh` on 2026-10-09.
+- The five `platforms/*/README.md` pages are no longer three-line stubs. Each now
+  has an "At a glance" list (installer target, install or export location, what
+  the tool reads, preview command, what to do after installing, what the
+  installer does not cover, and where to find the dated check status) and still
+  points to the authoritative guide in `docs/` for detail, so nothing is
+  duplicated that could drift (#138).
 - The portable improvement form (`skills/github-repo-configure/templates/`) now
   has a required Expected outcome field, and both portable forms say a maintainer
   turns it into acceptance criteria when triaging. `github-repo-configure` and
