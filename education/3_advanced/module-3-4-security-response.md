@@ -40,6 +40,22 @@ line) rather than *what* it was. The location is enough information for
 someone to act on; the value itself is just one more place the secret now
 lives.
 
+```mermaid
+flowchart TD
+    A[A secret was committed,<br/>or a vulnerability was found] --> B[Rotate or revoke<br/>the credential first]
+    B --> C[Report it privately:<br/>private vulnerability reporting]
+    C --> D[Say where it was,<br/>never what it was]
+    D --> E{Does the maintainer decide<br/>history must be cleaned?}
+    E -- Yes --> F[Rewrite history, after the<br/>maintainer's go-ahead]
+    E -- No --> G[Leave history as it is]
+    A -. "never" .-> P[Public issue or pull request]
+```
+
+What this shows: the order of the first moves. Rotating comes first because the
+credential is compromised from the moment it was pushed. The dotted line is the
+one door that stays closed: a vulnerability or committed secret never goes into
+a public issue or pull request.
+
 ## Exercise: practice the reporting flow (no real secret involved)
 
 **Permissions:** you need read access to a repository's Security tab. You must not submit a report.

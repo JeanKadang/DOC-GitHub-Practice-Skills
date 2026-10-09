@@ -172,6 +172,19 @@ radius.
 | `git revert <commit>` | An already-committed change | No — adds a new commit that undoes the old one | Yes — safe on shared branches |
 | `git reset <commit>` | Moves the branch pointer itself | Yes — can discard commits entirely (`--hard`) | Only on a branch nobody else has pulled. `--hard` also discards uncommitted edits, which the reflog can't bring back |
 
+```mermaid
+flowchart TD
+    A[What do you want to undo?] --> B{Is it committed yet?}
+    B -- No --> C["git restore FILE:<br/>the edit is gone for good"]
+    B -- Yes --> D{Has anyone else<br/>pulled that commit?}
+    D -- Yes --> E["git revert COMMIT:<br/>adds a correcting commit"]
+    D -- No --> F["git reset COMMIT moves the branch back;<br/>git revert still works"]
+```
+
+What this shows: which of the three commands fits. Ask first whether the change
+is committed, then whether anyone else has it. Of the commands that undo a
+commit, only `git revert` is safe on a branch other people have pulled.
+
 Try each one on your scratch branch from earlier. First get back onto it, since
 the conflict exercise left you on `conflict-b-<your-name>` with a merge commit, and
 `git revert HEAD` on a merge commit fails (git can't tell which parent to
