@@ -1,6 +1,6 @@
 # Developer and AI tooling taxonomy
 
-A lookup reference, not a lesson. It sorts the tools you will hear about into
+A lookup reference, not a lesson. The short explanation of the kinds is [Module 0.5: What kinds of tools are these?](../0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md); this page is the long list behind it. It sorts the tools you will hear about into
 a small number of categories, so that "what kind of thing is this?" has a
 consistent answer. Use it when a new product name comes up, or when you are
 deciding which of two tools do the same job.

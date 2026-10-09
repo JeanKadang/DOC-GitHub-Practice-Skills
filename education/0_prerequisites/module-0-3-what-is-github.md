@@ -162,7 +162,7 @@ Discussions section.
 
 Next: [Module 0.4: Coming from GitLab](module-0-4-coming-from-gitlab.md) if your
 team is moving from GitLab; otherwise the
-[LLM Track — Pre-requisite: What Is an LLM Assistant?](prerequisite-what-is-an-llm-assistant.md)
+[Module 0.6: What Is an LLM Assistant?](module-0-6-what-is-an-llm-assistant.md)
 (also required reading before Module 1.1 if you'll be using an AI coding
 assistant — most colleagues will), then
 [Module 1.1: Getting Started](../1_beginners/module-1-1-getting-started.md) —

@@ -112,7 +112,7 @@ covers where a thought belongs.
 - The `github-for-gitlab-users` skill, for any specific concept you are mapping.
 - [Module 1.1: Getting Started](../1_beginners/module-1-1-getting-started.md), the
   hands-on part, once you have read the
-  [LLM Track — Pre-requisite](prerequisite-what-is-an-llm-assistant.md).
+  [Module 0.6: What Is an LLM Assistant?](module-0-6-what-is-an-llm-assistant.md).
 - If you come from Azure DevOps instead, use `skills/github-for-ado-users/SKILL.md`
   alongside the table above.
 
@@ -134,5 +134,5 @@ Discussions section.
 
 ---
 
-Next: the [LLM Track — Pre-requisite: What Is an LLM Assistant?](prerequisite-what-is-an-llm-assistant.md),
+Next: the [Module 0.6: What Is an LLM Assistant?](module-0-6-what-is-an-llm-assistant.md),
 then [Module 1.1: Getting Started](../1_beginners/module-1-1-getting-started.md).

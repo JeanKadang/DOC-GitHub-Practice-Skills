@@ -1,7 +1,7 @@
 # Module 4.1: Reviewing changes an AI agent wrote
 
 **Audience:** Anyone who has done Modules 2.2 and 3.5 and read the
-[LLM prerequisite](../0_prerequisites/prerequisite-what-is-an-llm-assistant.md),
+[LLM prerequisite](../0_prerequisites/module-0-6-what-is-an-llm-assistant.md),
 and who accepts pull requests from an AI coding assistant or from the Copilot
 coding agent.
 **Format:** Self-paced — read and work through each step yourself. Facilitator-note

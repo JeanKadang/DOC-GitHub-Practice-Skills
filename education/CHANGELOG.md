@@ -13,6 +13,17 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 0.5 (what kinds of tools are these?), a short rewrite of the AI tooling
+  taxonomy for newcomers; the long product tables stay in
+  `examples/ai-tooling-taxonomy.md`. The LLM prerequisite is now Module 0.6, and
+  the local setup page is split into Module 0.7 (set up VS Code) and Module 0.8
+  (connect VS Code to Git, GitHub and an AI assistant, which now includes a short
+  step for adding an assistant). Module 0.6's paper practice now states
+  permissions, starting and success state, likely errors and cleanup. ADR 0015
+  records the new `0_prerequisites/` layout. Old file names changed:
+  `prerequisite-what-is-an-llm-assistant.md` and `setup-local-dev-environment.md`
+  are gone (#272).
+
 - Mermaid diagrams on the pages that had none or where a decision is easier to
   follow as a picture: the GitLab to GitHub mapping (Module 0.4), the order of an
   issue body and the preview loop (Module 1.3), which undo command to use (Module

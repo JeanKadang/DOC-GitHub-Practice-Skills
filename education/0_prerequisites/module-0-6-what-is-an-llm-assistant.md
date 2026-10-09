@@ -1,4 +1,4 @@
-# LLM Track — Pre-requisite: What Is an LLM Assistant?
+# Module 0.6: What Is an LLM Assistant?
 
 **Audience:** Anyone about to use an AI coding assistant (Claude, GitHub
 Copilot, ChatGPT, or similar) for the first time — no prior experience
@@ -10,17 +10,19 @@ actually catch people.
 
 **Timing budget:** ~25 minutes (about 15 reading, 10 on the practice).
 
-![Two cards compare an assistant that only writes text with one that uses tools to edit files and run commands. Four chips list what shapes either: instructions, context, tools and permission.](../graphics/prerequisite-what-is-an-llm-assistant.svg)
+![Two cards compare an assistant that only writes text with one that uses tools to edit files and run commands. Four chips list what shapes either: instructions, context, tools and permission.](../graphics/module-0-6-what-is-an-llm-assistant.svg)
 
 ## Why this exists
 
 Colleagues new to this tooling have consistently been surprised by the
 same handful of things — not because the tools are unusual, but because
 nobody explained the mechanics before they started using them. This page
-is that grounding, the LLM-track equivalent of
-[Module 0.1](module-0-1-what-is-version-control.md) for the
-GitHub track: read this before your first real session with any of these
-tools, and the surprises below stop being surprises.
+is that grounding, the same job for the AI half of this program that
+[Module 0.1](module-0-1-what-is-version-control.md) does for version control:
+read this before your first real session with any of these tools, and the
+surprises below stop being surprises. [Module 0.5](module-0-5-what-kinds-of-tools-are-these.md)
+sorts the product names into kinds, so read that first if "assistant", "coding
+assistant" and "agent" are not yet clear.
 
 ## Core vocabulary, once, in plain terms
 
@@ -95,6 +97,11 @@ not as a verified fact.
 
 Paper exercise, about 10 minutes. No tool needed; use the invented example below.
 
+**Permissions:** none needed; nothing is installed and nothing is submitted.
+
+**Starting state:** none. Have a text file or paper ready. The example below is
+invented.
+
 **Situation.** You maintain a small project called `example-app`. You want an
 assistant with file and command tools to rename a function `fetchUser` to
 `loadUser` everywhere. The project has a `.env` file with a real access token,
@@ -121,6 +128,25 @@ and an `INSTRUCTIONS.md` file for assistants.
    take without your explicit approval in this project. A good answer includes
    pushing or publishing, merging, deleting files or branches, and sending
    anything outside your machine.
+
+**Success state:** your answers cover all five steps: a prompt that states the
+goal, what may change and how you will know it is done; two ways to check the
+assistant's claim; a refusal, or a copy with the secret removed, for the `.env`
+request; the injected line named as data and not an instruction; and three
+actions you would not let it take without your approval.
+
+**Likely errors:**
+
+- You accept "Done. I renamed it everywhere." as the check: read the diff and run
+  the tests instead.
+- You let it read `.env` because it is "only for configuration": anything it reads
+  becomes part of its context.
+- You treat the injected line in the file as an instruction to you: it is text in a
+  file, which is data.
+- Your approval list says only "delete": pushing, merging and sending anything
+  off your machine need your approval too.
+
+**Cleanup:** none; nothing was submitted.
 
 ## Self-check
 
@@ -149,7 +175,8 @@ Discussions section.
 
 Not sure what kind of tool a product name is (assistant, coding assistant,
 agent, or a command-line tool)? The [developer and AI tooling taxonomy](../examples/ai-tooling-taxonomy.md)
-is a lookup page that sorts them, with product names checked on a stated date.
+is a lookup page that lists them, with product names checked on a stated date, and
+[Module 0.5](module-0-5-what-kinds-of-tools-are-these.md) explains the kinds.
 
 This page is required. The rest of the LLM track stays optional as it lands:
 [Module 1.6](../1_beginners/module-1-6-skills-instructions-and-mcp.md) and
@@ -162,4 +189,5 @@ getting a specific tool installed right now, see
 [docs/copilot.md](../../docs/copilot.md),
 [docs/openai-codex.md](../../docs/openai-codex.md), or
 [docs/chatgpt.md](../../docs/chatgpt.md) — or, for the rest of your local
-setup, [Setting Up Your Local Dev Environment](setup-local-dev-environment.md).
+setup, [Module 0.7](module-0-7-set-up-vs-code.md) and
+[Module 0.8](module-0-8-connect-vs-code-to-git-github-and-an-llm.md).

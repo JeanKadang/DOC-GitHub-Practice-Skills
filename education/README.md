@@ -16,10 +16,11 @@ commit, and file hashes (ADR 0013).
 **Folder numbers signal reading order** (per ADR 0009, refining ADR 0007):
 `0_prerequisites/` → `1_beginners/` → `2_intermediate/` → `3_advanced/`.
 `0_prerequisites/` holds required reading (Modules 0.1 to 0.3 on version
-control, Git and GitHub, and the LLM track's Pre-requisite page — most
-colleagues use an AI coding assistant, so that page is no longer optional)
-plus two conditional pages (Module 0.4 for teams moving from GitLab, and local
-dev environment setup, only if you don't already have Git/VS Code). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
+control, Git and GitHub, Module 0.5 on the kinds of tools, and Module 0.6 on LLM
+assistants — most colleagues use an AI coding assistant, so that page is no
+longer optional) plus three conditional pages (Module 0.4 for teams moving from
+GitLab, and Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
+assistant, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
 Module 3.6, and the first module built from it, Module 4.1. `examples/`,
 `cheat-sheet.md`, and `facilitator-guide.md` sit outside the numbered
 sequence — lookup references, not steps to work through in order.
@@ -34,9 +35,9 @@ you work through the program.
 
 What this shows: how your existing background routes you to the right
 starting point — nobody needs to sit through material for a background
-they don't have. The LLM Pre-requisite page is required for everyone,
-regardless of background, which is why both branches below converge into
-it before Module 1.1.
+they don't have. Modules 0.5 (kinds of tools) and 0.6 (LLM assistants) are
+required for everyone, regardless of background, which is why every branch below
+converges into them before Module 1.1.
 
 ```mermaid
 flowchart TD
@@ -47,16 +48,17 @@ flowchart TD
     Q1 -- No --> Q2{Coming from GitLab or Azure DevOps, not GitHub?}
     Q2 -- Yes --> GL3[Module 0.3: What Is GitHub?]
     GL3 --> GL4[Module 0.4: Coming from GitLab<br/>then the mapping skill:<br/>github-for-gitlab-users or<br/>github-for-ado-users]
-    Q2 -- No --> LLM0[LLM Pre-requisite<br/>required for everyone]
-    GL4 --> LLM0
-    S0c --> LLM0
+    Q2 -- No --> T5[Module 0.5: What kinds of tools are these?]
+    GL4 --> T5
+    S0c --> T5
+    T5 --> LLM0[Module 0.6: What Is an LLM Assistant?<br/>required for everyone]
     LLM0 --> S1[Module 1.1: Getting Started]
     S1 --> S3[Module 1.3: Markdown for issues and pull requests]
     S3 --> S4[Module 1.4: Finding your way around a repository]
     S4 --> Q3{Want the command line,<br/>not just the web UI?}
     Q3 -- Yes --> Q4{Git and VS Code<br/>already installed?}
     Q3 -- No --> M2a[Module 2.1: Issue-first and the closure gate]
-    Q4 -- No --> Extra[Setup Local Dev Environment]
+    Q4 -- No --> Extra[Modules 0.7 and 0.8:<br/>set up VS Code, Git, GitHub, an assistant]
     Q4 -- Yes --> S2[Module 1.2: Local Git Basics]
     Extra --> S2
     S2 --> S5[Module 1.5: What never goes in a repository]
@@ -80,7 +82,7 @@ flowchart TD
 | You want to find out what changed in a repository, and why, or whether something is already reported | [Module 1.4: Finding your way around a repository](1_beginners/module-1-4-finding-your-way-around-a-repo.md) |
 | You are about to commit files and want to know what must never go in a repository | [Module 1.5: What never goes in a repository](1_beginners/module-1-5-what-never-goes-in-a-repo.md) (do Module 1.2 first) |
 | Comfortable in the GitHub web UI, ready for the command line, Git/VS Code already installed | [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) |
-| Ready for the command line but no Git or VS Code installed yet, or Git has no name and email set | [Setting Up Your Local Dev Environment](0_prerequisites/setup-local-dev-environment.md), then [Module 1.2](1_beginners/module-1-2-local-git-basics.md) |
+| Ready for the command line but no Git or VS Code installed yet, or Git has no name and email set | [Module 0.7: Set up VS Code](0_prerequisites/module-0-7-set-up-vs-code.md) and [Module 0.8: Connect VS Code to Git, GitHub and an AI assistant](0_prerequisites/module-0-8-connect-vs-code-to-git-github-and-an-llm.md), then [Module 1.2](1_beginners/module-1-2-local-git-basics.md) |
 | Some git knowledge, new to this team's process | [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
 | Comfortable with the workflow, want your issues to be easier for others to act on | [Module 2.3: Writing a good issue](2_intermediate/module-2-3-writing-a-good-issue.md) |
 | You open pull requests and want them to be quick to review | [Module 2.4: Writing a reviewable pull request](2_intermediate/module-2-4-writing-a-reviewable-pr.md) |
@@ -93,11 +95,11 @@ flowchart TD
 | You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
 | Already know GitLab or Azure DevOps, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) (including account protection), then [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md) with its GitLab/ADO comparison table for a quick orientation, then `skills/github-for-gitlab-users/SKILL.md` (GitLab) or `skills/github-for-ado-users/SKILL.md` (Azure DevOps) for the full mapping |
 
-**Whatever your background: read the [LLM Track — Pre-requisite: What Is
-an LLM Assistant?](0_prerequisites/prerequisite-what-is-an-llm-assistant.md)
-page before Module 1.1 too.** It's required, not optional — most colleagues
-end up using an AI coding assistant, and it covers the two things that
-have actually surprised people so far.
+**Whatever your background: read [Module 0.5: What kinds of tools are these?](0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md)
+and [Module 0.6: What Is an LLM Assistant?](0_prerequisites/module-0-6-what-is-an-llm-assistant.md)
+before Module 1.1 too.** They are required, not optional — most colleagues end
+up using an AI coding assistant, and Module 0.6 covers the two things that have
+actually surprised people so far.
 
 Planning to work from the command line at all? Do [Module 1.2: Local Git
 Basics](1_beginners/module-1-2-local-git-basics.md) before Module 2.1 — it
@@ -144,15 +146,21 @@ mindmap
       Module 0.4: Coming from GitLab - conditional
         GitLab to GitHub mapping
         GitHub vs GitLab vs ADO
-      LLM Pre-requisite - required
+      Module 0.5: What kinds of tools are these?
+        IDEs and editors
+        AI assistants, coding assistants, agents
+      Module 0.6: What Is an LLM Assistant? - required
         Core vocabulary
         Agentic-behavior surprise
         Confidently-wrong caveat
-      Setup Local Dev Environment - optional
-        Install Git
+      Module 0.7: Set up VS Code - optional
         Install VS Code
-        Connect to GitHub Enterprise
         Recommended extensions
+      Module 0.8: Connect VS Code to Git, GitHub, an assistant - optional
+        Install Git
+        Connect to GitHub Enterprise
+        The GitHub CLI
+        Add an AI assistant
     1: Beginners
       Module 1.1: Getting Started
         What is a commit
@@ -238,8 +246,10 @@ mindmap
 - [Module 0.2: What Is Git?](0_prerequisites/module-0-2-what-is-git.md) — ~5 min, reading only, the history tool on your machine, and clone, push, pull.
 - [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) — ~15 min, reading plus a one-time account-protection checklist, pull requests, issues, and how this team's process sits on top.
 - [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md) — ~10 min, reading only, conditional: for teams moving from GitLab (or Azure DevOps) to GitHub.
-- [LLM Track — Pre-requisite: What Is an LLM Assistant?](0_prerequisites/prerequisite-what-is-an-llm-assistant.md) — ~15 min, reading only, **required**. Core vocabulary, the agentic-behavior surprise, and the confidently-wrong caveat. First page of the LLM track (ADR 0007); its later tiers are still being written and stay optional.
-- [Setting Up Your Local Dev Environment](0_prerequisites/setup-local-dev-environment.md) — ~35 min, mostly install time. Installing Git, telling Git your name and email, installing VS Code, connecting to GitHub Enterprise, the GitHub CLI (optional), recommended extensions. Optional — only needed if you don't already have these.
+- [Module 0.5: What kinds of tools are these?](0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md) — ~8 min, reading only, the kinds of developer and AI tools (IDEs, assistants, coding assistants, agents), rewritten from the taxonomy.
+- [Module 0.6: What Is an LLM Assistant?](0_prerequisites/module-0-6-what-is-an-llm-assistant.md) — ~25 min (about 15 reading, 10 on a paper practice), **required** for everyone: the vocabulary and the two surprises that have caught people.
+- [Module 0.7: Set up VS Code](0_prerequisites/module-0-7-set-up-vs-code.md) — ~15 min, mostly install time. Installing VS Code, the four places to know, recommended extensions. Optional — only needed if you don't already have it.
+- [Module 0.8: Connect VS Code to Git, GitHub and an AI assistant](0_prerequisites/module-0-8-connect-vs-code-to-git-github-and-an-llm.md) — ~25 min, mostly install time. Installing Git, telling Git your name and email, connecting to GitHub Enterprise, the GitHub CLI (optional), adding your AI assistant. Optional — only needed if you don't already have these.
 - [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) — ~60 min, hands-on, no prior experience needed.
 - [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) — ~45 min, hands-on command-line git — staging, conflicts, and undoing a mistake.
 - [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) — ~20 min, hands-on, web UI only. Headings, task lists, code fences, links, and previewing.
@@ -284,8 +294,10 @@ graphic and that each file has a title and description and no script.
 - [Git is the notebook, GitHub the editing room](graphics/module-0-2-what-is-git.svg) — Module 0.2.
 - [What GitHub adds to Git](graphics/module-0-3-what-is-github.svg) — Module 0.3.
 - [Same Git, new names](graphics/module-0-4-coming-from-gitlab.svg) — Module 0.4.
-- [Tools and permission decide what it can do](graphics/prerequisite-what-is-an-llm-assistant.svg) — LLM prerequisite.
-- [Set up once, then start working](graphics/setup-local-dev-environment.svg) — Local dev setup.
+- [Sort a tool by what it does](graphics/module-0-5-what-kinds-of-tools-are-these.svg) — Module 0.5.
+- [Tools and permission decide what it can do](graphics/module-0-6-what-is-an-llm-assistant.svg) — Module 0.6.
+- [VS Code is the hub](graphics/module-0-7-set-up-vs-code.svg) — Module 0.7.
+- [Git first, then the connections](graphics/module-0-8-connect-vs-code-to-git-github-and-an-llm.svg) — Module 0.8.
 - [Edit a photocopy, merge after review](graphics/module-1-1-getting-started.svg) — Module 1.1.
 - [Three undos, three different jobs](graphics/module-1-2-local-git-basics-undo.svg) — Module 1.2 (undo).
 - [Add packs the box. Commit seals it.](graphics/module-1-2-local-git-basics.svg) — Module 1.2.

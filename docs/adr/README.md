@@ -69,3 +69,7 @@ text is not edited.
 - [0014](0014-repository-layout-guidance.md) — Repository layout guidance lives
   in `github-repo-bootstrap`, with a structure check in `github-repo-review` and
   an early restructure prompt in `github-hygiene`; no new skill.
+- [0015](0015-education-prerequisites-restructure.md) — `0_prerequisites/` is
+  eight numbered modules (version control, Git, GitHub, GitLab, tool kinds, LLM
+  assistants, two setup pages). Status: Accepted; supersedes the part of ADR 0009
+  that lists the folder's contents and keeps the taxonomy outside the sequence.
