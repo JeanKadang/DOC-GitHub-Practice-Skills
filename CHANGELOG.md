@@ -6,6 +6,15 @@
 
 ### Added
 
+- Tooling for the education graphics (#283, #285): `npm run glance` generates
+  `education/at-a-glance.md` from `education/graphics/index.json` (`--check`
+  fails when it is out of date), `npm run export:graphics` renders every graphic
+  to a light and a dark PNG, and `npm run slides:data` writes the data for a
+  slide deck. Both write to `.export/`, which is git-ignored. The public-content
+  scan now reads `.svg` files. One new dev dependency, `playwright-core@1.63.0`
+  (Apache-2.0), is used only by the export and downloads no browser; point it at
+  an installed Chrome or Chromium with `--chrome` or `CHROME_PATH`. The lessons
+  themselves are in `education/CHANGELOG.md`.
 - Repository layout guidance across three skills. `github-repo-bootstrap` gets a
   "Starting layout" subsection (six principles and a per-stack table, judged by
   "Use when") and records the layout as a bootstrap decision.
