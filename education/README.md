@@ -15,10 +15,11 @@ commit, and file hashes (ADR 0013).
 
 **Folder numbers signal reading order** (per ADR 0009, refining ADR 0007):
 `0_prerequisites/` → `1_beginners/` → `2_intermediate/` → `3_advanced/`.
-`0_prerequisites/` holds required reading (Module 0.1, and the LLM track's
-Pre-requisite page — most colleagues use an AI coding assistant, so that
-page is no longer optional) plus one conditional page (local dev
-environment setup, only if you don't already have Git/VS Code). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
+`0_prerequisites/` holds required reading (Modules 0.1 to 0.3 on version
+control, Git and GitHub, and the LLM track's Pre-requisite page — most
+colleagues use an AI coding assistant, so that page is no longer optional)
+plus two conditional pages (Module 0.4 for teams moving from GitLab, and local
+dev environment setup, only if you don't already have Git/VS Code). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
 Module 3.6, and the first module built from it, Module 4.1. `examples/`,
 `cheat-sheet.md`, and `facilitator-guide.md` sit outside the numbered
 sequence — lookup references, not steps to work through in order.
@@ -41,11 +42,14 @@ it before Module 1.1.
 flowchart TD
     Start[Your git/GitHub background?] --> Q1{Never used version control,<br/>or want the vocabulary lined up first?}
     Q1 -- Yes --> S0[Module 0.1: What Is Version Control?]
+    S0 --> S0b[Module 0.2: What Is Git?]
+    S0b --> S0c[Module 0.3: What Is GitHub?]
     Q1 -- No --> Q2{Coming from GitLab or Azure DevOps, not GitHub?}
-    Q2 -- Yes --> Pre[Read the mapping skill first:<br/>github-for-ado-users or<br/>github-for-gitlab-users]
+    Q2 -- Yes --> GL3[Module 0.3: What Is GitHub?]
+    GL3 --> GL4[Module 0.4: Coming from GitLab<br/>then the mapping skill:<br/>github-for-gitlab-users or<br/>github-for-ado-users]
     Q2 -- No --> LLM0[LLM Pre-requisite<br/>required for everyone]
-    Pre --> LLM0
-    S0 --> LLM0
+    GL4 --> LLM0
+    S0c --> LLM0
     LLM0 --> S1[Module 1.1: Getting Started]
     S1 --> S3[Module 1.3: Markdown for issues and pull requests]
     S3 --> S4[Module 1.4: Finding your way around a repository]
@@ -71,7 +75,7 @@ flowchart TD
 
 | Background | Start here |
 | --- | --- |
-| Never used version control | [Module 0.1: What Is Version Control?](0_prerequisites/module-0-1-what-is-version-control.md), then [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) |
+| Never used version control | [Module 0.1: What Is Version Control?](0_prerequisites/module-0-1-what-is-version-control.md), [Module 0.2: What Is Git?](0_prerequisites/module-0-2-what-is-git.md) and [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md), then [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) |
 | You write issues or pull requests and want them to read well | [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) |
 | You want to find out what changed in a repository, and why, or whether something is already reported | [Module 1.4: Finding your way around a repository](1_beginners/module-1-4-finding-your-way-around-a-repo.md) |
 | You are about to commit files and want to know what must never go in a repository | [Module 1.5: What never goes in a repository](1_beginners/module-1-5-what-never-goes-in-a-repo.md) (do Module 1.2 first) |
@@ -87,7 +91,7 @@ flowchart TD
 | You use an AI assistant and want to know about skills, instruction files, and MCP servers | [Module 1.6: Skills, instruction files, and MCP servers](1_beginners/module-1-6-skills-instructions-and-mcp.md) (after the LLM prerequisite) |
 | You are about to add a skill or an MCP server you did not write | [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) (after Module 1.6) |
 | You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
-| Already know GitLab or Azure DevOps, not GitHub | [Module 0.1](0_prerequisites/module-0-1-what-is-version-control.md)'s GitLab/ADO comparison table for a quick orientation, then `skills/github-for-ado-users/SKILL.md` (Azure DevOps) or `skills/github-for-gitlab-users/SKILL.md` (GitLab) for full depth, then [Module 2.1](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
+| Already know GitLab or Azure DevOps, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) (including account protection), then [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md) with its GitLab/ADO comparison table for a quick orientation, then `skills/github-for-gitlab-users/SKILL.md` (GitLab) or `skills/github-for-ado-users/SKILL.md` (Azure DevOps) for the full mapping |
 
 **Whatever your background: read the [LLM Track — Pre-requisite: What Is
 an LLM Assistant?](0_prerequisites/prerequisite-what-is-an-llm-assistant.md)
@@ -129,8 +133,16 @@ mindmap
   root((Colleague Training))
     0: Prerequisites
       Module 0.1: What Is Version Control?
-        Git vs GitHub
-        Core vocabulary
+        History and snapshots
+        Repo, commit, branch, merge
+      Module 0.2: What Is Git?
+        Local vs shared copy
+        Clone, push, pull
+      Module 0.3: What Is GitHub?
+        Account protection
+        Pull requests and issues
+      Module 0.4: Coming from GitLab - conditional
+        GitLab to GitHub mapping
         GitHub vs GitLab vs ADO
       LLM Pre-requisite - required
         Core vocabulary
@@ -222,7 +234,10 @@ mindmap
 
 ## Materials
 
-- [Module 0.1: What Is Version Control?](0_prerequisites/module-0-1-what-is-version-control.md) — ~15 min, reading only, plain-terms vocabulary plus a GitHub/GitLab/ADO comparison.
+- [Module 0.1: What Is Version Control?](0_prerequisites/module-0-1-what-is-version-control.md) — ~5 min, reading only, history, commit, branch, merge in plain terms.
+- [Module 0.2: What Is Git?](0_prerequisites/module-0-2-what-is-git.md) — ~5 min, reading only, the history tool on your machine, and clone, push, pull.
+- [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) — ~15 min, reading plus a one-time account-protection checklist, pull requests, issues, and how this team's process sits on top.
+- [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md) — ~10 min, reading only, conditional: for teams moving from GitLab (or Azure DevOps) to GitHub.
 - [LLM Track — Pre-requisite: What Is an LLM Assistant?](0_prerequisites/prerequisite-what-is-an-llm-assistant.md) — ~15 min, reading only, **required**. Core vocabulary, the agentic-behavior surprise, and the confidently-wrong caveat. First page of the LLM track (ADR 0007); its later tiers are still being written and stay optional.
 - [Setting Up Your Local Dev Environment](0_prerequisites/setup-local-dev-environment.md) — ~35 min, mostly install time. Installing Git, telling Git your name and email, installing VS Code, connecting to GitHub Enterprise, the GitHub CLI (optional), recommended extensions. Optional — only needed if you don't already have these.
 - [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) — ~60 min, hands-on, no prior experience needed.
@@ -265,7 +280,10 @@ a graphic and a module ever disagree, the module wins and the graphic gets
 fixed. `tests/education-graphics.test.mjs` checks that every page embeds its
 graphic and that each file has a title and description and no script.
 
-- [Git is the notebook, GitHub the editing room](graphics/module-0-1-what-is-version-control.svg) — Module 0.1.
+- [One history, not ten copies](graphics/module-0-1-what-is-version-control.svg) — Module 0.1.
+- [Git is the notebook, GitHub the editing room](graphics/module-0-2-what-is-git.svg) — Module 0.2.
+- [What GitHub adds to Git](graphics/module-0-3-what-is-github.svg) — Module 0.3.
+- [Same Git, new names](graphics/module-0-4-coming-from-gitlab.svg) — Module 0.4.
 - [Tools and permission decide what it can do](graphics/prerequisite-what-is-an-llm-assistant.svg) — LLM prerequisite.
 - [Set up once, then start working](graphics/setup-local-dev-environment.svg) — Local dev setup.
 - [Edit a photocopy, merge after review](graphics/module-1-1-getting-started.svg) — Module 1.1.

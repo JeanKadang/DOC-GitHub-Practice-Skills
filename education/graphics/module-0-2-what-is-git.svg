@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 50.0 560 362.0" width="560" height="362.0"><title>Git is the notebook, GitHub the editing room</title><desc>A personal notebook labeled Git exchanges changes with a shared editing room labeled GitHub by push and pull arrows.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="50.0" width="560" height="362.0" rx="16"/>
+    <rect class="paper" x="40" y="70" width="160" height="180" rx="12"/>
+    <g class="ln-g"><circle cx="56" cy="96" r="5"/><circle cx="56" cy="130" r="5"/><circle cx="56" cy="164" r="5"/><circle cx="56" cy="198" r="5"/><circle cx="56" cy="232" r="5"/></g>
+    <rect class="ln" x="78" y="98" width="104" height="8" rx="4"/><rect class="ln" x="78" y="124" width="84" height="8" rx="4"/><rect class="ln" x="78" y="150" width="98" height="8" rx="4"/><rect class="ln" x="78" y="176" width="70" height="8" rx="4"/>
+    <text class="lbb mid" x="120" y="284">Git</text><text class="sm mid" x="120" y="308">your notebook</text>
+    <polygon class="paper" points="360,132 440,80 520,132"/>
+    <rect class="paper" x="372" y="132" width="136" height="118"/>
+    <g class="tg"><circle cx="402" cy="168" r="11"/><circle cx="440" cy="168" r="11"/><circle cx="478" cy="168" r="11"/></g>
+    <circle class="tg" cx="440" cy="218" r="17"/><path class="st-g" d="M431,218 l7,7 l13,-14"/>
+    <text class="lbb mid" x="440" y="284">GitHub</text><text class="sm mid" x="440" y="308">the shared editing room</text>
+    <path class="arw" d="M214,152 H348"/><text class="mns mid" x="281" y="140">push</text>
+    <path class="arw" d="M348,212 H214"/><text class="mns mid" x="281" y="238">pull</text>
+  <rect class="tg" x="14" y="332.0" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="360.0">Git keeps the history. GitHub shares it and</text><text class="bn mid" x="280.0" y="382.0">adds review.</text></svg>

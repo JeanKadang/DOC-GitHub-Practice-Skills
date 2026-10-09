@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 414" width="560" height="414"><title>Same Git, new names</title><desc>Four GitLab terms mapped to GitHub: merge request to pull request, epic to issue with sub-issues, issue board to Projects, and the GitLab CI file to Actions workflows, which is a rewrite and not a rename.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="414" rx="16"/><text class="mns mid" x="122" y="38" style="font-size:14px">GitLab</text><text class="mns mid" x="419" y="38" style="font-size:14px">GitHub</text><rect class="paper" x="12" y="50" width="220" height="50" rx="12"/><text class="mn" x="26" y="81">Merge Request</text><path class="arw" d="M240,75 L282,75"/><rect class="tg" x="290" y="50" width="258" height="50" rx="12"/><text class="lb" x="304" y="81" style="font-size:16px">Pull Request</text><rect class="paper" x="12" y="112" width="220" height="50" rx="12"/><text class="mn" x="26" y="143">Epic</text><path class="arw" d="M240,137 L282,137"/><rect class="tg" x="290" y="112" width="258" height="50" rx="12"/><text class="lb" x="304" y="143" style="font-size:16px">Issue + sub-issues</text><rect class="paper" x="12" y="174" width="220" height="50" rx="12"/><text class="mn" x="26" y="205">Issue Board</text><path class="arw" d="M240,199 L282,199"/><rect class="tg" x="290" y="174" width="258" height="50" rx="12"/><text class="lb" x="304" y="205" style="font-size:16px">Projects, a view</text><rect class="paper" x="12" y="236" width="220" height="50" rx="12"/><text class="mn" x="26" y="267">.gitlab-ci.yml</text><path class="arw" d="M240,261 L282,261"/><rect class="ta" x="290" y="236" width="258" height="50" rx="12"/><text class="lb" x="304" y="267" style="font-size:16px">Actions workflows</text><text class="sm atxt" x="304" y="302" style="font-size:13px">a rewrite, not a rename</text><rect class="tg" x="14" y="334" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="362">Same Git. New names, and a few real</text><text class="bn mid" x="280.0" y="384">differences.</text></svg>
