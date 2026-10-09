@@ -175,6 +175,30 @@ Close each child issue individually as its PR merges (`Closes #<child>` in
 the PR body does this automatically); leave the parent open until every
 child is closed.
 
+## Structure drift: suggest a restructure early
+
+While doing ordinary work, notice when the layout is about to stop fitting the
+repository: one source file holding many unrelated units, a root cluttered with
+runner scripts, tests mixed with the distributable, or planned features that will
+each add more to the same place. Surface it before the next feature lands, not
+after — a restructure is cheapest while the repository is small and has few open
+pull requests and consumers' paths to keep working.
+
+- **File it first** (`github-issue-first`) as a `decision-needed` issue that records
+  the proposed layout and states what must stay unchanged (exports, public paths,
+  behaviour). Do not fold it into a feature pull request.
+- **Sequence it.** Do line-ending and ignore-rule fixes first so renames are not
+  noisy; then the restructure; then the feature work that touches the same paths.
+  Note the order on the affected issues.
+- **Make the restructure behaviour-preserving.** Use `git mv` so history follows,
+  keep the public surface identical, and keep tests green before and after.
+  Update README and CI paths in the same pull request.
+- **Check ignore rules** with `git check-ignore -v <path>` for every new path;
+  blanket rules such as `*.yml` or `*.json` can silently hide new files.
+- The recommended starting layouts and the checks live in `github-repo-bootstrap`
+  ("Starting layout") and `github-repo-review` ("The structure baseline"). Do not
+  recommend folders a small repository does not need.
+
 ## Cleanup checklist (end of session / after release)
 
 - `git checkout main && git pull && git fetch --prune` — local branch listings lie until pruned; verify remote state with `gh api repos/{owner}/{repo}/branches` before reporting leftover branches.
@@ -198,4 +222,5 @@ child is closed.
 | Committing on main before branching | Branch first; if it happens: branch from the commit, then `git reset --hard origin/main` on main |
 | `gh api -f sub_issue_id=<id>` rejected with "not of type integer" | Use `-F` (capital), not `-f` — sub_issue_id must be sent as a typed integer, not a string |
 | Linking a sub-issue by its `number` instead of its `id` | The sub-issues endpoint wants the internal `id` — `gh api repos/{owner}/{repo}/issues/<number> --jq .id` first |
+| Adding another feature to an overgrown single file or flat root | Raise a restructure issue first and sequence it before the feature work; see "Structure drift" |
 | Re-running a red CI job without reading the log | `gh run view <id> --log-failed` first; rerun only a diagnosed flake |

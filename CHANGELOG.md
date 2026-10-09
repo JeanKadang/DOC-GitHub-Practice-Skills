@@ -6,6 +6,14 @@
 
 ### Added
 
+- Repository layout guidance across three skills. `github-repo-bootstrap` gets a
+  "Starting layout" subsection (six principles and a per-stack table, judged by
+  "Use when") and records the layout as a bootstrap decision.
+  `github-repo-review` and its standalone `review-prompt.md` get a "Repository
+  structure" audit bullet and a structure baseline. `github-hygiene` gets a
+  "Structure drift" section that prompts for an early, behaviour-preserving
+  restructure and warns that blanket ignore rules can hide new files. ADR 0014
+  records the decision; the roster stays at twelve skills (#268).
 - `.github/workflows/dependency-audit.yml` runs `scripts/dependency-audit.mjs`
   over `npm audit --json` every day and on demand, and fails on any
   moderate-or-higher advisory that is not in `.github/audit-accepted.json`, so a
