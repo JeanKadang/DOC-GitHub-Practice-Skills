@@ -1,6 +1,6 @@
 # Next-step modules: plan
 
-**Status:** a plan. Nothing here is required reading. Modules 4.1 and 4.12 are
+**Status:** a plan. Nothing here is required reading. Modules 4.1, 4.10 and 4.12 are
 built; every other entry is an outline that is ready to become an issue.
 
 The tiers before this one end at Module 3.6. This folder is for what comes
@@ -34,7 +34,7 @@ and want to go further. Modules built from this plan are named
 | 4.7 | Running a secret-leak drill | [Module 3.4](../3_advanced/module-3-4-security-response.md) | 45 min |
 | 4.8 | Working across many repositories | [Module 3.1](../3_advanced/module-3-1-branch-protection-and-rulesets.md), [Module 3.2](../3_advanced/module-3-2-projects-boards.md) | 30 min |
 | 4.9 | Using Copilot as a pull request reviewer | [Module 2.2](../2_intermediate/module-2-2-pr-review-and-branch-conventions.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 30 min |
-| 4.10 | Assigning issues to the Copilot coding agent | [Module 2.1](../2_intermediate/module-2-1-issue-first-and-closure-gate.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
+| 4.10 | [Assigning issues to the Copilot coding agent](module-4-10-assigning-issues-to-the-copilot-coding-agent.md) (built) | [Module 2.1](../2_intermediate/module-2-1-issue-first-and-closure-gate.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
 | 4.11 | Publishing and consuming packages (GitHub Packages) | [Module 3.3](../3_advanced/module-3-3-releases.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 35 min |
 | 4.12 | [Moving a GitLab pipeline to GitHub Actions](module-4-12-moving-a-gitlab-pipeline-to-actions.md) (built) | [Module 0.4](../0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 1.1](../1_beginners/module-1-1-getting-started.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
 
@@ -149,21 +149,7 @@ Built: [Module 4.1](module-4-1-reviewing-changes-an-ai-agent-wrote.md).
 
 ### Module 4.10: Assigning issues to the Copilot coding agent
 
-- **Audience:** maintainers who want to hand a well-specified issue to an agent.
-- **Prerequisites:** Module 2.1 and Module 3.5.
-- **Objectives:** write an issue an agent can act on (observable acceptance
-  criteria, scope, non-goals, how to verify); assign it and follow the draft
-  pull request; review the result against the issue's criteria with evidence
-  and reject scope creep; know what the agent can and cannot do with the
-  repository's permissions and branch rules.
-- **Exercise idea:** write two versions of the same sandbox issue, one vague and
-  one with criteria, assign each, and compare the pull requests; then run the
-  closure-gate check on the better one before merging.
-- **Verify before building:** plan and organization availability, how the agent
-  is assigned, and what it may access. Module 3.5 already covers the idea
-  briefly, so this module should add the practice, not repeat the explanation.
-- **Candidate issue title:** "Education: add Module 4.10, assigning issues to the
-  Copilot coding agent".
+Built: [Module 4.10](module-4-10-assigning-issues-to-the-copilot-coding-agent.md).
 
 ### Module 4.11: Publishing and consuming packages (GitHub Packages)
 
