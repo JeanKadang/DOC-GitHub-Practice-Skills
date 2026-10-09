@@ -354,6 +354,16 @@ Read the module: [Module 4.9: Using Copilot as a pull request reviewer](4_next-s
 
 Read the module: [Module 4.10: Assigning issues to the Copilot coding agent](4_next-step/module-4-10-assigning-issues-to-the-copilot-coding-agent.md)
 
+### Module 4.13: What goes in an instruction file
+
+![What belongs in an instruction file and what does not. In: the test command, conventions such as names and commit format, off-limits paths, and where things live. Out: secrets, long policy that belongs in a skill, weekly news that goes stale, and anything CI enforces, because a file only steers an assistant.](graphics/module-4-13-writing-an-instruction-file-for-your-repository.svg)
+
+**In one sentence:** Facts go in. Secrets, procedures and weekly news stay out.
+
+**Do not skip:** A file steers an assistant, it does not control it: enforce a rule that must always hold in CI.
+
+Read the module: [Module 4.13: Writing an instruction file for your repository](4_next-step/module-4-13-writing-an-instruction-file-for-your-repository.md)
+
 ---
 
 Back to the [education README](README.md).

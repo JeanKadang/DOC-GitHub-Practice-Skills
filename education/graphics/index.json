@@ -283,5 +283,13 @@
     "takeaway": "An agent builds what the issue says, so write it like a prompt.",
     "alt": "A vague issue and a specific one side by side. The vague one leaves scope, criteria, limits and the check unsaid. The specific one states one line in one file, observable criteria, a rule to touch no other file, and the evidence to look for, so the pull request can be reviewed against it.",
     "rule": "Your approval of an agent's pull request does not count toward the required number: another reviewer must approve."
+  },
+  {
+    "file": "module-4-13-writing-an-instruction-file-for-your-repository.svg",
+    "page": "4_next-step/module-4-13-writing-an-instruction-file-for-your-repository.md",
+    "title": "What goes in an instruction file",
+    "takeaway": "Facts go in. Secrets, procedures and weekly news stay out.",
+    "alt": "What belongs in an instruction file and what does not. In: the test command, conventions such as names and commit format, off-limits paths, and where things live. Out: secrets, long policy that belongs in a skill, weekly news that goes stale, and anything CI enforces, because a file only steers an assistant.",
+    "rule": "A file steers an assistant, it does not control it: enforce a rule that must always hold in CI."
   }
 ]

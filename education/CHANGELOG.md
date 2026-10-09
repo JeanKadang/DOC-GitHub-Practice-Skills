@@ -13,6 +13,15 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 4.13, writing an instruction file for your repository (optional, ~35 min,
+  hands-on in a local clone with a review-only path for learners without an
+  assistant) in `4_next-step/`, with an explainer graphic, a Mermaid diagram, and a
+  vendor-facts table dated 2026-10-09 (Claude Code, VS Code with Copilot, Codex,
+  Copilot on GitHub.com). The exercise has the learner write a short file, show the
+  behaviour change it causes, and review a deliberately bad change to it. Module 1.6's
+  Claude Code row now notes that newer versions read `AGENTS.md` directly only when
+  there is no `CLAUDE.md`. The README, plan (which says it comes before Module 4.2)
+  and at-a-glance page list it.
 - Module 4.9, using Copilot as a pull request reviewer (optional, ~30 min,
   hands-on in the sandbox with a paper path for learners without Copilot review) in
   `4_next-step/`, with an explainer graphic, a Mermaid diagram, and a vendor-facts
