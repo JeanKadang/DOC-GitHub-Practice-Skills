@@ -7,6 +7,8 @@ independent of Modules 3.1-3.3, 3.5, and 3.6 — read in any order.
 callouts mark optional group activities.
 **Timing:** ~15 min.
 
+![A public issue or pull request is crossed out because filing it is itself a disclosure. Private vulnerability reporting is the right door. Say where the secret was, not its value. Order: rotate, report privately, clean up.](../graphics/module-3-4-security-response.svg)
+
 ## Learning objectives
 
 - Know the first moves in a security-sensitive situation.

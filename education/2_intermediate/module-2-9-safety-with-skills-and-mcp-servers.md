@@ -12,6 +12,8 @@ can read your files and run commands, often with your permissions. This module
 is the checklist to run first, and the reasoning behind each item, so that you
 can say "no" quickly and "yes" with your eyes open.
 
+![Untrusted text reaches an assistant that reads it and may obey, leading to an action with your access. Three places to break the chain: fewer untrusted sources, review what it proposes, and limit its access.](../graphics/module-2-9-safety-with-skills-and-mcp-servers.svg)
+
 ## Learning objectives
 
 - Name what to check before adding a skill or an MCP server.

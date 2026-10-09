@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0.0 560 432.0" width="560" height="432.0"><title>Change the lock before the cleanup</title><desc>A secret key pushed to a repository has already been copied. Deleting the file does not help. The order is rotate the key, tell the maintainer privately, then clean up.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0.0" width="560" height="432.0" rx="16"/>
+    <circle class="ta" cx="62" cy="86" r="22"/><circle class="paper" cx="62" cy="86" r="8"/>
+    <path class="st-a" d="M84,86 H128 M114,86 v14 M126,86 v10"/>
+    <text class="mn mid" x="80" y="140">token</text>
+    <path class="arw" d="M146,86 H206"/>
+    <g><rect class="paper" x="214" y="52" width="48" height="60" rx="6"/><rect class="paper" x="278" y="52" width="48" height="60" rx="6"/><rect class="paper" x="342" y="52" width="48" height="60" rx="6"/>
+    <path class="st-a" d="M226,82 h24 M290,82 h24 M354,82 h24"/></g>
+    <text class="lb mid" x="302" y="140">already copied</text>
+    <rect class="tr" x="436" y="56" width="84" height="70" rx="8"/><path class="st" d="M452,56 v-10 h52 v10 M448,70 v44 M478,70 v44 M508,70 v44" />
+    <path class="st-r" d="M426,46 L530,134"/>
+    <text class="sm mid" x="478" y="164">deleting the file</text><text class="sm mid rtxt" x="478" y="184">is not enough</text>
+    <g>
+      <rect class="tg" x="14" y="218" width="166" height="90" rx="12"/><circle class="paper" cx="40" cy="244" r="14"/><text class="mn mid" x="40" y="250">1</text>
+      <text class="lb" x="22" y="282" style="font-size:16px">Rotate the key</text>
+      <rect class="paper" x="198" y="218" width="166" height="90" rx="12"/><circle class="paper" cx="224" cy="244" r="14"/><text class="mn mid" x="224" y="250">2</text>
+      <text class="lb" x="204" y="282" style="font-size:15px">Tell the maintainer</text><text class="sm" x="206" y="300">privately</text>
+      <rect class="paper" x="382" y="218" width="166" height="90" rx="12"/><circle class="paper" cx="408" cy="244" r="14"/><text class="mn mid" x="408" y="250">3</text>
+      <text class="lb" x="390" y="282" style="font-size:16px">Then clean up</text>
+      <path class="arw" d="M184,263 h10"/><path class="arw" d="M368,263 h10"/>
+    </g>
+  <rect class="tg" x="14" y="352.0" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="380.0">A pushed secret is already out. Rotate it</text><text class="bn mid" x="280.0" y="402.0">first.</text></svg>

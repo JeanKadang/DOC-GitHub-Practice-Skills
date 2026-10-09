@@ -22,7 +22,7 @@ import { fileURLToPath } from 'node:url';
 
 export const ALLOW_MARKER = 'public-scan: allow';
 export const SCANNED_EXTENSIONS = new Set([
-  '.md', '.yml', '.yaml', '.json', '.jsonc', '.mjs', '.ps1', '.txt',
+  '.md', '.yml', '.yaml', '.json', '.jsonc', '.mjs', '.ps1', '.txt', '.svg',
 ]);
 export const SKIPPED_FILES = new Set(['package-lock.json']);
 export const ALLOWED_EMAIL_DOMAINS = [

@@ -12,6 +12,8 @@ reported the thing you just found. GitHub keeps the answers, and this module
 shows you where. Every answer comes from the trail Module 1.1 taught you to
 leave: issues, branches, commits, and pull requests that point at each other.
 
+![Four cards: the code tab is the shelves, history and blame is the borrowing log, search is the card catalogue, and a pull request page is the contents page.](../graphics/module-1-4-finding-your-way-around-a-repo.svg)
+
 ## Learning objectives
 
 - Read a repository from the Code tab: files, branches, tags, and releases.

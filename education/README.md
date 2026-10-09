@@ -254,3 +254,40 @@ mindmap
 - [Examples: Markdown showcase document](examples/markdown-showcase.md) — one sample document that uses every kind of Markdown formatting together, to compare your own output against; the companion to the lookup reference.
 - [Examples: Developer and AI tooling taxonomy](examples/ai-tooling-taxonomy.md) — which kind of tool is which (IDEs, CLIs, AI assistants, coding assistants, agents), with product names checked on a stated date, lookup reference.
 - [Examples: Mermaid diagram types showcase](examples/mermaid-diagram-types-showcase.md) — every documented diagram type, established and newer, including the ten added in Mermaid 12, lookup reference.
+
+## Explainer graphics
+
+Every module page opens with one explainer graphic (Module 1.2 has two): a
+single idea drawn as an everyday picture, to read before the module. Each is a
+standalone SVG in `education/graphics/` that follows your light or dark
+theme. A graphic only summarises; the module text is the source of truth, so if
+a graphic and a module ever disagree, the module wins and the graphic gets
+fixed. `tests/education-graphics.test.mjs` checks that every page embeds its
+graphic and that each file has a title and description and no script.
+
+- [Git is the notebook, GitHub the editing room](graphics/module-0-1-what-is-version-control.svg) — Module 0.1.
+- [Tools and permission decide what it can do](graphics/prerequisite-what-is-an-llm-assistant.svg) — LLM prerequisite.
+- [Set up once, then start working](graphics/setup-local-dev-environment.svg) — Local dev setup.
+- [Edit a photocopy, merge after review](graphics/module-1-1-getting-started.svg) — Module 1.1.
+- [Three undos, three different jobs](graphics/module-1-2-local-git-basics-undo.svg) — Module 1.2 (undo).
+- [Add packs the box. Commit seals it.](graphics/module-1-2-local-git-basics.svg) — Module 1.2.
+- [Write for someone who was not there](graphics/module-1-3-markdown-for-issues-and-prs.svg) — Module 1.3.
+- [Read a repository like a library](graphics/module-1-4-finding-your-way-around-a-repo.svg) — Module 1.4.
+- [Change the lock before the cleanup](graphics/module-1-5-what-never-goes-in-a-repo.svg) — Module 1.5.
+- [House rules, recipe cards, a delivery hatch](graphics/module-1-6-skills-instructions-and-mcp.svg) — Module 1.6.
+- [Merged is not done](graphics/module-2-1-issue-first-and-closure-gate.svg) — Module 2.1.
+- [Approving is not merging](graphics/module-2-2-pr-review-and-branch-conventions.svg) — Module 2.2.
+- [An issue is a labeled parcel](graphics/module-2-3-writing-a-good-issue.svg) — Module 2.3.
+- [Show your work](graphics/module-2-4-writing-a-reviewable-pr.svg) — Module 2.4.
+- [Sort every open issue into one tray](graphics/module-2-5-triage-and-backlog-hygiene.svg) — Module 2.5.
+- [Four thoughts, four homes](graphics/module-2-6-where-does-this-thought-belong.svg) — Module 2.6.
+- [Your copy, their rules](graphics/module-2-7-contributing-to-someone-elses-repo.svg) — Module 2.7.
+- [Each rule exists to stop one mistake](graphics/module-2-8-why-the-rules-exist.svg) — Module 2.8.
+- [A note under the door can steer your assistant](graphics/module-2-9-safety-with-skills-and-mcp-servers.svg) — Module 2.9.
+- [A gate that exists only on some plans](graphics/module-3-1-branch-protection-and-rulesets.svg) — Module 3.1.
+- [The board is a window onto issues](graphics/module-3-2-projects-boards.svg) — Module 3.2.
+- [A release is a checklist, not a choice](graphics/module-3-3-releases.svg) — Module 3.3.
+- [Report it through the private door](graphics/module-3-4-security-response.svg) — Module 3.4.
+- [Rented runner or your own](graphics/module-3-5-actions-runners-and-agents.svg) — Module 3.5.
+- [Tidy, copy, recover](graphics/module-3-6-rebase-cherry-pick-and-reflog.svg) — Module 3.6.
+- [Inspect the work, not the summary](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote.svg) — Module 4.1.

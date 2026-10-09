@@ -12,6 +12,8 @@ that work: deciding how important each open issue is, what blocks what, and
 which issues should be closed. It explains the reasons behind the triage rules
 in `github-issue-first` and `github-releases`.
 
+![An open issue is sorted into one of six outcomes: already fixed, scope changed, obsolete, duplicate, unclear, or still valid. A strip notes that priority and milestone answer different questions.](../graphics/module-2-5-triage-and-backlog-hygiene.svg)
+
 ## Learning objectives
 
 - Separate priority (how important) from milestone (which release), and explain

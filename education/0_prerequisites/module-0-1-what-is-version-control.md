@@ -10,6 +10,8 @@ is where the hands-on part starts.
 
 **Timing budget:** ~15 minutes.
 
+![A personal notebook labeled Git exchanges changes with a shared editing room labeled GitHub by push and pull arrows.](../graphics/module-0-1-what-is-version-control.svg)
+
 ## Why this exists
 
 Module 1.1 teaches you to file an issue, branch, commit, and open a pull

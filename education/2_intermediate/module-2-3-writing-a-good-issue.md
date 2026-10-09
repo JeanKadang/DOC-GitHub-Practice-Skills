@@ -12,6 +12,8 @@ an issue closes. Here you learn how to *write* one and, for each rule, the
 specific failure it exists to prevent. A rule you understand is a rule you
 keep following when nobody is checking.
 
+![An issue drawn as a shipping label with seven fields: title, body, criteria, priority, category, milestone and assignee, each with a short instruction.](../graphics/module-2-3-writing-a-good-issue.svg)
+
 ## Learning objectives
 
 - Write a title that states the problem, and a body someone can act on six

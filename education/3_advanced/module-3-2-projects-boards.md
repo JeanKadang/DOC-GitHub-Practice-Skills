@@ -7,6 +7,8 @@ Optional, and independent of Modules 3.1 and 3.3-3.6 — read in any order.
 callouts mark optional group activities.
 **Timing:** ~35 min.
 
+![Issues on the left are the source of truth and the board on the right mirrors them. If an issue label says P1 and the board field says P2, the label wins and the field is fixed.](../graphics/module-3-2-projects-boards.svg)
+
 ## Learning objectives
 
 - Understand how a Projects board relates to issues, and which side is the

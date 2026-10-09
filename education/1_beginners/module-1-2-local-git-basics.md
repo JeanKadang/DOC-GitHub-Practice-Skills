@@ -18,6 +18,10 @@ through the web UI. This session is for if and when you want the command
 line for yourself; do it before Module 2.1 if you plan to use `git`/`gh`
 locally while working through the rest of the program.
 
+![Three undo commands: restore is a pencil eraser and the edit is gone, revert is a void slip that adds a correction and is safe to share, reset tears out pages and rewrites history.](../graphics/module-1-2-local-git-basics-undo.svg)
+
+![Three files on a desk. Two are packed into a staging box with git add; the box is sealed and labeled with git commit. The third file stays on the desk.](../graphics/module-1-2-local-git-basics.svg)
+
 ## Learning objectives
 
 By the end of this session, you will have:

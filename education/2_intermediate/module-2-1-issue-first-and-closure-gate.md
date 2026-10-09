@@ -13,6 +13,8 @@ one real gotcha in how issues get closed. Every section names the
 version, not the source of truth. If something here doesn't answer your
 question, the named skill file has the complete, current answer.
 
+![A pull request starts with Refs #N. Every acceptance criterion needs evidence such as a diff, test or CI run. Only then does the pull request say Closes #N. After a merge, check that the issue did not close early.](../graphics/module-2-1-issue-first-and-closure-gate.svg)
+
 ## Learning objectives
 
 - Understand why work starts with an issue, not a branch or a PR.

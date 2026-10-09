@@ -12,6 +12,8 @@ repository you don't own, and the rules flip: the *target* repository's
 habits govern, not this team's. This module explains the reasons behind
 `github-contributing`, the skill that covers it.
 
+![Upstream is forked into your fork, you branch from it, and a pull request goes back to upstream. A strip says the maintainers rules decide, and to sync before every branch.](../graphics/module-2-7-contributing-to-someone-elses-repo.svg)
+
 ## Learning objectives
 
 - Fork a repository, keep the fork's default branch in sync with upstream, and

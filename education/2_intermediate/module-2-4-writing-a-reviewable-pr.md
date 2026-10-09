@@ -13,6 +13,8 @@ rules in `github-hygiene` and `github-pr-review`, because a reviewer's time is
 the scarcest thing in the process, and most of these habits exist to protect
 it.
 
+![A pull request starts with Refs #N for one issue. A table lists each criterion with its evidence and a Met or Unmet result. If any row is Unmet, the pull request keeps Refs.](../graphics/module-2-4-writing-a-reviewable-pr.svg)
+
 ## Learning objectives
 
 - Keep a pull request to one issue or one independently reviewable unit.

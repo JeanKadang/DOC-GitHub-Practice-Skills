@@ -10,6 +10,8 @@ actually catch people.
 
 **Timing budget:** ~25 minutes (about 15 reading, 10 on the practice).
 
+![Two cards compare an assistant that only writes text with one that uses tools to edit files and run commands. Four chips list what shapes either: instructions, context, tools and permission.](../graphics/prerequisite-what-is-an-llm-assistant.svg)
+
 ## Why this exists
 
 Colleagues new to this tooling have consistently been surprised by the
