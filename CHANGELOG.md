@@ -132,6 +132,12 @@
   `package.json` carries description, license, repository, bugs, and homepage;
   `.claude/settings.local.json` is ignored in this repository; the ADR index shows
   each ADR's status; and a comment in `github-pr-review` is clearer.
+- The settings snapshot (`docs/repo-settings-snapshot.md`) now marks which commands
+  need more than read access (classic branch protection and the secrets list),
+  discovers the default branch instead of assuming `main`, probes all three
+  `CODEOWNERS` locations (`.github/`, the root, and `docs/`), and has a table that
+  separates a confirmed absence from "you cannot tell" and from "unavailable" (#138).
+  The table's wording was observed with `gh` on 2026-10-09.
 - The portable improvement form (`skills/github-repo-configure/templates/`) now
   has a required Expected outcome field, and both portable forms say a maintainer
   turns it into acceptance criteria when triaging. `github-repo-configure` and
