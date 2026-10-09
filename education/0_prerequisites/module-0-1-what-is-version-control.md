@@ -8,79 +8,25 @@ new one.
 **Format:** Reading only. No account needed, nothing to click. Module 1.1
 is where the hands-on part starts.
 
-**Timing budget:** ~15 minutes.
+**Timing budget:** ~5 minutes.
 
-![A personal notebook labeled Git exchanges changes with a shared editing room labeled GitHub by push and pull arrows.](../graphics/module-0-1-what-is-version-control.svg)
+![Without version control a document turns into files named final, final v2 and final v2 real. With it, one line of saved changes, with a branch for a new intro that is merged back.](../graphics/module-0-1-what-is-version-control.svg)
 
 ## Why this exists
 
-Module 1.1 teaches you to file an issue, branch, commit, and open a pull
-request — by clicking through the real GitHub UI. It assumes you already
-know, loosely, what those words mean. This page is that grounding, so
-Module 1.1 can spend its time on *doing* instead of *defining*.
+This is the first of four short pages that line up the vocabulary before
+Module 1.1: version control (this page), [Git](module-0-2-what-is-git.md),
+[GitHub](module-0-3-what-is-github.md), and, only if your team is moving from
+GitLab, [Coming from GitLab](module-0-4-coming-from-gitlab.md). Module 1.1
+teaches you to file an issue, branch, commit, and open a pull request — by
+clicking through the real GitHub UI. It assumes you already know, loosely,
+what those words mean. This page is that grounding, so Module 1.1 can spend
+its time on *doing* instead of *defining*.
 
 If you already know what a commit and a branch are, skip straight to
-[Module 1.1](../1_beginners/module-1-1-getting-started.md). If any of the vocabulary below
-is new, five minutes here saves confusion later.
-
-## Protect your account before you need to
-
-This is the one section here that isn't about concepts — it's a checklist,
-and it matters before you touch anything else. People do lose GitHub access
-after a phone replacement: no recovery codes saved anywhere, and the
-authenticator entry didn't carry over automatically. Losing access is
-disruptive and avoidable, and GitHub Support cannot restore an account that
-has two-factor authentication enabled if you lose your credentials. Do these
-once, now:
-
-- **Enable two-factor authentication (2FA) on your own account**, and set up
-  **two or more** methods, for example an authenticator app plus a passkey or
-  a security key. GitHub recommends more than one, so that losing a single
-  device doesn't lock you out.
-- **Download your recovery codes and keep them in a password manager**, not
-  in a note on the phone you might replace. You can download them again at any
-  time after enabling 2FA, so a lost copy is not a lost account. Generating a
-  new set *invalidates* the old one, so it is not a way to re-read the codes
-  you already have: when you generate new ones, replace the stored copy.
-- **Keep your authentication factors and recovery codes to yourself.** They
-  belong to your account alone. GitHub's guidance is not to share or
-  distribute recovery codes, and that includes colleagues and administrators.
-- **Before replacing a device, move or re-register 2FA first.** It does not
-  carry over automatically just because you're signed into other services on
-  the new phone.
-- **GitHub Mobile** (iOS/Android) is a legitimate way to check
-  notifications and review or approve PRs from your phone — genuinely
-  useful, but approving a merge from a phone deserves the same care as
-  from a laptop, not less.
-
-### If you're already locked out
-
-GitHub's recovery options are, in order of convenience: your saved recovery
-codes; a passkey or security key you set up earlier; a fallback SMS number if
-you added one; and, as a last resort, a one-time password sent to a verified
-email address that you confirm with an SSH key, a device you have used before,
-or a personal access token. Start from the sign-in page's recovery link, or
-from a device where you are still signed in. If none of these works, the
-account can't be recovered, although you can unlink its email address and use
-it with a new account.
-
-### Who can help, and who can't
-
-- **Your personal account:** only you and GitHub's own recovery flow. Your
-  organization's administrators can't recover it or bypass its 2FA, and GitHub's
-  documentation treats recovery as the account holder's responsibility.
-- **Your organization access:** once your account works again, an
-  administrator can help you regain access to the organization's repositories
-  and teams. Know who that is before you need them.
-- **Managed accounts:** some organizations manage accounts through their own
-  sign-in system. If yours does, recovery is handled there and not by the
-  personal flow above, so ask your administrator which applies to you.
-
-*Sources, checked against GitHub Docs on 2026-10-01:*
-[Configuring two-factor authentication recovery methods](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication-recovery-methods)
-and
-[Recovering your account if you lose your 2FA credentials](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/recovering-your-account-if-you-lose-your-2fa-credentials).
-GitHub's steps change, so check the current pages before you rely on them.
+[Module 0.3](module-0-3-what-is-github.md) (the GitHub-specific part, including
+account protection) or to [Module 1.1](../1_beginners/module-1-1-getting-started.md).
+If any of the vocabulary below is new, five minutes here saves confusion later.
 
 ## What version control actually is
 
@@ -91,123 +37,42 @@ emailed back and forth, every change is a recorded, timestamped, attributed
 snapshot — and multiple people can work on their own snapshot at the same
 time without overwriting each other.
 
-**Git** is the tool that keeps that history on your machine (and everyone
-else's). **GitHub** is a service that hosts a shared copy of that history
-online and adds the collaboration layer on top: who's allowed to change
-what, how changes get reviewed before they count, and a paper trail of why.
-Git works without GitHub. GitHub doesn't exist without Git underneath it.
-
 ```mermaid
-flowchart LR
-    A[Git<br/>the history tool] --> B[Your local copy<br/>on your machine]
-    C[GitHub<br/>hosts + adds review,<br/>permissions, tracking] --> D[The shared copy<br/>everyone works against]
-    B <-->|push / pull| D
+gitGraph
+   commit id: "first draft"
+   commit id: "add chapter 2"
+   branch rewrite-intro
+   checkout rewrite-intro
+   commit id: "new intro"
+   checkout main
+   commit id: "fix a typo"
+   merge rewrite-intro id: "intro merged"
 ```
 
-What this shows: Git and GitHub are two different layers. Git is what
-records changes; GitHub is where the shared, reviewed copy lives and where
-your changes go to be seen by everyone else.
+What this shows: one line of history (`main`), with a side line
+(`rewrite-intro`) for work in progress that is folded back in when it is ready.
+Every dot is a saved change that stays in the history.
 
-## The vocabulary, once, in plain terms
+## Four words, once, in plain terms
 
 | Term | Plain-language definition |
 | --- | --- |
 | **Repository** ("repo") | The project's folder, plus its entire saved history. |
 | **Commit** | A saved snapshot of a change, with a message explaining what and why. The basic unit of history. |
 | **Branch** | Your own copy of the project to work in, so your in-progress change can't disturb anyone else's until it's ready and reviewed. |
-| **Push** | Send your local commits up to the shared copy on GitHub. |
-| **Pull** | Bring down commits other people pushed, so your local copy catches up. |
-| **Pull Request (PR)** | A request to merge one branch's changes into another, with a review step in between. This is where "is this change good?" gets decided. |
 | **Merge** | The moment a branch's commits get folded into another branch (usually `main`) after review. |
-| **Issue** | A tracked unit of work — a bug, a task, a question — that a PR usually gets linked to. |
 
-```mermaid
-flowchart LR
-    A[Branch: your workspace] -->|commit| A
-    A -->|push| B[GitHub: shared copy]
-    B -->|Pull Request + review| C[main: the trunk]
-    D[Someone else's branch] -->|pull| A
-```
-
-What this shows: the same handful of actions — commit, push, pull, PR,
-merge — repeat every time, in this order, on every single change, no
-matter how small.
-
-## How GitHub specifically puts this together
-
-GitHub's shape of the workflow, at the concept level (no clicking yet —
-that's Module 1.1):
-
-1. Work starts with an **issue** — what needs to happen, and why.
-2. A **branch** is created for that issue, so the change has its own space.
-3. Work happens as one or more **commits** on that branch.
-4. The branch is **pushed** to GitHub.
-5. A **pull request** opens, comparing the branch against `main`.
-6. Someone reviews it — comments, requests changes, or approves.
-7. Once approved, it's **merged** — the change becomes part of `main`.
-8. The linked **issue** closes, because the work it tracked is done.
-
-That's the entire loop. Every session after this one is a deeper look at
-one part of it.
-
-## Where this team's process adds rules on top
-
-Git and GitHub give you the *mechanism*. This team adds specific
-*conventions* on top of it — when to say `Refs #N` vs `Closes #N`, how
-branches get named, what a PR needs before it can merge. Those aren't
-universal Git rules; they're this team's habits, and Module 1.1 onward
-teaches them hands-on.
-
-**One honest caveat: this level of rigor isn't one-size-fits-all.** The
-full issue → branch → PR → review ceremony this program teaches earns its
-keep on repos with real stakes — CI, deployed code, multiple contributors
-relying on a stable history. A low-stakes repo (no CI, no deployed code, a
-handful of people) doesn't automatically need the same weight — but that
-doesn't mean no structure at all either; even a light repo benefits from
-basic guardrails like branch protection on `main` or a habit of tracking
-work somewhere. Don't assume either way on a repo you're new to — ask
-whoever maintains it. `docs/repo-settings-snapshot.md` has read-only
-commands to check what a repo actually has configured before assuming,
-and `skills/github-issue-first/SKILL.md`'s "Scaling ceremony to repo risk"
-section is the fuller version of this same judgment call.
-
-## If you're coming from GitLab or Azure DevOps
-
-The core mechanism above (commit, branch, push, pull, review, merge) is the
-same everywhere — Git itself doesn't change. What changes is the vocabulary
-and a few structural features. Quick orientation:
-
-| Concept | GitHub | GitLab | Azure DevOps |
-| --- | --- | --- | --- |
-| Review request | Pull Request | Merge Request | Pull Request |
-| Tracked work item | Issue | Issue | Work Item |
-| Release bucket | Milestone | Milestone | Iteration (different meaning — see below) |
-| CI/CD config | `.github/workflows/*.yml` | `.gitlab-ci.yml` | Pipelines (YAML or classic editor) |
-| Kanban-style view | Projects (v2) | Issue Board | Boards |
-
-Two traps worth knowing before you hit them: GitHub milestones are a
-**release bucket only** — GitLab and Azure DevOps both use "milestone" or
-"iteration" language that can also mean a time-boxed sprint, which GitHub
-milestones don't do. And `.gitlab-ci.yml` is not something you rename into
-a GitHub Actions file — it's a different system with a different trigger
-model.
-
-This table is deliberately short — just enough to stop a familiar word from
-meaning the wrong thing. For the full mapping (work item types, boards,
-wikis, pipelines, and the traps specific to each tool), see
-`skills/github-for-ado-users/SKILL.md` (Azure DevOps / TFS) or
-`skills/github-for-gitlab-users/SKILL.md` (GitLab) before you start relying
-on GitHub day to day.
+The next page, [Module 0.2: What Is Git?](module-0-2-what-is-git.md), adds the
+words for moving history between your machine and a shared copy.
 
 ## Self-check
 
 - In your own words, what's the difference between a commit and a branch?
-- What has to happen to a branch before its changes become part of `main`?
-- If you're used to GitLab or Azure DevOps, name one term that means
-  something different (or doesn't exist) on GitHub.
+- Why is one history of saved changes better than several copies of a file
+  with `v2` and `final` in the name?
+- What happens to a branch's commits when it is merged?
 
-Not confident on any of these? Re-read the section above before starting
-Module 1.1 — it only gets more concrete from here, not less.
+Not confident on any of these? Re-read the section above before moving on.
 
 ## Feedback
 
@@ -219,8 +84,4 @@ Discussions section.
 
 ---
 
-Next: [LLM Track — Pre-requisite: What Is an LLM Assistant?](prerequisite-what-is-an-llm-assistant.md)
-(also required reading before Module 1.1 if you'll be using an AI coding
-assistant — most colleagues will), then
-[Module 1.1: Getting Started](../1_beginners/module-1-1-getting-started.md) —
-the hands-on version of everything defined above.
+Next: [Module 0.2: What Is Git?](module-0-2-what-is-git.md)

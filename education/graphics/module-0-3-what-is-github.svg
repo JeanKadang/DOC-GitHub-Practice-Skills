@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 378" width="560" height="378"><title>What GitHub adds to Git</title><desc>Three cards: hosting a shared copy, review so changes are checked before they count, and a paper trail of issues that record what was done and why.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="378" rx="16"/><rect class="paper" x="12.0" y="22" width="170.66666666666666" height="254" rx="14"/><rect class="paper" x="63.33333333333333" y="50.0" width="44" height="56" rx="6"/><rect class="ln" x="72.33333333333333" y="62.0" width="26" height="6" rx="3"/><rect class="ln" x="72.33333333333333" y="76.0" width="16" height="6" rx="3"/><rect class="tg" x="87.33333333333333" y="64.0" width="44" height="56" rx="6"/><rect class="ln" x="96.33333333333333" y="76.0" width="26" height="6" rx="3"/><rect class="ln" x="96.33333333333333" y="90.0" width="16" height="6" rx="3"/><text class="lb mid" x="97.33333333333333" y="156">Hosting</text><text class="sm mid" x="97.33333333333333" y="184">a shared copy</text><text class="sm mid" x="97.33333333333333" y="204">all of you use</text><rect class="paper" x="41.93333333333333" y="228" width="110.8" height="32" rx="16"/><text class="mns  mid" x="97.33333333333333" y="249">push, pull</text><rect class="paper" x="194.66666666666666" y="22" width="170.66666666666666" height="254" rx="14"/><circle class="paper" cx="266.0" cy="78" r="9"/><path class="paper" d="M250.0,106 q0,-20 16,-20 q16,0 16,20 z"/><circle class="tg" cx="302.0" cy="70" r="12"/><path class="st-g" d="M296.6,70.6 l4.2,4.8 l7.2,-9.0"/><text class="lb mid" x="280.0" y="156">Review</text><text class="sm mid" x="280.0" y="184">checked first,</text><text class="sm mid" x="280.0" y="204">then merged</text><rect class="tg" x="215.92000000000002" y="228" width="128.16" height="32" rx="16"/><text class="mns gtxt mid" x="280.0" y="249">pull request</text><rect class="paper" x="377.3333333333333" y="22" width="170.66666666666666" height="254" rx="14"/><rect class="paper" x="434.66666666666663" y="56" width="56" height="56" rx="8"/><rect class="ln" x="442.66666666666663" y="64" width="40" height="6" rx="3"/><rect class="ln" x="442.66666666666663" y="77" width="40" height="6" rx="3"/><rect class="tg" x="442.66666666666663" y="90" width="40" height="6" rx="3"/><rect class="ln" x="442.66666666666663" y="103" width="40" height="6" rx="3"/><text class="lb mid" x="462.66666666666663" y="156">Paper trail</text><text class="sm mid" x="462.66666666666663" y="184">issues record</text><text class="sm mid" x="462.66666666666663" y="204">what and why</text><rect class="ta" x="417.66666666666663" y="228" width="90" height="32" rx="16"/><text class="mns atxt mid" x="462.66666666666663" y="249">issue</text><rect class="tg" x="14" y="298" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="326">Git keeps the history. GitHub adds the people</text><text class="bn mid" x="280.0" y="348">around it.</text></svg>

@@ -13,6 +13,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 0.1 is now four short pages: Module 0.1 (version control), Module 0.2
+  (Git), Module 0.3 (GitHub, with the account-protection checklist, the issue to
+  merge loop and this team's rules) and Module 0.4 (coming from GitLab, for teams
+  moving to GitHub, with the GitLab to GitHub mapping and the GitHub/GitLab/Azure
+  DevOps table). Nothing was dropped from the old Module 0.1; it moved to
+  the page it belongs on. Each page has an explainer graphic (#272).
+
 - An explainer graphic on every lesson page: 26 standalone SVG files in
   `education/graphics/` (Module 1.2 has two), each drawing one idea as an
   everyday picture, with alt text, a title and description, and light and dark
