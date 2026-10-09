@@ -83,6 +83,14 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
   `<desc>`, and an SVG with a script, event handler, link, embedded image, or
   reference to anything outside the file. It cannot tell whether a graphic still
   agrees with its module text, so changing a module means rereading its graphic.
+- **Graphics index and at-a-glance page** (`tests/education-graphics-index.test.mjs`):
+  a graphic with no entry in `education/graphics/index.json`, an entry whose
+  title, takeaway or alt text differs from its SVG or from the page that embeds
+  it, and an `education/at-a-glance.md` that is out of date. To add or change a
+  graphic, edit its SVG and its index entry together, embed it in its page, then
+  run `npm run glance` to regenerate the at-a-glance page. The index is where the
+  one-line takeaway and the optional "do not skip" rule live, so a slide deck or
+  an export reads from it, not from the SVG text.
 - **Public-content scan** (`scripts/scan-public-content.mjs`,
   `tests/public-content-scan.test.mjs`; run alone with `npm run scan:public`): a
   token-shaped string (GitHub, AWS, Google, Slack, `sk-` keys, private key

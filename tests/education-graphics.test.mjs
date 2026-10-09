@@ -5,6 +5,7 @@ import test from 'node:test';
 
 import { JSDOM } from 'jsdom';
 
+import { embeddedGraphics } from './helpers/graphics.mjs';
 import { repoRoot } from './helpers/markdown.mjs';
 
 // Every education page opens with an explainer graphic: a standalone SVG in
@@ -18,7 +19,6 @@ const EDUCATION = join(repoRoot, 'education');
 // is a plan, not a lesson.
 const PAGE_FILE = /^module-\d+-\d+-.+\.md$/;
 const NUMBERED_FOLDER = /^\d+_/;
-const EMBED = /!\[([^\]]*)\]\((\.\.\/graphics\/[^)\s]+\.svg)\)/g;
 
 export function graphicProblems(svgText) {
   const problems = [];
@@ -41,10 +41,6 @@ export function graphicProblems(svgText) {
     problems.push('references something outside the file');
   }
   return problems;
-}
-
-export function embeddedGraphics(pageSource) {
-  return [...pageSource.matchAll(EMBED)].map((match) => ({ alt: match[1].trim(), path: match[2] }));
 }
 
 async function pages() {

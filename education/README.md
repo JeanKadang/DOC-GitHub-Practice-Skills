@@ -273,6 +273,7 @@ mindmap
 - [Module 3.6: Rebase, cherry-pick, and reflog recovery](3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md) — ~25 min, hands-on, in a terminal (needs Git and Module 1.2), optional.
 - [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) — ~30 min, a paper review of an invented agent pull request, optional. Scope creep, invented APIs, claimed checks, and why a green check is not a decision.
 - [Next-step module plan](4_next-step/module-plan.md) — a plan of candidate advanced modules; only Module 4.1 is built.
+- [At a glance](at-a-glance.md) — one picture and one sentence for every lesson page, the five-minute version, with a "do not skip" line where a rule matters. Generated from the graphics index; the module text wins.
 - [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
 - [Examples: Markdown formatting showcase](examples/markdown-formatting-showcase.md) — lookup reference, not a lesson.
@@ -285,7 +286,8 @@ mindmap
 Every module page opens with one explainer graphic (Module 1.2 has two): a
 single idea drawn as an everyday picture, to read before the module. Each is a
 standalone SVG in `education/graphics/` that follows your light or dark
-theme. A graphic only summarises; the module text is the source of truth, so if
+theme, and each has an entry in `education/graphics/index.json`, from which the
+[at-a-glance page](at-a-glance.md) is generated. A graphic only summarises; the module text is the source of truth, so if
 a graphic and a module ever disagree, the module wins and the graphic gets
 fixed. `tests/education-graphics.test.mjs` checks that every page embeds its
 graphic and that each file has a title and description and no script.

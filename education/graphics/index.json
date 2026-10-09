@@ -1,0 +1,228 @@
+[
+  {
+    "file": "module-0-1-what-is-version-control.svg",
+    "page": "0_prerequisites/module-0-1-what-is-version-control.md",
+    "title": "One history, not ten copies",
+    "takeaway": "One history of every change beats ten copies of the same file.",
+    "alt": "Without version control a document turns into files named final, final v2 and final v2 real. With it, one line of saved changes, with a branch for a new intro that is merged back."
+  },
+  {
+    "file": "module-0-2-what-is-git.svg",
+    "page": "0_prerequisites/module-0-2-what-is-git.md",
+    "title": "Git is the notebook, GitHub the editing room",
+    "takeaway": "Git keeps the history. GitHub shares it and adds review.",
+    "alt": "A personal notebook labeled Git exchanges changes with a shared editing room labeled GitHub by push and pull arrows."
+  },
+  {
+    "file": "module-0-3-what-is-github.svg",
+    "page": "0_prerequisites/module-0-3-what-is-github.md",
+    "title": "What GitHub adds to Git",
+    "takeaway": "Git keeps the history. GitHub adds the people around it.",
+    "alt": "Three cards: hosting a shared copy, review so changes are checked before they count, and a paper trail of issues that record what was done and why.",
+    "rule": "Turn on two-factor authentication with two or more methods, and keep your recovery codes in a password manager."
+  },
+  {
+    "file": "module-0-4-coming-from-gitlab.svg",
+    "page": "0_prerequisites/module-0-4-coming-from-gitlab.md",
+    "title": "Same Git, new names",
+    "takeaway": "Same Git. New names, and a few real differences.",
+    "alt": "Four GitLab terms mapped to GitHub: merge request to pull request, epic to issue with sub-issues, issue board to Projects, and the GitLab CI file to Actions workflows, which is a rewrite and not a rename."
+  },
+  {
+    "file": "module-0-5-what-kinds-of-tools-are-these.svg",
+    "page": "0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md",
+    "title": "Sort a tool by what it does",
+    "takeaway": "Classify a tool by what it does, not by where it runs.",
+    "alt": "Four rows: an IDE or editor such as VS Code, an AI assistant such as ChatGPT or Claude, an AI coding assistant such as GitHub Copilot, and an AI development agent such as Claude Code or Codex, which does the task itself so you review what it did."
+  },
+  {
+    "file": "module-0-6-what-is-an-llm-assistant.svg",
+    "page": "0_prerequisites/module-0-6-what-is-an-llm-assistant.md",
+    "title": "Tools and permission decide what it can do",
+    "takeaway": "The same prompt can end in text only, or in changes on your disk.",
+    "alt": "Two cards compare an assistant that only writes text with one that uses tools to edit files and run commands. Four chips list what shapes either: instructions, context, tools and permission."
+  },
+  {
+    "file": "module-0-7-set-up-vs-code.svg",
+    "page": "0_prerequisites/module-0-7-set-up-vs-code.md",
+    "title": "VS Code is the hub",
+    "takeaway": "Install it once. Git and your accounts connect to it next.",
+    "alt": "A sketch of the VS Code window with four places to know: Explorer for your files, Source Control which runs your Git, Extensions, and Accounts for signing in to GitHub."
+  },
+  {
+    "file": "module-0-8-connect-vs-code-to-git-github-and-an-llm.svg",
+    "page": "0_prerequisites/module-0-8-connect-vs-code-to-git-github-and-an-llm.md",
+    "title": "Git first, then the connections",
+    "takeaway": "Git comes first, because VS Code uses it underneath.",
+    "alt": "Five steps in order: install Git, tell Git who you are, sign in to GitHub, optionally sign in to the gh command, and add your AI assistant. Three commands check the steps: git version, git config user name, and gh auth status."
+  },
+  {
+    "file": "module-1-1-getting-started.svg",
+    "page": "1_beginners/module-1-1-getting-started.md",
+    "title": "Edit a photocopy, merge after review",
+    "takeaway": "Work on a copy. Merge it only after someone reviews it.",
+    "alt": "An original page labeled main is photocopied into a branch, edited, reviewed through a pull request, and merged back, which closes the linked issue."
+  },
+  {
+    "file": "module-1-2-local-git-basics.svg",
+    "page": "1_beginners/module-1-2-local-git-basics.md",
+    "title": "Add packs the box. Commit seals it.",
+    "takeaway": "Only what you packed goes into the commit.",
+    "alt": "Three files on a desk. Two are packed into a staging box with git add; the box is sealed and labeled with git commit. The third file stays on the desk."
+  },
+  {
+    "file": "module-1-2-local-git-basics-undo.svg",
+    "page": "1_beginners/module-1-2-local-git-basics.md",
+    "title": "Three undos, three different jobs",
+    "takeaway": "Choose by what you are undoing, and who already has it.",
+    "alt": "Three undo commands: restore is a pencil eraser and the edit is gone, revert is a void slip that adds a correction and is safe to share, reset tears out pages and rewrites history.",
+    "rule": "Only use `git reset` on a branch nobody else has pulled."
+  },
+  {
+    "file": "module-1-3-markdown-for-issues-and-prs.svg",
+    "page": "1_beginners/module-1-3-markdown-for-issues-and-prs.md",
+    "title": "Write for someone who was not there",
+    "takeaway": "Preview before you submit.",
+    "alt": "An issue body drawn as a form with a heading, a code block, a task list and a collapsed section, each annotated with why it helps the reader."
+  },
+  {
+    "file": "module-1-4-finding-your-way-around-a-repo.svg",
+    "page": "1_beginners/module-1-4-finding-your-way-around-a-repo.md",
+    "title": "Read a repository like a library",
+    "takeaway": "GitHub keeps the answers. You only need to know where to look.",
+    "alt": "Four cards: the code tab is the shelves, history and blame is the borrowing log, search is the card catalogue, and a pull request page is the contents page."
+  },
+  {
+    "file": "module-1-5-what-never-goes-in-a-repo.svg",
+    "page": "1_beginners/module-1-5-what-never-goes-in-a-repo.md",
+    "title": "Change the lock before the cleanup",
+    "takeaway": "A pushed secret is already out. Rotate it first.",
+    "alt": "A secret key pushed to a repository has already been copied. Deleting the file does not help. The order is rotate the key, tell the maintainer privately, then clean up.",
+    "rule": "Rotate a leaked secret first, and never paste its value into an issue, pull request, commit message or chat."
+  },
+  {
+    "file": "module-1-6-skills-instructions-and-mcp.svg",
+    "page": "1_beginners/module-1-6-skills-instructions-and-mcp.md",
+    "title": "House rules, recipe cards, a delivery hatch",
+    "takeaway": "Two are text it reads. One is code that acts, so review it first.",
+    "alt": "An instruction file is a poster on the wall, always read. A skill is a recipe card pulled out when the dish matches. An MCP server is a hatch to another kitchen and runs code, so review it first."
+  },
+  {
+    "file": "module-2-1-issue-first-and-closure-gate.svg",
+    "page": "2_intermediate/module-2-1-issue-first-and-closure-gate.md",
+    "title": "Merged is not done",
+    "takeaway": "Refs links the work. Closes comes only after every criterion has evidence.",
+    "alt": "A pull request starts with Refs #N. Every acceptance criterion needs evidence such as a diff, test or CI run. Only then does the pull request say Closes #N. After a merge, check that the issue did not close early.",
+    "rule": "Start a pull request with `Refs #N`, not `Closes #N`, and switch only when every criterion has evidence. After every merge, check the issue did not close early."
+  },
+  {
+    "file": "module-2-2-pr-review-and-branch-conventions.svg",
+    "page": "2_intermediate/module-2-2-pr-review-and-branch-conventions.md",
+    "title": "Approving is not merging",
+    "takeaway": "Never approve your own pull request to get past a rule.",
+    "alt": "Author, reviewer and maintainer. The reviewer gives an Approved stamp and the maintainer gives a separate Merged stamp. Below, Request changes is a real blocker and Comment gives no verdict.",
+    "rule": "Never approve your own pull request to get around a required review."
+  },
+  {
+    "file": "module-2-3-writing-a-good-issue.svg",
+    "page": "2_intermediate/module-2-3-writing-a-good-issue.md",
+    "title": "An issue is a labeled parcel",
+    "takeaway": "Each field prevents a specific failure. Criteria are what you close against.",
+    "alt": "An issue drawn as a shipping label with seven fields: title, body, criteria, priority, category, milestone and assignee, each with a short instruction."
+  },
+  {
+    "file": "module-2-4-writing-a-reviewable-pr.svg",
+    "page": "2_intermediate/module-2-4-writing-a-reviewable-pr.md",
+    "title": "Show your work",
+    "takeaway": "Name the evidence for each criterion. Do not say “tests pass”.",
+    "alt": "A pull request starts with Refs #N for one issue. A table lists each criterion with its evidence and a Met or Unmet result. If any row is Unmet, the pull request keeps Refs."
+  },
+  {
+    "file": "module-2-5-triage-and-backlog-hygiene.svg",
+    "page": "2_intermediate/module-2-5-triage-and-backlog-hygiene.md",
+    "title": "Sort every open issue into one tray",
+    "takeaway": "Leaving a valid issue alone is a legitimate outcome.",
+    "alt": "An open issue is sorted into one of six outcomes: already fixed, scope changed, obsolete, duplicate, unclear, or still valid. A strip notes that priority and milestone answer different questions."
+  },
+  {
+    "file": "module-2-6-where-does-this-thought-belong.svg",
+    "page": "2_intermediate/module-2-6-where-does-this-thought-belong.md",
+    "title": "Four thoughts, four homes",
+    "takeaway": "Pick the home by what kind of thought it is.",
+    "alt": "Four cards: a Discussion for open exploration, an issue for committed work, an ADR file for a decision already made, and a decision-needed issue for a decision still to make. An arrow shows a Discussion converting to an issue."
+  },
+  {
+    "file": "module-2-7-contributing-to-someone-elses-repo.svg",
+    "page": "2_intermediate/module-2-7-contributing-to-someone-elses-repo.md",
+    "title": "Your copy, their rules",
+    "takeaway": "Contribute the way the maintainers ask, not the way you usually do.",
+    "alt": "Upstream is forked into your fork, you branch from it, and a pull request goes back to upstream. A strip says the maintainers rules decide, and to sync before every branch."
+  },
+  {
+    "file": "module-2-8-why-the-rules-exist.svg",
+    "page": "2_intermediate/module-2-8-why-the-rules-exist.md",
+    "title": "Each rule exists to stop one mistake",
+    "takeaway": "Know the mistake behind a rule and you can judge when a lighter process is fine.",
+    "alt": "Six rule cards, each with what goes wrong if it is skipped: audit the issue after merge, read a red check before re-running, never approve your own pull request, branch before committing, rotate a leaked secret first, and give evidence for every criterion."
+  },
+  {
+    "file": "module-2-9-safety-with-skills-and-mcp-servers.svg",
+    "page": "2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md",
+    "title": "A note under the door can steer your assistant",
+    "takeaway": "Text it reads can steer what it does. Limit what it can do.",
+    "alt": "Untrusted text reaches an assistant that reads it and may obey, leading to an action with your access. Three places to break the chain: fewer untrusted sources, review what it proposes, and limit its access.",
+    "rule": "Review a skill or MCP server before you add it: an MCP server is code that runs on your machine."
+  },
+  {
+    "file": "module-3-1-branch-protection-and-rulesets.svg",
+    "page": "3_advanced/module-3-1-branch-protection-and-rulesets.md",
+    "title": "A gate that exists only on some plans",
+    "takeaway": "Availability depends on plan and visibility before it depends on your choices.",
+    "alt": "Public repositories and private repositories on a paid plan can use rulesets. A private free-plan repository cannot: CI runs but nothing blocks a merge. Solo maintainers require checks only; teams add one review."
+  },
+  {
+    "file": "module-3-2-projects-boards.svg",
+    "page": "3_advanced/module-3-2-projects-boards.md",
+    "title": "The board is a window onto issues",
+    "takeaway": "A board is a view over issues, never the source of truth.",
+    "alt": "Issues on the left are the source of truth and the board on the right mirrors them. If an issue label says P1 and the board field says P2, the label wins and the field is fixed."
+  },
+  {
+    "file": "module-3-3-releases.svg",
+    "page": "3_advanced/module-3-3-releases.md",
+    "title": "A release is a checklist, not a choice",
+    "takeaway": "A release is a recipe to follow, not a set of choices to weigh.",
+    "alt": "Seven steps in order: pick the version, make a release branch, verify, open the release pull request, tag main, confirm the release, and close the milestone. A note says to read the version file, not the last tag."
+  },
+  {
+    "file": "module-3-4-security-response.svg",
+    "page": "3_advanced/module-3-4-security-response.md",
+    "title": "Report it through the private door",
+    "takeaway": "Rotate first, report privately, never paste the value.",
+    "alt": "A public issue or pull request is crossed out because filing it is itself a disclosure. Private vulnerability reporting is the right door. Say where the secret was, not its value. Order: rotate, report privately, clean up.",
+    "rule": "A vulnerability or a committed secret never goes into a public issue or pull request."
+  },
+  {
+    "file": "module-3-5-actions-runners-and-agents.svg",
+    "page": "3_advanced/module-3-5-actions-runners-and-agents.md",
+    "title": "Rented runner or your own",
+    "takeaway": "Default to GitHub-hosted. An agent’s pull request is reviewed like any other.",
+    "alt": "An event triggers a workflow, which runs jobs on a runner. A GitHub-hosted runner is a fresh machine per job and the default. A self-hosted runner needs upkeep and is a risk on public repositories."
+  },
+  {
+    "file": "module-3-6-rebase-cherry-pick-and-reflog.svg",
+    "page": "3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md",
+    "title": "Tidy, copy, recover",
+    "takeaway": "Rewrite only history that nobody else has pulled.",
+    "alt": "Three cards: rebase turns three messy commits into one, cherry-pick copies one commit to another branch, and the reflog still holds a commit that looks lost.",
+    "rule": "Only rewrite history that nobody else has pulled."
+  },
+  {
+    "file": "module-4-1-reviewing-changes-an-ai-agent-wrote.svg",
+    "page": "4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md",
+    "title": "Inspect the work, not the summary",
+    "takeaway": "A fluent summary and a green check are not a review.",
+    "alt": "An agent's pull request description claims all tests pass and no other changes. Compare it with the diff: an unrelated file changed, a call to something that does not exist, and a claimed test missing.",
+    "rule": "An approval is not a merge decision: merging needs the maintainer's explicit approval."
+  }
+]
