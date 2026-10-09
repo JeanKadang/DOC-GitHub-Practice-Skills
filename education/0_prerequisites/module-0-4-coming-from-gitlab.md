@@ -19,7 +19,9 @@ feature GitHub does not, or where a familiar word means something slightly
 different. This page orients you. The full mapping, with the reasoning, is in
 the `github-for-gitlab-users` skill (`skills/github-for-gitlab-users/SKILL.md`),
 and this page does not repeat it. It also does not cover how to migrate
-repositories or rewrite pipelines.
+repositories. Rewriting a pipeline is taught in
+[Module 4.12](../4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md),
+once you have done Module 3.5.
 
 ## What stays the same
 

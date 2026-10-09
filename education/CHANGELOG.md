@@ -13,6 +13,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 4.12, moving a GitLab pipeline to GitHub Actions (conditional, ~40 min,
+  hands-on in the sandbox) in `4_next-step/`, with an explainer graphic, a Mermaid
+  diagram, and a vendor-facts table dated 2026-10-09 (GitHub Actions Importer
+  commands and gaps, job order, artifacts, variables and secrets, token
+  permissions). The exercise translates a small pipeline and has the learner read
+  a deliberate failure from the log before changing anything. Module 0.4 now points
+  to it, and the next-step plan, the README and the at-a-glance page list it.
 - `npm run export:graphics` renders every explainer graphic to a light and a
   dark PNG, and `npm run slides:data` writes the slide data for a deck, both
   read from `education/graphics/index.json`. The at-a-glance page now labels a
