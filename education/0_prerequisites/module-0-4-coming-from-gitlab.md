@@ -27,6 +27,33 @@ Commits, branches, merging after review, and the idea that a change is
 proposed, reviewed and then merged. A GitLab merge request is a GitHub pull
 request; a GitLab issue is a GitHub issue.
 
+```mermaid
+flowchart LR
+    subgraph GL[GitLab]
+        G1[Merge Request]
+        G2[Epic]
+        G3[Issue Board]
+        G4[.gitlab-ci.yml]
+        G5[Group with subgroups]
+    end
+    subgraph GH[GitHub]
+        H1[Pull Request]
+        H2[Epic issue +<br/>sub-issues]
+        H3[Projects:<br/>a view over issues]
+        H4[Actions workflows<br/>in .github/workflows]
+        H5[Organization,<br/>flat]
+    end
+    G1 --> H1
+    G2 --> H2
+    G3 --> H3
+    G4 -. "rewrite, not rename" .-> H4
+    G5 -. "no nested subgroups" .-> H5
+```
+
+What this shows: where each GitLab concept lands on GitHub. Solid arrows are
+renamed equivalents; dotted arrows are the two places where a rename is not
+enough.
+
 ## Quick orientation
 
 The core mechanism from Modules 0.1 to 0.3 (commit, branch, push, pull, review,

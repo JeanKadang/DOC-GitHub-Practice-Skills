@@ -24,6 +24,12 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `prerequisite-what-is-an-llm-assistant.md` and `setup-local-dev-environment.md`
   are gone (#272).
 
+- Mermaid diagrams on the pages that had none or where a decision is easier to
+  follow as a picture: the GitLab to GitHub mapping (Module 0.4), the order of an
+  issue body and the preview loop (Module 1.3), which undo command to use (Module
+  1.2), the first moves in a security situation (Module 3.4), and which history
+  tool to use (Module 3.6) (#275).
+
 - Module 0.1 is now four short pages: Module 0.1 (version control), Module 0.2
   (Git), Module 0.3 (GitHub, with the account-protection checklist, the issue to
   merge loop and this team's rules) and Module 0.4 (coming from GitLab, for teams

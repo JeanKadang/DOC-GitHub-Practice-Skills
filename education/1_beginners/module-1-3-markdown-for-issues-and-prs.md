@@ -23,6 +23,22 @@ open in another tab.
   `@name`.
 - Preview before submitting and fix what renders wrong.
 
+```mermaid
+flowchart TD
+    A[Write the body] --> B[Headings: what is wrong,<br/>steps to reproduce]
+    B --> C[Acceptance criteria<br/>as a task list]
+    C --> D[Code fences, links,<br/>a collapsible section]
+    D --> E[Preview]
+    E --> F{Renders as you meant?}
+    F -- No --> G[Fix the Markdown]
+    G --> E
+    F -- Yes --> H[Submit]
+```
+
+What this shows: the order the rest of this module follows, and the loop at the
+end. Preview is a step you repeat until the page reads the way you meant, not
+something you do once.
+
 ## Structure: headings, lists, and task lists
 
 **Source:** `education/examples/markdown-formatting-showcase.md`,

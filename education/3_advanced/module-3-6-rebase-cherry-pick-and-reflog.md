@@ -35,6 +35,22 @@ diverging versions of "the same" history that don't reconcile cleanly.
 If you're not sure whether a branch is safe to rewrite, it isn't — push
 what you have as-is, or ask first.
 
+```mermaid
+flowchart TD
+    A[What do you need?] --> B{Clean up several of<br/>your own commits?}
+    B -- Yes --> C{Has anyone else<br/>pulled that branch?}
+    C -- No --> D[Interactive rebase]
+    C -- "Yes, or not sure" --> E[Do not rewrite it:<br/>push as is, or ask first]
+    B -- No --> F{One commit needed<br/>on another branch?}
+    F -- Yes --> G[Cherry-pick it]
+    F -- No --> H{A commit looks lost?}
+    H -- Yes --> I[git reflog, then check<br/>out the commit's hash]
+    H -- No --> J[None of these three]
+```
+
+What this shows: which tool fits, with the safety rule applied first. Rewriting
+history is only for commits nobody else has.
+
 ## Before you start
 
 **Permissions:** you need `git` installed and a local clone of the sandbox. You only push if a step tells you to, so write access to the sandbox is not needed for the rest.
