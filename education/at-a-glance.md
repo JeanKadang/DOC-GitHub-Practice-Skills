@@ -36,6 +36,14 @@ Read the module: [Module 0.2: What Is Git?](0_prerequisites/module-0-2-what-is-g
 
 Read the module: [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md)
 
+### Module 0.3: Protect the account before you need to
+
+![Four steps: turn on two-factor with two or more methods, save recovery codes in a password manager, keep codes and factors to yourself, and re-register two-factor before replacing a device.](graphics/module-0-3-what-is-github-account-protection.svg)
+
+**In one sentence:** GitHub Support cannot restore a two-factor account if you lose your credentials.
+
+Read the module: [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md)
+
 ### Module 0.4: Same Git, new names
 
 ![Four GitLab terms mapped to GitHub: merge request to pull request, epic to issue with sub-issues, issue board to Projects, and the GitLab CI file to Actions workflows, which is a rewrite and not a rename.](graphics/module-0-4-coming-from-gitlab.svg)
@@ -130,6 +138,14 @@ Read the module: [Module 1.4: Finding your way around a repository](1_beginners/
 
 Read the module: [Module 1.5: What never goes in a repository](1_beginners/module-1-5-what-never-goes-in-a-repo.md)
 
+### Module 1.5: A .gitignore is a net, not a vault
+
+![What stays out of a repository, a sample gitignore file, and how to check it with git status. Two limits: it only affects files Git is not tracking yet, and it does not protect a secret anywhere else.](graphics/module-1-5-what-never-goes-in-a-repo-gitignore.svg)
+
+**In one sentence:** Ignore it before you commit it. A .gitignore is a net, not a vault.
+
+Read the module: [Module 1.5: What never goes in a repository](1_beginners/module-1-5-what-never-goes-in-a-repo.md)
+
 ### Module 1.6: House rules, recipe cards, a delivery hatch
 
 ![An instruction file is a poster on the wall, always read. A skill is a recipe card pulled out when the dish matches. An MCP server is a hatch to another kitchen and runs code, so review it first.](graphics/module-1-6-skills-instructions-and-mcp.svg)
@@ -157,6 +173,14 @@ Read the module: [Module 2.1: Issue-first and the closure gate](2_intermediate/m
 **In one sentence:** Never approve your own pull request to get past a rule.
 
 **Do not skip:** Never approve your own pull request to get around a required review.
+
+Read the module: [Module 2.2: PR review and branch conventions](2_intermediate/module-2-2-pr-review-and-branch-conventions.md)
+
+### Module 2.2: A milestone is a release bucket, not a sprint
+
+![Two cards: branch names start with fix, feat or docs, one branch per issue from an up-to-date main; a milestone is a release bucket that answers what ships next, and sprint cadence belongs in a Projects iteration field.](graphics/module-2-2-pr-review-and-branch-conventions-milestones.svg)
+
+**In one sentence:** A milestone answers “what ships next?”, not “what are we doing this week?”
 
 Read the module: [Module 2.2: PR review and branch conventions](2_intermediate/module-2-2-pr-review-and-branch-conventions.md)
 
@@ -215,6 +239,14 @@ Read the module: [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why
 **In one sentence:** Text it reads can steer what it does. Limit what it can do.
 
 **Do not skip:** Review a skill or MCP server before you add it: an MCP server is code that runs on your machine.
+
+Read the module: [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md)
+
+### Module 2.9: Seven questions before you add one
+
+![A checklist of seven questions to answer before adding a skill or an MCP server: who publishes it, what it runs, what it can reach, what it needs to know, what it may do without asking, who else gets it, and whether there is a policy.](graphics/module-2-9-safety-with-skills-and-mcp-servers-checklist.svg)
+
+**In one sentence:** If you cannot list what it reaches, do not add it.
 
 Read the module: [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md)
 
@@ -281,6 +313,14 @@ Read the module: [Module 3.6: Rebase, Cherry-Pick, and Reflog Recovery](3_advanc
 **In one sentence:** A fluent summary and a green check are not a review.
 
 **Do not skip:** An approval is not a merge decision: merging needs the maintainer's explicit approval.
+
+Read the module: [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md)
+
+### Module 4.1: Six patterns in an agent’s pull request
+
+![Six patterns to watch for and how to check each: scope creep, an invented API, a claimed check that did not happen, a special case that passes, weakened safety nets, and an intention told as fact.](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote-patterns.svg)
+
+**In one sentence:** A green check shows the checks that exist passed, not that they cover the change.
 
 Read the module: [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md)
 

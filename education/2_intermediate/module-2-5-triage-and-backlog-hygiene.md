@@ -125,6 +125,23 @@ On the blocker:         Sequencing note: do before #15, because #15 depends on i
 Chat scrolls away and issue comments stay. Linking by number makes GitHub
 connect the two issues automatically.
 
+```mermaid
+flowchart TD
+    A[Two issues look related] --> B{A real dependency?}
+    B -- No --> C[Do not record one]
+    B -- Yes --> D{Can B be done<br/>before A lands?}
+    D -- No --> E[Hard block: write the block<br/>on both issues]
+    D -- "Yes, but order matters" --> F[Soft dependency: write a<br/>sequencing note on both issues]
+    E --> G{Does A block two<br/>or more issues?}
+    F --> H[Order is not importance:<br/>priority unchanged]
+    G -- Yes --> I[Consider one tier higher<br/>and say so in a comment]
+    G -- No --> H
+```
+
+What this shows: how a dependency is recorded and when it may change priority.
+Only a blocker that holds up several issues earns a higher tier; sequencing alone
+never does.
+
 Dependencies can also change priority, but carefully. An issue that blocks two
 or more others is a reasonable candidate for one tier higher, even if its own
 content looks minor, so it does not sit at the bottom of the queue while

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380" width="560" height="380"><title>A .gitignore is a net, not a vault</title><desc>What stays out of a repository, a sample gitignore file, and how to check it with git status. Two limits: it only affects files Git is not tracking yet, and it does not protect a secret anywhere else.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="380" rx="16"/><rect class="paper" x="12" y="22" width="170" height="150" rx="12"/><text class="lb" x="24" y="46" style="font-size:15px">Stays out</text><circle class="tr" cx="30" cy="74" r="9"/><path class="st-r" d="M26.4,70.4 L33.6,77.6 M33.6,70.4 L26.4,77.6"/><text class="sm" x="46" y="79" style="font-size:13px">secrets and tokens</text><circle class="tr" cx="30" cy="104" r="9"/><path class="st-r" d="M26.4,100.4 L33.6,107.6 M33.6,100.4 L26.4,107.6"/><text class="sm" x="46" y="109" style="font-size:13px">personal data</text><circle class="tr" cx="30" cy="134" r="9"/><path class="st-r" d="M26.4,130.4 L33.6,137.6 M33.6,130.4 L26.4,137.6"/><text class="sm" x="46" y="139" style="font-size:13px">large binaries</text><rect class="ta" x="194" y="22" width="170" height="150" rx="12"/><text class="mn" x="206" y="46">.gitignore</text><text class="mn" x="206" y="74" style="font-size:13px">.env</text><text class="mn" x="206" y="98" style="font-size:13px">*.key</text><text class="mn" x="206" y="122" style="font-size:13px">build/</text><text class="mn" x="206" y="146" style="font-size:13px">node_modules/</text><rect class="paper" x="376" y="22" width="172" height="150" rx="12"/><text class="lb" x="388" y="46" style="font-size:15px">Check it worked</text><text class="mn" x="388" y="76" style="font-size:13px">git status</text><text class="sm" x="388" y="94" style="font-size:12px">the file is absent</text><text class="mn" x="388" y="124" style="font-size:11px">git check-ignore -v</text><text class="sm" x="388" y="142" style="font-size:12px">shows the rule</text><rect class="tr" x="12" y="184" width="264" height="90" rx="12"/><text class="lb" x="24" y="208" style="font-size:14px">Only for untracked files</text><text class="sm" x="24" y="230" style="font-size:13px">A committed file stays tracked.</text><text class="sm" x="24" y="250" style="font-size:13px">The old commits stay as they were.</text><rect class="tr" x="288" y="184" width="260" height="90" rx="12"/><text class="lb" x="300" y="208" style="font-size:14px">A net, not a vault</text><text class="sm" x="300" y="230" style="font-size:13px">It keeps files out of the repo only.</text><text class="sm" x="300" y="250" style="font-size:13px">Secrets live in a password manager.</text><rect class="tg" x="14" y="300" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="328">Ignore it before you commit it. A .gitignore is</text><text class="bn mid" x="280.0" y="350">a net, not a vault.</text></svg>

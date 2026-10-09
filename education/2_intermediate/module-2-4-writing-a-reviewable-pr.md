@@ -152,6 +152,21 @@ failing step's log tells you which of three situations you are in:
   token, a removed action): file it as its own issue. It will hit every future
   pull request, not just yours.
 
+```mermaid
+flowchart TD
+    A[A check goes red] --> B[Read the failing step's log]
+    B --> C{What is it?}
+    C -- "A genuine failure:<br/>a test, a lint rule, the build" --> D[Fix it on the same branch,<br/>with its own commit]
+    C -- "A flake:<br/>a network blip, a runner timeout" --> E[Re-run only the failed jobs]
+    E --> F{Did the same job<br/>flake twice?}
+    F -- Yes --> G[File an issue: a real defect<br/>in the test suite]
+    F -- No --> H[Carry on]
+    C -- "An infrastructure break:<br/>a missing secret, an expired token" --> I[File it as its own issue:<br/>it hits every future pull request]
+```
+
+What this shows: read the log first, then act on which of the three it is.
+Re-running a red job in the hope it turns green is not one of the options.
+
 Re-running a red job in the hope it turns green is the one thing the skill
 rules out, because it teaches everyone to ignore red.
 

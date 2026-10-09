@@ -13,6 +13,18 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- A coverage audit of the explainer graphics against each module's learning
+  objectives, and the gaps it found filled: five second graphics (account
+  protection in Module 0.3, what stays out of a repository and `.gitignore` in
+  Module 1.5, branch names and the milestone as a release bucket in Module 2.2,
+  the seven questions before adding a skill or MCP server in Module 2.9, and the
+  six patterns for reviewing an agent's pull request in Module 4.1) and six
+  Mermaid diagrams (which Git name and email to use in Module 0.8, how a merge
+  conflict comes about in Module 1.2, what to do when a check goes red in Module
+  2.4, recording dependencies in Module 2.5, the life of a decision record in
+  Module 2.6, and when a lighter process is reasonable in Module 2.8). The
+  graphics are in the graphics index and the at-a-glance page (#284).
+
 - An at-a-glance page (`at-a-glance.md`): one picture and one sentence for each
   of the 31 lesson graphics, grouped by tier, with a "do not skip" line where a
   rule matters (secrets, the closure gate, approving your own pull request,

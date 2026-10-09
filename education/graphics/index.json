@@ -22,6 +22,13 @@
     "rule": "Turn on two-factor authentication with two or more methods, and keep your recovery codes in a password manager."
   },
   {
+    "file": "module-0-3-what-is-github-account-protection.svg",
+    "page": "0_prerequisites/module-0-3-what-is-github.md",
+    "title": "Protect the account before you need to",
+    "takeaway": "GitHub Support cannot restore a two-factor account if you lose your credentials.",
+    "alt": "Four steps: turn on two-factor with two or more methods, save recovery codes in a password manager, keep codes and factors to yourself, and re-register two-factor before replacing a device."
+  },
+  {
     "file": "module-0-4-coming-from-gitlab.svg",
     "page": "0_prerequisites/module-0-4-coming-from-gitlab.md",
     "title": "Same Git, new names",
@@ -101,6 +108,13 @@
     "rule": "Rotate a leaked secret first, and never paste its value into an issue, pull request, commit message or chat."
   },
   {
+    "file": "module-1-5-what-never-goes-in-a-repo-gitignore.svg",
+    "page": "1_beginners/module-1-5-what-never-goes-in-a-repo.md",
+    "title": "A .gitignore is a net, not a vault",
+    "takeaway": "Ignore it before you commit it. A .gitignore is a net, not a vault.",
+    "alt": "What stays out of a repository, a sample gitignore file, and how to check it with git status. Two limits: it only affects files Git is not tracking yet, and it does not protect a secret anywhere else."
+  },
+  {
     "file": "module-1-6-skills-instructions-and-mcp.svg",
     "page": "1_beginners/module-1-6-skills-instructions-and-mcp.md",
     "title": "House rules, recipe cards, a delivery hatch",
@@ -122,6 +136,13 @@
     "takeaway": "Never approve your own pull request to get past a rule.",
     "alt": "Author, reviewer and maintainer. The reviewer gives an Approved stamp and the maintainer gives a separate Merged stamp. Below, Request changes is a real blocker and Comment gives no verdict.",
     "rule": "Never approve your own pull request to get around a required review."
+  },
+  {
+    "file": "module-2-2-pr-review-and-branch-conventions-milestones.svg",
+    "page": "2_intermediate/module-2-2-pr-review-and-branch-conventions.md",
+    "title": "A milestone is a release bucket, not a sprint",
+    "takeaway": "A milestone answers “what ships next?”, not “what are we doing this week?”",
+    "alt": "Two cards: branch names start with fix, feat or docs, one branch per issue from an up-to-date main; a milestone is a release bucket that answers what ships next, and sprint cadence belongs in a Projects iteration field."
   },
   {
     "file": "module-2-3-writing-a-good-issue.svg",
@@ -174,6 +195,13 @@
     "rule": "Review a skill or MCP server before you add it: an MCP server is code that runs on your machine."
   },
   {
+    "file": "module-2-9-safety-with-skills-and-mcp-servers-checklist.svg",
+    "page": "2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md",
+    "title": "Seven questions before you add one",
+    "takeaway": "If you cannot list what it reaches, do not add it.",
+    "alt": "A checklist of seven questions to answer before adding a skill or an MCP server: who publishes it, what it runs, what it can reach, what it needs to know, what it may do without asking, who else gets it, and whether there is a policy."
+  },
+  {
     "file": "module-3-1-branch-protection-and-rulesets.svg",
     "page": "3_advanced/module-3-1-branch-protection-and-rulesets.md",
     "title": "A gate that exists only on some plans",
@@ -224,5 +252,12 @@
     "takeaway": "A fluent summary and a green check are not a review.",
     "alt": "An agent's pull request description claims all tests pass and no other changes. Compare it with the diff: an unrelated file changed, a call to something that does not exist, and a claimed test missing.",
     "rule": "An approval is not a merge decision: merging needs the maintainer's explicit approval."
+  },
+  {
+    "file": "module-4-1-reviewing-changes-an-ai-agent-wrote-patterns.svg",
+    "page": "4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md",
+    "title": "Six patterns in an agent’s pull request",
+    "takeaway": "A green check shows the checks that exist passed, not that they cover the change.",
+    "alt": "Six patterns to watch for and how to check each: scope creep, an invented API, a claimed check that did not happen, a special case that passes, weakened safety nets, and an intention told as fact."
   }
 ]

@@ -111,6 +111,17 @@ evidence), **Decision** (what was decided, stated plainly), **Consequences**
 (what this makes easier or harder), and **Status** (`Proposed`, `Accepted`, or
 `Superseded by 0014`).
 
+```mermaid
+stateDiagram-v2
+    [*] --> Proposed
+    Proposed --> Accepted: the decision is made
+    Accepted --> Superseded: a new record supersedes it
+    Superseded --> [*]
+```
+
+What this shows: the life of a decision record. An accepted record is never
+edited to reverse it; you write a new one, and the old one's status changes.
+
 The rule that makes the whole thing work: **never edit a decided ADR to
 reverse it.** Write a new one that supersedes it, and set the old one's
 status. The history of what you believed, and when, is the point. You can see a

@@ -25,6 +25,8 @@ right and was never checked.
 - Decide between approve, request changes, and comment, with evidence for each
   finding, and say why a green check is not a decision.
 
+![Six patterns to watch for and how to check each: scope creep, an invented API, a claimed check that did not happen, a special case that passes, weakened safety nets, and an intention told as fact.](../graphics/module-4-1-reviewing-changes-an-ai-agent-wrote-patterns.svg)
+
 ## What is different about an agent's pull request
 
 **Source:** `skills/github-pr-review/SKILL.md`, `skills/github-hygiene/SKILL.md`

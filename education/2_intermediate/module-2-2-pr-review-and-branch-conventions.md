@@ -73,6 +73,8 @@ use it.
 > two paragraphs up), so the exercise below gives you a solo-appropriate
 > substitute instead.
 
+![Two cards: branch names start with fix, feat or docs, one branch per issue from an up-to-date main; a milestone is a release bucket that answers what ships next, and sprint cadence belongs in a Projects iteration field.](../graphics/module-2-2-pr-review-and-branch-conventions-milestones.svg)
+
 ## Branch conventions and milestones
 
 **Source:** `skills/github-hygiene/SKILL.md` (PR flow),

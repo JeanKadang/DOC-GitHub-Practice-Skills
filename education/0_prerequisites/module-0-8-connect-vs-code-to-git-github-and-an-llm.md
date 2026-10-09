@@ -89,6 +89,23 @@ settings. Set them once. Without them Git refuses to commit ("Author identity
 unknown") or records a wrong author, and the commit is not linked to your
 GitHub profile, so history cannot show who did what.
 
+```mermaid
+flowchart TD
+    A[Which repository are you committing to?] --> B{A company repository?}
+    B -- Yes --> C[Company initials as the name,<br/>company email, exactly what<br/>your organization requires]
+    B -- No --> D[Personal or private repository]
+    D --> E[GitHub noreply address,<br/>or your own verified email]
+    C --> F{Company and personal work<br/>on one machine?}
+    E --> F
+    F -- Yes --> G["Company values in --global;<br/>personal values with --local<br/>inside each personal repository"]
+    F -- No --> H["Set it once with --global"]
+```
+
+What this shows: which name and email to set. The company rule applies to
+company repositories, the GitHub noreply address is the default for your own, and
+when both live on one machine the personal values go inside each personal
+repository.
+
 **For company repositories, follow the company rule:** your name is your
 company initials only, and your email is your company email. Use exactly what
 your organization requires, not your full name or a personal address.

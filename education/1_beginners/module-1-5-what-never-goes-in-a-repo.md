@@ -52,6 +52,8 @@ flowchart TD
     D -- No --> E[Commit it]
 ```
 
+![What stays out of a repository, a sample gitignore file, and how to check it with git status. Two limits: it only affects files Git is not tracking yet, and it does not protect a secret anywhere else.](../graphics/module-1-5-what-never-goes-in-a-repo-gitignore.svg)
+
 ## Keeping files out with .gitignore
 
 **Source:** `skills/github-security-response/SKILL.md`
