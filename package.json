@@ -20,6 +20,7 @@
     "test:installer": "node scripts/run-tests.mjs --only-installer",
     "validate": "node scripts/validate-skills.mjs",
     "scan:public": "node scripts/scan-public-content.mjs",
+    "glance": "node scripts/education-glance.mjs",
     "lint:markdown": "npm run lint:markdown:docs && npm run lint:markdown:skills && npm run lint:markdown:education",
     "lint:markdown:docs": "markdownlint-cli2 \"**/*.md\" \"#node_modules/**\" \"#skills/**\" \"#docs/superpowers/**\" \"docs/superpowers/README.md\" \"#.superpowers/**\" \"#education/**\"",
     "lint:markdown:skills": "markdownlint-cli2 \"skills/**/*.md\" --config .markdownlint-skills.jsonc",
