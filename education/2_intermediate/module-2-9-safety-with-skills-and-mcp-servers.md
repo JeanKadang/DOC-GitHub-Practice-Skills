@@ -24,7 +24,7 @@ can say "no" quickly and "yes" with your eyes open.
 
 ## Why this needs care
 
-**Source:** `education/0_prerequisites/prerequisite-what-is-an-llm-assistant.md`,
+**Source:** `education/0_prerequisites/module-0-6-what-is-an-llm-assistant.md`,
 vendor documentation linked below. **Verified on:** 2026-10-01.
 
 Three facts from the LLM prerequisite and the vendors' own documentation drive
@@ -44,7 +44,7 @@ everything below:
 ## Prompt injection
 
 **Source:** [Claude Code MCP docs](https://code.claude.com/docs/en/mcp),
-`education/0_prerequisites/prerequisite-what-is-an-llm-assistant.md`
+`education/0_prerequisites/module-0-6-what-is-an-llm-assistant.md`
 
 An assistant can't reliably tell the difference between *your* instructions and
 *text it happens to read*. If a web page, an issue, a file, or the output of a

@@ -38,7 +38,7 @@ Mermaid versions. Check the preview in the viewer your readers will use;
 configuration cannot add a diagram type missing from that renderer.
 
 Use the Mermaid preview described in
-[Setting Up Your Local Dev Environment](../0_prerequisites/setup-local-dev-environment.md)
+[Module 0.8: Connect VS Code to Git, GitHub and an AI assistant](../0_prerequisites/module-0-8-connect-vs-code-to-git-github-and-an-llm.md)
 when working locally. The later examples need particular renderer features;
 ZenUML additionally needs its integration. Their support notes are part of the
 copy-and-preview guidance, not a promise of identical GitHub rendering.

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 332" width="560" height="332"><title>Git first, then the connections</title><desc>Five steps in order: install Git, tell Git who you are, sign in to GitHub, optionally sign in to the gh command, and add your AI assistant. Three commands check the steps: git version, git config user name, and gh auth status.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="332" rx="16"/><rect class="paper" x="12" y="24" width="92" height="106" rx="12"/><circle class="tg" cx="30" cy="44" r="11"/><text class="mn mid" x="30" y="49" style="font-size:13px">1</text><text class="lb" x="20" y="88" style="font-size:12px">Install</text><text class="lb" x="20" y="108" style="font-size:12px">Git</text><path class="arw" d="M106,77 L116,77"/><rect class="paper" x="118" y="24" width="92" height="106" rx="12"/><circle class="tg" cx="136" cy="44" r="11"/><text class="mn mid" x="136" y="49" style="font-size:13px">2</text><text class="lb" x="126" y="88" style="font-size:12px">Tell Git</text><text class="lb" x="126" y="108" style="font-size:12px">who you are</text><path class="arw" d="M212,77 L222,77"/><rect class="paper" x="224" y="24" width="92" height="106" rx="12"/><circle class="tg" cx="242" cy="44" r="11"/><text class="mn mid" x="242" y="49" style="font-size:13px">3</text><text class="lb" x="232" y="88" style="font-size:12px">Sign in to</text><text class="lb" x="232" y="108" style="font-size:12px">GitHub</text><path class="arw" d="M318,77 L328,77"/><rect class="paper dash" x="330" y="24" width="92" height="106" rx="12"/><circle class="tg" cx="348" cy="44" r="11"/><text class="mn mid" x="348" y="49" style="font-size:13px">4</text><text class="lb" x="338" y="88" style="font-size:12px">Optional:</text><text class="lb" x="338" y="108" style="font-size:12px">gh login</text><path class="arw" d="M424,77 L434,77"/><rect class="paper" x="436" y="24" width="92" height="106" rx="12"/><circle class="tg" cx="454" cy="44" r="11"/><text class="mn mid" x="454" y="49" style="font-size:13px">5</text><text class="lb" x="444" y="88" style="font-size:12px">Add your</text><text class="lb" x="444" y="108" style="font-size:12px">assistant</text><text class="sm mid" x="280" y="164">Check each one before the next</text><rect class="tg" x="12" y="178" width="168" height="40" rx="10"/><text class="mn mid" x="96" y="203" style="font-size:12px">git --version</text><rect class="tg" x="196" y="178" width="168" height="40" rx="10"/><text class="mn mid" x="280" y="203" style="font-size:12px">git config user.name</text><rect class="tg" x="380" y="178" width="168" height="40" rx="10"/><text class="mn mid" x="464" y="203" style="font-size:12px">gh auth status</text><rect class="tg" x="14" y="252" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="280">Git comes first, because VS Code uses it</text><text class="bn mid" x="280.0" y="302">underneath.</text></svg>

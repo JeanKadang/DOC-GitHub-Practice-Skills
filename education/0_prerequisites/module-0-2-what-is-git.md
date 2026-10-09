@@ -49,7 +49,7 @@ your changes go to be seen by everyone else.
 You will do each of these for real in [Module 1.2: Local Git Basics](../1_beginners/module-1-2-local-git-basics.md).
 Until then, one thing is worth knowing now: Git also needs to know who you are,
 a name and an email recorded on every commit you make. You set that once, in
-[the local setup page](setup-local-dev-environment.md).
+[Module 0.8](module-0-8-connect-vs-code-to-git-github-and-an-llm.md).
 
 ## How you will use it
 

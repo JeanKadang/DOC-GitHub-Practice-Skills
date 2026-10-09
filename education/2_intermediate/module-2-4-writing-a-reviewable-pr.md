@@ -160,7 +160,7 @@ rules out, because it teaches everyone to ignore red.
 If an assistant drafted the change, you are still its author. The same
 questions apply: is it one unit, does the description say how it was verified,
 does the evidence match the criteria. An assistant's confident summary is a
-claim to check (see the [LLM prerequisite](../0_prerequisites/prerequisite-what-is-an-llm-assistant.md)), not evidence.
+claim to check (see the [LLM prerequisite](../0_prerequisites/module-0-6-what-is-an-llm-assistant.md)), not evidence.
 
 ## A worked example: before and after
 
