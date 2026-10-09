@@ -13,6 +13,15 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 4.9, using Copilot as a pull request reviewer (optional, ~30 min,
+  hands-on in the sandbox with a paper path for learners without Copilot review) in
+  `4_next-step/`, with an explainer graphic, a Mermaid diagram, and a vendor-facts
+  table dated 2026-10-09 (plans and surfaces, requesting a review, comment reviews
+  that never count as approval, re-review, custom instructions and where they are
+  read from). The exercise plants two defects and one harmless choice, has the
+  learner judge each Copilot comment right, wrong or noise and list what it missed,
+  and ends with the learner's own verdict. The README, plan and at-a-glance page
+  list it.
 - Module 4.10, assigning issues to the Copilot coding agent (optional, ~40 min,
   hands-on in the sandbox with a paper path for learners without agent access) in
   `4_next-step/`, with an explainer graphic, a Mermaid diagram, and a vendor-facts

@@ -1,7 +1,7 @@
 # Next-step modules: plan
 
-**Status:** a plan. Nothing here is required reading. Modules 4.1, 4.10 and 4.12 are
-built; every other entry is an outline that is ready to become an issue.
+**Status:** a plan. Nothing here is required reading. Modules 4.1, 4.9, 4.10 and 4.12
+are built; every other entry is an outline that is ready to become an issue.
 
 The tiers before this one end at Module 3.6. This folder is for what comes
 after: material for people who already work comfortably in the GitHub workflow
@@ -33,7 +33,7 @@ and want to go further. Modules built from this plan are named
 | 4.6 | Debugging with Git: bisect, blame, stash, worktrees | [Module 1.2](../1_beginners/module-1-2-local-git-basics.md), [Module 3.6](../3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md) | 30 min |
 | 4.7 | Running a secret-leak drill | [Module 3.4](../3_advanced/module-3-4-security-response.md) | 45 min |
 | 4.8 | Working across many repositories | [Module 3.1](../3_advanced/module-3-1-branch-protection-and-rulesets.md), [Module 3.2](../3_advanced/module-3-2-projects-boards.md) | 30 min |
-| 4.9 | Using Copilot as a pull request reviewer | [Module 2.2](../2_intermediate/module-2-2-pr-review-and-branch-conventions.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 30 min |
+| 4.9 | [Using Copilot as a pull request reviewer](module-4-9-using-copilot-as-a-pull-request-reviewer.md) (built) | [Module 2.2](../2_intermediate/module-2-2-pr-review-and-branch-conventions.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 30 min |
 | 4.10 | [Assigning issues to the Copilot coding agent](module-4-10-assigning-issues-to-the-copilot-coding-agent.md) (built) | [Module 2.1](../2_intermediate/module-2-1-issue-first-and-closure-gate.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
 | 4.11 | Publishing and consuming packages (GitHub Packages) | [Module 3.3](../3_advanced/module-3-3-releases.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 35 min |
 | 4.12 | [Moving a GitLab pipeline to GitHub Actions](module-4-12-moving-a-gitlab-pipeline-to-actions.md) (built) | [Module 0.4](../0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 1.1](../1_beginners/module-1-1-getting-started.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
@@ -128,24 +128,7 @@ Built: [Module 4.1](module-4-1-reviewing-changes-an-ai-agent-wrote.md).
 
 ### Module 4.9: Using Copilot as a pull request reviewer
 
-- **Audience:** reviewers and authors who want a first-pass automated review
-  before a person looks.
-- **Prerequisites:** Module 2.2 and Module 3.5.
-- **Objectives:** request a Copilot review on a pull request and read its
-  comments critically; tell a useful finding from noise or a confident wrong
-  answer; write repository custom instructions so the review follows the team's
-  conventions; keep the rule that an automated review is input to the human
-  verdict, never the verdict or the merge approval.
-- **Exercise idea:** open a sandbox pull request with two real defects and one
-  harmless style choice, request a Copilot review, and record which comments
-  were right, wrong, or missing, then decide the verdict yourself.
-- **Verify before building:** which plans and surfaces offer Copilot review, how
-  custom instructions are scoped, and whether Copilot can review anything other
-  than a pull request (it is a pull-request feature; reviewing a filed issue is
-  not something to promise). State the plan and availability limits in the
-  module, as Module 3.5 does.
-- **Candidate issue title:** "Education: add Module 4.9, using Copilot as a pull
-  request reviewer".
+Built: [Module 4.9](module-4-9-using-copilot-as-a-pull-request-reviewer.md).
 
 ### Module 4.10: Assigning issues to the Copilot coding agent
 
