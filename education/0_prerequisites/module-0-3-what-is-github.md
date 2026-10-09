@@ -36,6 +36,8 @@ What this shows: the same handful of actions — commit, push, pull, PR,
 merge — repeat every time, in this order, on every single change, no
 matter how small.
 
+![Four steps: turn on two-factor with two or more methods, save recovery codes in a password manager, keep codes and factors to yourself, and re-register two-factor before replacing a device.](../graphics/module-0-3-what-is-github-account-protection.svg)
+
 ## Protect your account before you need to
 
 This is the one section here that isn't about concepts — it's a checklist,

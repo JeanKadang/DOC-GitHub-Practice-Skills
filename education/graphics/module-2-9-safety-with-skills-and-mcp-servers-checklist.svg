@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 382" width="560" height="382"><title>Seven questions before you add one</title><desc>A checklist of seven questions to answer before adding a skill or an MCP server: who publishes it, what it runs, what it can reach, what it needs to know, what it may do without asking, who else gets it, and whether there is a policy.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="382" rx="16"/><rect class="paper" x="12" y="20" width="536" height="32" rx="8"/><circle class="tg" cx="34" cy="36" r="12"/><text class="mn mid" x="34" y="41" style="font-size:13px">1</text><text class="lb" x="56" y="41" style="font-size:13px">Who publishes it?</text><text class="sm" x="300" y="41" style="font-size:13px">trust the source</text><rect class="paper" x="12" y="58" width="536" height="32" rx="8"/><circle class="tg" cx="34" cy="74" r="12"/><text class="mn mid" x="34" y="79" style="font-size:13px">2</text><text class="lb" x="56" y="79" style="font-size:13px">What does it run?</text><text class="sm" x="300" y="79" style="font-size:13px">code you choose to run</text><rect class="paper" x="12" y="96" width="536" height="32" rx="8"/><circle class="tg" cx="34" cy="112" r="12"/><text class="mn mid" x="34" y="117" style="font-size:13px">3</text><text class="lb" x="56" y="117" style="font-size:13px">What can it reach?</text><text class="sm" x="300" y="117" style="font-size:13px">files, networks, accounts</text><rect class="paper" x="12" y="134" width="536" height="32" rx="8"/><circle class="tg" cx="34" cy="150" r="12"/><text class="mn mid" x="34" y="155" style="font-size:13px">4</text><text class="lb" x="56" y="155" style="font-size:13px">What does it need to know?</text><text class="sm" x="300" y="155" style="font-size:13px">no keys in config files</text><rect class="paper" x="12" y="172" width="536" height="32" rx="8"/><circle class="tg" cx="34" cy="188" r="12"/><text class="mn mid" x="34" y="193" style="font-size:13px">5</text><text class="lb" x="56" y="193" style="font-size:13px">What may it do without asking?</text><text class="sm" x="300" y="193" style="font-size:13px">keep approval on</text><rect class="paper" x="12" y="210" width="536" height="32" rx="8"/><circle class="tg" cx="34" cy="226" r="12"/><text class="mn mid" x="34" y="231" style="font-size:13px">6</text><text class="lb" x="56" y="231" style="font-size:13px">Who else gets it?</text><text class="sm" x="300" y="231" style="font-size:13px">shared config: reviewed PR</text><rect class="paper" x="12" y="248" width="536" height="32" rx="8"/><circle class="tg" cx="34" cy="264" r="12"/><text class="mn mid" x="34" y="269" style="font-size:13px">7</text><text class="lb" x="56" y="269" style="font-size:13px">Is there a policy?</text><text class="sm" x="300" y="269" style="font-size:13px">check the org allowlist</text><rect class="tg" x="14" y="302" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="330">If you cannot list what it reaches, do not add</text><text class="bn mid" x="280.0" y="352">it.</text></svg>

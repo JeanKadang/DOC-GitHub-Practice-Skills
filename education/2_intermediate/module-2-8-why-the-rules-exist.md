@@ -152,6 +152,21 @@ decide that on your own, and it does not ask again once they have answered for
 that repository. A repository with CI, tests, deployment, or branch protection
 keeps the full routine without asking.
 
+```mermaid
+flowchart TD
+    A[A repository you are asked to work in] --> B{No CI, no branch protection,<br/>nothing built, deployed or tested?}
+    B -- No --> C[Full issue, branch and pull request<br/>routine, without asking]
+    B -- Yes --> D[Ask the maintainer once, up front]
+    D --> E{What do they want?}
+    E -- The full routine --> C
+    E -- A lighter touch --> F[For example a direct edit with a clear<br/>commit message; do not ask again]
+    F --> G[The reasons still hold: a leaked secret<br/>is just as urgent]
+```
+
+What this shows: when a lighter process is allowed. It is the maintainer's
+decision, asked once, and it never loosens the rules about secrets or false
+"done" reports.
+
 Two things make this tolerable rather than a loophole:
 
 - **The decision is the maintainer's**, and it is made with evidence: the

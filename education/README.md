@@ -283,7 +283,7 @@ mindmap
 
 ## Explainer graphics
 
-Every module page opens with one explainer graphic (Module 1.2 has two): a
+Every module page opens with one explainer graphic (a few modules have a second one for a section that needs it): a
 single idea drawn as an everyday picture, to read before the module. Each is a
 standalone SVG in `education/graphics/` that follows your light or dark
 theme, and each has an entry in `education/graphics/index.json`, from which the
@@ -295,6 +295,7 @@ graphic and that each file has a title and description and no script.
 - [One history, not ten copies](graphics/module-0-1-what-is-version-control.svg) — Module 0.1.
 - [Git is the notebook, GitHub the editing room](graphics/module-0-2-what-is-git.svg) — Module 0.2.
 - [What GitHub adds to Git](graphics/module-0-3-what-is-github.svg) — Module 0.3.
+- [Protect the account before you need to](graphics/module-0-3-what-is-github-account-protection.svg) — Module 0.3.
 - [Same Git, new names](graphics/module-0-4-coming-from-gitlab.svg) — Module 0.4.
 - [Sort a tool by what it does](graphics/module-0-5-what-kinds-of-tools-are-these.svg) — Module 0.5.
 - [Tools and permission decide what it can do](graphics/module-0-6-what-is-an-llm-assistant.svg) — Module 0.6.
@@ -306,9 +307,11 @@ graphic and that each file has a title and description and no script.
 - [Write for someone who was not there](graphics/module-1-3-markdown-for-issues-and-prs.svg) — Module 1.3.
 - [Read a repository like a library](graphics/module-1-4-finding-your-way-around-a-repo.svg) — Module 1.4.
 - [Change the lock before the cleanup](graphics/module-1-5-what-never-goes-in-a-repo.svg) — Module 1.5.
+- [A .gitignore is a net, not a vault](graphics/module-1-5-what-never-goes-in-a-repo-gitignore.svg) — Module 1.5.
 - [House rules, recipe cards, a delivery hatch](graphics/module-1-6-skills-instructions-and-mcp.svg) — Module 1.6.
 - [Merged is not done](graphics/module-2-1-issue-first-and-closure-gate.svg) — Module 2.1.
 - [Approving is not merging](graphics/module-2-2-pr-review-and-branch-conventions.svg) — Module 2.2.
+- [A milestone is a release bucket, not a sprint](graphics/module-2-2-pr-review-and-branch-conventions-milestones.svg) — Module 2.2.
 - [An issue is a labeled parcel](graphics/module-2-3-writing-a-good-issue.svg) — Module 2.3.
 - [Show your work](graphics/module-2-4-writing-a-reviewable-pr.svg) — Module 2.4.
 - [Sort every open issue into one tray](graphics/module-2-5-triage-and-backlog-hygiene.svg) — Module 2.5.
@@ -316,6 +319,7 @@ graphic and that each file has a title and description and no script.
 - [Your copy, their rules](graphics/module-2-7-contributing-to-someone-elses-repo.svg) — Module 2.7.
 - [Each rule exists to stop one mistake](graphics/module-2-8-why-the-rules-exist.svg) — Module 2.8.
 - [A note under the door can steer your assistant](graphics/module-2-9-safety-with-skills-and-mcp-servers.svg) — Module 2.9.
+- [Seven questions before you add one](graphics/module-2-9-safety-with-skills-and-mcp-servers-checklist.svg) — Module 2.9.
 - [A gate that exists only on some plans](graphics/module-3-1-branch-protection-and-rulesets.svg) — Module 3.1.
 - [The board is a window onto issues](graphics/module-3-2-projects-boards.svg) — Module 3.2.
 - [A release is a checklist, not a choice](graphics/module-3-3-releases.svg) — Module 3.3.
@@ -323,3 +327,4 @@ graphic and that each file has a title and description and no script.
 - [Rented runner or your own](graphics/module-3-5-actions-runners-and-agents.svg) — Module 3.5.
 - [Tidy, copy, recover](graphics/module-3-6-rebase-cherry-pick-and-reflog.svg) — Module 3.6.
 - [Inspect the work, not the summary](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote.svg) — Module 4.1.
+- [Six patterns in an agent’s pull request](graphics/module-4-1-reviewing-changes-an-ai-agent-wrote-patterns.svg) — Module 4.1.

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 402" width="560" height="402"><title>Six patterns in an agent’s pull request</title><desc>Six patterns to watch for and how to check each: scope creep, an invented API, a claimed check that did not happen, a special case that passes, weakened safety nets, and an intention told as fact.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="402" rx="16"/><rect class="paper" x="12" y="22" width="170" height="134" rx="12"/><text class="lb" x="24" y="50" style="font-size:13px">Scope creep</text><path class="st dash" d="M24,88 H170"/><text class="mns rtxt" x="24" y="108" style="font-size:12px">check:</text><text class="sm" x="24" y="126" style="font-size:13px">read the file list</text><text class="sm" x="24" y="144" style="font-size:13px">before any code</text><rect class="paper" x="195" y="22" width="170" height="134" rx="12"/><text class="lb" x="207" y="50" style="font-size:13px">An invented API</text><path class="st dash" d="M207,88 H353"/><text class="mns rtxt" x="207" y="108" style="font-size:12px">check:</text><text class="sm" x="207" y="126" style="font-size:13px">find the definition</text><text class="sm" x="207" y="144" style="font-size:13px">in the code or docs</text><rect class="paper" x="378" y="22" width="170" height="134" rx="12"/><text class="lb" x="390" y="50" style="font-size:13px">A claimed check</text><text class="lb" x="390" y="70" style="font-size:13px">that did not happen</text><path class="st dash" d="M390,88 H536"/><text class="mns rtxt" x="390" y="108" style="font-size:12px">check:</text><text class="sm" x="390" y="126" style="font-size:13px">compare with the</text><text class="sm" x="390" y="144" style="font-size:13px">actual run</text><rect class="paper" x="12" y="166" width="170" height="134" rx="12"/><text class="lb" x="24" y="194" style="font-size:13px">A special case</text><text class="lb" x="24" y="214" style="font-size:13px">that passes</text><path class="st dash" d="M24,232 H170"/><text class="mns rtxt" x="24" y="252" style="font-size:12px">check:</text><text class="sm" x="24" y="270" style="font-size:13px">look for hard-coded</text><text class="sm" x="24" y="288" style="font-size:13px">inputs</text><rect class="paper" x="195" y="166" width="170" height="134" rx="12"/><text class="lb" x="207" y="194" style="font-size:13px">Weakened</text><text class="lb" x="207" y="214" style="font-size:13px">safety nets</text><path class="st dash" d="M207,232 H353"/><text class="mns rtxt" x="207" y="252" style="font-size:12px">check:</text><text class="sm" x="207" y="270" style="font-size:13px">search the diff for</text><text class="sm" x="207" y="288" style="font-size:13px">skip, ignore, disable</text><rect class="paper" x="378" y="166" width="170" height="134" rx="12"/><text class="lb" x="390" y="194" style="font-size:13px">An intention</text><text class="lb" x="390" y="214" style="font-size:13px">told as fact</text><path class="st dash" d="M390,232 H536"/><text class="mns rtxt" x="390" y="252" style="font-size:12px">check:</text><text class="sm" x="390" y="270" style="font-size:13px">treat each verb as</text><text class="sm" x="390" y="288" style="font-size:13px">a claim to match</text><rect class="tg" x="14" y="322" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="350">A green check shows the checks that exist</text><text class="bn mid" x="280.0" y="372">passed, not that they cover the change.</text></svg>

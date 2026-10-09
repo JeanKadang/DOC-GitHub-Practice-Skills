@@ -115,6 +115,22 @@ section's conflict comes from.
 Conflicts feel alarming the first time only because nobody's shown you one
 on purpose yet. Here's a safe one, guaranteed to happen:
 
+```mermaid
+flowchart TD
+    A[Two branches from main] --> B[Branch A edits the first line<br/>of CONTRIBUTORS.md and is pushed]
+    A --> C[Branch B edits the same line<br/>differently and is committed]
+    B --> D[Merge A into B]
+    C --> D
+    D --> E{Same lines changed<br/>differently?}
+    E -- No --> F[Git merges on its own]
+    E -- Yes --> G[Git stops and writes<br/>conflict markers into the file]
+    G --> H[Edit the file: delete the markers,<br/>keep what makes sense]
+    H --> I[git add the file, then git commit<br/>to finish the merge]
+```
+
+What this shows: how the conflict below comes about and how it ends. Git never
+loses either version; it stops and asks you to decide.
+
 1. Make sure `main` is current: `git checkout main && git pull`.
 2. Create two branches from it. Put your own name in both, because everyone
    pushes to the same sandbox and a shared name would collide:

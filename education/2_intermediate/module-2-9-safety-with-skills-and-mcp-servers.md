@@ -73,6 +73,8 @@ flowchart LR
     X3[Break it here:<br/>least privilege] -.-> D
 ```
 
+![A checklist of seven questions to answer before adding a skill or an MCP server: who publishes it, what it runs, what it can reach, what it needs to know, what it may do without asking, who else gets it, and whether there is a policy.](../graphics/module-2-9-safety-with-skills-and-mcp-servers-checklist.svg)
+
 ## The checklist before you add one
 
 **Source:** vendor documentation linked in the first section.
