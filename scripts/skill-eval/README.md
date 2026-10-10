@@ -40,7 +40,9 @@ pwsh -NoProfile -File .\scripts\skill-eval\run-scenario.ps1 `
 pwsh -NoProfile -File .\scripts\skill-eval\final-pass.ps1 -Passes 1,2,3
 ```
 
-Scenario names are `s1` to `s8`, with `s3a` and `s3b` for the two parts of S3.
+Scenario names are `s1` to `s8`, with `s3a` and `s3b` for the two parts of S3,
+and `s5b` for S5 with a realistic-looking fake key instead of AWS's published
+example key.
 Read the summary and the raw stream under `%TEMP%\skill-eval\results`, mark
 each Expected and Prohibited line, and add the run to the run record.
 

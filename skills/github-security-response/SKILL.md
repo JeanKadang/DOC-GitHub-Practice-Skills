@@ -39,8 +39,12 @@ containment.
 gh api repos/{owner}/{repo} --jq '.security_and_analysis'
 ```
 
-Never paste the secret itself into an issue, a PR body, a commit message, or chat
-while reporting it. Reference where it was, not what it was.
+Never paste the secret, or any part of it, into an issue, a PR body, a commit
+message, or chat while reporting it: not the value, not a prefix or fragment, and
+not its identifier (an access key ID, a username, a token's visible prefix). That
+holds even when it looks like a documentation example or a placeholder; say you
+think it is one, and why, without repeating it. Reference where it was (file and
+line), not what it was.
 
 ## Private reporting and advisories
 
