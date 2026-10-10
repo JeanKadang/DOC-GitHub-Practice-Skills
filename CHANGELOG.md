@@ -15,6 +15,15 @@
   (Apache-2.0), is used only by the export and downloads no browser; point it at
   an installed Chrome or Chromium with `--chrome` or `CHROME_PATH`. The lessons
   themselves are in `education/CHANGELOG.md`.
+- The first recorded run of the skill behavior scenarios (#150), on Claude Code
+  2.1.292 with the twelve skills from `main`: skill selection passed 8 of 8, and
+  of the eight behavior scenarios four passed (S3 part a, S4, S8 and, in two of
+  three passes, S2), four failed or were partly failed (S1, S3 part b, S5, S6),
+  and S7 could not be judged. The failures were filed for review as #297 to #300
+  and no skill text was changed. `docs/skill-scenarios.md` has the run record,
+  and `scripts/skill-eval/` holds the Windows harness (an isolated sandbox
+  project, a mock `gh` that logs every call, and a runner) so the scenarios can
+  be re-run after a skill changes.
 - Repository layout guidance across three skills. `github-repo-bootstrap` gets a
   "Starting layout" subsection (six principles and a per-stack table, judged by
   "Use when") and records the layout as a bootstrap decision.
@@ -123,6 +132,15 @@
 
 ### Changed
 
+- The `github-hygiene` description now names opening or updating a pull request
+  in a repository you maintain, and auditing an issue after a merge, so the
+  skill loads when a pull request is opened instead of only when one is merged
+  (#297).
+  In the scenario rubric's S1 the skill went from loading in 0 of 3 runs to 3 of
+  3, the body now starts with `Refs #12`, and S2's post-merge audit went from 2
+  of 3 to 4 of 4; the run record in `docs/skill-scenarios.md` has the details and
+  the Expected lines of S1 that are still open. The sidecar's default prompt was
+  reworded to match. No policy text changed.
 - Documentation accuracy and consistency sweep across the root documents
   (`README.md`, `SECURITY.md`, `docs/GUIDE.md`, `docs/MAINTAINING.md`,
   `docs/WORKFLOW.md`) and `education/README.md` (#41).

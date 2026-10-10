@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Mock gh: never contacts GitHub. Logs argv and answers from the scenario files.
+exec node "$(cygpath -u "$GH_MOCK_DIR")/mock-gh.mjs" "$@"
