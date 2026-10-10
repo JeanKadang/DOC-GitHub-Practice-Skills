@@ -1,6 +1,6 @@
 # Maintaining the skill set
 
-**Applies to:** v0.4.0
+**Applies to:** v0.5.0
 
 **Reviewed:** 2026-09-28
 

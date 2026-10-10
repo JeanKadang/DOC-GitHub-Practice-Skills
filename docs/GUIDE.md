@@ -1,6 +1,6 @@
 # GitHub practice skills guide
 
-**Policy version:** v0.4.0
+**Policy version:** v0.5.0
 
 **Reviewed:** 2026-09-28
 
@@ -21,7 +21,7 @@ Acceptance criteria are evaluated evidence requirements, not clerical boxes.
 
 ## Current policy
 
-The following sections describe the canonical skills as they exist in v0.4.0.
+The following sections describe the canonical skills as they exist in v0.5.0.
 
 ### `github-issue-first`
 
