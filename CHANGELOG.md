@@ -4,6 +4,19 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- The installer no longer says "modified: hash mismatch" when the installed
+  copy is untouched but was installed from a different build of the same
+  version, which happens when `main` is previewed over an install made from
+  `main` earlier or over the previous release before the version is bumped
+  (#304). It now says the copy matches its own marker but differs from the
+  source, that the installer cannot tell that from an edited marker, and that
+  `-Force` replaces it with a backup. It still does not upgrade such an install
+  without `-Force`: a marker cannot prove it is genuine, and a test requires that
+  an edited marker cannot hide a local edit. Released installs are unaffected,
+  because each release bumps the version string.
+
 ### Removed
 
 - **The ChatGPT route (#144, ADR 0016). This removes behaviour v0.4.0 shipped.**

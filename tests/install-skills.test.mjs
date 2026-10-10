@@ -602,6 +602,57 @@ ${result.stderr}`, /hash data|modified|marker/i);
   assert.deepEqual(await treeSnapshot(codexHome), before);
 });
 
+// An unreleased main keeps the version string of the last release, so an
+// install made from an earlier build of it has the same version as the source
+// but different content (#304).
+async function installSameVersionOtherBuild(root, codexHome) {
+  const sourceRoot = await sourceFixture(join(root, 'other-build'));
+  const otherSkill = join(sourceRoot, 'skills', inventory.skills[0].name, 'SKILL.md');
+  await writeFile(otherSkill, `${await readFile(otherSkill, 'utf8')}
+an earlier build of this version
+`);
+  await runInstaller({ sourceRoot, codexHome, target: 'Codex' });
+}
+
+test('an install from another build of the same version is explained, not called modified (#304)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+  await installSameVersionOtherBuild(root, codexHome);
+  const name = inventory.skills[0].name;
+  const before = await treeSnapshot(codexHome);
+
+  const preview = await runInstaller({ codexHome, target: 'Codex', dryRun: true, expectFailure: true });
+
+  // PowerShell wraps a long error at the terminal width on Linux and macOS and
+  // draws a gutter and colour codes, so compare the text with those removed.
+  const output = `${preview.stdout}\n${preview.stderr}`
+    .replace(/\x1B\[[0-9;]*m/g, '')
+    .replace(/\s*\|\s*/g, ' ')
+    .replace(/\s+/g, ' ');
+  assert.match(output, new RegExp(`'${name}' matches its own marker but differs from this source`));
+  assert.match(output, /earlier build of the same version/);
+  assert.match(output, /-Force/);
+  assert.doesNotMatch(output, /is modified: hash mismatch/);
+  assert.deepEqual(await treeSnapshot(codexHome), before);
+});
+
+test('Force replaces an install from another build of the same version and backs it up (#304)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+  await installSameVersionOtherBuild(root, codexHome);
+  const name = inventory.skills[0].name;
+  const skillPath = join(codexHome, 'skills', name, 'SKILL.md');
+  const installedBefore = await readFile(skillPath, 'utf8');
+
+  await runInstaller({ codexHome, target: 'Codex', force: true });
+
+  assert.equal(await sha256(skillPath), await sha256(join(repoRoot, 'skills', name, 'SKILL.md')));
+  const backups = await readdir(join(codexHome, 'skill-backups'));
+  assert.equal(backups.length, 1);
+  const backedUp = await readFile(join(codexHome, 'skill-backups', backups[0], name, 'SKILL.md'), 'utf8');
+  assert.equal(backedUp, installedBefore);
+});
+
 test('reinstalling the current release is a no-op that changes nothing (#118)', async () => {
   const root = await temporaryRoot();
   const { codexHome } = await installOnce(root, 'Codex');

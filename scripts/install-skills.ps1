@@ -314,7 +314,12 @@ function Test-TrackedSkill {
         if ($isCurrent) {
             $sourceFile = Join-Path $resolvedSource (Join-Path 'skills' (Join-Path $Skill.name $relativeFile))
             if ($recordedHash -ne (Get-FileHashHex -LiteralPath $sourceFile)) {
-                return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' is modified: hash mismatch for '$relativeFile'" }
+                # The installed file matches its own marker (checked above), so
+                # nothing was edited. The source has changed under the same
+                # version string, as on an unreleased main (#304). A marker
+                # cannot prove it is genuine, so replacing it still needs
+                # -Force, which backs the directory up first.
+                return [pscustomobject]@{ Valid = $false; Reason = "tracked skill '$($Skill.name)' matches its own marker but differs from this source for '$relativeFile', and both say v$($Inventory.packageVersion). That usually means it was installed from an earlier build of the same version, such as an unreleased main; the installer cannot tell that from an edited marker. Use -Force to replace it; the current copy is backed up first" }
             }
         }
     }
