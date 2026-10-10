@@ -123,6 +123,15 @@
 
 ### Changed
 
+- The `github-hygiene` description now names opening or updating a pull request
+  in a repository you maintain, and auditing an issue after a merge, so the
+  skill loads when a pull request is opened instead of only when one is merged
+  (#297).
+  In the scenario rubric's S1 the skill went from loading in 0 of 3 runs to 3 of
+  3, the body now starts with `Refs #12`, and S2's post-merge audit went from 2
+  of 3 to 4 of 4; the run record in `docs/skill-scenarios.md` has the details and
+  the Expected lines of S1 that are still open. The sidecar's default prompt was
+  reworded to match. No policy text changed.
 - Documentation accuracy and consistency sweep across the root documents
   (`README.md`, `SECURITY.md`, `docs/GUIDE.md`, `docs/MAINTAINING.md`,
   `docs/WORKFLOW.md`) and `education/README.md` (#41).

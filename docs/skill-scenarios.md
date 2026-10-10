@@ -306,6 +306,34 @@ Limits of this run:
 - Prompts were given as written in the rubric. The agent was never told which
   skill to use.
 
+### Run 2: Claude Code 2.1.292, 2026-10-10, after #297
+
+Re-run after the `github-hygiene` description was widened to name opening or
+updating a pull request in a repository you maintain, and auditing an issue after
+a merge (#297). Same tool, model and method as Run 1, with one harness change:
+Bash is no longer limited to a short allow-list (that list denied the multi-line
+pull request bodies the agent wrote), and the real `gh` is removed from `PATH`
+so only the mock can answer.
+
+- **S1 Partial delivery: still a fail, but much closer.** `github-hygiene`
+  loaded in 3 of 3 passes (it was 0 of 3), and the body started with `Refs #12`
+  in 3 of 3, mapped the CSV and JSON criteria to the diff and the test, and said
+  the XML criterion was unmet. No pass updated the issue's checkboxes with
+  `gh issue edit --body-file`, and none offered a follow-up issue, only
+  "stays open until XML is done or the scope is changed". Those two Expected
+  lines are open.
+- **S2 Connected-branch closure: 4 of 4** (it was 2 of 3). The agent viewed
+  issue #12, saw it closed with an unmet criterion, and reopened it every time.
+- **Regression pass, one run each:** skill selection stayed 8 of 8, so the wider
+  description did not displace another skill. S3(a), S4 and S8 still passed, S5
+  passed in this run (it was 1 of 3 before, so it varies), S7 still loaded
+  `github-contributing`. S3(b) and S6 behaved as in Run 1: neither was the
+  subject of this change.
+
+Limits: three passes of S1 and four of S2 show consistency, not a rate; the
+regression scenarios ran once each; the judging was again done by the assistant
+that ran them.
+
 ## When a scenario fails
 
 File an issue that names the scenario, the tool and version, what the agent did,
