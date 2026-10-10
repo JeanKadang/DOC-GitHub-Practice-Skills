@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-10
+
 ### Added
 
 - Tooling for the education graphics (#283, #285): `npm run glance` generates
@@ -367,6 +369,17 @@
   local modification: the installer refuses without `-Force`, and `-Force`
   backs up the whole directory. The dry-run preview now reports
   `backup: none` when no backup will be made (#140).
+
+### Known issues
+
+- The ChatGPT route (Custom GPT Knowledge export) is not verified against a
+  current workspace, and Custom GPTs retire on 2026-12-11 (#144, #227).
+- The installer reports a false "modified: hash mismatch" when `main` is
+  previewed over a v0.3.0 install, because the version string is unchanged
+  (#304). Installing a release tag is not affected.
+- The behavior scenarios have only been run on Claude Code; Codex and Copilot
+  CLI have discovery evidence but no scenario runs. Two scenario findings are
+  open for a decision (#300, #303).
 
 ## [0.3.0] - 2026-09-28
 
