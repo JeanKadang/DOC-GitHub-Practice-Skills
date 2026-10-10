@@ -21,9 +21,9 @@ assistants — most colleagues use an AI coding assistant, so that page is no
 longer optional) plus three conditional pages (Module 0.4 for teams moving from
 GitLab, and Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
 assistant, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
-Module 3.6, and the modules built from it so far, Modules 4.1, 4.9, 4.10, 4.12 and 4.13. `examples/`,
-`cheat-sheet.md`, and `facilitator-guide.md` sit outside the numbered
-sequence — lookup references, not steps to work through in order.
+Module 3.6, and the modules built from it so far, Modules 4.1, 4.9, 4.10, 4.12 and 4.13. `examples/`
+and `facilitator-guide.md` sit outside the numbered sequence — lookup
+references, not steps to work through in order.
 
 **Tools:** for now, all Git activity in this program is done in **VS Code or on
 the command line**. Every lesson and exercise assumes one of those two. GitHub
@@ -284,7 +284,6 @@ mindmap
 - [Module 4.13: Writing an instruction file for your repository](4_next-step/module-4-13-writing-an-instruction-file-for-your-repository.md) — ~35 min, hands-on in a local clone (a review-only path if you have no assistant), optional. Decide what belongs in the file, keep one source for several tools, test it, and review a bad change.
 - [Next-step module plan](4_next-step/module-plan.md) — a plan of candidate advanced modules; Modules 4.1, 4.9, 4.10, 4.12 and 4.13 are built.
 - [At a glance](at-a-glance.md) — one picture and one sentence for every lesson page, the five-minute version, with a "do not skip" line where a rule matters. Generated from the graphics index; the module text wins.
-- [Cheat sheet](cheat-sheet.md) — one page, take it with you.
 - [Facilitator guide](facilitator-guide.md) — for the superuser running a session, not attendees.
 - [Examples: Markdown formatting showcase](examples/markdown-formatting-showcase.md) — lookup reference, not a lesson.
 - [Examples: Markdown showcase document](examples/markdown-showcase.md) — one sample document that uses every kind of Markdown formatting together, to compare your own output against; the companion to the lookup reference.
