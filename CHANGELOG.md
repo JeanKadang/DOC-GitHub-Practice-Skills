@@ -132,6 +132,16 @@
 
 ### Changed
 
+- The platform compatibility record (`docs/compatibility.md`, #149) now has the
+  GitHub Copilot CLI row verified (version 1.0.95, 2026-10-10: discovery with
+  `copilot skill list --json` and the upgrade preview; no model-backed sample
+  invocation was possible because the account's quota was used up) and the
+  project-scope rows for Claude Code, Codex and the Copilot CLI verified, each
+  with its version and method. The Copilot guide no longer claims every Copilot
+  surface was checked, and it notes that Copilot also reads `~/.agents/skills`.
+  Copilot in VS Code and ChatGPT stay unverified. The check also found that
+  previewing `main` over a `v0.3.0` install fails with a false "modified"
+  error, filed as #304.
 - `AGENTS.md` and the README now state the repository's priorities: the GitHub
   skills are the primary product, `education/` is secondary, and the skills come
   first when the two compete for effort, with education growing after each skill
