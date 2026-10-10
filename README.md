@@ -5,6 +5,14 @@
 Versioned GitHub workflow skills for OpenAI Codex, Claude, GitHub Copilot CLI,
 and people moving from Azure DevOps or GitLab to GitHub.
 
+**What this repository is for.** The primary product is the set of GitHub
+skills: best-in-class workflow policy to use across your own repositories and
+to share, so others get a first-class GitHub experience. The secondary product
+is the training material in [`education/`](education/README.md), written for
+colleagues and reaching beyond GitHub (the LLM and tooling track). When the two
+compete for effort, the skills come first; the training material keeps growing
+after each skill milestone.
+
 > **Release status:** [v0.3.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.3.0)
 > is published (twelve skills). Tag and publish the matching GitHub release
 > per `github-releases` before updating this line for the next version.

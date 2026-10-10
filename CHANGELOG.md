@@ -132,6 +132,10 @@
 
 ### Changed
 
+- `AGENTS.md` and the README now state the repository's priorities: the GitHub
+  skills are the primary product, `education/` is secondary, and the skills come
+  first when the two compete for effort, with education growing after each skill
+  milestone (#295). Wording only; no skill text, test, or behaviour changed.
 - The `github-hygiene` description now names opening or updating a pull request
   in a repository you maintain, and auditing an issue after a merge, so the
   skill loads when a pull request is opened instead of only when one is merged
