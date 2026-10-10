@@ -118,7 +118,9 @@ The following sections describe the canonical skills as they exist in v0.4.0.
   GitHub.
 - **Responsibilities and outputs:** Explain neutral mappings and the differences
   among issues, types, iterations, milestones, Projects, Actions, Test Plans,
-  and repository docs.
+  and repository docs. For Jira, map issue keys, epics and sub-tasks, sprints,
+  statuses, components, fix versions and JQL, and explain how Jira links to
+  GitHub without promising a sync.
 - **Boundary and handoff:** Do not reproduce an organization's process;
   workflow execution hands off to the relevant GitHub skill.
 

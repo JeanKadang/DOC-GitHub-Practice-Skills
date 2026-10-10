@@ -1,6 +1,6 @@
 ---
 name: github-for-ado-users
-description: Use when someone coming from Azure DevOps, TFS, Jira, or another tracker asks how a concept maps to GitHub — "what's the GitHub equivalent of a sprint / work item type / area path / query", why milestones don't behave like iterations, where a wiki or test plan should go, or how to set up GitHub tracking the way they had it in ADO.
+description: Use when someone coming from Azure DevOps, TFS, Jira, or another tracker asks how a concept maps to GitHub — "what's the GitHub equivalent of a sprint / epic / work item type / area path / component / fix version / query (WIQL or JQL)", "where do sprints go", why milestones don't behave like iterations, how Jira and GitHub link, where a wiki or test plan should go, or how to set up GitHub tracking the way they had it in ADO or Jira.
 ---
 
 # GitHub for Azure DevOps migrants
@@ -152,6 +152,78 @@ in-scope criterion is unmet or unevaluated. Scope changes require a recorded
 decision, not a checkbox that falsely implies delivery. The exact merge and
 closure gate lives in `github-hygiene`.
 
+## Coming from Jira
+
+Jira is not Azure DevOps, so the table above is the wrong starting point for a
+Jira user. Atlassian's current documentation says *work item* where this
+section says Jira issue, and *space* where it says Jira project; people still
+use both words, so accept either. The mapping below was checked against the
+vendor pages listed at the end on 2026-10-10. Re-check a claim before relying on
+it for a decision that is hard to undo; both vendors change these features.
+
+| Jira | GitHub | Where it differs |
+|---|---|---|
+| Space key plus number (`PROJ-123`) | Issue number (`#123`), unique per repository | There is no project prefix. Across repositories write `owner/repo#123`. |
+| Epic, Story, Task, Bug | **Issue types** (org-only; defaults are task, bug and feature, up to 25) | GitHub has no built-in "epic" level. Use an issue type or label plus sub-issues. |
+| Sub-task | **Sub-issue** | Up to eight levels and 100 per parent, and a sub-issue can sit in another repository. Jira's default is three fixed levels; do not rebuild more than you need. |
+| Scrum board and sprint | Projects board plus an **iteration field** | An iteration has a length in days or weeks, a start date and optional breaks, like a sprint. It is **not** a milestone; see trap 1. |
+| Workflow status (To Do, In Progress, Done) | A **single select field** on the Projects board, such as Status | The issue itself is only open or closed. Check which Jira workflow rules the team relies on; none carry over by themselves. |
+| Resolution (Done, Won't do, Duplicate) | The close reason on an issue (completed, not planned, duplicate) | Set when closing, and searchable with `reason:`. |
+| Priority | A priority label | Priority is not a built-in field on an issue. |
+| Component | Label such as `area:auth` | Flat, like Area Path. |
+| Fix version | **Milestone** | A release bucket that closes when it ships. |
+| Affects version | A field in the issue form, or a label | There is no built-in field. |
+| JQL | Issue search qualifiers, and Projects saved views | Search combines qualifiers with `AND`, `OR` and parentheses (`label:`, `no:`, `reason:`, `type:`, `milestone:`) and can be limited to an owner. It is not a query language with functions. |
+
+**Linking the two products.** The GitHub for Atlassian app connects a GitHub
+Cloud organization to a Jira Cloud site: a Jira site administrator and a GitHub
+organization owner must both approve it. Once connected, a Jira key in a branch
+name, a commit message or a pull request title links that work to the Jira item,
+and its development panel then shows the branches, commits and pull requests
+(workflows and deployments can be linked too). Smart commits can also comment
+on an item, log time or move its status from a commit message; new repositories
+in a linked account have them enabled by default, and Atlassian warns that a
+commit can be attributed to someone other than the person who pushed it, so
+some organizations switch them off.
+
+**What not to promise.** Atlassian's documentation describes development
+information flowing *into* Jira. It does not describe syncing GitHub issues with
+Jira items or carrying statuses between them, so never tell a user the two stay
+in step. If the team plans in Jira, keep one source of truth for each piece of
+work: planning and status in Jira, code and review in GitHub, with the key in
+the branch name and the pull request title. Mirroring every Jira item as a
+GitHub issue creates two records that drift. GitHub Enterprise Server connects
+through a separate process that this section does not cover.
+
+The closure gate does not change: a criterion is met when its evidence is
+recorded, wherever the criteria live. This repository's own conventions
+(`Refs #N`, `gh issue develop`) assume GitHub issues; for work tracked in Jira,
+put the key where the tooling looks for it and the evidence in the pull
+request.
+
+Sources, read 2026-10-10: Atlassian Support pages on [work item
+keys](https://support.atlassian.com/jira-software-cloud/docs/what-is-an-issue/),
+the [work type
+hierarchy](https://support.atlassian.com/jira-cloud-administration/docs/configure-the-issue-type-hierarchy/),
+[statuses, priority and
+resolution](https://support.atlassian.com/jira-cloud-administration/docs/what-are-issue-statuses-priorities-and-resolutions/),
+[sprints](https://support.atlassian.com/jira-software-cloud/docs/what-is-a-sprint/),
+[versions](https://support.atlassian.com/jira-cloud-administration/docs/manage-versions/),
+[JQL](https://support.atlassian.com/jira-software-cloud/docs/use-advanced-search-with-jira-query-language-jql/),
+[connecting
+GitHub](https://support.atlassian.com/jira-cloud-administration/docs/integrate-with-github/),
+[linking development
+work](https://support.atlassian.com/jira-software-cloud/docs/reference-issues-in-your-development-work/)
+and [smart
+commits](https://support.atlassian.com/jira-cloud-administration/docs/enable-smart-commits/);
+GitHub Docs pages on [iteration
+fields](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-iteration-fields),
+[sub-issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues),
+[issue
+types](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/managing-issue-types-in-an-organization)
+and [issue
+search](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/filtering-and-searching-issues-and-pull-requests).
+
 ## Setting up a repo the way you had it in ADO
 
 Rough order, with the skill that covers each:
@@ -180,3 +252,5 @@ Rough order, with the skill that covers each:
 | Expecting WIQL-grade queries | `gh issue list --search` + Projects views; plan for less |
 | A board as the source of truth | The board mirrors issues; labels and milestones are authoritative |
 | Assuming a merged PR means its issue met acceptance criteria | Review every criterion with evidence; use `Refs #N` until the completion contract passes |
+| Telling a Jira user that GitHub issues and Jira items stay in sync | The connection carries development information into Jira only; keep one source of truth per piece of work |
+| Using a Jira user's mapping from the Azure DevOps table | Use "Coming from Jira": fix versions are milestones, components are labels, sprints are iterations |
