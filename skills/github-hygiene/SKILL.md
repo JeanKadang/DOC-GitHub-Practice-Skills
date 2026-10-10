@@ -90,7 +90,12 @@ gh issue list --state closed --limit 1000 --json number,title,body,stateReason `
 - Wait for CI green on **every** matrix leg (e.g. windows + ubuntu) before merge — `gh pr checks <N> --watch`. Never merge on a red or pending check, and never bypass required checks with an admin merge.
 - **Merging needs the maintainer's explicit approval — ask once per batch** ("merge these N when green?"). The maintainer sometimes merges from the GitHub UI mid-session: before acting on a PR, `git pull` and re-check `gh pr view <N>` state rather than assuming.
 - **A closing keyword needs acceptance approval too.** Do not merge a PR carrying
-  `Closes #N` until the closure-gate procedure above passes for issue #N.
+  `Closes #N` until the closure-gate procedure above passes for issue #N. If it
+  has not passed, stop before merging, say which criterion has no evidence, and
+  offer the two ways forward: record the evidence, or change the PR to `Refs #N`
+  and merge. "Merge it" or "merge when green" authorizes the merge, not an edit
+  to the PR text, so do not rewrite `Closes` to `Refs` yourself and merge; let
+  the maintainer choose.
 - **Auto-merge is the maintainer's switch, not the agent's.** GitHub's auto-merge merges a pull request the moment its required checks pass, so enabling it is the merge approval. Turn it on only when the maintainer has said to, only on a pull request whose acceptance criteria already have recorded evidence, and never on one carrying `Closes #N` unless every in-scope criterion is met: an auto-merged `Closes` closes the issue with no chance to run the closure gate first. Otherwise leave it off, merge by hand after approval, and audit the issue afterwards. Check whether the repo allows it with `gh api repos/{owner}/{repo} --jq .allow_auto_merge`; enabling it on a pull request is `gh pr merge <N> --auto` with the repo's merge flag.
 - Merge with the repo's configured method. Check `gh repo view --json mergeCommitAllowed,squashMergeAllowed,rebaseMergeAllowed`, use the matching flag (`gh pr merge <N> --merge`, `--squash`, or `--rebase`), and when several are allowed follow the repo's existing history. If `gh repo view --json deleteBranchOnMerge` reports false, delete the merged remote branch yourself.
 
