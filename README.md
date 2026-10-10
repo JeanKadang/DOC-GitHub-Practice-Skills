@@ -20,7 +20,7 @@ after each skill milestone.
 > The `education/` program is versioned independently — see
 > `education/CHANGELOG.md` and `docs/MAINTAINING.md`'s release-hygiene
 > section for the `education-vX.Y.Z` tag convention. The tags so far are
-> `education-v1.0.0` and `education-v2.0.0`.
+> `education-v1.0.0`, `education-v2.0.0` and `education-v3.0.0`.
 
 ## Skills
 
