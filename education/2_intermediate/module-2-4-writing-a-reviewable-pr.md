@@ -128,7 +128,10 @@ complete is not.
 ### Checks: green before merge, and what to do when one goes red
 
 Never merge on a red or pending check, and never bypass a required check with
-an administrator merge. A merge also needs the maintainer's explicit
+an administrator merge. From a terminal, `gh pr checks <N>` lists every check
+on pull request `<N>` with its state and a link to its log (add `--watch` to
+follow until they finish); on the web it is the checks list at the bottom of
+the pull request page. A merge also needs the maintainer's explicit
 approval: approving a pull request and merging it are separate decisions, as
 Module 2.2 showed.
 

@@ -11,6 +11,19 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Removed
+
+- `cheat-sheet.md`. It predated the numbered modules, the graphics and the
+  at-a-glance page, and most of it repeated them. If you had it bookmarked, this
+  is where each part went: the issue-to-merge loop is Modules 1.1 and 2.1 and the
+  first lines of [`at-a-glance.md`](at-a-glance.md); the web steps are Module 1.1;
+  the git commands are Module 1.2; `gh issue develop` is Modules 2.1 and 2.4;
+  `gh issue create` is Module 2.5; `gh pr create` is Module 2.7; `Refs` and
+  `Closes` and the check-after-merge rule are Module 2.1; one branch per issue and
+  "a milestone is a release bucket" are Module 2.2; "approving is not merging" is
+  Modules 2.2 and 2.4; and the pointers to the skills are the README's Materials
+  list. The one gap, `gh pr checks <N>`, is now in Module 2.4's checks section.
+
 ### Added
 
 - Module 4.13, writing an instruction file for your repository (optional, ~35 min,
