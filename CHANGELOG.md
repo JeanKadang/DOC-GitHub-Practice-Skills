@@ -132,6 +132,15 @@
 
 ### Changed
 
+- `github-security-response` now says that "never paste the secret" covers any
+  part of it and its identifier (an access key ID, a username, a token's visible
+  prefix), even when it looks like a documentation example or a placeholder: say
+  you think it is one without repeating it, and refer to it by file and line
+  (#299). The earlier wording ("the secret itself") could be read as allowing the
+  identifier. In the rerun of the scenario rubric's S5 the identifier was not
+  quoted in any of twelve runs on either side, so this is a clarification, not a
+  measured fix; the earlier 2 of 3 failures did not reproduce. S5 now also has a
+  realistic-looking key variant in `scripts/skill-eval/`.
 - The `github-issue-first` description and opening now cover a direct request to
   make a change (for example "fix the typo in `team.md`"), not only something you
   notice: before the first edit the skill runs its read-only repo-risk checks and
