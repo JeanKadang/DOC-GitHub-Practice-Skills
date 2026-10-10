@@ -84,7 +84,7 @@ Two naming traps, as checked on 2026-10-01 (see the taxonomy for the sources):
 
 Lessons and exercises use VS Code, the command line, GitHub, and GitHub's own
 Copilot coding agent ([Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md)).
-The repository has install guides for Claude, GitHub Copilot, Codex and ChatGPT in
+The repository has install guides for Claude, GitHub Copilot and Codex in
 `docs/`. Every other product in the taxonomy is classified there but not taught.
 
 ## Self-check

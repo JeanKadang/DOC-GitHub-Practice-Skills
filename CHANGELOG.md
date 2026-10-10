@@ -4,6 +4,20 @@
 
 ## [Unreleased]
 
+### Removed
+
+- **The ChatGPT route (#144, ADR 0016). This removes behaviour v0.4.0 shipped.**
+  `install-skills.ps1 -Target ChatGPT` and `-ChatGPTExportPath` are gone, as are
+  `docs/chatgpt.md`, `platforms/chatgpt/README.md`, the export tests and the
+  20-file Knowledge-limit test, and the CI dry run of the export. The supported
+  platforms are three: OpenAI Codex, Claude Code and GitHub Copilot CLI.
+  Migration: `-Target ChatGPT` now fails with a parameter-validation error. If
+  you exported the files with v0.4.0, that folder is yours and keeps working;
+  nothing new is produced for it, and this repository gives no guidance for
+  Custom GPTs, which OpenAI's help center says retire on 2026-12-11. ADR 0006 is
+  marked superseded, and #227 (evaluate a ChatGPT skills route) is closed as not
+  planned.
+
 ### Added
 
 - A "Coming from Jira" section in `github-for-ado-users` (#306), since the skill

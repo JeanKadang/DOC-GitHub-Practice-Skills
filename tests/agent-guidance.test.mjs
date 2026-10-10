@@ -27,20 +27,20 @@ test('CLAUDE.md imports AGENTS.md instead of duplicating it', async () => {
   assert.ok(claude.split(/\r?\n/).length < 30, 'CLAUDE.md should stay a thin wrapper around the import');
 });
 
-test('AGENTS.md names every canonical skill and all four platforms', async () => {
+test('AGENTS.md names every canonical skill and all three platforms', async () => {
   const agents = await read('AGENTS.md');
   for (const { name } of inventory.skills) {
     assert.ok(agents.includes(`\`${name}\``), `AGENTS.md must describe ${name}`);
   }
-  for (const platform of ['OpenAI Codex', 'Claude Code', 'GitHub Copilot CLI', 'ChatGPT']) {
+  for (const platform of ['OpenAI Codex', 'Claude Code', 'GitHub Copilot CLI']) {
     assert.ok(agents.includes(platform), `AGENTS.md must mention ${platform}`);
   }
-  assert.match(agents, /four/i);
+  assert.match(agents, /three/i);
 });
 
 test('AGENTS.md never names a platform twice in a row (find-and-replace damage)', async () => {
   const agents = await read('AGENTS.md');
-  assert.doesNotMatch(agents, /\b(OpenAI Codex|Codex|Claude|Copilot|ChatGPT)(?:,| \+| and)\s+(?:OpenAI )?\1\b/);
+  assert.doesNotMatch(agents, /\b(OpenAI Codex|Codex|Claude|Copilot)(?:,| \+| and)\s+(?:OpenAI )?\1\b/);
 });
 
 test('every repository path AGENTS.md cites exists', async () => {

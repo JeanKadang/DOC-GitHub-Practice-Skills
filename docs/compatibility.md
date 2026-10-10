@@ -27,7 +27,6 @@ Windows 11 (10.0.22631) with Node 26.10 and PowerShell 7.6.
 | OpenAI Codex (CLI) | 0.160.0 | **Verified** 2026-10-05 |
 | GitHub Copilot CLI | 1.0.95 | **Verified** 2026-10-10 |
 | GitHub Copilot in VS Code | not checked | **Unverified** |
-| ChatGPT (Custom GPT, or plugin skills) | not applicable | **Unverified** |
 
 ### Claude Code
 
@@ -72,13 +71,14 @@ Checked 2026-10-10 with version 1.0.95 and the twelve skills from `main`.
   fails with a false "modified: hash mismatch", tracked in #304, because `main`
   still carries the version string `0.3.0`.
 
-### Copilot in VS Code, ChatGPT
+### Copilot in VS Code
 
 - **Copilot in VS Code:** the reload step in [vscode.md](vscode.md) is marked
   "needs verification" and has not been confirmed in a real session. It needs
   the VS Code interface, so it is still **Unverified**.
-- **ChatGPT:** there is no install; `-Target ChatGPT` exports files. Nothing was
-  tried in a real workspace (see [ChatGPT](chatgpt.md)).
+
+ChatGPT is not a supported platform; the Custom GPT export was removed (see
+[ADR 0016](adr/0016-retire-the-chatgpt-route.md)).
 
 The Claude Code and Codex personal-scope checks were made against an older
 install of the skills than the current release. The update check is the evidence

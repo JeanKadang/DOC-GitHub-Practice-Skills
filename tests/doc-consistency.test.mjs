@@ -26,7 +26,6 @@ const ROSTER_SURFACES = [
   'README.md',
   'AGENTS.md',
   'docs/GUIDE.md',
-  'docs/chatgpt.md',
   '.github/ISSUE_TEMPLATE/bug.yml',
   '.github/ISSUE_TEMPLATE/improvement.yml',
 ];
@@ -157,39 +156,6 @@ test('every label the workflow copies is grouped or excluded by release.yml (#13
 test('releaseExcludedLabels reads the exclude list (#134)', () => {
   const yaml = 'changelog:\n  exclude:\n    labels:\n      - ignore-for-release\n      - education\n  categories:\n    - title: Fixes\n';
   assert.deepEqual(releaseExcludedLabels(yaml), ['education', 'ignore-for-release']);
-});
-
-// ChatGPT Custom GPT Knowledge accepts at most 20 files (ADR 0006, and
-// docs/chatgpt.md). The export is one file per required skill file, so adding a
-// skill or a bundled file can push it past the limit without any other check
-// noticing (#129). The provenance files (LICENSE, manifest.json) are optional
-// to upload and are not counted against the limit.
-export const CHATGPT_KNOWLEDGE_FILE_LIMIT = 20;
-
-export function chatGPTExportFileCount(skills) {
-  return skills.reduce(
-    (total, skill) => total + skill.requiredFiles.filter((file) => file !== 'agents/openai.yaml').length,
-    0,
-  );
-}
-
-test('chatGPTExportFileCount skips the Codex sidecar', () => {
-  assert.equal(
-    chatGPTExportFileCount([
-      { name: 'a', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
-      { name: 'b', requiredFiles: ['SKILL.md', 'agents/openai.yaml', 'x.md'] },
-    ]),
-    3,
-  );
-});
-
-test('the ChatGPT export stays within the 20-file Knowledge limit', async () => {
-  const inventory = JSON.parse(await read('contracts/skill-inventory.json'));
-  const count = chatGPTExportFileCount(inventory.skills);
-  assert.ok(
-    count <= CHATGPT_KNOWLEDGE_FILE_LIMIT,
-    `the export is ${count} files, over ChatGPT's ${CHATGPT_KNOWLEDGE_FILE_LIMIT}-file Knowledge limit (ADR 0006)`,
-  );
 });
 
 // CI shape (#130). Required status checks match job names, so a matrix change

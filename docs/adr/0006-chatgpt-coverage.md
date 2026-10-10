@@ -2,7 +2,8 @@
 
 ## Status
 
-Accepted (2026-09-28).
+Accepted (2026-09-28). Superseded by
+[ADR 0016](0016-retire-the-chatgpt-route.md) (2026-10-10).
 
 ## Context
 

@@ -72,12 +72,7 @@ The installer validates the source, refuses unapproved overwrites, and can use
 [Copilot CLI guide](docs/copilot.md) for discovery details — or the
 [VS Code guide](docs/vscode.md) if you're not comfortable with PowerShell.
 `-Target Both` installs Codex and Claude only; install Copilot separately with
-`-Target Copilot`. ChatGPT has no local skill directory to install into —
-`-Target ChatGPT` (new in v0.4.0) exports the skill files
-instead, for uploading to a Custom
-GPT, which OpenAI's help center says retires on 2026-12-11; see the
-[ChatGPT guide](docs/chatgpt.md), "Availability", before exporting. The
-replacement route, uploading the skill folders as ChatGPT skills, is untested.
+`-Target Copilot`.
 
 ## Documentation
 
@@ -88,7 +83,6 @@ replacement route, uploading the skill folders as ChatGPT skills, is untested.
 - [Platform compatibility record (what has been checked, and what has not)](docs/compatibility.md)
 - [Azure DevOps migration mapping](docs/azure-devops-migration.md)
 - [Installing from VS Code (no PowerShell experience needed)](docs/vscode.md)
-- [Installing for ChatGPT (Custom GPT until its announced retirement, then paste)](docs/chatgpt.md)
 - [Colleague training program](education/README.md)
 - [Repo settings snapshot (read-only audit reference)](docs/repo-settings-snapshot.md)
 
@@ -99,9 +93,8 @@ packages under `skills/` the same way — a known local directory read every
 session. OpenAI Codex also reads `agents/openai.yaml`; Claude and Copilot
 both ignore that metadata and read the same `SKILL.md` — GitHub's Agent
 Skills format is an open standard shared with Anthropic's, so no content
-translation is needed for Copilot. ChatGPT is a fourth, structurally
-different target with no local directory to read — see
-[docs/chatgpt.md](docs/chatgpt.md) for what "installing" means there.
+translation is needed for Copilot. ChatGPT is not a supported platform; the
+Custom GPT export that v0.4.0 shipped was removed (see `CHANGELOG.md`).
 
 Node.js 22 or 24 (the supported LTS lines; `package.json` requires 22.22.2 or
 newer on 22, 24.15 or newer on 24, or 26 and later, the floor of the `jsdom` test

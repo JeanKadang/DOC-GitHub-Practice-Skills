@@ -299,7 +299,7 @@ Prohibited line was seen):
 Limits of this run:
 
 - Claude Code only. Codex was installed on the maintainer's machine and was not
-  run; Copilot CLI is not installed; ChatGPT has no local consumer.
+  run; Copilot CLI is not installed.
 - The mock `gh` is fixed. Two gaps were found and fixed during the run (the
   merge-method fields, and the closed-issue list that S2 needs); results above
   are from the fixed mock.

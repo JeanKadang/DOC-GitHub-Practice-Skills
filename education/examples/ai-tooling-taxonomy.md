@@ -143,7 +143,7 @@ General-purpose conversational AI.
 
 | Tool | In this program |
 | --- | --- |
-| ChatGPT | Install guide |
+| ChatGPT | No |
 | Claude | Install guide |
 | Microsoft Copilot | No |
 | Gemini | No |
