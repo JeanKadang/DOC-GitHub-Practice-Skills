@@ -2,11 +2,15 @@
 # Usage: .\setup-scenario.ps1 -Scenario s1
 param([Parameter(Mandatory)][string]$Scenario)
 $root = "$env:TEMP\skill-eval"; $sb = "$root\sandbox-claude"; $mock = "$root\mock"; $bare = "$root\remote.git"
-$repoSkills = (Resolve-Path (Join-Path $PSScriptRoot '..\..\skills')).Path
+# SKILL_EVAL_SKILLS points at another skills folder (for example an export of
+# main) to compare a change with its baseline.
+$repoSkills = if ($env:SKILL_EVAL_SKILLS) { $env:SKILL_EVAL_SKILLS } else { (Resolve-Path (Join-Path $PSScriptRoot '..\..\skills')).Path }
 $ErrorActionPreference = 'Stop'
 New-Item -ItemType Directory -Force $mock, "$root\mock-bin", "$sb\.claude" | Out-Null
 Copy-Item (Join-Path $PSScriptRoot 'mock-gh.mjs') $mock -Force
 Copy-Item (Join-Path $PSScriptRoot 'gh') "$root\mock-bin\gh" -Force
+Copy-Item (Join-Path $PSScriptRoot 'mock-git.mjs') $mock -Force
+Copy-Item (Join-Path $PSScriptRoot 'git-front.sh') $mock -Force
 
 # Fresh skills (all twelve from main) unless the scenario needs a subset.
 Remove-Item "$sb\.claude\skills" -Recurse -Force -ErrorAction SilentlyContinue
@@ -22,7 +26,7 @@ G config core.autocrlf false
 Add-Content (Join-Path $sb '.git/info/exclude') '.claude/'
 function Commit($msg) { G add -A; G commit -q -m $msg }
 $script:slug = 'acme/demo'
-function Add-Origin { $url = "https://github.com/$script:slug.git"; G remote add origin $url; G config "url.file:///$($bare -replace '\\\\','/').insteadOf" $url }
+function Add-Origin { G remote add origin ('file:///' + ($bare -replace '\\', '/')) }
 function Rule($m, $o, $c = 0) { [ordered]@{ match = $m; out = $o; code = $c } }
 $repoJson = '{"nameWithOwner":"acme/demo","visibility":"PRIVATE","defaultBranchRef":{"name":"main"},"hasIssuesEnabled":true,"mergeCommitAllowed":true,"squashMergeAllowed":false,"rebaseMergeAllowed":false,"deleteBranchOnMerge":true}'
 $rules = @()
@@ -92,4 +96,5 @@ switch ($Scenario) {
 Pop-Location
 New-Item -ItemType Directory -Force $mock | Out-Null
 ([ordered]@{ rules = $rules; default = $default } | ConvertTo-Json -Depth 8) | Set-Content "$mock\$Scenario.json" -Encoding utf8
+Set-Content "$mock\$Scenario.slug" $script:slug -Encoding utf8
 "scenario $Scenario ready: $($rules.Count) mock rules; skills: " + (Get-ChildItem "$sb\.claude\skills" -Directory).Count

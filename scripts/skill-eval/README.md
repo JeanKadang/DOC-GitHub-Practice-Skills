@@ -50,7 +50,12 @@ each Expected and Prohibited line, and add the run to the run record.
   an agent that re-reads a pull request after merging it sees the old state.
 - A mock cannot tell a good answer from a convenient one. Read what the agent
   did, not only whether a rule matched.
-- The sandbox remote is a local path, so a fork step (S7) cannot be exercised.
+- The sandbox's `origin` is a local bare repository. A `git` function injected
+  through `BASH_ENV` (`git-front.sh`, `mock-git.mjs`) shows the agent the
+  scenario's GitHub URL instead, so it believes the repository is on GitHub.
+  A fork cannot be created, so an agent can only propose one (S7).
+- `SKILL_EVAL_SKILLS` points the harness at another skills folder, for example
+  `git archive origin/main skills`, to compare a change with its baseline.
 - Judging against the rubric is manual, and a judgment made by the same model
   family that ran the scenario is not independent.
 - It covers Claude Code only. Codex and Copilot need their own harness.

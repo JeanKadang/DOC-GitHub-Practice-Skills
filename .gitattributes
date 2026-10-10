@@ -6,3 +6,4 @@ skills/**/agents/openai.yaml whitespace=cr-at-eol
 
 # The mock gh is run by bash, so it must keep LF line endings.
 scripts/skill-eval/gh text eol=lf
+scripts/skill-eval/git-front.sh text eol=lf

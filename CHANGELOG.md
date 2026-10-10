@@ -132,6 +132,16 @@
 
 ### Changed
 
+- The `github-issue-first` description and opening now cover a direct request to
+  make a change (for example "fix the typo in `team.md`"), not only something you
+  notice: before the first edit the skill runs its read-only repo-risk checks and
+  either follows the full flow or asks once whether to use a lighter touch for a
+  low-stakes repository. A request to fix something is still not a request to
+  skip the ceremony; only an explicit "just fix it" is (#298). In the scenario
+  rubric's S6 the skill went from loading in 0 of 3 runs to 3 of 3, and the agent
+  now asks instead of editing. The eval harness now shows the agent a GitHub
+  remote URL, which changes how earlier S5, S6 and S7 results should be read; see
+  Run 3 in `docs/skill-scenarios.md`.
 - The platform compatibility record (`docs/compatibility.md`, #149) now has the
   GitHub Copilot CLI row verified (version 1.0.95, 2026-10-10: discovery with
   `copilot skill list --json` and the upgrade preview; no model-backed sample

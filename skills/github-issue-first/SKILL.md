@@ -1,6 +1,6 @@
 ---
 name: github-issue-first
-description: Use whenever you are working in a git repository that has a GitHub remote and you notice a bug, gap, stale doc, missing test, CI failure, or any other improvement worth doing. Before fixing it, discussing it at length, or otherwise acting on it, file it as a GitHub issue first via gh issue create — labeled (priority + category) and assigned to the current user. Trigger this proactively when you spot something worth tracking, not only when the user explicitly says "file an issue" or "track this" — but file only in a repo where you have write or triage permission, and confirm once per repo per session before the first filing. In someone else's repo, use github-contributing instead. Also use this skill when the user asks you to prioritize, triage, reprioritize, or map dependencies between existing issues on a repo.
+description: Use whenever you are working in a git repository that has a GitHub remote and you notice a bug, gap, stale doc, missing test, CI failure, or any other improvement worth doing, or when the user asks you to make a change there (fix a typo, add a feature). Before fixing it, discussing it at length, or editing, file it as a GitHub issue first via gh issue create — labeled (priority + category) and assigned to the current user — unless the repo is low-stakes, where you ask once whether to use the full flow or a lighter touch. Trigger proactively, not only when told to file or track — but file only where you have write or triage permission, and confirm once per repo per session before the first filing. In someone else's repo, use github-contributing instead. Also use this skill when the user asks you to prioritize, triage, reprioritize, or map dependencies between existing issues on a repo.
 ---
 
 # GitHub issue-first workflow
@@ -13,6 +13,15 @@ when the user remembers to ask. The issue tracker is the source of truth for
 "things we know about," and if a finding only ever lived in chat, it's gone
 the moment the conversation scrolls past. Spotting it is automatic; filing it is gated by the
 Preconditions below (permission first, then one confirmation per repo per session).
+
+**When the user asks for the change.** The same gate applies when the change is
+the thing you were asked to do ("fix the typo in `team.md`"). Before the first
+edit, run the read-only checks in "Scaling ceremony to repo risk" below and
+follow the result: a repo with CI, tests, or branch protection gets the full
+flow (file the issue under the Preconditions, then branch and pull request); a
+clearly low-stakes repo gets one question, asked once, about the full flow or a
+lighter touch. A request to fix something is not itself a request to skip the
+ceremony; only an explicit "just fix it" is (next paragraph).
 
 The one exception: if the user has explicitly said "just fix it" / "don't
 bother filing an issue for this" / equivalent, for this specific thing, skip
