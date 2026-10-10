@@ -2,7 +2,7 @@
 
 ## Supported release
 
-The latest published release is v0.4.0 — identify the affected tag (or the
+The latest published release is v0.5.0 — identify the affected tag (or the
 current `main` state, if unreleased) in the private report.
 
 ## Reporting a vulnerability
