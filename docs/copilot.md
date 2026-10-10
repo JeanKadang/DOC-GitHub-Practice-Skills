@@ -1,14 +1,18 @@
 # GitHub Copilot CLI installation
 
 GitHub Copilot's Agent Skills mechanism is an open standard shared with
-Anthropic's `SKILL.md` format — Copilot CLI, VS Code and JetBrains agent mode,
-Copilot cloud agent, and Copilot code review all discover skills the same way
-Claude does. This repository's canonical `skills/<name>/SKILL.md` files need
-no translation: Copilot reads the same file Claude reads, and ignores
-`agents/openai.yaml` exactly as Claude does.
+Anthropic's `SKILL.md` format. GitHub's documentation says Copilot CLI, VS Code
+and JetBrains agent mode, Copilot cloud agent, and Copilot code review all
+discover skills the same way Claude does. Only the Copilot CLI has been checked
+here, on 2026-10-10; the other surfaces are unverified (see the
+[compatibility record](compatibility.md)). This repository's canonical
+`skills/<name>/SKILL.md` files need no translation: Copilot reads the same file
+Claude reads, and ignores `agents/openai.yaml` exactly as Claude does.
 
 Copilot looks for **personal** (user-level) skills under `~/.copilot/skills`
-and **project** (repository-level) skills under `.github/skills`,
+(and `~/.agents/skills`, which Codex also reads; a skill installed in both
+places can be listed twice) and **project** (repository-level) skills under
+`.github/skills`,
 `.claude/skills`, or `.agents/skills` in a given repo. This installer only
 manages the personal, user-level location — the same "install into your AI
 tool's home directory" model already used for Codex and Claude. It does not
