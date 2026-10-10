@@ -6,6 +6,15 @@
 
 ### Added
 
+- Tooling for the education graphics (#283, #285): `npm run glance` generates
+  `education/at-a-glance.md` from `education/graphics/index.json` (`--check`
+  fails when it is out of date), `npm run export:graphics` renders every graphic
+  to a light and a dark PNG, and `npm run slides:data` writes the data for a
+  slide deck. Both write to `.export/`, which is git-ignored. The public-content
+  scan now reads `.svg` files. One new dev dependency, `playwright-core@1.63.0`
+  (Apache-2.0), is used only by the export and downloads no browser; point it at
+  an installed Chrome or Chromium with `--chrome` or `CHROME_PATH`. The lessons
+  themselves are in `education/CHANGELOG.md`.
 - The first recorded run of the skill behavior scenarios (#150), on Claude Code
   2.1.292 with the twelve skills from `main`: skill selection passed 8 of 8, and
   of the eight behavior scenarios four passed (S3 part a, S4, S8 and, in two of
