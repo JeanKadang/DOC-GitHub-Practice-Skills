@@ -11,6 +11,10 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-10-10
+
+Breaking for anyone with links or bookmarks: Module 0.1 was split into Modules 0.1 to 0.4, new Modules 0.5 to 0.8 were added, the two old prerequisite files became `module-0-6-what-is-an-llm-assistant.md` and `module-0-7-set-up-vs-code.md`, and `cheat-sheet.md` was removed. The entries below say where each part went.
+
 ### Removed
 
 - `cheat-sheet.md`. It predated the numbered modules, the graphics and the
