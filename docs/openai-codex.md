@@ -26,7 +26,10 @@ Upgrading over an unmodified earlier install of this package needs no
 replaces the skill in place. Reinstalling the same release changes nothing.
 `-Force` is for a skill you changed locally (or an untracked directory): it
 backs the whole directory up first. Add `-KeepBackups N` to keep only the
-newest N backup sets under `skill-backups`.
+newest N backup sets under `skill-backups`. It is also what you need when you
+install from an unreleased `main` over an install of the same version: the
+installer then reports that the installed copy matches its own marker but
+differs from the source, and it cannot tell that from an edited marker.
 
 Installed skill directories belong to the installer, which tracks them with a
 marker file. A file you add inside `skills/<name>/` counts as a local
