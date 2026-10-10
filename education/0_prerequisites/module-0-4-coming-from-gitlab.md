@@ -115,8 +115,10 @@ covers where a thought belongs.
 - [Module 1.1: Getting Started](../1_beginners/module-1-1-getting-started.md), the
   hands-on part, once you have read the
   [Module 0.6: What Is an LLM Assistant?](module-0-6-what-is-an-llm-assistant.md).
-- If you come from Azure DevOps instead, use `skills/github-for-ado-users/SKILL.md`
-  alongside the table above.
+- If you come from Azure DevOps or Jira instead, read
+  [Module 0.9](module-0-9-coming-from-azure-devops.md) or
+  [Module 0.10](module-0-10-coming-from-jira.md), then use
+  `skills/github-for-ado-users/SKILL.md` alongside the table above.
 
 ## Self-check
 

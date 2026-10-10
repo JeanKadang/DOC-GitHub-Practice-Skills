@@ -11,7 +11,7 @@ import { repoRoot } from './helpers/markdown.mjs';
 export const EXERCISE_LABELS = ['Permissions', 'Starting state', 'Success state', 'Likely errors', 'Cleanup'];
 
 // Modules that are reading only, with no exercise to run.
-const READING_ONLY = new Set(['0.1', '0.2', '0.3', '0.4', '0.5', '3.5']);
+const READING_ONLY = new Set(['0.1', '0.2', '0.3', '0.4', '0.5', '0.9', '0.10', '3.5']);
 const MODULE_FILE = /^module-(\d+)-(\d+)-.+\.md$/;
 
 export function missingLabels(source) {

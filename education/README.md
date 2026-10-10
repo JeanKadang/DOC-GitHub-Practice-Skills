@@ -18,8 +18,8 @@ commit, and file hashes (ADR 0013).
 `0_prerequisites/` holds required reading (Modules 0.1 to 0.3 on version
 control, Git and GitHub, Module 0.5 on the kinds of tools, and Module 0.6 on LLM
 assistants — most colleagues use an AI coding assistant, so that page is no
-longer optional) plus three conditional pages (Module 0.4 for teams moving from
-GitLab, and Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
+longer optional) plus five conditional pages (Module 0.4 for teams moving from
+GitLab, Module 0.9 for Azure DevOps, Module 0.10 for Jira, and Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
 assistant, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
 Module 3.6, and the modules built from it so far, Modules 4.1, 4.9, 4.10, 4.12 and 4.13. `examples/`
 and `facilitator-guide.md` sit outside the numbered sequence — lookup
@@ -45,9 +45,9 @@ flowchart TD
     Q1 -- Yes --> S0[Module 0.1: What Is Version Control?]
     S0 --> S0b[Module 0.2: What Is Git?]
     S0b --> S0c[Module 0.3: What Is GitHub?]
-    Q1 -- No --> Q2{Coming from GitLab or Azure DevOps, not GitHub?}
+    Q1 -- No --> Q2{Coming from GitLab, Azure DevOps or Jira, not GitHub?}
     Q2 -- Yes --> GL3[Module 0.3: What Is GitHub?]
-    GL3 --> GL4[Module 0.4: Coming from GitLab<br/>then the mapping skill:<br/>github-for-gitlab-users or<br/>github-for-ado-users]
+    GL3 --> GL4[Module 0.4: Coming from GitLab,<br/>Module 0.9: Azure DevOps, or<br/>Module 0.10: Jira<br/>then the mapping skill:<br/>github-for-gitlab-users or<br/>github-for-ado-users]
     Q2 -- No --> T5[Module 0.5: What kinds of tools are these?]
     GL4 --> T5
     S0c --> T5
@@ -95,7 +95,7 @@ flowchart TD
 | You want an assistant to follow this repository's conventions (test command, commit format, off-limits files) | [Module 4.13: Writing an instruction file for your repository](4_next-step/module-4-13-writing-an-instruction-file-for-your-repository.md) (after Module 1.6 and Module 2.9) |
 | You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
 | Your team's CI is a `.gitlab-ci.yml` and you must move it to GitHub Actions | [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md) (after Module 0.4, Module 1.1, and Module 3.5) |
-| Already know GitLab or Azure DevOps, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) (including account protection), then [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md) with its GitLab/ADO comparison table for a quick orientation, then `skills/github-for-gitlab-users/SKILL.md` (GitLab) or `skills/github-for-ado-users/SKILL.md` (Azure DevOps) for the full mapping |
+| Already know GitLab, Azure DevOps or Jira, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) (including account protection), then [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md) or [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md), then `skills/github-for-gitlab-users/SKILL.md` (GitLab) or `skills/github-for-ado-users/SKILL.md` (Azure DevOps) for the full mapping |
 
 **Whatever your background: read [Module 0.5: What kinds of tools are these?](0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md)
 and [Module 0.6: What Is an LLM Assistant?](0_prerequisites/module-0-6-what-is-an-llm-assistant.md)
@@ -163,6 +163,12 @@ mindmap
         Connect to GitHub Enterprise
         The GitHub CLI
         Add an AI assistant
+      Module 0.9: Coming from Azure DevOps - conditional
+        Sprints are not milestones
+        Test Plans has no twin
+      Module 0.10: Coming from Jira - conditional
+        Fix version is a milestone
+        Nothing syncs
     1: Beginners
       Module 1.1: Getting Started
         What is a commit
@@ -251,11 +257,13 @@ mindmap
 - [Module 0.1: What Is Version Control?](0_prerequisites/module-0-1-what-is-version-control.md) — ~5 min, reading only, history, commit, branch, merge in plain terms.
 - [Module 0.2: What Is Git?](0_prerequisites/module-0-2-what-is-git.md) — ~5 min, reading only, the history tool on your machine, and clone, push, pull.
 - [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) — ~15 min, reading plus a one-time account-protection checklist, pull requests, issues, and how this team's process sits on top.
-- [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md) — ~10 min, reading only, conditional: for teams moving from GitLab (or Azure DevOps) to GitHub.
+- [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md) — ~10 min, reading only, conditional: for teams moving from GitLab to GitHub.
 - [Module 0.5: What kinds of tools are these?](0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md) — ~8 min, reading only, the kinds of developer and AI tools (IDEs, assistants, coding assistants, agents), rewritten from the taxonomy.
 - [Module 0.6: What Is an LLM Assistant?](0_prerequisites/module-0-6-what-is-an-llm-assistant.md) — ~25 min (about 15 reading, 10 on a paper practice), **required** for everyone: the vocabulary and the two surprises that have caught people.
 - [Module 0.7: Set up VS Code](0_prerequisites/module-0-7-set-up-vs-code.md) — ~15 min, mostly install time. Installing VS Code, the four places to know, recommended extensions. Optional — only needed if you don't already have it.
 - [Module 0.8: Connect VS Code to Git, GitHub and an AI assistant](0_prerequisites/module-0-8-connect-vs-code-to-git-github-and-an-llm.md) — ~25 min, mostly install time. Installing Git, telling Git your name and email, connecting to GitHub Enterprise, the GitHub CLI (optional), adding your AI assistant. Optional — only needed if you don't already have these.
+- [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md) — ~12 min, reading only, conditional: for teams moving from Azure DevOps to GitHub.
+- [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md) — ~12 min, reading only, conditional: for teams moving from Jira to GitHub, or keeping Jira next to GitHub.
 - [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) — ~60 min, hands-on, no prior experience needed.
 - [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) — ~45 min, hands-on command-line git — staging, conflicts, and undoing a mistake.
 - [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) — ~20 min, hands-on, web UI only. Headings, task lists, code fences, links, and previewing.
@@ -310,6 +318,8 @@ graphic and that each file has a title and description and no script.
 - [Tools and permission decide what it can do](graphics/module-0-6-what-is-an-llm-assistant.svg) — Module 0.6.
 - [VS Code is the hub](graphics/module-0-7-set-up-vs-code.svg) — Module 0.7.
 - [Git first, then the connections](graphics/module-0-8-connect-vs-code-to-git-github-and-an-llm.svg) — Module 0.8.
+- [Same ideas, different words](graphics/module-0-9-coming-from-azure-devops.svg) — Module 0.9.
+- [Mind the sync](graphics/module-0-10-coming-from-jira.svg) — Module 0.10.
 - [Edit a photocopy, merge after review](graphics/module-1-1-getting-started.svg) — Module 1.1.
 - [Three undos, three different jobs](graphics/module-1-2-local-git-basics-undo.svg) — Module 1.2 (undo).
 - [Add packs the box. Commit seals it.](graphics/module-1-2-local-git-basics.svg) — Module 1.2.

@@ -13,6 +13,20 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Modules 0.9, "Coming from Azure DevOps", and 0.10, "Coming from Jira" (#308):
+  two conditional prerequisites in the shape of Module 0.4, one per product,
+  because a team is usually fully on one or moving away from it. Each has a
+  concept mapping, the traps that cost most, an explainer graphic and a Mermaid
+  diagram, with vendor claims dated on the page. Module 0.9 covers the sprint
+  versus milestone trap, that Azure Test Plans has no GitHub equivalent, and the
+  `AB#` link to Azure Boards; Module 0.10 covers fix versions, statuses, and why
+  GitHub and Jira do not sync. The README route table, tier map, Materials list
+  and graphics list, the at-a-glance page and Modules 0.3 and 0.4 point to them.
+  They are numbered 0.9 and 0.10, not 0.5 and 0.6, so no prerequisite is
+  renumbered (ADR 0009, ADR 0015).
+
+### Added
+
 - `4_next-step/module-plan.md` groups the thirteen candidate modules into three
   tracks (agents and AI, automation and security, release and scale) and records
   a suggested build order with a reason for each step, noting that the pilot
