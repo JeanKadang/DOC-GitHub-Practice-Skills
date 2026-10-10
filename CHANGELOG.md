@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+### Changed
+
+- `github-hygiene` now says what to do when a pull request carries `Closes #N`
+  and a criterion of #N has no evidence (#300): stop before merging, name the
+  criterion, and offer the two ways forward (record the evidence, or change to
+  `Refs #N` and merge). An instruction to merge authorizes the merge, not an edit
+  to the pull request text, so the agent no longer rewrites `Closes` to `Refs`
+  and merges on its own. In scenario S3 part (b) the agent did that in three of
+  three runs before the change and in none of three after; part (a) is
+  unchanged. `docs/skill-scenarios.md` has Run 6.
+
 ### Fixed
 
 - The installer no longer says "modified: hash mismatch" when the installed
