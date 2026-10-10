@@ -13,6 +13,20 @@ $ghLog = "$out\$Name.gh.log"; Remove-Item $ghLog -ErrorAction SilentlyContinue
 $env:GH_MOCK_LOG = $ghLog
 $env:GH_MOCK_SCENARIO = $Scenario
 $env:GH_MOCK_DIR = "$root\mock"
+# The git front shows a GitHub URL instead of the local bare repository that
+# receives pushes, so the agent sees a GitHub remote. Nothing goes to GitHub.
+$env:GH_MOCK_GIT = (Get-Command git.exe).Source
+$slugFile = "$root\mock\$Scenario.slug"
+if ($Scenario -and (Test-Path $slugFile)) {
+  $slug = (Get-Content $slugFile -Raw).Trim()
+  $bare = "$root\remote.git"; $fwd = $bare -replace '\\', '/'
+  $posix = '/' + $fwd.Substring(0, 1).ToLower() + $fwd.Substring(2)
+  $env:GH_MOCK_REMOTE_URL = "https://github.com/$slug.git"
+  $env:GH_MOCK_REMOTE_PATH = @("file:///$fwd", "file:///$bare", $fwd, $bare, $posix) -join '|'
+  $front = "$root\mock\git-front.sh"
+  $env:BASH_ENV = '/' + $front.Substring(0, 1).ToLower() + $front.Substring(2).Replace('\', '/')
+}
+else { $env:GH_MOCK_REMOTE_URL = $null; $env:GH_MOCK_REMOTE_PATH = $null; $env:BASH_ENV = $null }
 $oldPath = $env:PATH
 $safe = ($env:PATH -split ';' | Where-Object { $_ -and -not (Test-Path (Join-Path $_ 'gh.exe')) -and -not (Test-Path (Join-Path $_ 'gh.cmd')) }) -join ';'
 $env:PATH = "$root\mock-bin;$safe"
@@ -21,7 +35,7 @@ try {
   $raw = claude -p $Prompt --setting-sources project --strict-mcp-config --no-session-persistence `
     --tools "Skill,Read,Grep,Glob,Bash,Edit,Write" --permission-mode acceptEdits --allowedTools "Skill" "Read" "Grep" "Glob" "Edit" "Write" "Bash" `
     --permission-prompts none --max-budget-usd $Budget --output-format stream-json --verbose 2>&1 | Out-String
-} finally { Pop-Location; $env:PATH = $oldPath }
+} finally { Pop-Location; $env:PATH = $oldPath; $env:BASH_ENV = $null }
 $raw | Set-Content "$out\$Name.raw.jsonl" -Encoding utf8
 $events = foreach ($l in ($raw -split "`r?`n")) { if ($l.StartsWith('{')) { try { $l | ConvertFrom-Json } catch {} } }
 $skills = @(); $cmds = @(); $other = @()

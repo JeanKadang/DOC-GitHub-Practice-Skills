@@ -1,4 +1,4 @@
 interface:
   display_name: "GitHub Issue First"
   short_description: "Track findings and issue closure evidence"
-  default_prompt: "Use $github-issue-first to triage, file, or reconcile this repository issue."
+  default_prompt: "Use $github-issue-first to triage, file, or decide how to track this repository change."
