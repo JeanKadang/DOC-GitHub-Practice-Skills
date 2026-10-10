@@ -15,6 +15,16 @@
   three runs before the change and in none of three after; part (a) is
   unchanged. `docs/skill-scenarios.md` has Run 6.
 
+- `github-hygiene` now says when acceptance criteria are ticked and what to do
+  about an unmet one (#303): when the pull request is opened, tick each
+  criterion whose evidence the agent has seen hold (a diff plus a test it ran, or
+  a passing CI run), post the evidence on the issue, and offer the maintainer a
+  follow-up issue or a recorded scope decision for each unchecked criterion,
+  filing it only when the maintainer agrees. In scenario S1 the agent ticked
+  the issue's boxes in none of three runs before the change and in three of
+  three after, and offered the follow-up in three of three (one of three
+  before). `docs/skill-scenarios.md` has Run 7.
+
 ### Fixed
 
 - The installer no longer says "modified: hash mismatch" when the installed

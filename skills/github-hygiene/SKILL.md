@@ -49,6 +49,15 @@ Before approving a merge that would close an issue:
 6. Only when every in-scope criterion passes, change `Refs #N` to `Closes #N`
    and proceed with the ordinary merge gate.
 
+Do steps 2 to 5 when you open the PR, not after the merge. Tick a criterion at
+that point when you have seen its evidence hold: a diff plus a test you ran, or
+a passing CI run on the PR's head. Do not tick on the strength of the code
+alone, and do not wait for the merge for a criterion that already has evidence.
+For each criterion left unchecked, say so in the PR and offer the maintainer a
+linked follow-up issue or a recorded scope decision; file the issue or record
+the decision only when the maintainer agrees. The criterion stays unchecked
+until one of those happens.
+
 If a criterion is no longer required, record the scope decision and rationale on
 the issue before merge. Mark it explicitly as removed or superseded; never check
 it as though it was delivered. Deferred work gets a linked follow-up issue and
