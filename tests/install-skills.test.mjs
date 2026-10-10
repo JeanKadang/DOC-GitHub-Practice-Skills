@@ -623,7 +623,12 @@ test('an install from another build of the same version is explained, not called
 
   const preview = await runInstaller({ codexHome, target: 'Codex', dryRun: true, expectFailure: true });
 
-  const output = `${preview.stdout}\n${preview.stderr}`;
+  // PowerShell wraps a long error at the terminal width on Linux and macOS and
+  // draws a gutter and colour codes, so compare the text with those removed.
+  const output = `${preview.stdout}\n${preview.stderr}`
+    .replace(/\x1B\[[0-9;]*m/g, '')
+    .replace(/\s*\|\s*/g, ' ')
+    .replace(/\s+/g, ' ');
   assert.match(output, new RegExp(`'${name}' matches its own marker but differs from this source`));
   assert.match(output, /earlier build of the same version/);
   assert.match(output, /-Force/);
