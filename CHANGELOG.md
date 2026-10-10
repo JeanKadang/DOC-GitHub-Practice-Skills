@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-10
+
 ### Changed
 
 - `github-hygiene` now says what to do when a pull request carries `Closes #N`
@@ -67,6 +69,18 @@
   skill-selection prompt and Run 5: the skill loaded in six of six runs, which
   it also did before, and only the changed skill's answers carried the new
   mappings and the no-sync warning.
+
+### Known issues
+
+- `braces` (GHSA-vfj7-8cjw-p6xm, high) has no patched release. It is a
+  devDependency reached only through `markdownlint-cli2`, is not shipped by the
+  installer, and is accepted in `.github/audit-accepted.json` with a review date
+  of 2026-11-06 (#260).
+- Installing from an unreleased `main` over an install of the same version still
+  needs `-Force`, because a marker cannot prove it is genuine; the message now
+  says so (#304). Installs of released tags are not affected.
+- The behavior scenarios have only been run on Claude Code; Codex and Copilot
+  CLI have discovery evidence but no scenario runs.
 
 ## [0.4.0] - 2026-10-10
 

@@ -1,6 +1,6 @@
 # Workflow and closure gates
 
-**Applies to:** v0.4.0
+**Applies to:** v0.5.0
 
 **Reviewed:** 2026-09-28
 
@@ -10,7 +10,7 @@
 2. File or select an assigned issue with one priority, relevant categories, a
    milestone, explicit scope, and observable acceptance criteria. This repo's
    skillset milestones are release-based (named after the target tag, e.g.
-   `v0.4.0`), not thematic buckets: a thematic name is allowed only until a
+   `v0.5.0`), not thematic buckets: a thematic name is allowed only until a
    release scopes the work, then its issues move to the `vX.Y.Z` milestone and
    it is closed. Work on `education/` uses "Education Program vN" milestones,
    because that track is tagged separately. Reuse these two schemes rather than
