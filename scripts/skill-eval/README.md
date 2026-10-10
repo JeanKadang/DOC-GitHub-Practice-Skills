@@ -12,8 +12,10 @@ judged by a person.
   checkout copied into the sandbox's `.claude/skills`.
 - Starts a fresh `claude -p` session there with `--setting-sources project`, so
   your personal skills and settings are not loaded, with a restricted tool set
-  (`Skill`, `Read`, `Grep`, `Glob`, `Edit`, `Write`, and `Bash` limited to
-  `gh`, `git`, and a few file commands) and no MCP servers.
+  (`Skill`, `Read`, `Grep`, `Glob`, `Edit`, `Write`, and `Bash`) and no MCP
+  servers. Every `PATH` entry that holds a real `gh` is removed, so only the
+  mock can answer; the sandbox is still a real shell, so use a machine you
+  trust.
 - Puts a **mock `gh`** first on `PATH`. It never contacts GitHub: it logs every
   call and answers from canned replies for the scenario. The `origin` remote is
   a local bare repository.

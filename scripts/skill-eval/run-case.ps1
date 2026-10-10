@@ -14,11 +14,12 @@ $env:GH_MOCK_LOG = $ghLog
 $env:GH_MOCK_SCENARIO = $Scenario
 $env:GH_MOCK_DIR = "$root\mock"
 $oldPath = $env:PATH
-$env:PATH = "$root\mock-bin;$env:PATH"
+$safe = ($env:PATH -split ';' | Where-Object { $_ -and -not (Test-Path (Join-Path $_ 'gh.exe')) -and -not (Test-Path (Join-Path $_ 'gh.cmd')) }) -join ';'
+$env:PATH = "$root\mock-bin;$safe"
 Push-Location $sb
 try {
   $raw = claude -p $Prompt --setting-sources project --strict-mcp-config --no-session-persistence `
-    --tools "Skill,Read,Grep,Glob,Bash,Edit,Write" --permission-mode acceptEdits --allowedTools "Skill" "Read" "Grep" "Glob" "Edit" "Write" "Bash(gh *)" "Bash(git *)" "Bash(cd *)" "Bash(ls *)" "Bash(cat *)" "Bash(head *)" "Bash(tail *)" "Bash(grep *)" "Bash(sed *)" "Bash(echo *)" `
+    --tools "Skill,Read,Grep,Glob,Bash,Edit,Write" --permission-mode acceptEdits --allowedTools "Skill" "Read" "Grep" "Glob" "Edit" "Write" "Bash" `
     --permission-prompts none --max-budget-usd $Budget --output-format stream-json --verbose 2>&1 | Out-String
 } finally { Pop-Location; $env:PATH = $oldPath }
 $raw | Set-Content "$out\$Name.raw.jsonl" -Encoding utf8
