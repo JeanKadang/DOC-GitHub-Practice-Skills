@@ -13,16 +13,9 @@ colleagues and reaching beyond GitHub (the LLM and tooling track). When the two
 compete for effort, the skills come first; the training material keeps growing
 after each skill milestone.
 
-> **Release status:** [v0.3.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.3.0)
+> **Release status:** [v0.4.0](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/releases/tag/v0.4.0)
 > is published (twelve skills). Tag and publish the matching GitHub release
 > per `github-releases` before updating this line for the next version.
->
-> **Unreleased on `main`:** `main` is ahead of v0.3.0, so some behavior
-> described in this repository is not in that release. `-Target ChatGPT`
-> below is one example; the full list is under
-> [Unreleased](CHANGELOG.md#unreleased) in `CHANGELOG.md`. To use only released
-> behavior, clone the tag:
-> `git clone --branch v0.3.0 https://github.com/JeanKadang/DOC-GitHub-Practice-Skills.git`.
 >
 > The `education/` program is versioned independently — see
 > `education/CHANGELOG.md` and `docs/MAINTAINING.md`'s release-hygiene
@@ -74,7 +67,7 @@ The installer validates the source, refuses unapproved overwrites, and can use
 [VS Code guide](docs/vscode.md) if you're not comfortable with PowerShell.
 `-Target Both` installs Codex and Claude only; install Copilot separately with
 `-Target Copilot`. ChatGPT has no local skill directory to install into —
-`-Target ChatGPT` (not in v0.3.0; on `main` only) exports the skill files
+`-Target ChatGPT` (new in v0.4.0) exports the skill files
 instead, for uploading to a Custom
 GPT, which OpenAI's help center says retires on 2026-12-11; see the
 [ChatGPT guide](docs/chatgpt.md), "Availability", before exporting. The
