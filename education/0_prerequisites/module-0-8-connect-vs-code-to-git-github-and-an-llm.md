@@ -207,8 +207,7 @@ change as the products do, so follow the current guide and not a copy here:
 
 - [docs/claude.md](../../docs/claude.md) for Claude,
 - [docs/copilot.md](../../docs/copilot.md) for GitHub Copilot,
-- [docs/openai-codex.md](../../docs/openai-codex.md) for Codex,
-- [docs/chatgpt.md](../../docs/chatgpt.md) for ChatGPT, and
+- [docs/openai-codex.md](../../docs/openai-codex.md) for Codex, and
 - [docs/vscode.md](../../docs/vscode.md) for the VS Code side of installing this
   repository's own skills.
 

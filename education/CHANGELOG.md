@@ -11,6 +11,15 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- The repository no longer ships a ChatGPT route (#144), so the lessons that
+  pointed at its install guide were updated: Modules 0.5, 0.6 and 0.8 no longer
+  list a ChatGPT install guide, Module 1.6 says ChatGPT has no local skill
+  folders and is not covered, and the tool taxonomy marks ChatGPT "No" in the
+  "In this program" column. ChatGPT is still named where it is only an example
+  of an AI assistant.
+
 ## [3.0.0] - 2026-10-10
 
 Breaking for anyone with links or bookmarks: Module 0.1 was split into Modules 0.1 to 0.4, new Modules 0.5 to 0.8 were added, the two old prerequisite files became `module-0-6-what-is-an-llm-assistant.md` and `module-0-7-set-up-vs-code.md`, and `cheat-sheet.md` was removed. The entries below say where each part went.

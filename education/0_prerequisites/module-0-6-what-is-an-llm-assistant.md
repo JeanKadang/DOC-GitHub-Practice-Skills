@@ -187,7 +187,6 @@ Further tiers are scoped as separate issues, not as empty folders. For
 getting a specific tool installed right now, see
 [docs/claude.md](../../docs/claude.md),
 [docs/copilot.md](../../docs/copilot.md),
-[docs/openai-codex.md](../../docs/openai-codex.md), or
-[docs/chatgpt.md](../../docs/chatgpt.md) — or, for the rest of your local
-setup, [Module 0.7](module-0-7-set-up-vs-code.md) and
+or [docs/openai-codex.md](../../docs/openai-codex.md) — or, for the rest of your
+local setup, [Module 0.7](module-0-7-set-up-vs-code.md) and
 [Module 0.8](module-0-8-connect-vs-code-to-git-github-and-an-llm.md).

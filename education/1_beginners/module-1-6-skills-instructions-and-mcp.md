@@ -104,11 +104,9 @@ so if Codex doesn't see the skills, that is the first place to look.)
 | Claude Code ([docs](https://code.claude.com/docs/en/mcp)) | `.mcp.json` in the project (shared), or your own settings; scopes are local, project, and user | `claude mcp add` |
 | Codex ([docs](https://learn.chatgpt.com/docs/extend/mcp?surface=cli)) | `~/.codex/config.toml`, or `.codex/config.toml` in a trusted project | `codex mcp add` |
 
-ChatGPT works differently: it has no local folders like these, which is why this
-repository exports a flattened file set for it instead (see
-[docs/chatgpt.md](../../docs/chatgpt.md)). OpenAI's pages also describe skills
-and connectors inside ChatGPT, but this module does not verify those, so check
-OpenAI's documentation if you rely on them.
+ChatGPT has no local folders like these, and this module does not cover it. This
+repository's skills are for the tools in the table; OpenAI's pages describe
+skills and connectors inside ChatGPT, which this module does not verify.
 
 ## Exercise: add an instruction, watch it work, remove it
 

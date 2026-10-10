@@ -104,11 +104,9 @@ jobs:
           $codexHome = Join-Path $testRoot 'codex'
           $claudeHome = Join-Path $testRoot 'claude'
           $copilotHome = Join-Path $testRoot 'copilot'
-          $chatGPTExport = Join-Path $testRoot 'chatgpt'
           try {
             & ./scripts/install-skills.ps1 -Target Both -SourceRoot $PWD.Path -CodexHome $codexHome -ClaudeHome $claudeHome -DryRun
             & ./scripts/install-skills.ps1 -Target Copilot -SourceRoot $PWD.Path -CopilotHome $copilotHome -DryRun
-            & ./scripts/install-skills.ps1 -Target ChatGPT -SourceRoot $PWD.Path -ChatGPTExportPath $chatGPTExport -DryRun
             if (Test-Path -LiteralPath $testRoot) {
               throw "Dry run created the temporary home root: $testRoot"
             }

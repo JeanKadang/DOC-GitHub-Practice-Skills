@@ -21,8 +21,8 @@ it. Human review must confirm that:
 - security-sensitive findings never enter a public issue or branch;
 - approval, merge, release, and destructive operations remain explicit gates;
 - a Projects board remains optional and mirrors issue metadata; and
-- Claude, OpenAI Codex, GitHub Copilot, and ChatGPT consume the same canonical
-  `SKILL.md` content (ChatGPT as flattened Custom GPT Knowledge files, ADR 0006).
+- Claude, OpenAI Codex, and GitHub Copilot consume the same canonical
+  `SKILL.md` content.
 
 Automation validates structure. It cannot establish semantic consistency.
 
@@ -46,14 +46,13 @@ a seeded violation in its own tests, so a rule that stops working is noticed.
 - **Roster agrees in three files** (`tests/roster-consistency.test.mjs`):
   inventory, validator, and installer drifting apart.
 - **Roster appears on every surface** (`tests/doc-consistency.test.mjs`): a skill
-  missing from the README, AGENTS.md, GUIDE, ChatGPT instructions, or issue forms.
+  missing from the README, AGENTS.md, GUIDE, or issue forms.
 - **Version stamps** (`tests/doc-consistency.test.mjs`): a policy document naming
   an old version. SECURITY.md may lag the package version, never lead it.
 - **Release-note labels** (`tests/doc-consistency.test.mjs`): a release category
   the label-copy workflow never applies, or a label the workflow copies that
   `release.yml` neither groups nor excludes.
-- **ChatGPT export size** (`tests/doc-consistency.test.mjs`): an export over the
-  20-file Knowledge limit.
+
 - **Relative links and anchors** (`tests/links.test.mjs`): a link to a file or
   heading that no longer exists.
 - **Education prerequisites and README Materials list**

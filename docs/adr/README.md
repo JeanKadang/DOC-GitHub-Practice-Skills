@@ -44,7 +44,8 @@ text is not edited.
   `github-for-gitlab-users` as a 12th skill, mirroring
   `github-for-ado-users`'s shape.
 - [0006](0006-chatgpt-coverage.md) — ChatGPT coverage via a Custom GPT
-  export target, not an installer directory-copy or an Actions schema.
+  export target, not an installer directory-copy or an Actions schema. Status:
+  Superseded by ADR 0016.
 - [0007](0007-two-track-education-program.md) — Split `education/` into a
   GitHub track and an LLM/VS Code tooling track, both staged across the
   same five tiers. Status: Accepted; its folder-naming specifics are
@@ -73,3 +74,6 @@ text is not edited.
   eight numbered modules (version control, Git, GitHub, GitLab, tool kinds, LLM
   assistants, two setup pages). Status: Accepted; supersedes the part of ADR 0009
   that lists the folder's contents and keeps the taxonomy outside the sequence.
+- [0016](0016-retire-the-chatgpt-route.md) — Retires the ChatGPT route: the
+  Custom GPT export, its docs and tests are removed and the supported platforms
+  are three. Status: Accepted; supersedes ADR 0006.
