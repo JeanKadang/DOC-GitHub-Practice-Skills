@@ -11,6 +11,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- `4_next-step/module-plan.md` groups the thirteen candidate modules into three
+  tracks (agents and AI, automation and security, release and scale) and records
+  a suggested build order with a reason for each step, noting that the pilot
+  (#232) can reorder it (#281). Module numbers and entries are unchanged.
+
 ### Changed
 
 - The repository no longer ships a ChatGPT route (#144), so the lessons that

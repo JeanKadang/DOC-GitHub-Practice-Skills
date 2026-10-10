@@ -23,27 +23,89 @@ and want to go further. Modules built from this plan are named
 
 ## Overview
 
+The candidates fall into three tracks. The numbers do not change and do not
+follow the tracks: a number records when a module was planned or built, and the
+track says what it is about. Each entry under [Candidates](#candidates) keeps
+its audience, prerequisites, objectives and exercise idea.
+
+### Track A: agents and AI
+
+How a team works with an AI assistant and coding agent on a repository.
+
 | Module | Working title | Builds on | Rough size |
 | --- | --- | --- | --- |
 | 4.1 | [Reviewing changes an AI agent wrote](module-4-1-reviewing-changes-an-ai-agent-wrote.md) (built) | [LLM prerequisite](../0_prerequisites/module-0-6-what-is-an-llm-assistant.md), [Module 2.2](../2_intermediate/module-2-2-pr-review-and-branch-conventions.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 30 min |
 | 4.2 | Writing your own agent skill | [Module 2.1](../2_intermediate/module-2-1-issue-first-and-closure-gate.md) | 40 min |
-| 4.3 | Authoring a GitHub Actions workflow | [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
-| 4.4 | Securing the supply chain | [Module 3.4](../3_advanced/module-3-4-security-response.md) | 35 min |
-| 4.5 | Release engineering: changelog, versions, provenance | [Module 3.3](../3_advanced/module-3-3-releases.md) | 35 min |
-| 4.6 | Debugging with Git: bisect, blame, stash, worktrees | [Module 1.2](../1_beginners/module-1-2-local-git-basics.md), [Module 3.6](../3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md) | 30 min |
-| 4.7 | Running a secret-leak drill | [Module 3.4](../3_advanced/module-3-4-security-response.md) | 45 min |
-| 4.8 | Working across many repositories | [Module 3.1](../3_advanced/module-3-1-branch-protection-and-rulesets.md), [Module 3.2](../3_advanced/module-3-2-projects-boards.md) | 30 min |
 | 4.9 | [Using Copilot as a pull request reviewer](module-4-9-using-copilot-as-a-pull-request-reviewer.md) (built) | [Module 2.2](../2_intermediate/module-2-2-pr-review-and-branch-conventions.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 30 min |
 | 4.10 | [Assigning issues to the Copilot coding agent](module-4-10-assigning-issues-to-the-copilot-coding-agent.md) (built) | [Module 2.1](../2_intermediate/module-2-1-issue-first-and-closure-gate.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
-| 4.11 | Publishing and consuming packages (GitHub Packages) | [Module 3.3](../3_advanced/module-3-3-releases.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 35 min |
-| 4.12 | [Moving a GitLab pipeline to GitHub Actions](module-4-12-moving-a-gitlab-pipeline-to-actions.md) (built) | [Module 0.4](../0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 1.1](../1_beginners/module-1-1-getting-started.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
 | 4.13 | [Writing an instruction file for your repository](module-4-13-writing-an-instruction-file-for-your-repository.md) (built) | [Module 1.6](../1_beginners/module-1-6-skills-instructions-and-mcp.md), [Module 2.9](../2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) | 35 min |
+
+### Track B: automation and security
+
+Workflows, pipelines and the supply chain around them.
+
+| Module | Working title | Builds on | Rough size |
+| --- | --- | --- | --- |
+| 4.3 | Authoring a GitHub Actions workflow | [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
+| 4.12 | [Moving a GitLab pipeline to GitHub Actions](module-4-12-moving-a-gitlab-pipeline-to-actions.md) (built) | [Module 0.4](../0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 1.1](../1_beginners/module-1-1-getting-started.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 40 min |
+| 4.4 | Securing the supply chain | [Module 3.4](../3_advanced/module-3-4-security-response.md) | 35 min |
+| 4.7 | Running a secret-leak drill | [Module 3.4](../3_advanced/module-3-4-security-response.md) | 45 min |
+
+### Track C: release and scale
+
+Releases, history, and working across many repositories.
+
+| Module | Working title | Builds on | Rough size |
+| --- | --- | --- | --- |
+| 4.5 | Release engineering: changelog, versions, provenance | [Module 3.3](../3_advanced/module-3-3-releases.md) | 35 min |
+| 4.6 | Debugging with Git: bisect, blame, stash, worktrees | [Module 1.2](../1_beginners/module-1-2-local-git-basics.md), [Module 3.6](../3_advanced/module-3-6-rebase-cherry-pick-and-reflog.md) | 30 min |
+| 4.8 | Working across many repositories | [Module 3.1](../3_advanced/module-3-1-branch-protection-and-rulesets.md), [Module 3.2](../3_advanced/module-3-2-projects-boards.md) | 30 min |
+| 4.11 | Publishing and consuming packages (GitHub Packages) | [Module 3.3](../3_advanced/module-3-3-releases.md), [Module 3.5](../3_advanced/module-3-5-actions-runners-and-agents.md) | 35 min |
+
+## Build order
+
+Eight of the thirteen candidates are not built. This order is a suggestion, and
+the pilot ([#232](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues/232))
+can reorder it where learners' timing and questions show a different need. A
+module still needs a real audience before it is built (see "How to use this
+plan").
+
+**Built so far, in the order they were built:**
+
+1. Module 4.12, moving a GitLab pipeline to Actions, first because teams moving
+   from GitLab had a pipeline to rewrite on day one.
+2. Modules 4.10 and 4.9 ([#278](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues/278),
+   [#279](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues/279)),
+   the Copilot coding agent and Copilot review, because colleagues already had
+   those tools.
+3. Module 4.13 ([#280](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues/280)),
+   writing an instruction file, because it is the smaller step before a skill.
+4. Module 4.1 ([#230](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues/230)),
+   reviewing changes an agent wrote.
+
+**Suggested order for what remains:**
+
+1. Module 4.2, writing your own agent skill: it is the step after 4.13 and
+   finishes Track A.
+2. Module 4.3, authoring a workflow: Modules 4.4 and 4.7 assume a learner can
+   read and change a workflow, and 4.3 is the general lesson that 4.12 deliberately
+   is not.
+3. Module 4.4, securing the supply chain, then Module 4.7, the secret-leak
+   drill: 4.7 is a rehearsal and is better after the controls of 4.4 exist.
+4. Module 4.5, release engineering: useful to anyone who cuts releases, and
+   independent of the tracks above.
+5. Module 4.8, working across many repositories: only worth building when a
+   learner maintains several related repositories.
+6. Module 4.6, debugging with Git: independent of everything else, so it can move
+   up when learners ask for it.
+7. Module 4.11, GitHub Packages: parked. Its entry says demand is unconfirmed;
+   build it only when a team starts to publish or consume versioned artifacts.
 
 ## Candidates
 
 ### Module 4.1: Reviewing changes an AI agent wrote
 
-Built: [Module 4.1](module-4-1-reviewing-changes-an-ai-agent-wrote.md).
+Built: [Module 4.1](module-4-1-reviewing-changes-an-ai-agent-wrote.md) ([#230](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues/230)).
 
 ### Module 4.2: Writing your own agent skill
 
@@ -133,11 +195,11 @@ rather than in a skill.
 
 ### Module 4.9: Using Copilot as a pull request reviewer
 
-Built: [Module 4.9](module-4-9-using-copilot-as-a-pull-request-reviewer.md).
+Built: [Module 4.9](module-4-9-using-copilot-as-a-pull-request-reviewer.md) ([#279](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues/279)).
 
 ### Module 4.10: Assigning issues to the Copilot coding agent
 
-Built: [Module 4.10](module-4-10-assigning-issues-to-the-copilot-coding-agent.md).
+Built: [Module 4.10](module-4-10-assigning-issues-to-the-copilot-coding-agent.md) ([#278](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues/278)).
 
 ### Module 4.11: Publishing and consuming packages (GitHub Packages)
 
@@ -174,7 +236,7 @@ workflow from scratch. The numbering is by order of building, not by reading ord
 
 ### Module 4.13: Writing an instruction file for your repository
 
-Built: [Module 4.13](module-4-13-writing-an-instruction-file-for-your-repository.md).
+Built: [Module 4.13](module-4-13-writing-an-instruction-file-for-your-repository.md) ([#280](https://github.com/JeanKadang/DOC-GitHub-Practice-Skills/issues/280)).
 It sits before Module 4.2 in reading order and builds on Modules 1.6 and 2.9. The
 number follows the order of building, not the reading order.
 
