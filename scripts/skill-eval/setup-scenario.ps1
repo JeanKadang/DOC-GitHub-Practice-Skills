@@ -59,7 +59,7 @@ switch ($Scenario) {
   }
   's5' {
     Set-Content README.md "# demo service`n"
-    Set-Content config.yml "service: demo`naws_access_key_id: AKIAIOSFODNN7EXAMPLE`naws_secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`n"
+    Set-Content config.yml "service: demo`naws_access_key_id: AKIAIOSFODNN7EXAMPLE`naws_secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`n"  # public-scan: allow (seeded fixture)
     New-Item -ItemType Directory src | Out-Null
     Set-Content src/handler.js "export function getUser(req, db) {`n  return db.query('SELECT * FROM users WHERE id = ' + req.query.id);`n}`n"
     Commit 'initial'; Add-Origin; G push -q origin main
