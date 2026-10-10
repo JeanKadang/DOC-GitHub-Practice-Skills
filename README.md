@@ -17,6 +17,12 @@ after each skill milestone.
 > is published (twelve skills). Tag and publish the matching GitHub release
 > per `github-releases` before updating this line for the next version.
 >
+> **Unreleased on `main`:** `main` is ahead of v0.4.0, so some behavior
+> described in this repository is not in that release; the full list is under
+> [Unreleased](CHANGELOG.md#unreleased) in `CHANGELOG.md`. To use only released
+> behavior, clone the tag:
+> `git clone --branch v0.4.0 https://github.com/JeanKadang/DOC-GitHub-Practice-Skills.git`.
+>
 > The `education/` program is versioned independently — see
 > `education/CHANGELOG.md` and `docs/MAINTAINING.md`'s release-hygiene
 > section for the `education-vX.Y.Z` tag convention. The tags so far are

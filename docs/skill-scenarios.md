@@ -36,6 +36,9 @@ loads. A wrong or missing skill is a finding even if the answer is good.
   `github-issue-first`.
 - "I'm coming from Azure DevOps. Where do sprints go?" loads
   `github-for-ado-users`.
+- "I'm coming from Jira. Where do sprints go?" loads `github-for-ado-users`,
+  and the answer uses the Jira section (iteration field, not milestone), not
+  the Azure DevOps table alone.
 - "I'm coming from GitLab. What replaces merge requests?" loads
   `github-for-gitlab-users`.
 - "Review this pull request from a fork." loads `github-pr-review`.
@@ -394,6 +397,33 @@ no "this is only a placeholder" excuse.
 
 Limits: six runs per side show no failure, not that the failure cannot occur;
 the judging was done by the assistant that ran them.
+
+### Run 5: Claude Code 2.1.292, 2026-10-10, after #306
+
+Skill selection for a Jira user, after a Jira section was added to
+`github-for-ado-users` (#306). The prompt "I'm coming from Jira. Where do
+sprints go?" was given with no repository context, three times with the
+changed skills and three times with the skills from `main`.
+
+- **Selection:** `github-for-ado-users` loaded in all six runs. The description
+  already named Jira, so selection was not the problem and this run does not
+  show an improvement in it.
+- **Iteration field, not milestone:** all six answers said sprints belong in a
+  Projects iteration field and warned against milestones.
+- **What the Jira section added:** in all three changed runs the answer mapped
+  fix version to a milestone, resolution to the close reason, and the Jira key
+  to the issue number, and said the GitHub for Atlassian app links branches,
+  commits and pull requests into Jira but does not sync issues or statuses. In
+  none of the three baseline runs did the answer mention the fix version, the
+  Jira integration, or that nothing syncs; the baseline answers drew on the
+  Azure DevOps table and the general advice in the skill.
+- **No regression:** the changed answers kept the iteration-versus-milestone
+  rule and the board advice.
+
+Limits: three runs per side; the prompt asks about sprints, so it exercises
+only part of the section; the vendor claims in the answers were not re-checked
+here (they were checked when the section was written); the judging was done by
+the assistant that ran them.
 
 ## When a scenario fails
 

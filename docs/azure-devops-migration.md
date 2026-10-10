@@ -1,6 +1,9 @@
 # Azure DevOps to GitHub mapping
 
 This is neutral concept mapping, not a migration of any organization's process.
+Coming from Jira instead? The "Coming from Jira" section of
+`skills/github-for-ado-users/SKILL.md` has the Jira mapping; the rules here
+(milestones are releases, iterations are cadence) apply to both.
 
 ## Concept mappings
 

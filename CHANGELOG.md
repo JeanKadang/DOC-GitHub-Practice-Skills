@@ -4,6 +4,22 @@
 
 ## [Unreleased]
 
+### Added
+
+- A "Coming from Jira" section in `github-for-ado-users` (#306), since the skill
+  named Jira in its description but answered a Jira user from the Azure DevOps
+  table. It maps the issue key, epics and sub-tasks, sprints, statuses,
+  resolution, priority, components, fix and affects versions, and JQL to GitHub
+  and says where each differs; explains how the GitHub for Atlassian app and
+  Jira keys in branch names, commits and pull request titles link the two
+  products; and says plainly not to promise that issues or statuses sync. Each
+  vendor claim was checked against Atlassian and GitHub documentation on
+  2026-10-10, with the pages listed in the section. The description and the
+  Codex prompt now mention Jira terms. `docs/skill-scenarios.md` gains a Jira
+  skill-selection prompt and Run 5: the skill loaded in six of six runs, which
+  it also did before, and only the changed skill's answers carried the new
+  mappings and the no-sync warning.
+
 ## [0.4.0] - 2026-10-10
 
 ### Added
