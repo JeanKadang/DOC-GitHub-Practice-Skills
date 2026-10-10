@@ -141,6 +141,9 @@ The mechanism above is the same everywhere; the vocabulary and a few
 structural features differ. [Module 0.4: Coming from GitLab](module-0-4-coming-from-gitlab.md)
 maps them, and points to the `github-for-gitlab-users` and
 `github-for-ado-users` skills for the full detail.
+[Module 0.9: Coming from Azure DevOps](module-0-9-coming-from-azure-devops.md)
+and [Module 0.10: Coming from Jira](module-0-10-coming-from-jira.md) do the same
+for those two products.
 
 ## Self-check
 
@@ -163,7 +166,9 @@ Discussions section.
 ---
 
 Next: [Module 0.4: Coming from GitLab](module-0-4-coming-from-gitlab.md) if your
-team is moving from GitLab; otherwise the
+team is moving from GitLab, [Module 0.9](module-0-9-coming-from-azure-devops.md)
+for Azure DevOps or [Module 0.10](module-0-10-coming-from-jira.md) for Jira;
+otherwise the
 [Module 0.6: What Is an LLM Assistant?](module-0-6-what-is-an-llm-assistant.md)
 (also required reading before Module 1.1 if you'll be using an AI coding
 assistant — most colleagues will), then

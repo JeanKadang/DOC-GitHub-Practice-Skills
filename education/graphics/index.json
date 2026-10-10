@@ -64,6 +64,20 @@
     "alt": "Five steps in order: install Git, tell Git who you are, sign in to GitHub, optionally sign in to the gh command, and add your AI assistant. Three commands check the steps: git version, git config user name, and gh auth status."
   },
   {
+    "file": "module-0-9-coming-from-azure-devops.svg",
+    "page": "0_prerequisites/module-0-9-coming-from-azure-devops.md",
+    "title": "Same ideas, different words",
+    "takeaway": "Same Git. Sprints are not milestones, and Test Plans has no twin.",
+    "alt": "Five Azure DevOps terms mapped to GitHub: work item to issue, iteration path to a Projects iteration field and not a milestone, area path to a label, epic and feature and story to an epic issue with sub-issues, and Test Plans, which GitHub has no equivalent for."
+  },
+  {
+    "file": "module-0-10-coming-from-jira.svg",
+    "page": "0_prerequisites/module-0-10-coming-from-jira.md",
+    "title": "Mind the sync",
+    "takeaway": "Same Git. A fix version is a milestone, a sprint is not, and nothing syncs.",
+    "alt": "Five Jira terms mapped to GitHub: issue to issue, sprint to a Projects iteration field and not a milestone, fix version to milestone, component to a label, and a sync between GitHub and Jira, which does not exist because development information only flows into Jira."
+  },
+  {
     "file": "module-1-1-getting-started.svg",
     "page": "1_beginners/module-1-1-getting-started.md",
     "title": "Edit a photocopy, merge after review",
