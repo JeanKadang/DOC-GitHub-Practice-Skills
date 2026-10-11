@@ -63,7 +63,8 @@ flowchart TD
     Extra --> S2
     S2 --> S5[Module 1.5: What never goes in a repository]
     S5 --> S6[Module 1.6: Skills, instruction files, and MCP servers]
-    S6 --> M2a
+    S6 --> S7[Module 1.7: Working with an AI assistant day to day]
+    S7 --> M2a
     M2a --> M2b[Module 2.2: PR review and branch conventions]
     M2b --> M2c[Module 2.3: Writing a good issue]
     M2c --> M2d[Module 2.4: Writing a reviewable pull request]
@@ -92,6 +93,7 @@ flowchart TD
 | You want to propose a change to a repository you do not maintain | [Module 2.7: Contributing to someone else's repository](2_intermediate/module-2-7-contributing-to-someone-elses-repo.md) |
 | You want the reasons behind this team's rules, to follow them with judgment | [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md) |
 | You use an AI assistant and want to know about skills, instruction files, and MCP servers | [Module 1.6: Skills, instruction files, and MCP servers](1_beginners/module-1-6-skills-instructions-and-mcp.md) (after the LLM prerequisite) |
+| You use an AI assistant in your editor every day and want a safe routine for it | [Module 1.7: Working with an AI assistant day to day](1_beginners/module-1-7-working-with-an-assistant-day-to-day.md) (after Module 1.6) |
 | You are about to add a skill or an MCP server you did not write | [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) (after Module 1.6) |
 | You want an assistant to follow this repository's conventions (test command, commit format, off-limits files) | [Module 4.13: Writing an instruction file for your repository](4_next-step/module-4-13-writing-an-instruction-file-for-your-repository.md) (after Module 1.6 and Module 2.9) |
 | You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
@@ -118,7 +120,7 @@ what's relevant to you. Each module is sized to fit a single sitting
 This program is primarily self-paced: work through it solo, at your own
 pace, with the modules above as your only guide. A facilitator-led session
 is still fully supported — modules mark optional group activities inline,
-so either mode works from the same files. Modules 1.2 to 1.6 and Modules 2.1, 2.2, 2.3,
+so either mode works from the same files. Modules 1.2 to 1.7 and Modules 2.1, 2.2, 2.3,
 2.4, 2.5, 2.6, 3.1, 3.2, and 3.6 include hands-on steps in a shared **sandbox practice repo** (a
 throwaway repo set up for exactly this purpose, never a real project). Ask
 your team's facilitator or onboarding buddy for access to it before you
@@ -202,6 +204,10 @@ mindmap
         Three things, in plain terms
         Where each tool looks
         Add an instruction, then remove it
+      Module 1.7: Working with an AI assistant day to day
+        Scope one small task
+        Read the approval prompt
+        Read the diff, undo with Git
     2: Intermediate
       Module 2.1: Issue-first and closure gate
         Issue-first
@@ -275,6 +281,7 @@ mindmap
 - [Module 1.4: Finding your way around a repository](1_beginners/module-1-4-finding-your-way-around-a-repo.md) — ~25 min, hands-on, web UI only. The Code tab, history and blame, search qualifiers, and reading a pull request.
 - [Module 1.5: What never goes in a repository](1_beginners/module-1-5-what-never-goes-in-a-repo.md) — ~20 min, hands-on, needs Git from Module 1.2. What stays out, `.gitignore`, and rotating first after a leaked secret.
 - [Module 1.6: Skills, instruction files, and MCP servers](1_beginners/module-1-6-skills-instructions-and-mcp.md) — ~30 min, hands-on in VS Code. What each is, where each tool reads them (verified 2026-10-01), and adding one instruction.
+- [Module 1.7: Working with an AI assistant day to day](1_beginners/module-1-7-working-with-an-assistant-day-to-day.md) — ~35 min, hands-on in VS Code. Scoping a task, reading the approval prompt and the diff, and undoing with `git restore` or `git revert` (VS Code facts verified 2026-10-11).
 - [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md) — ~50 min, this team's core workflow habit.
 - [Module 2.2: PR review and branch conventions](2_intermediate/module-2-2-pr-review-and-branch-conventions.md) — ~35 min, review etiquette and branch/milestone conventions.
 - [Module 2.3: Writing a good issue](2_intermediate/module-2-3-writing-a-good-issue.md) — ~30 min, hands-on, the reasons behind each rule in `github-issue-first`.
@@ -334,6 +341,7 @@ graphic and that each file has a title and description and no script.
 - [Change the lock before the cleanup](graphics/module-1-5-what-never-goes-in-a-repo.svg) — Module 1.5.
 - [A .gitignore is a net, not a vault](graphics/module-1-5-what-never-goes-in-a-repo-gitignore.svg) — Module 1.5.
 - [House rules, recipe cards, a delivery hatch](graphics/module-1-6-skills-instructions-and-mcp.svg) — Module 1.6.
+- [Scope it, read it, undo it](graphics/module-1-7-working-with-an-assistant-day-to-day.svg) — Module 1.7.
 - [Merged is not done](graphics/module-2-1-issue-first-and-closure-gate.svg) — Module 2.1.
 - [Approving is not merging](graphics/module-2-2-pr-review-and-branch-conventions.svg) — Module 2.2.
 - [A milestone is a release bucket, not a sprint](graphics/module-2-2-pr-review-and-branch-conventions-milestones.svg) — Module 2.2.

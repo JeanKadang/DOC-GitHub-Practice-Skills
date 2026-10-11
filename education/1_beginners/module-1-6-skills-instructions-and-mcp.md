@@ -205,7 +205,7 @@ Discussions section.
 
 ---
 
-Next: [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)
+Next: [Module 1.7: Working with an AI assistant day to day](module-1-7-working-with-an-assistant-day-to-day.md), then [Module 2.1: Issue-first and the closure gate](../2_intermediate/module-2-1-issue-first-and-closure-gate.md)
 (and, once you are comfortable with that, read
 [Module 2.9: Safety with skills and MCP servers](../2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md)
 before you add anything you did not write yourself)

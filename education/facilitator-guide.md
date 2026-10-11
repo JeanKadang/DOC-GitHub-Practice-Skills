@@ -73,6 +73,10 @@ project. Requirements:
   open a draft pull request for a practice decision record and close it
   unmerged, and file one practice issue that they close as "not planned";
   reset the sandbox between cohorts.
+- **For Module 1.7's exercise:** nothing on the repo itself. Each attendee needs
+  a local clone (Module 1.2), VS Code, and GitHub Copilot Chat in agent mode, and
+  works on a private scratch branch they delete afterwards. Attendees without it
+  can read the module and do the Git steps by hand.
 - **For Module 1.6's exercise:** nothing on the repo itself. Each attendee needs
   a local clone (Module 1.2), VS Code, and GitHub Copilot Chat available to them,
   and nothing is committed. If Copilot isn't licensed for someone, they can use
@@ -130,6 +134,8 @@ stateDiagram-v2
 - [ ] For Module 1.2: confirm every attendee has `git` installed and can clone the sandbox repo.
 - [ ] For Module 1.3: confirm each attendee still has their Module 1.1 issue and
       merged pull request to link to.
+- [ ] For Module 1.7: confirm each attendee has a local clone, VS Code, and an
+      assistant that can edit files, and knows how to delete a scratch branch.
 - [ ] For Module 1.6: confirm each attendee has VS Code, a local clone, and a
       way to run an AI assistant chat (Copilot Chat or another tool).
 - [ ] For Module 1.5: confirm every attendee has a local clone (same as Module 1.2).
@@ -166,7 +172,7 @@ harmless, since each attendee adds their own line.
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.6 / Intermediate modules 2.1-2.9 / Advanced modules 3.1-3.6; Modules 4.1, 4.9, 4.10, 4.12 and 4.13 are optional)" to
+(Beginner modules 0.1-1.7 / Intermediate modules 2.1-2.9 / Advanced modules 3.1-3.6; Modules 4.1, 4.9, 4.10, 4.12 and 4.13 are optional)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.
