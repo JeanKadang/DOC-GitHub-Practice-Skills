@@ -100,6 +100,14 @@ Read the module: [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0
 
 Read the module: [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md)
 
+### Module 0.11: Same steps, different menus
+
+![Five VS Code things and where they live in IntelliJ IDEA: the Accounts icon becomes Settings, Version Control, GitHub; Source Control becomes the Git menu; Extensions become Plugins; Copilot Chat becomes the GitHub Copilot plugin; agent approvals become Junie modes, with brave mode not recommended.](graphics/module-0-11-use-intellij-idea-with-git-github-and-an-llm.svg)
+
+**In one sentence:** Same habits, different menus. Issue first, Refs #N, evidence.
+
+Read the module: [Module 0.11: Use IntelliJ IDEA with Git, GitHub and an AI assistant](0_prerequisites/module-0-11-use-intellij-idea-with-git-github-and-an-llm.md)
+
 ## Beginners
 
 ### Module 1.1: Edit a photocopy, merge after review

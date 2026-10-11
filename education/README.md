@@ -18,9 +18,9 @@ commit, and file hashes (ADR 0013).
 `0_prerequisites/` holds required reading (Modules 0.1 to 0.3 on version
 control, Git and GitHub, Module 0.5 on the kinds of tools, and Module 0.6 on LLM
 assistants — most colleagues use an AI coding assistant, so that page is no
-longer optional) plus five conditional pages (Module 0.4 for teams moving from
-GitLab, Module 0.9 for Azure DevOps, Module 0.10 for Jira, and Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
-assistant, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
+longer optional) plus six conditional pages (Module 0.4 for teams moving from
+GitLab, Module 0.9 for Azure DevOps, Module 0.10 for Jira, Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
+assistant, and Module 0.11 for the same in IntelliJ IDEA, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
 Module 3.6, and the modules built from it so far, Modules 4.1, 4.9, 4.10, 4.12 and 4.13. `examples/`
 and `facilitator-guide.md` sit outside the numbered sequence — lookup
 references, not steps to work through in order.
@@ -83,6 +83,7 @@ flowchart TD
 | You are about to commit files and want to know what must never go in a repository | [Module 1.5: What never goes in a repository](1_beginners/module-1-5-what-never-goes-in-a-repo.md) (do Module 1.2 first) |
 | Comfortable in the GitHub web UI, ready for the command line, Git/VS Code already installed | [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) |
 | Ready for the command line but no Git or VS Code installed yet, or Git has no name and email set | [Module 0.7: Set up VS Code](0_prerequisites/module-0-7-set-up-vs-code.md) and [Module 0.8: Connect VS Code to Git, GitHub and an AI assistant](0_prerequisites/module-0-8-connect-vs-code-to-git-github-and-an-llm.md), then [Module 1.2](1_beginners/module-1-2-local-git-basics.md) |
+| Your team works in IntelliJ IDEA, not VS Code | [Module 0.11: Use IntelliJ IDEA with Git, GitHub and an AI assistant](0_prerequisites/module-0-11-use-intellij-idea-with-git-github-and-an-llm.md), after the Git steps of Module 0.8, then [Module 1.2](1_beginners/module-1-2-local-git-basics.md) |
 | Some git knowledge, new to this team's process | [Module 2.1: Issue-first and the closure gate](2_intermediate/module-2-1-issue-first-and-closure-gate.md) |
 | Comfortable with the workflow, want your issues to be easier for others to act on | [Module 2.3: Writing a good issue](2_intermediate/module-2-3-writing-a-good-issue.md) |
 | You open pull requests and want them to be quick to review | [Module 2.4: Writing a reviewable pull request](2_intermediate/module-2-4-writing-a-reviewable-pr.md) |
@@ -169,6 +170,9 @@ mindmap
       Module 0.10: Coming from Jira - conditional
         Fix version is a milestone
         Nothing syncs
+      Module 0.11: IntelliJ IDEA setup - conditional
+        Same steps, different menus
+        Junie Ask and Code modes
     1: Beginners
       Module 1.1: Getting Started
         What is a commit
@@ -264,6 +268,7 @@ mindmap
 - [Module 0.8: Connect VS Code to Git, GitHub and an AI assistant](0_prerequisites/module-0-8-connect-vs-code-to-git-github-and-an-llm.md) — ~25 min, mostly install time. Installing Git, telling Git your name and email, connecting to GitHub Enterprise, the GitHub CLI (optional), adding your AI assistant. Optional — only needed if you don't already have these.
 - [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md) — ~12 min, reading only, conditional: for teams moving from Azure DevOps to GitHub.
 - [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md) — ~12 min, reading only, conditional: for teams moving from Jira to GitHub, or keeping Jira next to GitHub.
+- [Module 0.11: Use IntelliJ IDEA with Git, GitHub and an AI assistant](0_prerequisites/module-0-11-use-intellij-idea-with-git-github-and-an-llm.md) — ~20 min, mostly install time, conditional: for teams that work in IntelliJ IDEA instead of VS Code. Signing in to GitHub, cloning, and adding the GitHub Copilot plugin, JetBrains AI Assistant or Junie.
 - [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) — ~60 min, hands-on, no prior experience needed.
 - [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) — ~45 min, hands-on command-line git — staging, conflicts, and undoing a mistake.
 - [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) — ~20 min, hands-on, web UI only. Headings, task lists, code fences, links, and previewing.
@@ -320,6 +325,7 @@ graphic and that each file has a title and description and no script.
 - [Git first, then the connections](graphics/module-0-8-connect-vs-code-to-git-github-and-an-llm.svg) — Module 0.8.
 - [Same ideas, different words](graphics/module-0-9-coming-from-azure-devops.svg) — Module 0.9.
 - [Mind the sync](graphics/module-0-10-coming-from-jira.svg) — Module 0.10.
+- [Same steps, different menus](graphics/module-0-11-use-intellij-idea-with-git-github-and-an-llm.svg) — Module 0.11.
 - [Edit a photocopy, merge after review](graphics/module-1-1-getting-started.svg) — Module 1.1.
 - [Three undos, three different jobs](graphics/module-1-2-local-git-basics-undo.svg) — Module 1.2 (undo).
 - [Add packs the box. Commit seals it.](graphics/module-1-2-local-git-basics.svg) — Module 1.2.
