@@ -179,7 +179,8 @@ is a lookup page that lists them, with product names checked on a stated date, a
 [Module 0.5](module-0-5-what-kinds-of-tools-are-these.md) explains the kinds.
 
 This page is required. The rest of the LLM track stays optional as it lands:
-[Module 1.6](../1_beginners/module-1-6-skills-instructions-and-mcp.md) and
+[Module 1.6](../1_beginners/module-1-6-skills-instructions-and-mcp.md),
+[Module 1.7](../1_beginners/module-1-7-working-with-an-assistant-day-to-day.md) and
 [Module 2.9](../2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md)
 exist today, and a module on reviewing changes an AI agent wrote is planned in
 [the next-step plan](../4_next-step/module-plan.md) and tracked in issue #230.

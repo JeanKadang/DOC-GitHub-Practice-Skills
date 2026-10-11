@@ -13,6 +13,15 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 1.7, "Working with an AI assistant day to day" (#282): a beginner
+  module after Module 1.6 that teaches the daily loop, not one product. Scope one
+  small task, read each approval prompt and allow once, read `git status` and
+  `git diff`, and undo with `git restore` or `git revert`, with a sandbox exercise
+  on a scratch branch. VS Code claims (approval choices, checkpoints and what they
+  do not cover, Keep and Undo) are dated 2026-10-11; other tools are named as not
+  checked. The maintainer chose a beginner module over an intermediate one or none.
+  The README route table, flow, mindmap, Materials and graphics lists, the
+  facilitator guide, the next-step plan and Modules 0.6 and 1.6 point to it.
 - Module 0.11, "Use IntelliJ IDEA with Git, GitHub and an AI assistant" (#309):
   a conditional prerequisite parallel to Modules 0.7 and 0.8 for teams that work
   in IntelliJ IDEA. It maps where the VS Code steps live (Settings, Version

@@ -243,6 +243,7 @@ number follows the order of building, not the reading order.
 ## Also considered, not proposed
 
 - A deeper Copilot or Claude in VS Code lesson belongs to the LLM track, not
-  this folder, and is tracked with that track's later tiers.
+  this folder, and is tracked with that track's later tiers. The day-to-day
+  habit (scope, read the diff, undo with Git) is built as Module 1.7 (#282).
 - A GitHub Pages or documentation-site module would be useful only if the
   repository ever publishes a site.

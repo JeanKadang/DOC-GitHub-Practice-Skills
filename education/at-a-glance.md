@@ -178,6 +178,14 @@ Read the module: [Module 1.5: What never goes in a repository](1_beginners/modul
 
 Read the module: [Module 1.6: Skills, instruction files, and MCP servers](1_beginners/module-1-6-skills-instructions-and-mcp.md)
 
+### Module 1.7: Scope it, read it, undo it
+
+![Five habits for every assistant task: scope it to one small task with named files, read each approval prompt and allow once rather than always, read git status and git diff, undo with git restore before a commit or git revert after, and commit only what you can explain.](graphics/module-1-7-working-with-an-assistant-day-to-day.svg)
+
+**In one sentence:** Small task, read every change, undo with Git.
+
+Read the module: [Module 1.7: Working with an AI assistant day to day](1_beginners/module-1-7-working-with-an-assistant-day-to-day.md)
+
 ## Intermediate
 
 ### Module 2.1: Merged is not done

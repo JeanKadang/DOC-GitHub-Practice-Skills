@@ -143,6 +143,13 @@
     "alt": "An instruction file is a poster on the wall, always read. A skill is a recipe card pulled out when the dish matches. An MCP server is a hatch to another kitchen and runs code, so review it first."
   },
   {
+    "file": "module-1-7-working-with-an-assistant-day-to-day.svg",
+    "page": "1_beginners/module-1-7-working-with-an-assistant-day-to-day.md",
+    "title": "Scope it, read it, undo it",
+    "takeaway": "Small task, read every change, undo with Git.",
+    "alt": "Five habits for every assistant task: scope it to one small task with named files, read each approval prompt and allow once rather than always, read git status and git diff, undo with git restore before a commit or git revert after, and commit only what you can explain."
+  },
+  {
     "file": "module-2-1-issue-first-and-closure-gate.svg",
     "page": "2_intermediate/module-2-1-issue-first-and-closure-gate.md",
     "title": "Merged is not done",
