@@ -13,6 +13,15 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 0.11, "Use IntelliJ IDEA with Git, GitHub and an AI assistant" (#309):
+  a conditional prerequisite parallel to Modules 0.7 and 0.8 for teams that work
+  in IntelliJ IDEA. It maps where the VS Code steps live (Settings, Version
+  Control, GitHub; the Git menu; Plugins), and covers the GitHub Copilot plugin,
+  JetBrains AI Assistant and Junie, including Junie's Ask and Code modes and why
+  brave mode stays off. Vendor claims are dated on the page; the README route
+  table, tier map, Materials and graphics lists, the at-a-glance page and
+  Modules 0.7 and 0.8 point to it. Numbered 0.11 so no prerequisite is
+  renumbered (ADR 0009, ADR 0015).
 - Modules 0.9, "Coming from Azure DevOps", and 0.10, "Coming from Jira" (#308):
   two conditional prerequisites in the shape of Module 0.4, one per product,
   because a team is usually fully on one or moving away from it. Each has a

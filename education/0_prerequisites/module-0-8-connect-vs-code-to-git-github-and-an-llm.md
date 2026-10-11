@@ -47,7 +47,8 @@ Git your name and email, connect VS Code to GitHub, optionally install the GitHu
 CLI, and add the AI assistant your team uses. Git has to come first, because
 VS Code's Source Control view calls out to your local Git install underneath.
 This is a conditional prerequisite, not core reading: you need it only if you
-do not already have these set up.
+do not already have these set up. Steps 1 and 2 apply in any editor; for
+IntelliJ IDEA, continue with [Module 0.11](module-0-11-use-intellij-idea-with-git-github-and-an-llm.md) after them.
 
 ```mermaid
 flowchart LR

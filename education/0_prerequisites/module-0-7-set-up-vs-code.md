@@ -39,7 +39,8 @@ in it that matter. [Module 0.8](module-0-8-connect-vs-code-to-git-github-and-an-
 then connects it to Git, GitHub and an AI assistant. This is a conditional
 prerequisite, not core reading: you need it only if you do not have VS Code set
 up already, and nothing else in the program depends on it beyond what Module 0.8
-and the command-line modules assume.
+and the command-line modules assume. If your team works in IntelliJ IDEA instead,
+use [Module 0.11](module-0-11-use-intellij-idea-with-git-github-and-an-llm.md).
 
 ## 1. Install VS Code
 

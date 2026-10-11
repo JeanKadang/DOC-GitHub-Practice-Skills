@@ -78,6 +78,13 @@
     "alt": "Five Jira terms mapped to GitHub: issue to issue, sprint to a Projects iteration field and not a milestone, fix version to milestone, component to a label, and a sync between GitHub and Jira, which does not exist because development information only flows into Jira."
   },
   {
+    "file": "module-0-11-use-intellij-idea-with-git-github-and-an-llm.svg",
+    "page": "0_prerequisites/module-0-11-use-intellij-idea-with-git-github-and-an-llm.md",
+    "title": "Same steps, different menus",
+    "takeaway": "Same habits, different menus. Issue first, Refs #N, evidence.",
+    "alt": "Five VS Code things and where they live in IntelliJ IDEA: the Accounts icon becomes Settings, Version Control, GitHub; Source Control becomes the Git menu; Extensions become Plugins; Copilot Chat becomes the GitHub Copilot plugin; agent approvals become Junie modes, with brave mode not recommended."
+  },
+  {
     "file": "module-1-1-getting-started.svg",
     "page": "1_beginners/module-1-1-getting-started.md",
     "title": "Edit a photocopy, merge after review",
