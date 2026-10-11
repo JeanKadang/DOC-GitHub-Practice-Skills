@@ -39,6 +39,9 @@ loads. A wrong or missing skill is a finding even if the answer is good.
 - "I'm coming from Jira. Where do sprints go?" loads `github-for-ado-users`,
   and the answer uses the Jira section (iteration field, not milestone), not
   the Azure DevOps table alone.
+- "We keep Azure Boards for planning. How do I link a pull request to a work
+  item?" loads `github-for-ado-users`, and the answer says `AB#` links from a
+  description or commit message but not from a title or comment.
 - "I'm coming from GitLab. What replaces merge requests?" loads
   `github-for-gitlab-users`.
 - "Review this pull request from a fork." loads `github-pr-review`.
@@ -473,6 +476,40 @@ reply into the body file, the agent noticed, rewrote it from clean text, could
 not confirm the result on read-back, and said so; that is the mock, not the
 skill, but the skill does not warn about `--jq`; the judging was done by the
 assistant that ran them.
+
+### Run 8: Claude Code 2.1.292, 2026-10-11, after #327
+
+Skill selection and answer content for an Azure Boards user, after a "Keeping
+Azure Boards next to GitHub" section was added to `github-for-ado-users` (#327).
+The prompt, with no repository context: "My team is moving our code from Azure
+Repos to GitHub but keeping Azure Boards for planning. How do I link my pull
+requests to the Azure Boards work items? I was going to put Fixes AB#123 in the
+PR title so the work item closes when it merges." Three runs with the changed
+skills (scenario s1 sandbox) and three with the skills from `main`.
+
+- **Selection:** `github-for-ado-users` loaded in 3 of 3 changed runs and in 1
+  of 3 baseline runs. The change also added Azure Boards (`AB#`) to the
+  description, so this run cannot separate the description from the new section.
+- **PR title:** in all three baseline runs the answer said an `AB#` in the title
+  links or "does work" (one hedged: "fairly sure the title works"). In all three
+  changed runs the answer said a title or a comment does not link, and that it
+  works from a commit message, pull request description or issue description.
+- **Connection prerequisite:** all three changed answers said the Azure Boards
+  project must be connected to the repository first; all three baseline answers
+  also described a connection step, from general knowledge.
+- **State word and the closure gate:** all three changed answers said
+  `Fixes AB#123` moves the work item on merge without checking criteria, and
+  recommended the bare `AB#123` until evidence is recorded and closure is
+  approved. One of three baseline answers (the run that loaded the skill) gave
+  the same advice from general knowledge; the other two recommended
+  `Fixes AB#123` without it.
+- **No regression:** the changed answers kept the one-source-of-truth advice and
+  cited the source with its date.
+
+Limits: three runs per side; the prompt names the title mistake, so it tests
+that part of the section more than the rest; the vendor claims in the answers
+were checked against Microsoft Learn when the section was written (2026-10-11)
+and not re-checked here; the judging was done by the assistant that ran them.
 
 ## When a scenario fails
 
