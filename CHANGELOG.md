@@ -4,6 +4,16 @@
 
 ## [Unreleased]
 
+### Added
+
+- `github-for-ado-users` now covers keeping Azure Boards next to GitHub (#327):
+  the `AB#` mention links from a commit message, pull request description or
+  issue description but not from a comment or a pull request title, it needs the
+  Azure Boards project connected to the repository, and a state word such as
+  `Fixes AB#125` moves the work item on merge without checking any criterion, so
+  the bare `AB#125` is used until the closure gate passes. Source: Microsoft
+  Learn, read 2026-10-11. Scenario record: `docs/skill-scenarios.md` (Run 8).
+
 ## [0.5.0] - 2026-10-10
 
 ### Changed

@@ -133,13 +133,16 @@ covers where a thought belongs.
 ## Keeping Azure Boards next to GitHub
 
 If the team keeps Azure Boards for planning, GitHub and Azure Boards link through
-the **`AB#` mention**. Put `AB#125` in a commit message, a pull request
+the **`AB#` mention**. It works only once the Azure Boards project is connected to
+the GitHub repository (the Azure Boards app for GitHub, with Contributor access to
+both), so ask whoever administers Azure DevOps to do that first. Put `AB#125` in a commit message, a pull request
 description or an issue description, and the work item shows the link in its
 Development section. Microsoft's current documentation says a mention in a
 *comment* or in a pull request *title* does **not** create the link, so put it
 in the description. A word such as `fixes` before the mention can move the work
 item to a completed state, but only when the pull request merges into the default
-branch.
+branch. That is the same trap as `Closes #12` on a GitHub issue: it checks no
+acceptance criterion, so write the bare `AB#125` until the evidence is recorded.
 
 The closure rule does not change: this team records evidence for each acceptance
 criterion before an issue closes. See

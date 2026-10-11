@@ -1,6 +1,6 @@
 ---
 name: github-for-ado-users
-description: Use when someone coming from Azure DevOps, TFS, Jira, or another tracker asks how a concept maps to GitHub — "what's the GitHub equivalent of a sprint / epic / work item type / area path / component / fix version / query (WIQL or JQL)", "where do sprints go", why milestones don't behave like iterations, how Jira and GitHub link, where a wiki or test plan should go, or how to set up GitHub tracking the way they had it in ADO or Jira.
+description: Use when someone coming from Azure DevOps, TFS, Jira, or another tracker asks how a concept maps to GitHub — "what's the GitHub equivalent of a sprint / epic / work item type / area path / component / fix version / query (WIQL or JQL)", "where do sprints go", why milestones don't behave like iterations, how Jira or Azure Boards (AB#) and GitHub link, where a wiki or test plan should go, or how to set up GitHub tracking the way they had it in ADO or Jira.
 ---
 
 # GitHub for Azure DevOps migrants
@@ -152,6 +152,46 @@ in-scope criterion is unmet or unevaluated. Scope changes require a recorded
 decision, not a checkbox that falsely implies delivery. The exact merge and
 closure gate lives in `github-hygiene`.
 
+## Keeping Azure Boards next to GitHub
+
+Many teams move the code first and keep Azure Boards for planning. The two link
+through the **`AB#` mention**, which needs the Azure Boards project to be
+connected to the GitHub repository first (the Azure Boards app for GitHub, with
+Contributor access to both). Without the connection a mention links nothing.
+
+- **Where it works:** put `AB#125` in a **commit message, a pull request
+  description or an issue description**, push or save, and the work item shows
+  the link in its Development section.
+- **Where it does not:** Microsoft's documentation says an `AB#` in a
+  **comment** or in a **pull request title** does not create the link. A
+  user who put it in the title and sees nothing has not found a bug.
+- **State words move work items.** A word such as `fix`, `fixes`, `fixed` or
+  a state name before the mention (`Fixes AB#125`, `Closed AB#125`) also
+  transitions the work item, but only when the pull request merges into the
+  default branch. With several mentions, only the first is transitioned unless
+  each one has its own word.
+
+**Do not combine the two closures.** `Fixes AB#125` moves the Azure Boards work
+item on merge in the same way `Closes #N` closes a GitHub issue: neither checks
+the acceptance criteria. Treat it like `Closes`. Use the bare `AB#125` (link
+only) while any criterion lacks evidence, and add a state word only once the
+evidence is recorded and the maintainer has approved the closure. The closure
+gate lives in `github-hygiene`.
+
+Keep one source of truth for each piece of work: planning and status in Azure
+Boards, code and review in GitHub, the `AB#` mention in the description. Copying
+every work item into a GitHub issue gives two records that drift. Connecting
+the same repository to projects in more than one Azure DevOps organization
+can produce unexpected links, so connect it to one. Azure DevOps Server (on
+premises) supports GitHub Enterprise Server only; this section does not cover
+that setup.
+
+Source, read 2026-10-11: Microsoft Learn, [Link GitHub commits, PRs, branches,
+and issues to work
+items](https://learn.microsoft.com/en-us/azure/devops/boards/github/link-to-from-github)
+(page dated 2026-07-16). Re-check it before relying on a claim for a decision
+that is hard to undo.
+
 ## Coming from Jira
 
 Jira is not Azure DevOps, so the table above is the wrong starting point for a
@@ -253,4 +293,6 @@ Rough order, with the skill that covers each:
 | A board as the source of truth | The board mirrors issues; labels and milestones are authoritative |
 | Assuming a merged PR means its issue met acceptance criteria | Review every criterion with evidence; use `Refs #N` until the completion contract passes |
 | Telling a Jira user that GitHub issues and Jira items stay in sync | The connection carries development information into Jira only; keep one source of truth per piece of work |
+| Writing `Fixes AB#125` in a PR description before the evidence is recorded | It moves the work item on merge and checks no criterion; use bare `AB#125` until the closure gate passes |
+| Putting `AB#125` in a PR title or a comment and expecting a link | It links only from a commit message, PR description or issue description, and only once the project is connected to the repository |
 | Using a Jira user's mapping from the Azure DevOps table | Use "Coming from Jira": fix versions are milestones, components are labels, sprints are iterations |

@@ -52,6 +52,10 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- Module 0.9 now says that `AB#` linking needs the Azure Boards project connected
+  to the GitHub repository, and that a state word before the mention is the same
+  trap as `Closes #N` (#327). It now agrees with `github-for-ado-users`.
+
 - The repository no longer ships a ChatGPT route (#144), so the lessons that
   pointed at its install guide were updated: Modules 0.5, 0.6 and 0.8 no longer
   list a ChatGPT install guide, Module 1.6 says ChatGPT has no local skill
