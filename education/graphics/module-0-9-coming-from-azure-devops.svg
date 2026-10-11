@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 524" width="560" height="524"><title>Same ideas, different words</title><desc>Five Azure DevOps terms mapped to GitHub: work item to issue, iteration path to a Projects iteration field and not a milestone, area path to a label, epic and feature and story to an epic issue with sub-issues, and Test Plans, which GitHub has no equivalent for.</desc><style>svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.bg { fill: #f4f6f2; }
+.paper { fill: #ffffff; stroke: #c9d1cc; stroke-width: 2; }
+.tg { fill: #dcf1e7; stroke: #1c8a63; stroke-width: 2; }
+.ta { fill: #fbecc9; stroke: #b87a0d; stroke-width: 2; }
+.tr { fill: #f9dcd6; stroke: #c24a38; stroke-width: 2; }
+.ln { fill: #c9d1cc; }
+.ln-g { fill: #1c8a63; }
+.st { stroke: #56625c; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-g { stroke: #1c8a63; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-r { stroke: #c24a38; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.st-a { stroke: #b87a0d; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dash { stroke-dasharray: 6 6; }
+.arw { stroke: #56625c; stroke-width: 2.5; fill: none; marker-end: url(#ar); }
+.arw-g { stroke: #1c8a63; stroke-width: 3; fill: none; marker-end: url(#arg); }
+.mk { fill: #56625c; } .mkg { fill: #1c8a63; }
+text { fill: #15201c; }
+.lb { font-size: 18px; font-weight: 500; }
+.lbb { font-size: 20px; font-weight: 700; }
+.bn { font-size: 17px; font-weight: 600; }
+.sm { font-size: 15px; fill: #56625c; }
+.mn { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 500; }
+.mns { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; fill: #56625c; }
+.mid { text-anchor: middle; }
+.end { text-anchor: end; }
+.gtxt { fill: #1c8a63; } .atxt { fill: #b87a0d; } .rtxt { fill: #c24a38; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #121816; }
+  .paper { fill: #1b2321; stroke: #3a4741; }
+  .tg { fill: #173a2d; stroke: #4cc79b; }
+  .ta { fill: #3d2f11; stroke: #e5a53b; }
+  .tr { fill: #402019; stroke: #ef7d6b; }
+  .ln { fill: #3a4741; }
+  .ln-g { fill: #4cc79b; }
+  .st { stroke: #a2aea8; }
+  .st-g { stroke: #4cc79b; }
+  .st-r { stroke: #ef7d6b; }
+  .st-a { stroke: #e5a53b; }
+  .arw { stroke: #a2aea8; }
+  .arw-g { stroke: #4cc79b; }
+  .mk { fill: #a2aea8; } .mkg { fill: #4cc79b; }
+  text { fill: #f1f5f2; }
+  .sm, .mns { fill: #a2aea8; }
+  .gtxt { fill: #4cc79b; } .atxt { fill: #e5a53b; } .rtxt { fill: #ef7d6b; }
+}</style><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10z"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkg" d="M0,0 L10,5 L0,10z"/></marker></defs><rect class="bg" x="0" y="0" width="560" height="524" rx="16"/><text class="mns mid" x="122" y="38" style="font-size:14px">Azure DevOps</text><text class="mns mid" x="419" y="38" style="font-size:14px">GitHub</text><rect class="paper" x="12" y="50" width="220" height="50" rx="12"/><text class="mn" x="26" y="81" style="font-size:14px">Work item</text><path class="arw" d="M240,75 L282,75"/><rect class="tg" x="290" y="50" width="258" height="50" rx="12"/><text class="lb" x="304" y="81" style="font-size:16px">Issue</text><rect class="paper" x="12" y="128" width="220" height="50" rx="12"/><text class="mn" x="26" y="159" style="font-size:14px">Iteration path (sprint)</text><path class="arw" d="M240,153 L282,153"/><rect class="ta" x="290" y="128" width="258" height="50" rx="12"/><text class="lb" x="304" y="159" style="font-size:16px">Projects iteration field</text><text class="sm atxt" x="304" y="196" style="font-size:13px">not a milestone</text><rect class="paper" x="12" y="206" width="220" height="50" rx="12"/><text class="mn" x="26" y="237" style="font-size:14px">Area path</text><path class="arw" d="M240,231 L282,231"/><rect class="ta" x="290" y="206" width="258" height="50" rx="12"/><text class="lb" x="304" y="237" style="font-size:16px">Label</text><text class="sm atxt" x="304" y="274" style="font-size:13px">flat, not a tree</text><rect class="paper" x="12" y="284" width="220" height="50" rx="12"/><text class="mn" x="26" y="315" style="font-size:14px">Epic / Feature / Story</text><path class="arw" d="M240,309 L282,309"/><rect class="ta" x="290" y="284" width="258" height="50" rx="12"/><text class="lb" x="304" y="315" style="font-size:16px">Epic issue + sub-issues</text><text class="sm atxt" x="304" y="352" style="font-size:13px">fewer levels</text><rect class="paper" x="12" y="362" width="220" height="50" rx="12"/><text class="mn" x="26" y="393" style="font-size:14px">Test Plans</text><path class="arw" d="M240,387 L282,387"/><rect class="tr" x="290" y="362" width="258" height="50" rx="12"/><text class="lb" x="304" y="393" style="font-size:16px">No equivalent</text><text class="sm rtxt" x="304" y="430" style="font-size:13px">decide where tests live</text><rect class="tg" x="14" y="444" width="532" height="66" rx="12"/><text class="bn mid" x="280.0" y="472">Same Git. Sprints are not milestones,</text><text class="bn mid" x="280.0" y="494">and Test Plans has no twin.</text></svg>

@@ -84,6 +84,22 @@ Read the module: [Module 0.7: Set up VS Code](0_prerequisites/module-0-7-set-up-
 
 Read the module: [Module 0.8: Connect VS Code to Git, GitHub and an AI assistant](0_prerequisites/module-0-8-connect-vs-code-to-git-github-and-an-llm.md)
 
+### Module 0.9: Same ideas, different words
+
+![Five Azure DevOps terms mapped to GitHub: work item to issue, iteration path to a Projects iteration field and not a milestone, area path to a label, epic and feature and story to an epic issue with sub-issues, and Test Plans, which GitHub has no equivalent for.](graphics/module-0-9-coming-from-azure-devops.svg)
+
+**In one sentence:** Same Git. Sprints are not milestones, and Test Plans has no twin.
+
+Read the module: [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md)
+
+### Module 0.10: Mind the sync
+
+![Five Jira terms mapped to GitHub: issue to issue, sprint to a Projects iteration field and not a milestone, fix version to milestone, component to a label, and a sync between GitHub and Jira, which does not exist because development information only flows into Jira.](graphics/module-0-10-coming-from-jira.svg)
+
+**In one sentence:** Same Git. A fix version is a milestone, a sprint is not, and nothing syncs.
+
+Read the module: [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md)
+
 ## Beginners
 
 ### Module 1.1: Edit a photocopy, merge after review
