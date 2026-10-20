@@ -31,7 +31,7 @@ These are the acceptance criteria of #232, so each result you record maps to one
   stop at any time, and you will not help except as set out under "Unaided".
 - **Sandbox ready.** Follow the [facilitator guide](facilitator-guide.md): a
   private shared practice repository with `CONTRIBUTORS.md`, and for the
-  migrant route the labels and milestone that Module 2.1 needs. Check each
+  Module 2.1 (both routes) the labels and milestone it needs. Check each
   learner can reach it before the clock starts.
 - **Accounts and installs.** A GitHub account for each learner. Whether they
   already have Git and VS Code decides if Modules 0.7 and 0.8 belong on their
@@ -57,9 +57,12 @@ the route.
 | 5 | 0.6 What Is an LLM Assistant? | 25 min |
 | 6 | 1.1 Getting Started | 60 min |
 
-Optional, only if the learner wants the command line: Modules 0.7 and 0.8 (15
-and 25 min) when Git or VS Code is missing, then Module 1.2 (45 min). Time them
-the same way and mark them "optional" on the sheet.
+To finish Route A end to end, add Module 1.2 (45 min) and then Module 2.1 (50
+min), in that order: the README wants Module 1.2 done before Module 2.1 for
+anyone who works from the command line. Add Modules 0.7 and 0.8 (15 and 25 min)
+before 1.2 only if Git or VS Code is missing. Whether the learner does these is
+the observer's call on the day; record "not done" and why if they skip them.
+Time them the same way and mark 0.7 and 0.8 "optional" on the sheet.
 
 ### Route B: experienced migrant
 
@@ -75,11 +78,13 @@ start?" order.
 | 4 | 0.5 What kinds of tools are these? | 8 min |
 | 5 | 0.6 What Is an LLM Assistant? | 25 min |
 | 6 | 1.1 Getting Started | 60 min |
+| 7 | 2.1 Issue-first and the closure gate | 50 min |
 
-**Where the route stops:** the README does not say. The kit stops after Module
-1.1, the point where the flow chart sends every route. Module 2.1 (50 min) is
-optional for a learner who still has energy; mark it "optional" on the sheet.
-Jira has no mapping skill, so a Jira learner skips step 3 and you note that.
+**Where the route stops:** the README does not say. The kit ends Route B at
+Module 2.1, the README's entry for "some git knowledge, new to this team's
+process", so the migrant meets the issue-first and closure-gate habits. Module
+1.1 is where the flow chart sends every route; if time runs out, record where
+the learner stopped and whether 1.1 and 2.1 were reached. Jira has no mapping skill, so a Jira learner skips step 3 and you note that.
 
 ## Unaided
 
@@ -123,8 +128,8 @@ correction (see "After the pilot").
 | 0.7 (optional) | 15 | 11.25 and 18.75 | | | | | | |
 | 0.8 (optional) | 25 | 18.75 and 31.25 | | | | | | |
 | 1.1 | 60 | 45 and 75 | | | | | | |
-| 1.2 (optional) | 45 | 33.75 and 56.25 | | | | | | |
-| 2.1 (optional) | 50 | 37.5 and 62.5 | | | | | | |
+| 1.2 | 45 | 33.75 and 56.25 | | | | | | |
+| 2.1 | 50 | 37.5 and 62.5 | | | | | | |
 | Mapping skill | none | none | | | | | | |
 
 Delete the rows that are not on that learner's route. Write the real time in
