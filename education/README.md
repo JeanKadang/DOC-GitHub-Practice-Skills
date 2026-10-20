@@ -21,8 +21,8 @@ assistants — most colleagues use an AI coding assistant, so that page is no
 longer optional) plus six conditional pages (Module 0.4 for teams moving from
 GitLab, Module 0.9 for Azure DevOps, Module 0.10 for Jira, Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
 assistant, and Module 0.11 for the same in IntelliJ IDEA, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
-Module 3.6, and the modules built from it so far, Modules 4.1, 4.9, 4.10, 4.12 and 4.13. `examples/`
-and `facilitator-guide.md` sit outside the numbered sequence — lookup
+Module 3.6, and the modules built from it so far, Modules 4.1, 4.9, 4.10, 4.12 and 4.13. `examples/`,
+`facilitator-guide.md` and `pilot-kit.md` sit outside the numbered sequence — lookup
 references, not steps to work through in order.
 
 **Tools:** for now, all Git activity in this program is done in **VS Code or on
