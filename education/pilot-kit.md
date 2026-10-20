@@ -30,8 +30,8 @@ These are the acceptance criteria of #232, so each result you record maps to one
 - **Tell them what this is.** You are testing the material, not them. They may
   stop at any time, and you will not help except as set out under "Unaided".
 - **Sandbox ready.** Follow the [facilitator guide](facilitator-guide.md): a
-  private shared practice repository with `CONTRIBUTORS.md`, and for the
-  Module 2.1 (both routes) the labels and milestone it needs. Check each
+  private shared practice repository with `CONTRIBUTORS.md`, plus the
+  labels and milestone that Module 2.1 needs (it is on both routes). Check each
   learner can reach it before the clock starts.
 - **Accounts and installs.** A GitHub account for each learner. Whether they
   already have Git and VS Code decides if Modules 0.7 and 0.8 belong on their
