@@ -115,6 +115,8 @@ detection; this is the response):
 - **Pin third-party actions to a commit SHA**, not a mutable tag.
 - **Secrets never interpolated into `run:` strings** where they land in logs.
 - **Branch protection on the default branch** with required checks and review.
+  For a floor across many repositories (push protection, CodeQL, exceptions with
+  an expiry), see the baseline in `github-repo-configure`.
 - **Self-hosted runners on a public repo** let any fork PR run code on your
   machine — a finding in its own right.
 
