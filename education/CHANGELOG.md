@@ -13,6 +13,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `pilot-kit.md` (#333), a page for whoever runs the learner pilot (#232): two
+  routes with explicit module lists and stated times (new to version control, and
+  experienced migrant, ending at Module 2.1; Route A can extend through 1.2 and 2.1), a definition of "unaided", an
+  observation sheet with the plus or minus 25 percent bounds filled in, a results
+  template recorded by role, and the rule that each problem becomes its own issue
+  and no module is edited before the pilot has data. The facilitator guide and the
+  README point to it. No module or timing is changed.
 - Module 1.7, "Working with an AI assistant day to day" (#282): a beginner
   module after Module 1.6 that teaches the daily loop, not one product. Scope one
   small task, read each approval prompt and allow once, read `git status` and
