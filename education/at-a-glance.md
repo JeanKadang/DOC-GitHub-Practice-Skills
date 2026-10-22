@@ -108,6 +108,30 @@ Read the module: [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-com
 
 Read the module: [Module 0.11: Use IntelliJ IDEA with Git, GitHub and an AI assistant](0_prerequisites/module-0-11-use-intellij-idea-with-git-github-and-an-llm.md)
 
+### Module 0.12: Rules move to rulesets
+
+![Five Bitbucket things mapped to GitHub: a project becomes an organization with teams, branch permissions become rulesets, merge checks become required reviews and status checks, default reviewers become code owners or required reviewers, and a delta migration does not exist so changes made during a migration are lost.](graphics/module-0-12-coming-from-bitbucket.svg)
+
+**In one sentence:** Same ideas, new names. Freeze before you migrate.
+
+Read the module: [Module 0.12: Coming from Bitbucket](0_prerequisites/module-0-12-coming-from-bitbucket.md)
+
+### Module 0.13: A converter is a start
+
+![Five Jenkins things mapped to GitHub Actions: a Jenkinsfile becomes a workflow file, an agent becomes a runner, stages become jobs, post has no direct keyword, and a conversion tool cannot finish the job because most pipelines convert only partly and secrets, scripted pipelines and self-hosted runners are moved by hand.](graphics/module-0-13-coming-from-jenkins.svg)
+
+**In one sentence:** Rewrite the pipeline, do not port it line by line.
+
+Read the module: [Module 0.13: Coming from Jenkins](0_prerequisites/module-0-13-coming-from-jenkins.md)
+
+### Module 0.14: Your account lives inside the company
+
+![Five things that differ with a managed account: the account is provisioned through the company login so name and email are not editable on GitHub, public repositories and gists are not available so use internal repositories, the account cannot collaborate outside the enterprise so use a personal account if policy allows, addresses move to your enterprise subdomain so hard-coded github.com links need updating, and Marketplace actions may not work so check each one.](graphics/module-0-14-using-github-with-a-managed-account.svg)
+
+**In one sentence:** Check the account and address, then push.
+
+Read the module: [Module 0.14: Using GitHub with a managed account (EMU and GHE.com)](0_prerequisites/module-0-14-using-github-with-a-managed-account.md)
+
 ## Beginners
 
 ### Module 1.1: Edit a photocopy, merge after review
@@ -281,6 +305,14 @@ Read the module: [Module 2.9: Safety with skills and MCP servers](2_intermediate
 **In one sentence:** If you cannot list what it reaches, do not add it.
 
 Read the module: [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md)
+
+### Module 2.10: Fix the cause, not the message
+
+![A blocked push has four common causes: a secret detected by push protection, a ruleset that requires a pull request, a file over the size limit, and a rule set above the repository. For each, find which rule said no and who owns it, fix the cause rather than the message, and never bypass without approval.](graphics/module-2-10-when-a-push-is-blocked.svg)
+
+**In one sentence:** Find which rule said no. Fix the cause, never the message.
+
+Read the module: [Module 2.10: When a push is blocked](2_intermediate/module-2-10-when-a-push-is-blocked.md)
 
 ## Advanced
 

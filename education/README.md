@@ -18,8 +18,8 @@ commit, and file hashes (ADR 0013).
 `0_prerequisites/` holds required reading (Modules 0.1 to 0.3 on version
 control, Git and GitHub, Module 0.5 on the kinds of tools, and Module 0.6 on LLM
 assistants — most colleagues use an AI coding assistant, so that page is no
-longer optional) plus six conditional pages (Module 0.4 for teams moving from
-GitLab, Module 0.9 for Azure DevOps, Module 0.10 for Jira, Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
+longer optional) plus nine conditional pages (Module 0.4 for teams moving from
+GitLab, Module 0.9 for Azure DevOps, Module 0.10 for Jira, Module 0.12 for Bitbucket, Module 0.13 for Jenkins, Module 0.14 for managed accounts and GHE.com, Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
 assistant, and Module 0.11 for the same in IntelliJ IDEA, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
 Module 3.6, and the modules built from it so far, Modules 4.1, 4.9, 4.10, 4.12 and 4.13. `examples/`,
 `facilitator-guide.md` and `pilot-kit.md` sit outside the numbered sequence — lookup
@@ -45,9 +45,9 @@ flowchart TD
     Q1 -- Yes --> S0[Module 0.1: What Is Version Control?]
     S0 --> S0b[Module 0.2: What Is Git?]
     S0b --> S0c[Module 0.3: What Is GitHub?]
-    Q1 -- No --> Q2{Coming from GitLab, Azure DevOps or Jira, not GitHub?}
+    Q1 -- No --> Q2{Coming from GitLab, Azure DevOps, Bitbucket, Jenkins or Jira, not GitHub?}
     Q2 -- Yes --> GL3[Module 0.3: What Is GitHub?]
-    GL3 --> GL4[Module 0.4: Coming from GitLab,<br/>Module 0.9: Azure DevOps, or<br/>Module 0.10: Jira<br/>then the mapping skill:<br/>github-for-gitlab-users or<br/>github-for-ado-users]
+    GL3 --> GL4[Module 0.4: Coming from GitLab,<br/>Module 0.9: Azure DevOps,<br/>Module 0.10: Jira,<br/>Module 0.12: Bitbucket, or<br/>Module 0.13: Jenkins<br/>then the mapping skill:<br/>github-for-gitlab-users or<br/>github-for-ado-users]
     Q2 -- No --> T5[Module 0.5: What kinds of tools are these?]
     GL4 --> T5
     S0c --> T5
@@ -73,7 +73,8 @@ flowchart TD
     M2f --> M2g[Module 2.7: Contributing to someone else's repository]
     M2g --> M2h[Module 2.8: Why the rules exist]
     M2h --> M2i[Module 2.9: Safety with skills and MCP servers]
-    M2i --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
+    M2i --> M2j[Module 2.10: When a push is blocked]
+    M2j --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
 ```
 
 | Background | Start here |
@@ -94,11 +95,14 @@ flowchart TD
 | You want the reasons behind this team's rules, to follow them with judgment | [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md) |
 | You use an AI assistant and want to know about skills, instruction files, and MCP servers | [Module 1.6: Skills, instruction files, and MCP servers](1_beginners/module-1-6-skills-instructions-and-mcp.md) (after the LLM prerequisite) |
 | You use an AI assistant in your editor every day and want a safe routine for it | [Module 1.7: Working with an AI assistant day to day](1_beginners/module-1-7-working-with-an-assistant-day-to-day.md) (after Module 1.6) |
+| Your push or merge was refused by a secret check, a ruleset, a file-size limit or a rule you cannot see | [Module 2.10: When a push is blocked](2_intermediate/module-2-10-when-a-push-is-blocked.md) (after Module 1.5 and Module 2.2) |
 | You are about to add a skill or an MCP server you did not write | [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) (after Module 1.6) |
 | You want an assistant to follow this repository's conventions (test command, commit format, off-limits files) | [Module 4.13: Writing an instruction file for your repository](4_next-step/module-4-13-writing-an-instruction-file-for-your-repository.md) (after Module 1.6 and Module 2.9) |
 | You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
 | Your team's CI is a `.gitlab-ci.yml` and you must move it to GitHub Actions | [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md) (after Module 0.4, Module 1.1, and Module 3.5) |
 | Already know GitLab, Azure DevOps or Jira, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) (including account protection), then [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md) or [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md), then `skills/github-for-gitlab-users/SKILL.md` (GitLab) or `skills/github-for-ado-users/SKILL.md` (Azure DevOps) for the full mapping |
+| Already know Bitbucket or Jenkins, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md), then [Module 0.12: Coming from Bitbucket](0_prerequisites/module-0-12-coming-from-bitbucket.md) or [Module 0.13: Coming from Jenkins](0_prerequisites/module-0-13-coming-from-jenkins.md), then `skills/github-for-ado-users/SKILL.md` ("Planning a migration to GitHub") |
+| Your company creates your GitHub account for you through the company login (a managed account), or uses GHE.com | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md), then [Module 0.14: Using GitHub with a managed account](0_prerequisites/module-0-14-using-github-with-a-managed-account.md) |
 
 **Whatever your background: read [Module 0.5: What kinds of tools are these?](0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md)
 and [Module 0.6: What Is an LLM Assistant?](0_prerequisites/module-0-6-what-is-an-llm-assistant.md)
@@ -111,7 +115,7 @@ Basics](1_beginners/module-1-2-local-git-basics.md) before Module 2.1 — it
 covers staging, conflicts, and undoing a mistake, none of which the web-UI
 path in Module 1.1 touches.
 
-Modules 2.1 and 2.2 build on each other — do 2.1 first. Modules 2.3 to 2.9 build on
+Modules 2.1 and 2.2 build on each other — do 2.1 first. Modules 2.3 to 2.10 build on
 2.1 and are best read after 2.2. Modules 3.1-3.6 are
 each independent and optional; read any subset, in any order, based on
 what's relevant to you. Each module is sized to fit a single sitting
@@ -174,6 +178,15 @@ mindmap
         Nothing syncs
       Module 0.11: IntelliJ IDEA setup - conditional
         Same steps, different menus
+      Module 0.12: Coming from Bitbucket - conditional
+        Branch permissions become rulesets
+        Freeze before you migrate
+      Module 0.13: Coming from Jenkins - conditional
+        A converter is a start
+        Rewrite, do not port
+      Module 0.14: Managed accounts and GHE.com - conditional
+        The account lives inside the company
+        Check the account and address
         Junie Ask and Code modes
     1: Beginners
       Module 1.1: Getting Started
@@ -244,6 +257,9 @@ mindmap
         Prompt injection
         The checklist before you add one
         Least privilege
+      Module 2.10: When a push is blocked
+        Which rule said no
+        Never bypass without approval
     3: Advanced
       Module 3.1: Branch protection and rulesets
       Module 3.2: Projects boards
@@ -275,6 +291,9 @@ mindmap
 - [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md) — ~12 min, reading only, conditional: for teams moving from Azure DevOps to GitHub.
 - [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md) — ~12 min, reading only, conditional: for teams moving from Jira to GitHub, or keeping Jira next to GitHub.
 - [Module 0.11: Use IntelliJ IDEA with Git, GitHub and an AI assistant](0_prerequisites/module-0-11-use-intellij-idea-with-git-github-and-an-llm.md) — ~20 min, mostly install time, conditional: for teams that work in IntelliJ IDEA instead of VS Code. Signing in to GitHub, cloning, and adding the GitHub Copilot plugin, JetBrains AI Assistant or Junie.
+- [Module 0.12: Coming from Bitbucket](0_prerequisites/module-0-12-coming-from-bitbucket.md) — ~12 min, reading only, conditional: for teams moving from Bitbucket to GitHub. Projects, branch permissions, merge checks and default reviewers, and why a migration is a snapshot (Bitbucket and GitHub claims dated 2026-10-22).
+- [Module 0.13: Coming from Jenkins](0_prerequisites/module-0-13-coming-from-jenkins.md) — ~12 min, reading only, conditional: for teams moving from Jenkins to GitHub Actions. Where each Jenkins concept lands, and what a conversion tool leaves for you to do by hand (GitHub claims dated 2026-10-22).
+- [Module 0.14: Using GitHub with a managed account](0_prerequisites/module-0-14-using-github-with-a-managed-account.md) — ~10 min, reading only, conditional: for people whose company creates their GitHub account (Enterprise Managed Users) or uses GHE.com. What the account cannot do, why addresses change, and why to check which account you are signed in to (GitHub claims dated 2026-10-22).
 - [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) — ~60 min, hands-on, no prior experience needed.
 - [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) — ~45 min, hands-on command-line git — staging, conflicts, and undoing a mistake.
 - [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) — ~20 min, hands-on, web UI only. Headings, task lists, code fences, links, and previewing.
@@ -291,6 +310,7 @@ mindmap
 - [Module 2.7: Contributing to someone else's repository](2_intermediate/module-2-7-contributing-to-someone-elses-repo.md) — ~30 min, hands-on, the reasons behind `github-contributing`.
 - [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md) — ~35 min, reading and a short writing exercise, the failure behind each of six rules.
 - [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) — ~25 min, reading and a short review exercise, what to check before adding a skill or MCP server.
+- [Module 2.10: When a push is blocked](2_intermediate/module-2-10-when-a-push-is-blocked.md) — ~25 min, a paper exercise, no sandbox. The four common reasons a push or merge is refused, what a push-protection bypass records, and who to ask (GitHub claims dated 2026-10-22).
 - [Module 3.1: Branch protection and rulesets](3_advanced/module-3-1-branch-protection-and-rulesets.md) — ~25 min, optional.
 - [Module 3.2: Projects boards](3_advanced/module-3-2-projects-boards.md) — ~35 min, optional. What a board mirrors, showing and filtering by milestone, which board and view to use when.
 - [Module 3.3: Releases](3_advanced/module-3-3-releases.md) — ~25 min, optional.
@@ -333,6 +353,9 @@ graphic and that each file has a title and description and no script.
 - [Same ideas, different words](graphics/module-0-9-coming-from-azure-devops.svg) — Module 0.9.
 - [Mind the sync](graphics/module-0-10-coming-from-jira.svg) — Module 0.10.
 - [Same steps, different menus](graphics/module-0-11-use-intellij-idea-with-git-github-and-an-llm.svg) — Module 0.11.
+- [Rules move to rulesets](graphics/module-0-12-coming-from-bitbucket.svg) — Module 0.12.
+- [A converter is a start](graphics/module-0-13-coming-from-jenkins.svg) — Module 0.13.
+- [Your account lives inside the company](graphics/module-0-14-using-github-with-a-managed-account.svg) — Module 0.14.
 - [Edit a photocopy, merge after review](graphics/module-1-1-getting-started.svg) — Module 1.1.
 - [Three undos, three different jobs](graphics/module-1-2-local-git-basics-undo.svg) — Module 1.2 (undo).
 - [Add packs the box. Commit seals it.](graphics/module-1-2-local-git-basics.svg) — Module 1.2.
@@ -353,6 +376,7 @@ graphic and that each file has a title and description and no script.
 - [Each rule exists to stop one mistake](graphics/module-2-8-why-the-rules-exist.svg) — Module 2.8.
 - [A note under the door can steer your assistant](graphics/module-2-9-safety-with-skills-and-mcp-servers.svg) — Module 2.9.
 - [Seven questions before you add one](graphics/module-2-9-safety-with-skills-and-mcp-servers-checklist.svg) — Module 2.9.
+- [Fix the cause, not the message](graphics/module-2-10-when-a-push-is-blocked.svg) — Module 2.10.
 - [A gate that exists only on some plans](graphics/module-3-1-branch-protection-and-rulesets.svg) — Module 3.1.
 - [The board is a window onto issues](graphics/module-3-2-projects-boards.svg) — Module 3.2.
 - [A release is a checklist, not a choice](graphics/module-3-3-releases.svg) — Module 3.3.

@@ -13,6 +13,31 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 2.10, "When a push is blocked" (#339): an intermediate module, ~25 min, with
+  a paper exercise of four invented refusal messages (a detected secret, a required
+  pull request, a file over the size limit, and a check set above the repository),
+  a Mermaid decision diagram, an explainer graphic and a model answer. It says what
+  a push-protection bypass records, when to ask a rule owner for a dated exception,
+  and never to bypass without approval. GitHub claims are dated 2026-10-22. The
+  facilitator guide gains a migration-wave checklist and the Module 2.10 setup note.
+- Module 0.14, "Using GitHub with a managed account (EMU and GHE.com)" (#339): a
+  reading-only conditional page, ~10 min, with an explainer graphic and a Mermaid
+  diagram. It separates EMU (the account model) from GHE.com (where GitHub runs),
+  lists what a managed account cannot do (public repositories, gists, outside
+  collaboration), why addresses move to an enterprise subdomain, and three traps
+  (two accounts in one editor, not assuming you may contribute outside, rules that
+  sit above you). GitHub claims are dated 2026-10-22. Not checked: Copilot plans
+  on managed accounts.
+- Modules 0.12, "Coming from Bitbucket", and 0.13, "Coming from Jenkins" (#339):
+  reading-only conditional pages parallel to Modules 0.4, 0.9 and 0.10, each with
+  an explainer graphic and a Mermaid diagram. Bitbucket maps projects, branch
+  permissions, merge checks and default reviewers to organizations and teams,
+  rulesets, required reviews and status checks, and code owners, and warns that a
+  migration has no delta. Jenkins maps the Jenkinsfile, agent, stages and `post`
+  to workflows, runners and jobs, and lists what the importer leaves by hand.
+  Claims are checked against Atlassian and GitHub documentation on 2026-10-22 and
+  dated on the pages. The README route table, flow, mindmap, Materials and
+  graphics lists point to them.
 - `pilot-kit.md` (#333), a page for whoever runs the learner pilot (#232): two
   routes with explicit module lists and stated times (new to version control, and
   experienced migrant, ending at Module 2.1; Route A can extend through 1.2 and 2.1), a definition of "unaided", an
