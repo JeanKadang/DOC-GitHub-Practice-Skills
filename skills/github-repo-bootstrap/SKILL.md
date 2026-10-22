@@ -118,7 +118,9 @@ Enable private vulnerability reporting, secret scanning, push protection,
 Dependabot, and other security controls when GitHub makes them available and the
 approved design requires them. Verify each endpoint's actual result; record an
 unavailable control rather than claiming it is enabled. Route security reports
-through SECURITY.md, never an ordinary public issue form.
+through SECURITY.md, never an ordinary public issue form. When the organization
+holds every repository to one floor (ownership, push protection, CodeQL,
+exceptions with an expiry), use the baseline in `github-repo-configure`.
 
 Read what the API reports before enabling anything. A 403 or 404 is a result to
 record: some controls need admin access or a plan that includes them.
