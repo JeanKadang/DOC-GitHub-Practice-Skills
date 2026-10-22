@@ -167,9 +167,10 @@ before it counts as done.
 **Sources and dates.** Checked on 2026-10-22 against docs.github.com: about
 rulesets, push protection, OpenID Connect in Actions, deployment environments,
 restricting repository creation, streaming the audit log, dependency review, and
-large files. Not checked: the exact rule list for rulesets, how required
-workflows and code-scanning rules vary by plan, plan prices, and how managed
-users change repository creation. The pages are undated, so recheck before you
+large files, and the list of available ruleset rules (require a pull request,
+require status checks, block force pushes, restrict deletions, require code
+scanning results, among others). Not checked: how required workflows vary by
+plan, plan prices, and how managed users change repository creation. The pages are undated, so recheck before you
 rely on a limit or a plan requirement.
 
 ## Common mistakes
