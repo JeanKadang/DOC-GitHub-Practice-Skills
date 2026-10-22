@@ -251,6 +251,13 @@
     "alt": "A checklist of seven questions to answer before adding a skill or an MCP server: who publishes it, what it runs, what it can reach, what it needs to know, what it may do without asking, who else gets it, and whether there is a policy."
   },
   {
+    "file": "module-2-10-when-a-push-is-blocked.svg",
+    "page": "2_intermediate/module-2-10-when-a-push-is-blocked.md",
+    "title": "Fix the cause, not the message",
+    "takeaway": "Find which rule said no. Fix the cause, never the message.",
+    "alt": "A blocked push has four common causes: a secret detected by push protection, a ruleset that requires a pull request, a file over the size limit, and a rule set above the repository. For each, find which rule said no and who owns it, fix the cause rather than the message, and never bypass without approval."
+  },
+  {
     "file": "module-3-1-branch-protection-and-rulesets.svg",
     "page": "3_advanced/module-3-1-branch-protection-and-rulesets.md",
     "title": "A gate that exists only on some plans",

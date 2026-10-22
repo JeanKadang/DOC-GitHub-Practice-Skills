@@ -73,7 +73,8 @@ flowchart TD
     M2f --> M2g[Module 2.7: Contributing to someone else's repository]
     M2g --> M2h[Module 2.8: Why the rules exist]
     M2h --> M2i[Module 2.9: Safety with skills and MCP servers]
-    M2i --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
+    M2i --> M2j[Module 2.10: When a push is blocked]
+    M2j --> M3[Modules 3.1-3.6: pick any, in any order - all optional]
 ```
 
 | Background | Start here |
@@ -94,6 +95,7 @@ flowchart TD
 | You want the reasons behind this team's rules, to follow them with judgment | [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md) |
 | You use an AI assistant and want to know about skills, instruction files, and MCP servers | [Module 1.6: Skills, instruction files, and MCP servers](1_beginners/module-1-6-skills-instructions-and-mcp.md) (after the LLM prerequisite) |
 | You use an AI assistant in your editor every day and want a safe routine for it | [Module 1.7: Working with an AI assistant day to day](1_beginners/module-1-7-working-with-an-assistant-day-to-day.md) (after Module 1.6) |
+| Your push or merge was refused by a secret check, a ruleset, a file-size limit or a rule you cannot see | [Module 2.10: When a push is blocked](2_intermediate/module-2-10-when-a-push-is-blocked.md) (after Module 1.5 and Module 2.2) |
 | You are about to add a skill or an MCP server you did not write | [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) (after Module 1.6) |
 | You want an assistant to follow this repository's conventions (test command, commit format, off-limits files) | [Module 4.13: Writing an instruction file for your repository](4_next-step/module-4-13-writing-an-instruction-file-for-your-repository.md) (after Module 1.6 and Module 2.9) |
 | You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
@@ -113,7 +115,7 @@ Basics](1_beginners/module-1-2-local-git-basics.md) before Module 2.1 — it
 covers staging, conflicts, and undoing a mistake, none of which the web-UI
 path in Module 1.1 touches.
 
-Modules 2.1 and 2.2 build on each other — do 2.1 first. Modules 2.3 to 2.9 build on
+Modules 2.1 and 2.2 build on each other — do 2.1 first. Modules 2.3 to 2.10 build on
 2.1 and are best read after 2.2. Modules 3.1-3.6 are
 each independent and optional; read any subset, in any order, based on
 what's relevant to you. Each module is sized to fit a single sitting
@@ -255,6 +257,9 @@ mindmap
         Prompt injection
         The checklist before you add one
         Least privilege
+      Module 2.10: When a push is blocked
+        Which rule said no
+        Never bypass without approval
     3: Advanced
       Module 3.1: Branch protection and rulesets
       Module 3.2: Projects boards
@@ -305,6 +310,7 @@ mindmap
 - [Module 2.7: Contributing to someone else's repository](2_intermediate/module-2-7-contributing-to-someone-elses-repo.md) — ~30 min, hands-on, the reasons behind `github-contributing`.
 - [Module 2.8: Why the rules exist](2_intermediate/module-2-8-why-the-rules-exist.md) — ~35 min, reading and a short writing exercise, the failure behind each of six rules.
 - [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md) — ~25 min, reading and a short review exercise, what to check before adding a skill or MCP server.
+- [Module 2.10: When a push is blocked](2_intermediate/module-2-10-when-a-push-is-blocked.md) — ~25 min, a paper exercise, no sandbox. The four common reasons a push or merge is refused, what a push-protection bypass records, and who to ask (GitHub claims dated 2026-10-22).
 - [Module 3.1: Branch protection and rulesets](3_advanced/module-3-1-branch-protection-and-rulesets.md) — ~25 min, optional.
 - [Module 3.2: Projects boards](3_advanced/module-3-2-projects-boards.md) — ~35 min, optional. What a board mirrors, showing and filtering by milestone, which board and view to use when.
 - [Module 3.3: Releases](3_advanced/module-3-3-releases.md) — ~25 min, optional.
@@ -370,6 +376,7 @@ graphic and that each file has a title and description and no script.
 - [Each rule exists to stop one mistake](graphics/module-2-8-why-the-rules-exist.svg) — Module 2.8.
 - [A note under the door can steer your assistant](graphics/module-2-9-safety-with-skills-and-mcp-servers.svg) — Module 2.9.
 - [Seven questions before you add one](graphics/module-2-9-safety-with-skills-and-mcp-servers-checklist.svg) — Module 2.9.
+- [Fix the cause, not the message](graphics/module-2-10-when-a-push-is-blocked.svg) — Module 2.10.
 - [A gate that exists only on some plans](graphics/module-3-1-branch-protection-and-rulesets.svg) — Module 3.1.
 - [The board is a window onto issues](graphics/module-3-2-projects-boards.svg) — Module 3.2.
 - [A release is a checklist, not a choice](graphics/module-3-3-releases.svg) — Module 3.3.

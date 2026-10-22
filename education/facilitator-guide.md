@@ -82,7 +82,8 @@ project. Requirements:
   a local clone (Module 1.2), VS Code, and GitHub Copilot Chat available to them,
   and nothing is committed. If Copilot isn't licensed for someone, they can use
   the instruction-file location for the tool they do have (the module's first
-  table). **For Module 2.9:** nothing; it is a reading and review exercise with
+  table). **For Module 2.10:** nothing; it is a paper exercise on four invented refusal
+  messages, so no sandbox, repository or account is needed. **For Module 2.9:** nothing; it is a reading and review exercise with
   made-up values, and nothing is installed.
 - **For Module 2.8's exercise:** nothing. It is a reading and writing exercise
   with no sandbox use.
@@ -170,10 +171,36 @@ repo doesn't need to be freshly reset for a solo run if `CONTRIBUTORS.md`
 already has other names in it from prior cohorts; that's expected and
 harmless, since each attendee adds their own line.
 
+## Migration-wave checklist
+
+Use this when a team is moving to GitHub from another platform and you are
+supporting the people, not the tooling. It is generic: the platform team owns the
+settings, and the planning guidance is in `skills/github-for-ado-users/SKILL.md`
+("Planning a migration to GitHub").
+
+- [ ] The platform's identity, repository-creation rules and security baseline
+      exist before the first wave. If they do not, say so and do not run the
+      wave.
+- [ ] Each repository in the wave has a named owner, and has been classified as
+      easy, needs some work, or not migratable now. Dormant and empty repositories
+      have an archive or keep decision.
+- [ ] A freeze window is agreed for each repository (a migration is a snapshot:
+      changes made during it are not carried over), and people know when it is.
+- [ ] Anyone who will use the new platform has done the modules that fit their
+      background: Module 0.3, then 0.4, 0.9, 0.10, 0.12 or 0.13, and Module 0.14
+      if they will have a managed account. Everyone does Module 2.10 before their
+      first push to a protected repository.
+- [ ] A support channel or office hour is named, and attendees know which rules
+      they cannot change themselves and who owns them.
+- [ ] Exceptions are recorded with an approver, a reason, a compensating control
+      and an expiry date; none is open-ended.
+- [ ] After the wave, check what blocked people (record by role, not by name) and
+      file each problem as its own issue.
+
 ## Tracking completion
 
 No separate tracking system — add a checkbox for "GitHub training
-(Beginner modules 0.1-1.7 / Intermediate modules 2.1-2.9 / Advanced modules 3.1-3.6; Modules 4.1, 4.9, 4.10, 4.12 and 4.13 are optional)" to
+(Beginner modules 0.1-1.7 / Intermediate modules 2.1-2.10 / Advanced modules 3.1-3.6; Modules 4.1, 4.9, 4.10, 4.12 and 4.13 are optional)" to
 whatever onboarding checklist or issue already exists for new hires. Track
 at that coarse, three-bucket granularity — not one checkbox per module —
 since per-module tracking is more overhead than this mechanism needs.

@@ -13,6 +13,13 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 2.10, "When a push is blocked" (#339): an intermediate module, ~25 min, with
+  a paper exercise of four invented refusal messages (a detected secret, a required
+  pull request, a file over the size limit, and a check set above the repository),
+  a Mermaid decision diagram, an explainer graphic and a model answer. It says what
+  a push-protection bypass records, when to ask a rule owner for a dated exception,
+  and never to bypass without approval. GitHub claims are dated 2026-10-22. The
+  facilitator guide gains a migration-wave checklist and the Module 2.10 setup note.
 - Module 0.14, "Using GitHub with a managed account (EMU and GHE.com)" (#339): a
   reading-only conditional page, ~10 min, with an explainer graphic and a Mermaid
   diagram. It separates EMU (the account model) from GHE.com (where GitHub runs),

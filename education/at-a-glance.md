@@ -306,6 +306,14 @@ Read the module: [Module 2.9: Safety with skills and MCP servers](2_intermediate
 
 Read the module: [Module 2.9: Safety with skills and MCP servers](2_intermediate/module-2-9-safety-with-skills-and-mcp-servers.md)
 
+### Module 2.10: Fix the cause, not the message
+
+![A blocked push has four common causes: a secret detected by push protection, a ruleset that requires a pull request, a file over the size limit, and a rule set above the repository. For each, find which rule said no and who owns it, fix the cause rather than the message, and never bypass without approval.](graphics/module-2-10-when-a-push-is-blocked.svg)
+
+**In one sentence:** Find which rule said no. Fix the cause, never the message.
+
+Read the module: [Module 2.10: When a push is blocked](2_intermediate/module-2-10-when-a-push-is-blocked.md)
+
 ## Advanced
 
 ### Module 3.1: A gate that exists only on some plans
