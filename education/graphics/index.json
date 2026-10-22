@@ -99,6 +99,13 @@
     "alt": "Five Jenkins things mapped to GitHub Actions: a Jenkinsfile becomes a workflow file, an agent becomes a runner, stages become jobs, post has no direct keyword, and a conversion tool cannot finish the job because most pipelines convert only partly and secrets, scripted pipelines and self-hosted runners are moved by hand."
   },
   {
+    "file": "module-0-14-using-github-with-a-managed-account.svg",
+    "page": "0_prerequisites/module-0-14-using-github-with-a-managed-account.md",
+    "title": "Your account lives inside the company",
+    "takeaway": "Check the account and address, then push.",
+    "alt": "Five things that differ with a managed account: the account is provisioned through the company login so name and email are not editable on GitHub, public repositories and gists are not available so use internal repositories, the account cannot collaborate outside the enterprise so use a personal account if policy allows, addresses move to your enterprise subdomain so hard-coded github.com links need updating, and Marketplace actions may not work so check each one."
+  },
+  {
     "file": "module-1-1-getting-started.svg",
     "page": "1_beginners/module-1-1-getting-started.md",
     "title": "Edit a photocopy, merge after review",

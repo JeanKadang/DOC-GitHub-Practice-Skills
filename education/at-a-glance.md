@@ -124,6 +124,14 @@ Read the module: [Module 0.12: Coming from Bitbucket](0_prerequisites/module-0-1
 
 Read the module: [Module 0.13: Coming from Jenkins](0_prerequisites/module-0-13-coming-from-jenkins.md)
 
+### Module 0.14: Your account lives inside the company
+
+![Five things that differ with a managed account: the account is provisioned through the company login so name and email are not editable on GitHub, public repositories and gists are not available so use internal repositories, the account cannot collaborate outside the enterprise so use a personal account if policy allows, addresses move to your enterprise subdomain so hard-coded github.com links need updating, and Marketplace actions may not work so check each one.](graphics/module-0-14-using-github-with-a-managed-account.svg)
+
+**In one sentence:** Check the account and address, then push.
+
+Read the module: [Module 0.14: Using GitHub with a managed account (EMU and GHE.com)](0_prerequisites/module-0-14-using-github-with-a-managed-account.md)
+
 ## Beginners
 
 ### Module 1.1: Edit a photocopy, merge after review

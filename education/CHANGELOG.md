@@ -13,6 +13,14 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Module 0.14, "Using GitHub with a managed account (EMU and GHE.com)" (#339): a
+  reading-only conditional page, ~10 min, with an explainer graphic and a Mermaid
+  diagram. It separates EMU (the account model) from GHE.com (where GitHub runs),
+  lists what a managed account cannot do (public repositories, gists, outside
+  collaboration), why addresses move to an enterprise subdomain, and three traps
+  (two accounts in one editor, not assuming you may contribute outside, rules that
+  sit above you). GitHub claims are dated 2026-10-22. Not checked: Copilot plans
+  on managed accounts.
 - Modules 0.12, "Coming from Bitbucket", and 0.13, "Coming from Jenkins" (#339):
   reading-only conditional pages parallel to Modules 0.4, 0.9 and 0.10, each with
   an explainer graphic and a Mermaid diagram. Bitbucket maps projects, branch
