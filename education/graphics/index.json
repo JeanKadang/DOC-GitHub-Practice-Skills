@@ -85,6 +85,20 @@
     "alt": "Five VS Code things and where they live in IntelliJ IDEA: the Accounts icon becomes Settings, Version Control, GitHub; Source Control becomes the Git menu; Extensions become Plugins; Copilot Chat becomes the GitHub Copilot plugin; agent approvals become Junie modes, with brave mode not recommended."
   },
   {
+    "file": "module-0-12-coming-from-bitbucket.svg",
+    "page": "0_prerequisites/module-0-12-coming-from-bitbucket.md",
+    "title": "Rules move to rulesets",
+    "takeaway": "Same ideas, new names. Freeze before you migrate.",
+    "alt": "Five Bitbucket things mapped to GitHub: a project becomes an organization with teams, branch permissions become rulesets, merge checks become required reviews and status checks, default reviewers become code owners or required reviewers, and a delta migration does not exist so changes made during a migration are lost."
+  },
+  {
+    "file": "module-0-13-coming-from-jenkins.svg",
+    "page": "0_prerequisites/module-0-13-coming-from-jenkins.md",
+    "title": "A converter is a start",
+    "takeaway": "Rewrite the pipeline, do not port it line by line.",
+    "alt": "Five Jenkins things mapped to GitHub Actions: a Jenkinsfile becomes a workflow file, an agent becomes a runner, stages become jobs, post has no direct keyword, and a conversion tool cannot finish the job because most pipelines convert only partly and secrets, scripted pipelines and self-hosted runners are moved by hand."
+  },
+  {
     "file": "module-1-1-getting-started.svg",
     "page": "1_beginners/module-1-1-getting-started.md",
     "title": "Edit a photocopy, merge after review",

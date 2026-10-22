@@ -108,6 +108,22 @@ Read the module: [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-com
 
 Read the module: [Module 0.11: Use IntelliJ IDEA with Git, GitHub and an AI assistant](0_prerequisites/module-0-11-use-intellij-idea-with-git-github-and-an-llm.md)
 
+### Module 0.12: Rules move to rulesets
+
+![Five Bitbucket things mapped to GitHub: a project becomes an organization with teams, branch permissions become rulesets, merge checks become required reviews and status checks, default reviewers become code owners or required reviewers, and a delta migration does not exist so changes made during a migration are lost.](graphics/module-0-12-coming-from-bitbucket.svg)
+
+**In one sentence:** Same ideas, new names. Freeze before you migrate.
+
+Read the module: [Module 0.12: Coming from Bitbucket](0_prerequisites/module-0-12-coming-from-bitbucket.md)
+
+### Module 0.13: A converter is a start
+
+![Five Jenkins things mapped to GitHub Actions: a Jenkinsfile becomes a workflow file, an agent becomes a runner, stages become jobs, post has no direct keyword, and a conversion tool cannot finish the job because most pipelines convert only partly and secrets, scripted pipelines and self-hosted runners are moved by hand.](graphics/module-0-13-coming-from-jenkins.svg)
+
+**In one sentence:** Rewrite the pipeline, do not port it line by line.
+
+Read the module: [Module 0.13: Coming from Jenkins](0_prerequisites/module-0-13-coming-from-jenkins.md)
+
 ## Beginners
 
 ### Module 1.1: Edit a photocopy, merge after review

@@ -18,8 +18,8 @@ commit, and file hashes (ADR 0013).
 `0_prerequisites/` holds required reading (Modules 0.1 to 0.3 on version
 control, Git and GitHub, Module 0.5 on the kinds of tools, and Module 0.6 on LLM
 assistants — most colleagues use an AI coding assistant, so that page is no
-longer optional) plus six conditional pages (Module 0.4 for teams moving from
-GitLab, Module 0.9 for Azure DevOps, Module 0.10 for Jira, Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
+longer optional) plus eight conditional pages (Module 0.4 for teams moving from
+GitLab, Module 0.9 for Azure DevOps, Module 0.10 for Jira, Module 0.12 for Bitbucket, Module 0.13 for Jenkins, Modules 0.7 and 0.8 to set up VS Code, Git, GitHub and an AI
 assistant, and Module 0.11 for the same in IntelliJ IDEA, only if you don't already have them). [`4_next-step/`](4_next-step/module-plan.md) holds a plan for content beyond
 Module 3.6, and the modules built from it so far, Modules 4.1, 4.9, 4.10, 4.12 and 4.13. `examples/`,
 `facilitator-guide.md` and `pilot-kit.md` sit outside the numbered sequence — lookup
@@ -45,9 +45,9 @@ flowchart TD
     Q1 -- Yes --> S0[Module 0.1: What Is Version Control?]
     S0 --> S0b[Module 0.2: What Is Git?]
     S0b --> S0c[Module 0.3: What Is GitHub?]
-    Q1 -- No --> Q2{Coming from GitLab, Azure DevOps or Jira, not GitHub?}
+    Q1 -- No --> Q2{Coming from GitLab, Azure DevOps, Bitbucket, Jenkins or Jira, not GitHub?}
     Q2 -- Yes --> GL3[Module 0.3: What Is GitHub?]
-    GL3 --> GL4[Module 0.4: Coming from GitLab,<br/>Module 0.9: Azure DevOps, or<br/>Module 0.10: Jira<br/>then the mapping skill:<br/>github-for-gitlab-users or<br/>github-for-ado-users]
+    GL3 --> GL4[Module 0.4: Coming from GitLab,<br/>Module 0.9: Azure DevOps,<br/>Module 0.10: Jira,<br/>Module 0.12: Bitbucket, or<br/>Module 0.13: Jenkins<br/>then the mapping skill:<br/>github-for-gitlab-users or<br/>github-for-ado-users]
     Q2 -- No --> T5[Module 0.5: What kinds of tools are these?]
     GL4 --> T5
     S0c --> T5
@@ -99,6 +99,7 @@ flowchart TD
 | You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
 | Your team's CI is a `.gitlab-ci.yml` and you must move it to GitHub Actions | [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md) (after Module 0.4, Module 1.1, and Module 3.5) |
 | Already know GitLab, Azure DevOps or Jira, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) (including account protection), then [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md) or [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md), then `skills/github-for-gitlab-users/SKILL.md` (GitLab) or `skills/github-for-ado-users/SKILL.md` (Azure DevOps) for the full mapping |
+| Already know Bitbucket or Jenkins, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md), then [Module 0.12: Coming from Bitbucket](0_prerequisites/module-0-12-coming-from-bitbucket.md) or [Module 0.13: Coming from Jenkins](0_prerequisites/module-0-13-coming-from-jenkins.md), then `skills/github-for-ado-users/SKILL.md` ("Planning a migration to GitHub") |
 
 **Whatever your background: read [Module 0.5: What kinds of tools are these?](0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md)
 and [Module 0.6: What Is an LLM Assistant?](0_prerequisites/module-0-6-what-is-an-llm-assistant.md)
@@ -174,6 +175,12 @@ mindmap
         Nothing syncs
       Module 0.11: IntelliJ IDEA setup - conditional
         Same steps, different menus
+      Module 0.12: Coming from Bitbucket - conditional
+        Branch permissions become rulesets
+        Freeze before you migrate
+      Module 0.13: Coming from Jenkins - conditional
+        A converter is a start
+        Rewrite, do not port
         Junie Ask and Code modes
     1: Beginners
       Module 1.1: Getting Started
@@ -275,6 +282,8 @@ mindmap
 - [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md) — ~12 min, reading only, conditional: for teams moving from Azure DevOps to GitHub.
 - [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md) — ~12 min, reading only, conditional: for teams moving from Jira to GitHub, or keeping Jira next to GitHub.
 - [Module 0.11: Use IntelliJ IDEA with Git, GitHub and an AI assistant](0_prerequisites/module-0-11-use-intellij-idea-with-git-github-and-an-llm.md) — ~20 min, mostly install time, conditional: for teams that work in IntelliJ IDEA instead of VS Code. Signing in to GitHub, cloning, and adding the GitHub Copilot plugin, JetBrains AI Assistant or Junie.
+- [Module 0.12: Coming from Bitbucket](0_prerequisites/module-0-12-coming-from-bitbucket.md) — ~12 min, reading only, conditional: for teams moving from Bitbucket to GitHub. Projects, branch permissions, merge checks and default reviewers, and why a migration is a snapshot (Bitbucket and GitHub claims dated 2026-10-22).
+- [Module 0.13: Coming from Jenkins](0_prerequisites/module-0-13-coming-from-jenkins.md) — ~12 min, reading only, conditional: for teams moving from Jenkins to GitHub Actions. Where each Jenkins concept lands, and what a conversion tool leaves for you to do by hand (GitHub claims dated 2026-10-22).
 - [Module 1.1: Getting Started](1_beginners/module-1-1-getting-started.md) — ~60 min, hands-on, no prior experience needed.
 - [Module 1.2: Local Git Basics](1_beginners/module-1-2-local-git-basics.md) — ~45 min, hands-on command-line git — staging, conflicts, and undoing a mistake.
 - [Module 1.3: Markdown for issues and pull requests](1_beginners/module-1-3-markdown-for-issues-and-prs.md) — ~20 min, hands-on, web UI only. Headings, task lists, code fences, links, and previewing.
@@ -333,6 +342,8 @@ graphic and that each file has a title and description and no script.
 - [Same ideas, different words](graphics/module-0-9-coming-from-azure-devops.svg) — Module 0.9.
 - [Mind the sync](graphics/module-0-10-coming-from-jira.svg) — Module 0.10.
 - [Same steps, different menus](graphics/module-0-11-use-intellij-idea-with-git-github-and-an-llm.svg) — Module 0.11.
+- [Rules move to rulesets](graphics/module-0-12-coming-from-bitbucket.svg) — Module 0.12.
+- [A converter is a start](graphics/module-0-13-coming-from-jenkins.svg) — Module 0.13.
 - [Edit a photocopy, merge after review](graphics/module-1-1-getting-started.svg) — Module 1.1.
 - [Three undos, three different jobs](graphics/module-1-2-local-git-basics-undo.svg) — Module 1.2 (undo).
 - [Add packs the box. Commit seals it.](graphics/module-1-2-local-git-basics.svg) — Module 1.2.

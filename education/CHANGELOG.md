@@ -13,6 +13,16 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Modules 0.12, "Coming from Bitbucket", and 0.13, "Coming from Jenkins" (#339):
+  reading-only conditional pages parallel to Modules 0.4, 0.9 and 0.10, each with
+  an explainer graphic and a Mermaid diagram. Bitbucket maps projects, branch
+  permissions, merge checks and default reviewers to organizations and teams,
+  rulesets, required reviews and status checks, and code owners, and warns that a
+  migration has no delta. Jenkins maps the Jenkinsfile, agent, stages and `post`
+  to workflows, runners and jobs, and lists what the importer leaves by hand.
+  Claims are checked against Atlassian and GitHub documentation on 2026-10-22 and
+  dated on the pages. The README route table, flow, mindmap, Materials and
+  graphics lists point to them.
 - `pilot-kit.md` (#333), a page for whoever runs the learner pilot (#232): two
   routes with explicit module lists and stated times (new to version control, and
   experienced migrant, ending at Module 2.1; Route A can extend through 1.2 and 2.1), a definition of "unaided", an
