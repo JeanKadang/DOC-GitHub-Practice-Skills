@@ -1,6 +1,7 @@
 # Facilitator Guide
 
-This file is for whoever is **running** a session, not for attendees.
+This file is for whoever is **running** a session, not for attendees. To run
+the learner pilot (#232), use the [pilot kit](pilot-kit.md) as well.
 
 ## Tools policy
 
