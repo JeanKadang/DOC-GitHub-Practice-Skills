@@ -6,6 +6,12 @@
 
 ### Added
 
+- ADR 0018 records the distribution decision (#357): per-repository installs
+  are adopted (follow-up #366), plugin distribution is deferred, and installing
+  without PowerShell is adopted by documenting `gh skill` and Codex's
+  `$skill-installer` (follow-up #367) instead of a second installer.
+  `docs/compatibility.md` and `docs/copilot.md` no longer call a per-repository
+  install out of scope.
 - `github-hygiene` now covers merging a batch under strict up-to-date status
   checks (#353): detect the rule and a merge queue, use the queue where there is
   one, otherwise update, watch and merge one pull request at a time in a stated

@@ -84,3 +84,7 @@ text is not edited.
   yield to a repository's own conventions; approval, evidence, audit-and-reopen,
   and security gates hold everywhere. Makes ADR 0001's `Refs`-first spelling a
   default outside this repository; its audit-and-reopen decision is unchanged.
+- [0018](0018-distribution-channels.md) — Per-repository installs adopted
+  (follow-up #366), plugin distribution deferred, and installing without
+  PowerShell adopted by documenting `gh skill` and Codex's `$skill-installer`
+  (follow-up #367) instead of a second installer.
