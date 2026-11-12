@@ -47,7 +47,7 @@ flowchart TD
     S0b --> S0c[Module 0.3: What Is GitHub?]
     Q1 -- No --> Q2{Coming from GitLab, Azure DevOps or Jira, not GitHub?}
     Q2 -- Yes --> GL3[Module 0.3: What Is GitHub?]
-    GL3 --> GL4[Module 0.4: Coming from GitLab,<br/>Module 0.9: Azure DevOps, or<br/>Module 0.10: Jira<br/>then the mapping skill:<br/>github-for-gitlab-users or<br/>github-for-ado-users]
+    GL3 --> GL4[Module 0.4: Coming from GitLab,<br/>Module 0.9: Azure DevOps, or<br/>Module 0.10: Jira<br/>then the mapping skill:<br/>github-for-gitlab-users for GitLab, or<br/>github-for-ado-users for Azure DevOps and Jira]
     Q2 -- No --> T5[Module 0.5: What kinds of tools are these?]
     GL4 --> T5
     S0c --> T5
@@ -98,7 +98,7 @@ flowchart TD
 | You want an assistant to follow this repository's conventions (test command, commit format, off-limits files) | [Module 4.13: Writing an instruction file for your repository](4_next-step/module-4-13-writing-an-instruction-file-for-your-repository.md) (after Module 1.6 and Module 2.9) |
 | You review pull requests that an AI assistant or coding agent wrote | [Module 4.1: Reviewing changes an AI agent wrote](4_next-step/module-4-1-reviewing-changes-an-ai-agent-wrote.md) (after the LLM prerequisite, Module 2.2, and Module 3.5) |
 | Your team's CI is a `.gitlab-ci.yml` and you must move it to GitHub Actions | [Module 4.12: Moving a GitLab pipeline to GitHub Actions](4_next-step/module-4-12-moving-a-gitlab-pipeline-to-actions.md) (after Module 0.4, Module 1.1, and Module 3.5) |
-| Already know GitLab, Azure DevOps or Jira, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) (including account protection), then [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md) or [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md), then `skills/github-for-gitlab-users/SKILL.md` (GitLab) or `skills/github-for-ado-users/SKILL.md` (Azure DevOps) for the full mapping |
+| Already know GitLab, Azure DevOps or Jira, not GitHub | [Module 0.3: What Is GitHub?](0_prerequisites/module-0-3-what-is-github.md) (including account protection), then [Module 0.4: Coming from GitLab](0_prerequisites/module-0-4-coming-from-gitlab.md), [Module 0.9: Coming from Azure DevOps](0_prerequisites/module-0-9-coming-from-azure-devops.md) or [Module 0.10: Coming from Jira](0_prerequisites/module-0-10-coming-from-jira.md), then `skills/github-for-gitlab-users/SKILL.md` (GitLab) or `skills/github-for-ado-users/SKILL.md` (Azure DevOps, and its "Coming from Jira" section for Jira) for the full mapping |
 
 **Whatever your background: read [Module 0.5: What kinds of tools are these?](0_prerequisites/module-0-5-what-kinds-of-tools-are-these.md)
 and [Module 0.6: What Is an LLM Assistant?](0_prerequisites/module-0-6-what-is-an-llm-assistant.md)

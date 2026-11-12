@@ -59,6 +59,16 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- The pilot kit's two routes now follow the README flowchart module by module
+  to Module 2.1 (#347): both include Modules 1.3 and 1.4, and the command-line
+  branch adds Modules 1.2 and 1.5 to 1.7, with the conditional setup pages
+  (0.7, 0.8, or 0.11 for IntelliJ IDEA) before 1.2. Each route states its total
+  time, the observation sheet covers every module on either route with
+  whole-minute bounds, and the timing-correction rule uses the median of the
+  learners' times so it agrees with #232. The kit and the README now name
+  `github-for-ado-users` ("Coming from Jira") as the Jira mapping skill. No
+  module or stated time is changed.
+
 - Module 0.9 now says that `AB#` linking needs the Azure Boards project connected
   to the GitHub repository, and that a state word before the mention is the same
   trap as `Closes #N` (#327). It now agrees with `github-for-ado-users`.
