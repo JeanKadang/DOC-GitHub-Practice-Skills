@@ -104,7 +104,7 @@ Not confident on any of these? Re-read "Security response basics" above.
 Something unclear, wrong, or worth improving in this module? Open a
 Discussion in this repo (**Ideas** category). Concrete, actionable
 feedback gets converted into a tracked issue, per this repo's own
-issue-first convention — see `skills/github-issue-first/SKILL.md`'s
+issue-first convention — see `skills/github-issue-first/decisions-and-discussions.md`,
 Discussions section.
 
 ---

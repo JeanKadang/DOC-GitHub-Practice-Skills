@@ -84,6 +84,11 @@ following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- The feedback note at the end of each module now points to
+  `skills/github-issue-first/decisions-and-discussions.md`, where the
+  Discussions guidance moved when `github-issue-first` was split (#354). No
+  module content changes.
+
 - The pilot kit's two routes now follow the README flowchart module by module
   to Module 2.1 (#347): both include Modules 1.3 and 1.4, and the command-line
   branch adds Modules 1.2 and 1.5 to 1.7, with the conditional setup pages

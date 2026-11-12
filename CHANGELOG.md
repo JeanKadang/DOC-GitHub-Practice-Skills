@@ -15,6 +15,13 @@
   point to it. GitHub claims are checked against GitHub's docs on 2026-11-12;
   merge-queue plan availability is not stated there, so the skill detects it.
 
+- `github-issue-first` is split for length (#354): ADRs and Discussions move to
+  `decisions-and-discussions.md` and issue types and templates to
+  `issue-types-and-templates.md`, each linked from `SKILL.md` with when to read
+  it; the duplicate Bash and PowerShell `gh issue create` blocks become one line
+  that runs in both. `SKILL.md` is 387 lines (was 516) and no longer triggers
+  the length warning. Its description is 540 characters (was 917) and no longer
+  fires on every requested change. The three rosters list the new files.
 - Every skill now states one precedence rule under its title (#352, ADR 0017):
   a repository's own conventions win over the skill's defaults for labels,
   branch names, commit style, milestones, assignment, and closing-keyword
