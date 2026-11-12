@@ -6,6 +6,14 @@
 
 ### Added
 
+- `github-hygiene` now covers merging a batch under strict up-to-date status
+  checks (#353): detect the rule and a merge queue, use the queue where there is
+  one, otherwise update, watch and merge one pull request at a time in a stated
+  order. It also covers Dependabot pull requests: comment commands instead of
+  pushes, overlapping grouped and single updates, Dependabot-only secrets, and no
+  issue for a routine bump. `github-issue-first` and `github-security-response`
+  point to it. GitHub claims are checked against GitHub's docs on 2026-11-12;
+  merge-queue plan availability is not stated there, so the skill detects it.
 - The installer has a read-only `-Status` report (#355): for each selected
   platform home, every skill's installed version against the source, local
   modifications, and missing skills, with a summary line; it writes nothing and
