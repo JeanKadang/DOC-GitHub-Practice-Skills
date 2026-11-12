@@ -1,6 +1,6 @@
 ---
 name: github-hygiene
-description: Use when opening or updating a pull request in a repository you maintain, merging PRs, closing issues, reconciling acceptance criteria, decomposing large work into sub-issues, auditing an issue after a merge, or cleaning up branches at the end of a session — before running gh pr create, gh pr merge, gh issue close, or any merge step.
+description: Use when opening or updating your own pull request in a repository you maintain, merging PRs, closing issues, reconciling acceptance criteria, decomposing large work into sub-issues, auditing an issue after a merge, or cleaning up branches at the end of a session — before running gh pr create, gh pr merge, gh issue close, or any merge step. Reviewing a pull request someone else wrote is github-pr-review.
 ---
 
 # GitHub Hygiene
