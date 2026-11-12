@@ -15,6 +15,13 @@
   GitHub claims are checked against docs.github.com on 2026-10-22 and dated in the
   skill, including the ruleset rule names; plan prices were not checked. No
   scenario run yet.
+- `github-for-ado-users` now has "Planning a migration to GitHub" (#338): three
+  readiness tiers for repositories and pipelines from objective signals, the rule
+  that standardization is a separate screen checked against the baseline, source
+  tools (GitHub Enterprise Importer sources, Actions Importer for Jenkins), the
+  sequence (foundation first, hardest source last), and the GHE.com and Enterprise
+  Managed Users differences. `github-for-gitlab-users` points to it. GitHub claims
+  are checked on 2026-10-22 and dated in the skill. No scenario run yet.
 - `github-for-ado-users` now covers keeping Azure Boards next to GitHub (#327):
   the `AB#` mention links from a commit message, pull request description or
   issue description but not from a comment or a pull request title, it needs the

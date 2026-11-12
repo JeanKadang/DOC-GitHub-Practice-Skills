@@ -148,6 +148,11 @@ Rough order, with the skill that covers each:
 9. Decide the Wiki's fate deliberately (see trap 3) rather than defaulting
    either way — `github-repo-bootstrap`
 
+Moving a whole GitLab estate rather than one repository? GitHub Enterprise
+Importer lists GitLab as a source. For readiness tiers, sequencing and the
+GHE.com and managed-user differences, read "Planning a migration to GitHub" in
+`github-for-ado-users`; it is not specific to Azure DevOps.
+
 ## Common mistakes
 
 | Mistake | Fix |
