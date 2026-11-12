@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "jsdom": "31.0.0",
-    "markdownlint-cli2": "^0.24.0",
+    "markdownlint-cli2": "^0.24.1",
     "mermaid": "12.3.0",
     "playwright-core": "1.65.0",
     "yaml": "^2.9.1"
