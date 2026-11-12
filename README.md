@@ -72,8 +72,23 @@ The installer validates the source, refuses unapproved overwrites, and can use
 [OpenAI Codex guide](docs/openai-codex.md), [Claude guide](docs/claude.md), and
 [Copilot CLI guide](docs/copilot.md) for discovery details — or the
 [VS Code guide](docs/vscode.md) if you're not comfortable with PowerShell.
-`-Target Both` installs Codex and Claude only; install Copilot separately with
-`-Target Copilot`.
+`-Target Both` installs Codex and Claude only, for backward compatibility;
+`-Target All` installs Codex, Claude, and Copilot in one run.
+
+### Keeping an install current
+
+An installed copy does not update itself. To see whether yours is behind,
+run the read-only status report; it changes nothing:
+
+```powershell
+pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target All -Status
+```
+
+It lists each skill's installed version against the source and any local
+changes. To update: pull the source (`git pull` in your checkout, or download
+the newer release), run the dry run again, read the plan (it says when an
+installed copy is older than the source), then install. Restart the assistant,
+or reload its skills, so sessions load the new text.
 
 ## Documentation
 

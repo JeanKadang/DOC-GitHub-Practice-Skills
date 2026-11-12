@@ -38,6 +38,18 @@ Then install:
 pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Copilot
 ```
 
+An installed copy does not update itself. To check whether yours is behind,
+run the read-only report, which changes nothing:
+
+```powershell
+pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Copilot -Status
+```
+
+It lists each skill as current, older than the source, modified, or not
+installed. To update, pull the source (or download the newer release), run the
+dry run again (it prints a line when the installed copy is older than the
+source), then install without `-DryRun`.
+
 Upgrading over an unmodified earlier install of this package needs no
 `-Force` and makes no backup: the installer recognizes its own marker and
 replaces the skill in place. Reinstalling the same release changes nothing.
@@ -62,6 +74,6 @@ pwsh -NoProfile -File .\scripts\install-skills.ps1 `
 ```
 
 `-Target Both` still means Codex and Claude only, for backward compatibility;
-installing all three currently means running the installer twice (`-Target
-Both` and `-Target Copilot`). Inside an active Copilot CLI session, run
-`/skills reload` to pick up newly installed skills without restarting.
+`-Target All` installs all three in one run. Inside an active Copilot CLI
+session, run `/skills reload` to pick up newly installed skills without
+restarting.
