@@ -5,6 +5,8 @@ description: Use when reviewing someone else's pull request, checking out a cont
 
 # Reviewing pull requests
 
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and no secret, confidential content, or security-sensitive finding in public text, which takes the private path in `github-security-response`.
+
 Merging conventions live in `github-hygiene`; this skill covers the review that
 happens before a merge is even on the table. The goal of a review is a decision —
 approve, request changes, or comment — backed by evidence that you actually ran or

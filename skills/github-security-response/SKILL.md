@@ -5,6 +5,8 @@ description: Use when a security problem is found in a GitHub repo — a credent
 
 # Security response
 
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and no secret, confidential content, or security-sensitive finding in public text, which takes the private path in `github-security-response`.
+
 The normal flow — file a public issue, open a PR, discuss in the open — is wrong
 for vulnerabilities. A public issue for an unpatched bug is a disclosure. This
 skill covers what to do instead. `github-issue-first` still governs everything

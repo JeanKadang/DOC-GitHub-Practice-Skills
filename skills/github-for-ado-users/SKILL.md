@@ -5,6 +5,8 @@ description: Use when someone coming from Azure DevOps, TFS, Jira, or another tr
 
 # GitHub for Azure DevOps migrants
 
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and no secret, confidential content, or security-sensitive finding in public text, which takes the private path in `github-security-response`.
+
 GitHub and ADO cover the same ground with a much smaller feature set. The danger
 is not the concepts that are missing — those are obvious. It is the ones that map
 *almost*, where a familiar word means something different and the process quietly

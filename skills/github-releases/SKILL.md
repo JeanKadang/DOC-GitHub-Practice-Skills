@@ -5,11 +5,13 @@ description: Use when cutting a release, tagging a version, configuring branch p
 
 # GitHub Releases
 
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and no secret, confidential content, or security-sensitive finding in public text, which takes the private path in `github-security-response`.
+
 Conventions for milestones, branch protection, and cutting a release. Issue filing/triage is `github-issue-first`; PR flow and the acceptance-criteria closure gate are `github-hygiene` — file the issue and merge the PR there, then use this skill to ship it. Reviewing a PR before it reaches the merge decision is `github-pr-review`; multi-maintainer board setup is `github-projects`; a release that contains a security fix goes through `github-security-response` first.
 
 ## Milestones
 
-- **Attach at filing time, not just at scoping.** Every `gh issue create` (from `github-issue-first`) should leave the issue with a milestone before moving on — an issue with no milestone is as incomplete as one with no priority label. Check what exists first (next bullet); if nothing fits yet, create one rather than leaving the issue unbucketed.
+- **Attach at filing time, not just at scoping**, in a repository that uses milestones. There, every `gh issue create` (from `github-issue-first`) should leave the issue with a milestone before moving on — an issue with no milestone is as incomplete as one with no priority label. Check what exists first (next bullet); if nothing fits yet, create one in the repository's naming scheme rather than leaving the issue unbucketed. A repository that does not use milestones is not given any, and a release there is scoped by its tag and notes alone.
 - **Check what exists before creating one**: `gh api "repos/{owner}/{repo}/milestones?state=all"`. The repo may have thematic milestones already (e.g. "Reliability Hardening"); attach to the existing bucket rather than minting a competing `vX.Y.Z` one. Two schemes in one repo is worse than either.
 - Absent any existing scheme, group each planned release's issues under a milestone named `vX.Y.Z`. A batch of related findings that isn't yet tied to a specific release version can use a short thematic name instead (e.g. "Naming Consistency") — rename or fold it into a `vX.Y.Z` milestone once a release actually scopes it.
 - Attach with `gh issue edit <N> --milestone "<title>"` — including already-closed issues that ship in that release.

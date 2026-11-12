@@ -5,6 +5,8 @@ description: Use whenever you are working in a git repository that has a GitHub 
 
 # GitHub issue-first workflow
 
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and no secret, confidential content, or security-sensitive finding in public text, which takes the private path in `github-security-response`.
+
 When you're working in a repo and you notice something worth fixing that isn't
 the exact thing you were asked to do right now — a bug, a stale doc, a missing
 test, a CI failure, a backlog item, anything — the default move is: **file the
@@ -95,6 +97,28 @@ for that repo. Any repo with CI, tests, deployment, or existing branch
 protection keeps the default full ceremony without asking; that signal
 alone is enough to know it's warranted.
 
+## Read the repository's conventions first
+
+Before the first issue or branch in a repository this session, read how it
+already works. Its conventions win over this skill's defaults; the invariants
+in the precedence line at the top do not yield.
+
+```bash
+git ls-files CONTRIBUTING.md AGENTS.md CLAUDE.md .github/      # documented rules, templates, forms
+gh label list --limit 100                                       # its label scheme
+gh api "repos/{owner}/{repo}/milestones?state=open" --jq '.[].title'
+gh issue list --state all --limit 20 --json number,assignees,milestone --jq '.[] | "#\(.number)\t\(.assignees | length) assignee(s)\t\(.milestone.title // "-")"'
+gh pr list --state merged --limit 10 --json headRefName,title,body --jq '.[] | "\(.headRefName)\t\(.title)\t\(.body | split("\n")[0])"'
+```
+
+The same lines run unchanged in PowerShell.
+
+Read the documented files first. From the rest, note the label scheme, whether
+issues carry milestones and assignees, and the branch names, commit titles and
+closing keyword in merged pull requests. Where documented and observed
+practice disagree, follow the documented one and say so. A repository with no
+conventions gets this skill's defaults.
+
 ## Filing a single issue
 
 ```bash
@@ -133,8 +157,10 @@ triage: write them into the issue body before implementation starts.
 
 ### Labels
 
-Every issue needs exactly one priority label and at least one category label.
-Create labels that don't exist yet on the repo before using them:
+Use the repository's label scheme when it has one (the conventions probe shows
+it). In this skill's default scheme, for a repository with none, every issue
+carries exactly one priority label and at least one category label; create
+only the labels you use, before using them:
 
 ```bash
 gh label list   # check what already exists first
@@ -165,8 +191,11 @@ Only overwrite colour/description this way for labels you are bootstrapping. Don
 
 ### Milestone
 
-Every filed issue also gets a milestone before you move on — not just labels
-and an assignee. `gh issue create` supports `--milestone "<title>"` directly
+In a repository that uses milestones (the conventions probe shows open
+milestones that recent issues are attached to, or its docs say so), every
+filed issue also gets a milestone before you move on — not just labels and an
+assignee. A repository that does not use milestones is not given one.
+`gh issue create` supports `--milestone "<title>"` directly
 when you already know which existing milestone the issue belongs to; when
 you don't (or the right milestone doesn't exist yet), attach it as a
 follow-up instead: `gh issue edit <N> --milestone "<title>"`. Full milestone
@@ -244,11 +273,12 @@ rather than drafting new ones from scratch.
 
 ### Assignment
 
-Always `--assignee "@me"` (it needs `TRIAGE` or higher, which the Preconditions already
-require; if `gh` still refuses the assignment, file without it and say so) unless the user
-has told you a different assignee
-convention for this repo (e.g. "assign backend issues to X"). Don't leave
-issues unassigned — an unassigned finding is easy to lose track of.
+Default to `--assignee "@me"` (it needs `TRIAGE` or higher, which the Preconditions already
+require; if `gh` still refuses the assignment, file without it and say so). Follow the
+repository's practice instead when it has one — issues left unassigned for a triage
+rotation, or an owner rule such as "assign backend issues to X" — and any assignee
+convention the user gives you. In a repository that assigns its issues, don't leave
+one unassigned — an unassigned finding is easy to lose track of.
 
 ## Filing a batch (backlog docs, review passes, multi-finding sessions)
 
@@ -319,7 +349,8 @@ string preserved.
 ## Sanity check before moving on
 
 After filing a batch, list the open issues back with their labels and
-assignee to confirm nothing slipped through unlabeled or unassigned:
+assignee to confirm nothing slipped through unlabeled, or unassigned in a
+repository that assigns its issues:
 
 ```bash
 gh issue list --state open --json number,title,labels,assignees \
@@ -333,8 +364,9 @@ gh issue list --state open --json number,title,labels,assignees `
   -q 'sort_by(.number) | .[] | "\(.number)\t\(.assignees[0].login)\t\([.labels[].name]|join(","))"'
 ```
 
-If anything comes back with no priority label, no category label, or no
-assignee, fix it before considering the batch done.
+If anything comes back without a label the repository's scheme requires (in
+the default scheme, a priority and a category label), or without an assignee
+where the repository assigns issues, fix it before considering the batch done.
 
 If the repo has a Projects board, the batch is not done until the new issues are
 on it — see the `github-projects` skill. Branch/PR conventions for acting on
@@ -470,7 +502,9 @@ Every close carries a reason a human can read.
 
 GitHub closing keywords do not evaluate the issue. Before allowing `Closes #N`
 to merge, use `github-hygiene` to perform its acceptance-criteria closure gate.
-Use `Refs #N` while any criterion remains unmet or unevaluated.
+Use `Refs #N` while any criterion remains unmet or unevaluated; in a repository
+whose convention puts a closing keyword in the pull request from the start, keep
+it, but do not let that pull request merge until the gate passes.
 
 `Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
 stays open when GitHub has a connected development branch. After every merge,

@@ -5,6 +5,8 @@ description: Use when handed an existing repository (already created, possibly a
 
 # Configuring an already-existing repository
 
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and no secret, confidential content, or security-sensitive finding in public text, which takes the private path in `github-security-response`.
+
 `github-repo-bootstrap` owns the moment a repository doesn't exist yet, or its
 initial shell is still incomplete. This skill owns a different, more common
 moment: someone handed you a repository that already exists — maybe empty,
