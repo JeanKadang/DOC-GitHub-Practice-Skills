@@ -6,6 +6,15 @@
 
 ### Added
 
+- `github-hygiene` now covers merging a batch under strict up-to-date status
+  checks (#353): detect the rule and a merge queue, use the queue where there is
+  one, otherwise update, watch and merge one pull request at a time in a stated
+  order. It also covers Dependabot pull requests: comment commands instead of
+  pushes, overlapping grouped and single updates, Dependabot-only secrets, and no
+  issue for a routine bump. `github-issue-first` and `github-security-response`
+  point to it. GitHub claims are checked against GitHub's docs on 2026-11-12;
+  merge-queue plan availability is not stated there, so the skill detects it.
+
 - Every skill now states one precedence rule under its title (#352, ADR 0017):
   a repository's own conventions win over the skill's defaults for labels,
   branch names, commit style, milestones, assignment, and closing-keyword

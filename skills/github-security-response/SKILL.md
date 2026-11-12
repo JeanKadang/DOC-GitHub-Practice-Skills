@@ -152,7 +152,9 @@ Never dismiss in bulk to clear a dashboard.
 
 Alerts that are *not* sensitive to disclose (an outdated dev dependency, a
 false positive to suppress) go through the ordinary public issue flow. Only
-unpatched, exploitable findings stay private.
+unpatched, exploitable findings stay private. The Dependabot *pull requests* that
+fix alerts are handled like any other dependency update: see `github-hygiene`,
+"Dependabot pull requests".
 
 ## Hardening the repo itself
 

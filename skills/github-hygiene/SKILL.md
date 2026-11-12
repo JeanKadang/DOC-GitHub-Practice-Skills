@@ -169,6 +169,72 @@ gh run view <run-id> --log-failed          # only the failing steps
 - **Flake** (network blip, runner timeout, race): `gh run rerun <run-id> --failed`. If the same job flakes twice, that is a real defect in the test suite — file it (`github-issue-first`) rather than re-running a third time.
 - **Infrastructure/config break** (missing secret, expired token, action removed): file it as its own issue; it will hit every future PR, not just this one.
 
+### Merging a batch under strict status checks
+
+When the default branch requires branches to be up to date before merging, each
+merge puts every other open pull request behind. Check before merging a batch:
+
+```bash
+gh api repos/{owner}/{repo}/rules/branches/main --jq '.[] | select(.type=="required_status_checks") | .parameters.strict_required_status_checks_policy'
+gh api graphql -f query='query($o:String!,$r:String!){repository(owner:$o,name:$r){mergeQueue(branch:"main"){url}}}' -f o=<owner> -f r=<repo>
+```
+
+`true` from the first means strict checks; a non-null `mergeQueue` from the
+second means the branch has a merge queue. A legacy branch protection rule can
+set the same requirement (`gh api repos/{owner}/{repo}/branches/main/protection`).
+
+- **With a merge queue, use it.** GitHub's docs say it "provides the same
+  benefits" as the up-to-date requirement "but does not require a pull request
+  author to update their pull request branch". GitHub's merge-queue pages, read
+  2026-11-12, do not state which plans or account types offer it, so detect it
+  per repository as above rather than assuming.
+- **Without one, merge serially**, one pull request at a time: `gh pr update-branch <N>`
+  (or `@dependabot rebase` for a Dependabot pull request, below), then
+  `gh pr checks <N> --watch`, then merge, then re-read the next one's state
+  before touching it. Do not update every pull request at once: each merge makes
+  the others stale again and the CI runs are wasted.
+- **Order the batch**: independent and small changes first, a change other pull
+  requests depend on before them, and Dependabot pull requests after the human
+  ones that touch the same files. A pull request that conflicts after an update
+  is resolved on its own branch by merging the fresh base, never by rebasing a
+  shared branch.
+- One maintainer approval per batch still covers the whole loop. Each merge is
+  still followed by the issue audit in "Acceptance criteria are closure gates".
+
+### Dependabot pull requests
+
+Dependabot pull requests are maintained by Dependabot, not by you.
+
+- **Refresh with comment commands, not pushes**: `@dependabot rebase` to bring
+  it up to date, `@dependabot recreate` to rebuild it and overwrite any edits,
+  `@dependabot ignore this dependency` (or `this major version`, `this minor version`,
+  `this patch version`) to close it and stop that update.
+- **A push stops Dependabot.** By GitHub's docs, Dependabot "will stop rebasing a
+  pull request once extra commits have been pushed to it". If a bump needs a code
+  change (a test that pins the dependency's version, say), either make it in a
+  separate pull request first, or push it and accept that you now keep the
+  branch up to date yourself with `gh pr update-branch`. A commit message
+  containing `[dependabot skip]` lets Dependabot force-push over your commit
+  instead.
+- **Overlap**: a grouped update and a single update can bump the same package.
+  Merge the grouped one first, then `@dependabot rebase` the single one: when the
+  base already has the version, Dependabot closes it as up to date (observed
+  behaviour; GitHub's docs do not describe grouped-versus-single overlap).
+- **Secrets**: a workflow triggered by a Dependabot pull request gets only
+  Dependabot secrets, not Actions secrets, and a read-only `GITHUB_TOKEN` by
+  default. A check that fails only on Dependabot pull requests for a missing
+  secret is a configuration problem: add the secret under Dependabot secrets,
+  not a retry.
+- **No issue for a routine bump.** A green dependency update needs no issue and
+  no `Refs #N`: the pull request is its own record, and it merges with the batch
+  approval like any other. File an issue when the bump needs human work (a
+  breaking change, a failing check that needs code) and link the pull request
+  to it. A vulnerability alert goes through `github-security-response`.
+
+GitHub's Dependabot behaviour above is from GitHub's docs on managing Dependabot
+pull requests, its comment commands, and automating Dependabot with GitHub
+Actions, checked 2026-11-12.
+
 ## Solo vs multi-contributor tracking
 
 - **Solo repo (default)**: no Projects boards — milestones + labels are the whole tracking system; a board is unmaintained overhead.
@@ -286,4 +352,6 @@ pull requests and consumers' paths to keep working.
 | Linking a sub-issue by its `number` instead of its `id` | The sub-issues endpoint wants the internal `id` — `gh api repos/{owner}/{repo}/issues/<number> --jq .id` first |
 | Adding another feature to an overgrown single file or flat root | Raise a restructure issue first and sequence it before the feature work; see "Structure drift" |
 | Pushing after `git add -A` or `git add .` without reading the file list | Run the scope check before every push and `gh pr create`; stage files by name |
+| Updating every open PR at once under strict up-to-date checks | Merge serially: update, watch checks, merge, then the next |
+| `gh pr update-branch` or a push to refresh a Dependabot PR | `@dependabot rebase`; a push stops Dependabot maintaining it |
 | Re-running a red CI job without reading the log | `gh run view <id> --log-failed` first; rerun only a diagnosed flake |

@@ -46,7 +46,8 @@ The following sections describe the canonical skills as they exist in v0.5.0.
 - **Responsibilities and outputs:** Maintain the issue-linked traceability
   chain, check that a branch publishes only in-scope files before every push
   and pull request, evaluate criteria, record evidence, and perform approved
-  merge and cleanup steps.
+  merge and cleanup steps, merging a batch serially under strict up-to-date
+  checks and refreshing Dependabot pull requests with comment commands.
 - **Boundary and handoff:** Individual PR review belongs to
   `github-pr-review`; releasing and tagging hand off to `github-releases`.
 
