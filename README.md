@@ -90,6 +90,50 @@ the newer release), run the dry run again, read the plan (it says when an
 installed copy is older than the source), then install. Restart the assistant,
 or reload its skills, so sessions load the new text.
 
+### Without PowerShell, or into a team repository
+
+GitHub CLI 2.90 or later installs the skills straight from this repository with
+`gh skill` (a GitHub CLI preview), with no clone and no `pwsh` (ADR 0018). Pin a
+release tag; `v0.5.0` is the latest at the time of writing. For your own
+machine, run one line per assistant you use:
+
+```bash
+gh skill install JeanKadang/DOC-GitHub-Practice-Skills --all \
+  --scope user --pin v0.5.0 --agent claude-code
+```
+
+```bash
+gh skill install JeanKadang/DOC-GitHub-Practice-Skills --all \
+  --scope user --pin v0.5.0 --agent codex
+```
+
+```bash
+gh skill install JeanKadang/DOC-GitHub-Practice-Skills --all \
+  --scope user --pin v0.5.0 --agent github-copilot
+```
+
+To pin one version for everyone in a team repository, run the same commands
+from the repository root with `--scope project` instead, then commit the folders
+they write: `.claude/skills` (Claude Code) and `.agents/skills` (Codex and
+Copilot). Git then tracks any change to the skills, and an update arrives as a
+reviewable diff (`gh skill update`, or a new `--pin`).
+
+Know what you give up and what still interferes:
+
+- Copies installed by `gh skill` are not tracked by `install-skills.ps1`: no
+  `-Status`, no refusal to overwrite local edits, no backups. `gh skill` adds a
+  `metadata:` block to each `SKILL.md` recording the repository and tag.
+- A personal copy still wins or still shows. In Claude Code a skill in
+  `~/.claude/skills` takes precedence over the repository's copy of the same
+  name. Codex lists the repository's copy and any personal copies
+  (`~/.codex/skills`, `~/.agents/skills`) side by side. Remove or update
+  personal copies before relying on a repository pin.
+- Codex also has a built-in `$skill-installer` skill that installs skills from
+  a GitHub repository inside a Codex session.
+
+What was checked, and with which versions, is in
+[docs/compatibility.md](docs/compatibility.md).
+
 ## Documentation
 
 - [Layered skill guide](docs/GUIDE.md)
