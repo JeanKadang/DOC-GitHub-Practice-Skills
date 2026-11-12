@@ -1,6 +1,6 @@
 ---
 name: github-for-ado-users
-description: Use when someone coming from Azure DevOps, TFS, Jira, or another tracker asks how a concept maps to GitHub — "what's the GitHub equivalent of a sprint / epic / work item type / area path / component / fix version / query (WIQL or JQL)", "where do sprints go", why milestones don't behave like iterations, how Jira or Azure Boards (AB#) and GitHub link, where a wiki or test plan should go, or how to set up GitHub tracking the way they had it in ADO or Jira.
+description: Use when someone coming from Azure DevOps, TFS, Jira, or another tracker asks how a concept maps to GitHub — "what's the GitHub equivalent of a sprint / epic / work item type / area path / component / fix version / query (WIQL or JQL)", "where do sprints go", why milestones don't behave like iterations, how Jira or Azure Boards (AB#) and GitHub link, how to plan a migration from Azure DevOps, Bitbucket or Jenkins (readiness tiers, sequence, GHE.com and managed-user differences), where a wiki or test plan should go, or how to set up GitHub tracking the way they had it in ADO or Jira.
 ---
 
 # GitHub for Azure DevOps migrants
@@ -264,6 +264,96 @@ types](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-is
 and [issue
 search](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/filtering-and-searching-issues-and-pull-requests).
 
+## Planning a migration to GitHub
+
+This skill explains; it does not move anything. Use this section when the
+question is "how do we move our whole estate" rather than "what is the
+equivalent". It applies to Azure DevOps, Bitbucket, Jenkins and TFS sources.
+
+### 1. Classify before you move
+
+Put every repository and every pipeline in one of three tiers: **easy to
+migrate**, **needs some work**, **not migratable as it is**. Use objective,
+tool-reported signals so the answer is the same for every source system.
+
+| Signal | What it decides |
+|---|---|
+| Repository size | GitHub recommends repositories under 1 GB, strongly under 5 GB; over that it needs splitting or history work |
+| Largest tracked file | GitHub warns at 50 MiB and blocks above 100 MiB; Git LFS or removal is needed before the push |
+| Version control | TFVC must become Git first; that is a separate conversion, not a copy |
+| Pipeline conversion | Convertible with no unsupported steps is easy; converted with unsupported or unknown steps needs rework; unsupported is rebuilt as Actions |
+
+The cut-offs are your own choice inside GitHub's fixed limits; one assessment
+used 2 GB and 5 GB. Whether a repository is empty or dormant is a separate
+retention decision (archive or delete), not a complexity score. For Jenkins,
+GitHub Actions Importer has `audit` (analyze the footprint), `forecast`,
+`dry-run` (convert one pipeline and print the workflow) and `migrate` (convert
+and open a pull request). GitHub's page says mandatory build tools, scripted
+pipelines, secrets, self-hosted runners and unknown plugins are migrated
+manually, so expect most of a large Jenkins estate to land in "needs some work".
+
+### 2. Standardization is a separate screen
+
+A repository that converts cleanly can still be unfit to move: no owner, no
+branch rules, hardcoded credentials, copied pipelines, committed binaries.
+Check each one against the baseline in `github-repo-configure` ("The minimum
+baseline"). Fix what fails, or record a dated exception with an approver, before
+it counts as migrated. Moving it unchanged only relocates the problem.
+
+### 3. Tools and sources
+
+GitHub Enterprise Importer migrates repositories from Azure DevOps Cloud,
+Bitbucket Server and Data Center (5.14 and later), GitLab, GitHub Enterprise
+Server and GitHub.com. Bitbucket Cloud is not in that list, and the classic
+"Import repository" importer is not available on GHE.com. Pipelines are a
+separate job (Actions Importer above, or a rewrite). Migrate a submodule before
+the repository that contains it and rewrite its URL, because the parent will not
+build otherwise.
+
+### 4. Sequence and who does the work
+
+Stand up the governed platform first: identity, repository creation rules, the
+security baseline and audit-log streaming, before any workload moves. This phase
+is easy to underestimate; do not compress it to shorten the schedule. Then move
+the most similar source first (existing GitHub organizations), then the next
+source, and the hardest last (very large repositories, automation that must be
+rebuilt). The platform team owns the platform and its guardrails; each team
+migrates its own repositories and pipelines with runbooks, templates and a
+support channel. Run representative pilots, and measure them, before you retire
+any existing scanner or change any licence.
+
+### 5. GitHub Enterprise Cloud with data residency (GHE.com)
+
+GHE.com uses Enterprise Managed Users (EMU): the identity provider provisions
+every account. Checked on 2026-10-22 against GitHub Docs:
+
+- **Not available, by design:** public repositories and gists, and the classic
+  importer. Use internal repositories for sharing inside the enterprise.
+- **Not available yet (may change):** macOS GitHub-hosted runners, Maven and
+  Gradle in GitHub Packages, the GitHub Marketplace for browsing or installing,
+  dependency insights, and audit-log streaming to Amazon S3 with OIDC.
+- **Works differently:** the API, container registry, raw-content, SSH clone,
+  OIDC issuer and SCIM URLs move to your enterprise subdomain, so every script,
+  workflow or integration that hard-codes `github.com`, `ghcr.io` or
+  `githubusercontent.com` needs updating. Every API request must be
+  authenticated, and `GITHUB_TOKEN` does not reach resources on GitHub.com.
+  Actions that call `api.github.com` may fail unless the author supports it.
+  A managed user account cannot create public content or collaborate outside the
+  enterprise.
+
+### 6. The change is in how people work
+
+Git and GitHub branching, pull requests, review and CI differ materially from
+Bitbucket, Azure DevOps and Jenkins. Plan and resource training and support as
+part of the programme; teams that treat it as a tooling swap carry old habits
+onto the new platform.
+
+Sources: GitHub Docs pages on GitHub Enterprise Importer, Actions Importer for
+Jenkins, large files, and GHE.com features and Enterprise Managed Users, read
+2026-10-22. They carry no update date, so recheck a limit before you rely on it.
+Not checked: which pipeline sources Actions Importer supports other than
+Jenkins, TFVC conversion tools, and Copilot plans on managed accounts.
+
 ## Setting up a repo the way you had it in ADO
 
 Rough order, with the skill that covers each:
@@ -295,4 +385,6 @@ Rough order, with the skill that covers each:
 | Telling a Jira user that GitHub issues and Jira items stay in sync | The connection carries development information into Jira only; keep one source of truth per piece of work |
 | Writing `Fixes AB#125` in a PR description before the evidence is recorded | It moves the work item on merge and checks no criterion; use bare `AB#125` until the closure gate passes |
 | Putting `AB#125` in a PR title or a comment and expecting a link | It links only from a commit message, PR description or issue description, and only once the project is connected to the repository |
+| Moving a repository because it converts cleanly | Check it against the baseline too; easy to convert is not fit to move |
+| Moving workloads before identity, repository rules and the security baseline exist | Foundation first; it is the one hard dependency |
 | Using a Jira user's mapping from the Azure DevOps table | Use "Coming from Jira": fix versions are milestones, components are labels, sprints are iterations |
