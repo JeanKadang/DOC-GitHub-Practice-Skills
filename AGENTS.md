@@ -71,7 +71,9 @@ pwsh -NoProfile -File .\scripts\install-skills.ps1 -Target Copilot -DryRun
 ```
 
 `-Target Both` means Codex + Claude only, for backward compatibility;
-installing all three needs two invocations. The installer is PowerShell-only.
+`-Target All` installs all three in one run. `-Status` is a read-only report
+of installed versus source versions and local changes. The installer is
+PowerShell-only.
 Windows is the primary verified environment (required CI check); Ubuntu and
 macOS `pwsh` also run it in CI as advisory checks. macOS was dropped once
 for a reparse-point false-positive (`/var` is a symlink on macOS; see

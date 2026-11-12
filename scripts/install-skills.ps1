@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('Codex', 'Claude', 'Copilot', 'Both')]
+    [ValidateSet('Codex', 'Claude', 'Copilot', 'Both', 'All')]
     [string]$Target = 'Both',
     [string]$SourceRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$CodexHome = $(if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex' }),
@@ -9,7 +9,8 @@ param(
     [ValidateRange(-1, 1000)]
     [int]$KeepBackups = -1,
     [switch]$DryRun,
-    [switch]$Force
+    [switch]$Force,
+    [switch]$Status
 )
 
 Set-StrictMode -Version Latest
@@ -244,6 +245,56 @@ function Write-DuplicateCodexWarning {
     Write-Output '  Keep one copy and remove the other yourself; this installer never deletes it. See docs/openai-codex.md, "Where Codex looks for skills".'
 }
 
+function Get-VersionRelation {
+    param(
+        [Parameter(Mandatory)][string]$Installed,
+        [Parameter(Mandatory)][string]$Source
+    )
+
+    if ($Installed -eq $Source) { return 'current' }
+    $installedVersion = $null
+    $sourceVersion = $null
+    if ([version]::TryParse($Installed, [ref]$installedVersion) -and
+        [version]::TryParse($Source, [ref]$sourceVersion)) {
+        if ($installedVersion -lt $sourceVersion) { return 'older' }
+        if ($installedVersion -gt $sourceVersion) { return 'newer' }
+    }
+    return 'different'
+}
+
+function Get-InstalledMarkerVersion {
+    param([Parameter(Mandatory)][string]$SkillPath)
+
+    $markerPath = Join-Path $SkillPath $markerName
+    if (-not (Test-Path -LiteralPath $markerPath -PathType Leaf)) { return $null }
+    try {
+        $marker = Get-Content -LiteralPath $markerPath -Raw | ConvertFrom-Json
+    }
+    catch {
+        return $null
+    }
+    if ($marker.packageName -ne $packageName -or
+        [string]::IsNullOrWhiteSpace([string]$marker.packageVersion)) {
+        return $null
+    }
+    return [string]$marker.packageVersion
+}
+
+function Write-OlderInstallNote {
+    param(
+        [Parameter(Mandatory)]$Plan,
+        [Parameter(Mandatory)][string]$SourceVersion,
+        [Parameter(Mandatory)][string]$Verb
+    )
+
+    $older = @($Plan.Replacements |
+        Where-Object { $null -ne $_.InstalledVersion -and (Get-VersionRelation -Installed $_.InstalledVersion -Source $SourceVersion) -eq 'older' } |
+        ForEach-Object { $_.InstalledVersion } | Sort-Object -Unique)
+    if ($older.Count -gt 0) {
+        Write-Output "  Note: $($Plan.Name) has v$($older -join ', v') installed, older than this source (v$SourceVersion); this run $Verb it."
+    }
+}
+
 function Test-TrackedSkill {
     param(
         [Parameter(Mandatory)][string]$SkillPath,
@@ -451,7 +502,11 @@ foreach ($skill in $inventory.skills) {
 }
 
 $targetSpecs = @()
-if ($Target -in @('Codex', 'Both')) {
+if ($Status -and ($DryRun -or $Force)) {
+    throw '-Status is read-only and cannot be combined with -DryRun or -Force.'
+}
+
+if ($Target -in @('Codex', 'Both', 'All')) {
     $platformPath = Get-FullPath -Path $CodexHome
     $targetSpecs += [pscustomobject]@{
         Name = 'Codex'
@@ -459,7 +514,7 @@ if ($Target -in @('Codex', 'Both')) {
         SkillRoot = Join-Path $platformPath 'skills'
     }
 }
-if ($Target -in @('Claude', 'Both')) {
+if ($Target -in @('Claude', 'Both', 'All')) {
     $platformPath = Get-FullPath -Path $ClaudeHome
     $targetSpecs += [pscustomobject]@{
         Name = 'Claude'
@@ -467,7 +522,7 @@ if ($Target -in @('Claude', 'Both')) {
         SkillRoot = Join-Path $platformPath 'skills'
     }
 }
-if ($Target -eq 'Copilot') {
+if ($Target -in @('Copilot', 'All')) {
     $platformPath = Get-FullPath -Path $CopilotHome
     $targetSpecs += [pscustomobject]@{
         Name = 'Copilot'
@@ -496,6 +551,49 @@ for ($leftIndex = 0; $leftIndex -lt $targetSpecs.Count; $leftIndex++) {
             }
         }
     }
+}
+
+if ($Status) {
+    # Read-only report: never creates, changes, or deletes anything (#355).
+    Write-Output "Source: $resolvedSource (v$($inventory.packageVersion))"
+    foreach ($spec in $targetSpecs) {
+        Write-Output "Status: $($spec.Name) -> $($spec.SkillRoot)"
+        $counts = [ordered]@{ current = 0; older = 0; other = 0; modified = 0; missing = 0 }
+        foreach ($skill in $inventory.skills) {
+            $destination = Get-FullPath -Path (Join-Path $spec.SkillRoot $skill.name)
+            if (-not (Test-Path -LiteralPath $destination -PathType Container)) {
+                Write-Output "  $($skill.name): not installed"
+                $counts.missing++
+                continue
+            }
+            $installedVersion = Get-InstalledMarkerVersion -SkillPath $destination
+            if ($null -eq $installedVersion) {
+                Write-Output "  $($skill.name): present but not installed by this package (no valid marker)"
+                $counts.modified++
+                continue
+            }
+            $tracked = Test-TrackedSkill -SkillPath $destination -Skill $skill -Inventory $inventory
+            $relation = Get-VersionRelation -Installed $installedVersion -Source $inventory.packageVersion
+            $line = switch ($relation) {
+                'current' { "v$installedVersion, current" }
+                'older' { "v$installedVersion, older than source v$($inventory.packageVersion)" }
+                'newer' { "v$installedVersion, newer than source v$($inventory.packageVersion)" }
+                default { "v$installedVersion, differs from source v$($inventory.packageVersion)" }
+            }
+            if ($tracked.Valid) {
+                Write-Output "  $($skill.name): $line"
+                if ($relation -eq 'current') { $counts.current++ }
+                elseif ($relation -eq 'older') { $counts.older++ }
+                else { $counts.other++ }
+            }
+            else {
+                Write-Output "  $($skill.name): $line; $($tracked.Reason)"
+                $counts.modified++
+            }
+        }
+        Write-Output "  Summary: $($counts.current) current, $($counts.older) older, $($counts.other) other version, $($counts.modified) modified or untracked, $($counts.missing) not installed"
+    }
+    exit 0
 }
 
 $backupTimestamp = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssfffffffZ')
@@ -571,6 +669,7 @@ if ($DryRun) {
                 Write-Output "  $($skill.name): install; backup: none"
             }
         }
+        Write-OlderInstallNote -Plan $plan -SourceVersion $inventory.packageVersion -Verb 'would upgrade'
         Write-DuplicateCodexWarning -Plan $plan
         if ($KeepBackups -ge 0) {
             $willBackUp = @($plan.Replacements | Where-Object { $_.Mode -eq 'Backup' }).Count -gt 0
@@ -665,6 +764,7 @@ if ($KeepBackups -ge 0) {
 }
 
 foreach ($plan in $plans) {
+    Write-OlderInstallNote -Plan $plan -SourceVersion $inventory.packageVersion -Verb 'upgraded'
     Write-DuplicateCodexWarning -Plan $plan
 }
 

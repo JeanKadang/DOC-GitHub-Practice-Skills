@@ -65,6 +65,7 @@ async function runInstaller({
   target = 'Both',
   dryRun = false,
   force = false,
+  status = false,
   keepBackups,
   timeoutMs = installerTimeoutMs,
   expectFailure = false,
@@ -83,6 +84,7 @@ async function runInstaller({
   if (copilotHome) args.push('-CopilotHome', copilotHome);
   if (dryRun) args.push('-DryRun');
   if (force) args.push('-Force');
+  if (status) args.push('-Status');
   if (keepBackups !== undefined) args.push('-KeepBackups', String(keepBackups));
 
   // Strip these from the inherited environment by default so a developer's
@@ -913,4 +915,65 @@ test('a marker from another package or another skill name is not reported as our
 
   assert.equal(result.exitCode, 0, 'an unreadable marker must not make the installer fail');
   assert.doesNotMatch(result.stdout, /Warning:/);
+});
+
+// Status and staleness (#355): a read-only report, and a visible line when an
+// installed copy is older than the source.
+test('Status reports current, older, modified, and missing skills and writes nothing (#355)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+  await installOldRelease(root, codexHome);
+  const [oldName, editedName, removedName] = inventory.skills.map((skill) => skill.name);
+  await writeFile(join(codexHome, 'skills', editedName, 'SKILL.md'), 'locally modified\n');
+  await rm(join(codexHome, 'skills', removedName), { recursive: true, force: true });
+  const before = await treeSnapshot(root);
+
+  const result = await runInstaller({ codexHome, target: 'Codex', status: true });
+
+  assert.ok(result.stdout.includes(`${oldName}: v0.0.1, older than source v${inventory.packageVersion}`), result.stdout);
+  assert.match(result.stdout, new RegExp(`${editedName}: v0\\.0\\.1, older than source[^\\n]*modified`));
+  assert.ok(result.stdout.includes(`${removedName}: not installed`), result.stdout);
+  assert.match(result.stdout, /Summary: 0 current, \d+ older, 0 other version, 1 modified or untracked, 1 not installed/);
+  assert.deepEqual(await treeSnapshot(root), before);
+});
+
+test('Status on a current install reports every skill current (#355)', async () => {
+  const root = await temporaryRoot();
+  const { codexHome } = await installOnce(root, 'Codex');
+  const result = await runInstaller({ codexHome, target: 'Codex', status: true });
+  assert.match(result.stdout, new RegExp(`Summary: ${inventory.skills.length} current, 0 older`));
+});
+
+test('Status refuses to combine with DryRun or Force and creates nothing (#355)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+  const result = await runInstaller({ codexHome, target: 'Codex', status: true, dryRun: true, expectFailure: true });
+  assert.match(`${result.stdout}${result.stderr}`, /read-only/);
+  assert.equal(await exists(codexHome), false);
+});
+
+test('dry runs and real runs say when the installed copy is older than the source (#355)', async () => {
+  const root = await temporaryRoot();
+  const codexHome = join(root, 'codex-home');
+  await installOldRelease(root, codexHome);
+  const note = `Codex has v0.0.1 installed, older than this source (v${inventory.packageVersion})`;
+
+  const preview = await runInstaller({ codexHome, target: 'Codex', dryRun: true });
+  assert.ok(preview.stdout.includes(`${note}; this run would upgrade it.`), preview.stdout);
+
+  const install = await runInstaller({ codexHome, target: 'Codex' });
+  assert.ok(install.stdout.includes(`${note}; this run upgraded it.`), install.stdout);
+
+  const again = await runInstaller({ codexHome, target: 'Codex', dryRun: true });
+  assert.doesNotMatch(again.stdout, /older than this source/);
+});
+
+test('Target All installs to Codex, Claude, and Copilot in one run (#355)', async () => {
+  const root = await temporaryRoot();
+  const homes = { codexHome: join(root, 'codex'), claudeHome: join(root, 'claude'), copilotHome: join(root, 'copilot') };
+  const result = await runInstaller({ ...homes, target: 'All' });
+  assert.match(result.stdout, /Installed \d+ skills to: Codex, Claude, Copilot/);
+  for (const home of Object.values(homes)) {
+    assert.ok(await exists(join(home, 'skills', inventory.skills[0].name, 'SKILL.md')), home);
+  }
 });

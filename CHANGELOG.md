@@ -6,6 +6,14 @@
 
 ### Added
 
+- The installer has a read-only `-Status` report (#355): for each selected
+  platform home, every skill's installed version against the source, local
+  modifications, and missing skills, with a summary line; it writes nothing and
+  refuses `-DryRun` or `-Force`. Dry runs and real runs print one line when an
+  installed copy is older than the source. `-Target All` installs Codex, Claude,
+  and Copilot in one run (`Both` is unchanged). `README.md` and the Claude, Codex,
+  and Copilot guides describe the update path.
+
 - Every skill now states one precedence rule under its title (#352, ADR 0017):
   a repository's own conventions win over the skill's defaults for labels,
   branch names, commit style, milestones, assignment, and closing-keyword
