@@ -6,6 +6,15 @@
 
 ### Added
 
+- `github-repo-configure` now has a minimum baseline an organization can hold every
+  repository to (#337): identity and repository creation, a default-branch ruleset,
+  file-size limits, OIDC and protected environments instead of stored credentials,
+  secret scanning with push protection, CodeQL, dependency review, audit-log
+  streaming, and exceptions that need an approver, a compensating control and an
+  expiry. `github-repo-bootstrap` and `github-security-response` point to it.
+  GitHub claims are checked against docs.github.com on 2026-10-22 and dated in the
+  skill, including the ruleset rule names; plan prices were not checked. No
+  scenario run yet.
 - `github-for-ado-users` now has "Planning a migration to GitHub" (#338): three
   readiness tiers for repositories and pipelines from objective signals, the rule
   that standardization is a separate screen checked against the baseline, source

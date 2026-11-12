@@ -43,7 +43,7 @@ when working locally. The later examples need particular renderer features;
 ZenUML additionally needs its integration. Their support notes are part of the
 copy-and-preview guidance, not a promise of identical GitHub rendering.
 
-**Checked against Mermaid 12.1.0.** Every example here except ZenUML parses
+**Checked against Mermaid 12.2.0.** Every example here except ZenUML parses
 under that version, which is pinned in `package.json` and checked by
 `tests/mermaid-diagrams.test.mjs` on every pull request, so a diagram that
 stops parsing fails CI. A parse check proves the syntax is valid for that
@@ -837,7 +837,7 @@ modeling), which is part of the syntax. Not every viewer has them. On
 2026-10-06 GitHub's viewer, on Mermaid 11.17.2, drew eight of the ten (Venn,
 Ishikawa, Wardley, tree view, railroad, Cynefin, event modeling, and swimlane)
 but not **use case** or **agent flow**, which need Mermaid 12. The parse check
-proves these examples are valid for Mermaid 12.1.0; it does not prove how any
+proves these examples are valid for Mermaid 12.2.0; it does not prove how any
 viewer draws them, so preview them in the viewer your readers will use. Their
 content is fictional.
 

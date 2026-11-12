@@ -85,6 +85,27 @@
     "alt": "Five VS Code things and where they live in IntelliJ IDEA: the Accounts icon becomes Settings, Version Control, GitHub; Source Control becomes the Git menu; Extensions become Plugins; Copilot Chat becomes the GitHub Copilot plugin; agent approvals become Junie modes, with brave mode not recommended."
   },
   {
+    "file": "module-0-12-coming-from-bitbucket.svg",
+    "page": "0_prerequisites/module-0-12-coming-from-bitbucket.md",
+    "title": "Rules move to rulesets",
+    "takeaway": "Same ideas, new names. Freeze before you migrate.",
+    "alt": "Five Bitbucket things mapped to GitHub: a project becomes an organization with teams, branch permissions become rulesets, merge checks become required reviews and status checks, default reviewers become code owners or required reviewers, and a delta migration does not exist so changes made during a migration are lost."
+  },
+  {
+    "file": "module-0-13-coming-from-jenkins.svg",
+    "page": "0_prerequisites/module-0-13-coming-from-jenkins.md",
+    "title": "A converter is a start",
+    "takeaway": "Rewrite the pipeline, do not port it line by line.",
+    "alt": "Five Jenkins things mapped to GitHub Actions: a Jenkinsfile becomes a workflow file, an agent becomes a runner, stages become jobs, post has no direct keyword, and a conversion tool cannot finish the job because most pipelines convert only partly and secrets, scripted pipelines and self-hosted runners are moved by hand."
+  },
+  {
+    "file": "module-0-14-using-github-with-a-managed-account.svg",
+    "page": "0_prerequisites/module-0-14-using-github-with-a-managed-account.md",
+    "title": "Your account lives inside the company",
+    "takeaway": "Check the account and address, then push.",
+    "alt": "Five things that differ with a managed account: the account is provisioned through the company login so name and email are not editable on GitHub, public repositories and gists are not available so use internal repositories, the account cannot collaborate outside the enterprise so use a personal account if policy allows, addresses move to your enterprise subdomain so hard-coded github.com links need updating, and Marketplace actions may not work so check each one."
+  },
+  {
     "file": "module-1-1-getting-started.svg",
     "page": "1_beginners/module-1-1-getting-started.md",
     "title": "Edit a photocopy, merge after review",
@@ -228,6 +249,13 @@
     "title": "Seven questions before you add one",
     "takeaway": "If you cannot list what it reaches, do not add it.",
     "alt": "A checklist of seven questions to answer before adding a skill or an MCP server: who publishes it, what it runs, what it can reach, what it needs to know, what it may do without asking, who else gets it, and whether there is a policy."
+  },
+  {
+    "file": "module-2-10-when-a-push-is-blocked.svg",
+    "page": "2_intermediate/module-2-10-when-a-push-is-blocked.md",
+    "title": "Fix the cause, not the message",
+    "takeaway": "Find which rule said no. Fix the cause, never the message.",
+    "alt": "A blocked push has four common causes: a secret detected by push protection, a ruleset that requires a pull request, a file over the size limit, and a rule set above the repository. For each, find which rule said no and who owns it, fix the cause rather than the message, and never bypass without approval."
   },
   {
     "file": "module-3-1-branch-protection-and-rulesets.svg",
