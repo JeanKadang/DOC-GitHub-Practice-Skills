@@ -5,7 +5,7 @@ description: Use when opening or updating a pull request in a repository you mai
 
 # GitHub Hygiene
 
-**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and the private path for security-sensitive findings.
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and no secret, confidential content, or security-sensitive finding in public text, which takes the private path in `github-security-response`.
 
 Conventions for PR flow, closure, and cleanup. Follow this instead of re-deriving from git history. Issue filing/triage is covered by the separate `github-issue-first` skill — file the issue first, then start work here. Cutting a release, tagging, branch protection, and milestones are `github-releases` — merge here, then ship there. Reviewing a PR before it reaches the merge decision is `github-pr-review`; multi-maintainer board setup is `github-projects`; a release that contains a security fix goes through `github-security-response` first.
 
@@ -94,7 +94,16 @@ gh issue list --state closed --limit 1000 --json number,title,body,stateReason `
 
 ## PR flow
 
-- Before the first branch in a repository this session, run the conventions probe in `github-issue-first` ("Read the repository's conventions first"); its branch names, commit style and closing keyword win over the defaults below.
+- Before the first branch in a repository this session, run the conventions probe (the same one as `github-issue-first`'s "Read the repository's conventions first"; the lines run unchanged in PowerShell). Its branch names, commit style and closing keyword win over the defaults below.
+
+  ```bash
+  git ls-files CONTRIBUTING.md AGENTS.md CLAUDE.md .github/      # documented rules, templates, forms
+  gh label list --limit 100
+  gh api "repos/{owner}/{repo}/milestones?state=open" --jq '.[].title'
+  gh issue list --state all --limit 20 --json number,assignees,milestone --jq '.[] | "#\(.number)\t\(.assignees | length) assignee(s)\t\(.milestone.title // "-")"'
+  gh pr list --state merged --limit 10 --json headRefName,title,body --jq '.[] | "\(.headRefName)\t\(.title)\t\(.body | split("\n")[0])"'
+  ```
+
 - One branch per issue, named the repository's way. With no convention, use `gh issue develop`'s `<N>-<title>` or a prefix: `fix/…`, `feat/…`, `ci/…`, `test/…`, `docs/…`, `release/x.y.z`. Branch from a fresh `git pull`ed main — never commit on main.
 - `main` throughout this skill means the repo's default branch. Look it up with `gh repo view --json defaultBranchRef -q .defaultBranchRef.name` and substitute it where it differs.
 - Prefer `gh issue develop <N> --name <branch> --base main --checkout` to start work: it creates the branch and links it to the issue. Start the PR body with `Refs #N`; replace it with `Closes #N` only after the acceptance gate passes. When falling back to `git checkout -b`, add the same `Refs #N` link manually. In a repository whose own convention puts `Closes #N` (or another closing keyword) in the pull request from the start, keep that convention rather than imposing `Refs #N`; the merge then closes the issue, so every in-scope criterion needs recorded evidence before the merge, and the after-merge audit in "Acceptance criteria are closure gates" still applies.
@@ -167,7 +176,7 @@ gh run view <run-id> --log-failed          # only the failing steps
   - A **ruleset** on main: require the CI status checks and at least one PR review; contributors never push to main. See `github-releases`.
   - Native blocked-by/blocks relations plus `Depends on: #N` body lines, so pick-up order is visible.
   - CODEOWNERS for review routing; CONTRIBUTING.md pointing at the conventions in this skill.
-  - Assign every issue at triage — unassigned means unowned.
+  - Assign every issue at triage, unless the repository's practice is otherwise — unassigned means unowned.
 
 ## Sub-issues for any large-scope issue, solo repo included
 
@@ -271,7 +280,7 @@ pull requests and consumers' paths to keep working.
 | Merging own PR without asking | Ask once per batch; check whether the maintainer already merged it |
 | Treating merged PR or green CI as proof every criterion passed | Evaluate each criterion, record evidence, and keep the issue open until all in-scope criteria pass |
 | Checking a removed or deferred criterion as delivered | Record the scope decision; link follow-up work; never falsify completion |
-| Letting `Closes #N` auto-close an unevaluated issue | Use `Refs #N` until the acceptance gate passes; reopen immediately if it closes early |
+| Letting `Closes #N` auto-close an unevaluated issue | Use `Refs #N` until the acceptance gate passes (where the repository uses `Closes` from the start, hold the merge instead); reopen immediately if it closes early |
 | Committing on main before branching | Branch first; if it happens: branch from the commit, then `git reset --hard origin/main` on main |
 | `gh api -f sub_issue_id=<id>` rejected with "not of type integer" | Use `-F` (capital), not `-f` — sub_issue_id must be sent as a typed integer, not a string |
 | Linking a sub-issue by its `number` instead of its `id` | The sub-issues endpoint wants the internal `id` — `gh api repos/{owner}/{repo}/issues/<number> --jq .id` first |

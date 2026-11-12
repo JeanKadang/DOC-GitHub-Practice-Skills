@@ -52,7 +52,8 @@ existing labels and milestones, and recent merged pull requests.
 - pull request body layout beyond the evidence it must carry;
 - merge method (already "use the repository's configured method").
 
-**Invariants (hold everywhere):**
+**Invariants (hold everywhere), the same four in every skill's precedence
+line:**
 
 - no merge, release, tag, or destructive operation without the maintainer's
   explicit approval;
@@ -61,11 +62,15 @@ existing labels and milestones, and recent merged pull requests.
   a closing keyword, that evidence is recorded **before** the merge;
 - after every merge, audit the linked issue's state and body and reopen it if
   it closed with a criterion unmet (ADR 0001), whatever keyword was used;
-- a security-sensitive finding never goes into a public issue, branch, or pull
-  request (`github-security-response`);
-- no secret or confidential content in public text;
-- issue-first: a finding is recorded before it is acted on, in a repository
-  where the user may file.
+- no secret, confidential content, or security-sensitive finding in a public
+  issue, branch, pull request, or comment; it takes the private path in
+  `github-security-response`.
+
+**Issue-first is neither.** Recording a finding before acting on it is this
+set's working mode, but `github-issue-first` already lets the maintainer scale
+it down ("just fix it" for one finding, or "Scaling ceremony to repo risk" for
+a low-stakes repository). That is the maintainer's decision, asked once, not
+something a repository's observed habits switch off silently.
 
 `github-issue-first` and `github-hygiene` read the repository's conventions
 with a short probe before the first issue or branch in a repository, and

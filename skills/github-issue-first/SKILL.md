@@ -5,7 +5,7 @@ description: Use whenever you are working in a git repository that has a GitHub 
 
 # GitHub issue-first workflow
 
-**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and the private path for security-sensitive findings.
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and no secret, confidential content, or security-sensitive finding in public text, which takes the private path in `github-security-response`.
 
 When you're working in a repo and you notice something worth fixing that isn't
 the exact thing you were asked to do right now — a bug, a stale doc, a missing
@@ -157,8 +157,10 @@ triage: write them into the issue body before implementation starts.
 
 ### Labels
 
-Every issue needs exactly one priority label and at least one category label.
-Create labels that don't exist yet on the repo before using them:
+Use the repository's label scheme when it has one (the conventions probe shows
+it). In this skill's default scheme, for a repository with none, every issue
+carries exactly one priority label and at least one category label; create
+only the labels you use, before using them:
 
 ```bash
 gh label list   # check what already exists first
@@ -347,7 +349,8 @@ string preserved.
 ## Sanity check before moving on
 
 After filing a batch, list the open issues back with their labels and
-assignee to confirm nothing slipped through unlabeled or unassigned:
+assignee to confirm nothing slipped through unlabeled, or unassigned in a
+repository that assigns its issues:
 
 ```bash
 gh issue list --state open --json number,title,labels,assignees \
@@ -361,8 +364,9 @@ gh issue list --state open --json number,title,labels,assignees `
   -q 'sort_by(.number) | .[] | "\(.number)\t\(.assignees[0].login)\t\([.labels[].name]|join(","))"'
 ```
 
-If anything comes back with no priority label, no category label, or no
-assignee, fix it before considering the batch done.
+If anything comes back without a label the repository's scheme requires (in
+the default scheme, a priority and a category label), or without an assignee
+where the repository assigns issues, fix it before considering the batch done.
 
 If the repo has a Projects board, the batch is not done until the new issues are
 on it — see the `github-projects` skill. Branch/PR conventions for acting on
@@ -498,7 +502,9 @@ Every close carries a reason a human can read.
 
 GitHub closing keywords do not evaluate the issue. Before allowing `Closes #N`
 to merge, use `github-hygiene` to perform its acceptance-criteria closure gate.
-Use `Refs #N` while any criterion remains unmet or unevaluated.
+Use `Refs #N` while any criterion remains unmet or unevaluated; in a repository
+whose convention puts a closing keyword in the pull request from the start, keep
+it, but do not let that pull request merge until the gate passes.
 
 `Refs #N` avoids a PR-body closing keyword; it does not guarantee the issue
 stays open when GitHub has a connected development branch. After every merge,
