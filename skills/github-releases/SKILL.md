@@ -1,6 +1,6 @@
 ---
 name: github-releases
-description: Use when cutting a release, tagging a version, configuring branch protection or rulesets, or creating/closing milestones — before running git tag, gh api .../rulesets, or any release step.
+description: Use when cutting a release, tagging a version, a version bump, writing release notes or a changelog entry for a release, configuring branch protection or rulesets, or creating/closing milestones — before running git tag, gh release create, gh api .../rulesets, or any release step.
 ---
 
 # GitHub Releases

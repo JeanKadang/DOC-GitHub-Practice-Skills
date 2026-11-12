@@ -1,6 +1,6 @@
 ---
 name: github-pr-review
-description: Use when reviewing someone else's pull request, checking out a contributor's branch to test it, or handling a PR that came from a fork — before approving, requesting changes, or leaving line comments.
+description: Use when reviewing a pull request authored by someone else, checking out a contributor's branch to test it, or handling a PR that came from a fork — before approving, requesting changes, or leaving line comments. Your own pull request is github-hygiene.
 ---
 
 # Reviewing pull requests

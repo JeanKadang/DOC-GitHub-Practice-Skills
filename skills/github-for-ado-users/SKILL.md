@@ -21,10 +21,8 @@ lock on a file at once; Git gives every clone the entire history, and
 every commit happens locally, before anyone pushes anywhere — there's no
 central lock to wait for. No amount of relabeling nouns bridges that gap;
 it has to be learned as its own concept before the table below is useful.
-If this repository's colleague-training program is available, its
-`education/0_prerequisites/module-0-1-what-is-version-control.md` (this repository only) covers the
-concept in plain terms — but the two sentences above are enough to name
-the jump even without it.
+The two sentences above are enough to name the jump; if the person wants it in
+plain terms, explain distributed version control before the mapping table.
 
 **The single most expensive mistake (once you're on Git): treating
 milestones as sprints.** See below.

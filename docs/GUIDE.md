@@ -42,7 +42,8 @@ The following sections describe the canonical skills as they exist in v0.5.0.
 
 ### `github-hygiene`
 
-- **Trigger:** Work branches, closure, merge, or cleanup are involved.
+- **Trigger:** Your own work branches and pull requests, closure, merge, or
+  cleanup are involved.
 - **Responsibilities and outputs:** Maintain the issue-linked traceability
   chain, check that a branch publishes only in-scope files before every push
   and pull request, evaluate criteria, record evidence, and perform approved
@@ -53,8 +54,9 @@ The following sections describe the canonical skills as they exist in v0.5.0.
 
 ### `github-releases`
 
-- **Trigger:** Cutting a release, tagging a version, configuring branch
-  protection/rulesets, or creating/closing milestones.
+- **Trigger:** Cutting a release, tagging a version, a version bump, release
+  notes or a release changelog entry, configuring branch protection/rulesets,
+  or creating/closing milestones.
 - **Responsibilities and outputs:** Maintain milestone conventions, configure
   and audit rulesets, run the release recipe, and keep release-note
   automation accurate.

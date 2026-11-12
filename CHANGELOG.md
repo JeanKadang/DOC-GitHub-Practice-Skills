@@ -85,6 +85,16 @@
   the bare `AB#125` is used until the closure gate passes. Source: Microsoft
   Learn, read 2026-10-11. Scenario record: `docs/skill-scenarios.md` (Run 8).
 
+### Changed
+
+- Skill portability and triggers (#356): `github-for-ado-users` no longer names
+  a file under `education/`, which installed copies do not have, and a new test
+  (`tests/skill-portability.test.mjs`) keeps skill links inside the installed
+  skill directory. `github-releases` now triggers on a version bump, release
+  notes, and a changelog entry; `github-hygiene` and `github-pr-review` state
+  the authorship boundary (your own pull request versus one someone else wrote)
+  in their descriptions.
+
 ## [0.5.0] - 2026-10-10
 
 ### Changed
