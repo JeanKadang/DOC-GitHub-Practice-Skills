@@ -342,8 +342,9 @@ these issues live in `github-hygiene`, release conventions live in
 `github-releases`, and reviewing a PR is `github-pr-review`.
 
 **Security findings are the exception to filing publicly.** An unpatched
-vulnerability, an exploitable defect, or a committed credential must not go into a
-public issue — that is disclosure. Use `github-security-response` instead.
+vulnerability, an exploitable defect, a committed credential, or a confidential
+document pushed to a public repository must not go into a public issue — that is
+disclosure. Use `github-security-response` instead.
 
 ## Decisions, brainstorming, and what does *not* belong in an issue
 

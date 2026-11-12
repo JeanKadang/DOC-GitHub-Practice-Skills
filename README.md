@@ -41,7 +41,8 @@ after each skill milestone.
 - `github-repo-bootstrap` creates and verifies a new repository safely.
 - `github-repo-configure` elicits org-optional settings and issue/PR
   templates for an already-existing repository.
-- `github-security-response` keeps exploitable findings and credentials private.
+- `github-security-response` keeps exploitable findings, credentials, and
+  confidential documents private.
 - `github-projects` adds a maintained shared board when multiple maintainers
   need one.
 - `github-for-ado-users` maps Azure DevOps concepts to GitHub without importing

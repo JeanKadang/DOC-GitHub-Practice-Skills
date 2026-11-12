@@ -97,10 +97,12 @@ The following sections describe the canonical skills as they exist in v0.5.0.
 
 ### `github-security-response`
 
-- **Trigger:** A secret, vulnerability, security alert, or private reporting
-  need is found.
+- **Trigger:** A secret, a confidential document pushed to a public repo,
+  a vulnerability, a security alert, or a private reporting need is found.
 - **Responsibilities and outputs:** Rotate credentials first, contain
-  disclosure, assess reachability, use private advisories, and harden controls.
+  disclosure (including asking GitHub Support to remove pull request refs and
+  cached views of a pushed document), assess reachability, use private
+  advisories, and harden controls.
 - **Boundary and handoff:** Never file an unpatched exploitable finding
   publicly; return ordinary non-sensitive work to `github-issue-first`.
 
