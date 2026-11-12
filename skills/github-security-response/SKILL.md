@@ -1,6 +1,6 @@
 ---
 name: github-security-response
-description: Use when a security problem is found in a GitHub repo — a credential or key committed to history, a Dependabot or code-scanning alert to triage, a vulnerability reported by a user, or a repo that needs a private reporting channel and SECURITY.md. Also use before publishing a fix for a vulnerability, since the ordinary public issue-and-PR flow leaks it.
+description: Use when a security problem is found in a GitHub repo — a credential or key committed to history, a confidential or private document (an assessment, customer or personal data, internal policy) pushed to a public repo or pull request, a Dependabot or code-scanning alert to triage, a vulnerability reported by a user, or a repo that needs a private reporting channel and SECURITY.md. Also use before publishing a fix for a vulnerability, since the ordinary public issue-and-PR flow leaks it.
 ---
 
 # Security response
@@ -45,6 +45,55 @@ not its identifier (an access key ID, a username, a token's visible prefix). Tha
 holds even when it looks like a documentation example or a placeholder; say you
 think it is one, and why, without repeating it. Reference where it was (file and
 line), not what it was.
+
+## A confidential document was pushed
+
+Not every leak is a secret. An assessment, a customer document, personal data, or
+internal policy pushed to a public repository has nothing to rotate, and secret
+scanning does not detect it. If the document *contains* a credential, do the
+secret steps above first; then continue here. The order still matters: stop the
+spread before cleaning up.
+
+1. **Stop the spread.** Do not link, quote, or name the file, its contents, the
+   commit, or the pull request in any public issue, comment, commit message, or
+   pull request body. A comment that closes the pull request says it was
+   superseded, nothing more.
+2. **Contain it on GitHub.** Find every branch and commit that carries it, close
+   any open pull request that includes it, delete those branches, and list forks:
+
+   ```bash
+   git fetch origin --prune
+   git log --all --oneline -- <path>               # every commit that touches it
+   git branch -r --contains <commit-sha>           # every branch that carries it
+   gh api repos/{owner}/{repo}/forks --jq '.[].full_name'
+   ```
+
+   Closing a pull request and deleting a branch are reversible, but deleting a
+   branch is still a destructive step: confirm with the maintainer first. Neither
+   removes the data: the pull request's `refs/pull/<N>/head` ref is read-only, and
+   the commits stay reachable by their SHA and through any pull request that
+   references them.
+3. **Notify the data owner and record the incident privately**, in the owner's
+   own incident process, not in this repository's issues: what was exposed, from
+   when to when, on which branches and pull requests.
+4. **Ask GitHub Support, through the support portal, to remove what you cannot.**
+   Support can dereference or delete the affected pull requests, remove cached
+   views, and run garbage collection. Give the repository, the pull request
+   numbers, and the first commit SHAs there, privately. Support's cleanup applies
+   only when no fork still references the data: a fork keeps it, and you must
+   contact its owner yourself.
+5. **Rewrite history only with the maintainer's explicit go-ahead**, and only if
+   the document reached a branch that stays (for example the default branch).
+   Use `git filter-repo --sensitive-data-removal`, then follow step 4 for what the
+   rewrite leaves behind.
+6. **Prevent recurrence**: the scope check before every push and pull request in
+   `github-hygiene`, `.gitignore` rules for the folders such documents live in,
+   and the baseline in `github-repo-configure` for push protection across
+   repositories.
+
+GitHub's behaviour above (read-only pull request refs, cached views, what Support
+removes, forks) is from GitHub's "Removing sensitive data from a repository"
+documentation, checked 2026-11-12.
 
 ## Private reporting and advisories
 
@@ -128,6 +177,8 @@ detection; this is the response):
 | Filing a public issue for an unpatched vulnerability | Private advisory + temporary private fork |
 | Quoting the secret in the issue or commit that reports it | Reference the location, never the value |
 | Assuming a history rewrite makes the secret gone | Forks and clones keep it; rotation is what matters |
+| Closing a leaked pull request with a comment that names the file | Say "superseded"; give details only to Support and the data owner, privately |
+| Assuming a deleted branch removed a confidential document | The pull request ref, cached views, and SHAs remain; ask GitHub Support |
 | Rewriting shared history without asking | Destructive and coordinated — maintainer decides |
 | Treating CVSS severity as priority | Judge reachability; record the reasoning on the issue |
 | Bulk-dismissing alerts | Dismiss individually, with a recorded reason |

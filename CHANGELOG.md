@@ -6,6 +6,14 @@
 
 ### Added
 
+- `github-security-response` now covers a confidential document that is not a
+  secret (an assessment, customer or personal data, internal policy) pushed to a
+  public repository or pull request (#351): stop the spread before cleaning up,
+  contain it on GitHub, notify the data owner privately, ask GitHub Support to
+  remove pull request refs and cached views, rewrite history only with the
+  maintainer's go-ahead, and prevent recurrence. Its description triggers on
+  the case, and `github-issue-first` routes it there. GitHub's behaviour is
+  checked against "Removing sensitive data from a repository" on 2026-11-12.
 - `github-repo-configure` now has a minimum baseline an organization can hold every
   repository to (#337): identity and repository creation, a default-branch ruleset,
   file-size limits, OIDC and protected environments instead of stored credentials,
