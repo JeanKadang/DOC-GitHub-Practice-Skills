@@ -9,7 +9,7 @@ export const CANONICAL_SKILLS = [
   { name: 'github-for-ado-users', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-for-gitlab-users', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-hygiene', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
-  { name: 'github-issue-first', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
+  { name: 'github-issue-first', requiredFiles: ['SKILL.md', 'agents/openai.yaml', 'decisions-and-discussions.md', 'issue-types-and-templates.md'] },
   { name: 'github-pr-review', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-projects', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },
   { name: 'github-releases', requiredFiles: ['SKILL.md', 'agents/openai.yaml'] },

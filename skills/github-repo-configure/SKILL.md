@@ -31,7 +31,7 @@ behind it.
    `github-repo-bootstrap`'s scaffolding matrix for the full
    reasoning behind this conditional stance.
 2. **Discussions** — "Enable Discussions? If yes, which categories does this
-   repo actually need?" See `github-issue-first`'s Discussions section for
+   repo actually need?" See `github-issue-first`'s `decisions-and-discussions.md` for
    what each category (`Ideas`, `Q&A`, `RFC`, `Announcements`) is for — don't
    cargo-cult all four onto a repo that only needs one or two.
 3. **Project board** — "Attach this repo to a board?" Defer entirely to
@@ -49,7 +49,7 @@ behind it.
 If the repo doesn't already have `.github/ISSUE_TEMPLATE/` forms or a pull
 request template, offer to add them — recommend it, don't silently add it,
 the same posture `github-issue-first` already takes for templates in
-general. This skill's `templates/` directory ships four ready-to-copy,
+general (its `issue-types-and-templates.md`). This skill's `templates/` directory ships four ready-to-copy,
 repo-agnostic files:
 
 - `templates/bug.yml` — a Bug Report issue form.

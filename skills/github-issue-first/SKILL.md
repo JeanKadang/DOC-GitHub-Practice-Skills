@@ -1,6 +1,6 @@
 ---
 name: github-issue-first
-description: Use whenever you are working in a git repository that has a GitHub remote and you notice a bug, gap, stale doc, missing test, CI failure, or any other improvement worth doing, or when the user asks you to make a change there (fix a typo, add a feature). Before fixing it, discussing it at length, or editing, file it as a GitHub issue first via gh issue create — labeled (priority + category) and assigned to the current user — unless the repo is low-stakes, where you ask once whether to use the full flow or a lighter touch. Trigger proactively, not only when told to file or track — but file only where you have write or triage permission, and confirm once per repo per session before the first filing. In someone else's repo, use github-contributing instead. Also use this skill when the user asks you to prioritize, triage, reprioritize, or map dependencies between existing issues on a repo.
+description: Use in a git repository with a GitHub remote when you notice a bug, gap, stale doc, missing test, CI failure, or other improvement worth doing, file it as a GitHub issue (gh issue create) before fixing it or discussing it at length. Trigger proactively, but file only where you have write or triage permission, and confirm once per repo per session before the first filing. In someone else's repo, use github-contributing instead. Also use when the user asks to prioritize, triage, reprioritize, or map dependencies between existing issues.
 ---
 
 # GitHub issue-first workflow
@@ -122,24 +122,10 @@ conventions gets this skill's defaults.
 ## Filing a single issue
 
 ```bash
-gh issue create \
-  --title "<short, specific, states the problem not the fix>" \
-  --body "<what's wrong, where (file:line if applicable), how you found it, and what fixing it would involve>" \
-  --assignee "@me" \
-  --label "<priority-label>" \
-  --label "<category-label(s)>"
+gh issue create --title "<short, specific, states the problem not the fix>" --body "<what is wrong, where (file:line), how you found it, what fixing it involves>" --assignee "@me" --label "<priority-label>" --label "<category-label(s)>"
 ```
 
-PowerShell:
-
-```powershell
-gh issue create `
-  --title "<short, specific, states the problem not the fix>" `
-  --body "<what's wrong, where (file:line if applicable), how you found it, and what fixing it would involve>" `
-  --assignee "@me" `
-  --label "<priority-label>" `
-  --label "<category-label(s)>"
-```
+The same line runs in PowerShell (keep `"@me"` quoted there).
 
 **Title** states the defect or gap, not the task of fixing it — "Status badge
 falls through to the default color" not "Fix badge bug." **Body** gives enough
@@ -224,52 +210,13 @@ might want `visualization` or `accessibility`). Reuse an existing label if a
 close match already exists rather than creating near-duplicates — check
 `gh label list` first.
 
-### Issue types (organization repos)
+### Issue types, templates and forms
 
-Separate from labels, GitHub has a first-class **issue type** field — the closest
-equivalent to a work-item type in Azure DevOps or Jira. Set it at creation:
-
-```bash
-gh issue create --type Bug --title "..." --body "..." --assignee "@me" --label P1
-gh issue edit <N> --type Feature      # or --remove-type
-```
-
-**Issue types are defined at the organization level.** On a personal account the
-endpoint 404s and the flag has nothing to select:
-
-```bash
-gh api "orgs/<org>/issue-types" --jq '.[].name'
-```
-
-So: on an org repo, use the type field for *what kind of work this is* and keep
-labels for priority and area. On a personal repo, encode the kind as a category
-label — don't invent a parallel scheme. The axes are:
-
-| Axis | Where | Example |
-|---|---|---|
-| Kind of work | Issue type (org) or category label | Bug, Feature, Task, Epic |
-| Urgency/importance | Priority label | P0–P3 |
-| Area/domain | Category label | `tooling`, `documentation`, `visualization` |
-
-Keep types coarse. A dozen types is a taxonomy nobody applies consistently.
-
-### Issue templates and forms
-
-Check `.github/ISSUE_TEMPLATE/` before filing. If the repo has templates, **fill
-out the fields they define** rather than free-forming a body — a repo that asks
-for reproduction steps and version wants those on every issue, including yours.
-Use `gh issue create --template <name>.yml` (non-interactive `--body` bypasses
-the template entirely, so paste the template's sections into the body yourself).
-
-If a repo has no templates and is about to take outside contributors, that is
-worth recommending: issue *forms* (`.github/ISSUE_TEMPLATE/*.yml` with `body:`
-fields) beat markdown templates because required fields are actually enforced and
-`labels:`/`assignees:` are applied automatically. Add `config.yml` with
-`blank_issues_enabled: false` plus contact links to route questions away from the
-tracker. Recommend it, don't silently add it — templates change what every future
-contributor sees. `github-repo-configure` ships ready-to-copy, generic
-Bug Report/Improvement forms plus a matching `config.yml` — reuse those
-rather than drafting new ones from scratch.
+On an organization repository, set the issue **type** as well as labels. If the
+repository has `.github/ISSUE_TEMPLATE/`, fill the fields its templates define
+instead of free-forming a body (a non-interactive `--body` bypasses the template).
+Read [issue-types-and-templates.md](issue-types-and-templates.md) before setting a
+type, or before filing in a repository with templates or forms.
 
 ### Assignment
 
@@ -337,14 +284,10 @@ are different axes. Only bump for real blocking fan-out.
 
 ## Windows / Git Bash gotcha
 
-If you're running `gh` through Git Bash on Windows (MSYS), an issue title or
-body argument that *starts* with something that looks like an absolute path
-(e.g. `/api/export is broken`) can get silently mangled by MSYS's path
-conversion into a Windows path (`C:/Program Files/Git/api/export is broken`).
-Avoid leading your title/body with a bare `/segment/...` — rephrase so it
-doesn't start with a slash (`Bug: /api/export ...`, `The /api/export endpoint
-...`), or set `MSYS_NO_PATHCONV=1` for the command if you need the literal
-string preserved.
+In Git Bash on Windows (MSYS), a title or body that *starts* with an absolute-looking
+path (`/api/export is broken`) is silently rewritten to a Windows path
+(`C:/Program Files/Git/api/...`). Don't start with a bare `/segment` (write
+`The /api/export endpoint ...`), or set `MSYS_NO_PATHCONV=1` for that command.
 
 ## Sanity check before moving on
 
@@ -380,8 +323,7 @@ disclosure. Use `github-security-response` instead.
 
 ## Decisions, brainstorming, and what does *not* belong in an issue
 
-Not every durable thought is an issue. Three different things get confused, and
-putting them all in the tracker is what turns a backlog into noise.
+Not every durable thought is an issue:
 
 | Thing | Home | Why |
 |---|---|---|
@@ -390,79 +332,8 @@ putting them all in the tracker is what turns a backlog into noise.
 | A decision that was made | **ADR file in `docs/adr/`** | Immutable record, versioned with the code it constrains |
 | A decision that must be made | **Issue labeled `decision-needed`** | It *is* actionable work: someone must decide |
 
-### Architecture Decision Records
-
-A single growing `decisions.md` is the anti-pattern — append-only, unreadable,
-and edits silently rewrite a record that was supposed to be permanent. Use one
-immutable file per decision:
-
-```
-docs/adr/0001-use-postgres-over-mongo.md
-docs/adr/0014-move-session-store-to-redis.md
-```
-
-Each file: **Context / Decision / Consequences / Status** (`Proposed`, `Accepted`,
-`Superseded by 0014`). **Never edit a decided ADR to reverse it** — write a new
-one that supersedes it, and set the old one's status. The history of what you
-believed and when is the point.
-
-The GitHub lifecycle maps onto this cleanly:
-
-1. Question arises → issue labeled `decision-needed` (it needs a human, not code)
-2. Options explored → Discussion, or a draft ADR PR with `Status: Proposed`
-3. **The PR that adds the ADR is the deliberation record** — review comments are
-   the debate, preserved and linked, without any extra ceremony
-4. Merged with `Status: Accepted`, PR body carries `Closes #<decision-needed>`
-5. Reversed later → new ADR supersedes it; the old file is never touched
-
-Why `docs/adr/` and not the GitHub Wiki: the Wiki is a separate repo with no PRs,
-no review, and no coupling to the branch that changed the behaviour. An ADR in the
-repo branches with the change that motivated it.
-
-### Discussions (brainstorming and open-ended questions)
-
-`brainstorm.md` in a repo has no threading, no voting, no answer-marking, and
-every edit costs a PR. Use **Discussions** instead — enable it under
-**Settings → General → Features** if the repo doesn't have it yet.
-
-**Categories** (create the ones a repo actually needs, don't cargo-cult all of
-them):
-
-| Category | For | Typical shape |
-|---|---|---|
-| `Ideas` | An unshaped proposal, "what if we..." | Open-ended, may never converge — that's fine |
-| `Q&A` | A question with one right answer | Gets an accepted answer, then closes itself |
-| `RFC` | A proposal specific enough to have real trade-offs | Converges to a decision — accept, reject, or convert to a `decision-needed` issue |
-| `Announcements` (maintainer-only posting) | Release notes, deprecations, policy changes | One-way; use sparingly, don't duplicate `CHANGELOG.md` |
-
-**Triage cadence:** when you touch a repo's Discussions (same moment as an
-issue triage pass, not a separate ritual), check for: a `Q&A` post with a
-correct answer buried in replies that was never marked accepted (mark it —
-that's what makes it findable later), an `RFC` that's converged but nobody
-converted it, and an `Ideas` post that's been actionable for a while without
-anyone noticing.
-
-**Convert a discussion to an issue at the moment it becomes actionable** — that
-conversion is the boundary between exploring and committing, and it is the whole
-reason to keep them separate. Exploration that never converges stays a discussion
-instead of rotting as a stale issue nobody can close. `gh discussion` is
-preview/GraphQL-only with no built-in convert command, so do it explicitly:
-
-1. File the issue normally (title, body, labels, assignee, milestone — the
-   same as any other issue in this skill), with a line in the body linking
-   back: `Converted from discussion #<N>.`
-2. Comment on the discussion linking forward to the new issue (`Converted to
-   #<N>.`) so anyone landing on the discussion later finds the live work.
-3. Mark the discussion's status: an `RFC` that converged gets its accepted
-   answer noted (or is closed, if the category supports it); don't just
-   abandon it mid-thread once the issue exists.
-
-Never let a discussion silently duplicate an issue that already tracks the
-same work — link them together the moment you notice, the same way you'd
-record a dependency between two issues (see below).
-
-Coming from Azure DevOps or Jira, see `github-for-ado-users` for how these map to
-what you had.
+Read [decisions-and-discussions.md](decisions-and-discussions.md) before recording
+a decision (an ADR), starting or converting a Discussion, or triaging Discussions.
 
 ## Closing issues: the other half of the job
 
