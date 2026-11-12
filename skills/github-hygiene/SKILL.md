@@ -108,6 +108,42 @@ gh issue list --state closed --limit 1000 --json number,title,body,stateReason `
 - **Auto-merge is the maintainer's switch, not the agent's.** GitHub's auto-merge merges a pull request the moment its required checks pass, so enabling it is the merge approval. Turn it on only when the maintainer has said to, only on a pull request whose acceptance criteria already have recorded evidence, and never on one carrying `Closes #N` unless every in-scope criterion is met: an auto-merged `Closes` closes the issue with no chance to run the closure gate first. Otherwise leave it off, merge by hand after approval, and audit the issue afterwards. Check whether the repo allows it with `gh api repos/{owner}/{repo} --jq .allow_auto_merge`; enabling it on a pull request is `gh pr merge <N> --auto` with the repo's merge flag.
 - Merge with the repo's configured method. Check `gh repo view --json mergeCommitAllowed,squashMergeAllowed,rebaseMergeAllowed`, use the matching flag (`gh pr merge <N> --merge`, `--squash`, or `--rebase`), and when several are allowed follow the repo's existing history. If `gh repo view --json deleteBranchOnMerge` reports false, delete the merged remote branch yourself.
 
+### Scope check before push and pull request
+
+Before every `git push` and before `gh pr create`, read the file list the branch
+will publish. Secret scanning and push protection catch credentials, not an
+unrelated document, export, or archive that was staged by accident, and once it
+is on a public pull request, deleting the branch does not remove it.
+
+```bash
+git status --short                              # what is staged, modified, untracked
+git diff --cached --name-only                   # what the next commit adds
+git diff --stat origin/main...HEAD              # everything the push and PR publish
+git diff --numstat origin/main...HEAD | awk '$1=="-"'   # binary files on the branch
+```
+
+PowerShell (the binary filter differs):
+
+```powershell
+git status --short
+git diff --cached --name-only
+git diff --stat origin/main...HEAD
+git diff --numstat origin/main...HEAD | Where-Object { $_ -match '^-\s+-\s' }
+```
+
+- Every path must be explained by the issue or the pull request body. A path you
+  cannot explain is not pushed.
+- **Stop and ask** before pushing a binary, a PDF, an office document, an image
+  that is not part of the change, an archive, or anything in a directory the
+  change has no reason to touch.
+- Stage files by name. Do not run `git add -A` or `git add .` without reading
+  the list it produces before committing.
+- On a public repository, ask the maintainer before pushing any file outside the
+  issue's scope, even one that looks harmless.
+
+If an out-of-scope confidential file is already on a public branch or pull
+request, stop and follow `github-security-response`.
+
 ### When CI goes red
 
 Never re-run a red job hoping it turns green. Read the failure first:
@@ -237,4 +273,5 @@ pull requests and consumers' paths to keep working.
 | `gh api -f sub_issue_id=<id>` rejected with "not of type integer" | Use `-F` (capital), not `-f` — sub_issue_id must be sent as a typed integer, not a string |
 | Linking a sub-issue by its `number` instead of its `id` | The sub-issues endpoint wants the internal `id` — `gh api repos/{owner}/{repo}/issues/<number> --jq .id` first |
 | Adding another feature to an overgrown single file or flat root | Raise a restructure issue first and sequence it before the feature work; see "Structure drift" |
+| Pushing after `git add -A` or `git add .` without reading the file list | Run the scope check before every push and `gh pr create`; stage files by name |
 | Re-running a red CI job without reading the log | `gh run view <id> --log-failed` first; rerun only a diagnosed flake |

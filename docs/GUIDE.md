@@ -38,8 +38,9 @@ The following sections describe the canonical skills as they exist in v0.5.0.
 
 - **Trigger:** Work branches, closure, merge, or cleanup are involved.
 - **Responsibilities and outputs:** Maintain the issue-linked traceability
-  chain, evaluate criteria, record evidence, and perform approved merge and
-  cleanup steps.
+  chain, check that a branch publishes only in-scope files before every push
+  and pull request, evaluate criteria, record evidence, and perform approved
+  merge and cleanup steps.
 - **Boundary and handoff:** Individual PR review belongs to
   `github-pr-review`; releasing and tagging hand off to `github-releases`.
 

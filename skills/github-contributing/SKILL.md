@@ -63,6 +63,11 @@ git push -u origin fix/<short-description>
 gh pr create --repo <owner>/<repo> --title "..." --body "..."
 ```
 
+Before the push and before `gh pr create`, run the scope check in
+`github-hygiene`'s PR flow, comparing against the upstream base you branched
+from: a stray file in a pull request to someone else's public repository is
+outside your control once it is pushed.
+
 `gh pr create` without `--repo` targets the fork itself if run from inside it and
 `origin` is the fork — pass `--repo <owner>/<repo>` explicitly, or `--base` and
 let `gh` infer the upstream base, to avoid accidentally opening the PR against

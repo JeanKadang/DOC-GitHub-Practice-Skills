@@ -6,6 +6,13 @@
 
 ### Added
 
+- `github-hygiene` now has a scope check before every push and `gh pr create`
+  (#350): read `git status`, the staged names and the branch's diff against
+  the base, list binary files (Bash and PowerShell forms), explain every path
+  from the issue or pull request, stop and ask on binaries, PDFs, office
+  documents, archives and unrelated directories, and never stage blindly with
+  `git add -A` or `git add .`. `github-contributing` and
+  `github-repo-bootstrap` point to it.
 - `github-security-response` now covers a confidential document that is not a
   secret (an assessment, customer or personal data, internal policy) pushed to a
   public repository or pull request (#351): stop the spread before cleaning up,
