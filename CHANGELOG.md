@@ -6,6 +6,17 @@
 
 ### Added
 
+- Every skill now states one precedence rule under its title (#352, ADR 0017):
+  a repository's own conventions win over the skill's defaults for labels,
+  branch names, commit style, milestones, assignment, and closing-keyword
+  spelling, while maintainer approval, recorded evidence before closure, the
+  after-merge issue audit, and the private security path hold everywhere.
+  `github-issue-first` gains a "Read the repository's conventions first" probe
+  that `github-hygiene` runs before the first branch; milestones and `@me`
+  assignment apply only where the repository uses them (`github-issue-first`,
+  `github-releases`); and `github-hygiene` keeps a repository's own
+  `Closes #N` habit, with evidence recorded before the merge.
+
 - `github-hygiene` now has a scope check before every push and `gh pr create`
   (#350): read `git status`, the staged names and the branch's diff against
   the base, list binary files (Bash and PowerShell forms), explain every path

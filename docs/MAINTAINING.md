@@ -16,7 +16,10 @@ supersede. A roster addition or removal is exactly this class of change — ADR
 plan each independently missed `CHANGELOG.md` before this line existed to catch
 it. Human review must confirm that:
 
-- issue-first work retains ownership, priority, category, milestone, and scope;
+- issue-first work retains ownership, priority, category, milestone, and scope
+  (in another repository, milestone and assignment follow its practice);
+- every skill keeps the identical precedence line under its title: defaults
+  yield to a repository's conventions, invariants do not (ADR 0017);
 - `Refs #N` remains until criterion evidence passes the closure gate;
 - security-sensitive findings never enter a public issue or branch;
 - approval, merge, release, and destructive operations remain explicit gates;

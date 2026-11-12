@@ -34,6 +34,8 @@ text is not edited.
 
 - [0001](0001-refs-closes-connected-branch-closure.md) — `Refs`/`Closes`
   closure semantics must account for GitHub's connected-branch auto-closure.
+  Status: Accepted; its `Refs`-first spelling is a default outside this
+  repository per ADR 0017.
 - [0002](0002-split-hygiene-add-contributing-and-releases.md) — Split
   `github-hygiene` into hygiene + releases and added `github-contributing`.
 - [0003](0003-wiki-discussions-multirepo-projects.md) — Conditional Wiki
@@ -77,3 +79,8 @@ text is not edited.
 - [0016](0016-retire-the-chatgpt-route.md) — Retires the ChatGPT route: the
   Custom GPT export, its docs and tests are removed and the supported platforms
   are three. Status: Accepted; supersedes ADR 0006.
+- [0017](0017-defaults-yield-invariants-hold.md) — Skill defaults (labels,
+  branch names, commit style, milestones, assignment, closing-keyword spelling)
+  yield to a repository's own conventions; approval, evidence, audit-and-reopen,
+  and security gates hold everywhere. Makes ADR 0001's `Refs`-first spelling a
+  default outside this repository; its audit-and-reopen decision is unchanged.

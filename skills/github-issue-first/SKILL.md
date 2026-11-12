@@ -5,6 +5,8 @@ description: Use whenever you are working in a git repository that has a GitHub 
 
 # GitHub issue-first workflow
 
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and the private path for security-sensitive findings.
+
 When you're working in a repo and you notice something worth fixing that isn't
 the exact thing you were asked to do right now — a bug, a stale doc, a missing
 test, a CI failure, a backlog item, anything — the default move is: **file the
@@ -95,6 +97,28 @@ for that repo. Any repo with CI, tests, deployment, or existing branch
 protection keeps the default full ceremony without asking; that signal
 alone is enough to know it's warranted.
 
+## Read the repository's conventions first
+
+Before the first issue or branch in a repository this session, read how it
+already works. Its conventions win over this skill's defaults; the invariants
+in the precedence line at the top do not yield.
+
+```bash
+git ls-files CONTRIBUTING.md AGENTS.md CLAUDE.md .github/      # documented rules, templates, forms
+gh label list --limit 100                                       # its label scheme
+gh api "repos/{owner}/{repo}/milestones?state=open" --jq '.[].title'
+gh issue list --state all --limit 20 --json number,assignees,milestone --jq '.[] | "#\(.number)\t\(.assignees | length) assignee(s)\t\(.milestone.title // "-")"'
+gh pr list --state merged --limit 10 --json headRefName,title,body --jq '.[] | "\(.headRefName)\t\(.title)\t\(.body | split("\n")[0])"'
+```
+
+The same lines run unchanged in PowerShell.
+
+Read the documented files first. From the rest, note the label scheme, whether
+issues carry milestones and assignees, and the branch names, commit titles and
+closing keyword in merged pull requests. Where documented and observed
+practice disagree, follow the documented one and say so. A repository with no
+conventions gets this skill's defaults.
+
 ## Filing a single issue
 
 ```bash
@@ -165,8 +189,11 @@ Only overwrite colour/description this way for labels you are bootstrapping. Don
 
 ### Milestone
 
-Every filed issue also gets a milestone before you move on — not just labels
-and an assignee. `gh issue create` supports `--milestone "<title>"` directly
+In a repository that uses milestones (the conventions probe shows open
+milestones that recent issues are attached to, or its docs say so), every
+filed issue also gets a milestone before you move on — not just labels and an
+assignee. A repository that does not use milestones is not given one.
+`gh issue create` supports `--milestone "<title>"` directly
 when you already know which existing milestone the issue belongs to; when
 you don't (or the right milestone doesn't exist yet), attach it as a
 follow-up instead: `gh issue edit <N> --milestone "<title>"`. Full milestone
@@ -244,11 +271,12 @@ rather than drafting new ones from scratch.
 
 ### Assignment
 
-Always `--assignee "@me"` (it needs `TRIAGE` or higher, which the Preconditions already
-require; if `gh` still refuses the assignment, file without it and say so) unless the user
-has told you a different assignee
-convention for this repo (e.g. "assign backend issues to X"). Don't leave
-issues unassigned — an unassigned finding is easy to lose track of.
+Default to `--assignee "@me"` (it needs `TRIAGE` or higher, which the Preconditions already
+require; if `gh` still refuses the assignment, file without it and say so). Follow the
+repository's practice instead when it has one — issues left unassigned for a triage
+rotation, or an owner rule such as "assign backend issues to X" — and any assignee
+convention the user gives you. In a repository that assigns its issues, don't leave
+one unassigned — an unassigned finding is easy to lose track of.
 
 ## Filing a batch (backlog docs, review passes, multi-finding sessions)
 

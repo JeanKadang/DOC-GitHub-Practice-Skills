@@ -19,6 +19,12 @@ issue with ownership, labels, milestone, and acceptance criteria
 Acceptance criteria are evaluated evidence requirements, not clerical boxes.
 [WORKFLOW.md](WORKFLOW.md) defines the closure gates in detail.
 
+That path uses the skills' defaults, which are this repository's conventions.
+In another repository, every skill lets the repository's own conventions win
+for labels, branch names, commit style, milestones, assignment, and the
+closing-keyword spelling, and keeps the approval, evidence, after-merge audit,
+and security gates everywhere ([ADR 0017](adr/0017-defaults-yield-invariants-hold.md)).
+
 ## Current policy
 
 The following sections describe the canonical skills as they exist in v0.5.0.

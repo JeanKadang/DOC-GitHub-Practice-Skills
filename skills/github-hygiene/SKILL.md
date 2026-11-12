@@ -5,6 +5,8 @@ description: Use when opening or updating a pull request in a repository you mai
 
 # GitHub Hygiene
 
+**Repository conventions win over this skill's defaults** — labels, branch names, commit style, milestones, assignment, and closing-keyword spelling follow what the repository documents or already does (see `github-issue-first`, "Read the repository's conventions first"). These hold in every repository: no merge, release, or destructive step without the maintainer's approval; no issue closed as completed without recorded evidence for each criterion; the after-merge issue audit; and the private path for security-sensitive findings.
+
 Conventions for PR flow, closure, and cleanup. Follow this instead of re-deriving from git history. Issue filing/triage is covered by the separate `github-issue-first` skill — file the issue first, then start work here. Cutting a release, tagging, branch protection, and milestones are `github-releases` — merge here, then ship there. Reviewing a PR before it reaches the merge decision is `github-pr-review`; multi-maintainer board setup is `github-projects`; a release that contains a security fix goes through `github-security-response` first.
 
 This skill's PR/merge ceremony assumes a repo that warrants it. For a
@@ -92,10 +94,11 @@ gh issue list --state closed --limit 1000 --json number,title,body,stateReason `
 
 ## PR flow
 
-- One branch per issue: `fix/…`, `feat/…`, `ci/…`, `test/…`, `docs/…`, `release/x.y.z`. Branch from a fresh `git pull`ed main — never commit on main.
+- Before the first branch in a repository this session, run the conventions probe in `github-issue-first` ("Read the repository's conventions first"); its branch names, commit style and closing keyword win over the defaults below.
+- One branch per issue, named the repository's way. With no convention, use `gh issue develop`'s `<N>-<title>` or a prefix: `fix/…`, `feat/…`, `ci/…`, `test/…`, `docs/…`, `release/x.y.z`. Branch from a fresh `git pull`ed main — never commit on main.
 - `main` throughout this skill means the repo's default branch. Look it up with `gh repo view --json defaultBranchRef -q .defaultBranchRef.name` and substitute it where it differs.
-- Prefer `gh issue develop <N> --name <branch> --base main --checkout` to start work: it creates the branch and links it to the issue. Start the PR body with `Refs #N`; replace it with `Closes #N` only after the acceptance gate passes. When falling back to `git checkout -b`, add the same `Refs #N` link manually.
-- Commit style: conventional (`fix:`, `feat:`, `ci:`, `test:`, `release:`), subject ≤ 50 chars, body says why. PR body states what changed and how it was verified.
+- Prefer `gh issue develop <N> --name <branch> --base main --checkout` to start work: it creates the branch and links it to the issue. Start the PR body with `Refs #N`; replace it with `Closes #N` only after the acceptance gate passes. When falling back to `git checkout -b`, add the same `Refs #N` link manually. In a repository whose own convention puts `Closes #N` (or another closing keyword) in the pull request from the start, keep that convention rather than imposing `Refs #N`; the merge then closes the issue, so every in-scope criterion needs recorded evidence before the merge, and the after-merge audit in "Acceptance criteria are closure gates" still applies.
+- Commit style: the repository's own; with none, conventional (`fix:`, `feat:`, `ci:`, `test:`, `release:`), subject ≤ 50 chars, body says why. PR body states what changed and how it was verified.
 - Wait for CI green on **every** matrix leg (e.g. windows + ubuntu) before merge — `gh pr checks <N> --watch`. Never merge on a red or pending check, and never bypass required checks with an admin merge.
 - **Merging needs the maintainer's explicit approval — ask once per batch** ("merge these N when green?"). The maintainer sometimes merges from the GitHub UI mid-session: before acting on a PR, `git pull` and re-check `gh pr view <N>` state rather than assuming.
 - **A closing keyword needs acceptance approval too.** Do not merge a PR carrying
