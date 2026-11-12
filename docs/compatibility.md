@@ -101,8 +101,10 @@ installer does not write any of these locations.
 | Copilot cloud agent and code review | **Unverified** |
 
 Copilot reads repository skills from `.github/skills`, `.claude/skills`, or
-`.agents/skills` ([Copilot](copilot.md)); a per-repository install is a
-separate decision outside this tool's scope.
+`.agents/skills` ([Copilot](copilot.md)). Per-repository installs are adopted
+(ADR 0018) but not built yet: #366 decides between `gh skill install --scope
+project` and an installer option. Until then, copy the skill folders into the
+repository yourself.
 
 The three verified rows were checked on 2026-10-10 in a throwaway repository
 that held the twelve skills from `main`:

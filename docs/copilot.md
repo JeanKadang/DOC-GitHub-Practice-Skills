@@ -16,8 +16,8 @@ places can be listed twice) and **project** (repository-level) skills under
 `.claude/skills`, or `.agents/skills` in a given repo. This installer only
 manages the personal, user-level location — the same "install into your AI
 tool's home directory" model already used for Codex and Claude. It does not
-write project-level skills into any other repository; that is a separate,
-per-repository decision outside this tool's scope.
+write project-level skills into a repository yet: per-repository installs are
+adopted (ADR 0018) and tracked in #366.
 
 The installer uses `-CopilotHome` when supplied. Otherwise it discovers the
 home from `COPILOT_HOME`, then defaults to the current user's `.copilot`
