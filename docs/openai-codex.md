@@ -33,6 +33,23 @@ installed. To update, pull the source (or download the newer release), run the
 dry run again (it prints a line when the installed copy is older than the
 source), then install without `-DryRun`.
 
+Without PowerShell, GitHub CLI 2.90 or later installs the skills from this
+repository with `gh skill` (a GitHub CLI preview) into `~/.agents/skills`:
+
+```bash
+gh skill install JeanKadang/DOC-GitHub-Practice-Skills --all \
+  --scope user --pin v0.5.0 --agent codex
+```
+
+With `--scope project`, run from a repository root, it writes `.agents/skills`
+there instead, which you commit so the team shares one pinned version. Copies
+installed this way are not tracked by `install-skills.ps1` (no `-Status`, no
+backups). Codex lists a repository copy and any personal copies
+(`~/.codex/skills`, `~/.agents/skills`) side by side, so update or remove
+personal copies before relying on a repository pin. Codex's built-in
+`$skill-installer` skill can also install from a GitHub repository inside a
+session. See the README, "Without PowerShell, or into a team repository".
+
 Upgrading over an unmodified earlier install of this package needs no
 `-Force` and makes no backup: the installer recognizes its own marker and
 replaces the skill in place. Reinstalling the same release changes nothing.

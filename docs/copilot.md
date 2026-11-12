@@ -50,6 +50,22 @@ installed. To update, pull the source (or download the newer release), run the
 dry run again (it prints a line when the installed copy is older than the
 source), then install without `-DryRun`.
 
+Without PowerShell, GitHub CLI 2.90 or later installs the skills from this
+repository with `gh skill` (a GitHub CLI preview) into `~/.copilot/skills`:
+
+```bash
+gh skill install JeanKadang/DOC-GitHub-Practice-Skills --all \
+  --scope user --pin v0.5.0 --agent github-copilot
+```
+
+With `--scope project`, run from a repository root, it writes `.agents/skills`
+there instead, which you commit so the team shares one pinned version. Copies
+installed this way are not tracked by `install-skills.ps1` (no `-Status`, no
+backups). In the check recorded in `docs/compatibility.md`, Copilot listed each
+skill once even with the same skills in both `.agents/skills` and
+`.claude/skills`. See the README, "Without PowerShell, or into a team
+repository".
+
 Upgrading over an unmodified earlier install of this package needs no
 `-Force` and makes no backup: the installer recognizes its own marker and
 replaces the skill in place. Reinstalling the same release changes nothing.

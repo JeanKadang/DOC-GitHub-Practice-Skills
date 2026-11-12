@@ -101,10 +101,9 @@ installer does not write any of these locations.
 | Copilot cloud agent and code review | **Unverified** |
 
 Copilot reads repository skills from `.github/skills`, `.claude/skills`, or
-`.agents/skills` ([Copilot](copilot.md)). Per-repository installs are adopted
-(ADR 0018) but not built yet: #366 decides between `gh skill install --scope
-project` and an installer option. Until then, copy the skill folders into the
-repository yourself.
+`.agents/skills` ([Copilot](copilot.md)). Per-repository installs use
+`gh skill install --scope project` (ADR 0018, #366); this installer does not
+write repository locations.
 
 The three verified rows were checked on 2026-10-10 in a throwaway repository
 that held the twelve skills from `main`:
@@ -120,6 +119,34 @@ that held the twelve skills from `main`:
   `.github/skills` with source `project`.
 
 Nothing was checked for a coding agent or a code review that runs on GitHub.
+
+## Installing with `gh skill`
+
+Checked 2026-11-12 with GitHub CLI 2.103.3 (`gh skill` is a preview), pinned to
+`v0.5.0`, on Windows. The user-scope runs used a throwaway home directory; the
+project-scope runs used a throwaway git repository.
+
+- **Project scope, `--agent claude-code`:** wrote `.claude/skills`, all 12
+  with companion files. Claude Code 2.1.318 with `--setting-sources project`
+  listed all 12.
+- **Project scope, `--agent codex`:** wrote `.agents/skills`, all 12. Codex
+  0.167.1 (`codex debug prompt-input`) listed all 12 from the repository.
+- **Project scope, `--agent github-copilot`:** `.agents/skills` was already
+  present, so nothing new was written. Copilot CLI 1.0.109
+  (`copilot skill list --json`) listed all 12, each once.
+- **User scope:** `--agent claude-code` wrote `~/.claude/skills`, `codex`
+  wrote `~/.agents/skills`, and `github-copilot` wrote `~/.copilot/skills`.
+  These were in a throwaway home, so no session listed them.
+
+- `gh skill` adds a `metadata:` block (repository, pinned tag, ref, tree SHA)
+  to each `SKILL.md` and writes no other file.
+- Copilot listed each skill once although the repository held the same skills
+  in both `.agents/skills` and `.claude/skills`.
+- Codex listed the repository's 12 skills and, beside them, older personal
+  copies from `~/.codex/skills` and `~/.agents/skills`.
+- Codex's `$skill-installer` was not run: it runs inside an interactive Codex
+  session, and OpenAI's "Build skills" page (read 2026-11-12) is the source for
+  it.
 
 ## Re-running a check
 

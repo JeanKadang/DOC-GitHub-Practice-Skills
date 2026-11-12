@@ -6,6 +6,14 @@
 
 ### Added
 
+- `gh skill install` is documented as the route without PowerShell (#367) and
+  for pinning the skills in a team repository (#366): `README.md` and the
+  Claude, Codex, and Copilot guides give the pinned commands at user and project
+  scope, and say what these copies give up (no `-Status`, no backups) and that
+  personal copies still win in Claude Code and still show in Codex. Checked
+  2026-11-12 on all three platforms and recorded in `docs/compatibility.md`.
+  The comparison on #366 found no gap that needs a repository scope in
+  `install-skills.ps1`.
 - ADR 0018 records the distribution decision (#357): per-repository installs
   are adopted (follow-up #366), plugin distribution is deferred, and installing
   without PowerShell is adopted by documenting `gh skill` and Codex's
