@@ -64,6 +64,10 @@ Check all three before the first `gh issue create` in a repo:
 If a precondition fails, put the finding in your reply instead (what, where,
 why it matters) and do not file it.
 
+A routine bot dependency pull request (Dependabot, Renovate) needs no issue; one
+that needs human work does. `github-hygiene`, "Dependabot pull requests", has the
+rule.
+
 | Situation | Permission | What you do |
 |---|---|---|
 | The user's own repo; you notice a stale doc | `ADMIN` | Confirm once (repo, visibility, title), then file |
