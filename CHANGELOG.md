@@ -6,6 +6,13 @@
 
 ### Added
 
+- `github-hygiene` now has a scope check before every push and `gh pr create`
+  (#350): read `git status`, the staged names and the branch's diff against
+  the base, list binary files (Bash and PowerShell forms), explain every path
+  from the issue or pull request, stop and ask on binaries, PDFs, office
+  documents, archives and unrelated directories, and never stage blindly with
+  `git add -A` or `git add .`. `github-contributing` and
+  `github-repo-bootstrap` point to it.
 - `github-repo-configure` now has a minimum baseline an organization can hold every
   repository to (#337): identity and repository creation, a default-branch ruleset,
   file-size limits, OIDC and protected environments instead of stored credentials,

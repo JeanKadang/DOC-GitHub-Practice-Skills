@@ -165,8 +165,9 @@ gh api -X POST repos/{owner}/{repo}/rulesets --input ruleset.json
 
 ## 9. Initial pull request and release
 
-Open the bootstrap pull request with `Refs #N`, criterion evidence, content-scan
-results, and local validation. Inspect its scope and every CI leg; merge only with
+Before pushing and opening the bootstrap pull request, run the scope check in
+`github-hygiene`'s PR flow. Open the bootstrap pull request with `Refs #N`,
+criterion evidence, content-scan results, and local validation. Inspect its scope and every CI leg; merge only with
 explicit maintainer approval and all applicable checks green. If the repository
 ships a versioned artifact, tag the updated default branch, publish generated release notes,
 and verify the release before closing the bootstrap issue.
